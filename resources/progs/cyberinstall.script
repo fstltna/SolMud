@@ -1,0 +1,41 @@
+cast_prog p cyberinstall
+mpechoat $n ^#111Target is $t.^N
+##prompts
+mpprompt $n itemval ^rPlease enter the full name of the cybernetic item to install. Enter nothing to cancel.^N
+mpprompt $n locationval ^rPlease enter the location this item will be installed (even if it can not be installed in multiple locations. ex: ears, torso.) Enter nothing to cancel.^N
+mpchoose $n DECISION YN N Are you certain you wrote those correctly? (Y/N)
+if  VAR($n DECISION == 'Y')
+## checks for yes
+## checks if entered blank
+if  VAR($n itemval != '')
+if  VAR($n locationval != '')
+##check for sitting
+if position($t == SITTING)
+##start of process
+mpcallfunc installationtime
+else
+## not sitting
+mpechoat $n Target is not sitting, canceled.
+endif
+else
+## blank locationval
+mpechoat $n Canceled.
+endif
+else
+## Blank itemval
+mpechoat $n Canceled.
+endif
+else
+## N
+mpechoat $n Canceled.
+endif
+~
+
+function_prog installationtime
+mpforce $n mpunaffect '$<$n itemval>' Prop_Wearzapper
+mpforce $n give $<$n itemval> $t
+mpforce $t mpunaffect '$<$n itemval>' Prop_Wearzapper
+mpforce $t mpaffect Prop_Wearzapper '$<$n itemval>' -NAMES +$t
+mpgset '$<$n itemval>' ISREMOVABLE true
+mpforce $t wear $<$n itemval> on $<$n locationval>
+~

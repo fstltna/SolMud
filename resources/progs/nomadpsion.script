@@ -1,0 +1,93 @@
+cnclmsg_prog huh p browse
+mpechoat $n ^cPossible location keys:%0DArkhenneld%0DPhantom%0DGoblin%0DPlantperson%0DGlimmerfall%0DWayshore%0DFrozen%0D%0DUse travel <keyword> to travel.%0DGive ^g5000^c of the local currency to get an one-use gem to use for this service.^N
+return cancel
+~
+
+bribe_prog 5000
+mpoload fromfile resources/itemspawnlists/psiongem.cmare any
+mpforce $i give gem $n
+~
+
+cnclmsg_prog huh p travel arkhenneld
+if has('$n' '^Pa psion gateway gem^N')
+mpforce $n drop '^Pa psion gateway gem^N'
+mpjunk '^Pa psion gateway gem^N'
+mptransfer '$n' 'Arkhenneld Academy#49'
+mpecho $n's gem vanishes and $e seems be transported elsewhere in a portal that swallows $s!
+else
+mpforce $i say You need to buy a gem first.
+endif
+return cancel
+~
+
+cnclmsg_prog huh p travel phantom
+if has('$n' '^Pa psion gateway gem^N')
+mpforce $n drop '^Pa psion gateway gem^N'
+mpjunk '^Pa psion gateway gem^N'
+mptransfer '$n' 'Phantom City#253'
+mpecho $n's gem vanishes and $e seems be transported elsewhere in a portal that swallows $s!
+else
+mpforce $i say You need to buy a gem first.
+endif
+return cancel
+~
+
+cnclmsg_prog huh p travel goblin
+if has('$n' '^Pa psion gateway gem^N')
+mpforce $n drop '^Pa psion gateway gem^N'
+mpjunk '^Pa psion gateway gem^N'
+mptransfer '$n' 'Ancient Forest Residency#6'
+mpecho $n's gem vanishes and $e seems be transported elsewhere in a portal that swallows $s!
+else
+mpforce $i say You need to buy a gem first.
+endif
+return cancel
+~
+
+cnclmsg_prog huh p travel plantperson
+if has('$n' '^Pa psion gateway gem^N')
+mpforce $n drop '^Pa psion gateway gem^N'
+mpjunk '^Pa psion gateway gem^N'
+mptransfer '$n' 'plantperson village#22'
+mpecho $n's gem vanishes and $e seems be transported elsewhere in a portal that swallows $s!
+else
+mpforce $i say You need to buy a gem first.
+endif
+return cancel
+~
+
+cnclmsg_prog huh p travel glimmerfall
+if has('$n' '^Pa psion gateway gem^N')
+mpforce $n drop '^Pa psion gateway gem^N'
+mpjunk '^Pa psion gateway gem^N'
+mptransfer '$n' 'Glimmerfall#72'
+mpecho $n's gem vanishes and $e seems be transported elsewhere in a portal that swallows $s!
+else
+mpforce $i say You need to buy a gem first.
+endif
+return cancel
+~
+
+cnclmsg_prog huh p travel wayshore
+if has('$n' '^Pa psion gateway gem^N')
+mpforce $n drop '^Pa psion gateway gem^N'
+mpjunk '^Pa psion gateway gem^N'
+mptransfer '$n' 'Wayshore#318'
+mpecho $n's gem vanishes and $e seems be transported elsewhere in a portal that swallows $s!
+else
+mpforce $i say You need to buy a gem first.
+endif
+return cancel
+~
+
+cnclmsg_prog huh p travel frozen
+if has('$n' '^Pa psion gateway gem^N')
+mpforce $n drop '^Pa psion gateway gem^N'
+mpjunk '^Pa psion gateway gem^N'
+mptransfer '$n' 'Frozen City#45'
+mpecho $n's gem vanishes and $e seems be transported elsewhere in a portal that swallows $s!
+else
+mpforce $i say You need to buy a gem first.
+endif
+return cancel
+~

@@ -1,0 +1,28 @@
+once_prog
+mpsetvar $n healedtimes 0
+mpcallfunc medkitactive
+~
+
+function_prog medkitactive
+if var($n healedtimes < 5)
+mpsetvar $n healamt $%MATH($<$n userLevel>*2 + 15?150)%
+MPSETVAR $n MaxHits $%GSTAT($n BASEHITS)%
+mpsetvar $n healedtimes ++
+IF GSTAT($n HITS < $<$n MaxHits>)
+    MPECHO ^g$n gets treated for ($<$n healamt>)!
+    MPSETVAR $n CurHits $%GSTAT($n HITS)%
+    MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n healamt> < $<$n MaxHits>)%
+    IF GSTAT($n BASEHITS < $<$n HitsCalc>)
+        MPSETVAR $n HitsCalc $<$n MaxHits>
+        MPECHO ^g$n gets treated for ($<$n healamt>)!
+    ENDIF
+    MPGSET $n HITS $%VAR($n HitsCalc)%
+    ELSE
+    mpecho $n could not get healed much more.
+ENDIF
+mpalarm 1 mpcallfunc medkitactive
+else
+mpechoat $n stops healing.
+mpunaffect $n surgery_medkitusing
+endif
+~

@@ -1,0 +1,210 @@
+set name Capturewarrant
+set display Capture Bounty Hunt
+set author Moonbeam
+set questtype competitive_capture2
+set category 
+set instructions I need you to capture at least three designated gang members.  They are at sector minus, no precise location known. Just beat them senseless, and they will yield to you. Watch out for other Mercenaries that may want to take your bounty target from you though. You will see the active bounty through your neural implant if you spot the targets.
+
+set wait 220 minutes
+set interval 1
+#quiet
+
+set minplayers 1
+set playermask +tattoos -corporate
+
+set area "Phantom City"
+set room "Phantom City#32"
+set mobgroup
+set mob "A HOJ Dispatcher"
+give stat keyplayer true
+give script LOAD=Capturewarrant_announcer.script
+give stat charisma 100
+
+set area "sector minus"
+set roomgroup 
+set mobgroup
+set mob
+set room
+import mobs Capturewarrant_mobs.xml
+load mobgroup 10 any
+set mob
+give script LOAD=Capturewarrant_capturable.script
+
+set duration 120 minutes
+<?xml version="1.0"?>
+<FILE><NAME>Capturewarrant_rewarditems.xml</NAME><DATA><ITEMS></ITEMS></DATA></FILE>
+<FILE><NAME>Capturewarrant_mobs.xml</NAME><DATA><MOBS><MOB><MCLAS>GenMob</MCLAS><MLEVL>25</MLEVL><MABLE>11</MABLE><MREJV>217</MREJV><MTEXT>&lt;NAME&gt;a gang member&lt;/NAME&gt;&lt;DESC /&gt;&lt;DISP&gt;^R[^rBOUNTY^R]^N A fresh-looking ganger is here.&lt;/DISP&gt;&lt;PROP&gt;11|25|25|25|0|25|217|1.0|181|75|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;Fighterness&lt;/BCLASS&gt;&lt;BPARMS /&gt;&lt;/BHAVE&gt;&lt;/BEHAVES&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;MONEY&gt;17&lt;/MONEY&gt;&lt;VARMONEY&gt;0.0&lt;/VARMONEY&gt;&lt;GENDER&gt;M&lt;/GENDER&gt;&lt;MRACE&gt;Resurgentis&lt;/MRACE&gt;&lt;FACTIONS&gt;&lt;FCTN ID="ALIGNMENT.INI"&gt;-2999&lt;/FCTN&gt;&lt;FCTN ID="INCLINATION.INI"&gt;-2999&lt;/FCTN&gt;&lt;/FACTIONS&gt;&lt;INVEN /&gt;&lt;ABLTYS /&gt;</MTEXT></MOB>
+</MOBS></DATA></FILE>
+<FILE><NAME>Capturewarrant_announcer.script</NAME>
+<DATA>
+ONCE_PROG 100
+MPQSET * INSTRUCTIONS $i in $a wants you to 'I need you to capture at least three designated gang members.  They are at sector minus, no precise location known. Just beat them senseless, and they will yield to you. Watch out for other Mercenaries that may want to take your bounty target from you though. You will see the active bounty through your neural implant if you spot the targets.'
+MPSETVAR * Capturewarrant_ALREADY_TOLD ''
+MPSETVAR * Capturewarrant_REWARDED ''
+MPSETVAR * Capturewarrant_WARNED ''
+MPSETVAR * Capturewarrant_ACCEPTED ''
+MPSETVAR * Capturewarrant_CAPTURED ''
+MPSETVAR * Capturewarrant_NUMACCEPTED ''
+QUESTCHAT A new capture warrant is out for someone within Sector Minus, Come to the Hall of Justice to take on the bounty. (No corporates - Recommended level range: 25-30)
+~
+
+QUEST_TIME_PROG * 1
+mpsetvar $i Capturewarrant_NUMACCEPTED '$<$i Capturewarrant_ACCEPTED>.LENGTH#'
+for $0 = 0 to< '$<$i Capturewarrant_NUMACCEPTED>'
+tell "$<$i Capturewarrant_ACCEPTED>.$0" You have 1 minute to complete my quest.
+next
+~
+
+QUEST_TIME_PROG * -1
+mpsetvar $i Capturewarrant_NUMACCEPTED '$<$i Capturewarrant_ACCEPTED>.LENGTH#'
+for $0 = 0 to< '$<$i Capturewarrant_NUMACCEPTED>'
+if !QUESTWINNER('$<$i Capturewarrant_ACCEPTED>.$0' *)
+tell "$<$i Capturewarrant_ACCEPTED>.$0" You failed to complete my quest in time.
+endif
+mpqset * STATISTICS FAILED
+next
+if VAR($i Capturewarrant_REWARDED == '')
+QUESTCHAT Looks like we won't be getting them in time, capture bounty recalled.
+endif
+MPSETVAR * Capturewarrant_NUMACCEPTED ''
+MPSETVAR * Capturewarrant_ALREADY_TOLD ''
+MPSETVAR * Capturewarrant_ACCEPTED ''
+MPSETVAR * Capturewarrant_REWARDED ''
+MPSETVAR * Capturewarrant_WARNED ''
+MPSETVAR * Capturewarrant_CAPTURED ''
+~
+
+ALL_GREET_PROG 100
+if ISLIKE($n '+tattoos -corporate') and ISPC($n) and ( EVAL('YES' != 'PREV') or QUESTWINNER($n previous) )
+if EVAL('YES' == 'YES') OR !QUESTWINNER($n *)
+if !STRIN('$<$i Capturewarrant_ALREADY_TOLD>' '$n')
+if VAR($n Capturewarrant_ACCEPTED == '')
+sayto "$n" Here to take on the capture bounty? -- just say 'i accept' to take on this quest.
+MPSETVAR $i Capturewarrant_ALREADY_TOLD '$<$i Capturewarrant_ALREADY_TOLD> "$n"'
+endif
+endif
+endif
+endif
+
+IF isnpc($n) and questmob($n *) and isfollow($n)
+mpargset $9 '$%ISFOLLOW($n)%'
+if ISLIKE($9 '+tattoos -corporate') and ISPC($9)
+if  EVAL('YES' != 'YES') AND QUESTWINNER($9 *)
+sayto "$9" Not YOU again
+return
+endif
+if  VAR($i Capturewarrant_REWARDED == $9)
+sayto "$9" Not YOU again
+return
+endif
+mpforce $n follow self
+mpforce $n follow $i
+mpsetvar $9 Capturewarrant_CAPTURED ++;
+if var($9 Capturewarrant_CAPTURED >= 3)
+mpsetvar $i Capturewarrant_REWARDED $9
+if EVAL('30%' != '')
+mpexp $9 30%
+endif
+if EVAL('AREA_PHANTOM_CITY.INI' != '')
+mpfaction $9 AREA_PHANTOM_CITY.INI +10
+endif
+if EVAL('YES' == 'YES') AND !QUESTWINNER($9 *)
+mpoload QuestPoint
+give "a quest point" "$9"
+endif
+if EVAL('9000' != '') AND EVAL('10000' > 0)
+mpoload 10000
+give 10000 "$9"
+endif
+mpoload fromfile Capturewarrant_rewarditems.xml any
+if EVAL('$b' != '')
+give "$b" "$n"
+endif
+mpquestwin $9 *
+QUESTCHAT Capture bounty is fulfilled, reward handed out.
+mpendquest *
+mpqset * STATISTICS SUCCESS
+IF EVAL('' != '')
+mpstartquest 
+ELSE
+IF EVAL('YES' == 'PREV')
+mptransfer $n $n
+ENDIF
+ENDIF
+else
+if EVAL(3 > 1)
+mpechoat $9 You've brought in $<$9 Capturewarrant_CAPTURED>/3
+endif
+endif
+ENDIF
+endif
+~
+
+FUNCTION_PROG CAN_ACCEPT
+if ISLIKE($n '+tattoos -corporate') and ISPC($n) and ( EVAL('YES' != 'PREV') or QUESTWINNER($n previous) )
+if EVAL('YES' == 'YES') OR !QUESTWINNER($n *)
+if VAR($n Capturewarrant_ACCEPTED == '')
+RETURN TRUE
+endif
+endif
+endif
+RETURN CANCEL
+~
+
+FUNCTION_PROG DO_ACCEPT
+mpscript $n INDIVIDUAL LOAD=Capturewarrant_playertrack.script
+mpqset * REMAINING 30 minutes
+mpqset * STATISTICS ACCEPTED
+MPSETVAR $i Capturewarrant_ACCEPTED '$<$i Capturewarrant_ACCEPTED> $n'
+mpsetvar $n Capturewarrant_ACCEPTED 'YES'
+mpsetvar $n Capturewarrant_CAPTURED 0
+~
+
+SPEECH_PROG p i accept
+if CALLFUNC(CAN_ACCEPT)
+sayto "$n" I need you to capture at least three designated gang members.  They are at sector minus, no precise location known. Just beat them senseless, and they will yield to you. Watch out for other Mercenaries that may want to take your bounty target from you though. You will see the active bounty through your neural implant if you spot the targets.
+MPCALLFUNC DO_ACCEPT
+else
+sayto "$n" Yes, yes, I know .. now off with you.
+endif
+~
+</DATA></FILE>
+<FILE><NAME>Capturewarrant_capturable.script</NAME>
+<DATA>
+GREET_PROG 100
+if VAR($n Capturewarrant_ACCEPTED != '') and !isfollow($i)
+sayto "$n" I ain't going to jail!
+if EVAL('VIOLENT' == 'PEACEFUL')
+sayto "$n" Stop! I give up- I give up!
+mpstop all
+follow "$n"
+endif
+endif
+~
+
+CNCLMSG_PROG DEATH ALL
+if ISFIGHT($i)
+mpargset $9 '$%ISFIGHT($i)%'
+if VAR($9 Capturewarrant_ACCEPTED != '')
+mpgset $i HITS 1
+sayto "$9" Stop! I give up- I give up!
+mpstop all
+follow "$9"
+RETURN CANCEL
+endif
+endif
+~
+</DATA></FILE>
+<FILE><NAME>Capturewarrant_playertrack.script</NAME>
+<DATA>
+ONCE_PROG 100
+mpsetvar $i INSTRUCTIONS I need you to capture at least three designated gang members.  They are at sector minus, no precise location known. Just beat them senseless, and they will yield to you. Watch out for other Mercenaries that may want to take your bounty target from you though. You will see the active bounty through your neural implant if you spot the targets.
+~
+RAND_PROG 99
+if QVAR(* REMAINING == '')
+MPENDQUEST $i
+else
+mpsetvar $i TIME_REMAINING $%QVAR(* REMAINING)%
+endif
+~
+</DATA></FILE>

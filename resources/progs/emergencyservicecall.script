@@ -1,0 +1,15 @@
+once_prog
+mpechoat $n ^R[N-UI]^r Alerted emergency services, you may be charged for this service by an officer.^N
+if worn($i neural)
+mpsetvar $i confirmcode $%RAND0NUM(9)%$%RAND0NUM(9)%$%RAND0NUM(9)%$%RAND0NUM(9)%$%RAND0NUM(9)%$%RAND0NUM(9)%$%RAND0NUM(9)%$%RAND0NUM(9)%$%RAND0NUM(9)%
+if islike($i -tattoos +corporate)
+mpchannel !EMERGENCY ACTIVATED A PRIORITY EMERGENCY ALERT.%0D^wHEALTH PERCENTAGE: $%HITPRCNT($i)%%%0D^wAREA: $%INAREA($i)%%0DROOM: $%INROOM($i)%%0D%0D^wMEMBERS OF THE CORPORATE IS ENTITLED TO RECEIVE HIGHEST PRIORITY ON EMERGENCY RESPONSE.%0DCONFIRMATION CODE: $<$i confirmcode>
+mpalarm 2 mpsetvar $i confirmcode ''
+else
+mpchannel !EMERGENCY requesting emergency services at $%INAREA($i)%, $%INROOM($i)%. CODE: $<$i confirmcode>
+mpalarm 2 mpsetvar $i confirmcode ''
+endif
+else
+mpechoat $i You do not have a neural implant.
+endif
+~

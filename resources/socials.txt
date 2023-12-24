@@ -96,6 +96,10 @@ ss	BURP	Burp.	<S-NAME> burps.	<S-NAME> burps in your general direction.		burp.wa
 ss	BURP <T-NAME>	You burp loudly to <T-HIM-HER> in response.	<S-NAME> burps loudly in response to <T-NAMESELF>'s remark.	<S-NAME> burps loudly in response to your remark.	You can't find your victim.	burp.wav		
 ss	BURP SELF	You burp at yourself.	<S-NAME> burps at <S-HIM-HERSELF>.  What a sick sight.			burp.wav		
 ov	BUTT <T-NAME>	You reach down and cup one of <T-NAME>`s buttcheeks.	<S-NAME> reaches down and cups one of <T-NAME>`s buttcheeks.	<S-NAME> reaches down and cups one of your buttcheeks.	Butt who?			
+qw	BUTTFUCK	You gonna buttfuck yourself? Get real.						
+ov	BUTTFUCK <I-NAME>	You buttfuck <T-NAME>.	<S-NAME> buttfucks <T-NAMESELF>.	<S-NAME> buttfucks you.	Buttfuck who?			
+ov	BUTTFUCK <T-NAME>	You buttfuck <T-NAME>.	<S-NAME> buttfucks <T-NAMESELF>.	<S-NAME> buttfucks you.	Buttfuck who?			TARG_CONFIRM
+ov	BUTTFUCK <V-NAME>	You buttfuck <T-NAME>.	<S-NAME> buttfucks <T-NAMESELF>.	<S-NAME> buttfucks you.	Buttfuck who?			
 ss	CACKLE	You cackle gleefully.	<S-NAME> throws back <S-HIS-HER> head and cackles with insane glee!			cackle.wav		
 ss	CACKLE <T-NAME>	You cackle gleefully at <T-NAMESELF>	<S-NAME> cackles gleefully at <T-NAMESELF>.	<S-NAME> cackles gleefully at you.  Better keep your distance from <S-HIM-HER>.	You can't find a friend to cackle with.	cackle.wav		
 ss	CACKLE SELF	You cackle at yourself.  Now THAT'S strange!	<S-NAME> is really crazy now!  <S-HE-SHE> cackles at <S-HIM-HERSELF>.			cackle.wav		
@@ -199,9 +203,6 @@ mo	EMBRACE SELF	You try to console yourself with a loving embrace.	<S-NAME> trie
 mv	ENOD	You eagerly nod <S-YOUPOSS> approval.	<S-NAME> eagerly nods <S-HIS-HER> approval.					
 mv	ENOD <T-NAME>	You eagerly nod at <T-NAME>.	<S-NAME> eagerly nods at <T-NAME>.  <S-NAME> must approve!	<S-NAME> nods at <T-NAME> in approval.				
 mv	ENOD SELF	You bob <S-YOUPOSS> head up and down rapidly.	<S-NAME> nods <S-HIS-HER> head rapidly in some bizarre dance move.					
-mo	EYEPOKE	You get ready to poke someone in the eye.	<S-NAME> looks around for some eyes to gouge.					
-mo	EYEPOKE <T-NAME>	You poke <T-NAME> in the eye! Squishy!	<S-NAME> pokes <T-NAME> in the eye. That must`ve hurt.	<S-NAME> pokes you in the eye! OWWIE!!!	They aren`t around to poke. Sorry.			
-mo	EYEPOKE SELF	You jam your thumb into your eye. Was that fun?	<S-NAME> jabs <S-HIS-HER> thumb into <S-HIS-HER> eye and squishes it around.					
 mo	EXCITED	Whoohoo!	<S-NAME> is so excited <S-HE-SHE> is bouncing off the walls!					
 mo	EXCITED <T-NAME>	You bounce excitedly at <T-NAME>!	<S-NAME> hops around excitedly at <T-NAME>.	<S-NAME> looks at you and bounces with excitement.	So much energy, but nobody to share it with.			
 oo	EXPLODE	You feel the blood boiling in your veins!	<S-NAME> turns a deep red, fighting to contain <S-HIS-HER> temper...					
@@ -212,6 +213,14 @@ mo	EYE <T-NAME>	You eye <T-NAME> suspiciously.	<S-NAME> sizes up <T-NAME> carefu
 mo	EYE SELF	You carefully inspect yourself making sure nothing is out of place.	<S-NAME> checks over <S-HIS-HER> belongings, looking for something.					
 mo	EYEBROW	You raise an eyebrow at the notion.	<S-NAME> raises an eyebrow.					
 mo	EYEBROW <T-NAME>	You raise your eyebrow at <T-NAMESELF>.	<S-NAME> raises an eyebrow at <T-NAMESELF>'s weird actions.	<S-NAME> raises an eyebrow at you.	Forget it.  They aren't here.			
+mo	EYEPOKE	You get ready to poke someone in the eye.	<S-NAME> looks around for some eyes to gouge.					
+mo	EYEPOKE <T-NAME>	You poke <T-NAME> in the eye! Squishy!	<S-NAME> pokes <T-NAME> in the eye. That must`ve hurt.	<S-NAME> pokes you in the eye! OWWIE!!!	They aren`t around to poke. Sorry.			
+mo	EYEPOKE SELF	You jam your thumb into your eye. Was that fun?	<S-NAME> jabs <S-HIS-HER> thumb into <S-HIS-HER> eye and squishes it around.					
+qq	FACEFUCK	You gotta suck yourself? Get real.						
+ov	FACEFUCK <I-NAME>	You facefuck <T-NAME>.	<S-NAME> facefucks <T-NAMESELF>.	<S-NAME> facefucks you.	Facefuck who?			
+ov	FACEFUCK <T-NAME>	You facefuck <T-NAME>.	<S-NAME> facefucks <T-NAMESELF>.	<S-NAME> facefucks you.	Facefuck who?			TARG_CONFIRM
+ov	FACEFUCK <V-NAME>	You facefuck <T-NAME>.	<S-NAME> facefucks <T-NAMESELF>.	<S-NAME> facefucks you.	Facefuck who?			
+mv	FACEPALM	You put your hand over your face and shake your head slowly...What a dork!	<S-name> slaps <s-his-her> palm over <s-his-her> face and shakes <s-his-her> head slowly.					
 oo	FAINT	You faint.	<S-NAME> faints.					
 ot	FAINT <T-NAME>	You faint into <T-HIS-HER> arms.	<S-NAME> faints into <T-NAMESELF>'s open arms.	<S-NAME> just fainted into YOUR arms.	You fall on the floor and look stupid--really suave.			
 mo	FAREWELL	You raise a hand in farewell.	<S-NAME> raises a hand in farewell.					
@@ -256,7 +265,6 @@ mt	FONDLE SELF	You fondly fondle yourself, feels funny doesn't it?	<S-NAME> fond
 mo	FOOTSIE	Who do you want to play footsie with?	`					
 ov	FOOTSIE <T-NAME>	You rub your foot on <T-NAMESELF>`s leg from <T-HIS-HER> ankle to <T-HIS-HER> thigh.	<S-NAME> rubs <S-HIS-HER> foot on <T-NAMESELF>`s leg from <T-HIS-HER> ankle to <T-HIS-HER> thigh.	<S-NAME> rubs <S-HIS-HER> foot from your ankle to VERY high up on your thigh.	Who do you want to play footsie with?			
 mo	FOOTSIE SELF	You look weird trying to play footsie with yourself.	<S-NAME> looks rather awkward trying to play footsie with <S-HIM-HERSELF>.					
-mv	FACEPALM	You put your hand over your face and shake your head slowly...What a dork!	<S-name> slaps <s-his-her> palm over <s-his-her> face and shakes <s-his-her> head slowly.					
 mt	FRENCH	Kiss whom?						
 mt	FRENCH <T-NAME>	You give <T-NAMESELF> a long and passionate kiss, it seems to last forever...	<S-NAME> kisses <T-NAMESELF> passionately.	<S-NAME> gives you a long and passionate kiss, it seems to last forever...	Your heart is filled with despair as that person is not here.			
 ot	FRENCH SELF	You gather yourself in your arms and try to kiss yourself.	<S-NAME> makes an attempt at kissing <S-HIM-HERSELF>.					
@@ -340,6 +348,7 @@ ss	HICCUP	*HIC*	<S-NAME> hiccups.			hiccup.wav
 oo	HIGHFIVE	You jump in the air and give a BIG high five to...umm...absolutely nothing.	<S-NAME> wildly high fives the air, looking very foolish -- very foolish indeed.					
 ov	HIGHFIVE <T-NAME>	You jump in the air and give a BIG high five to <T-NAMESELF>!	<S-NAME> enthusiastically high-five's <T-NAMESELF>!	<S-NAME> gives you a BIG high five!  Way to go!!	Sorry, they have already left.			
 ov	HIGHFIVE SELF	You try to give yourself a high five.  What ARE you thinking?	<S-NAME> tries to high five <S-HIM-HERSELF>, but ends up looking foolish instead.					
+ms	HMM	You hmm.	<S-NAME> hmms.					
 mo	HOMEWORK	You suddenly remember that you have to defend your thesis today...	<S-NAME> looks stricken.  Could <S-HE-SHE> have blown off some important homework?					
 ov	HOMEWORK <T-NAME>	You bring out a textbook and slowly advance towards <T-NAME>.	<S-NAME> grab(s) <S-HIS-HER> textbook and slowly advance(s) towards <T-NAME>.	<S-NAME> grab(s) their textbook and slowly advance(s) towards <T-NAME>.	But I brought my own pencil!			
 mv	HOMEWORK SELF	You bring out a textbook and get to work.	<S-NAME> pulls out <S-HIS-HER> textbook and gets to work.					
@@ -420,13 +429,14 @@ mo	MASSAGE	Massage what?  Thin air?
 mt	MASSAGE <T-NAME>	You gently massage <T-NAMESELF>'s shoulders.	<S-NAME> massages <T-NAMESELF>'s shoulders.	<S-NAME> gently massages your shoulders - Ahhhhhhhhhh...	You can only massage someone in the same room as you.			
 mo	MASSAGE SELF	You practice yoga as you try to massage yourself.	<S-NAME> gives a show on yoga-positions, trying to massage <S-HIM-HERSELF>.					
 mo	MATE	Umm, with yourself?						
-mo	MATE <T-NAME>	You make passionate love to <T-HIM-HER>.	<S-NAME> makes passionate love to <T-NAMESELF>.	<S-NAME> makes passionate love to you.	Sorry, friend, I can't see that person here.			
-mo	MATE SELF	You make passionate love to yourself.	You don't want to know what <S-NAME> is doing right now.					
+ov	MATE <I-NAME>	You fuck the shit out of <T-NAME>	<S-NAME> fucks the shit out of <T-NAMESELF>	<S-NAME> mates you.	Smash who?			
+mv	MATE <T-NAME>	You fuck the shit out of <T-HIM-HER>.	<S-NAME> fucks the shit out of <T-NAMESELF>.	<S-NAME> fucks the shit out of you.	Sorry, friend, I can't see that person here.			
+ov	MATE <V-NAME>	You fuck the shit out of <T-NAME>	<S-NAME> fucks the shit out of <T-NAMESELF>	<S-NAME> mates you.	Mate who?			
 mo	MEDITATE	You assume a very comfortable position and begin to meditate.	<S-NAME> rests and begins to meditate... <S-HE-SHE> chants softly to <S-HIM-HERSELF>.					
 mo	MISCHIEVOUS	You give a mischievous smile at the trouble you have in mind.	<S-NAME> grins mischievously at a nasty idea.					
 mo	MISCHIEVOUS <T-NAME>	You grin mischievously at <T-HIM-HER>, thinking an evil thought.	<S-NAME> grins mischievously at <T-NAMESELF>.  <S-HIM-HER> must be thinking something evil.	<S-NAME> grins mischievously at you.  You inch toward the door.	You must be delirious.			
 mo	MISCHIEVOUS SELF	You grin mischievously to yourself.	<S-NAME> grins mischievously to <S-HIM-HERSELF>.					
-ss	MOAN	You start to moan.	<S-NAME> starts moaning.					
+ss	MOAN	You start to moan.	<S-NAME> ^pmoans!^N					
 ss	MOAN <T-NAME>	You moan in ecstasy.	<s-name> moans in ecstasy.	<s-name> moans in total ecstasy.	You see no cause to moan.			
 ss	MOAN SELF	You moan at yourself.	<S-NAME> makes <S-HIM-HERSELF> moan.					
 ss	MOO	You chew your cud and moo plaintively.  Muh-OOOOO!	<S-NAME> turns cowlike eyes on you, chews <S-HIS-HER> cud, and moos plaintively.			moo.wav		
@@ -453,6 +463,7 @@ mo	NIBBLE SELF	You nibble on your OWN ear ???????????????????	<S-NAME> nibbles o
 mo	NOD	You nod.	<S-NAME> nods.					
 mo	NOD <T-NAME>	You nod at <T-NAMESELF>.	<S-NAME> nods at <T-NAMESELF>.	<S-NAME> nods at you.	Nod your head off -- they aren't here.			
 mo	NOD SELF	You attempt to nod at yourself and get dizzy instead.	<S-NAME> nods quietly to <S-HIM-HERSELF>.  What a wacko.					
+mq	NODNOD	You nodnodnodnodnodnodnod!!!	<S-NAME> nodnodnodnodnodnodnods!!					
 mo	NOOGIE	You can't noogie the AIR!  It has no head.						
 mt	NOOGIE <T-NAME>	You grab <T-NAMESELF>, get <T-HIM-HER> in a head lock and NOOGIE <T-HIM-HER>!	<S-NAME> grabs <T-NAMESELF> in a head lock and NOOGIES <T-HIM-HER>... ARGH!!!	Oh NO, <S-NAME> grabs you, throws you in a head lock and NOOGIES you!	That person has gone off to other lands...			
 mt	NOOGIE SELF	You rub your head and create a static charge...	<S-NAME> rubs <S-HIS-HER> OWN head and creates a static charge... *ZAP*					
@@ -474,8 +485,7 @@ mo	OOGLE <T-NAME>	You oogle at <T-NAME>.	<S-NAME> oogles at <T-NAME> and drools.
 mo	OOGLE SELF	You oogle at yourself. Having fun?	<S-NAME> oogles at <S-HIM-HERSELF> and giggles.					
 mo	PALE	You feel the blood draining from your face.						
 mo	PALE SELF	You feel the blood draining from your face.						
-ss	PANT	You pant lustily.	<S-NAME> pants lustily.			pant.wav		
-ss	PANT <T-NAME>	You pant lustily at <T-HIM-HER>.	<S-NAME> looks at <T-NAMESELF> and pants lustily.	<S-NAME> looks at you and pants lustily...		pant.wav		
+ss	PANT	You pant.	<S-NAME> pants.			pant.wav		
 ov	PASSOUT	You belch and pass out.	<S-NAME> is OBVIOUSLY intoxicated... <S-HE-SHE> burps loudly and passes out!					
 mo	PAT	Pat who?						
 ot	PAT <T-NAME>	You pat <T-NAMESELF> on <T-HIS-HER> head.	<S-NAME> pats <T-NAMESELF> on <T-HIS-HER> head.	<S-NAME> pats you on your head.	Who, where, what?			

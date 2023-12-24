@@ -1,0 +1,222 @@
+set name pcbookdelivery
+set display Book Delivery
+set author Moonbeam
+set questtype normal_delivery2
+set category 
+set instructions Go to the sector minus library and drop the books.  Be careful! If you are corporate you may be attacked by the gangers there!
+
+set wait 4 hours
+set interval 1
+quiet
+
+set minplayers 1
+set playermask 
+
+set area "Phantom City"
+set room "Phantom City#83"
+set mobgroup
+set mob reselect Ross
+give stat keyplayer true
+give script LOAD=pcbookdelivery_deliverer.script
+
+set area
+set room
+set mobgroup
+set mob
+set item
+import items pcbookdelivery_item.xml
+set itemgroup loadeditems
+set item itemgroup
+give affect Property
+
+set area "sector minus"
+set room "sector minus#20"
+give script LOAD=pcbookdelivery_deliveree.script
+set itemgroup
+set item reselect 
+give stat keyplayer true
+give affect Property
+
+set duration 120 minutes
+<?xml version="1.0"?>
+<FILE><NAME>pcbookdelivery_item.xml</NAME><DATA><ITEMS><ITEM><ICLAS>GenBook</ICLAS><IUSES>2147483647</IUSES><ILEVL>0</ILEVL><IABLE>0</IABLE><IREJV>0</IREJV><ITEXT>&lt;NAME&gt; ^#500a bu^#520nd^#540le o^#333f bo^#500oks^w&lt;/NAME&gt;&lt;DESC /&gt;&lt;DISP&gt; ^#500a bu^#520nd^#540le o^#333f bo^#500oks^w sit here.&lt;/DISP&gt;&lt;PROP&gt;0|0|0|0|1048576|0|0|1.0|1|0|8|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES /&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;15&lt;/FLAG&gt;&lt;IDENT /&gt;&lt;VALUE&gt;20&lt;/VALUE&gt;&lt;MTRAL&gt;2368&lt;/MTRAL&gt;&lt;WORNL&gt;false&lt;/WORNL&gt;&lt;WORNB&gt;512&lt;/WORNB&gt;&lt;READ /&gt;&lt;MAXPG&gt;0&lt;/MAXPG&gt;&lt;MAXCHPG&gt;0&lt;/MAXCHPG&gt;</ITEXT></ITEM>
+</ITEMS></DATA></FILE>
+<FILE><NAME>pcbookdelivery_deliverer.script</NAME>
+<DATA>
+ONCE_PROG 100
+MPQSET * INSTRUCTIONS $i in $a wants you to 'Go to the sector minus library and drop the books.  Be careful! If you are corporate you may be attacked by the gangers there!'
+if EVAL('QUESTCHAT' != '')
+QUESTCHAT I need someone to deliver $[1 *] to the sector minus library. -- Come see me for more information.
+endif
+~
+
+# this script is for the human chosen to be the note bearer
+GREET_PROG 100
+if ISLIKE($n '') and ISPC($n) and ( EVAL('YES' != 'PREV') or QUESTWINNER($n previous) )
+if EVAL('YES' == 'YES') OR !QUESTWINNER($n *)
+if !QUESTSCRIPTED($n *)
+sayto "$n" I need someone to deliver $[1 *] to the sector minus library..  Say '^yi accept^?' or '^yi accept Book Delivery^?', and I will give you the details.
+endif
+endif
+endif
+~
+
+FUNCTION_PROG CAN_ACCEPT
+if ISLIKE($n '') and ISPC($n) and ( EVAL('YES' != 'PREV') or QUESTWINNER($n previous) )
+if EVAL('YES' == 'YES') OR !QUESTWINNER($n *)
+if !QUESTSCRIPTED($n *)
+RETURN TRUE
+endif
+endif
+endif
+RETURN CANCEL
+~
+
+FUNCTION_PROG DO_ACCEPT
+mpscript $n INDIVIDUAL SAVABLE STATIC=LOAD=pcbookdelivery_playertrack.script
+mpqset * STATISTICS ACCEPTED
+if !HAS($n '$[1 *]')
+mpat $n mpforce $n mpoload fromfile pcbookdelivery_item.xml '$[1 *]'
+MPQSET * QUESTOBJ $b
+mpat $n mpechoat $n You receive $[1 *].
+endif
+~
+
+SPEECH_PROG p i accept Book Delivery
+if CALLFUNC(CAN_ACCEPT)
+mpqset * STATISTICS ACCEPTED
+if !HAS($i '$[1 *]')
+mpoload fromfile pcbookdelivery_item.xml '$[1 *]'
+mpoload 100
+endif
+if !has($n '$[1 *]')
+give "$[1 *]" "$n"
+give 100 "$n"
+endif
+sayto "$n" Go to the sector minus library and drop the books.  Be careful! If you are corporate you may be attacked by the gangers there!
+mpscript $n INDIVIDUAL SAVABLE STATIC=LOAD=pcbookdelivery_playertrack.script
+endif
+~
+
+SPEECH_PROG p i accept
+if CALLFUNC(CAN_ACCEPT)
+mpqset * STATISTICS ACCEPTED
+if !HAS($i '$[1 *]')
+mpoload fromfile pcbookdelivery_item.xml '$[1 *]'
+mpoload 100
+endif
+if !has($n '$[1 *]')
+give "$[1 *]" "$n"
+mpforce $n GET 100
+endif
+sayto "$n" Go to the sector minus library and drop the books.  Be careful! If you are corporate you may be attacked by the gangers there!
+mpscript $n INDIVIDUAL SAVABLE STATIC=LOAD=pcbookdelivery_playertrack.script
+endif
+~
+
+GIVE_PROG p '$[1 *]'
+if EVAL($o == '$[1 *]')
+sayto "$n" So, you refuse?  Help me find someone else then.  Ok?
+mpjunk $o
+mpendquest $n
+endif
+~
+</DATA></FILE>
+<FILE><NAME>pcbookdelivery_deliveree.script</NAME>
+<DATA>
+
+PUT_PROG p '$[1 *]'
+if EVAL($p == '$[1 *]') AND EVAL($o == '$[2 *]') AND EVAL('$[2 *]' != '') AND EVAL('$[2 *]' != '$[1 *]')
+if ISLIKE($n '') AND EVAL('$[1 *]' != '') and ISPC($n) and QUESTSCRIPTED($n *)
+if  EVAL('YES' == 'YES') OR !QUESTWINNER($n *)
+if EVAL($p == '$[1 *]')
+if EVAL('15%' != '')
+mpexp $n 15%
+endif
+if EVAL('' != '')
+mpfaction $n  +
+endif
+if EVAL('NO' == 'YES') AND !QUESTWINNER($n *)
+endif
+if EVAL('2000' != '') AND EVAL('2000' > 0)
+mpoload 2000
+mpforce $n GET 2000
+endif
+mpquestwin $n *
+mpecho Your task is complete.
+mpendquest $n
+mpqset * STATISTICS SUCCESS
+IF EVAL('YES' == 'PREV')
+mptransfer $n $n
+ENDIF
+endif
+endif
+endif
+endif
+~
+
+DROP_PROG p '$[1 *]'
+if EVAL('$[2 *]' != '') AND EVAL('$[2 *]' != '$[1 *]')
+RETURN
+ENDIF
+if ISLIKE($n '') AND EVAL('$[1 *]' != '') and ISPC($n) and QUESTSCRIPTED($n *)
+if  EVAL('YES' == 'YES') OR !QUESTWINNER($n *)
+if EVAL($o == '$[1 *]')
+if EVAL('10%' != '')
+mpexp $n 10%
+endif
+if EVAL('' != '')
+mpfaction $n  +
+endif
+if EVAL('NO' == 'YES') AND !QUESTWINNER($n *)
+endif
+if EVAL('1000' != '') AND EVAL('1000' > 0)
+mpoload 1000
+mpforce $n GET 1000
+endif
+mpquestwin $n *
+mpecho Your task is complete.
+mpendquest $n
+mpqset * STATISTICS SUCCESS
+IF EVAL('YES' == 'PREV')
+mptransfer $n $n
+ENDIF
+endif
+endif
+endif
+~
+</DATA></FILE>
+<FILE><NAME>pcbookdelivery_playertrack.script</NAME>
+<DATA>
+ONCE_PROG 100
+mpsetvar $i INSTRUCTIONS Go to the sector minus library and drop the books.  Be careful! If you are corporate you may be attacked by the gangers there!
+IF !isquestmobalive(1 'pcbookdelivery')
+MPENDQUEST 'pcbookdelivery'
+ENDIF
+~
+
+RAND_PROG 25
+IF !isquestmobalive(1 'pcbookdelivery')
+MPENDQUEST 'pcbookdelivery'
+else
+IF QVAR(* DURATION != '0')
+if QVAR(* REMAINING == '')
+MPENDQUEST $i
+else
+mpsetvar $i TIME_REMAINING $%QVAR(* REMAINING)%
+endif
+ENDIF
+ENDIF
+~
+
+QUEST_TIME_PROG * 1
+MPECHOAT $i The quest "Book Delivery" has 1 minute remaining.
+~
+
+QUEST_TIME_PROG * -1
+MPECHOAT $i The quest "Book Delivery" has ended.
+MPENDQUEST 'pcbookdelivery'
+~
+
+
+</DATA></FILE>

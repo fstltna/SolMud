@@ -1,0 +1,46 @@
+#vitalite
+cnclmsg_prog huh p inject vitalite
+if isname($i 'a NM Vitalite stimulant injector')
+if var($n affectedbystim != 1)
+if has($n 'a NM Vitalite stimulant injector')
+mpsetvar $n affectedbystim 1
+mpecho ^r$n injects $mself with $i ^ras it hisses out pressure while releasing the liquid into $m bloodstream.^N
+mpalarm 1 mpaffect Spell_Choke $n 2TICKS
+mpalarm 1 mpaffect Disease_Nausea $n 5TICKS
+mpalarm 1 mpaffect Disease_Fever $n 5TICKS
+MPSETVAR $n userLevel $%Level($n)%
+mpsetvar $n healedtimes 0
+mpalarm 2 mpcallfunc vitaliteactive
+endif
+else
+mpechoat $n You figure you can't drug yourself more without overdosing right now.
+endif
+endif
+return cancel
+~
+
+function_prog vitaliteactive
+if var($n healedtimes < 3)
+mpsetvar $n healamt $%MATH(15?50 + $<$n userLevel>)%
+MPSETVAR $n MaxHits $%GSTAT($n BASEHITS)%
+mpsetvar $n healedtimes ++
+IF GSTAT($n HITS < $<$n MaxHits>)
+    MPECHO ^g$n heals ($<$n healamt>) by the stimulant!
+    MPSETVAR $n CurHits $%GSTAT($n HITS)%
+    MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n healamt> < $<$n MaxHits>)%
+    IF GSTAT($n BASEHITS < $<$n HitsCalc>)
+        MPSETVAR $n HitsCalc $<$n MaxHits>
+        MPECHO ^g$n heals ($<$n healamt>) by the stimulant!
+    ENDIF
+    MPGSET $n HITS $%VAR($n HitsCalc)%
+    ELSE
+    mpechoat $n ^GThe stimulant couldn't heal you further.^N
+ENDIF
+mpalarm 1 mpcallfunc vitaliteactive
+else
+mpalarm 8 mpsetvar $n affectedbystim 0
+mpalarm 8 mpechoat $n You feel like you can take another stimulant by now.
+mpechoat $n the stimulant wears off.
+mpjunk '$i'
+endif
+~

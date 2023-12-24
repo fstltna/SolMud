@@ -1,0 +1,46 @@
+#mentx
+cnclmsg_prog huh p inject mentx
+if isname($i 'a NM MentX stimulant injector')
+if var($n affectedbystim != 1)
+if has($n 'a NM MentX stimulant injector')
+mpsetvar $n affectedbystim 1
+mpecho ^r$n injects $mself with $i ^ras it hisses out pressure while releasing the liquid into $m bloodstream.^N
+mpalarm 1 mpaffect Disease_Nausea $n 10TICKS
+mpalarm 1 mpaffect Disease_deafness $n 5TICKS
+mpalarm 1 mpaffect Disease_Blindness $n 5TICKS
+MPSETVAR $n userLevel $%Level($n)%
+mpsetvar $n mentxtimes 0
+mpalarm 2 mpcallfunc mentxactive
+endif
+else
+mpechoat $n You figure you can't drug yourself more without overdosing right now.
+endif
+endif
+return cancel
+~
+
+function_prog mentxactive
+if var($n mentxtimes < 6)
+mpsetvar $n MANAAmt $%MATH(20?100 + $<$n userLevel>)%
+MPSETVAR $n MaxMANA $%GSTAT($n BASEMANA)%
+mpsetvar $n mentxtimes ++
+IF GSTAT($n MANA < $<$n MaxMANA>)
+    MPECHO ^g$n recovers ($<$n MANAAmt> MP) by the stimulant!
+    MPSETVAR $n CurMANA $%GSTAT($n MANA)%
+    MPSETVAR $n MANACalc $%MATH($<$n CurMANA> + $<$n MANAAmt> < $<$n MaxMANA>)%
+    IF GSTAT($n BASEMANA < $<$n MANACalc>)
+        MPSETVAR $n MANACalc $<$n MaxMANA>
+        MPECHO ^g$n recovers ($<$n MANAAmt> MP) by the stimulant!
+    ENDIF
+    MPGSET $n MANA $%VAR($n MANACalc)%
+    ELSE
+    mpechoat $n ^GThe stimulant couldn't recover you any further.^N
+ENDIF
+mpalarm 1 mpcallfunc mentxactive
+else
+mpalarm 15 mpsetvar $n affectedbystim 0
+mpalarm 15 mpechoat $n You feel like you can take another stimulant by now.
+mpechoat $n the stimulant wears off.
+mpjunk '$i'
+endif
+~

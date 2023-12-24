@@ -1,0 +1,221 @@
+casting_prog p sexual_medichealsex
+if var($n havingsex != 1)
+mpsetvar $n havingsex 1
+mpunaffect $t sexual_medichealsex
+mpalarm 11 mpsetvar $n havingsex 0
+if islike($t -names "+$n")
+mpechoat $n You realize you can't actually fuck yourself.
+mpcallfunc ending
+else
+if wornon($n legs all)
+mpforce $n remove all.legs
+endif
+if wornon($n groin all)
+mpforce $n remove all.groin
+endif
+if wornon($t legs all)
+mpforce $t remove all.legs
+endif
+if wornon($t groin all)
+mpforce $t remove all.groin
+endif
+mpsetvar $n fuckrounds 0
+mpaffect bandaging $t
+MPSETVAR $n medicsexhealLevel $%Level($n)%
+mpsetvar $n medicsexheallevelplus $%MATH(50?100 + $<$n medicsexheallevel>)%
+mpsetvar $n medicsexheallevelhalf $%MATH(20?40 + $<$n medicsexheallevel>/4)%
+if isable($n skill_sexhealing)
+mpsetvar $n fuckrounds +1
+mpecho $<$n fuckrounds>/10 to orgasm.
+mpalarm 1 mpcallfunc medicsexhealer
+else
+mpsetvar $n fuckrounds +1
+mpecho $<$n fuckrounds>/10 to orgasm.
+mpalarm 1 mpcallfunc nonmedicsexhealer
+endif
+else
+endif
+else
+return
+endif
+return
+~
+
+function_prog midroundcheck
+if ishere($t)
+if var($n fuckrounds < 10)
+if wornon($n legs all)
+mpforce $n remove all.legs
+endif
+if wornon($n groin all)
+mpforce $n remove all.groin
+endif
+if wornon($t legs all)
+mpforce $t remove all.legs
+endif
+if wornon($t groin all)
+mpforce $t remove all.groin
+endif
+mpsetvar $n fuckrounds +1
+mpecho $<$n fuckrounds>/10 to orgasm.
+MPSETVAR $n medicsexhealLevel $%Level($n)%
+mpsetvar $n medicsexheallevelplus $%MATH(50?100 + $<$n medicsexheallevel>)%
+mpsetvar $n medicsexheallevelhalf $%MATH(20?40 + $<$n medicsexheallevel>/4)%
+if isable($n skill_sexhealing)
+mpalarm 1 mpcallfunc medicsexhealer
+else
+mpalarm 1 mpcallfunc nonmedicsexhealer
+endif
+else
+mpecho ^w$n and $t ^pcums!^N
+if sex($n == M) or sex($n == O) or sex($n == U)
+ if sex($t == F) or sex($t == A) or sex($t == H)
+ switch $%RANDNUM(2)%
+case 1
+mpecho ^p$n swiftly slips $m cock out, shoving the tip against a bottle they kept ready the whole time, filling it up with fresh cum.^N
+ mpoloadroom fromfile milkables.cmare A bottle of cum
+ mpcallfunc ending
+case 2
+ if affected($t sexual_cumbloat3)
+ mpecho $t's belly can't get inflated any more but it is filled with fresh cum over again...
+ mpunaffect $t sexual_cumbloat3
+ mpaffect sexual_cumbloat3 $t
+ else
+ if affected($t sexual_cumbloat2)
+ mpecho $t's belly inflate even more with the large amount of cum splurted into it!
+ mpunaffect $t sexual_cumbloat2
+ mpaffect sexual_cumbloat3 $t
+ else
+ if affected($t sexual_cumbloat1)
+ mpecho $t's belly inflate more with the large amount of cum splurted into it!
+ mpunaffect $t sexual_cumbloat1
+ mpaffect sexual_cumbloat2 $t
+ else
+ mpecho $t's belly inflate with the large amount of cum splurted into it!
+ mpaffect sexual_cumbloat1 $t
+ endif
+ endif
+ endif
+ endif
+ endswitch
+ else
+ if sex($n == F) or sex($n == A) or sex($n == H)
+ if sex($t == M) or sex($t == O) or sex($t == U)
+ switch $%RANDNUM(2)%
+case 1
+mpecho ^p$n swiftly slips $t's cock out of $mself, shoving the tip against a bottle they kept ready the whole time, filling it up with fresh cum.^N
+ mpoloadroom fromfile milkables.cmare A bottle of cum
+ mpcallfunc ending
+case 2
+ if affected($n sexual_cumbloat3)
+ mpecho $n's belly can't get inflated any more but it is filled with fresh cum over again...
+ mpunaffect $n sexual_cumbloat3
+ mpaffect sexual_cumbloat3 $n
+ else
+ if affected($n sexual_cumbloat2)
+ mpecho $n's belly inflate even more with the large amount of cum splurted into it!
+ mpunaffect $n sexual_cumbloat2
+ mpaffect sexual_cumbloat3 $n
+ else
+ if affected($n sexual_cumbloat1)
+ mpecho $n's belly inflate more with the large amount of cum splurted into it!
+ mpunaffect $n sexual_cumbloat1
+ mpaffect sexual_cumbloat2 $n
+ else
+ mpecho $n's belly inflate with the large amount of cum splurted into it!
+ mpaffect Sexual_Cumbloat1 $n
+ endif
+ endif
+ endif
+ endif
+endswitch
+ endif
+ endif
+mpforce $n mate "$t"
+mpcallfunc ending
+endif
+else
+mpcallfunc ending
+endif
+~
+
+function_prog medicsexhealer
+MPSETVAR $t MaxHits $%GSTAT($t BASEHITS)%
+IF GSTAT($t HITS < $<$t MaxHits>)
+    MPSETVAR $t CurHits $%GSTAT($t HITS)%
+    MPSETVAR $t HitsCalc $%MATH($<$t CurHits> + $<$n medicsexheallevelplus>)%
+    IF GSTAT($t BASEHITS < $<$t HitsCalc>)
+        MPSETVAR $t HitsCalc $<$t MaxHits>
+    ENDIF
+    MPGSET $t HITS $%VAR($t HitsCalc)%
+ENDIF
+IF GSTAT($n MOVE > 50)
+    MPSETVAR $n CurMove $%GSTAT($n MOVE)%
+    MPSETVAR $n MoveCalc $%MATH($<$n CurMove> - $<$n medicsexheallevelhalf>)%
+    MPGSET $n MOVE $%VAR($n MoveCalc)%
+    mpecho ^G$n's genitals resist ^R($<$n medicsexheallevelhalf>) ^Gdamage.^N
+ENDIF
+IF GSTAT($n MOVE <= 50)
+    MPGSET $n MOVE 50
+    MPSETVAR $n CurMana $%GSTAT($n MANA)%
+    MPSETVAR $n ManaCalc $%MATH($<$n CurMana> - $<$n medicsexheallevelhalf>)%
+    MPGSET $n MANA $%VAR($n ManaCalc)%
+    mpecho ^M$n's genitals resist ^R($<$n medicsexheallevelhalf>) ^Mdamage.^N
+        IF GSTAT($n MANA <= 50)
+            MPSETVAR $n ManaCalc 50
+            MPGSET $n MANA $%VAR($t ManaCalc)%
+            MPECHO ^R$n exhaused all of of their alternative resources to keep going safely!^N
+            MPCALLFUNC ending
+        ENDIF
+ENDIF
+mpecho ^p*FWAP* *SLAP* $n keeps tending $t with $m tools... *SLOP* *FAP*^N
+mpecho ^p*FWOP* *PLAP* *PLOP* $n smacks $m hips against $t, healing $S for ^g($<$n medicsexheallevelplus>)^p during the sexual healing! *PLOP* *PLAP* *FAP*^N
+mpcallfunc midroundcheck
+~
+
+function_prog nonmedicsexhealer
+MPSETVAR $t MaxHits $%GSTAT($t BASEHITS)%
+IF GSTAT($t HITS < $<$t MaxHits>)
+    MPSETVAR $t CurHits $%GSTAT($t Hits)%
+    MPSETVAR $t HitsCalc $%MATH($<$t CurHits> + $<$n medicsexheallevel>)%
+    IF GSTAT($t BASEHITS < $<$t HitsCalc>)
+        MPSETVAR $t HitsCalc $<$t MaxHits>
+    ENDIF
+    MPGSET $t HITS $%VAR($t HitsCalc)%
+ENDIF
+IF GSTAT($n MOVE > 50)
+    MPSETVAR $n CurMove $%GSTAT($n MOVE)%
+    MPSETVAR $n MoveCalc $%MATH($<$n CurMove> - $<$n medicsexheallevel>)%
+    mpecho ^G$n's genitals resist ^r($<$n medicsexheallevel>) ^Gdamage.^N
+    MPGSET $n MOVE $%VAR($n MoveCalc)%
+ENDIF
+IF GSTAT($n MOVE <= 50)
+    MPSETVAR $n CurHits $%GSTAT($n Hits)%
+    MPSETVAR $n HitsCalc $%MATH($<$n CurHits> - $<$n medicsexheallevel>)%
+    MPGSET $n HITS $%VAR($n HitsCalc)%
+    mpecho ^R$n's genitals are damaged for ^r($<$n medicsexheallevel>)^R!
+        IF GSTAT($n HITS <= 50)
+            MPSETVAR $n HitsCalc 50
+            MPGSET $n HITS $%VAR($n HitsCalc)%
+            MPECHO ^R$n's genitals are too damaged to keep going safely!^N
+            MPCALLFUNC ending
+        ENDIF
+ENDIF
+mpecho ^p*FWAP* *SLAP* $n keeps tending $t with $m tools... *SLOP* *FAP*^N
+mpecho ^p*FWOP* *PLAP* *PLOP* $n smacks $m hips against $t, healing $S for ^g($<$n medicsexheallevelhalf>)^p during the sexual healing! *PLOP* *PLAP* *FAP*^N
+mpcallfunc midroundcheck
+~
+
+function_prog ending
+mpecho $n steps away.
+mpunaffect $t sexual_medichealsex
+mpunaffect $n sexual_medichealsex
+mpsetvar $n havingsex 0
+~
+
+exit_prog 100
+if ishere($t)
+else
+function_prog ending
+endif
+~

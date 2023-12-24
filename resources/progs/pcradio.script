@@ -1,0 +1,331 @@
+once_prog
+mpcallfunc talkpick
+~
+
+function_prog talkpick
+if NUMPCSAREA( > 1)
+switch $%RANDNUM(7)%
+case 1
+mpalarm 10 mpchannel !music You know, i mean if you don't know. All of our songs, or well most of them maybe are from the old world, actually. recovered out of some servers those corpo... NineTails? Right, Ninetails dug up and stuff. Cool stuff.
+mpalarm 15 mpcallfunc songpick
+case 2
+mpalarm 10 mpchannel !music Why don't like, everyone move to Phantom City anyway? I mean. Monsters and all that -should- be worse than the occasional shankin' down here right? I dunno.
+mpalarm 15 mpcallfunc songpick
+case 3
+mpalarm 10 mpchannel !music So the other day i saw some merc pretty much killing a guy with a thick ass chain, i dunno man corpo can just declare someone dead and it'll happen at this point.
+mpalarm 15 mpcallfunc songpick
+case 4
+mpalarm 10 mpchannel !music *slight hum of hardware spinning up*
+mpalarm 15 mpcallfunc songpick
+case 5
+mpalarm 10 mpchannel !music Uh, Well. Since i am like paid fuck-all here is like some advertisements and stuff? Sponsors? Uh... Q..Quik-smash.xxx your.. Your Quick way to find single partners... Registration is only 50 credits a month. (muttering 'god.' under breath.)
+mpalarm 15 mpcallfunc songpick
+case 6
+mpalarm 10 mpchannel !music Now.. A word from our sponsors.. 'Needin' it hang free? Come to bare back, it is mandatory here, no need to be shy......'
+mpalarm 15 mpcallfunc songpick
+case 7
+mpalarm 10 mpchannel !music An Advertisement.. The Cum Chalice Brothel.. *mutters stuff under breath* Your only place to bust a fat one at amazing prices...
+mpalarm 15 mpcallfunc songpick
+endswitch
+else
+mpalarm 300 mpcallfunc talkpick
+endif
+~
+
+function_prog songpick
+switch $%RANDNUM(7)%
+case 1
+if var($n lastsong == song1)
+mpcallfunc songpick
+else
+mpcallfunc song1
+endif
+case 2
+if var($n lastsong == song2)
+mpcallfunc songpick
+else
+mpcallfunc song2
+endif
+case 3
+if var($n lastsong == song3)
+mpcallfunc songpick
+else
+mpcallfunc song3
+endif
+case 4
+if var($n lastsong == song4)
+mpcallfunc songpick
+else
+mpcallfunc song4
+endif
+case 5
+if var($n lastsong == song5)
+mpcallfunc songpick
+else
+mpcallfunc song5
+endif
+case 6
+if var($n lastsong == song6)
+mpcallfunc songpick
+else
+mpcallfunc song6
+endif
+case7
+if var($n lastsong == song7)
+mpcallfunc songpick
+else
+mpcallfunc song7
+endif
+endswitch
+~
+
+function_prog song1
+mpchannel !music  Now, We have a cool one if you are on the road... 'Venger' by Perter... Perturbator?, i can't even spell the name. ^C(https://www.youtube.com/watch?v=-B7-Vcdlld8)^N
+mpchannel !music ^#111(Music)
+mpalarm 4 mpchannel !music Every night the dream's always the same.
+mpalarm 6 mpchannel !music Can't escape these walls of dark decay.
+mpalarm 8 mpchannel !music Feel me drowning underneath the waves.
+mpalarm 10 mpchannel !music Every time it never seems to chaaaange.
+mpalarm 12 mpchannel !music ^#111(ooooooo-)
+mpalarm 14 mpchannel !music Tooo chaaaaange.
+mpalarm 16 mpchannel !music Took yooou away and nooow
+mpalarm 18 mpchannel !music Theeey're gonna geet it, all I haaave.
+mpalarm 20 mpchannel !music You know now you're gooone.
+mpalarm 22 mpchannel !music And I just waaant to haaave you baaack again.
+mpalarm 24 mpchannel !music Hollow heart is all I have today
+mpalarm 26 mpchannel !music Someone came and pulled away the veins.
+mpalarm 28 mpchannel !music They stitched it up and put me on display.
+mpalarm 30 mpchannel !music But nothing seems to cure me of the pain.
+mpalarm 32 mpchannel !music ^#111(aaaaahhh-)
+mpalarm 34 mpchannel !music ^#111(aaaaahhh-)
+mpalarm 36 mpchannel !music The paaaain.
+mpalarm 38 mpchannel !music Tooook youuu aaawaay and nooow.
+mpalarm 40 mpchannel !music They're gooonna geeet it, aaall I have.
+mpalarm 42 mpchannel !music You knooow nooow you're gooone.
+mpalarm 44 mpchannel !music And III juust waaant to haaave you baaack agaaain.
+mpalarm 46 mpchannel !music ^#111(Music)
+mpalarm 48 mpcallfunc song1_2
+~
+
+function_prog song1_2
+mpchannel !music ^#111(aaaaaaah-)
+mpalarm 2 mpchannel !music ^#111(aaaaaaah-)
+mpalarm 4 mpchannel !music ^#111(aaaaaaah-)
+mpalarm 6 mpchannel !music ^#111(Music)
+mpalarm 8 mpchannel !music Took you awaaaaaaay
+mpalarm 10 mpchannel !music Took you awaaaaaaaay
+mpalarm 12 mpchannel !music Took you awaaaaaaay
+mpalarm 14 mpchannel !music Took you awaaaaaaaay
+mpalarm 16 mpchannel !music ^#111(Music quieting down.)
+mpsetvar $n lastsong song1
+mpalarm 24 mpcallfunc talkpick
+~
+
+function_prog song2
+mpchannel !music ^rOooonlyyy Youuu--^p Now we have Only you, by The Platters. ^C(https://www.youtube.com/watch?v=5p2k55F-uag)^N
+mpalarm 2 mpchannel !music ^#111(Music)
+mpalarm 4 mpchannel !music Oooooonlyyyyy Youuuuu.
+mpalarm 6 mpchannel !music Only you can make all this world seem right
+mpalarm 8 mpchannel !music Only you can make the darkness bright
+mpalarm 10 mpchannel !music Only you and you alone can thrill me like you do
+mpalarm 12 mpchannel !music And fill my heart with love for only you
+mpalarm 14 mpchannel !music Oh, only you can do make all this change in me
+mpalarm 16 mpchannel !music For it's true, you are my destiny
+mpalarm 18 mpchannel !music When you hold my hand I understand the magic that you do
+mpalarm 20 mpchannel !music You're my dream come true, my one and only you
+mpalarm 22 mpchannel !music Oh oh, only you can do make this change in me
+mpalarm 24 mpchannel !music For it's true, you are my destiny
+mpalarm 26 mpchannel !music When you hold my hand I understand the magic that you do
+mpalarm 28 mpchannel !music You're my dream come true, my one and only you
+mpsetvar $n lastsong song2
+mpalarm 35 mpcallfunc talkpick
+~
+
+function_prog song3
+mpchannel !music Now we have another one from about five hundred years ago or something. ^C(Mordecai and Rigbys - Party tonight) ^C(https://www.youtube.com/watch?v=TKerorbhX9U)^N
+mpalarm 2 mpchannel !music ^#111(Music)
+mpalarm 4 mpchannel !music Your eyes staring into my eyes
+mpalarm 6 mpchannel !music Who am I but a guy with two eyes on the prize
+mpalarm 8 mpchannel !music And the prize in my eyes is 10 times
+mpalarm 10 mpchannel !music The surprise in your eyes as I kiss you goodnight
+mpalarm 12 mpchannel !music Gonna remember it until I grow old
+mpalarm 14 mpchannel !music Cause life is too short we gotta do things
+mpalarm 16 mpchannel !music ^#111(Music)
+mpalarm 18 mpchannel !music So baby let's just party? toni-ight
+mpalarm 20 mpchannel !music Baby let's just party? toni-ight!!!
+mpalarm 22 mpchannel !music ^#111(Music)
+mpalarm 24 mpchannel !music We've come out on top, we're in front of the line
+mpalarm 26 mpchannel !music We're here to rock out and have a good time
+mpalarm 28 mpchannel !music 'Cause the past is the past and the future is bright
+mpalarm 30 mpchannel !music ^#111(Music)
+mpalarm 34 mpchannel !music Baby let's just party toni-ight
+mpalarm 36 mpchannel !music ^#111(Music and ending)
+mpsetvar $n lastsong song3
+mpalarm 45 mpcallfunc talkpick
+~
+
+function_prog song4
+mpchannel !music Now we have Another day... By Dream Theater. ^C(https://www.youtube.com/watch?v=LYtiDCXLAcQ)^N
+mpalarm 2 mpchannel !music ^#111(Music)
+mpalarm 4 mpchannel !music Oooooh.
+mpalarm 5 mpchannel !music ^#111(Music)
+mpalarm 8 mpchannel !music Live another day
+mpalarm 10 mpchannel !music Climb a little higher
+mpalarm 12 mpchannel !music Find another reason to stay
+mpalarm 14 mpchannel !music Ashes in your hands
+mpalarm 16 mpchannel !music Mercy in your eyes
+mpalarm 18 mpchannel !music If you're searching for a silent sky...
+mpalarm 20 mpchannel !music You won't find it here
+mpalarm 22 mpchannel !music Look another way
+mpalarm 24 mpchannel !music You won't find it here
+mpalarm 26 mpchannel !music So die another day
+mpalarm 27 mpchannel !music ^#111(Music)
+mpalarm 34 mpchannel !music The coldness of his words
+mpalarm 36 mpchannel !music The message in his silence,
+mpalarm 38 mpchannel !music 'Face the candle to the wind...'
+mpalarm 40 mpchannel !music This distance in my voice
+mpalarm 42 mpchannel !music Isn't leaving you a choice
+mpalarm 44 mpchannel !music So if you're looking for a time to run away...
+mpalarm 48 mpcallfunc song4_2
+~
+
+function_prog song4_2
+mpchannel !music ^#111(Music)
+mpalarm 2 mpchannel !music You won't find it here
+mpalarm 4 mpchannel !music Look another way
+mpalarm 6 mpchannel !music You won't find it here
+mpalarm 8 mpchannel !music So try another day
+mpalarm 10 mpchannel !music ^#111(Music)
+mpalarm 12 mpchannel !music They took pictures of our dreams
+mpalarm 14 mpchannel !music Ran to hide behind the stairs
+mpalarm 16 mpchannel !music And said maybe when it's right for you, they'll fall
+mpalarm 18 mpchannel !music But if they don't come down
+mpalarm 20 mpchannel !music Resist the need to pull them in
+mpalarm 22 mpchannel !music And throw them away
+mpalarm 24 mpchannel !music Better to save the mystery
+mpalarm 26 mpchannel !music Than surrender to the secret
+mpalarm 27 mpchannel !music ^#111(Music)
+mpalarm 30 mpchannel !music You won't find it here
+mpalarm 32 mpchannel !music Look another way
+mpalarm 34 mpchannel !music You won't find it here
+mpalarm 36 mpchannel !music So try another day
+mpsetvar $n lastsong song4
+mpalarm 40 mpchannel !music ^#111(Music ending)
+mpalarm 48 mpcallfunc talkpick
+~
+
+function_prog song5
+mpchannel !music  Another one from Lord Huron, recovered as usual by Ninetails in some shape of a large disk.. what they call it? Vinyl? like the rest of the songs from this guy or band... Lord Huron, louisa. ^C(https://www.youtube.com/watch?v=ljiS3yGeE9I)^N
+mpalarm 1 mpchannel !music ^#111(Music)
+mpalarm 2 mpchannel !music Good for nothing is the name they'll remember me by
+mpalarm 4 mpchannel !music Done nothin' with my life for no one, I'm just waitin' to die
+mpalarm 6 mpchannel !music I turned my back on the world
+mpalarm 8 mpchannel !music You know I'd given up on livin' til I met you girl
+mpalarm 10 mpchannel !music Then you came into my life with come hither in your eyes
+mpalarm 12 mpchannel !music Pulling me outta the grave what a nice surprise
+mpalarm 14 mpchannel !music I die when our nights end, but I only stay dead til I see you again
+mpalarm 18 mpchannel !music ^#111(Music)
+mpalarm 22 mpchannel !music I lie awake in the night just to see another dawn
+mpalarm 24 mpchannel !music Used to be the sun was my weakness but them days are gone
+mpalarm 26 mpchannel !music I feel your lips on mine
+mpalarm 28 mpchannel !music Will you meet me by the river, baby, one more time?
+mpalarm 30 mpchannel !music I'll give you what you wanna have, I'll take you where you wanna go
+mpalarm 32 mpchannel !music I'm the only man you'll ever need, girl, and now you know
+mpalarm 34 mpchannel !music I'll write your name on my skin, as a promise that we'll never be apart again
+mpalarm 36 mpchannel !music I feel alive when I'm with you, baby
+mpalarm 38 mpchannel !music So tell me that I won't ever be lonely again
+mpalarm 40 mpchannel !music Don't wanna die I wanna wander the world with you
+mpalarm 42 mpchannel !music And no one else for the rest of my days on this earth
+mpalarm 44 mpcallfunc song5_2
+~
+
+function_prog song5_2
+mpchannel !music I turned my back on the world
+mpalarm 4 mpchannel !music I wasn't always like this, girl
+mpalarm 6 mpchannel !music Do you know what loneliness does to a man?
+mpalarm 8 mpchannel !music Turn him into the walking dead
+mpalarm 10 mpchannel !music I may have died but your lovin' raised me
+mpalarm 12 mpchannel !music I feel alive when I'm with you, baby
+mpalarm 14 mpchannel !music So tell me that I won't ever be lonely again
+mpalarm 16 mpchannel !music You saved my life I just wanna repay you in kind
+mpalarm 18 mpchannel !music Ain't no one else ever tell you you're beautiful, girl?
+mpalarm 20 mpchannel !music I feel alive when I'm with you, baby
+mpalarm 22 mpchannel !music So tell me that I won't ever be lonely again
+mpalarm 24 mpchannel !music Don't wanna die I wanna wander the world with you
+mpalarm 26 mpchannel !music And no one else for the rest of my days on this earth
+mpalarm 28 mpchannel !music ^#111(Music)
+mpsetvar $n lastsong song5
+mpalarm 32 mpcallfunc talkpick
+~
+
+function_prog song6
+mpchannel !music  Here is Tech Noir.. From Gunship. No, not an aircraft like, thats the name of the group... ^C(https://www.youtube.com/watch?v=-nC5TBv3sfU)^N
+mpalarm 2 mpchannel !music Narrator: I'm recording this, because this could be the last thing I'll ever say
+mpalarm 3 mpchannel !music ^#111(music subtly starts)
+mpalarm 4 mpchannel !music Narrator: The city I once knew as home is teetering on the edge of radioactive oblivion
+mpalarm 6 mpchannel !music Narrator: A three-hundred thousand degree baptism by nuclear fire
+mpalarm 8 mpchannel !music Narrator: I'm not sorry, we had it coming
+mpalarm 10 mpchannel !music Narrator: A surge of white-hot atonement will be our wake-up call
+mpalarm 12 mpchannel !music Narrator: Hope for our future is now a stillborn dream
+mpalarm 14 mpchannel !music Narrator: The bombs begin to fall and I'm rushing to meet my love
+mpalarm 16 mpchannel !music Narrator: Please, remember me
+mpalarm 18 mpchannel !music Narrator: There is no more
+mpalarm 19 mpchannel !music ^#111(music kicks in)
+mpalarm 22 mpchannel !music Feel the breeze, I feel alive
+mpalarm 24 mpchannel !music Will you come to away with me
+mpalarm 28 mpchannel !music (female voice) You?ll be my focus
+mpalarm 30 mpchannel !music (female voice) Could this be, could this be- could this be the highway
+mpalarm 32 mpchannel !music Before you save me
+mpalarm 34 mpchannel !music Just wait your turn, look at me now
+mpalarm 36 mpchannel !music Steady as we burn
+mpalarm 38 mpchannel !music It was all for love
+mpalarm 40 mpchannel !music Just move yourself, drop it back down
+mpalarm 42 mpchannel !music And push it out in front
+mpalarm 44 mpchannel !music Keep your heart out on the road
+mpalarm 46 mpcallfunc song6_2
+~
+
+function_prog song6_2
+mpchannel !music Will you come to Tech Noir with me
+mpalarm 2 mpchannel !music (female voice) You?ll be my focus
+mpalarm 4 mpchannel !music (female voice) Could this be, could this be- could this be the highway
+mpalarm 6 mpchannel !music Before you save me
+mpalarm 8 mpchannel !music Just wait your turn, look at me now
+mpalarm 10 mpchannel !music Steady as we burn
+mpalarm 12 mpchannel !music It was all for love
+mpalarm 14 mpchannel !music Just move yourself, drop it back down
+mpalarm 16 mpchannel !music And push it out in front
+mpalarm 20 mpchannel !music (voice comes up front, softer) Guided by voices, it?s you and me
+mpalarm 21 mpchannel !music ^#111(music)
+mpalarm 24 mpchannel !music Before you save me
+mpalarm 26 mpchannel !music Just wait your turn, look at me now
+mpalarm 28 mpchannel !music Steady as we burn
+mpalarm 30 mpchannel !music It was all for love
+mpalarm 32 mpchannel !music Just move yourself, drop it back down
+mpalarm 34 mpchannel !music And push it out in front
+mpalarm 40 mpcallfunc talkpick
+mpsetvar $n lastsong song6
+~
+
+function_prog song7
+mpchannel !music This one is... Snake eater from an old game, Cynthia Harrell.
+mpalarm 2 mpchannel !music ^GWhat a thrill^N
+mpalarm 6 mpchannel !music ^GWith darkness and silence through the night^N
+mpalarm 8 mpchannel !music ^GWhat a thrill^N
+mpalarm 10 mpchannel !music ^GI'm searching and I'll melt into you^N
+mpalarm 12 mpchannel !music ^GWhat a fear in my heart^N
+mpalarm 14 mpchannel !music ^GBut you're so supreme!^N
+mpalarm 16 mpchannel !music ^GI give my life, not for honor, but for you (Snake Eater)^N
+mpalarm 18 mpchannel !music ^GIn my time, there'll be no one else^N
+mpalarm 20 mpchannel !music ^GCrime, it's the way I fly to you (Snake Eater)^N
+mpalarm 22 mpchannel !music ^GI'm still in a dream, Snake Eater^N
+mpalarm 24 mpchannel !music ^GSomeday you go through the rain And someday you feed on a tree frog.^N
+mpalarm 26 mpchannel !music ^GThis ordeal, the trial to survive for the day we see new light!^N
+mpalarm 28 mpchannel !music ^GI give my life, not for honor, but for you (Snake Eater)^N
+mpalarm 30 mpchannel !music ^GIn my time, there'll be no one else^N
+mpalarm 32 mpchannel !music ^GCrime, it's the way I fly to you (Snake Eater)^N
+mpalarm 34 mpchannel !music ^GI'm still in a dream, Snake Eater^N
+mpalarm 36 mpchannel !music ^GI'm still in a dream, Snake Eater%0D(Snake eater...)^N
+mpalarm 40 mpcallfunc talkpick
+mpsetvar $n lastsong song7
+~

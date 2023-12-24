@@ -1,0 +1,11 @@
+cnclmsg_prog huh p Wash at sink
+if var($n usingappliance != 1)
+mpsetvar $n usingappliance 1
+mpecho $n leans on the sink and causes the electronic mirror to turn on and pixelate into clarity, $e turns it on and splashes some water on $m face, then staring at $m reflection for a while.
+mpalarm 1 mpecho $n steps back off the sink.
+mpalarm 1 mpsetvar $n usingappliance 0
+else
+mpechoat $n You are a little busy right now.
+endif
+return cancel
+~

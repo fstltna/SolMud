@@ -1,0 +1,31 @@
+#medkit
+once_prog
+if isfight($n)
+mpechoat $n ^rGet real! You are fighting!^N
+else
+if var($n usingkit != 1)
+if has($n 'an advanced trauma kit')
+mpsetvar $n usingkit 1
+mpecho ^r$n sets down $i and opens it, preparing $m tools.^N
+mpprompt $n patient Who are you looking to treat? (single word answer) (blank for cancel)
+if var($n patient != '')
+MPSETVAR $<$n patient> userLevel $%Level($n)%
+mpaffect surgery_medkitusing '$<$n patient>'
+mpalarm 15 mpunaffect $n surgery_medkit
+mpalarm 14 mpsetvar $n usingkit 0
+mpalarm 14 mpechoat $n You feel like you can treat someone with a trauma kit agin.
+else
+mpechoat $n Canceled.
+mpalarm 2 mpunaffect $n surgery_medkit
+mpalarm 1 mpsetvar $n usingkit 0
+mpalarm 1 mpechoat $n You feel like you can treat someone with a trauma kit agin.
+endif
+else
+mpechoat $n you seem to have misplaced your trauma kit?
+endif
+else
+mpechoat $n You figure you need a bit of rest before doing that again.
+endif
+endif
+return cancel
+~

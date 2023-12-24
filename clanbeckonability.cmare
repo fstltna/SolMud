@@ -1,0 +1,23 @@
+<CUSTOM><ABILITY ID="Skill_Clanbeckon" TYPE="GenAbility"><CLASS>Skill_Clanbeckon</CLASS><NAME>Clanbeckon</NAME><DISPLAY></DISPLAY><TRIGSTR>CLANBECKON</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,NOTHING</CLASSIFICATION><OVERRIDEMANA>0</OVERRIDEMANA><USAGEMASK>MOVEMENT</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>BENEFICIAL_OTHERS</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT>imask_prog p skill_clanbeckon
+if clan($n == '')
+mpechoat $n You are not part of a clan to begin with.
+else
+if isname($n $t)
+mpechoat $n You can't do that to yourself..?
+else
+mpsetvar $n clannameone $%clan($n)%
+mpsetvar $n clannametwo $%clan($t)%
+mpsetvar $n clanrankone $%clanrank($n)%
+mpsetvar $n clanranktwo $%clanrank($t)%
+if eval('$&lt;$n clannameone&gt;' == '$&lt;$n clannametwo&gt;')
+if eval('$&lt;$n clanrankone&gt;' &gt; '$&lt;$n clanranktwo&gt;')
+mpforce $t follow $n
+else
+mpechoat $n You can't order them as they are higher rank than you are.
+endif
+else
+mpechoat $n $t is not in your clan.
+endif
+endif
+endif
+~</SCRIPT><TARGETMASK>+MOB</TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempts to make &lt;T-NAME&gt; follow them but fails.</FIZZLEMSG><AUTOCASTMSG></AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; tries to make &lt;T-NAME&gt; follow them.</CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;This ability is not yet documented.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>1</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG></UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG></ABILITY></CUSTOM>

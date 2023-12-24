@@ -1,0 +1,1429 @@
+20231015.1107.40 info  MUD            CoffeeMud v5.10.2
+20231015.1107.40 info  MUD            (C) 2000-2023 Bo Zimmerman
+20231015.1107.40 info  MUD            http://www.coffeemud.org
+20231015.1107.40 error CMSecurity     Unknown or duplicate disable flag: AUTOFORWARD
+20231015.1107.40 info  HOST0          Disabled subsystems: DBERRORQUESTART, QUITREASON, SLOW_AGEING, DEATHCRY, AUTOMOODS, AUTOFORWARD, FATIGUE, ALLERGIES, NEWCHARACTERS
+20231015.1107.40 info  MUD@5555       MUD Server started on port: 5555
+20231015.1107.41 info  HOST0          Connected to jdbc:mysql://localhost:3306/coffeemud2
+20231015.1107.41 debug HOST0          SSL not configured.
+20231015.1107.41 debug HOST0          SSL not configured.
+20231015.1107.41 info  cweb-admin0    Started http admin0 on port 27777
+20231015.1107.41 info  cweb-pub0      Started http pub0 on port 27744
+20231015.1107.41 debug cweb-pub0Timeo Timeout Thread started
+20231015.1107.41 debug cweb-admin0Tim Timeout Thread started
+20231015.1107.42 info  HOST0          WebMacros loaded  : 199
+20231015.1107.43 info  HOST0          MOB Types loaded  : 148
+20231015.1107.43 info  HOST0          Exit Types loaded : 31
+20231015.1107.43 info  HOST0          Area Types loaded : 14
+20231015.1107.43 info  HOST0          Locales loaded    : 127
+20231015.1107.43 info  HOST0          Fighter Skills    : 153
+20231015.1107.44 info  HOST0          Chants loaded     : 318
+20231015.1107.44 info  HOST0          Languages loaded  : 59
+20231015.1107.44 info  HOST0          Properties loaded : 310
+20231015.1107.45 info  HOST0          Prayers loaded    : 357
+20231015.1107.45 info  HOST0          Thief Skills      : 179
+20231015.1107.46 info  HOST0          Skills loaded     : 338
+20231015.1107.46 info  HOST0          Songs loaded      : 156
+20231015.1107.46 info  HOST0          Spells loaded     : 416
+20231015.1107.46 info  HOST0          Heroics loaded    : 6
+20231015.1107.46 info  HOST0          Tech Skills loaded: 2
+20231015.1107.47 info  HOST0          Traps loaded      : 82
+20231015.1107.47 info  HOST0          GenAbles loaded   : 106
+20231015.1107.47 info  HOST0          Basic Items loaded: 137
+20231015.1107.47 info  HOST0          Weapons loaded    : 61
+20231015.1107.47 info  HOST0          Armor loaded      : 51
+20231015.1107.47 info  HOST0          Magic Items loaded: 46
+20231015.1107.47 info  HOST0          Clan Items loaded : 29
+20231015.1107.48 info  HOST0          Electronics loaded: 98
+20231015.1107.48 info  HOST0          Behaviors loaded  : 97
+20231015.1107.49 info  HOST0          Commands loaded   : 300
+20231015.1107.49 info  HOST0          Races loaded      : 300
+20231015.1107.50 info  HOST0          Classes loaded    : 97
+20231015.1107.55 info  HOST0          Expertises defined: 1820
+20231015.1107.55 info  HOST0          Channels loaded   : 32
+20231015.1107.55 info  HOST0          Socials loaded    : 342
+20231015.1107.56 info  HOST0          Clans loaded      : 11
+20231015.1107.56 info  CM1Server0@277 Started CM1Server0@27733 on port 27733
+20231015.1107.56 info  I3Server       InterMud3 Core (c)1996 George Reese
+20231015.1107.56 info  Intermud3      I3 client connection: 204.209.44.3@8080
+20231015.1107.56 info  I3Server       InterMud3 Server started on port 27766
+20231015.1107.57 info  HOST0          Loading catalog...
+20231015.1107.57 info  HOST0          Loading map...
+20231015.1108.00 error HOST0          Bad Zappermask key '-NOGANG' @ -NOGANG +CHECKLEVEL
+20231015.1108.00 error HOST0          Bad Zappermask key '+CHECKLEVEL' @ -NOGANG +CHECKLEVEL
+20231015.1108.05 error ClanHelper     Unknown clan activated." for ^#222A ^#111N^#222T^#333C^r-^#111O^#222M^#333N^#222I ^#111A^#222l^#333l^r-^#222P^#111u^#222r^#333p^#222o^#111s^#222e ^#333D^#222r^#111o^#222i^#333d^N in 
+20231015.1108.05 error ClanHelper     Unknown clan activated." for ^#222A ^#111N^#222T^#333C^r-^#111O^#222M^#333N^#222I ^#111A^#222l^#333l^r-^#222P^#111u^#222r^#333p^#222o^#111s^#222e ^#333D^#222r^#111o^#222i^#333d^N in 
+20231015.1108.05 error ClanHelper     Unknown clan activated. for ^#111N^#222T^#333C^r-^#1110^#2220^#3330^r2 ^#550P^#540r^#550e^#540m^#550i^#540u^#550m ^#222D^#333r^ro^#222i^#111d^N in OOC Area#15
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error ClanHelper     Unknown clan activated." for ^#111N^#222T^#333C^r-^#1110^#2220^#3330^r1 ^#550P^#540r^#550e^#540m^#550i^#540u^#550m ^#222D^#333r^ro^#222i^#111d^N in 
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.06 error HOST0          Bad ZapperMask parm '+THIEF' @ -BASECLASS +THIEF
+20231015.1108.08 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.08 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.08 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.08 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.08 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.08 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.08 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.08 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.08 error ClanHelper     Unknown clan activated." for ^#222A ^#111N^#222T^#333C^r-^#111O^#222M^#333N^#222I ^#111A^#222l^#333l^r-^#222P^#111u^#222r^#333p^#222o^#111s^#222e ^#333D^#222r^#111o^#222i^#333d^N in 
+20231015.1108.08 error ClanHelper     Unknown clan activated." for ^#222A ^#111N^#222T^#333C^r-^#111O^#222M^#333N^#222I ^#111A^#222l^#333l^r-^#222P^#111u^#222r^#333p^#222o^#111s^#222e ^#333D^#222r^#111o^#222i^#333d^N in 
+20231015.1108.08 error ClanHelper     Unknown clan activated." for ^#111N^#222T^#333C^r-^#1110^#2220^#3330^r1 ^#550P^#540r^#550e^#540m^#550i^#540u^#550m ^#222D^#333r^ro^#222i^#111d^N in 
+20231015.1108.08 error ClanHelper     Unknown clan activated." for ^#111N^#222T^#333C^r-^#1110^#2220^#3330^r1 ^#550P^#540r^#550e^#540m^#550i^#540u^#550m ^#222D^#333r^ro^#222i^#111d^N in 
+20231015.1108.08 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.08 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.08 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.08 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.08 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.08 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.08 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.08 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.09 error ClanHelper     Unknown clan activated." for ^#222A ^#111N^#222T^#333C^r-^#111O^#222M^#333N^#222I ^#111A^#222l^#333l^r-^#222P^#111u^#222r^#333p^#222o^#111s^#222e ^#333D^#222r^#111o^#222i^#333d^N in 
+20231015.1108.09 error ClanHelper     Unknown clan activated." for ^#222A ^#111N^#222T^#333C^r-^#111O^#222M^#333N^#222I ^#111A^#222l^#333l^r-^#222P^#111u^#222r^#333p^#222o^#111s^#222e ^#333D^#222r^#111o^#222i^#333d^N in 
+20231015.1108.09 error ClanHelper     Unknown clan activated. for ^#111N^#222T^#333C^r-^#1110^#2220^#3330^r2 ^#550P^#540r^#550e^#540m^#550i^#540u^#550m ^#222D^#333r^ro^#222i^#111d^N in OOC Area#15
+20231015.1108.10 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.10 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.10 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.10 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.10 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.10 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.10 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.10 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.10 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.10 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1108.14 info  HOST0          Preparing map...
+20231015.1108.14 info  HOST0          Mapped rooms      : 3049 in 73 areas
+20231015.1108.14 info  HOST0          Space objects     : 6
+20231015.1108.14 info  HOST0          Clan owned items  : 0
+20231015.1108.15 info  HOST0          Quests loaded     : 6
+20231015.1108.15 info  HOST0          Services and utilities started
+20231015.1108.15 info  HOST0          Host#0 initializated.
+20231015.1108.15 info  MUD            Initialization complete.
+20231015.1108.16 error CombatAbilitie the woods does not want to fight.
+20231015.1108.20 info  MudChat        Chat Data by Chris Busch & Jeremy Vyska
+20231015.1108.20 info  MudChat        Chat Data by Chris Busch & Jeremy Vyska
+20231015.1108.30 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231015.1108.30 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231015.1108.35 info  MudChat        Chat Data by Chris Busch & Jeremy Vyska
+20231015.1112.08 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1112.08 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1112.08 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1112.08 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1112.08 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1112.08 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1112.08 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1112.08 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1112.08 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1112.08 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1112.08 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1112.08 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1112.08 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1112.08 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1112.08 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1112.08 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1112.08 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1112.08 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1112.08 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1112.08 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1112.08 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1112.08 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231015.1118.38 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231015.1118.38 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231015.1128.46 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231015.1128.46 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231015.1133.03 info  MUD@5555       Connection from 78.175.237.129
+20231015.1133.10 info  Worker0#3      78.175.237.129 Mudlet 4.16.0 MXP MSDP GMCP CMP ANSI, account login: Moonbeam
+20231015.1133.12 info  Worker0#6      78.175.237.129 Mudlet 4.16.0 MXP MSDP GMCP CMP ANSI, character login: Moonbeam
+20231015.1138.54 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231015.1138.54 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231015.1149.02 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231015.1149.02 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231015.1152.54 error Worker0#5      null
+java.lang.StackOverflowError
+	at java.base/java.util.AbstractMap.hashCode(AbstractMap.java:526)
+	at java.base/java.util.Collections$SynchronizedMap.hashCode(Collections.java:2642)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Pair.hashCode(Pair.java:165)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+	at com.planet_ink.coffee_mud.core.collections.Triad.hashCode(Triad.java:126)
+	at java.base/java.util.ArrayList.hashCodeRange(ArrayList.java:626)
+	at java.base/java.util.ArrayList.hashCode(ArrayList.java:613)
+20231015.1159.10 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231015.1159.10 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231015.1208.17 error THMap0         PC Radio in room sector minus#46 unticked (is ticking=false, dead=false, Home=sector minus#46) since: 10/15/2023 11:52 AM.  This mob has been destroyed. May he rest in peace.
+20231015.1209.18 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231015.1209.18 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231015.1219.26 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231015.1219.26 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231015.1229.34 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231015.1229.34 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231015.1239.42 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231015.1239.42 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231015.1249.50 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231015.1249.50 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231015.1259.58 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231015.1259.58 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231015.1300.05 info  MUD@5555       Connection from 103.178.228.64
+20231015.1301.12 info  Worker0#1      Disconnect: 103.178.228.64 (1m 6s)
+20231015.1301.36 info  MUD@5555       Connection from 104.156.100.167
+20231015.1302.38 info  Worker0#4      Disconnect: 104.156.100.167 (1m 1s)
+20231015.1310.06 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231015.1310.06 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231015.1320.14 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231015.1320.14 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231015.1330.22 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231015.1330.22 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231015.1340.30 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231015.1340.30 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231015.1350.38 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231015.1350.38 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231015.1400.46 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231015.1400.46 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231015.1410.54 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231015.1410.54 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231015.1419.24 info  MUD@5555       Connection from 103.180.146.2
+20231015.1420.31 info  Worker0#1      Disconnect: 103.180.146.2 (1m 6s)
+20231015.1421.02 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231015.1421.02 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231015.1431.10 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231015.1431.10 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231015.1441.18 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231015.1441.18 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231015.1447.14 info  MUD@5555       Connection from 64.62.197.152
+20231015.1447.20 info  Worker0#4      Disconnect: 64.62.197.152 (6s)
+20231015.1448.19 info  SysopUtils     Moonbeam 1 copied GenItem item.
+20231015.1451.27 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231015.1451.27 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231015.1501.35 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231015.1501.35 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231015.1505.24 info  CreateEdit     Moonbeam modified item ^Pa citizenship advertisement poster^N (GenItem) in Phantom City#43.
+20231015.1505.33 info  CreateEdit     Moonbeam modified item ^Pa citizenship advertisement poster^N (GenItem) in Phantom City#43.
+20231015.1505.43 info  SysopUtils     Moonbeam 1 copied GenItem item.
+20231015.1505.54 info  SysopUtils     Moonbeam 1 copied GenItem item.
+20231015.1505.59 info  Items          Moonbeam destroyed item ^Ca job advertisement billboard^N.
+20231015.1506.00 info  SysopUtils     Moonbeam 1 copied GenItem item.
+20231015.1508.23 error ClanHelper     Unknown clan activated." for ^#222A ^#111N^#222T^#333C^r-^#111O^#222M^#333N^#222I ^#111A^#222l^#333l^r-^#222P^#111u^#222r^#333p^#222o^#111s^#222e ^#333D^#222r^#111o^#222i^#333d^N in 
+20231015.1508.23 error ClanHelper     Unknown clan activated." for ^#222A ^#111N^#222T^#333C^r-^#111O^#222M^#333N^#222I ^#111A^#222l^#333l^r-^#222P^#111u^#222r^#333p^#222o^#111s^#222e ^#333D^#222r^#111o^#222i^#333d^N in 
+20231015.1511.43 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231015.1511.43 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231015.1521.51 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231015.1521.51 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231015.1531.59 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231015.1531.59 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231015.1542.07 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231015.1542.07 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231015.1552.15 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231015.1552.15 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231015.1556.46 info  MUD@5555       Connection from 45.79.181.104
+20231015.1556.48 info  Worker0#3      Disconnect: 45.79.181.104 (1s 946ms)
+20231015.1601.37 info  MUD@5555       Connection from 104.156.100.167
+20231015.1602.23 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231015.1602.23 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231015.1602.39 info  Worker0#1      Disconnect: 104.156.100.167 (1m 2s)
+20231015.1612.31 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231015.1612.31 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231015.1622.39 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231015.1622.39 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231015.1629.01 debug Intermud       UCache packet has # data: 9
+20231015.1629.01 debug Intermud       UCache Data: ucache-update 5 WarofLegend 0 0 0 Kaldar Kaldar 0
+20231015.1632.47 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231015.1632.47 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231015.1642.27 info  Worker0#4      Logout: Moonbeam (5h)
+20231015.1642.31 info  Worker0#1      Disconnect: Moonbeam: 78.175.237.129 (5h)
+20231015.1642.34 info  MUD@5555       Connection from 78.175.237.129
+20231015.1642.39 info  Worker0#3      Creating account: Ezekiel
+20231015.1642.43 info  Worker0#4      Created account: Ezekiel
+20231015.1642.55 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231015.1642.55 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231015.1643.22 info  Worker0#5      Disconnect: Ezekiel: 78.175.237.129 (48s)
+20231015.1643.24 info  MUD@5555       Connection from 78.175.237.129
+20231015.1643.30 info  Worker0#5      78.175.237.129 Mudlet 4.16.0 MXP MSDP GMCP CMP ANSI, account login: Moonbeam
+20231015.1643.32 info  Worker0#6      78.175.237.129 Mudlet 4.16.0 MXP MSDP GMCP CMP ANSI, character login: Moonbeam
+20231015.1644.48 error CommandProcess Moonbeam starts system shutdown...
+20231015.1644.48 info  Shutdown0      New Connections are now closed
+20231015.1644.48 info  ServiceEngine  Scheduler stopped
+20231015.1644.48 info  Shutdown0      All users saved.
+20231015.1644.48 info  Shutdown0      Stats saved.
+20231015.1644.48 info  Shutdown0      Notifying all objects of shutdown...
+20231015.1644.49 info  QuestBound     SHUTDOWN message for a gang member caused Capturewarrant to reset.
+20231015.1644.49 debug Shutdown0      Destroying flag of clan NineTails Corporation in NineTails Corporation#33 because reset.
+20231015.1644.49 info  QuestBound     SHUTDOWN message for A HOJ receptionist caused Protect1 to reset.
+20231015.1644.49 info  QuestBound     SHUTDOWN message for Ross caused pcbookdelivery to reset.
+20231015.1644.50 info  CM1Server      Shutdown complete
+20231015.1644.52 info  Shutdown0      CM1Server0@27733 stopped
+20231015.1644.52 info  Intermud       Shutdown!!!
+20231015.1644.53 info  Shutdown0      I3Server stopped
+20231015.1644.56 info  Shutdown0      All users logged off.
+20231015.1644.58 info  ServiceEngine  Shutdown complete.
+20231015.1644.58 info  Shutdown0      Map Threads Stopped.
+20231015.1644.58 info  Shutdown0      Resources Cleared.
+20231015.1644.58 info  Shutdown0      Database connections closed.
+20231015.1644.58 info  cweb-pub0      Shutdown complete
+20231015.1644.58 info  cweb-pub0Timeo Timeout Thread shutdown
+20231015.1644.58 info  Shutdown0      Web server cweb-pub0 stopped.
+20231015.1644.58 info  cweb-admin0    Shutdown complete
+20231015.1644.58 info  cweb-admin0Tim Timeout Thread shutdown
+20231015.1644.58 info  Shutdown0      Web server cweb-admin0 stopped.
+20231015.1644.59 info  Shutdown0      CoffeeMud shutdown complete.
+20231015.1645.00 info  MUD@5555       Server cleaning up.
+20231015.1645.00 info  MUD@5555       MUD on port 5555 stopped!
+20231015.1645.01 debug Shutdown0      Used memory = 32342072

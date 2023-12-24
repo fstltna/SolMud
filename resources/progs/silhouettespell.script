@@ -1,0 +1,14 @@
+once_prog
+mpprompt $n targetval ^rWHO SHALT BE HUNTED?^N
+mpecho ^r$<$n targetval> IT IS.^N
+mpecho ^#111The sacrifical ingredients and currency poofs in a cloud of smoke as the pact is made and the demon is summoned onto the targeted person.^N
+mpexp $n -500
+mpechoat $n ^wYou lost ^r500^w experience.^N
+mpchannel !wizinfo $n used silhouettefullnelson against $<$n targetval>.
+MPSETVAR $n CurLevel $%GSTAT($n LEVEL)%
+MPSETVAR $n levelval $%MATH($<$n CurLevel>/2)%
+mpmload fromfile silhouettemob.cmare silhouette
+mpgset $b level $<$n levelval>
+mptransfer $b $<$n targetval>
+mpalarm 1 mpforce $b fullnelson $<$n targetval>
+~

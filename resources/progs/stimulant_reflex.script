@@ -1,0 +1,18 @@
+#ReFlex
+cnclmsg_prog huh p inject reflex
+if isname($i 'a NM ReFlex stimulant injector')
+if var($n affectedbystim != 1)
+if has($n 'a NM ReFlex stimulant injector')
+mpsetvar $n affectedbystim 1
+mpecho ^r$n injects $mself with $i ^ras it hisses out pressure while releasing the liquid into $m bloodstream.^N
+mpalarm 1 mpaffect Disease_Nausea $n 10TICKS
+mpalarm 1 mpaffect Spell_Choke $n 4TICKS
+mpalarm 2 mpaffect Stimulant_Dexterity $n 30TICKS
+mpalarm 3 mpjunk '$i'
+endif
+else
+mpechoat $n You figure you can't drug yourself more without overdosing right now.
+endif
+endif
+return cancel
+~

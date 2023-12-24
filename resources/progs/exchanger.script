@@ -1,0 +1,21 @@
+cnclmsg_prog huh p exchange experience
+if exp($n < 5000)
+mpechoat $n insufficent experience.
+else
+mpexp $n -5000
+mpecho traded 5000XP for 1 Train
+mptrains $n ++1
+endif
+return cancel
+~
+
+cnclmsg_prog huh p exchange questpoint
+if questpoints($n < 1)
+mpechoat $n insufficent questpoints.
+else
+mpquestpoints $n --1
+mpecho traded 1QP for 3 Trains
+mptrains $n ++3
+endif
+return cancel
+~

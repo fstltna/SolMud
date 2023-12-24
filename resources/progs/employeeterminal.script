@@ -1,0 +1,266 @@
+## Made by VideNoir - Secret of Life MUD on CoffeeMud v5.10.1
+## This took 16 hours or something to get right for some reason.
+##
+##toggles console on CONSOLE OFF
+
+once_prog
+mpsetvar $i powerswitch 0
+mpgset $i description '^W._____________________________________.%0D|                                     |%0D|                                     |%0D|                                     |%0D|                                     |%0D|                                     |%0D|                                     |%0D|                                     |%0D|                                     |%0D|                                     |%0D|                                     |%0D|                                     |%0D|_______________________________[^R(|)^W]_|^N%0D ^cCONSOLE ON^N to turn it on.'
+mpsavevar $i powerswitch
+~
+
+cnclmsg_prog huh p console off
+if var($i powerswitch == 1)
+mpecho $n presses the power button on $i
+mpecho $i's fans stop whirring as it dies down.
+mpsetvar $i powerswitch 0
+mpsavevar $i powerswitch
+mpgset $i description '^W._____________________________________.%0D|                                     |%0D|                                     |%0D|                                     |%0D|                                     |%0D|                                     |%0D|                                     |%0D|                                     |%0D|                                     |%0D|                                     |%0D|                                     |%0D|                                     |%0D|_______________________________[^R(|)^W]_|^N%0D ^cCONSOLE ON^N to turn it on.'
+else
+mpechoat $n $i is already turned off.
+endif
+return cancel
+~
+
+##toggles console on CONSOLE ON
+cnclmsg_prog huh p console on
+if var($i powerswitch != 1)
+mpecho $n presses the power button on $i
+mpecho $i whirrs a little while powering up.
+mpsetvar $i powerswitch 1
+mpsavevar $i powerswitch
+mpgset $i description '^G._____________________________________.%0D|                                     |%0D| Possible Commands:                  |%0D| Console Off                         |%0D| Checkin                             |%0D| Balance                             |%0D| Resign                              |%0D|                                     |%0D| ^BManagement Commands:^G                |%0D| ^B(*)Setup Console^G                    |%0D| ^B(*)Register  Employee^G               |%0D| ^B(*)Unregister Employee^G              |%0D|_______________________________^W[^g(|)^W]^G_|^N'
+else
+mpechoat $n $i is already turned on.
+endif
+return cancel
+~
+
+## Allows adding days of working and gives wage payment when reached 15 days of work CHECKIN
+cnclmsg_prog huh p checkin
+mploadvar $i employmentroom
+mploadvar $n employmentroomtat
+mploadvar $n workeddays
+mploadvar $n lastworkday
+mploadvar $n employeewage
+if var($i powerswitch == 1)
+    if affected('$n' 'Property_Neurallink')
+        mpecho $n draws out $m personal jack from $m implant and jacks in the machine, processing $m ID and bio-signature...
+        mpsetvar $n employmentroom '$<$i employmentroom>'
+            if var($n employmentroomtat == $<$n employmentroom>)
+            if var($n workeddays <= 14)
+            mpsetvar $n todaydate $%ISRLDAY()%
+            ## $%ISRLDAY()% maybe
+                if var($n todaydate != $<$n lastworkday>)
+                    mpalarm 2 mpecho ^p$i pings ^w'^gYour checking in is now processed into your worked days.^2'^N
+                    mpalarm 2 mpecho ^p$i pings ^w'Accessing days worked since last payment... $<$n workeddays>/15, Optimal Credit payout: ^g$<$n employeewage>c^w. Have a productive day.'^N
+                    mpsetvar $n workeddays +1
+                    mpsavevar $n workeddays
+                    mpsetvar $n lastworkday $%ISRLDAY()%
+                    mpsavevar $n lastworkday
+                    if var($n workeddays > 0)
+                    else
+                    mpsetvar $n workeddays 1
+                    mpsavevar $n workeddays
+                    mpalarm 2 mpecho ^p$i pings ^w'There might have been an error setting your days, please try again.'^N
+                    endif
+                else
+                    mpalarm 2 mpecho ^p$i pings ^w'Accessing days worked since last payment... $<$n workeddays>/15, Optimal Credit payout: ^g$<$n employeewage>c^w. Have a productive day.'^N
+                endif
+            else
+                mpalarm 2 mpecho ^p$i pings ^w'Accessing days worked since last payment... $<$n workeddays>/15. ^gCongratulations! You are eligible for wage payment.^w'^N
+                if goldamt($i >= $<$n employeewage>)
+                    mpforce $i drop $<$n employeewage>$
+                    mpsetvar $n workeddays 0
+                    mpsavevar $n workeddays
+                    mpsetvar $n lastworkday $%ISRLDAY()%
+                    mpsavevar $n lastworkday
+                else
+                    mpalarm 2 mpecho ^p$i pings ^w'ERROR: Insufficient funds in terminal, contact management for refill.'^N
+                endif
+            endif
+        else
+            mpalarm 2 mpecho ^p$i pings ^w'ERROR: Bio-signature does not match any employee in the database.'^N
+        endif
+    else
+        mpalarm 2 mpecho $n could not verify $m ID and biosignature due lacking a neural implant.
+    endif
+else
+    mpechoat $n $i is not turned on!
+endif
+return cancel
+~
+
+##sets up console to this owned room. SETUP CONSOLE
+cnclmsg_prog huh p setup console
+if var($i powerswitch == 1)
+if islike($n -LOCATION +OWNED)
+mpsetvar $i employmentroom '$%INROOM()%'
+mpsavevar $i employmentroom
+mpecho ^p$i pings ^w'Employment room set to $a, Have a productive day.'^N
+else
+if islike($n -LOCATION +CLANOWNED)
+if clanrank($n >= 5)
+mpsetvar $i employmentroom '$%INROOM()%'
+mpsavevar $i employmentroom
+mpecho ^p$i pings ^w'Employment room set to $a, Have a productive day.'^N
+else
+mpecho ^p$i pings ^w'ERROR: Invalid room ownership.'^N
+endif
+else
+mpecho ^p$i pings ^w'ERROR: Unauthorized ID.'^N
+endif
+endif
+else
+mpechoat $n $i is not turned on!
+endif
+return cancel
+~
+
+# Adds a new employee REGISTER EMPLOYEE
+cnclmsg_prog huh p register employee
+mploadvar $i employmentroom
+if var($i powerswitch == 1)
+    if islike($n -LOCATION +OWNED)
+        mpprompt $n registereename Name of the Employee
+        mploadvar $<$n registereename> employmentroomtat
+        if cansee($i '$<$n registereename>')
+        mploadvar '$<$n registereename>' workingsomewhere
+            if var('$<$n registereename>' workingsomewhere == 1)
+                mpecho ^p$i pings ^w'ERROR: Registeree is working somewhere else or is already registered here.'^N
+            else
+                mpprompt $n wageamount Type a number for the wage in credits for $<$n registereename>. (You will have to give the console a budget of money.)
+                if var($n wageamount < 0)
+                mpsetvar $n wageamount 0
+                else
+                endif
+                mploadvar $i employmentroom
+                mpsetvar '$<$n registereename>' employeewage $<$n wageamount>
+                mpsavevar '$<$n registereename>' employeewage
+                mpsetvar '$<$n registereename>' employmentroomtat '$<$i employmentroom>'
+                mpsavevar '$<$n registereename>' employmentroomtat
+                mpecho $n types in some things to the terminal and registers $<$n registereename> as an employee
+                mpsetvar '$<$n registereename>' workingsomewhere 1
+                mpsavevar '$<$n registereename>' workingsomewhere
+            endif
+        else
+            mpecho ^p$i pings ^w'ERROR: Registeree not found in the room.'^N
+        endif
+    else
+        if islike($n -LOCATION +CLANOWNED)
+            if clanrank($n >= 5)
+                mpprompt $n registereename Name of the Employee
+                if cansee($i '$<$n registereename>')
+                    mploadvar '$<$n registereename>' workingsomewhere
+                    if var('$<$n registereename>' workingsomewhere == 1)
+                        mpecho ^p$i pings ^w'ERROR: Registeree is working somewhere else or is already registered here.'^N
+                    else
+                        mpprompt $n wageamount Type a number for the wage in credits for $<$n registereename>. (You will have to give the console a budget of money.)
+                        mpsetvar '$<$n registereename>' employeewage $<$n wageamount>
+                        mpsavevar '$<$n registereename>' employeewage
+                        mpecho $n types in some things to the terminal and registers $<$n registereename> as an employee
+                        mpsetvar '$<$n registereename>' workingsomewhere 1
+                        mpsavevar '$<$n registereename>' workingsomewhere
+                        mpsetvar '$<$n registereename>' employmentroomtat '$<$i employmentroom>'
+                        mpsavevar '$<$n registereename>' employmentroomtat
+                    endif
+                else
+                    mpecho ^p$i pings ^w'ERROR: Registeree not found in the room.'^N
+                endif
+            else
+                mpecho ^p$i pings ^w'ERROR: Unauthorized ID.'^N
+            endif
+        else
+          mpecho ^p$i pings ^w'ERROR: Invalid room ownership.'^N
+        endif
+    endif
+else
+    mpechoat $n $i is not turned on!
+endif
+return cancel
+~
+
+## removes an employee UNREGISTER EMPLOYEE
+cnclmsg_prog huh p unregister employee
+mploadvar $i employmentroom
+if var($i powerswitch == 1)
+    if islike($n -LOCATION +OWNED)
+        mpprompt $n registereename Name of the Employee to remove
+        if cansee($i '$<$n registereename>')
+        mploadvar $<$n registereename> employmentroomtat
+             if var('$<$n registereename>' employmentroomtat == '$%INROOM()%')
+                mpsetvar '$<$n registereename>' workingsomewhere 0
+                mpsavevar '$<$n registereename>' workingsomewhere
+                mpsetvar '$<$n registereename>' employmentroomtat 0
+                mpsavevar '$<$n registereename>' employmentroomtat
+                mpecho $n types in some things to the terminal and unregisters $<$n registereename> as an employee
+                else
+                mpecho ^p$i pings ^w'ERROR: Unknown employee.'^N
+                endif
+        else
+            mpecho ^p$i pings ^w'ERROR: Registeree not found in the room.'^N
+        endif
+    else
+        if islike($n -LOCATION +CLANOWNED)
+            if clanrank($n == 6)
+                mpprompt $n registereename Name of the Employee
+                if cansee($i '$<$n registereename>')
+                mploadvar $<$n registereename> employmentroomtat
+                if var('$<$n registereename>' employmentroomtat == '$%INROOM()%')
+                        mpsetvar '$<$n registereename>' workingsomewhere 0
+                        mpsavevar '$<$n registereename>' workingsomewhere
+                        mpsetvar '$<$n registereename>' employmentroomtat 0
+                        mpsavevar '$<$n registereename>' employmentroomtat
+                        mpecho $n types in some things to the terminal and unregisters $<$n registereename> as an employee
+                        else
+                        mpecho ^p$i pings ^w'ERROR: Unknown employee.'^N
+                        endif
+                else
+                    mpecho ^p$i pings ^w'ERROR: Registeree not found in the room.'^N
+                endif
+            else
+                mpecho ^p$i pings ^w'ERROR: Unauthorized ID.'^N
+            endif
+        else
+            mpecho ^p$i pings ^w'ERROR: Invalid room ownership.'^N
+        endif
+    endif
+else
+    mpechoat $n $i is not turned on!
+endif
+return cancel
+~
+
+cnclmsg_prog huh p resign
+if var($i powerswitch == 1)
+mploadvar $i employmentroom
+mploadvar $n employmentroomtat
+mploadvar $n workingsomewhere
+if var($n workingsomewhere == 1)
+mpsetvar $n workingsomewhere 0
+mpsavevar $n workingsomewhere
+mpecho $n types in some things to the terminal and resigns from the job.
+mpsetvar $n employmentroomtat 0
+mpsavevar $n employmentroomtat
+else
+mpechoat $n You are not working anywhere.
+endif
+else
+mpechoat $n $i is not turned on!
+endif
+return cancel
+~
+
+cnclmsg_prog huh p Balance
+if var($i powerswitch == 1)
+mpecho $n types in some things to the terminal and pulls up the balance.
+mpalarm 1 mpecho ^p$i pings ^w'Currently available funds: ^g$%GOLDAMT($i)%c^w'^N
+if goldamt($i < 5000)
+mpalarm 1 mpecho ^p$i pings ^w'Available funds might be insufficient to resume operations, please alert management if the balance is too low.'^N
+else
+endif
+else
+mpechoat $n $i is not turned on!
+endif
+return cancel
+~

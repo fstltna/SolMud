@@ -17,3 +17,18 @@ maggoty cheese sandwich	FOOD		22	maggoty cheese	1	maggoty bread	1
 rotting fish sandwich	FOOD		24	fish	1	moldy bread	1	greens	-1	tomatoes	-1						
 rancid beef sandwich	FOOD		26	beef	1	stale bread	1	greens	-1	tomatoes	-1						
 fetid pork sandwich	FOOD		28	Pork	1	stale bread	1	greens	-1	tomatoes	-1						
+rotten cum soap	SOAP		5	CUM	10												
+dried rotten cum powder	GenPowder		8	CUM	3												
+stale cummy water	DRINK		3	WATER		CUM											
+rotten cummy water	DRINK		10	CUM		WATER											
+disposable cup of spoiled cum	DRINK		15	CUM													
+XL condom full of rotten horse cum	DRINK		25	CUM	5	RUBBER											
+cum covered slimey pasta	FOOD		1	CUM	3	slimey pasta											
+cummy rotting fish sandwich	FOOD		26	CUM		rotting fish sandwich											
+cummy maggot-egg sandwich	FOOD		1	CUM		maggot-egg sandwich											
+moldy cum sandwich	FOOD		1	CUM		moldy bread											
+disposable cup of spoiled pussyjuice	DRINK		10	PUSSYJUICE	5												
+disposable cup of spoiled breastmilk	DRINK		1	MILK													
+spoiled cum cheese	FOOD		10	CUM		MILK											
+spoiled cum cheese sandwich	FOOD		1	cum cheese		stale bread											
+a bottle of musky goblin cum	DRINK		15	CUM	5												

@@ -1,0 +1,22 @@
+cnclmsg_prog COMMANDFAIL get all open chest
+mpgset $i name A Mimic
+mpnotrigger cnclmsg_prog 10
+switch $%RANDNUM(3)%
+case 1
+mpgset $i name A Mimic
+mpecho ^rIT WAS A MIMIC!^N $n gets stuck on the sticky mimic!
+mpaffect Spell_Ensnare 6TICKS $n
+mpforce $i kill $n
+case 2
+mpgset $i name A Mimic
+mpecho ^rIT WAS A MIMIC!^N $n gets pulled into the mimic!
+mpaffect Spell_Ensnare 6TICKS $n
+mpforce $i fullnelson $n
+case 3
+mpgset $i name A Mimic
+mpecho ^rIT WAS A MIMIC!^N $n gets assaulted by lewd tentacles that shoot out of the mimic!
+mpaffect Spell_Ensnare 6TICKS $n
+mpforce $i cast tentacles $n
+endswitch
+return cancel
+~

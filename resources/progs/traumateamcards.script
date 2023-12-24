@@ -1,0 +1,163 @@
+delay_prog 3 3
+if inarea($i != 'Novamed Hospital')
+if hitprcnt($i <= 95)
+if var($i traumaalerttoggle != 1)
+if ishere(rectangular device with antennaes)
+mpechoat $n ^R[N-UI] ^rLow or No signal! May not be able to reach Trauma Team.^N
+endif
+if has($i A trauma-team platinum membership card)
+if affected($i property_neurallink)
+if var($i alertedonce != 1)
+mpsetvar $i confirmcode PT-$%RAND0NUM(9)%$%RAND0NUM(9)%$%RAND0NUM(9)%$%RAND0NUM(9)%
+mpsetvar $i alertedonce 1
+mpchannel !EMERGENCY ^cTRAUMA-TEAM ^rPLATINUM^w SERVICES AUTO-REQUESTED%0D^wHEALTH PERCENTAGE: $%HITPRCNT($i)%%%0D^wAREA: $%INAREA($i)%%0DROOM: $d%0DCONFIRMATION CODE: $<$i confirmcode>
+mpechoat $i ^R[N-UI] ^rTrauma team has been automatically alerted of your emergency.^N
+else
+if hitprcnt($i <= 90)
+mpechoat $i ^R[N-UI] ^rTrauma team has been automatically alerted of your $%HITPRCNT($i)%% health status.^N
+mpchannel !EMERGENCY ALERT! $<$i confirmcode> - HEALTH: $%HITPRCNT($i)%% - ^wAREA: $%INAREA($i)%, $d.
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+if hitprcnt($i == 100)
+if var($i alertedonce == 1)
+if ishere(rectangular device with antennaes)
+mpechoat $n ^R[N-UI] ^rLow or No signal! May not be able to reach Trauma Team.^N
+endif
+mpechoat $i ^R[N-UI] ^rTrauma team has been automatically alerted of your $%HITPRCNT($i)%% health recovery.^N
+mpchannel !EMERGENCY $<$i confirmcode> SEEMS TO BE STABILISED AT $%HITPRCNT($i)%% HEALTH.
+mpsetvar $i confirmcode ''
+mpsetvar $i alertedonce 0
+endif
+endif
+~
+
+cnclmsg_prog HUH p toggle traumaalert
+if var($i traumaalerttoggle != 1)
+mpsetvar $i traumaalerttoggle 1
+mpechoat $i ^R[N-UI] ^rToggled trauma alerts OFF, trauma team notified of last known area for precaution.^N
+mpchannel !EMERGENCY toggled trauma alerts off, last known area: ^wAREA: $%INAREA($i)%.
+else
+mpsetvar $i traumaalerttoggle 0
+mpechoat $i ^R[N-UI] ^rToggled trauma alerts ON, trauma team notified of change for precaution.^N
+mpchannel !EMERGENCY toggled trauma alerts back on.
+endif
+return cancel
+~
+
+death_prog
+if affected($i property_neurallink)
+mpchannel !EMERGENCY ALERT! $<$i confirmcode> FLATLINED AT $%INAREA($i)%, $d.
+mpsetvar $i confirmcode ''
+mpsetvar $i alertedonce 0
+endif
+~
+
+delay_prog 3 3
+if inarea($i != 'Novamed Hospital')
+if hitprcnt($i <= 70)
+if var($i traumaalerttoggle != 1)
+if ishere(rectangular device with antennaes)
+mpechoat $n ^R[N-UI] ^rLow or No signal! May not be able to reach Trauma Team.^N
+endif
+if has($i A trauma-team gold membership card)
+if affected($i property_neurallink)
+if var($i alertedonce != 1)
+mpsetvar $i confirmcode PT-$%RAND0NUM(9)%$%RAND0NUM(9)%$%RAND0NUM(9)%$%RAND0NUM(9)%
+mpsetvar $i alertedonce 1
+mpchannel !EMERGENCY ^cTRAUMA-TEAM ^yGOLD^w SERVICES AUTO-REQUESTED%0D^wHEALTH PERCENTAGE: $%HITPRCNT($i)%%%0D^wAREA: $%INAREA($i)%%0DROOM: $d%0DCONFIRMATION CODE: $<$i confirmcode>
+mpechoat $i ^R[N-UI] ^rTrauma team has been automatically alerted of your emergency.^N
+else
+if hitprcnt($i <= 65)
+mpechoat $i ^R[N-UI] ^rTrauma team has been automatically alerted of your $%HITPRCNT($i)%% health status.^N
+mpchannel !EMERGENCY ALERT! $<$i confirmcode> - HEALTH: $%HITPRCNT($i)%% - ^wAREA: $%INAREA($i)%, $d.
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+if hitprcnt($i == 100)
+if var($i alertedonce == 1)
+mpechoat $i ^R[N-UI] ^rTrauma team has been automatically alerted of your $%HITPRCNT($i)%% health recovery.^N
+mpchannel !EMERGENCY $<$i confirmcode> SEEMS TO BE STABILISED AT $%HITPRCNT($i)%% HEALTH.
+mpsetvar $i confirmcode ''
+mpsetvar $i alertedonce 0
+endif
+endif
+~
+
+delay_prog 3 3
+if inarea($i != 'Novamed Hospital')
+if hitprcnt($i <= 50)
+if var($i traumaalerttoggle != 1)
+if ishere(rectangular device with antennaes)
+mpechoat $n ^R[N-UI] ^rLow or No signal! May not be able to reach Trauma Team.^N
+endif
+if has($i A trauma-team silver membership card)
+if affected($i property_neurallink)
+if var($i alertedonce != 1)
+mpsetvar $i confirmcode PT-$%RAND0NUM(9)%$%RAND0NUM(9)%$%RAND0NUM(9)%$%RAND0NUM(9)%
+mpsetvar $i alertedonce 1
+mpchannel !EMERGENCY ^cTRAUMA-TEAM ^WSILVER^w SERVICES AUTO-REQUESTED%0D^wHEALTH PERCENTAGE: $%HITPRCNT($i)%%%0D^wAREA: $%INAREA($i)%%0DROOM: $d%0DCONFIRMATION CODE: $<$i confirmcode>
+mpechoat $i ^R[N-UI] ^rTrauma team has been automatically alerted of your emergency.^N
+else
+if hitprcnt($i <= 45)
+mpechoat $i ^R[N-UI] ^rTrauma team has been automatically alerted of your $%HITPRCNT($i)%% health status.^N
+mpchannel !EMERGENCY ALERT! $<$i confirmcode> - HEALTH: $%HITPRCNT($i)%% - ^wAREA: $%INAREA($i)%, $d.
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+if hitprcnt($i == 100)
+if var($i alertedonce == 1)
+mpechoat $i ^R[N-UI] ^rTrauma team has been automatically alerted of your $%HITPRCNT($i)%% health recovery.^N
+mpchannel !EMERGENCY $<$i confirmcode> SEEMS TO BE STABILISED AT $%HITPRCNT($i)%% HEALTH.
+mpsetvar $i confirmcode ''
+mpsetvar $i alertedonce 0
+endif
+endif
+~
+
+delay_prog 3 3
+if inarea($i != 'Novamed Hospital')
+if hitprcnt($i <= 30)
+if var($i traumaalerttoggle != 1)
+if ishere(rectangular device with antennaes)
+mpechoat $n ^R[N-UI] ^rLow or No signal! May not be able to reach Trauma Team.^N
+endif
+if has($i A trauma-team copper membership card)
+if affected($i property_neurallink)
+if var($i alertedonce != 1)
+mpsetvar $i confirmcode PT-$%RAND0NUM(9)%$%RAND0NUM(9)%$%RAND0NUM(9)%$%RAND0NUM(9)%
+mpsetvar $i alertedonce 1
+mpchannel !EMERGENCY ^cTRAUMA-TEAM ^YCOPPER^w SERVICES AUTO-REQUESTED%0D^wHEALTH PERCENTAGE: $%HITPRCNT($i)%%%0D^wAREA: $%INAREA($i)%%0DROOM: $d%0DCONFIRMATION CODE: $<$i confirmcode>
+mpechoat $i ^R[N-UI] ^rTrauma team has been automatically alerted of your emergency.^N
+else
+if hitprcnt($i <= 25)
+mpechoat $i ^R[N-UI] ^rTrauma team has been automatically alerted of your $%HITPRCNT($i)%% health status.^N
+mpchannel !EMERGENCY ALERT! $<$i confirmcode> - HEALTH: $%HITPRCNT($i)%% - ^wAREA: $%INAREA($i)%, $d.
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+if hitprcnt($i == 100)
+if var($i alertedonce == 1)
+mpechoat $i ^R[N-UI] ^rTrauma team has been automatically alerted of your $%HITPRCNT($i)%% health recovery.^N
+mpchannel !EMERGENCY $<$i confirmcode> SEEMS TO BE STABILISED AT $%HITPRCNT($i)%% HEALTH.
+mpsetvar $i confirmcode ''
+mpsetvar $i alertedonce 0
+endif
+endif
+~

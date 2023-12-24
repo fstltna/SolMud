@@ -1,0 +1,28 @@
+<CUSTOM><ABILITY ID="Donate" TYPE="GenAbility"><CLASS>Donate</CLASS><NAME>Donate</NAME><DISPLAY>NULL</DISPLAY><TRIGSTR>DONATE, DON</TRIGSTR><MAXRANGE>CLOSE</MAXRANGE><MINRANGE>CLOSE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>CASTER</FLAGS><CLASSIFICATION>SKILL,NOTHING</CLASSIFICATION><OVERRIDEMANA>0</OVERRIDEMANA><USAGEMASK>MANA</USAGEMASK><CANAFFECTMASK>0</CANAFFECTMASK><CANTARGETMASK>ITEMS</CANTARGETMASK><QUALITY>INDIFFERENT</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT>imask_prog p donate
+
+if gstat($t LEVEL &lt;= 121)
+
+if gstat($t ISDROPPABLE == TRUE)
+mptransfer $t 'Phantom City#161'
+if inroom($n == 'Phantom City#161')
+mpforce $n drop $t
+endif
+mpechoat $n You donate $t.
+mpecho $t is snatched out of $n's hands by a cargo drone and is taken away.
+mpechoat 'Phantom City#161' $t is delivered by a cargo drone!
+else
+mpechoat $n You are unable to donate this item.  It might be undroppable. 
+endif
+
+else
+mpechoat $n This item is too powerful to donate. Try to sell it, bank it, or drop it in a dump.
+endif
+
+
+
+~</SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempts to use this ability against &lt;T-NAME&gt;, and fails</FIZZLEMSG><AUTOCASTMSG>An amazing thing happens to &lt;T-NAME&gt;!</AUTOCASTMSG><CASTMSG></CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>Ability: Donate
+Usage: Donate [ITEM NAME]
+Examples: donate bread
+Short: don
+This ability is available to everyone.  It removes the item from your inventory and transfers it to the Donation Room, so other players may pick it up and keep it for themselves.
+This ability will not work on items that are cursed or otherwise undroppable.  It will also not work on items with an Item Level greater than 121. </HELP><TICKSBETWEENCASTS>1</TICKSBETWEENCASTS><TICKSOVERRIDE>0</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG></UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG></ABILITY></CUSTOM>

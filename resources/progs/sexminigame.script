@@ -1,0 +1,1452 @@
+execmsg_prog mount all
+if incontainer('$n' '$i')
+mpsetvar $i pleasureamount 5
+mpsetvar $n playerpleasureamount 5
+mpsetvar $i whosturn 1
+mpsetvar $n genitaldamage 0
+## 0 is player 1 is enemy
+mpsetvar $n curenergy $%GSTAT($n move)%
+mpsetvar $n maxenergy $%GSTAT($n maxmove)%
+mpsetvar $i moblevel $%LEVEL($i)%
+mpsetvar $i mobleveltrip $%MATH($<$i moblevel>*3)%
+mpsetvar $i mobleveldoub $%MATH($<$i moblevel>*2)%
+mpsetvar $n pclevel $%LEVEL($n)%
+mpsetvar $n pcleveltrip $%MATH($<$n pclevel>*3)%
+mpsetvar $n pcleveldoub $%MATH($<$n pclevel>*2)%
+mpsetvar $i arousalcalcmath $%MATH(25?100)%
+mpsetvar $i arousalcalc $%MATH(100 + $<$i mobleveldoub> + $<$i arousalcalcmath>)%
+if class($n == Tacticaljoy)
+mpsetvar $i playerarousalmaxcalcmath $%MATH(25?150)%
+mpsetvar $n playerarousalmaxcalc $%MATH(150 + $<$n pcleveldoub> + $<$n playerarousalmaxcalcmath>)%
+ELSE
+mpsetvar $i playerarousalmaxcalcmath $%MATH(10?50)%
+mpsetvar $n playerarousalmaxcalc $%MATH(100 + $<$n pclevel> + $<$n playerarousalmaxcalcmath>)%
+ENDIF
+if sex($n == F) or sex($n == A) or sex($n == H)
+switch $%RANDNUM(6)%
+case 1
+mpecho $n turn around and grab $i by the cock, feeling it for a brief moment before dropping $m ass with $m whole weight onto the cock, with a loud *SMACK* of $m ass and the poor $i. Possibly with some luck and a massive amount of $m god"s grace, $n manage to miraculously slip it inside $m ready pussy and nowhere else. Moaning loudly before positioning $m legs bent and apart, then $n lean forward a little? ready to roll!
+case 2
+mpecho $n climb on top of $i, balancing on it and "aiming" a little, looking down? $n suddenly bend $m knees, immediately slamming pussy-first onto the cock, getting it to slip inside $m poor cunt to it"s base with an audible *thud* as it hits the end of $m womb, followed by a *SMACK* of $m ass hitting the poor $i $m vision shakes for a moment with the sudden shock of impalement on $m cunny. $n are kneeling and balancing on top of $i with it hilted in $m pussy as $n think of what to do next.
+case 3
+mpecho $n step in front of $i, give it a pat and turn around, slowly lowering $m ass to $i's cock as $n reach $m hand to find it, positioning it to $m pussy and easing $m ass down, getting it in slow and smooth until it hilts inside $m pussy, feeling it throb with excitement as $n cross $m legs. $i's cock hardens a little more as it is squeezed by $m vaginal walls, more so with $m crossed legs.
+case 4
+mpecho $n quickly step to $i, maintaining $m momentum as $n straddle it like a horse, $i's cock slides in $m vagina with a loud *PLOP* followed by $m ass smacking against the thing $n are on, $n roll $m hips a bit to getter feel for it, feeling how tight $m grip is on $i's cock... After a few more moments of checking $n are good to ride!
+case 5
+mpecho $n bend over and give a few long licks to $i's cock from base to the tip as it throbs and hardens, readying it for what to come, $n put $m hands on $i, pushing $m body up and letting $m ass drop onto it, hoping for the best as it slides in $m pussy perfectly with a wet *SLICK* sound, $n try to hold $m moan in but it"s futile.
+case 6
+mpecho $n hop over by $i, with confidence $n turn around and drop $m ass onto $i's cock, just to shudder with the shock of that $n really did drop $m ass onto it, it"s hilted deep in $m ass as it throbs and hardens, $n sigh and try to pull away, with some struggle it comes out with a little pop and some pain that fades away after a little while, $n get it right this time as $m position $m pussy right, plopping the whole thing where it belongs once and for all with a wet *plap*
+endswitch
+ENDIF
+if sex($t == M) or sex($t == O) or sex($t == U)
+switch $%RANDNUM(6)%
+case 1
+mpecho $n turn around and grab $i by the cock, feeling it for a brief moment before dropping $m ass with $m whole weight onto the cock, with a loud *SMACK* of $m ass and the poor $i. Possibly with some luck and a massive amount of $m god"s grace, $n manage to miraculously slip it inside $m ready ass and nowhere else. Moaning loudly before positioning $m legs bent and apart, then $n lean forward a little as $m balls and cock lay on $i? ready to roll!
+case 2
+mpecho $n climb on top of $i, balancing on it and "aiming" a little, looking down? $n suddenly bend $m knees, immediately slamming ass-first onto the cock, getting it to slip inside $m poor ass to it"s base with an audible *thud* as it hits the ends of $n, followed by a *SMACK* of $m ass hitting the poor $i $m vision shakes for a moment with the sudden shock of impalement on $m ass. $n are kneeling and balancing on top of $i with it hilted in $m ass as $n think of what to do next, $m cock drips precum and throbs with excitement aswell as the cock in $n.
+case 3
+mpecho $n step in front of $i, give it a pat and turn around, slowly lowering $m ass to $i's cock as $n reach $m hand to find it, positioning it to $m asshole and easing $m ass down, getting it in slow and smooth until it hilts inside $m ass, feeling it throb with excitement as $n cross $m legs. $i's cock hardens a little more as it is squeezed by $m ass, more so with $m crossed legs and clenched butt, $m poor peen peeks from between $m legs at $n.
+case 4
+mpecho $n quickly step to $i, maintaining $m momentum as $n straddle it like a horse, $i's cock slides in $m ass with a loud *PLOP* followed by $m whole ass smacking against the thing $n are on (and $m balls), $n roll $m hips a bit to getter feel for it while brushing $m cock against the top of $i, feeling how tight $m grip is on $i's cock... After a few more moments of checking $n are good to ride!
+case 5
+mpecho $n bend over and give a few long licks to $i's cock from base to the tip as it throbs and hardens, readying it for what to come, $n put $m hands on $i, pushing $m body up and letting $m ass drop onto it, hoping for the best as it slides in perfectly into $m ass with a wet *SLICK* sound, $n try to hold $m moan in but it"s futile.
+case 6
+mpecho $n hop over by $i, with confidence $n turn around and drop $m ass onto $i's cock, it"s hilted deep in $m ass immediately with a *PLOP* sound as it throbs and hardens, $n push $mself with one leg against the floor to get a little spiiiiiiiiiiin around with that thing drilling $m ass, $n can"t help but moan as $n stop $mself and position $m legs to ride.
+endswitch
+endif
+endif
+mpechoat $n ^P..You hear battle music!..^N
+mpcallfunc enemyturn
+~
+
+function_prog minigameoptionmenu
+mpsetvar $n gdiffregen $%MATH(1?3)%
+MPSETVAR $n genitaldamage $%MATH($<$n genitaldamage> - $<$n gdiffregen> > 0)%
+if class($n == Tacticaljoy)
+mpecho ^#111...$n seems to be preparing, in a weirdly bouncy 'battle stance' on the cock...^N
+mpecho ^p$n seems to know what $e is doing! What a professional.^N
+mpechoat $n ^P| --------CLOSE-------.
+mpechoat $n ^P|^N %@@@@@%%@@@@%%%%%%%#%0D^P|^N %@@.-@@@@@@@@@@@@@@%%0D^P|^N %@@.@@@@:...*@@@@@@%%0D^P|^N %@*.@#...#@*+-=@@@@+%0D^P|^N %@@...*#*%@##+=.@@@@%0D^P|^N @@@..-+@.:@@%@@=..*#%0D^P|^N @@..:*=@+%@@%#@@=:..%0D^P|^N +...=%=#:@@@@#@@=.@=%0D^P|^N @.-.=*=*-@@@@%@@=+..%0D^P|^N ....=@@*=@@%#@@@....%0D^P|^N .=+.:%@+=@@**@@@.:+.%0D^P|^N .-:..#@-#%#*@@@+.:*.%0D^P|^N .:.-%#=:@%##@#@..=+.%0D^P|^N .=.+@+:=@@@##@@...=.%0D^P|^N ...#@==#@@####@.....
+mpechoat $n ^P| -----COMBAT-CAM-----*
+mpechoat $n ^P.------------------------------------------._
+mpechoat $n ^P|  /- ^r$i
+mpechoat $n ^P|  ^W.:| ^wArousal ^p$<$i pleasureamount>^w/^P$<$i arousalcalc> ^w|:.
+mpechoat $n ^P|
+mpechoat $n ^P|    ------------------------------------
+mpechoat $n ^P|
+mpechoat $n ^P|  /- ^w$n
+if sex($n == F)
+mpechoat $n ^P|    \^pFemale
+mpechoat $n ^P|    !! ^rCaution: Vagina penetrated by $i^r.
+ENDIF
+if sex($n == M)
+mpechoat $n ^P|    \^bMale
+mpechoat $n ^P|    !! ^rCaution: Anus penetrated by $i^r.
+ENDIF
+if sex($n == U)
+mpechoat $n ^P|    \^pFuta
+mpechoat $n ^P|    !! ^rCaution: Anus penetrated by $i^r.
+ENDIF
+if sex($n == H)
+mpechoat $n ^P|    \^pHerm
+mpechoat $n ^P|    !! ^rCaution: Vagina penetrated by $i^r.
+ENDIF
+if sex($n == A)
+mpechoat $n ^P|    \^bTrans-Male
+mpechoat $n ^P|    !! ^rCaution: Vagina penetrated by $i^r.
+ENDIF
+if sex($n == O)
+mpechoat $n ^P|    \^pTrans-Female
+mpechoat $n ^P|    !! ^rCaution: Anus penetrated by $i^r.
+ENDIF
+if var ($n genitaldamage >= 190)
+mpechoat $n ^P|    |>G.STATUS: ^rAbsolutely destroyed, ripped and torn!!!^N
+else
+if var($n genitaldamage >= 170)
+mpechoat $n ^P|    |>G.STATUS: ^rAbout to rip apart!!^N
+else
+if var($n genitaldamage >= 150)
+mpechoat $n ^P|    |>G.STATUS: ^rUnrecognizable, bloody and prolapsing with thrusts.^N
+else
+if var($n genitaldamage >= 140)
+mpechoat $n ^P|    |>G.STATUS: ^rVery wounded and about to prolapse!^N
+else
+if var($n genitaldamage >= 120)
+mpechoat $n ^P|    |>G.STATUS: ^rFriction burned and wounded.^N
+else
+if var($n genitaldamage >= 100)
+mpechoat $n ^P|    |>G.STATUS: ^rLoosened and minor bleedings.^N
+else
+if var($n genitaldamage >= 80)
+mpechoat $n ^P|    |>G.STATUS: ^rSmall cuts and scrapes.^N
+else
+if var($n genitaldamage >= 60)
+mpechoat $n ^P|    |>G.STATUS: ^rMajor bruises.^N
+else
+if var($n genitaldamage >= 40)
+mpechoat $n ^P|    |>G.STATUS: ^rReddened and agitated skin.^N
+else
+if var($n genitaldamage >= 20)
+mpechoat $n ^P|    |>G.STATUS: ^rSlightly Agitated skin.^N
+endif
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+mpechoat $n ^P|
+mpechoat $n ^P|  ^W.:| ^wGeni. Damage ^r$<$n genitaldamage>^w/^R200 ^w|:.
+mpechoat $n ^P|  ^W.:| ^wEnergy ^g$<$n curenergy>^w/^G$<$n maxenergy> ^w|:.
+mpechoat $n ^P|  ^W.:| ^wArousal ^p$<$n playerpleasureamount>^w/^P$<$n playerarousalmaxcalc> ^w|:.
+mpechoat $n ^P|
+mpechoat $n ^P|  ^P(^pTact Joy^P) ^WActions:
+mpechoat $n ^P|  ^wFuck (^G-150-200 ^P-5-15^w ^r>>15-50)
+mpechoat $n ^P|  ^wGrind (^P-10-20 ^g+75-150^w)
+mpechoat $n ^P|  ^wClench (^p+25-40 ^G-30-65^w ^r+NEXT FUCK DMG)
+mpechoat $n ^P|
+mpechoat $n ^P| ^WOther Actions:
+mpechoat $n ^P|  ^wStatus
+mpechoat $n ^P|  ^wHelpinfo
+mpechoat $n ^P|  ^rDismount^w
+mpechoat $n ^P.__________________________________________.-
+else
+mpecho ^#111...$n seems to be preparing, in a weirdly bouncy 'battle stance' on the cock...^N
+mpechoat $n ^P| --------CLOSE-------.
+mpechoat $n ^P|^N %@@@@@%%@@@@%%%%%%%#%0D^P|^N %@@.-@@@@@@@@@@@@@@%%0D^P|^N %@@.@@@@:...*@@@@@@%%0D^P|^N %@*.@#...#@*+-=@@@@+%0D^P|^N %@@...*#*%@##+=.@@@@%0D^P|^N @@@..-+@.:@@%@@=..*#%0D^P|^N @@..:*=@+%@@%#@@=:..%0D^P|^N +...=%=#:@@@@#@@=.@=%0D^P|^N @.-.=*=*-@@@@%@@=+..%0D^P|^N ....=@@*=@@%#@@@....%0D^P|^N .=+.:%@+=@@**@@@.:+.%0D^P|^N .-:..#@-#%#*@@@+.:*.%0D^P|^N .:.-%#=:@%##@#@..=+.%0D^P|^N .=.+@+:=@@@##@@...=.%0D^P|^N ...#@==#@@####@.....
+mpechoat $n ^P| -----COMBAT-CAM-----*
+mpechoat $n ^P.------------------------------------------._
+mpechoat $n ^P|  /- ^r$i
+mpechoat $n ^P|  ^W.:| ^wArousal ^p$<$i pleasureamount>^w/^P$<$i arousalcalc> ^w|:.
+mpechoat $n ^P|
+mpechoat $n ^P|    ------------------------------------
+mpechoat $n ^P|
+mpechoat $n ^P|  /- ^w$n
+if sex($n == F)
+mpechoat $n ^P|    \^pFemale
+mpechoat $n ^P|    !! ^rCaution: Vagina penetrated by $i^r.
+ENDIF
+if sex($n == M)
+mpechoat $n ^P|    \^bMale
+mpechoat $n ^P|    !! ^rCaution: Anus penetrated by $i^r.
+ENDIF
+if sex($n == U)
+mpechoat $n ^P|    \^pFuta
+mpechoat $n ^P|    !! ^rCaution: Anus penetrated by $i^r.
+ENDIF
+if sex($n == H)
+mpechoat $n ^P|    \^pHerm
+mpechoat $n ^P|    !! ^rCaution: Vagina penetrated by $i^r.
+ENDIF
+if sex($n == A)
+mpechoat $n ^P|    \^bTrans-Male
+mpechoat $n ^P|    !! ^rCaution: Vagina penetrated by $i^r.
+ENDIF
+if sex($n == O)
+mpechoat $n ^P|    \^pTrans-Female
+mpechoat $n ^P|    !! ^rCaution: Anus penetrated by $i^r.
+ENDIF
+if var ($n genitaldamage >= 190)
+mpechoat $n ^P|    |>G.STATUS: ^rAbsolutely destroyed, ripped and torn!!!^N
+else
+if var($n genitaldamage >= 170)
+mpechoat $n ^P|    |>G.STATUS: ^rAbout to rip apart!!^N
+else
+if var($n genitaldamage >= 150)
+mpechoat $n ^P|    |>G.STATUS: ^rUnrecognizable, bloody and prolapsing with thrusts.^N
+else
+if var($n genitaldamage >= 140)
+mpechoat $n ^P|    |>G.STATUS: ^rVery wounded and about to prolapse!^N
+else
+if var($n genitaldamage >= 120)
+mpechoat $n ^P|    |>G.STATUS: ^rFriction burned and wounded.^N
+else
+if var($n genitaldamage >= 100)
+mpechoat $n ^P|    |>G.STATUS: ^rLoosened and minor bleedings.^N
+else
+if var($n genitaldamage >= 80)
+mpechoat $n ^P|    |>G.STATUS: ^rSmall cuts and scrapes.^N
+else
+if var($n genitaldamage >= 60)
+mpechoat $n ^P|    |>G.STATUS: ^rMajor bruises.^N
+else
+if var($n genitaldamage >= 40)
+mpechoat $n ^P|    |>G.STATUS: ^rReddened and agitated skin.^N
+else
+if var($n genitaldamage >= 20)
+mpechoat $n ^P|    |>G.STATUS: ^rSlightly Agitated skin.^N
+endif
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+mpechoat $n ^P|
+mpechoat $n ^P|  ^W.:| ^wGeni. Damage ^r$<$n genitaldamage>^w/^R100 ^w|:.
+mpechoat $n ^P|  ^W.:| ^wEnergy ^g$<$n curenergy>^w/^G$<$n maxenergy> ^w|:.
+mpechoat $n ^P|  ^W.:| ^wArousal ^p$<$n playerpleasureamount>^w/^P$<$n playerarousalmaxcalc> ^w|:.
+mpechoat $n ^P|
+mpechoat $n ^P|  ^WPossible Actions:
+mpechoat $n ^P|  ^wFuck (^G-Energy ^P+Arousal ^p++A.DMG^w)
+mpechoat $n ^P|  ^wGrind (^g++Energy ^P++Arousal^w)
+mpechoat $n ^P|  ^wClench (^G-Energy ^p-Arousal^w ^r+NEXT FUCK DMG)
+mpechoat $n ^P|
+mpechoat $n ^P| ^WOther Actions:
+mpechoat $n ^P|  ^wStatus
+mpechoat $n ^P|  ^wHelpinfo
+mpechoat $n ^P|  ^rDismount^w
+mpechoat $n ^P.__________________________________________.-
+endif
+~
+
+cnclmsg_prog huh p fuck
+if var($i whosturn == 0)
+if incontainer('$n' '$i')
+mpsetvar $i whosturn 1
+if class($n == Tacticaljoy)
+if sex($n == F) or sex($n == A) or sex($n == H)
+switch $%RANDNUM(5)%
+case 1
+mpecho $n ride $i's cock  for a while, then put one of $m hands on top of it, beginning to ride roughly, filling the room with the noise of $m ass-smacking against $i as $m vice-gripping pussy squeezes $i's cock, causing it to throb inside $m walls, once $m legs give in $e return to $m previous speed, riding as fast as $m legs allow $m to until they recover.
+case 2
+mpecho $n ride $i's cock for quite some time then $e close $m legs together and begin to rapidly smack $m ass against $i, pulling out and hilting $i's cock to the tip and base each time $e rapidly move $m ass, after a while $e get tired and pant, preparing for the next move..
+case 3
+mpecho $n ride $i's cock for some time, opening $m legs and using $m thumb to rub $m clit as $m moan and pick up the speed with self-encouragement of that sort, $e pull $m hand away as $e grow closer but nearly fail to edge $m orgasm and violently cum with $i's cock rapidly being ridden by $n, not giving up, $e keep riding afterwards.
+case 4
+mpecho $n ride $i's cock, "hmm"ing a little as $e grow bored, putting a hand on $i, $e spiiiiiin $mself to face another direction, feeling $i's cock spin against $m tight gripping walls, $e grunt a little, getting $m legs back in position as $e continue to ride.
+case 5
+mpecho $n ride $i's cock. Putting $m hands on $m legs as $e moan and grunt, feeling  $i's cock harden and throb inside $m cunny walls, $e focus on trying to not cum.
+endswitch
+endif
+if sex($n == M) or sex($n == O) or sex($n == U)
+switch $%RANDNUM(5)%
+case 1
+mpecho $n ride $i's cock  for a while, then put one of $m hands on top of it, beginning to ride roughly, filling the room with the noise of $m ass smacking against $i as $m vice-gripping pussy squeezes $i's cock, causing it to throb inside $m rectum, once $m legs give in $e return to $m previous speed, riding as $m legs allow $m to until they recover.
+case 2
+mpecho $n ride $i's cock for quite some time then $e close $m legs together and begin to rapidly smack $m ass against $i, pulling out and hilting $i's cock to the tip and base each time $e rapidly move $m ass, after a while $e get tired and pant, preparing for the next move..
+case 3
+mpecho $n ride $i's cock for some time, opening $m legs and grabbing $m cock to stroke it quickly as $m moan and pick up the speed with self-encouragement of that sort, $e pulls $m hand away as $e grow closer but $e almost fail to edge $m orgasm and violently cum with $i's cock rapidly being ridden by $n, not giving up, $e keep riding afterwards.
+case 4
+mpecho $n ride $i's cock, "hmm"ing a little as $e grow bored, putting a hand on $i, $e spiiiiiin $mself to face another direction, feeling $i's cock spin against $m tight gripping walls, $e grunt a little, getting $m legs back in position as $e continue to ride.
+case 5
+mpecho $n ride $i's cock. Putting $m hands on $m legs as $e moan and grunt, feeling  $i's cock harden and throb inside $m inner walls, $e focus on trying to not cum as $m cock leak precum.
+endswitch
+endif
+MPSETVAR $n energydiff $%MATH(150?200)%
+MPSETVAR $n ppdiff $%MATH(5?15)%
+MPSETVAR $i pdiff $%MATH(20?60)%
+mpsetvar $n gdiffregen $%MATH(1?3)%
+MPSETVAR $n genitaldamage $%MATH($<$n genitaldamage> - $<$n gdiffregen> > 0)%
+MPSETVAR $n curenergy $%MATH($<$n Curenergy> - $<$n energydiff>)%
+MPSETVAR $n gddiff $%MATH($<$n genitaldamage>/2)%
+mpecho ^p*SPLAT* ^N$n's battered sensitive hole causes extra ^p(^w$<$n gddiff>^p)^N pleasure damage to $m! ^p*FWOP*^N
+mpsetvar $n playerpleasureamountcalc $%MATH($<$n playerpleasureamount> + $<$n ppdiff> + $<$n gddiff>)%
+mpsetvar $n playerpleasureamount $<$n playerpleasureamountcalc>
+mpsetvar $i pleasureamountcalc $%MATH($<$i pleasureamount> + $<$i pdiff>)%
+mpsetvar $i pleasureamount $<$i pleasureamountcalc>
+mpecho ^p*PLAP* *PLAP* ^N$n works $i's cock for ^p(^w$<$i pdiff>^p)^N pleasure damage! ^p*PLAP* *PLAP*^N
+mpecho ^p*PLAP* *PLAP* ^N$n gets pleasured for ^p(^w$<$n ppdiff>^p)^N damage! ^p*PLAP* *PLAP*^N
+if var('$n' squeezeactive == 1)
+mpsetvar '$n' squeezeactive 0
+MPSETVAR $n ppdiff $%MATH(1?5)%
+MPSETVAR $i pdiff $%MATH(5?25)%
+MPSETVAR $n gddiff $%MATH($<$n genitaldamage>/2)%
+mpecho ^p*SPLAT* ^N$n's battered sensitive hole causes extra ^p(^w$<$n gddiff>^p)^N pleasure damage to $m! ^p*FWOP*^N
+mpsetvar $n playerpleasureamountcalc $%MATH($<$n playerpleasureamount> + $<$n ppdiff> + $<$n gddiff>)%
+mpsetvar $n playerpleasureamount $<$n playerpleasureamountcalc>
+mpsetvar $i pleasureamountcalc $%MATH($<$i pleasureamount> + $<$i pdiff>)%
+mpsetvar $i pleasureamount $<$i pleasureamountcalc>
+mpecho ^P*PLAP* *PLAP* ^N$n squeezes $i's cock for ^P(^w$<$i pdiff>^P)^N damage during the tight-fuck! ^P*PLAP* *PLAP*^N
+mpecho ^P*PLAP* *PLAP* ^N$n gets pleasured for ^P(^w$<$n ppdiff>^P)^N damage during the tight-fuck! ^P*PLAP* *PLAP*^N
+endif
+ELSE
+if sex($n == F) or sex($n == A) or sex($n == H)
+switch $%RANDNUM(5)%
+case 1
+mpecho $n ride $i's cock  for a while, then put one of $m hands on top of it, beginning to ride roughly, filling the room with the noise of $m ass-smacking against $i as $m vice-gripping pussy squeezes $i's cock, causing it to throb inside $m walls, once $m legs give in $e return to $m previous speed, riding as fast as $m legs allow $m to until they recover.
+case 2
+mpecho $n ride $i's cock for quite some time then $e close $m legs together and begin to rapidly smack $m ass against $i, pulling out and hilting $i's cock to the tip and base each time $e rapidly move $m ass, after a while $e get tired and pant, preparing for the next move..
+case 3
+mpecho $n ride $i's cock for some time, opening $m legs and using $m thumb to rub $m clit as $m moan and pick up the speed with self-encouragement of that sort, $e pull $m hand away as $e grow closer but nearly fail to edge $m orgasm and violently cum with $i's cock rapidly being ridden by $n, not giving up, $e keep riding afterwards.
+case 4
+mpecho $n ride $i's cock, "hmm"ing a little as $e grow bored, putting a hand on $i, $e spiiiiiin $mself to face another direction, feeling $i's cock spin against $m tight gripping walls, $e grunt a little, getting $m legs back in position as $e continue to ride.
+case 5
+mpecho $n ride $i's cock. Putting $m hands on $m legs as $e moan and grunt, feeling  $i's cock harden and throb inside $m cunny walls, $e focus on trying to not cum.
+endswitch
+endif
+if sex($n == M) or sex($n == O) or sex($n == U)
+switch $%RANDNUM(5)%
+case 1
+mpecho $n ride $i's cock  for a while, then put one of $m hands on top of it, beginning to ride roughly, filling the room with the noise of $m ass smacking against $i as $m vice-gripping pussy squeezes $i's cock, causing it to throb inside $m rectum, once $m legs give in $e return to $m previous speed, riding as $m legs allow $m to until they recover.
+case 2
+mpecho $n ride $i's cock for quite some time then $e close $m legs together and begin to rapidly smack $m ass against $i, pulling out and hilting $i's cock to the tip and base each time $e rapidly move $m ass, after a while $e get tired and pant, preparing for the next move..
+case 3
+mpecho $n ride $i's cock for some time, opening $m legs and grabbing $m cock to stroke it quickly as $m moan and pick up the speed with self-encouragement of that sort, $e pulls $m hand away as $e grow closer but $e almost fail to edge $m orgasm and violently cum with $i's cock rapidly being ridden by $n, not giving up, $e keep riding afterwards.
+case 4
+mpecho $n ride $i's cock, "hmm"ing a little as $e grow bored, putting a hand on $i, $e spiiiiiin $mself to face another direction, feeling $i's cock spin against $m tight gripping walls, $e grunt a little, getting $m legs back in position as $e continue to ride.
+case 5
+mpecho $n ride $i's cock. Putting $m hands on $m legs as $e moan and grunt, feeling  $i's cock harden and throb inside $m inner walls, $e focus on trying to not cum as $m cock leak precum.
+endswitch
+endif
+MPSETVAR $n energydiff $%MATH(250?300)%
+MPSETVAR $n ppdiff $%MATH(10?25)%
+MPSETVAR $i pdiff $%MATH(15?30)%
+mpsetvar $n gdiffregen $%MATH(1?3)%
+MPSETVAR $n genitaldamage $%MATH($<$n genitaldamage> - $<$n gdiffregen> > 0)%
+MPSETVAR $n curenergy $%MATH($<$n Curenergy> - $<$n energydiff>)%
+MPSETVAR $n gddiff $%MATH($<$n genitaldamage>/2)%
+mpecho ^p*SPLAT* ^N$n's battered sensitive hole causes extra ^p(^w$<$n gddiff>^p)^N pleasure damage to $m! ^p*FWOP*^N
+mpsetvar $n playerpleasureamountcalc $%MATH($<$n playerpleasureamount> + $<$n ppdiff> + $<$n gddiff>)%
+mpsetvar $n playerpleasureamount $<$n playerpleasureamountcalc>
+mpsetvar $i pleasureamountcalc $%MATH($<$i pleasureamount> + $<$i pdiff>)%
+mpsetvar $i pleasureamount $<$i pleasureamountcalc>
+mpecho ^p*PLAP* *PLAP* ^N$n works $i's cock for ^p(^w$<$i pdiff>^p)^N pleasure damage! ^p*PLAP* *PLAP*^N
+mpecho ^p*PLAP* *PLAP* ^N$n gets pleasured for ^p(^w$<$n ppdiff>^p)^N damage! ^p*PLAP* *PLAP*^N
+if var('$n' squeezeactive == 1)
+mpsetvar '$n' squeezeactive 0
+MPSETVAR $n ppdiff $%MATH(5?10)%
+MPSETVAR $i pdiff $%MATH(5?15)%
+mpsetvar $n gdiffregen $%MATH(1?3)%
+MPSETVAR $n genitaldamage $%MATH($<$n genitaldamage> - $<$n gdiffregen> > 0)%
+MPSETVAR $n gddiff $%MATH($<$n genitaldamage>/2)%
+mpecho ^p*SPLAT* ^N$n's battered sensitive hole causes extra ^p(^w$<$n gddiff>^p)^N pleasure damage to $m! ^p*FWOP*^N
+mpsetvar $n playerpleasureamountcalc $%MATH($<$n playerpleasureamount> + $<$n ppdiff> + $<$n gddiff>)%
+mpsetvar $n playerpleasureamount $<$n playerpleasureamountcalc>
+mpsetvar $i pleasureamountcalc $%MATH($<$i pleasureamount> + $<$i pdiff>)%
+mpsetvar $i pleasureamount $<$i pleasureamountcalc>
+mpecho ^p*PLAP* *PLAP* ^N$n squeezes $i's cock for ^p(^w$<$i pdiff>^P)^N damage during the tight-fuck! ^P*PLAP* *PLAP*^N
+mpecho ^P*PLAP* *PLAP* ^N$n gets pleasured for ^P(^w$<$n ppdiff>^P)^N damage during the tight-fuck! ^P*PLAP* *PLAP*^N
+endif
+endif
+mpalarm 1 mpcallfunc enemyturn
+endif
+endif
+return cancel
+~
+
+cnclmsg_prog huh p grind
+if var($i whosturn == 0)
+if incontainer('$n' '$i')
+mpsetvar $i whosturn 1
+if class($n == Tacticaljoy)
+if sex($n == F) or sex($n == A) or sex($n == H)
+switch $%RANDNUM(5)%
+case 1
+mpecho $n ride $i's cock until $e stop and press $m pussy firmly against $i, having the cock down to the hilt as it pokes against $m womb, $e grind $m pussy against $i back and forth, moaning quietly?. After quite a bit of doing that $e prepare for the next move..
+case 2
+mpecho $n ride $i's cock, rolling $m hips in a circle during it, grinding that $i's cock all over $m walls a few times before $e push $m ass down and give it a loooong grind in a circle before focusing to ride normally.
+case 3
+mpecho $n ride $i's cock and once in two bounces $e press $m pussy down to the hilt and draw a circle with $m hips, sometimes a straight line, almost until $i's cock slips out of $m before $e slip back in position to ride again.
+case 4
+mpecho $n ride $i's cock, $e stop and begin to shift $m ass side to side, grinding $i's cock against $m inner walls, moaning softly and finishing it up with a little circle of $m hips before preparing for the next move.
+case 5
+mpecho $n ride $i's cock for a while before $e slide back, popping the cock out of $m cunt in the process. $e move $m butt above the cock and begin to rapidly move back and forth, grinding $m pussy against it rapidly, eventually pulling back too far and forth, making it sloppily slip inside with a *SLOP* sound on the way in, hilting $n and allowing $n to continue $m delicate work of continuing to ride.
+endswitch
+endif
+if sex($n == M) or sex($n == O) or sex($n == U)
+switch $%RANDNUM(5)%
+case 1
+mpecho $n ride $i's cock until $e stop and press $m ass firmly against $i, having the cock down to the hilt as it pokes the deepest parts of $e, $e grind $m ass against $i back and forth, moaning quietly?. After quite a bit of doing that $e prepare for the next move., $m dick bouncing around with $m movement.
+case 2
+mpecho $n ride $i's cock, rolling $m hips in a circle during it, grinding that $i's cock all over $m walls a few times before $e push $m ass down and give it a loooong grind in a circle before focusing to ride normally.
+case 3
+mpecho $n ride $i's cock and once in two bounces $e press $m ass down to the hilt and draw a circle with $m hips, sometimes a straight line, almost until $i's cock slips out of $m before $e slip back in position to ride again.
+case 4
+mpecho $n ride $i's cock, $e stop and begin to shift $m ass side to side $m dick follows the motion of $m side-to-side movement., $e keep grinding $i's cock against $m inner walls, moaning softly and finishing it up with a little circle of $m hips before preparing for the next move.
+case 5
+mpecho $n ride $i's cock for a while before $e slide back, popping the cock out of $m ass in the process. $e move $m butt above the cock and begin to rapidly move back and forth, grinding butt and balls against it rapidly, eventually pulling back too far and forth, making it sloppily slip inside with a *SLOP* sound on the way in, hilting $e and allowing $e to continue $m delicate work of continuing to ride.
+endswitch
+endif
+MPSETVAR $n energydiff $%MATH(75?150)%
+MPSETVAR $n ppdiff $%MATH(10?20)%
+MPSETVAR $i pdiff $%MATH(5?25)%
+mpsetvar $n gdiffregen $%MATH(1?3)%
+MPSETVAR $n genitaldamage $%MATH($<$n genitaldamage> - $<$n gdiffregen> > 0)%
+MPSETVAR $n curenergy $%MATH($<$n Curenergy> + $<$n energydiff>)%
+MPSETVAR $n gddiff $%MATH($<$n genitaldamage>/2)%
+mpecho ^p*SPLAT* ^N$n's battered sensitive hole causes extra ^p(^w$<$n gddiff>^p)^N pleasure damage to $m! ^p*FWOP*^N
+mpsetvar $n playerpleasureamountcalc $%MATH($<$n playerpleasureamount> + $<$n ppdiff> + $<$n gddiff>)%
+mpsetvar $n playerpleasureamount $<$n playerpleasureamountcalc>
+mpsetvar $i pleasureamountcalc $%MATH($<$i pleasureamount> + $<$i pdiff>)%
+mpsetvar $i pleasureamount $<$i pleasureamountcalc>
+mpecho ^p*PLAP* *PLAP* ^N$n works $i's cock for ^p(^w$<$i pdiff>^p)^N pleasure damage! ^p*PLAP* *PLAP*^N
+mpecho ^p*PLAP* *PLAP* ^N$n gets pleasured for ^p(^w$<$n ppdiff>^p)^N damage! ^p*PLAP* *PLAP*^N
+ELSE
+if sex($n == F) or sex($n == A) or sex($n == H)
+switch $%RANDNUM(5)%
+case 1
+mpecho $n ride $i's cock until $e stop and press $m pussy firmly against $i, having the cock down to the hilt as it pokes against $m womb, $e grind $m pussy against $i back and forth, moaning quietly?. After quite a bit of doing that $e prepare for the next move..
+case 2
+mpecho $n ride $i's cock, rolling $m hips in a circle during it, grinding that $i's cock all over $m walls a few times before $e push $m ass down and give it a loooong grind in a circle before focusing to ride normally.
+case 3
+mpecho $n ride $i's cock and once in two bounces $e press $m pussy down to the hilt and draw a circle with $m hips, sometimes a straight line, almost until $i's cock slips out of $m before $e slip back in position to ride again.
+case 4
+mpecho $n ride $i's cock, $e stop and begin to shift $m ass side to side, grinding $i's cock against $m inner walls, moaning softly and finishing it up with a little circle of $m hips before preparing for the next move.
+case 5
+mpecho $n ride $i's cock for a while before $e slide back, popping the cock out of $m cunt in the process. $e move $m butt above the cock and begin to rapidly move back and forth, grinding $m pussy against it rapidly, eventually pulling back too far and forth, making it sloppily slip inside with a *SLOP* sound on the way in, hilting $n and allowing $n to continue $m delicate work of continuing to ride.
+endswitch
+endif
+if sex($n == M) or sex($n == O) or sex($n == U)
+switch $%RANDNUM(5)%
+case 1
+mpecho $n ride $i's cock until $e stop and press $m ass firmly against $i, having the cock down to the hilt as it pokes the deepest parts of $e, $e grind $m ass against $i back and forth, moaning quietly?. After quite a bit of doing that $e prepare for the next move., $m dick bouncing around with $m movement.
+case 2
+mpecho $n ride $i's cock, rolling $m hips in a circle during it, grinding that $i's cock all over $m walls a few times before $e push $m ass down and give it a loooong grind in a circle before focusing to ride normally.
+case 3
+mpecho $n ride $i's cock and once in two bounces $e press $m ass down to the hilt and draw a circle with $m hips, sometimes a straight line, almost until $i's cock slips out of $m before $e slip back in position to ride again.
+case 4
+mpecho $n ride $i's cock, $e stop and begin to shift $m ass side to side $m dick follows the motion of $m side-to-side movement., $e keep grinding $i's cock against $m inner walls, moaning softly and finishing it up with a little circle of $m hips before preparing for the next move.
+case 5
+mpecho $n ride $i's cock for a while before $e slide back, popping the cock out of $m ass in the process. $e move $m butt above the cock and begin to rapidly move back and forth, grinding butt and balls against it rapidly, eventually pulling back too far and forth, making it sloppily slip inside with a *SLOP* sound on the way in, hilting $e and allowing $e to continue $m delicate work of continuing to ride.
+endswitch
+endif
+MPSETVAR $n energydiff $%MATH(50?100)%
+MPSETVAR $n ppdiff $%MATH(10?25)%
+MPSETVAR $i pdiff $%MATH(5?15)%
+mpsetvar $n gdiffregen $%MATH(1?3)%
+MPSETVAR $n genitaldamage $%MATH($<$n genitaldamage> - $<$n gdiffregen> > 0)%
+MPSETVAR $n curenergy $%MATH($<$n Curenergy> + $<$n energydiff>)%
+MPSETVAR $n gddiff $%MATH($<$n genitaldamage>/2)%
+mpecho ^p*SPLAT* ^N$n's battered sensitive hole causes extra ^p(^w$<$n gddiff>^p)^N pleasure damage to $m! ^p*FWOP*^N
+mpsetvar $n playerpleasureamountcalc $%MATH($<$n playerpleasureamount> + $<$n ppdiff> + $<$n gddiff>)%
+mpsetvar $n playerpleasureamount $<$n playerpleasureamountcalc>
+mpsetvar $i pleasureamountcalc $%MATH($<$i pleasureamount> + $<$i pdiff>)%
+mpsetvar $i pleasureamount $<$i pleasureamountcalc>
+mpecho ^p*PLAP* *PLAP* ^N$n works $i's cock for ^p(^w$<$i pdiff>^p)^N pleasure damage! ^p*PLAP* *PLAP*^N
+mpecho ^p*PLAP* *PLAP* ^N$n gets pleasured for ^p(^w$<$n ppdiff>^p)^N damage! ^p*PLAP* *PLAP*^N
+endif
+mpalarm 1 mpcallfunc enemyturn
+endif
+endif
+return cancel
+~
+
+cnclmsg_prog huh p clench
+if var($i whosturn == 0)
+if incontainer('$n' '$i')
+mpsetvar $i whosturn 1
+if class($n == Tacticaljoy)
+if sex($n == F) or sex($n == A) or sex($n == H)
+switch $%RANDNUM(4)%
+case 1
+mpecho $n ride $i's cock, focusing $m mind to squeeze $m inner walls, grunting as $e keep moving $m ass, pulling the cock into a real lock in $m pussy as $e wrestle it tight, eventually panting and preparing for the next move..
+case 2
+mpecho $n ride $i's cock, squeezing $m vaginal muscles as much as $e can during it, slowing $m down a little thanks to the tightness but it must help! After some of that $e prepare for the next move.
+case 3
+mpecho $n ride $i's cock, closing $m legs tightly and squeezing the cock much as $e can as $e forcefully and slowly move $m ass up and down, giving it a real squeeze! After some of that $e feel tired and maybe even worn on the inside, $e relax $m cunt and legs and plan the next move.
+case 4
+mpecho $n ride $i's cock and clench $m cunt during it, giving $i's cock a real tight workout in $m pussy, $e can't help but moan and $m pussy drips a little, moisture should help afterall? $e continue to ride.
+endswitch
+endif
+if sex($e == M) or sex($e == O) or sex($e == U)
+switch $%RANDNUM(4)%
+case 1
+mpecho $n ride $i's cock, focusing $m mind to squeeze $m ass, grunting as $e keep moving $m hips, pulling the cock into a real lock in $m ass as $e wrestle it tight,panting and preparing for the next move.
+case 2
+mpecho $n ride $i's cock, squeezing $m ass as much as $e can during it, slowing $m down a little thanks to the tightness but it must help! After some of that $e prepare for the next move.
+case 3
+mpecho $n ride $i's cock, closing $m legs tightly and squeezing the cock much as $e can as $e forcefully and slowly move $m ass up and down, giving it a real squeeze! After some of that $e feel tired and maybe even worn on the inside, $e relax $m ass and legs and plan the next move.
+case 4
+mpecho $n ride $i's cock and clench $m ass during it, giving $i's cock a real tight workout in $m asshole, $e can't help but moan and $m dick leaks a bit of precum. $e continue to ride.
+endswitch
+endif
+MPSETVAR $n energydiff $%MATH(30?65)%
+MPSETVAR $n ppdiff $%MATH(25?40)%
+MPSETVAR $i pdiff $%MATH(5?15)%
+mpsetvar $n gdiffregen $%MATH(1?3)%
+MPSETVAR $n genitaldamage $%MATH($<$n genitaldamage> - $<$n gdiffregen> > 0)%
+MPSETVAR $n curenergy $%MATH($<$n Curenergy> - $<$n energydiff>)%
+MPSETVAR $n gddiff $%MATH($<$n genitaldamage>/2)%
+mpecho ^p*SPLAT* ^N$n's battered sensitive hole causes extra ^p(^w$<$n gddiff>^p)^N pleasure damage to $m! ^p*FWOP*^N
+mpsetvar $n playerpleasureamountcalc $%MATH($<$n playerpleasureamount> + $<$n ppdiff> + $<$n gddiff>)%
+mpsetvar $n playerpleasureamount $<$n playerpleasureamountcalc>
+mpsetvar $i pleasureamountcalc $%MATH($<$i pleasureamount> + $<$i pdiff>)%
+mpsetvar $n squeezeactive 1
+mpsetvar $i pleasureamount $<$i pleasureamountcalc>
+mpecho ^p*PLAP* *PLAP* ^N$n works $i's cock for ^p(^w$<$i pdiff>^p)^N pleasure damage! ^p*PLAP* *PLAP*^N
+mpecho ^p*PLAP* *PLAP* ^N$n gets pleasured for ^p(^w$<$n ppdiff>^p)^N damage! ^p*PLAP* *PLAP*^N
+ELSE
+if sex($n == F) or sex($n == A) or sex($n == H)
+switch $%RANDNUM(4)%
+case 1
+mpecho $n ride $i's cock, focusing $m mind to squeeze $m inner walls, grunting as $e keep moving $m ass, pulling the cock into a real lock in $m pussy as $e wrestle it tight, eventually panting and preparing for the next move..
+case 2
+mpecho $n ride $i's cock, squeezing $m vaginal muscles as much as $e can during it, slowing $m down a little thanks to the tightness but it must help! After some of that $e prepare for the next move.
+case 3
+mpecho $n ride $i's cock, closing $m legs tightly and squeezing the cock much as $e can as $e forcefully and slowly move $m ass up and down, giving it a real squeeze! After some of that $e feel tired and maybe even worn on the inside, $e relax $m cunt and legs and plan the next move.
+case 4
+mpecho $n ride $i's cock and clench $m cunt during it, giving $i's cock a real tight workout in $m pussy, $e can't help but moan and $m pussy drips a little, moisture should help afterall? $e continue to ride.
+endswitch
+endif
+if sex($e == M) or sex($e == O) or sex($e == U)
+switch $%RANDNUM(4)%
+case 1
+mpecho $n ride $i's cock, focusing $m mind to squeeze $m ass, grunting as $e keep moving $m hips, pulling the cock into a real lock in $m ass as $e wrestle it tight,panting and preparing for the next move.
+case 2
+mpecho $n ride $i's cock, squeezing $m ass as much as $e can during it, slowing $m down a little thanks to the tightness but it must help! After some of that $e prepare for the next move.
+case 3
+mpecho $n ride $i's cock, closing $m legs tightly and squeezing the cock much as $e can as $e forcefully and slowly move $m ass up and down, giving it a real squeeze! After some of that $e feel tired and maybe even worn on the inside, $e relax $m ass and legs and plan the next move.
+case 4
+mpecho $n ride $i's cock and clench $m ass during it, giving $i's cock a real tight workout in $m asshole, $e can't help but moan and $m dick leaks a bit of precum. $e continue to ride.
+endswitch
+endif
+MPSETVAR $n energydiff $%MATH(40?85)%
+MPSETVAR $n ppdiff $%MATH(10?25)%
+MPSETVAR $i pdiff $%MATH(3?10)%
+mpsetvar $n gdiffregen $%MATH(1?3)%
+MPSETVAR $n genitaldamage $%MATH($<$n genitaldamage> - $<$n gdiffregen> > 0)%
+MPSETVAR $n curenergy $%MATH($<$n Curenergy> - $<$n energydiff>)%
+MPSETVAR $n gddiff $%MATH($<$n genitaldamage>/2)%
+mpecho ^p*SPLAT* ^N$n's battered sensitive hole causes extra ^p(^w$<$n gddiff>^p)^N pleasure damage to $m! ^p*FWOP*^N
+mpsetvar $n playerpleasureamountcalc $%MATH($<$n playerpleasureamount> + $<$n ppdiff> + $<$n gddiff>)%
+mpsetvar $n playerpleasureamount $<$n playerpleasureamountcalc>
+mpsetvar $i pleasureamountcalc $%MATH($<$i pleasureamount> + $<$i pdiff>)%
+mpsetvar $n squeezeactive 1
+mpsetvar $i pleasureamount $<$i pleasureamountcalc>
+mpecho ^p*PLAP* *PLAP* ^N$n works $i's cock for ^p(^w$<$i pdiff>^p)^N pleasure damage! ^p*PLAP* *PLAP*^N
+mpecho ^p*PLAP* *PLAP* ^N$n gets pleasured for ^p(^w$<$n ppdiff>^p)^N damage! ^p*PLAP* *PLAP*^N
+endif
+mpalarm 1 mpcallfunc enemyturn
+endif
+endif
+return cancel
+~
+
+##enemy turn
+function_prog enemyturn
+if var($i whosturn == 1)
+if incontainer('$n' '$i')
+switch $%RANDNUM(6)%
+case1
+mpecho $i's cock throbs inside $n, tight-fit of $m walls feeling it well?
+mpsetvar $i pleasureamountcalc $%MATH(1?3)%
+mpalarm 1mpecho ^R$i regains ^P(^W$<$i pleasureamountcalc>^P) ^Rendurance.^N
+mpsetvar $i pleasureamount $%MATH($<$i pleasureamount> - $<$i pleasureamountcalc>  > 0)%
+case 2
+mpecho $i's cock swells inside $n, leaking some warm liquid?
+mpsetvar $i pleasureamountcalc $%MATH(1?3)%
+mpecho ^R$i regains ^P(^W$<$i pleasureamountcalc>^P) ^Rendurance.^N
+mpsetvar $i pleasureamount $%MATH($<$i pleasureamount> - $<$i pleasureamountcalc>  > 0)%
+case 3
+mpecho $i's cock stiffens inside $n, twitching a little against $m walls?
+mpsetvar $i pleasureamountcalc $%MATH(1?3)%
+mpecho ^R$i regains ^P(^W$<$i pleasureamountcalc>^P) ^Rendurance.^N
+mpsetvar $i pleasureamount $%MATH($<$i pleasureamount> - $<$i pleasureamountcalc>  > 0)%
+case 4
+mpecho $i's cock softens a little inside $n, twitching a little against $m walls?
+mpsetvar $i pleasureamountcalc $%MATH(1?5)%
+mpecho ^R$i regains ^P(^W$<$i pleasureamountcalc>^P) ^Rendurance.^N
+mpsetvar $i pleasureamount $%MATH($<$i pleasureamount> - $<$i pleasureamountcalc>  > 0)%
+case 5
+mpecho $i's cock softens a bit inside $n, threatening to slip out?
+mpsetvar $i pleasureamountcalc $%MATH(1?5)%
+mpecho ^R$i regains ^P(^W$<$i pleasureamountcalc>^P) ^Rendurance.^N
+mpsetvar $i pleasureamount $%MATH($<$i pleasureamount> - $<$i pleasureamountcalc>  > 0)%
+case 6
+mpecho $i's cock pumps some warm pre inside $n, lubricating $m hole?
+mpsetvar $i pleasureamountcalc $%MATH(1?3)%
+mpecho ^R$i regains ^P(^W$<$i pleasureamountcalc>^P) ^Rendurance.^N
+mpsetvar $i pleasureamount $%MATH($<$i pleasureamount> - $<$i pleasureamountcalc>  > 0)%
+endswitch
+mpecho ^r$i grabs $n's legs and spreads them wide, preparing to pound!!! $n takes a 'defensive stance'!^N
+if class($n == Tacticaljoy)
+mpecho ^p$n seems to know what $e is doing! What a professional.^N
+mpechoat $n ^P| --------CLOSE-------.
+mpechoat $n ^P| ^N#%%%%*.@%@@@%@.+%%%#%0D^P|^N %@@@@@@@@@:@@@@@@@@%%0D^P|^N %@@@@@+@@@.@@%%@@@@%%0D^P|^N %@@@@#-@@..:@@=@@@@%%0D^P|^N #@@@@@@..*@.#@@@@@@%%0D^P|^N %@@@@@.#%=@.=.@@%@@%%0D^P|^N @@@@@.#%*=@=#--@@@@#%0D^P|^N .#@@%.@@-#@*#%.@*+=.%0D^P|^N .**=@.#*@-@*%@.@=@%.%0D^P|^N .***@..@@:@*%@.%+=-.%0D^P|^N .@@@@%.@@.@+@@.@@@@.%0D^P|^N .......#=.@@%*...-:.%0D^P|^N .:.+#-...@#*@..@....%0D^P|^N ..-=.+@@#-.#%@@@=...%0D^P|^N ##@..............+@+
+mpechoat $n ^P| --------CAM---------*
+mpechoat $n ^P.------------------------------------------._
+mpechoat $n ^P|  /- ^r$i
+mpechoat $n ^P|  ^W.:| ^wArousal ^p$<$i pleasureamount>^w/^P$<$i arousalcalc> ^w|:.
+mpechoat $n ^P|    ^r!!!!!!!!!!!!WARNING: PREPARING TO POUND!!!!!!!!!!!!
+mpechoat $n ^P|    ------------------------------------
+mpechoat $n ^P|
+mpechoat $n ^P|  /- ^w$n
+if sex($n == F)
+mpechoat $n ^P|    \^pFemale
+mpechoat $n ^P|    !! ^rCaution: Vagina penetrated by $i^r.
+ENDIF
+if sex($n == M)
+mpechoat $n ^P|    \^bMale
+mpechoat $n ^P|    !! ^rCaution: Anus penetrated by $i^r.
+ENDIF
+if sex($n == U)
+mpechoat $n ^P|    \^pFuta
+mpechoat $n ^P|    !! ^rCaution: Anus penetrated by $i^r.
+ENDIF
+if sex($n == H)
+mpechoat $n ^P|    \^pHerm
+mpechoat $n ^P|    !! ^rCaution: Vagina penetrated by $i^r.
+ENDIF
+if sex($n == A)
+mpechoat $n ^P|    \^bTrans-Male
+mpechoat $n ^P|    !! ^rCaution: Vagina penetrated by $i^r.
+ENDIF
+if sex($n == O)
+mpechoat $n ^P|    \^pTrans-Female
+mpechoat $n ^P|    !! ^rCaution: Anus penetrated by $i^r.
+ENDIF
+if var($n genitaldamage >= 190)
+mpechoat $n ^P|    |>G.STATUS: ^rAbsolutely destroyed, ripped and torn!!!^N
+else
+if var($n genitaldamage >= 170)
+mpechoat $n ^P|    |>G.STATUS: ^rAbout to rip apart!!^N
+else
+if var($n genitaldamage >= 150)
+mpechoat $n ^P|    |>G.STATUS: ^rUnrecognizable, bloody and prolapsing with thrusts.^N
+else
+if var($n genitaldamage >= 140)
+mpechoat $n ^P|    |>G.STATUS: ^rVery wounded and about to prolapse!^N
+else
+if var($n genitaldamage >= 120)
+mpechoat $n ^P|    |>G.STATUS: ^rFriction burned and wounded.^N
+else
+if var($n genitaldamage >= 100)
+mpechoat $n ^P|    |>G.STATUS: ^rLoosened and minor bleedings.^N
+else
+if var($n genitaldamage >= 80)
+mpechoat $n ^P|    |>G.STATUS: ^rSmall cuts and scrapes.^N
+else
+if var($n genitaldamage >= 60)
+mpechoat $n ^P|    |>G.STATUS: ^rMajor bruises.^N
+else
+if var($n genitaldamage >= 40)
+mpechoat $n ^P|    |>G.STATUS: ^rReddened and agitated skin.^N
+else
+if var($n genitaldamage >= 20)
+mpechoat $n ^P|    |>G.STATUS: ^rSlightly Agitated skin.^N
+endif
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+mpechoat $n ^P|
+mpechoat $n ^P|  ^W.:| ^wGeni. Damage ^r$<$n genitaldamage>^w/^R200 ^w|:.
+mpechoat $n ^P|  ^W.:| ^wEnergy ^g$<$n curenergy>^w/^G$<$n maxenergy> ^w|:.
+mpechoat $n ^P|  ^W.:| ^wArousal ^p$<$n playerpleasureamount>^w/^P$<$n playerarousalmaxcalc> ^w|:.
+mpechoat $n ^P|
+mpechoat $n ^P|  ^P(^pTact Joy^P) ^WActions:
+mpechoat $n ^P|  ^g100% ^wNothing (^g+20-35 ^r+1-15^w)
+mpechoat $n ^P|  ^y50% ^wEndure (^G-50 ^c-50% DMG^w)
+mpechoat $n ^P|  ^r25% ^wDodge (^G-150^w)
+mpechoat $n ^P|
+mpechoat $n ^P| ^WOther Actions:
+mpechoat $n ^P|  ^wStatus
+mpechoat $n ^P|  ^wHelpinfo
+mpechoat $n ^P|  ^rDismount^w
+mpechoat $n ^P.__________________________________________.-
+else
+mpechoat $n ^P| --------CLOSE-------.
+mpechoat $n ^P| ^N#%%%%*.@%@@@%@.+%%%#%0D^P|^N %@@@@@@@@@:@@@@@@@@%%0D^P|^N %@@@@@+@@@.@@%%@@@@%%0D^P|^N %@@@@#-@@..:@@=@@@@%%0D^P|^N #@@@@@@..*@.#@@@@@@%%0D^P|^N %@@@@@.#%=@.=.@@%@@%%0D^P|^N @@@@@.#%*=@=#--@@@@#%0D^P|^N .#@@%.@@-#@*#%.@*+=.%0D^P|^N .**=@.#*@-@*%@.@=@%.%0D^P|^N .***@..@@:@*%@.%+=-.%0D^P|^N .@@@@%.@@.@+@@.@@@@.%0D^P|^N .......#=.@@%*...-:.%0D^P|^N .:.+#-...@#*@..@....%0D^P|^N ..-=.+@@#-.#%@@@=...%0D^P|^N ##@..............+@+
+mpechoat $n ^P| --------CAM---------*
+mpechoat $n ^P.------------------------------------------._
+mpechoat $n ^P|  /- ^r$i
+mpechoat $n ^P|  ^W.:| ^wArousal ^p$<$i pleasureamount>^w/^P$<$i arousalcalc> ^w|:.
+mpechoat $n ^P|      ^r!!!WARNING: PREPARING TO POUND!!!
+mpechoat $n ^P|    ------------------------------------
+mpechoat $n ^P|
+mpechoat $n ^P|  /- ^w$n
+if sex($n == F)
+mpechoat $n ^P|    \^pFemale
+mpechoat $n ^P|    !! ^rCaution: Vagina penetrated by $i^r.
+ENDIF
+if sex($n == M)
+mpechoat $n ^P|    \^bMale
+mpechoat $n ^P|    !! ^rCaution: Anus penetrated by $i^r.
+ENDIF
+if sex($n == U)
+mpechoat $n ^P|    \^pFuta
+mpechoat $n ^P|    !! ^rCaution: Anus penetrated by $i^r.
+ENDIF
+if sex($n == H)
+mpechoat $n ^P|    \^pHerm
+mpechoat $n ^P|    !! ^rCaution: Vagina penetrated by $i^r.
+ENDIF
+if sex($n == A)
+mpechoat $n ^P|    \^bTrans-Male
+mpechoat $n ^P|    !! ^rCaution: Vagina penetrated by $i^r.
+ENDIF
+if sex($n == O)
+mpechoat $n ^P|    \^pTrans-Female
+mpechoat $n ^P|    !! ^rCaution: Anus penetrated by $i^r.
+ENDIF
+if var($n genitaldamage >= 190)
+mpechoat $n ^P|    |>G.STATUS: ^rAbsolutely destroyed, ripped and torn!!!^N
+else
+if var($n genitaldamage >= 170)
+mpechoat $n ^P|    |>G.STATUS: ^rAbout to rip apart!!^N
+else
+if var($n genitaldamage >= 150)
+mpechoat $n ^P|    |>G.STATUS: ^rUnrecognizable, bloody and prolapsing with thrusts.^N
+else
+if var($n genitaldamage >= 140)
+mpechoat $n ^P|    |>G.STATUS: ^rVery wounded and about to prolapse!^N
+else
+if var($n genitaldamage >= 120)
+mpechoat $n ^P|    |>G.STATUS: ^rFriction burned and wounded.^N
+else
+if var($n genitaldamage >= 100)
+mpechoat $n ^P|    |>G.STATUS: ^rLoosened and minor bleedings.^N
+else
+if var($n genitaldamage >= 80)
+mpechoat $n ^P|    |>G.STATUS: ^rSmall cuts and scrapes.^N
+else
+if var($n genitaldamage >= 60)
+mpechoat $n ^P|    |>G.STATUS: ^rMajor bruises.^N
+else
+if var($n genitaldamage >= 40)
+mpechoat $n ^P|    |>G.STATUS: ^rReddened and agitated skin.^N
+else
+if var($n genitaldamage >= 20)
+mpechoat $n ^P|    |>G.STATUS: ^rSlightly Agitated skin.^N
+endif
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+mpechoat $n ^P|
+mpechoat $n ^P|  ^W.:| ^wGeni. Damage ^r$<$n genitaldamage>^w/^R100 ^w|:.
+mpechoat $n ^P|  ^W.:| ^wEnergy ^g$<$n curenergy>^w/^G$<$n maxenergy> ^w|:.
+mpechoat $n ^P|  ^W.:| ^wArousal ^p$<$n playerpleasureamount>^w/^P$<$n playerarousalmaxcalc> ^w|:.
+mpechoat $n ^P|
+mpechoat $n ^P|  ^WPossible Actions:
+mpechoat $n ^P|  ^g100% ^wNothing (^g+Energy ^g+Geni.HP^w)
+mpechoat $n ^P|  ^y50% ^wEndure (^G-Energy^w ^c+BLOCK^w)
+mpechoat $n ^P|  ^r25% ^wDodge (^G--Energy^w)
+mpechoat $n ^P|
+mpechoat $n ^P| ^WOther Actions:
+mpechoat $n ^P|  ^wStatus
+mpechoat $n ^P|  ^wHelpinfo
+mpechoat $n ^P|  ^rDismount^w
+mpechoat $n ^P.__________________________________________.-
+endif
+endif
+endif
+~
+
+cnclmsg_prog huh p nothing
+if var($i whosturn == 1)
+switch $%RANDNUM(2)%
+case 1
+mpecho ^B[^bNothing^B]^N $n peers down at $m hole between $m spreaded legs hopelessly as $i prepares to pound it to hell...
+case 2
+mpecho ^B[^bNothing^B]^N $n surrenders to fate as $m hole is about to be pounded hard by $i...
+endswitch
+mpsetvar $n lastsexdefense nothing
+MPSETVAR $n energydiff $%MATH(20?35)%
+MPSETVAR $n gdiffregen $%MATH(1?15)%
+MPSETVAR $n curenergy $%MATH($<$n Curenergy> + $<$n energydiff>)%
+MPSETVAR $n gddiff $%MATH($<$n genitaldamage> - $<$n gdiffregen>)%
+mpsetvar $n genitaldamage $<$n gddiff>
+mpecho $n recovers ^G(^g$<$n gdiffregen>^G)^N genital integrity!
+mpecho $n recovers ^G(^g$<$n energydiff>^G)^N energy!
+mpalarm 1 mpcallfunc enemyattack
+return cancel
+endif
+~
+
+cnclmsg_prog huh p endure
+if var($i whosturn == 1)
+MPSETVAR $n curenergy $%MATH($<$n Curenergy> - 50)%
+switch $%RANDNUM(2)%
+case 1
+switch $%RANDNUM(3)%
+case 1
+mpecho ^B[^bEndure^B]^N $n seems to be trying to loosen $m hole and think of something else as $i is about to pound $m hard...
+case 2
+mpecho ^B[^bEndure^B]^N $n manages to reach down and spread $m ass wide with $i still inside $m...
+case 3
+mpecho ^B[^bEndure^B]^N $n focuses on moving $m hips along with $i to reduce the impact...
+endswitch
+mpsetvar $n lastsexdefense endure
+case 2
+mpsetvar $n lastsexdefense nothing
+switch $%RANDNUM(3)%
+case 1
+mpecho ^R[^rFail^R]^N $n seems to be trying to loosen $m hole but fails as $i is about to pound $m hard...
+case 2
+mpecho ^R[^rFail^R]^N $n tries to reach down and spread $m ass wide while $i is still inside $m but it is futile...
+case 3
+mpecho ^R[^rFail^R]^N $n tries to move $m hips along with $i to reduce the impact but could not synchronize...
+endswitch
+endswitch
+mpalarm 1 mpcallfunc enemyattack
+return cancel
+endif
+~
+
+cnclmsg_prog huh p dodge
+if var($i whosturn == 1)
+MPSETVAR $n curenergy $%MATH($<$n Curenergy> - 150)%
+switch $%RANDNUM(4)%
+case 1
+switch $%RANDNUM(3)%
+case 1
+mpecho ^G[^gDodge^G]^N $n loosens $m hole and pushes $mself up just in time to slip it out, avoiding the thrust from $i completely! $n Plugs them back in afterwards...
+case 2
+mpecho ^G[^gDodge^G]^N $n swiftly moves $m hand and pulls $i out of $m hole, causing them to thrust in the air! $n Plugs them back in afterwards...
+case 3
+mpecho ^G[^gDodge^G]^N $n manages to leg-lock down into $i and hold them from moving!..
+endswitch
+mpsetvar $n lastsexdefense dodge
+case 2
+mpsetvar $n lastsexdefense nothing
+mpecho ^R[^rFail^R]^N $n tries to loosen $m hole and push $mself up just in time to slip it out, but $s foot slip, landing with great impact right down where $e belongs, ballsdeep stuffed with cock suddenly...
+case 3
+mpsetvar $n lastsexdefense nothing
+mpecho ^R[^rFail^R]^N $n tries to move $m hand and pull $i out of $m hole but $i thrusts in just before that, trapping $m hand a little between $m ass and $i's groin.
+case 4
+mpsetvar $n lastsexdefense nothing
+mpecho ^R[^rFail^R]^N $n tries to leg-lock down into $i but fails to maintain a strong grip...
+endswitch
+mpalarm 1 mpcallfunc enemyattack
+return cancel
+endif
+~
+
+function_prog enemyattack
+if var($i whosturn == 1)
+if incontainer('$n' '$i')
+mpsetvar $i whosturn 0
+if var($n lastsexdefense == dodge)
+mpecho ^G[^gDodge^G]^W $i seems surprised by $n's successful move! Losing their opportunity.^N
+else
+switch $%RANDNUM(3)%
+case 1
+## main attack
+if sex($n == F) or sex($n == A) or sex($n == H)
+mpecho ^Y[^yAttack^Y]^N ^P*BAM* *PLAP* *SLAP*^N $i raises $n's legs up behind $m head, locking $m in a full-nelson position and beginning to rapidly machine-gun slam into $m vagina!!! ^P*PAP* *SLAP* *CLAP*^N
+ELSE
+mpecho ^Y[^yAttack^Y]^N ^P*BAM* *PLAP* *SLAP*^N $i raises $n's legs up behind $m head, locking $m in a full-nelson position and beginning to rapidly machine-gun slam into $m ass!!! ^P*PAP* *SLAP* *CLAP*^N
+endif
+MPSETVAR $n ppdiff $%MATH(15?55)%
+MPSETVAR $i pdiff $%MATH(5?20)%
+if var($n lastsexdefense == endure)
+MPSETVAR $n ppdiff $%MATH($<$n ppdiff>/2)%
+endif
+MPSETVAR $n gddiffcalc $%MATH($<$n ppdiff>/2)%
+MPSETVAR $n genitaldamage $%MATH($<$n genitaldamage> + $<$n gddiffcalc>)%
+MPSETVAR $n gddiff $%MATH($<$n genitaldamage>/2)%
+mpecho ^p*SPLAT* ^N$n's battered sensitive hole causes extra ^p(^w$<$n gddiff>^p)^N pleasure damage to $m! ^p*FWOP*^N
+
+mpsetvar $n playerpleasureamountcalc $%MATH($<$n playerpleasureamount> + $<$n ppdiff> + $<$n gddiff>)%
+mpsetvar $n playerpleasureamount $<$n playerpleasureamountcalc>
+mpsetvar $i pleasureamountcalc $%MATH($<$i pleasureamount> + $<$i pdiff>)%
+mpsetvar $i pleasureamount $<$i pleasureamountcalc>
+mpecho ^p*PLAP* *PLAP* ^N$i fucks $n for ^p(^w$<$n ppdiff>^p)^N pleasure damage! ^p*PLAP* *PLAP*^N
+mpecho ^p*PLAP* *PLAP* ^N$i gets pleasured for ^p(^w$<$i pdiff>^p)^N damage! ^p*PLAP* *PLAP*^N
+case 2
+## recovery
+if sex($n == F) or sex($n == A) or sex($n == H)
+mpecho ^G[^gRecovery^G]^N ^P*SLOP*^N $i raises $n's legs up behind $m head, locking $m in a full-nelson position and beginning to softly fuck $m vagina, unloading a sizeable amount of precum into the hole and resting inside. ^P*SPLURT*^N
+ELSE
+mpecho ^G[^gRecovery^G]^N ^P*SLOP*^N $i raises $n's legs up behind $m head, locking $m in a full-nelson position and beginning to softly fuck $m ass, unloading a sizeable amount of precum into the hole and resting inside. ^P*SPLURT*^N
+endif
+MPSETVAR $n ppdiff $%MATH(1?15)%
+MPSETVAR $i pdiff $%MATH(15?45)%
+if var($n lastsexdefense == endure)
+MPSETVAR $n ppdiff $%MATH($<$n ppdiff>/2)%
+MPSETVAR $n ppdiff $%MATH($<$i pdiff>/2)%
+endif
+MPSETVAR $n gddiffcalc $%MATH($<$n ppdiff>/2)%
+MPSETVAR $n genitaldamage $%MATH($<$n genitaldamage> + $<$n gddiffcalc>)%
+MPSETVAR $n gddiff $%MATH($<$n genitaldamage>/2)%
+mpecho ^p*SPLAT* ^N$n's battered sensitive hole causes extra ^p(^w$<$n gddiff>^p)^N pleasure damage to $m! ^p*FWOP*^N
+mpsetvar $n playerpleasureamountcalc $%MATH($<$n playerpleasureamount> + $<$n ppdiff> + $<$n gddiff>)%
+mpsetvar $n playerpleasureamount $<$n playerpleasureamountcalc>
+mpsetvar $i pleasureamountcalc $%MATH($<$i pleasureamount> - $<$i pdiff> > 0)%
+mpsetvar $i pleasureamount $<$i pleasureamountcalc>
+mpecho ^p*PLAP* *PLAP* ^N$i fucks $n for ^p(^w$<$n ppdiff>^p)^N pleasure damage! ^p*PLAP* *PLAP*^N
+mpecho ^p*PLAP* *PLAP* ^N$i recovers ^p(^w$<$i pdiff>^p)^N endurance! ^p*PLAP* *PLAP*^N
+case 3
+## woundfuck
+if var($n genitaldamage > 30)
+if sex($n == F) or sex($n == A) or sex($n == H)
+mpecho ^R[^rINJURE^R]^N ^P*SLOP* *PAP* *PLAP*^N $i raises $n's legs up behind $m head, locking $m in a full-nelson position and beginning to brutally fuck $m vagina, targeting the wounded spots precisely, rubbing and pushing their cock directly onto them! ^P*BAM* *GRIND* *SLAP*^N
+ELSE
+mpecho ^R[^rINJURE^R]^N ^P*SLOP* *PAP* *PLAP*^N $i raises $n's legs up behind $m head, locking $m in a full-nelson position and beginning to brutally fuck $m ass, targeting the wounded spots precisely, rubbing and pushing their cock directly onto them! ^P*BAM* *GRIND* *SLAP*^N
+endif
+MPSETVAR $n ppdiff $%MATH(10?20)%
+MPSETVAR $i pdiff $%MATH(15?30)%
+if var($n lastsexdefense == endure)
+MPSETVAR $n ppdiff $%MATH($<$n ppdiff>/2)%
+endif
+MPSETVAR $n gddiff $%MATH($<$n ppdiff>)%
+MPSETVAR $n gddiff $%MATH($<$n gddiff>*3)%
+MPSETVAR $n genitaldamage $%MATH($<$n genitaldamage> + $<$gddiff>)%
+mpsetvar $n playerpleasureamountcalc $%MATH($<$n playerpleasureamount> + $<$n ppdiff> + $<$n gddiff>)%
+mpsetvar $n playerpleasureamount $<$n playerpleasureamountcalc>
+mpsetvar $i pleasureamountcalc $%MATH($<$i pleasureamount> + $<$i pdiff>)%
+mpsetvar $i pleasureamount $<$i pleasureamountcalc>
+mpecho ^p*PLAP* *PLAP* ^N$i fucks $n for ^p(^w$<$n ppdiff>^p)^N pleasure damage! ^p*PLAP* *PLAP*^N
+mpecho ^p*PLAP* *PLAP* ^N$i gets pleasured for ^p(^w$<$i pdiff>^p)^N damage! ^p*PLAP* *PLAP*^N
+MPSETVAR $n energydiff $%MATH(20?45)%
+MPSETVAR $n curenergy $%MATH($<$n Curenergy> - $<$n energydiff>)%
+mpecho $n loses ^G(^r$<$n energydiff>^G)^N energy!
+ELSE
+mpecho ^R[^rINJURE?^R]^N ^P*pap* *plap* ^N$i tries to brutally fuck $n right against $m inner wounds, but there was no significant wounds in $m hole. ^P*slap?*^N
+MPSETVAR $n ppdiff $%MATH(10?40)%
+MPSETVAR $i pdiff $%MATH(10?25)%
+if var($n lastsexdefense == endure)
+MPSETVAR $n ppdiff $%MATH($<$n ppdiff>/2)%
+endif
+MPSETVAR $n gddiffcalc $%MATH($<$n ppdiff>/2)%
+MPSETVAR $n genitaldamage $%MATH($<$n genitaldamage> + $<$n gddiffcalc>)%
+MPSETVAR $n gddiff $%MATH($<$n genitaldamage>/2)%
+mpecho ^p*SPLAT* ^N$n's battered sensitive hole causes extra ^p(^w$<$n gddiff>^p)^N pleasure damage to $m! ^p*FWOP*^N
+mpsetvar $n playerpleasureamountcalc $%MATH($<$n playerpleasureamount> + $<$n ppdiff> + $<$n gddiff>)%
+mpsetvar $n playerpleasureamount $<$n playerpleasureamountcalc>
+mpsetvar $i pleasureamountcalc $%MATH($<$i pleasureamount> + $<$i pdiff>)%
+mpsetvar $i pleasureamount $<$i pleasureamountcalc>
+mpecho ^p*PLAP* *PLAP* ^N$i fucks $n for ^p(^w$<$n ppdiff>^p)^N pleasure damage! ^p*PLAP* *PLAP*^N
+mpecho ^p*PLAP* *PLAP* ^N$i gets pleasured for ^p(^w$<$i pdiff>^p)^N damage! ^p*PLAP* *PLAP*^N
+ENDIF
+endswitch
+endif
+ENDIF
+ENDIF
+mpalarm 1 mpcallfunc midroundchecksex
+~
+
+function_prog midroundchecksex
+if eval('$<$n playerpleasureamount>' > $<$n playerarousalmaxcalc>)
+mpecho $n cums ^N(^G500^N) violently!! Panting tiredly after the intense orgasm...
+MPSETVAR $n curenergy $%MATH($<$n Curenergy> - 500)%
+mpsetvar $n playerpleasureamount 50
+endif
+if var($n curenergy <= 0)
+mpecho ^r$n falls limp and exhausted, too tired to continue!!!^N
+mpcallfunc playerlose
+ELSE
+if eval('$<$i pleasureamount>' >= '$<$i arousalcalc>')
+mpecho ^g$i's cock begin to violently throb inside $n!!!^N
+mpcallfunc playerwin
+ELSE
+if var($n genitaldamage >= 100)
+if class($n == Tacticaljoy)
+if var($n genitaldamage >= 200)
+mpecho ^g$n's genital finally rips open in gorey display, unusable!
+mpcallfunc playerlose
+endif
+else
+mpecho ^g$n's genital finally gives in, loose, bloody and unusable!
+endif
+ELSE
+if var($i whosturn == 1)
+mpcallfunc enemyturn
+endif
+if var($i whosturn == 0)
+mpcallfunc minigameoptionmenu
+endif
+endif
+endif
+endif
+~
+
+function_prog playerwin
+if sex($n == F) or sex($n == A) or sex($n == H)
+switch $%RANDNUM(2)%
+case 1
+mpecho $n feel $i's cock throbbing more violently than usual, $n begin to pick up the pace greatly and combine $m techniques, $n squeeze, press down and grind $m ass in a circle and move $m cunt up and down fast as $n can, $n moan loudly as $m own orgasm reaches $n sooner than $i, but just by a second.. As ^#100c^#200o^#300l^#400o^#301r^#301f^#312u^#323l ^#324c^#334o^#344n^#354f^#355e^#455t^#453t^#452t^#441i^#431s^N pop suddenly, and a cheerful victory music followed with clapping and 'Yayyy!!' sounds as $i begins to unload load after load of cum into $n as $n maintain $m expert technique, $m belly quickly begins to inflate and $m cunt leaks out massive lakes of cum as it could not hold the pressure of the cum in anymore, Once it stops cumming. $n hesitate to get off the cock, $n sure will feel empty without it. But eventually $n face the reality and hop off $i, splattering massive amounts of cum to the floor as $n do from $m cunt, stepping away.
+case 2
+mpecho $n feel $i's cock throbbing violently inside $n, $n quickly lift $mself to a stand on $i, taking a breath and dropping $mself hard onto the cock, thankfully $i does not shatter or something and it perfectly slides into $m vagina as per $m planning, with a loud *SMACK* as it begins to pump $n load after load full of cum. ^#100c^#200o^#300l^#400o^#301r^#301f^#312u^#323l ^#324c^#334o^#344n^#354f^#355e^#455t^#453t^#452t^#441i^#431s^N pop suddenly, and a cheerful victory music followed with clapping and 'Yayyy!!' sounds... $n sigh and moan as $m belly inflates quickly with the volume of that load, watching the confettis fall to the ground slowly as $m pussy eventually gives in, splatters and leaks thick amounts of cum? $n hesitate to get off the cock, $n sure will feel empty without it. But eventually $n face the reality and hop off $i, splattering massive amounts of cum to the floor as $n do from $m ass, stepping away.
+endswitch
+else
+switch $%RANDNUM(2)%
+case 1
+mpecho $n feel $i's cock throbbing more violently than usual, $n begin to pick up the pace greatly and combine $m techniques, $n squeeze, press down and grind $m ass in a circle and move $m ass up and down fast as $n can, $n moan loudly as $m own orgasm reaches $n sooner than $i, but just by a second.. As ^#100c^#200o^#300l^#400o^#301r^#301f^#312u^#323l ^#324c^#334o^#344n^#354f^#355e^#455t^#453t^#452t^#441i^#431s^N pop suddenly, and a cheerful victory music followed with clapping and 'Yayyy!!' sounds as $i begins to unload load after load of cum into $n as $n maintain $m expert technique, $m belly quickly begins to inflate and $m ass leaks out massive lakes of cum as it could not hold the pressure of the cum in anymore, Once it stops cumming. $n hesitate to get off the cock, $n sure will feel empty without it. But eventually $n face the reality and hop off $i, splattering massive amounts of cum to the floor as $n do from $m ass, stepping away.
+case 2
+mpecho $n feel $i's cock throbbing violently inside $n, $n quickly lift $mself to a stand on $i, taking a breath and dropping $mself hard onto the cock, thankfully $i does not shatter or something and and it perfectly slides into $m ass as per $m planning, with a loud *SMACK* as it begins to pump $n load after load full of cum. ^#100c^#200o^#300l^#400o^#301r^#301f^#312u^#323l ^#324c^#334o^#344n^#354f^#355e^#455t^#453t^#452t^#441i^#431s^N pop suddenly, and a cheerful victory music followed with clapping and 'Yayyy!!' sounds. $n sigh and moan as $m belly inflates quickly with the volume of that load, watching the confettis fall to the ground slowly as $m asshole eventually gives in, splatters and leaks thick amounts of cum? $n hesitate to get off the cock, $n sure will feel empty without it. But eventually $n face the reality and hop off $i, splattering massive amounts of cum to the floor as $n do from $m ass, stepping away.
+endswitch
+endif
+mploadvar $n wonsexbattles
+mpsetvar $n wonsexbattles ++
+mpsavevar $n wonsexbattles
+mpforce '$n' dismount
+mpecho $n's belly inflate with the large amount of cum splurted into it!
+mpunaffect $n sexual_cumbloat3
+mpunaffect $n sexual_cumbloat2
+mpunaffect $n sexual_cumbloat1
+mpaffect sexual_cumbloat3 $n
+mpexp '$n' 15%
+mpjunk '$i'
+mpcallfunc sexvictory
+~
+
+function_prog playerlose
+if sex($n == F) or sex($n == A) or sex($n == H)
+switch $%RANDNUM(2)%
+case 1
+mpecho $i holds $n and stands up with $m, spreading $m legs wide apart as $e remains limp and exhausted with a battered cunny, $i begins to jackhammer right into $m pussy with ungodly force, causing the poor limp $n to squirt all over the room in a shameful display of defeat, $m aching, ruined pussy cumming with whatever energy it has left while still being battered endlessly by the victorious cock of $i... After atleast three hours of endless pussy-beating the cock finally unloads the last drops it has into $n and softens inside, by now $n's whole crotch is covered in cum, the room sprayed with many loads of juices by $m poor humiliated pussy. A 'boooo' ing is heard followed with a deep 'DEFEAT.'... $n is finally released from the softened cock in critical state.
+case 2
+mpecho lost 2
+endswitch
+else
+switch $%RANDNUM(2)%
+case 1
+mpecho $i holds $n and stands up with $m, spreading $m legs wide apart as $e remains limp and exhausted with a battered ass, $i begins to jackhammer right into $m ass with ungodly force, causing the poor limp $n to cum all over the room in a shameful display of defeat, $m aching, $n's cock begins cumming with whatever energy it has left while still being battered endlessly by the victorious cock of $i... After atleast three hours of endless ass-beating the cock finally unloads the last drops it has into $n and softens inside, by now $n's whole ass is covered in cum, the room sprayed with many loads of cum by $n's humiliated self. A 'boooo' ing is heard followed with a deep 'DEFEAT.'... $n is finally released from the softened cock in critical state.
+case 2
+mpecho lost 2
+endswitch
+endif
+mpgset $n hits 1
+mpforce $n dismount
+mpecho $n's belly inflate with the large amount of cum splurted into it!
+mpunaffect $n sexual_cumbloat3
+mpunaffect $n sexual_cumbloat2
+mpunaffect $n sexual_cumbloat1
+mpaffect sexual_cumbloat3 $n
+~
+
+cnclmsg_prog huh p helpinfo
+mpechoat $n Welcome to the battlefuck minigame!%0DYou may take pleasure damage by most actions, yours or enemys' and regen 1-3 genital damage when you act or and your turn start.%0DThe more damaged your genital is the faster you'll gain arousal due lost composure and increased sensitivity. Your genitals will be damaged for half the arousal you received. Geni.Damage will add 1 points of extra arousal for each 2 genital damage. Special circumstances may change this.%0DYou lose when your energy becomes 0 so make sure to try to keep it high! You will instnatly lose 500 energy if your arousal reaches maximum and you cum.%0DEnemy will lose some arousal time to time, you will feel that by the cock's actions inside.%0DBlocking an attack will halve it's effects, while dodging while harder to do, will completely skip the enemy's attack. Resting will regain some energy but you will take full damage from the attack... Though you will get no energy and take full damage anyway if you mess up a defense.%0DUse your abilities to make your opponent cum before you (or before they break your hole)!%0DMake sure to keep an eye on your genital! If it gets too damaged it'll become an unusable gorey pulp and you'll lose!%0D%0DIf you wish to add new emotes to any sex ability in the game, please write them down and share them in discord contributions channel!%0D^rIf you notice something wrong with the system, or the math despite what it shows please BUG it or report in discord!^N
+return cancel
+~
+
+cnclmsg_prog huh p status
+if incontainer('$n' '$i')
+if sex($n == F) or sex($n == A) or sex($n == H)
+mpecho $n bends forward and examines $m pussy and the cock penetrating it, closely. Re-considering $m options...
+ELSE
+mpecho $n bends forward and examines $m ass and the cock penetrating it, close as $e can. Re-considering $m options...
+endif
+if var($i whosturn == 0)
+if class($n == Tacticaljoy)
+mpechoat $n ^P| -----------------------------EXT-CLOSE-------------------------------.
+if sex($n == F) or sex($n == A) or sex($n == H)
+mpechoat $n ^P|^N .....................................................................%0D^P|^N .::--:----::....-***++*%%%%*+=:::::--------------=-======:..:++*++++.%0D^P|^N .::::-:::---:::.......:::-=*#*+======-==------------::::..=***#*++++.%0D^P|^N .:-----=:.:::::::...::::::...:::----====--------:----:::-#*+#*++++++.%0D^P|^N .:-------=-*:-=++++-:::::--------:-------------------:=##+++++++++++.%0D^P|^N .:::-:---=-:#@@@%%%%#*+=:------:-:::::-------------::=#*++*+++++++++.%0D^P|^N .---:-====-:..=@%**####*+----:--::%-*========--------*%###%%##******.%0D^P|^N .----===++++=:..+#+####*=-=.::::%@-..#:.---:=----=*-::..::...::-----.%0D^P|^N .----=========-..=+%%#*+=:..::@%=#@@=@%#:=..====-=-::::::::::::::::-.%0D^P|^N .----------:::....*@#+=-:..+@#*+...=@*.@%%=..:--===.:=#######***++++.%0D^P|^N .-----::::::::-%@%@@+--:.=%#+-@@@@%-=*##.@+%::::==#:+@@##*#**######*.%0D^P|^N .-------------=@#*@*=-.:%@@@@-@++*==++*%%:=@%%:::=+-+.:+#*+*++++****.%0D^P|^N .------------:..#%@++:*@@@+*@-%#@=*+::*#%+=#+@@:.:=-.....*+++====+++.%0D^P|^N .--------------..%@+**@@@=-@#.@#+++*%#++*++*=-+@=::#-:::.-=+++++==++.%0D^P|^N .--------------:.:@=*%@@++%@-.@++#+-::#*%+*@*%:+@-:%==-::---===+====.%0D^P|^N .--------------:.=@*=@@*@*@@#+@@%*+=::**%..%=#==@#=@*++++==-======+=.%0D^P|^N .-------------:.--@@@@*#%#@#::@@@#@+:=**%**#+=#.#@*@%##*++++========.%0D^P|^N .-----------::.==#@*@%#%#@%::.%@%=+-::++##-%+=*+#@.@@%###*++++======.%0D^P|^N .---------:::-:*%@@+@#%#*%@@%+#%*=*+:+###=.%+++*===%#@@@%##**++++=++.%0D^P|^N .--------:::-=#@@@%@@*%#%%#*==%@+-%==-+#*-.%+==+=@%*+-+%@@%##**+++=+.%0D^P|^N .--------:-=%@@@%##@@*%%@%#*+*@@*-#::.=-#%****=+-@@@#*+==*@%%##***++.%0D^P|^N .--------==%@:##%%*@@*%#.@@#*=@%*-#=.:*+#-=%:=*+-@:%@@*++++*####**++.%0D^P|^N .------==*%%-+#@@@*@@*%@:@@%=+@@+-#-.=+=*:.@=*++-@#*#@@#+++++******+.%0D^P|^N .---===+*#*--#@@%#*@@#%@:*@=.=@%+=*-.+++#+=@-*++:@==+#@@#+++++++****.%0D^P|^N .--===++*==-+@@###%@%%%@:@#@@#@%-=+=+++*#*:%-*++-@@%#**@@%=+*+++++**.%0D^P|^N .======+===:%@++%@@@%%@#:@+:-#@*:+===+-#**-+=*+=-@%%%%%##@%=+***+++*.%0D^P|^N .=========:*@@@@@#*@%%@%:##%:@@+:#=-=+-%*+=+*%*-#@%%%%%%%%@@==******.%0D^P|^N .=====++=-+@@####%%@#@%@=*=%:@@*:#=++=+%++=+***=@@@%%%%%%#@@@+=+****.%0D^P|^N .===+++=-*@@%%%%%%@@#@#@:#%*-@%+-%-=+=%#+++***-+.@@%%%%%%#@#%@@=++**.%0D^P|^N .==+++=-#@@%%%%%%%@@#@@@+@**#@#==%=**=@#*==+**=*.@@%%%%%%#@%#%@@%==*.%0D^P|^N .+++=--@@@%%%%%#%#@#*##=.@%+@@*=+#+*+=#**=+@++.:@@@%%%%%%#@%#%%@@@%=.%0D^P|^N .+=--+@@@%%%@@@@@@@*@@@@#.:+@@*=*#+*+#**+==+.*@=@@%%%@%%##@@#%%%%@@@=%0D^P|^N .=--@@@@%%%@@@@@@@@#@=*=@@-%@%=+***++#**+#:-@@:=@@%%%%@@@%@@#%%%%%%%=%0D^P|^N .-%@@@@@@%%%%%%%%@@%%+*=+@*@@*=+***++##+::@@+=:%@%%%%%%%#@@@#%%%%%%%=%0D^P|^N .@@@@@@@@@%%%%@@@@@%#*%%###@@=+***++*+==%@+=+=:@@%%%%%%%#@@@%@%@%%%%=%0D^P|^N %@@%%%%%%%%%%#%##@#%##%#*#%@%++***+++=##%=+++-=@@@@@@@@@%@@@%@@@%%%%=%0D^P|^N *@@@@@@@@@@@@@@@@@#%#####%%%*++**++++#@*++++*=%@@@@@@@%%#*@@%%%%%%%%=%0D^P|^N *%%%%%%%@@@@@@@@@@########%%*+*++==*##++++***-@@%%%%%%%@%%@@#%%%%%%%=%0D^P|^N *@@@@@%%%%%%%%%@@@#######%@%*===+*#*#+++***+--@@%%%%@@@@@%@@%%%%%%%%+%0D^P|^N *@@@%%%%%%%@@@@%%@*##%##%%%*=+++=-+%***==--+*#@%%%@@@@@@@@@@@@@@%%%%=%0D^P|^N *%%@@@@@@@@@@@@@@@*##%#%@%+=++=-#%@**=*=##**+@@@@@@@@%%%%%%%@@@@@@@@*%0D^P|^N @@@@@@@@@@%%##**+@*#%@@@%%%#++#@%#@%%@@@@@%#*@@@@@@@@%**************-%0D^P|^N ::---:-:-:---:::=@::::...:::-*-::.:+=:...............-===-----------.
+endif
+if sex($n == M) or sex($n == O) or sex($n == U)
+mpechoat $n ^P|^N @@@@@@@@@@@@@@.@@@@@@@@@@@@@@.@.@@*%@#@@@:@.@@@@@%@@@@@@...@.........%0D^P|^N @@@@@@@@@@@@@@@.@@@@@@@@@@@@....@=@@@.@@@@@.@@@@@@@%...@@@:.@@@%%*##.%0D^P|^N @@@@@@@@@@@@@@@@@@@@@@@@@..@@@@@..@@@.@@@..+@..@@@@@@@@@@.:=@##+**##.%0D^P|^N @@@@@@@@@@@@@@@@@..@@.@@.@@@@@@@@@@@@@@.@@@@@@@..@@@@@@@.@@@@+*#*##@.%0D^P|^N @@@@@@@@@@@@@@@@@@.@@@..@..@@@@@@@@@@..@@@@@@@@@@@@@@@@.@%***##@@@@..%0D^P|^N @@@@@@@@@*#+%@@@@@@.@@.@:..@@@@@@@@@@@@@@@@@@@@@@..##..@##*#%@@@@.#=.%0D^P|^N @@@@@@@@@@@-@@#@@@#.@-.@*%.@@@%#%@@.@@@##%%@@@@..@.#..@@*%#@@@+...@..%0D^P|^N @@@@@@@@@@@@@.=.=.@@..@+=*-..@@@@%@.@.@@@@@@@..%*@.@.*@%*@@@.....-@..%0D^P|^N @@@@@@@@@@@@@@@.@.@...@@+*=+-..@@@@...@@@@@...-=*@.@.@@@@#....:@@@@#.%0D^P|^N @@@@@@@@@@@@@@@@@.@....@+*=+-+..:-#..@@.....++==@..@........=@@#+%-#.%0D^P|^N @@@@@@@@@@@@@@@@@@...@.@@++*+=-=.=@=.%..:+..-..-*.@@.-%%..@@@**=%#=#.%0D^P|^N @@@@@@@@@@@@@@@@@@@..@..@%*=#+==*-%.@+--.=+#*@@@..@..:..@@%#*#*-@+##.%0D^P|^N @@@@@@@@@@@@@@@@@@@@.+@..@@****#*#@.:@#**+*+%@@..@@.:.%@@#***##=@+#*.%0D^P|^N @@@@@@@@@@@@@@@@@@.@+#%*...@@@@@@@..-*@#@@@@@...@+@..@@*++#****+@+##.%0D^P|^N @@@@@@@@@@@@@@@@@@=@.@+@..@..=...=.-@:@@++.....@##@.@@+##**####*@++#.%0D^P|^N @@@@@@@@@@@@@@+@==@@.@@@@..%.=::.-::.....-+*..@*=@..=@#+###**#-:#***.%0D^P|^N @@@@@@@@@@@@@@-.%+@%.@%%@.@-.===----==*-=+-..@=#=@...%#++++++*+@+###.%0D^P|^N @@@@@@@@@@@@.:+*##@..@=+%..@..-----:=---+-.@*****@@..%@*+#+#**%-+#=-.%0D^P|^N @@@@@@@...:=*###%+%@#=-+=*.@@..:-....=-...@*+#**#*@.--@##***=*+@=.@+.%0D^P|^N ......@@@@#*%#*####%***+*++%*@#...@@...:@%##*=#=+#@:..@*=*+*+#+*#@...%0D^P|^N .+*#%-.@*@***#*#%*+*+*%********@*.@-+%#+#%-+%#*@##%@*.-@*+***###=@*+.%0D^P|^N .*@*=.%@%####@@###*%##*+*#**+=+--...===-.+**-::#-#%*@.#-@#-@-=#=.@@#.%0D^P|^N .**.%@@##%#%%%=*****#*%++*+*-:...--=.-.::-*#**+%=*#*%@..@*##*+#*+-:..%0D^P|^N ..%@###+**#:#*+%++.......@%-..+.............+-*%*#***@@=.@=%#*+**+@+.%0D^P|^N .#@@@@@%#%%@%@@%#.@@@@@@.......@@@:@@@@@+.+:...#@*@%#+%@@.*@##+@#++@.%0D^P|^N .+%#@%*@*#@@@-.%@.......@+...@@@.@@@@..@@@......#==-*+#*#@..*@..*:...%0D^P|^N .+..=-@@@@%.====*+-*#-@*.@#:@@......*....@@@.@@.+-%++==++*%@:...::-:.%0D^P|^N .+#%@%-...#@....++##+-...@.@...--.@..@.-...@%@=....:=-=+-+=-*@+.:---.%0D^P|^N .+:...#@@@#.@@@:%-+.=..@..-..----.@....---..@@@@....+-:+---==:**=---.%0D^P|^N .#@@@@#++**-.-..*:-+..@@@:.+=----.@.--+--=*.@.@.:@@:--=-:-==:==:=-=-.%0D^P|^N .+.-=*@*++:..--=*==..@@*@.#+-----.@.=-----+:+..@....--=--==---:-----.%0D^P|^N .-=-:.-.:+=+*=-=-+.=@...=.%------.@.=:-----++..@@.------------------.%0D^P|^N .-====-=--+-----=..@..+#@.%------.@:=*-----#..#.@.------------------.%0D^P|^N .-+:----=====-*:..@@:%@...%------.*.:=:----%...+@::-----------------.%0D^P|^N .+=+++++=-=-+*%+.@@.......%---+=:-+.-+-=---%.....@=%#+--------------.%0D^P|^N .@@@%#%@@***....-@........%----:..%-..:----%.....-...%%%*=----------.%0D^P|^N ..............@@....@@@...-.....@@-:%*.....=....-*@=.....@%%%%%%%#=..%0D^P|^N .**...#@..=@@@@@@@@@%....==@@@@@@@@@@@@@%#=*....#@@@@@@@...........@.%0D^P|^N @@=-@@..:@@..:::+#@@@@@@@@@=...........=@@@@@@@@@%:....@@@.-...=:@@%.%0D^P|^N @@@@%..@@-@@@@@@@=....=%**=#@@@@@@@@@@@@##****#*+*#@@##+...@.%#=@#==.%0D^P|^N @@@..@@@@@@%#*#%#@@@@@@%#@@#.:+*++****+++****++*****=:.+@@@@@...#@@@.%0D^P|^N @:.@@@.....%%%%%%@%@@@@@@@@@@#.===*+*++***********##%@@+::=+*@@@@....%0D^P|^N ...-%@@@@@@@@@@@@@@@@@@@@@@@@@@@@+@@@@@@@@@@@@%#***+*++#%%=:-+++#=+@.%0D^P|^N *@@@#%#####++++*+*++==-::....:+=@*+=-..........*%@@%#**+=+*#+-===*+..%0D^P|^N .....................................................................
+endif
+mpechoat $n ^P| -----------------------------COMBAT-CAM------------------------------*
+mpechoat $n ^P.------------------------------------------._
+mpechoat $n ^P|  /- ^r$i
+mpechoat $n ^P|  ^W.:| ^wArousal ^p$<$i pleasureamount>^w/^P$<$i arousalcalc> ^w|:.
+mpechoat $n ^P|
+mpechoat $n ^P|    ------------------------------------
+mpechoat $n ^P|
+mpechoat $n ^P|  /- ^w$n
+if sex($n == F)
+mpechoat $n ^P|    \^pFemale
+mpechoat $n ^P|    !! ^rCaution: Vagina penetrated by $i^r.
+ENDIF
+if sex($n == M)
+mpechoat $n ^P|    \^bMale
+mpechoat $n ^P|    !! ^rCaution: Anus penetrated by $i^r.
+ENDIF
+if sex($n == U)
+mpechoat $n ^P|    \^pFuta
+mpechoat $n ^P|    !! ^rCaution: Anus penetrated by $i^r.
+ENDIF
+if sex($n == H)
+mpechoat $n ^P|    \^pHerm
+mpechoat $n ^P|    !! ^rCaution: Vagina penetrated by $i^r.
+ENDIF
+if sex($n == A)
+mpechoat $n ^P|    \^bTrans-Male
+mpechoat $n ^P|    !! ^rCaution: Vagina penetrated by $i^r.
+ENDIF
+if sex($n == O)
+mpechoat $n ^P|    \^pTrans-Female
+mpechoat $n ^P|    !! ^rCaution: Anus penetrated by $i^r.
+ENDIF
+if var ($n genitaldamage >= 190)
+mpechoat $n ^P|    |>G.STATUS: ^rAbsolutely destroyed, ripped and torn!!!^N
+else
+if var($n genitaldamage >= 170)
+mpechoat $n ^P|    |>G.STATUS: ^rAbout to rip apart!!^N
+else
+if var($n genitaldamage >= 150)
+mpechoat $n ^P|    |>G.STATUS: ^rUnrecognizable, bloody and prolapsing with thrusts.^N
+else
+if var($n genitaldamage >= 140)
+mpechoat $n ^P|    |>G.STATUS: ^rVery wounded and about to prolapse!^N
+else
+if var($n genitaldamage >= 120)
+mpechoat $n ^P|    |>G.STATUS: ^rFriction burned and wounded.^N
+else
+if var($n genitaldamage >= 100)
+mpechoat $n ^P|    |>G.STATUS: ^rLoosened and minor bleedings.^N
+else
+if var($n genitaldamage >= 80)
+mpechoat $n ^P|    |>G.STATUS: ^rSmall cuts and scrapes.^N
+else
+if var($n genitaldamage >= 60)
+mpechoat $n ^P|    |>G.STATUS: ^rMajor bruises.^N
+else
+if var($n genitaldamage >= 40)
+mpechoat $n ^P|    |>G.STATUS: ^rReddened and agitated skin.^N
+else
+if var($n genitaldamage >= 20)
+mpechoat $n ^P|    |>G.STATUS: ^rSlightly Agitated skin.^N
+endif
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+mpechoat $n ^P|
+mpechoat $n ^P|  ^W.:| ^wGeni. Damage ^r$<$n genitaldamage>^w/^R200 ^w|:.
+mpechoat $n ^P|  ^W.:| ^wEnergy ^g$<$n curenergy>^w/^G$<$n maxenergy> ^w|:.
+mpechoat $n ^P|  ^W.:| ^wArousal ^p$<$n playerpleasureamount>^w/^P$<$n playerarousalmaxcalc> ^w|:.
+mpechoat $n ^P|
+mpechoat $n ^P|  ^P(^pTact Joy^P) ^WActions:
+mpechoat $n ^P|  ^wFuck (^G-150-200 ^P-5-15^w ^r>>15-50)
+mpechoat $n ^P|  ^wGrind (^P-10-20 ^g+75-150^w)
+mpechoat $n ^P|  ^wClench (^p+25-40 ^G-30-65^w ^r+NEXT FUCK DMG)
+mpechoat $n ^P|
+mpechoat $n ^P| ^WOther Actions:
+mpechoat $n ^P|  ^wStatus
+mpechoat $n ^P|  ^wHelpinfo
+mpechoat $n ^P|  ^rDismount^w
+mpechoat $n ^P.__________________________________________.-
+else
+mpechoat $n ^P| -----------------------------EXT-CLOSE-------------------------------.
+if sex($n == F) or sex($n == A) or sex($n == H)
+mpechoat $n ^P|^N .....................................................................%0D^P|^N .::--:----::....-***++*%%%%*+=:::::--------------=-======:..:++*++++.%0D^P|^N .::::-:::---:::.......:::-=*#*+======-==------------::::..=***#*++++.%0D^P|^N .:-----=:.:::::::...::::::...:::----====--------:----:::-#*+#*++++++.%0D^P|^N .:-------=-*:-=++++-:::::--------:-------------------:=##+++++++++++.%0D^P|^N .:::-:---=-:#@@@%%%%#*+=:------:-:::::-------------::=#*++*+++++++++.%0D^P|^N .---:-====-:..=@%**####*+----:--::%-*========--------*%###%%##******.%0D^P|^N .----===++++=:..+#+####*=-=.::::%@-..#:.---:=----=*-::..::...::-----.%0D^P|^N .----=========-..=+%%#*+=:..::@%=#@@=@%#:=..====-=-::::::::::::::::-.%0D^P|^N .----------:::....*@#+=-:..+@#*+...=@*.@%%=..:--===.:=#######***++++.%0D^P|^N .-----::::::::-%@%@@+--:.=%#+-@@@@%-=*##.@+%::::==#:+@@##*#**######*.%0D^P|^N .-------------=@#*@*=-.:%@@@@-@++*==++*%%:=@%%:::=+-+.:+#*+*++++****.%0D^P|^N .------------:..#%@++:*@@@+*@-%#@=*+::*#%+=#+@@:.:=-.....*+++====+++.%0D^P|^N .--------------..%@+**@@@=-@#.@#+++*%#++*++*=-+@=::#-:::.-=+++++==++.%0D^P|^N .--------------:.:@=*%@@++%@-.@++#+-::#*%+*@*%:+@-:%==-::---===+====.%0D^P|^N .--------------:.=@*=@@*@*@@#+@@%*+=::**%..%=#==@#=@*++++==-======+=.%0D^P|^N .-------------:.--@@@@*#%#@#::@@@#@+:=**%**#+=#.#@*@%##*++++========.%0D^P|^N .-----------::.==#@*@%#%#@%::.%@%=+-::++##-%+=*+#@.@@%###*++++======.%0D^P|^N .---------:::-:*%@@+@#%#*%@@%+#%*=*+:+###=.%+++*===%#@@@%##**++++=++.%0D^P|^N .--------:::-=#@@@%@@*%#%%#*==%@+-%==-+#*-.%+==+=@%*+-+%@@%##**+++=+.%0D^P|^N .--------:-=%@@@%##@@*%%@%#*+*@@*-#::.=-#%****=+-@@@#*+==*@%%##***++.%0D^P|^N .--------==%@:##%%*@@*%#.@@#*=@%*-#=.:*+#-=%:=*+-@:%@@*++++*####**++.%0D^P|^N .------==*%%-+#@@@*@@*%@:@@%=+@@+-#-.=+=*:.@=*++-@#*#@@#+++++******+.%0D^P|^N .---===+*#*--#@@%#*@@#%@:*@=.=@%+=*-.+++#+=@-*++:@==+#@@#+++++++****.%0D^P|^N .--===++*==-+@@###%@%%%@:@#@@#@%-=+=+++*#*:%-*++-@@%#**@@%=+*+++++**.%0D^P|^N .======+===:%@++%@@@%%@#:@+:-#@*:+===+-#**-+=*+=-@%%%%%##@%=+***+++*.%0D^P|^N .=========:*@@@@@#*@%%@%:##%:@@+:#=-=+-%*+=+*%*-#@%%%%%%%%@@==******.%0D^P|^N .=====++=-+@@####%%@#@%@=*=%:@@*:#=++=+%++=+***=@@@%%%%%%#@@@+=+****.%0D^P|^N .===+++=-*@@%%%%%%@@#@#@:#%*-@%+-%-=+=%#+++***-+.@@%%%%%%#@#%@@=++**.%0D^P|^N .==+++=-#@@%%%%%%%@@#@@@+@**#@#==%=**=@#*==+**=*.@@%%%%%%#@%#%@@%==*.%0D^P|^N .+++=--@@@%%%%%#%#@#*##=.@%+@@*=+#+*+=#**=+@++.:@@@%%%%%%#@%#%%@@@%=.%0D^P|^N .+=--+@@@%%%@@@@@@@*@@@@#.:+@@*=*#+*+#**+==+.*@=@@%%%@%%##@@#%%%%@@@=%0D^P|^N .=--@@@@%%%@@@@@@@@#@=*=@@-%@%=+***++#**+#:-@@:=@@%%%%@@@%@@#%%%%%%%=%0D^P|^N .-%@@@@@@%%%%%%%%@@%%+*=+@*@@*=+***++##+::@@+=:%@%%%%%%%#@@@#%%%%%%%=%0D^P|^N .@@@@@@@@@%%%%@@@@@%#*%%###@@=+***++*+==%@+=+=:@@%%%%%%%#@@@%@%@%%%%=%0D^P|^N %@@%%%%%%%%%%#%##@#%##%#*#%@%++***+++=##%=+++-=@@@@@@@@@%@@@%@@@%%%%=%0D^P|^N *@@@@@@@@@@@@@@@@@#%#####%%%*++**++++#@*++++*=%@@@@@@@%%#*@@%%%%%%%%=%0D^P|^N *%%%%%%%@@@@@@@@@@########%%*+*++==*##++++***-@@%%%%%%%@%%@@#%%%%%%%=%0D^P|^N *@@@@@%%%%%%%%%@@@#######%@%*===+*#*#+++***+--@@%%%%@@@@@%@@%%%%%%%%+%0D^P|^N *@@@%%%%%%%@@@@%%@*##%##%%%*=+++=-+%***==--+*#@%%%@@@@@@@@@@@@@@%%%%=%0D^P|^N *%%@@@@@@@@@@@@@@@*##%#%@%+=++=-#%@**=*=##**+@@@@@@@@%%%%%%%@@@@@@@@*%0D^P|^N @@@@@@@@@@%%##**+@*#%@@@%%%#++#@%#@%%@@@@@%#*@@@@@@@@%**************-%0D^P|^N ::---:-:-:---:::=@::::...:::-*-::.:+=:...............-===-----------.
+endif
+if sex($n == M) or sex($n == O) or sex($n == U)
+mpechoat $n ^P|^N @@@@@@@@@@@@@@.@@@@@@@@@@@@@@.@.@@*%@#@@@:@.@@@@@%@@@@@@...@.........%0D^P|^N @@@@@@@@@@@@@@@.@@@@@@@@@@@@....@=@@@.@@@@@.@@@@@@@%...@@@:.@@@%%*##.%0D^P|^N @@@@@@@@@@@@@@@@@@@@@@@@@..@@@@@..@@@.@@@..+@..@@@@@@@@@@.:=@##+**##.%0D^P|^N @@@@@@@@@@@@@@@@@..@@.@@.@@@@@@@@@@@@@@.@@@@@@@..@@@@@@@.@@@@+*#*##@.%0D^P|^N @@@@@@@@@@@@@@@@@@.@@@..@..@@@@@@@@@@..@@@@@@@@@@@@@@@@.@%***##@@@@..%0D^P|^N @@@@@@@@@*#+%@@@@@@.@@.@:..@@@@@@@@@@@@@@@@@@@@@@..##..@##*#%@@@@.#=.%0D^P|^N @@@@@@@@@@@-@@#@@@#.@-.@*%.@@@%#%@@.@@@##%%@@@@..@.#..@@*%#@@@+...@..%0D^P|^N @@@@@@@@@@@@@.=.=.@@..@+=*-..@@@@%@.@.@@@@@@@..%*@.@.*@%*@@@.....-@..%0D^P|^N @@@@@@@@@@@@@@@.@.@...@@+*=+-..@@@@...@@@@@...-=*@.@.@@@@#....:@@@@#.%0D^P|^N @@@@@@@@@@@@@@@@@.@....@+*=+-+..:-#..@@.....++==@..@........=@@#+%-#.%0D^P|^N @@@@@@@@@@@@@@@@@@...@.@@++*+=-=.=@=.%..:+..-..-*.@@.-%%..@@@**=%#=#.%0D^P|^N @@@@@@@@@@@@@@@@@@@..@..@%*=#+==*-%.@+--.=+#*@@@..@..:..@@%#*#*-@+##.%0D^P|^N @@@@@@@@@@@@@@@@@@@@.+@..@@****#*#@.:@#**+*+%@@..@@.:.%@@#***##=@+#*.%0D^P|^N @@@@@@@@@@@@@@@@@@.@+#%*...@@@@@@@..-*@#@@@@@...@+@..@@*++#****+@+##.%0D^P|^N @@@@@@@@@@@@@@@@@@=@.@+@..@..=...=.-@:@@++.....@##@.@@+##**####*@++#.%0D^P|^N @@@@@@@@@@@@@@+@==@@.@@@@..%.=::.-::.....-+*..@*=@..=@#+###**#-:#***.%0D^P|^N @@@@@@@@@@@@@@-.%+@%.@%%@.@-.===----==*-=+-..@=#=@...%#++++++*+@+###.%0D^P|^N @@@@@@@@@@@@.:+*##@..@=+%..@..-----:=---+-.@*****@@..%@*+#+#**%-+#=-.%0D^P|^N @@@@@@@...:=*###%+%@#=-+=*.@@..:-....=-...@*+#**#*@.--@##***=*+@=.@+.%0D^P|^N ......@@@@#*%#*####%***+*++%*@#...@@...:@%##*=#=+#@:..@*=*+*+#+*#@...%0D^P|^N .+*#%-.@*@***#*#%*+*+*%********@*.@-+%#+#%-+%#*@##%@*.-@*+***###=@*+.%0D^P|^N .*@*=.%@%####@@###*%##*+*#**+=+--...===-.+**-::#-#%*@.#-@#-@-=#=.@@#.%0D^P|^N .**.%@@##%#%%%=*****#*%++*+*-:...--=.-.::-*#**+%=*#*%@..@*##*+#*+-:..%0D^P|^N ..%@###+**#:#*+%++.......@%-..+.............+-*%*#***@@=.@=%#*+**+@+.%0D^P|^N .#@@@@@%#%%@%@@%#.@@@@@@.......@@@:@@@@@+.+:...#@*@%#+%@@.*@##+@#++@.%0D^P|^N .+%#@%*@*#@@@-.%@.......@+...@@@.@@@@..@@@......#==-*+#*#@..*@..*:...%0D^P|^N .+..=-@@@@%.====*+-*#-@*.@#:@@......*....@@@.@@.+-%++==++*%@:...::-:.%0D^P|^N .+#%@%-...#@....++##+-...@.@...--.@..@.-...@%@=....:=-=+-+=-*@+.:---.%0D^P|^N .+:...#@@@#.@@@:%-+.=..@..-..----.@....---..@@@@....+-:+---==:**=---.%0D^P|^N .#@@@@#++**-.-..*:-+..@@@:.+=----.@.--+--=*.@.@.:@@:--=-:-==:==:=-=-.%0D^P|^N .+.-=*@*++:..--=*==..@@*@.#+-----.@.=-----+:+..@....--=--==---:-----.%0D^P|^N .-=-:.-.:+=+*=-=-+.=@...=.%------.@.=:-----++..@@.------------------.%0D^P|^N .-====-=--+-----=..@..+#@.%------.@:=*-----#..#.@.------------------.%0D^P|^N .-+:----=====-*:..@@:%@...%------.*.:=:----%...+@::-----------------.%0D^P|^N .+=+++++=-=-+*%+.@@.......%---+=:-+.-+-=---%.....@=%#+--------------.%0D^P|^N .@@@%#%@@***....-@........%----:..%-..:----%.....-...%%%*=----------.%0D^P|^N ..............@@....@@@...-.....@@-:%*.....=....-*@=.....@%%%%%%%#=..%0D^P|^N .**...#@..=@@@@@@@@@%....==@@@@@@@@@@@@@%#=*....#@@@@@@@...........@.%0D^P|^N @@=-@@..:@@..:::+#@@@@@@@@@=...........=@@@@@@@@@%:....@@@.-...=:@@%.%0D^P|^N @@@@%..@@-@@@@@@@=....=%**=#@@@@@@@@@@@@##****#*+*#@@##+...@.%#=@#==.%0D^P|^N @@@..@@@@@@%#*#%#@@@@@@%#@@#.:+*++****+++****++*****=:.+@@@@@...#@@@.%0D^P|^N @:.@@@.....%%%%%%@%@@@@@@@@@@#.===*+*++***********##%@@+::=+*@@@@....%0D^P|^N ...-%@@@@@@@@@@@@@@@@@@@@@@@@@@@@+@@@@@@@@@@@@%#***+*++#%%=:-+++#=+@.%0D^P|^N *@@@#%#####++++*+*++==-::....:+=@*+=-..........*%@@%#**+=+*#+-===*+..%0D^P|^N .....................................................................
+endif
+mpechoat $n ^P| -----------------------------COMBAT-CAM------------------------------*
+mpechoat $n ^P.------------------------------------------._
+mpechoat $n ^P|  /- ^r$i
+mpechoat $n ^P|  ^W.:| ^wArousal ^p$<$i pleasureamount>^w/^P$<$i arousalcalc> ^w|:.
+mpechoat $n ^P|
+mpechoat $n ^P|    ------------------------------------
+mpechoat $n ^P|
+mpechoat $n ^P|  /- ^w$n
+if sex($n == F)
+mpechoat $n ^P|    \^pFemale
+mpechoat $n ^P|    !! ^rCaution: Vagina penetrated by $i^r.
+ENDIF
+if sex($n == M)
+mpechoat $n ^P|    \^bMale
+mpechoat $n ^P|    !! ^rCaution: Anus penetrated by $i^r.
+ENDIF
+if sex($n == U)
+mpechoat $n ^P|    \^pFuta
+mpechoat $n ^P|    !! ^rCaution: Anus penetrated by $i^r.
+ENDIF
+if sex($n == H)
+mpechoat $n ^P|    \^pHerm
+mpechoat $n ^P|    !! ^rCaution: Vagina penetrated by $i^r.
+ENDIF
+if sex($n == A)
+mpechoat $n ^P|    \^bTrans-Male
+mpechoat $n ^P|    !! ^rCaution: Vagina penetrated by $i^r.
+ENDIF
+if sex($n == O)
+mpechoat $n ^P|    \^pTrans-Female
+mpechoat $n ^P|    !! ^rCaution: Anus penetrated by $i^r.
+ENDIF
+if var ($n genitaldamage >= 190)
+mpechoat $n ^P|    |>G.STATUS: ^rAbsolutely destroyed, ripped and torn!!!^N
+else
+if var($n genitaldamage >= 170)
+mpechoat $n ^P|    |>G.STATUS: ^rAbout to rip apart!!^N
+else
+if var($n genitaldamage >= 150)
+mpechoat $n ^P|    |>G.STATUS: ^rUnrecognizable, bloody and prolapsing with thrusts.^N
+else
+if var($n genitaldamage >= 140)
+mpechoat $n ^P|    |>G.STATUS: ^rVery wounded and about to prolapse!^N
+else
+if var($n genitaldamage >= 120)
+mpechoat $n ^P|    |>G.STATUS: ^rFriction burned and wounded.^N
+else
+if var($n genitaldamage >= 100)
+mpechoat $n ^P|    |>G.STATUS: ^rLoosened and minor bleedings.^N
+else
+if var($n genitaldamage >= 80)
+mpechoat $n ^P|    |>G.STATUS: ^rSmall cuts and scrapes.^N
+else
+if var($n genitaldamage >= 60)
+mpechoat $n ^P|    |>G.STATUS: ^rMajor bruises.^N
+else
+if var($n genitaldamage >= 40)
+mpechoat $n ^P|    |>G.STATUS: ^rReddened and agitated skin.^N
+else
+if var($n genitaldamage >= 20)
+mpechoat $n ^P|    |>G.STATUS: ^rSlightly Agitated skin.^N
+endif
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+mpechoat $n ^P|
+mpechoat $n ^P|  ^W.:| ^wGeni. Damage ^r$<$n genitaldamage>^w/^R100 ^w|:.
+mpechoat $n ^P|  ^W.:| ^wEnergy ^g$<$n curenergy>^w/^G$<$n maxenergy> ^w|:.
+mpechoat $n ^P|  ^W.:| ^wArousal ^p$<$n playerpleasureamount>^w/^P$<$n playerarousalmaxcalc> ^w|:.
+mpechoat $n ^P|
+mpechoat $n ^P|  ^WPossible Actions:
+mpechoat $n ^P|  ^wFuck (^G-Energy ^P+Arousal ^p++A.DMG^w)
+mpechoat $n ^P|  ^wGrind (^g++Energy ^P++Arousal^w)
+mpechoat $n ^P|  ^wClench (^G-Energy ^p-Arousal^w ^r+NEXT FUCK DMG)
+mpechoat $n ^P|
+mpechoat $n ^P| ^WOther Actions:
+mpechoat $n ^P|  ^wStatus
+mpechoat $n ^P|  ^wHelpinfo
+mpechoat $n ^P|  ^rDismount^w
+mpechoat $n ^P.__________________________________________.-
+endif
+ELSE
+if class($n == Tacticaljoy)
+mpechoat $n ^P| -----------------------------EXT-CLOSE-------------------------------.
+if sex($n == F) or sex($n == A) or sex($n == H)
+mpechoat $n ^P|^N .....................:.............................-.................%0D^P|^N .-:----:---:::---==-:+=..::::::::::::::::::::::...:@.-----::--------.%0D^P|^N .---:::-::----:::-=+=*@@*======------------===+*+*@+:==-::::::-:::::.%0D^P|^N .:::-:-:-::::::::::=+:.:--====-----::-:-------:=+-=:==-:::::--------.%0D^P|^N .-:----------:::::::::::::-------::+-@:--------:+...::::------------.%0D^P|^N .---------------:::-:::::-=------:*%.#-:---------:.::::-------------.%0D^P|^N .-:---------------:::::==-------:=*:==#::--------=::::--------------.%0D^P|^N .-------------------.:==-----::::*:.+.*=:---------=::---------------.%0D^P|^N .------------------::+=----=-=---%=@@-+=----=------=:----:----------.%0D^P|^N .-:----------------:=*-====-----*#...:#+::---------=-:----------::-:.%0D^P|^N .--:-::-::----====-:+*===-=---:-%..#@:+%+-----===--+=:--------::-:--.%0D^P|^N .-----::::::::::::.:#+++=--::.-#:.%@@-.*-----======*+.-------:::::--.%0D^P|^N .:--::-::::::::-:.:#+===----:=#=:@@@%%.+*---:-=---=++.:::::::-:----:.%0D^P|^N .----:--::----:..-*+==----::=*==-%:.@@-=*++=:----=-=+.::-----:::----.%0D^P|^N .-:----:::::-----===--=--:-+*-++..-#*.++:--=--------=::-:--:::------.%0D^P|^N .:-::----------:----::..:=**+%@@@%+::+@*--.:-------:-=-::------:::--.%0D^P|^N .-=-:::---::---::-::-.-:+%@#-=*+=--::.:*@@@%...:---..::-:::-::::--=:.%0D^P|^N .:--:---------::--:=*:-@@+::+*%*+*=-+#==#+-#@*-:=+-----:::::-==-----.%0D^P|^N .---:----::::::==--:.:@@+=++==+*++=+-++=%#--+@@-++=-:----==-:-------.%0D^P|^N .----:----:-===----.+@#--++=+=*#++=*.++=%#-=+=%@*:..=+=----=-:::----.%0D^P|^N .-==:::::::+=--==-:.@@===+*-+=**++=*.=++##-+*=-@#.::-+==--=-:.::::--.%0D^P|^N .==-:-=**+:--==-=-.=@*-=-=+-+=#*+++=---=#%=+#+=%@..::+====-:=+==+-::.%0D^P|^N .:::------=-.---=-.@@=-=-+=-++#=++=++:=+*#+-=++=@=.:::-:--------=-::.%0D^P|^N .=+--=-----==-==:..@=-+**%*:=*%++++#*-=+++*==++-@@.--::::--=---==+:=.%0D^P|^N .==:==------=::=..=@===-=*##-:=+++=+.=-+*++=-++-#@.::-==-::======+-+.%0D^P|^N .=+-=-===---=-:--=@@+++-=+-=%%=-*==#.==+*=+=-=+-+@...#.::::======+-=.%0D^P|^N .====-====--==.+@-@*=*+-=*=--@%-=++#.==+#**+=+*==@#=:*.**+--++==++-=.%0D^P|^N .=+---====--==:*+=@*+*+:=*==:#@==*-*=+=+*++=-===-@+#%:#****-+++++=-=.%0D^P|^N .=%@%-======+=:-##@**#*-=%+--#*:#%-=-===++*++==--@--+:+++++==+++*.=+.%0D^P|^N .==--=++++++##.+:.@%**+:+%*+++-+@+-===++**=+++++=@===++===+*=+*++-*+.%0D^P|^N .++++++++++*#-.@:.@@**+#@+++=-=**+=-====*+-*+===+@**:+***+**::*@*#*+.%0D^P|^N .+++++++++**+###::@@*#-:#++==-***+====++*+-++-===@+-=#+++++***...-++.%0D^P|^N .+++++++++*-.*#+.##@+#@##=-==+%*#*=-===+*+=++-===@::**+++++**#*:-@*+.%0D^P|^N .*++++++++*###*-+@+@*%%*#=**==%***=-===+*+=*+====@:.**+++++++*#%%*++.%0D^P|^N .***+***+++*#=-+@@=@@##**====-*+**=--==+*+=**===+@===****+****+*****.%0D^P|^N .*****+*****##=%%+=#@+###++=+-***#+==+=+*=-**--++@-*#-**************.%0D^P|^N .**********##=#%**+=@#*##+=++-***#+==+++*==++:-**@:+##%=+******+*+**.%0D^P|^N .**********=-##*++-.=@+#%+-=+--@@%==++++*==++-+*#@:+****************.%0D^P|^N .::=+++*+++=--::--#@@@=#@#:==::@@%=-+++*====%#%*%@..:-+***++*+******.%0D^P|^N @@@#==-==+*%@@@@@@@@@@=#%#:::-@%@===+=+*-==-+##=@@@@@#-:-----:::::::.%0D^P|^N :*%@@@@@@@@@%%###**+*@#+#@%**%@@#+#-==+*-+-+=+%-@%*#%@@@@@@@@@@@@@@@%%0D^P|^N :%%###%%%%#########*+%@=##+-@@@%++#:-%+==+:@%:#=@%*#%%##%%%%%%%%%%%@@%0D^P|^N :%%%%%%#%%%%%%%%%@@@#@@-#%@@#*@.#*%:#+@:-=-@@=@=@@%#@@%%%%%%#%%%%@#=:%0D^P|^N .#%%%%%%%%%@@@%#**+-#@@=#*####@.@-@.@:*#::*%#+@%@@::+%@@@%%%%%%%@#**.%0D^P|^N .*##%%%%%@%#*****+*%@@@*%#++++@.%:@:*:+@**#--*@@@@@#:-==#@@@%%%%#**#.%0D^P|^N .++++#%%#***###*+#@@##*%@@@@@@@@@:@%:-+#*----::+=*@@@--+=-=#@@%#****.%0D^P|^N :%#%%%########**@@*+#@@@@%+...#%@=%@:*==#@%###*=:..=@@*=+*=-:-+#@@#*.%0D^P|^N .%@@@@@@@@@@@%%@*#@@%=:...-#@#-+#@@@@@*--+*+======-:.-@@=-=+#@@%%%%@:%0D^P|^N .*+-::....-=+@@#@@=::-=+++=--=%*=:=+:=*%#+==++++++++=::@@@@@@@@@@@@@:%0D^P|^N .@@@@%%*:....**@*:-=+++++++++======+==+==+++++++++++++=-#@...........%0D^P|^N ...-%@@@@@+.@@#@:-+++++++++++++++++**++++++++++++++++++-:@@=..::::+@:%0D^P|^N .-::.......-@%#@.=++++++++++++++++++#++++++++++++++++++=:+@@:.-==--..%0D^P|^N ............:..:..........................................-+.........
+endif
+if sex($n == M) or sex($n == O) or sex($n == U)
+mpechoat $n ^P|^N ............................................:........................%0D^P|^N ..........=.....::..............+....-....-@...............=.........%0D^P|^N .........=-......-...............@...-...@@................*::.......%0D^P|^N ............+.....................@..%.@@.................=..........%0D^P|^N .............=..@..................+.@+@.................@...........%0D^P|^N ................@..................@=@@..................@...........%0D^P|^N ................@.@::.............:.*@.@..............=#.@...........%0D^P|^N ................@.*-%*:.........-=+=-.=*@@:.=--=##@@%#**.@...........%0D^P|^N .................@:-%:@%##+@#*@*+%=-*.=.-=%*=#*:+..:++.*@............%0D^P|^N .................@.=..==:*-=%.+=:%..%=+=#-.==+++-+=*:.=.@............%0D^P|^N ..................@...+.-*=.*.+:-:=@@@@#+=.-.:.#.--.=+.@.............%0D^P|^N ....................@+........:.@@.......@@.=.......-@...............%0D^P|^N ....................+-@@@@@@@@@+*@#@@@@@@@#.@@@@@@@@:................%0D^P|^N ....................:-.@...............==.%#*:*.@....................%0D^P|^N ....................+.#@-.:.#**@@@@@@@@:....-::.@:...................%0D^P|^N ....................-.@*%=@@.............*@:.--.@....................%0D^P|^N ....................:.@:.......:-*....=+.....=%.@....................%0D^P|^N ...................=@@...................%......@....................%0D^P|^N ..................:@..............................@*.................%0D^P|^N ................::..........:....:......:.-............+=%=:.........%0D^P|^N ...............:.+..........:.::::......:-........:.:................%0D^P|^N .............:-:#...=......-.+:.::.....:.::-.......+.................%0D^P|^N ............--........@@@..@..:::-......::::.....@...@..%............%0D^P|^N ..........-.....@..@..@#+....::::.:.....:.::.....@@..@.@..@....:.....%0D^P|^N ......:.......@@..@...@@...@.::::.:.....::::-.:..@@@..@:-=-.@@.:.....%0D^P|^N .:......@....@@:..@..@*@...+.:::::......-:..=..:..@@...@#.-..........%0D^P|^N ......:+.+@@%%@..@..%*:+...@.:::.-......:.:-::.=..@%@...@:#:#=-:-.:..%0D^P|^N ...-*:*+--#:*@...@..@+@...#@..:::-:.....=..-:.#=..#@@...@#:-@-#*=-+..%0D^P|^N .=-+:*-=+--=+@..@@@%@+@...@@..:::::.....::::.+=....@@....%*:*-=.-=*=.%0D^P|^N .**=+=@#:*++%..@.@--@:@...@...:-:-:....::--:=.+....@@#.@%=#.=**===#=.%0D^P|^N .+-===.=+--+@..%:@.#-@....@.@.:::::.....-::.=.#....@%@.@*-+=*=+*-*-+.%0D^P|^N .+=+@+.#+:+%*.*@.@.%+@....@.=:..:::.:..:-..:::#....@.@..@-**.:%*.-+:.%0D^P|^N .=-+:-*-*++@..@@.@.++@....@..@-.:-.-..-::::.:.%....@:@..@-+-#::+-+==.%0D^P|^N .%-%+.*-*:+#..#:.@.=*@....@...@..:.::..:.:..=.@....@.@..@.+=+%+.%-=*.%0D^P|^N .:=-:*+--*@...#@.@-%:@....@..::@::..:..:::.=-:@....@.@..@===-:**==*+.%0D^P|^N .-%:#-.@.+.....+.@*#=@....@#.:#+.:::....:.:=-.@....@:@..**-*-+-.=:+-.%0D^P|^N .--:+:+*:@...:@.%-*:@%....@-..#-:::::.::-.:-+:@....@:@..#%=:==*+:=::.%0D^P|^N ..-==-.++....@@@=@@*+%@...-.:.+:-.:...::.:#::=@....%%@....-.*-.=-%--.%0D^P|^N .:+--....@@@@@+@..#-##+@@@@.#.#=:.:...:::.+.=#:@..@#%@+.@@@....+====.%0D^P|^N ......@@@@#@:%*@.-%+#*=+.:%..-#*-..--:-:.-#.*%.@.#@=*@#@@*@@@@-......%0D^P|^N .@@@@@@%%##%#@*@=+*+*%+#.-@.:.=+==.-:::.:*:++@-=-@%*-#:@+*%%%#@@@@@@.%0D^P|^N .#%*##%@%###%*#*@+:*++#++:@-%.@*:-......-.:==%.=-#+*-%-@*%*#@%%+#*#@.%0D^P|^N .%#%%#*#*####*%*@++*=-**+-+...++==:#:.:-:=+*+*::%*+#-*#%###+#=%*@#@+.%0D^P|^N .*#**#@*@*#@##%+@+%=%%-@*#=*==#**%....-.:==@+%.%*@=%+@@+%*@%@#%+**##.%0D^P|^N .%*#%%##*%#%*#@*@-*#-**+*##@..%=++++..+::#+*#.-@=++--:@=@#****%#@#**.%0D^P|^N .=**+##+@+*%#%*%#@:@==#+*=*+..@==#-*..#.=#=+#.##@*#%%.@+%*#*@*##=@+%.%0D^P|^N .@%**#%+%*##%#*++@-%#=##*%*#=:#*#==#:-.*-***++%*=*=+**@+####*##@+##%.%0D^P|^N .*#*#+%@*##*+%#+@:*:@+#-*+-@=:#@.%-%+@.**+@=+###+@-@-:-@%#**#*%*#@%*.%0D^P|^N .@*#@*#+%#*#*##@:%*+%@**%+*#@.=*=%=-:*=-%+@-+#+##-@=+%*:%%#*#%*%*#*#.%0D^P|^N .+=#@@=#+#%*%#==+%=@#-##*#**%*-%+%#+*@##+=*+@*%+*#@+%=@**=@@+*@%-#**.%0D^P|^N .%#+:%=***#@@*##+@**@+@+@+%++@*+++*%#:@+*#*#*+#@*++*%+#*=*=##*:%%*#*.%0D^P|^N .@+@##@*%+@==%#@%%@@@@@#%+@+%==*+@-%#%+*+#-@=@.@*@@@@@@@@@@*-@+*+*#*.%0D^P|^N .*#%-*=##@**@%--=--..:-#@@@@@+*%*+*=%+##:*=@*#@@@@@*=.*::%@@=-#%*+#@.%0D^P|^N .@:**@##%+#@+:.++...:=.....@@@@-*:@=*-%-@*@#@@%........:-..=@@-*@+*=.%0D^P|^N .#@*#=**#=%::-.:..+.-...+....*@@@*#+#%*%%@@@+..::.-..:...-.+.#@@=@=@.%0D^P|^N .#+=@-@@=##-:-:.:.::..-:.......=@@#@*#=@+@=..-....::::.::....+-@=+#%.%0D^P|^N .#+%=@-=++-.+.+--.:....:::::.=:..@%*.#*=@...:.::.:..::::.-=.-::*%-@=.%0D^P|^N .+*%-@@+==*:=-.-.-......-:::.-.:..+@@=@*...:-.:::.....:.=-=:.*++++=@.%0D^P|^N .#%#@+*+%==+-+:=.::....:::::...+:..+#+:=.--..::::....:.:-.:==.####*%.%0D^P|^N .#-=@:+++#=:=..-:..::::::....=...-.%@*:.-.-=..::.::::::.-.=:.-++-+-@.%0D^P|^N .**+@-#*=*=-=+*:-:..-.-...=...*:...%=@-@:**:-.-.:...-:..:=-.=:+=#*%%.%0D^P|^N .#@=@-@*=**=--.--.%::.-.+--@..%@@@@+..........*.=.-...-==.=#.%%:#+=@.%0D^P|^N ...................................................................:.
+endif
+endifmpechoat $n ^P| -----------------------------COMBAT-CAM------------------------------*
+mpechoat $n ^P.------------------------------------------._
+mpechoat $n ^P|  /- ^r$i
+mpechoat $n ^P|  ^W.:| ^wArousal ^p$<$i pleasureamount>^w/^P$<$i arousalcalc> ^w|:.
+mpechoat $n ^P|      ^r!!!WARNING: PREPARING TO POUND!!!
+mpechoat $n ^P|    ------------------------------------
+mpechoat $n ^P|
+mpechoat $n ^P|  /- ^w$n
+if sex($n == F)
+mpechoat $n ^P|    \^pFemale
+mpechoat $n ^P|    !! ^rCaution: Vagina penetrated by $i^r.
+ENDIF
+if sex($n == M)
+mpechoat $n ^P|    \^bMale
+mpechoat $n ^P|    !! ^rCaution: Anus penetrated by $i^r.
+ENDIF
+if sex($n == U)
+mpechoat $n ^P|    \^pFuta
+mpechoat $n ^P|    !! ^rCaution: Anus penetrated by $i^r.
+ENDIF
+if sex($n == H)
+mpechoat $n ^P|    \^pHerm
+mpechoat $n ^P|    !! ^rCaution: Vagina penetrated by $i^r.
+ENDIF
+if sex($n == A)
+mpechoat $n ^P|    \^bTrans-Male
+mpechoat $n ^P|    !! ^rCaution: Vagina penetrated by $i^r.
+ENDIF
+if sex($n == O)
+mpechoat $n ^P|    \^pTrans-Female
+mpechoat $n ^P|    !! ^rCaution: Anus penetrated by $i^r.
+ENDIF
+if var($n genitaldamage >= 190)
+mpechoat $n ^P|    |>G.STATUS: ^rAbsolutely destroyed, ripped and torn!!!^N
+else
+if var($n genitaldamage >= 170)
+mpechoat $n ^P|    |>G.STATUS: ^rAbout to rip apart!!^N
+else
+if var($n genitaldamage >= 150)
+mpechoat $n ^P|    |>G.STATUS: ^rUnrecognizable, bloody and prolapsing with thrusts.^N
+else
+if var($n genitaldamage >= 140)
+mpechoat $n ^P|    |>G.STATUS: ^rVery wounded and about to prolapse!^N
+else
+if var($n genitaldamage >= 120)
+mpechoat $n ^P|    |>G.STATUS: ^rFriction burned and wounded.^N
+else
+if var($n genitaldamage >= 100)
+mpechoat $n ^P|    |>G.STATUS: ^rLoosened and minor bleedings.^N
+else
+if var($n genitaldamage >= 80)
+mpechoat $n ^P|    |>G.STATUS: ^rSmall cuts and scrapes.^N
+else
+if var($n genitaldamage >= 60)
+mpechoat $n ^P|    |>G.STATUS: ^rMajor bruises.^N
+else
+if var($n genitaldamage >= 40)
+mpechoat $n ^P|    |>G.STATUS: ^rReddened and agitated skin.^N
+else
+if var($n genitaldamage >= 20)
+mpechoat $n ^P|    |>G.STATUS: ^rSlightly Agitated skin.^N
+endif
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+mpechoat $n ^P|
+mpechoat $n ^P|  ^W.:| ^wGeni. Damage ^r$<$n genitaldamage>^w/^R200 ^w|:.
+mpechoat $n ^P|  ^W.:| ^wEnergy ^g$<$n curenergy>^w/^G$<$n maxenergy> ^w|:.
+mpechoat $n ^P|  ^W.:| ^wArousal ^p$<$n playerpleasureamount>^w/^P$<$n playerarousalmaxcalc> ^w|:.
+mpechoat $n ^P|
+mpechoat $n ^P|  ^P(^pTact Joy^P) ^WActions:
+mpechoat $n ^P|  ^g100% ^wNothing (^g+20-35 ^r+1-15^w)
+mpechoat $n ^P|  ^y50% ^wEndure (^G-50 ^c-50% DMG^w)
+mpechoat $n ^P|  ^r25% ^wDodge (^G-150^w)
+mpechoat $n ^P|
+mpechoat $n ^P| ^WOther Actions:
+mpechoat $n ^P|  ^wStatus
+mpechoat $n ^P|  ^wHelpinfo
+mpechoat $n ^P|  ^rDismount^w
+mpechoat $n ^P.__________________________________________.-
+else
+mpechoat $n ^P| -----------------------------EXT-CLOSE-------------------------------.
+if sex($n == F) or sex($n == A) or sex($n == H)
+mpechoat $n ^P|^N .....................:.............................-.................%0D^P|^N .-:----:---:::---==-:+=..::::::::::::::::::::::...:@.-----::--------.%0D^P|^N .---:::-::----:::-=+=*@@*======------------===+*+*@+:==-::::::-:::::.%0D^P|^N .:::-:-:-::::::::::=+:.:--====-----::-:-------:=+-=:==-:::::--------.%0D^P|^N .-:----------:::::::::::::-------::+-@:--------:+...::::------------.%0D^P|^N .---------------:::-:::::-=------:*%.#-:---------:.::::-------------.%0D^P|^N .-:---------------:::::==-------:=*:==#::--------=::::--------------.%0D^P|^N .-------------------.:==-----::::*:.+.*=:---------=::---------------.%0D^P|^N .------------------::+=----=-=---%=@@-+=----=------=:----:----------.%0D^P|^N .-:----------------:=*-====-----*#...:#+::---------=-:----------::-:.%0D^P|^N .--:-::-::----====-:+*===-=---:-%..#@:+%+-----===--+=:--------::-:--.%0D^P|^N .-----::::::::::::.:#+++=--::.-#:.%@@-.*-----======*+.-------:::::--.%0D^P|^N .:--::-::::::::-:.:#+===----:=#=:@@@%%.+*---:-=---=++.:::::::-:----:.%0D^P|^N .----:--::----:..-*+==----::=*==-%:.@@-=*++=:----=-=+.::-----:::----.%0D^P|^N .-:----:::::-----===--=--:-+*-++..-#*.++:--=--------=::-:--:::------.%0D^P|^N .:-::----------:----::..:=**+%@@@%+::+@*--.:-------:-=-::------:::--.%0D^P|^N .-=-:::---::---::-::-.-:+%@#-=*+=--::.:*@@@%...:---..::-:::-::::--=:.%0D^P|^N .:--:---------::--:=*:-@@+::+*%*+*=-+#==#+-#@*-:=+-----:::::-==-----.%0D^P|^N .---:----::::::==--:.:@@+=++==+*++=+-++=%#--+@@-++=-:----==-:-------.%0D^P|^N .----:----:-===----.+@#--++=+=*#++=*.++=%#-=+=%@*:..=+=----=-:::----.%0D^P|^N .-==:::::::+=--==-:.@@===+*-+=**++=*.=++##-+*=-@#.::-+==--=-:.::::--.%0D^P|^N .==-:-=**+:--==-=-.=@*-=-=+-+=#*+++=---=#%=+#+=%@..::+====-:=+==+-::.%0D^P|^N .:::------=-.---=-.@@=-=-+=-++#=++=++:=+*#+-=++=@=.:::-:--------=-::.%0D^P|^N .=+--=-----==-==:..@=-+**%*:=*%++++#*-=+++*==++-@@.--::::--=---==+:=.%0D^P|^N .==:==------=::=..=@===-=*##-:=+++=+.=-+*++=-++-#@.::-==-::======+-+.%0D^P|^N .=+-=-===---=-:--=@@+++-=+-=%%=-*==#.==+*=+=-=+-+@...#.::::======+-=.%0D^P|^N .====-====--==.+@-@*=*+-=*=--@%-=++#.==+#**+=+*==@#=:*.**+--++==++-=.%0D^P|^N .=+---====--==:*+=@*+*+:=*==:#@==*-*=+=+*++=-===-@+#%:#****-+++++=-=.%0D^P|^N .=%@%-======+=:-##@**#*-=%+--#*:#%-=-===++*++==--@--+:+++++==+++*.=+.%0D^P|^N .==--=++++++##.+:.@%**+:+%*+++-+@+-===++**=+++++=@===++===+*=+*++-*+.%0D^P|^N .++++++++++*#-.@:.@@**+#@+++=-=**+=-====*+-*+===+@**:+***+**::*@*#*+.%0D^P|^N .+++++++++**+###::@@*#-:#++==-***+====++*+-++-===@+-=#+++++***...-++.%0D^P|^N .+++++++++*-.*#+.##@+#@##=-==+%*#*=-===+*+=++-===@::**+++++**#*:-@*+.%0D^P|^N .*++++++++*###*-+@+@*%%*#=**==%***=-===+*+=*+====@:.**+++++++*#%%*++.%0D^P|^N .***+***+++*#=-+@@=@@##**====-*+**=--==+*+=**===+@===****+****+*****.%0D^P|^N .*****+*****##=%%+=#@+###++=+-***#+==+=+*=-**--++@-*#-**************.%0D^P|^N .**********##=#%**+=@#*##+=++-***#+==+++*==++:-**@:+##%=+******+*+**.%0D^P|^N .**********=-##*++-.=@+#%+-=+--@@%==++++*==++-+*#@:+****************.%0D^P|^N .::=+++*+++=--::--#@@@=#@#:==::@@%=-+++*====%#%*%@..:-+***++*+******.%0D^P|^N @@@#==-==+*%@@@@@@@@@@=#%#:::-@%@===+=+*-==-+##=@@@@@#-:-----:::::::.%0D^P|^N :*%@@@@@@@@@%%###**+*@#+#@%**%@@#+#-==+*-+-+=+%-@%*#%@@@@@@@@@@@@@@@%%0D^P|^N :%%###%%%%#########*+%@=##+-@@@%++#:-%+==+:@%:#=@%*#%%##%%%%%%%%%%%@@%0D^P|^N :%%%%%%#%%%%%%%%%@@@#@@-#%@@#*@.#*%:#+@:-=-@@=@=@@%#@@%%%%%%#%%%%@#=:%0D^P|^N .#%%%%%%%%%@@@%#**+-#@@=#*####@.@-@.@:*#::*%#+@%@@::+%@@@%%%%%%%@#**.%0D^P|^N .*##%%%%%@%#*****+*%@@@*%#++++@.%:@:*:+@**#--*@@@@@#:-==#@@@%%%%#**#.%0D^P|^N .++++#%%#***###*+#@@##*%@@@@@@@@@:@%:-+#*----::+=*@@@--+=-=#@@%#****.%0D^P|^N :%#%%%########**@@*+#@@@@%+...#%@=%@:*==#@%###*=:..=@@*=+*=-:-+#@@#*.%0D^P|^N .%@@@@@@@@@@@%%@*#@@%=:...-#@#-+#@@@@@*--+*+======-:.-@@=-=+#@@%%%%@:%0D^P|^N .*+-::....-=+@@#@@=::-=+++=--=%*=:=+:=*%#+==++++++++=::@@@@@@@@@@@@@:%0D^P|^N .@@@@%%*:....**@*:-=+++++++++======+==+==+++++++++++++=-#@...........%0D^P|^N ...-%@@@@@+.@@#@:-+++++++++++++++++**++++++++++++++++++-:@@=..::::+@:%0D^P|^N .-::.......-@%#@.=++++++++++++++++++#++++++++++++++++++=:+@@:.-==--..%0D^P|^N ............:..:..........................................-+.........
+endif
+if sex($n == M) or sex($n == O) or sex($n == U)
+mpechoat $n ^P|^N ............................................:........................%0D^P|^N ..........=.....::..............+....-....-@...............=.........%0D^P|^N .........=-......-...............@...-...@@................*::.......%0D^P|^N ............+.....................@..%.@@.................=..........%0D^P|^N .............=..@..................+.@+@.................@...........%0D^P|^N ................@..................@=@@..................@...........%0D^P|^N ................@.@::.............:.*@.@..............=#.@...........%0D^P|^N ................@.*-%*:.........-=+=-.=*@@:.=--=##@@%#**.@...........%0D^P|^N .................@:-%:@%##+@#*@*+%=-*.=.-=%*=#*:+..:++.*@............%0D^P|^N .................@.=..==:*-=%.+=:%..%=+=#-.==+++-+=*:.=.@............%0D^P|^N ..................@...+.-*=.*.+:-:=@@@@#+=.-.:.#.--.=+.@.............%0D^P|^N ....................@+........:.@@.......@@.=.......-@...............%0D^P|^N ....................+-@@@@@@@@@+*@#@@@@@@@#.@@@@@@@@:................%0D^P|^N ....................:-.@...............==.%#*:*.@....................%0D^P|^N ....................+.#@-.:.#**@@@@@@@@:....-::.@:...................%0D^P|^N ....................-.@*%=@@.............*@:.--.@....................%0D^P|^N ....................:.@:.......:-*....=+.....=%.@....................%0D^P|^N ...................=@@...................%......@....................%0D^P|^N ..................:@..............................@*.................%0D^P|^N ................::..........:....:......:.-............+=%=:.........%0D^P|^N ...............:.+..........:.::::......:-........:.:................%0D^P|^N .............:-:#...=......-.+:.::.....:.::-.......+.................%0D^P|^N ............--........@@@..@..:::-......::::.....@...@..%............%0D^P|^N ..........-.....@..@..@#+....::::.:.....:.::.....@@..@.@..@....:.....%0D^P|^N ......:.......@@..@...@@...@.::::.:.....::::-.:..@@@..@:-=-.@@.:.....%0D^P|^N .:......@....@@:..@..@*@...+.:::::......-:..=..:..@@...@#.-..........%0D^P|^N ......:+.+@@%%@..@..%*:+...@.:::.-......:.:-::.=..@%@...@:#:#=-:-.:..%0D^P|^N ...-*:*+--#:*@...@..@+@...#@..:::-:.....=..-:.#=..#@@...@#:-@-#*=-+..%0D^P|^N .=-+:*-=+--=+@..@@@%@+@...@@..:::::.....::::.+=....@@....%*:*-=.-=*=.%0D^P|^N .**=+=@#:*++%..@.@--@:@...@...:-:-:....::--:=.+....@@#.@%=#.=**===#=.%0D^P|^N .+-===.=+--+@..%:@.#-@....@.@.:::::.....-::.=.#....@%@.@*-+=*=+*-*-+.%0D^P|^N .+=+@+.#+:+%*.*@.@.%+@....@.=:..:::.:..:-..:::#....@.@..@-**.:%*.-+:.%0D^P|^N .=-+:-*-*++@..@@.@.++@....@..@-.:-.-..-::::.:.%....@:@..@-+-#::+-+==.%0D^P|^N .%-%+.*-*:+#..#:.@.=*@....@...@..:.::..:.:..=.@....@.@..@.+=+%+.%-=*.%0D^P|^N .:=-:*+--*@...#@.@-%:@....@..::@::..:..:::.=-:@....@.@..@===-:**==*+.%0D^P|^N .-%:#-.@.+.....+.@*#=@....@#.:#+.:::....:.:=-.@....@:@..**-*-+-.=:+-.%0D^P|^N .--:+:+*:@...:@.%-*:@%....@-..#-:::::.::-.:-+:@....@:@..#%=:==*+:=::.%0D^P|^N ..-==-.++....@@@=@@*+%@...-.:.+:-.:...::.:#::=@....%%@....-.*-.=-%--.%0D^P|^N .:+--....@@@@@+@..#-##+@@@@.#.#=:.:...:::.+.=#:@..@#%@+.@@@....+====.%0D^P|^N ......@@@@#@:%*@.-%+#*=+.:%..-#*-..--:-:.-#.*%.@.#@=*@#@@*@@@@-......%0D^P|^N .@@@@@@%%##%#@*@=+*+*%+#.-@.:.=+==.-:::.:*:++@-=-@%*-#:@+*%%%#@@@@@@.%0D^P|^N .#%*##%@%###%*#*@+:*++#++:@-%.@*:-......-.:==%.=-#+*-%-@*%*#@%%+#*#@.%0D^P|^N .%#%%#*#*####*%*@++*=-**+-+...++==:#:.:-:=+*+*::%*+#-*#%###+#=%*@#@+.%0D^P|^N .*#**#@*@*#@##%+@+%=%%-@*#=*==#**%....-.:==@+%.%*@=%+@@+%*@%@#%+**##.%0D^P|^N .%*#%%##*%#%*#@*@-*#-**+*##@..%=++++..+::#+*#.-@=++--:@=@#****%#@#**.%0D^P|^N .=**+##+@+*%#%*%#@:@==#+*=*+..@==#-*..#.=#=+#.##@*#%%.@+%*#*@*##=@+%.%0D^P|^N .@%**#%+%*##%#*++@-%#=##*%*#=:#*#==#:-.*-***++%*=*=+**@+####*##@+##%.%0D^P|^N .*#*#+%@*##*+%#+@:*:@+#-*+-@=:#@.%-%+@.**+@=+###+@-@-:-@%#**#*%*#@%*.%0D^P|^N .@*#@*#+%#*#*##@:%*+%@**%+*#@.=*=%=-:*=-%+@-+#+##-@=+%*:%%#*#%*%*#*#.%0D^P|^N .+=#@@=#+#%*%#==+%=@#-##*#**%*-%+%#+*@##+=*+@*%+*#@+%=@**=@@+*@%-#**.%0D^P|^N .%#+:%=***#@@*##+@**@+@+@+%++@*+++*%#:@+*#*#*+#@*++*%+#*=*=##*:%%*#*.%0D^P|^N .@+@##@*%+@==%#@%%@@@@@#%+@+%==*+@-%#%+*+#-@=@.@*@@@@@@@@@@*-@+*+*#*.%0D^P|^N .*#%-*=##@**@%--=--..:-#@@@@@+*%*+*=%+##:*=@*#@@@@@*=.*::%@@=-#%*+#@.%0D^P|^N .@:**@##%+#@+:.++...:=.....@@@@-*:@=*-%-@*@#@@%........:-..=@@-*@+*=.%0D^P|^N .#@*#=**#=%::-.:..+.-...+....*@@@*#+#%*%%@@@+..::.-..:...-.+.#@@=@=@.%0D^P|^N .#+=@-@@=##-:-:.:.::..-:.......=@@#@*#=@+@=..-....::::.::....+-@=+#%.%0D^P|^N .#+%=@-=++-.+.+--.:....:::::.=:..@%*.#*=@...:.::.:..::::.-=.-::*%-@=.%0D^P|^N .+*%-@@+==*:=-.-.-......-:::.-.:..+@@=@*...:-.:::.....:.=-=:.*++++=@.%0D^P|^N .#%#@+*+%==+-+:=.::....:::::...+:..+#+:=.--..::::....:.:-.:==.####*%.%0D^P|^N .#-=@:+++#=:=..-:..::::::....=...-.%@*:.-.-=..::.::::::.-.=:.-++-+-@.%0D^P|^N .**+@-#*=*=-=+*:-:..-.-...=...*:...%=@-@:**:-.-.:...-:..:=-.=:+=#*%%.%0D^P|^N .#@=@-@*=**=--.--.%::.-.+--@..%@@@@+..........*.=.-...-==.=#.%%:#+=@.%0D^P|^N ...................................................................:.
+endif
+mpechoat $n ^P| -----------------------------COMBAT-CAM------------------------------*
+mpechoat $n ^P.------------------------------------------._
+mpechoat $n ^P|  /- ^r$i
+mpechoat $n ^P|  ^W.:| ^wArousal ^p$<$i pleasureamount>^w/^P$<$i arousalcalc> ^w|:.
+mpechoat $n ^P|      ^r!!!WARNING: PREPARING TO POUND!!!
+mpechoat $n ^P|    ------------------------------------
+mpechoat $n ^P|
+mpechoat $n ^P|  /- ^w$n
+if sex($n == F)
+mpechoat $n ^P|    \^pFemale
+mpechoat $n ^P|    !! ^rCaution: Vagina penetrated by $i^r.
+ENDIF
+if sex($n == M)
+mpechoat $n ^P|    \^bMale
+mpechoat $n ^P|    !! ^rCaution: Anus penetrated by $i^r.
+ENDIF
+if sex($n == U)
+mpechoat $n ^P|    \^pFuta
+mpechoat $n ^P|    !! ^rCaution: Anus penetrated by $i^r.
+ENDIF
+if sex($n == H)
+mpechoat $n ^P|    \^pHerm
+mpechoat $n ^P|    !! ^rCaution: Vagina penetrated by $i^r.
+ENDIF
+if sex($n == A)
+mpechoat $n ^P|    \^bTrans-Male
+mpechoat $n ^P|    !! ^rCaution: Vagina penetrated by $i^r.
+ENDIF
+if sex($n == O)
+mpechoat $n ^P|    \^pTrans-Female
+mpechoat $n ^P|    !! ^rCaution: Anus penetrated by $i^r.
+ENDIF
+if var($n genitaldamage >= 190)
+mpechoat $n ^P|    |>G.STATUS: ^rAbsolutely destroyed, ripped and torn!!!^N
+else
+if var($n genitaldamage >= 170)
+mpechoat $n ^P|    |>G.STATUS: ^rAbout to rip apart!!^N
+else
+if var($n genitaldamage >= 150)
+mpechoat $n ^P|    |>G.STATUS: ^rUnrecognizable, bloody and prolapsing with thrusts.^N
+else
+if var($n genitaldamage >= 140)
+mpechoat $n ^P|    |>G.STATUS: ^rVery wounded and about to prolapse!^N
+else
+if var($n genitaldamage >= 120)
+mpechoat $n ^P|    |>G.STATUS: ^rFriction burned and wounded.^N
+else
+if var($n genitaldamage >= 100)
+mpechoat $n ^P|    |>G.STATUS: ^rLoosened and minor bleedings.^N
+else
+if var($n genitaldamage >= 80)
+mpechoat $n ^P|    |>G.STATUS: ^rSmall cuts and scrapes.^N
+else
+if var($n genitaldamage >= 60)
+mpechoat $n ^P|    |>G.STATUS: ^rMajor bruises.^N
+else
+if var($n genitaldamage >= 40)
+mpechoat $n ^P|    |>G.STATUS: ^rReddened and agitated skin.^N
+else
+if var($n genitaldamage >= 20)
+mpechoat $n ^P|    |>G.STATUS: ^rSlightly Agitated skin.^N
+endif
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+ENDIF
+mpechoat $n ^P|
+mpechoat $n ^P|  ^W.:| ^wGeni. Damage ^r$<$n genitaldamage>^w/^R100 ^w|:.
+mpechoat $n ^P|  ^W.:| ^wEnergy ^g$<$n curenergy>^w/^G$<$n maxenergy> ^w|:.
+mpechoat $n ^P|  ^W.:| ^wArousal ^p$<$n playerpleasureamount>^w/^P$<$n playerarousalmaxcalc> ^w|:.
+mpechoat $n ^P|
+mpechoat $n ^P|  ^WPossible Actions:
+mpechoat $n ^P|  ^g100% ^wNothing (^g+Energy ^g+Geni.HP^w)
+mpechoat $n ^P|  ^y50% ^wEndure (^G-Energy^w ^c+BLOCK^w)
+mpechoat $n ^P|  ^r25% ^wDodge (^G--Energy^w)
+mpechoat $n ^P|
+mpechoat $n ^P| ^WOther Actions:
+mpechoat $n ^P|  ^wStatus
+mpechoat $n ^P|  ^wHelpinfo
+mpechoat $n ^P|  ^rDismount^w
+mpechoat $n ^P.__________________________________________.-
+endif
+endif
+endif
+return cancel
+~

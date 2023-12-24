@@ -9,5 +9,10 @@ CoffeeMud is based on concepts borrowed from AD&D, and
 observed in such popular muds as ROM.
 
 Long live text-based mudding!
+--
+Secret of Life MUD Credits
+Hosted by pocketmud.com
+SoL Created by Vide Noir (Moonbeam)
 
-
+To see the immortal list use ^cWIZLIST^N
+--

@@ -1,0 +1,90 @@
+##Age
+cnclmsg_prog HUH p charedit age
+mpprompt $n AGESET ^#111a bodiless feminine voice asks "^#135How old are you?^#111"^w
+if var($n AGESET < 800)
+if var($n AGESET > 8)
+mpset $n AGE $<$n AGESET>
+mpechoat $n ^#135Age set to ^#155$<$n AGESET>.^w
+else
+mpechoat $n ^#111a bodiless feminine voice says "^#135Do not fool me, You can't be that young... Try again.^#111"^N
+else
+mpechoat $n ^#111a bodiless feminine voice says "^#135Do not fool me, You can't be that old... Try again.^#111"^N
+endif
+endif
+return cancel
+~
+
+##Height
+cnclmsg_prog HUH p charedit height
+mpprompt $n HEIGHTSET ^#111a bodyless feminine voice asks "^#135How tall are you?^#111"^w
+if var($n HEIGHTSET > 10)
+if var($n HEIGHTSET < 100)
+mpset $n HEIGHT $<$n HEIGHTSET>
+mpechoat $n ^#135Height set to ^#155$<$n HEIGHTSET>.^w
+else
+mpechoat $n ^#111a bodiless feminine voice says "^#135Do not fool me, That is not possible... Try again.^#111"^w
+else
+mpechoat $n ^#111a bodiless feminine voice says "^#135Do not fool me, That is not possible... Try again.^#111"^w
+endif
+endif
+return cancel
+~
+
+##Weight
+cnclmsg_prog HUH p charedit weight
+mpprompt $n WEIGHTSET ^#111a bodiless feminine voice asks "^#135How much do you weight?^#111"^w
+if var($n WEIGHTSET > 10)
+if var($n WEIGHTSET < 530)
+mpset $n WEIGHT $<$n WEIGHTSET>
+mpechoat $n ^#135Weight set to ^#155$<$n WEIGHTSET>.^w
+else
+mpechoat $n ^#111a bodiless feminine voice says "^#135Do not fool me, You can not weight that... Try again.^#111"^w
+else
+mpechoat $n ^#111a bodiless feminine voice says "^#135Do not fool me, You can not weight that... Try again.^#111"^w
+endif
+endif
+return cancel
+~
+
+##Gender - Does not work.
+##imask_prog p charedit gender
+##mpprompt $n GENDERSET ^#111a bodyless feminine voice asks "^#135What is your gender?^#111"^w (M/F/N)
+##if var($n GENDERSET = F)
+## mpset $n GENDER 1
+## mpechoat $n ^#135Set to ^#155FEMALE.^w
+##  else
+##   if var($n GENDERSET = M)
+##    mpset $n GENDER 2
+##    mpechoat $n ^#135Set to ^#155MALE.^w
+##     else
+##      if var($n GENDERSET = N)
+##      mpset $n GENDER 0
+##      mpechoat $n ^#135Set to ^#155NEUTER.^w
+##       else
+##       if var($n GENDERSET = f)
+##        mpset $n GENDER 1
+##        mpechoat $n ^#135Set to ^#155FEMALE.^w
+##         else
+##          if var($n GENDERSET = m)
+##           mpset $n GENDER 2
+##           mpechoat $n ^#135Set to ^#155MALE.^w
+##            else
+##             if var($n GENDERSET = m)
+##             mpset $n GENDER 0
+##             mpechoat $n ^#135Set to ^#155NEUTER.^w
+##              else
+##               mpechoat $n ^#111a bodyless feminine voice says "^#135That was ^#500not ^#135an option... Try again...^#111"^w
+##                endif
+##                endif
+##                endif
+##                endif
+##                endif
+##                endif
+##~
+
+##Short - Players dont have display or it doesn't just work.
+##imask_prog p charedit short
+##mpprompt $n SHORT ^#111a bodyless feminine voice asks "^#135What do you look like at first glance?^#111"^w
+##mpset $n DISPLAY ("a" + $<$n SHORT> + " ^#111(^w+"$n"+^#111)^w")
+##mpechoat $n ^#135Short set to ^#155a $<$n SHORT> ^#111(^w+"$n"+^#111)^w.
+##~

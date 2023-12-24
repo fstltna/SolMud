@@ -1,0 +1,51 @@
+UPDATE CMBKLG SET CMDATE=60977 WHERE CMNAME='MUSIC' AND CMINDX = 0	!|!	com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 8,001 milliseconds ago.  The last packet sent successfully to the server was 3 milliseconds ago.	!|!	1
+UPDATE CMBKLG SET CMDATE=60978 WHERE CMNAME='MUSIC' AND CMINDX = 0	!|!	com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 8,081 milliseconds ago.  The last packet sent successfully to the server was 83 milliseconds ago.	!|!	1
+UPDATE CMBKLG SET CMDATE=145094 WHERE CMNAME='MUSIC' AND CMINDX = 0	!|!	com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 20,005 milliseconds ago.  The last packet sent successfully to the server was 5 milliseconds ago.	!|!	1
+UPDATE CMBKLG SET CMDATE=145095 WHERE CMNAME='MUSIC' AND CMINDX = 0	!|!	com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 20,053 milliseconds ago.  The last packet sent successfully to the server was 53 milliseconds ago.	!|!	1
+UPDATE CMBKLG SET CMDATE=145096 WHERE CMNAME='MUSIC' AND CMINDX = 0	!|!	com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 27,999 milliseconds ago.  The last packet sent successfully to the server was 7,999 milliseconds ago.	!|!	1
+UPDATE CMBKLG SET CMDATE=145097 WHERE CMNAME='MUSIC' AND CMINDX = 0	!|!	com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 28,007 milliseconds ago.  The last packet sent successfully to the server was 8,007 milliseconds ago.	!|!	1
+UPDATE CMBKLG SET CMDATE=145098 WHERE CMNAME='MUSIC' AND CMINDX = 0	!|!	com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 35,999 milliseconds ago.  The last packet sent successfully to the server was 15,999 milliseconds ago.	!|!	1
+UPDATE CMBKLG SET CMDATE=145099 WHERE CMNAME='MUSIC' AND CMINDX = 0	!|!	com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 36,012 milliseconds ago.  The last packet sent successfully to the server was 16,012 milliseconds ago.	!|!	1
+UPDATE CMBKLG SET CMDATE=145100 WHERE CMNAME='MUSIC' AND CMINDX = 0	!|!	com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 44,000 milliseconds ago.  The last packet sent successfully to the server was 24,000 milliseconds ago.	!|!	1
+UPDATE CMBKLG SET CMDATE=145101 WHERE CMNAME='MUSIC' AND CMINDX = 0	!|!	com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 44,026 milliseconds ago.  The last packet sent successfully to the server was 24,026 milliseconds ago.	!|!	1
+UPDATE CMBKLG SET CMDATE=145102 WHERE CMNAME='MUSIC' AND CMINDX = 0	!|!	com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 52,000 milliseconds ago.  The last packet sent successfully to the server was 32,000 milliseconds ago.	!|!	1
+UPDATE CMBKLG SET CMDATE=145103 WHERE CMNAME='MUSIC' AND CMINDX = 0	!|!	com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 52,016 milliseconds ago.  The last packet sent successfully to the server was 32,016 milliseconds ago.	!|!	1
+UPDATE CMBKLG SET CMDATE=145104 WHERE CMNAME='MUSIC' AND CMINDX = 0	!|!	com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 60,000 milliseconds ago.  The last packet sent successfully to the server was 40,000 milliseconds ago.	!|!	1
+UPDATE CMBKLG SET CMDATE=145105 WHERE CMNAME='MUSIC' AND CMINDX = 0	!|!	com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 60,002 milliseconds ago.  The last packet sent successfully to the server was 40,002 milliseconds ago.	!|!	1
+UPDATE CMBKLG SET CMDATE=145106 WHERE CMNAME='MUSIC' AND CMINDX = 0	!|!	com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 67,999 milliseconds ago.  The last packet sent successfully to the server was 47,999 milliseconds ago.	!|!	1
+UPDATE CMBKLG SET CMDATE=145107 WHERE CMNAME='MUSIC' AND CMINDX = 0	!|!	com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 68,004 milliseconds ago.  The last packet sent successfully to the server was 48,004 milliseconds ago.	!|!	1
+UPDATE CMBKLG SET CMDATE=145108 WHERE CMNAME='MUSIC' AND CMINDX = 0	!|!	com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 76,000 milliseconds ago.  The last packet sent successfully to the server was 56,000 milliseconds ago.	!|!	1

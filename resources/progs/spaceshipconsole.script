@@ -1,0 +1,469 @@
+## Made by VideNoir - Secret of Life MUD on CoffeeMud v5.10.1
+##
+##
+once_prog
+mpsetvar $i powerswitch 0
+mpgset $i description '^W._____________________________________.%0D|                                     |%0D|                                     |%0D|                                     |%0D|                                     |%0D|                                     |%0D|                                     |%0D|                                     |%0D|                                     |%0D|                                     |%0D|                                     |%0D|                                     |%0D|                                     |%0D|                                     |%0D|                                     |%0D|_______________________________[^R(|)^W]_|^N%0D ^cCONSOLE ON^N to turn it on.'
+mpsavevar $i powerswitch
+mploadvar $i landed
+mploadvar $i shipparkedloc
+mploadvar $i claimer
+~
+
+cnclmsg_prog huh p console off
+mploadvar $i powerswitch
+if var($i powerswitch == 1)
+mpecho $n presses the power button on $i
+mpecho $i's fans stop whirring as it dies down.
+mpsetvar $i powerswitch 0
+mpsavevar $i powerswitch
+mpgset $i description '^W._____________________________________.%0D|                                     |%0D|                                     |%0D|                                     |%0D|                                     |%0D|                                     |%0D|                                     |%0D|                                     |%0D|                                     |%0D|                                     |%0D|                                     |%0D|                                     |%0D|                                     |%0D|                                     |%0D|                                     |%0D|_______________________________[^R(|)^W]_|^N%0D ^cCONSOLE ON^N to turn it on.'
+else
+mpechoat $n $i is already turned off.
+endif
+return cancel
+~
+
+##toggles console on CONSOLE ON
+cnclmsg_prog huh p console on
+mploadvar $i powerswitch
+if var($i powerswitch != 1)
+mpecho $n presses the power button on $i
+mpecho $i whirrs a little while powering up.
+mpsetvar $i powerswitch 1
+mpsavevar $i powerswitch
+mpgset $i description '^b._____________________________________.%0D|                                     |%0D|  ^gAvailable commands :  ^b             |%0D|                                     |%0D|   ^g [Takeoff]^b                        |%0D|    ^g[Destination]^b                    |%0D|     \_ ^g[Phantom ] ^b| ^#111[Angelic ]^b      |%0D|     |_ ^g[Moon    ] ^b| ^r[Novamed ]^b      |%0D|     |_ ^g[Wayshore] ^b| ^g[Frozen  ]^b      |%0D|     |_ ^R[Epsilon ] ^b| ^g[Glimmer ]^b      |%0D|     |_ ^g[Stellar ] ^b| ^g[Nomans  ]^b      |%0D|                                     |%0D|              ^g[EXITSHIP]^b             |%0D|   ^g[Console OFF] [Claim] [Unclaim]^b   |%0D|                   NTC NAVI-TEK v1.1 |%0D|_______________________________[^G(|)^b]_|^N'
+else
+mpechoat $n $i is already turned on.
+endif
+return cancel
+~
+
+cnclmsg_prog huh p takeoff
+mploadvar $i landed
+mploadvar $i powerswitch
+mploadvar $n claimer
+if var($i claimer == '$n')
+if var($i landed == 1)
+if var($i powerswitch == 1)
+mpecho ^p$n taps a button on the console and the thrusters begin to hum to life...^N
+mpalarm 1 ^pthe ship's thrusters roar to life as the pilot AI begins to undock and lift off...^N
+mpalarm 3 ^pthe ship lifts off as the gravity feels heavier on the feet as it goes up for a while.^N
+mpalarm 4 ^pthe ship
+mpsetvar $i landed 0
+mpsetvar $n shipparkedloc 0
+mpsavevar $i landed
+mpsavevar $n shipparkedloc
+mpsetvar $i shipparkedloc 0
+mpsavevar $i shipparkedloc
+mpecho $n takes the ship off
+else
+mpechoat $n $i is not turned on.
+endif
+else
+mpechoat $n Ship is not landed.
+endif
+else
+mpechoat $n This is not your ship
+endif
+return cancel
+~
+
+cnclmsg_prog huh p claim
+mploadvar $i claimed
+mploadvar $n claimer
+mploadvar claimedaship
+if var ($n claimedaship != 1)
+if var($i claimed != 1)
+mpsetvar $i landed 1
+mpsavevar $i landed
+mpsetvar $i claimed 1
+mpsavevar $i claimed
+mpsetvar $i claimer $n
+mpsavevar $i claimer
+mpsetvar $n claimedaship 1
+mpsavevar $n claimedaship
+mpsetvar $n claimedshiploc '$%INROOM($i)%'
+mpsavevar $n claimedshiploc
+mpecho $n claims this ship.
+else
+mpechoat $n This ship is already claimed.
+endif
+else
+mpechoat $n You already own a ship.
+endif
+return cancel
+~
+
+cnclmsg_prog huh p unclaim
+mploadvar $i claimed
+mploadvar $i claimer
+if var ($i claimer == $n)
+if var($i claimed == 1)
+mpsetvar $i claimed 0
+mpsavevar $i claimed
+mpsetvar $n claimedshiploc 0
+mpsavevar $n claimedshiploc
+mpsetvar $n claimedaship 0
+mpsavevar $n claimedaship
+mpsetvar $i claimer '$n'
+mpsavevar $i claimer
+mpecho $n unclaims this ship.
+else
+mpechoat $n This ship is already unclaimed.
+endif
+else
+mpechoat $n You don't own a ship at all.
+endif
+return cancel
+~
+
+cnclmsg_prog huh p debugclearclaim
+mpsetvar $i claimed 0
+mpsavevar $i claimed
+mpsetvar $n claimedaship 0
+mpsavevar $n claimedaship
+mpsetvar $n claimedshiploc 0
+mpsavevar $n claimedshiploc
+mpsetvar $i claimer '$n'
+mpsavevar $i claimer
+mpecho $n unclaims this ship.
+return cancel
+~
+
+cnclmsg_prog huh p destination phantom
+mploadvar $n claimedshiploc
+mploadvar $n claimer
+if var($i powerswitch == 1)
+if var($i landed != 1)
+if var($i claimer == '$n')
+mpecho ^p$n taps a button on the console and the thrusters begin to hum to life...^N
+mpalarm 1 ^pthe ship's thrusters roar to life as the pilot AI begins to move the ship...^N
+mpalarm 3 ^pthe ship begins to turn and move in some directions, slightly swaying everything unbolted to the opposite directions as it aligns itself to the destination.^N
+mpalarm 3 ^pa synthetic voice is heard in the ship ^w'Preparing for jump to the destination, please secure yourself to the ship.'^N
+mpalarm 5 ^pthe ship recoils for a moment then a sudden force pushes everything not bound towards the back of the ship with massive force, then it settles down as the ship travels faster than light.^N
+mpalarm 8 ^pa synthetic voice is heard in the ship ^w'Exiting Jump momentarily, please make sure you are secured.'^N
+mpalarm 10 ^pEverything unbolted in the ship recoils forward as the ship stops in an instant, at orbit above the destination.^N
+mpalarm 11 ^pThe ship begins to descend rapidly but controlledly, lowering itself to the landing zone.^N
+mpalarm 13 ^pThe ship's thrusters power up further as the gravity kicks in more and more as it approaches the ground, slowing down as it begins to land... And with a soft touch down it is landed.^N
+mpalarm 14 ^pThe door of the ship opens slowly, providing a ramp to leave and enter the ship, in it's place a hardlight shield activates, maintaining atmosphere in the ship.
+mpalarm 15 ^pa synthetic voice is heard in the ship ^w'Landing complete.'^N
+mpalarm 15 mpsetvar $i landed 1
+mpalarm 15 mpsavevar $i landed
+mpalarm 15 mpsetvar $n shipparkedloc 'Phantom City#156'
+mpalarm 15 mpsavevar $n shipparkedloc
+mpalarm 15 mpsetvar $i shipparkedloc 'Phantom City#156'
+mpalarm 15 mpsavevar $i shipparkedloc
+else
+mpechoat $n This is not your ship.
+endif
+else
+mpechoat $n You need to take off first.
+endif
+else
+mpechoat $n The console is not on.
+endif
+return cancel
+~
+
+cnclmsg_prog huh p destination moon
+mploadvar $n claimedshiploc
+mploadvar $n claimer
+if var($i powerswitch == 1)
+if var($i landed != 1)
+if var($i claimer == '$n')
+mpecho ^p$n taps a button on the console and the thrusters begin to hum to life...^N
+mpalarm 1 ^pthe ship's thrusters roar to life as the pilot AI begins to move the ship...^N
+mpalarm 3 ^pthe ship begins to turn and move in some directions, slightly swaying everything unbolted to the opposite directions as it aligns itself to the destination.^N
+mpalarm 3 ^pa synthetic voice is heard in the ship ^w'Preparing for jump to the destination, please secure yourself to the ship.'^N
+mpalarm 5 ^pthe ship recoils for a moment then a sudden force pushes everything not bound towards the back of the ship with massive force, then it settles down as the ship travels faster than light.^N
+mpalarm 8 ^pa synthetic voice is heard in the ship ^w'Exiting Jump momentarily, please make sure you are secured.'^N
+mpalarm 10 ^pEverything unbolted in the ship recoils forward as the ship stops in an instant, at orbit above the destination.^N
+mpalarm 11 ^pThe ship begins to descend rapidly but controlledly, lowering itself to the landing zone.^N
+mpalarm 13 ^pThe ship's thrusters power up further as the gravity kicks in more and more as it approaches the ground, slowing down as it begins to land... And with a soft touch down it is landed.^N
+mpalarm 14 ^pThe door of the ship opens slowly, providing a ramp to leave and enter the ship, in it's place a hardlight shield activates, maintaining atmosphere in the ship.
+mpalarm 15 ^pa synthetic voice is heard in the ship ^w'Landing complete.'^N
+mpalarm 15 mpsetvar $i landed 1
+mpalarm 15 mpsavevar $i landed
+mpalarm 15 mpsetvar $n shipparkedloc 'moon#0'
+mpalarm 15 mpsavevar $n shipparkedloc
+mpalarm 15 mpsetvar $i shipparkedloc 'moon#0'
+mpalarm 15 mpsavevar $i shipparkedloc
+else
+mpechoat $n This is not your ship.
+endif
+else
+mpechoat $n You need to take off first.
+endif
+else
+mpechoat $n The console is not on.
+endif
+return cancel
+~
+
+cnclmsg_prog huh p destination wayshore
+mploadvar $n claimedshiploc
+mploadvar $n claimer
+if var($i powerswitch == 1)
+if var($i landed != 1)
+if var($i claimer == '$n')
+mpecho ^p$n taps a button on the console and the thrusters begin to hum to life...^N
+mpalarm 1 ^pthe ship's thrusters roar to life as the pilot AI begins to move the ship...^N
+mpalarm 3 ^pthe ship begins to turn and move in some directions, slightly swaying everything unbolted to the opposite directions as it aligns itself to the destination.^N
+mpalarm 3 ^pa synthetic voice is heard in the ship ^w'Preparing for jump to the destination, please secure yourself to the ship.'^N
+mpalarm 5 ^pthe ship recoils for a moment then a sudden force pushes everything not bound towards the back of the ship with massive force, then it settles down as the ship travels faster than light.^N
+mpalarm 8 ^pa synthetic voice is heard in the ship ^w'Exiting Jump momentarily, please make sure you are secured.'^N
+mpalarm 10 ^pEverything unbolted in the ship recoils forward as the ship stops in an instant, at orbit above the destination.^N
+mpalarm 11 ^pThe ship begins to descend rapidly but controlledly, lowering itself to the landing zone.^N
+mpalarm 13 ^pThe ship's thrusters power up further as the gravity kicks in more and more as it approaches the ground, slowing down as it begins to land... And with a soft touch down it is landed.^N
+mpalarm 14 ^pThe door of the ship opens slowly, providing a ramp to leave and enter the ship, in it's place a hardlight shield activates, maintaining atmosphere in the ship.
+mpalarm 15 ^pa synthetic voice is heard in the ship ^w'Landing complete.'^N
+mpalarm 15 mpsetvar $i landed 1
+mpalarm 15 mpsavevar $i landed
+mpalarm 15 mpsetvar $n shipparkedloc 'Wayshore#317'
+mpalarm 15 mpsavevar $n shipparkedloc
+mpalarm 15 mpsetvar $i shipparkedloc 'Wayshore#317'
+mpalarm 15 mpsavevar $i shipparkedloc
+else
+mpechoat $n This is not your ship.
+endif
+else
+mpechoat $n You need to take off first.
+endif
+else
+mpechoat $n The console is not on.
+endif
+return cancel
+~
+
+cnclmsg_prog huh p destination novamed
+mploadvar $n claimedshiploc
+mploadvar $n claimer
+if var($i powerswitch == 1)
+if var($i landed != 1)
+if var($i claimer == '$n')
+mpchannel !emergency A ship is aproaching to land at Novamed Landing pad.
+mpecho ^p$n taps a button on the console and the thrusters begin to hum to life...^N
+mpalarm 1 ^pthe ship's thrusters roar to life as the pilot AI begins to move the ship...^N
+mpalarm 3 ^pthe ship begins to turn and move in some directions, slightly swaying everything unbolted to the opposite directions as it aligns itself to the destination.^N
+mpalarm 3 ^pa synthetic voice is heard in the ship ^w'Preparing for jump to the destination, please secure yourself to the ship.'^N
+mpalarm 5 ^pthe ship recoils for a moment then a sudden force pushes everything not bound towards the back of the ship with massive force, then it settles down as the ship travels faster than light.^N
+mpalarm 8 ^pa synthetic voice is heard in the ship ^w'Exiting Jump momentarily, please make sure you are secured.'^N
+mpalarm 10 ^pEverything unbolted in the ship recoils forward as the ship stops in an instant, at orbit above the destination.^N
+mpalarm 11 ^pThe ship begins to descend rapidly but controlledly, lowering itself to the landing zone.^N
+mpalarm 13 ^pThe ship's thrusters power up further as the gravity kicks in more and more as it approaches the ground, slowing down as it begins to land... And with a soft touch down it is landed.^N
+mpalarm 14 ^pThe door of the ship opens slowly, providing a ramp to leave and enter the ship, in it's place a hardlight shield activates, maintaining atmosphere in the ship.
+mpalarm 15 ^pa synthetic voice is heard in the ship ^w'Landing complete.'^N
+mpalarm 15 mpsetvar $i landed 1
+mpalarm 15 mpsavevar $i landed
+mpalarm 15 mpsetvar $n shipparkedloc 'Novamed Hospital#15'
+mpalarm 15 mpsavevar $n shipparkedloc
+mpalarm 15 mpsetvar $i shipparkedloc 'Novamed Hospital#15'
+mpalarm 15 mpsavevar $i shipparkedloc
+else
+mpechoat $n This is not your ship.
+endif
+else
+mpechoat $n You need to take off first.
+endif
+else
+mpechoat $n The console is not on.
+endif
+return cancel
+~
+
+cnclmsg_prog huh p destination stellar
+mploadvar $n claimedshiploc
+mploadvar $n claimer
+if var($i powerswitch == 1)
+if var($i landed != 1)
+if var($i claimer == '$n')
+mpecho ^p$n taps a button on the console and the thrusters begin to hum to life...^N
+mpalarm 1 ^pthe ship's thrusters roar to life as the pilot AI begins to move the ship...^N
+mpalarm 3 ^pthe ship begins to turn and move in some directions, slightly swaying everything unbolted to the opposite directions as it aligns itself to the destination.^N
+mpalarm 3 ^pa synthetic voice is heard in the ship ^w'Preparing for jump to the destination, please secure yourself to the ship.'^N
+mpalarm 5 ^pthe ship recoils for a moment then a sudden force pushes everything not bound towards the back of the ship with massive force, then it settles down as the ship travels faster than light.^N
+mpalarm 8 ^pa synthetic voice is heard in the ship ^w'Exiting Jump momentarily, please make sure you are secured.'^N
+mpalarm 10 ^pEverything unbolted in the ship recoils forward as the ship stops in an instant, at orbit above the destination.^N
+mpalarm 11 ^pThe ship begins to descend rapidly but controlledly, lowering itself to the landing zone.^N
+mpalarm 13 ^pThe ship's thrusters power up further as the gravity kicks in more and more as it approaches the ground, slowing down as it begins to land... And with a soft touch down it is landed.^N
+mpalarm 14 ^pThe door of the ship opens slowly, providing a ramp to leave and enter the ship, in it's place a hardlight shield activates, maintaining atmosphere in the ship.
+mpalarm 15 ^pa synthetic voice is heard in the ship ^w'Landing complete.'^N
+mpalarm 15 mpsetvar $i landed 1
+mpalarm 15 mpsavevar $i landed
+mpalarm 15 mpsetvar $n shipparkedloc 'Stellarhaven#156'
+mpalarm 15 mpsavevar $n shipparkedloc
+mpalarm 15 mpsetvar $i shipparkedloc 'Stellarhaven#156'
+mpalarm 15 mpsavevar $i shipparkedloc
+else
+mpechoat $n This is not your ship.
+endif
+else
+mpechoat $n You need to take off first.
+endif
+else
+mpechoat $n The console is not on.
+endif
+return cancel
+~
+
+cnclmsg_prog huh p destination Glimmer
+mploadvar $n claimedshiploc
+mploadvar $n claimer
+if var($i powerswitch == 1)
+if var($i landed != 1)
+if var($i claimer == '$n')
+mpecho ^p$n taps a button on the console and the thrusters begin to hum to life...^N
+mpalarm 1 ^pthe ship's thrusters roar to life as the pilot AI begins to move the ship...^N
+mpalarm 3 ^pthe ship begins to turn and move in some directions, slightly swaying everything unbolted to the opposite directions as it aligns itself to the destination.^N
+mpalarm 3 ^pa synthetic voice is heard in the ship ^w'Preparing for jump to the destination, please secure yourself to the ship.'^N
+mpalarm 5 ^pthe ship recoils for a moment then a sudden force pushes everything not bound towards the back of the ship with massive force, then it settles down as the ship travels faster than light.^N
+mpalarm 8 ^pa synthetic voice is heard in the ship ^w'Exiting Jump momentarily, please make sure you are secured.'^N
+mpalarm 10 ^pEverything unbolted in the ship recoils forward as the ship stops in an instant, at orbit above the destination.^N
+mpalarm 11 ^pThe ship begins to descend rapidly but controlledly, lowering itself to the landing zone.^N
+mpalarm 13 ^pThe ship's thrusters power up further as the gravity kicks in more and more as it approaches the ground, slowing down as it begins to land... And with a soft touch down it is landed.^N
+mpalarm 14 ^pThe door of the ship opens slowly, providing a ramp to leave and enter the ship, in it's place a hardlight shield activates, maintaining atmosphere in the ship.
+mpalarm 15 ^pa synthetic voice is heard in the ship ^w'Landing complete.'^N
+mpalarm 15 mpsetvar $i landed 1
+mpalarm 15 mpsavevar $i landed
+mpalarm 15 mpsetvar $n shipparkedloc 'Glimmerfall#63'
+mpalarm 15 mpsavevar $n shipparkedloc
+mpalarm 15 mpsetvar $i shipparkedloc 'Glimmerfall#63'
+mpalarm 15 mpsavevar $i shipparkedloc
+else
+mpechoat $n This is not your ship.
+endif
+else
+mpechoat $n You need to take off first.
+endif
+else
+mpechoat $n The console is not on.
+endif
+return cancel
+~
+
+cnclmsg_prog huh p destination epsilon
+mploadvar $n claimedshiploc
+mploadvar $n claimer
+if clan($n in 'SSE')
+if var($i powerswitch == 1)
+if var($i landed != 1)
+if var($i claimer == '$n')
+mpecho ^p$n taps a button on the console and the thrusters begin to hum to life...^N
+mpalarm 1 ^pthe ship's thrusters roar to life as the pilot AI begins to move the ship...^N
+mpalarm 3 ^pthe ship begins to turn and move in some directions, slightly swaying everything unbolted to the opposite directions as it aligns itself to the destination.^N
+mpalarm 3 ^pa synthetic voice is heard in the ship ^w'Preparing for jump to the destination, please secure yourself to the ship.'^N
+mpalarm 5 ^pthe ship recoils for a moment then a sudden force pushes everything not bound towards the back of the ship with massive force, then it settles down as the ship travels faster than light.^N
+mpalarm 8 ^pa synthetic voice is heard in the ship ^w'Exiting Jump momentarily, please make sure you are secured.'^N
+mpalarm 10 ^pEverything unbolted in the ship recoils forward as the ship stops in an instant, at orbit above the destination.^N
+mpalarm 11 ^pThe ship begins to descend rapidly but controlledly, lowering itself to the landing zone.^N
+mpalarm 13 ^pThe ship's thrusters power up further as the gravity kicks in more and more as it approaches the ground, slowing down as it begins to land... And with a soft touch down it is landed.^N
+mpalarm 14 ^pThe door of the ship opens slowly, providing a ramp to leave and enter the ship, in it's place a hardlight shield activates, maintaining atmosphere in the ship.
+mpalarm 15 ^pa synthetic voice is heard in the ship ^w'Landing complete.'^N
+mpalarm 15 mpsetvar $i landed 1
+mpalarm 15 mpsavevar $i landed
+mpalarm 15 mpsetvar $n shipparkedloc 'ArcherCorp SS Epsilon#88'
+mpalarm 15 mpsavevar $n shipparkedloc
+mpalarm 15 mpsetvar $i shipparkedloc 'ArcherCorp SS Epsilon#88'
+mpalarm 15 mpsavevar $i shipparkedloc
+else
+mpechoat $n This is not your ship.
+endif
+else
+mpechoat $n You need to take off first.
+endif
+else
+mpechoat $n The console is not on.
+endif
+else
+mpecho $i beeps "Docking permission denied."
+endif
+return cancel
+~
+
+cnclmsg_prog huh p destination nomans
+mploadvar $n claimedshiploc
+mploadvar $n claimer
+if var($i powerswitch == 1)
+if var($i landed != 1)
+if var($i claimer == '$n')
+mpecho ^p$n taps a button on the console and the thrusters begin to hum to life...^N
+mpalarm 1 ^pthe ship's thrusters roar to life as the pilot AI begins to move the ship...^N
+mpalarm 3 ^pthe ship begins to turn and move in some directions, slightly swaying everything unbolted to the opposite directions as it aligns itself to the destination.^N
+mpalarm 3 ^pa synthetic voice is heard in the ship ^w'Preparing for jump to the destination, please secure yourself to the ship.'^N
+mpalarm 5 ^pthe ship recoils for a moment then a sudden force pushes everything not bound towards the back of the ship with massive force, then it settles down as the ship travels faster than light.^N
+mpalarm 8 ^pa synthetic voice is heard in the ship ^w'Exiting Jump momentarily, please make sure you are secured.'^N
+mpalarm 10 ^pEverything unbolted in the ship recoils forward as the ship stops in an instant, at orbit above the destination.^N
+mpalarm 11 ^pThe ship begins to descend rapidly but controlledly, lowering itself to the landing zone.^N
+mpalarm 13 ^pThe ship's thrusters power up further as the gravity kicks in more and more as it approaches the ground, slowing down as it begins to land... And with a soft touch down it is landed.^N
+mpalarm 14 ^pThe door of the ship opens slowly, providing a ramp to leave and enter the ship, in it's place a hardlight shield activates, maintaining atmosphere in the ship.
+mpalarm 15 ^pa synthetic voice is heard in the ship ^w'Landing complete.'^N
+mpalarm 15 mpsetvar $i landed 1
+mpalarm 15 mpsavevar $i landed
+mpalarm 15 mpsetvar $n shipparkedloc 'Nuclear Facility#49'
+mpalarm 15 mpsavevar $n shipparkedloc
+mpalarm 15 mpsetvar $i shipparkedloc 'Nuclear Facility#49'
+mpalarm 15 mpsavevar $i shipparkedloc
+else
+mpechoat $n This is not your ship.
+endif
+else
+mpechoat $n You need to take off first.
+endif
+else
+mpechoat $n The console is not on.
+endif
+return cancel
+~
+
+cnclmsg_prog huh p destination Angelic
+mploadvar $n claimedshiploc
+mploadvar $n claimer
+if var($i powerswitch == 1)
+if var($i landed != 1)
+if var($i claimer == '$n')
+mpecho ^p$n taps a button on the console and the thrusters begin to hum to life...^N
+mpalarm 1 ^pthe ship's thrusters roar to life as the pilot AI begins to move the ship...^N
+mpalarm 3 ^pthe ship begins to turn and move in some directions, slightly swaying everything unbolted to the opposite directions as it aligns itself to the destination.^N
+mpalarm 3 ^pa synthetic voice is heard in the ship ^w'Preparing for jump to the destination, please secure yourself to the ship.'^N
+mpalarm 5 ^pthe ship recoils for a moment then a sudden force pushes everything not bound towards the back of the ship with massive force, then it settles down as the ship travels faster than light.^N
+mpalarm 8 ^pa synthetic voice is heard in the ship ^w'Exiting Jump momentarily, please make sure you are secured.'^N
+mpalarm 10 ^pEverything unbolted in the ship recoils forward as the ship stops in an instant, at orbit above the destination.^N
+mpalarm 11 ^pThe ship begins to descend rapidly but controlledly, lowering itself to the landing zone.^N
+mpalarm 13 ^pThe ship's thrusters power up further as the gravity kicks in more and more as it approaches the ground, slowing down as it begins to land... And with a soft touch down it is landed.^N
+mpalarm 14 ^pThe door of the ship opens slowly, providing a ramp to leave and enter the ship, in it's place a hardlight shield activates, maintaining atmosphere in the ship.
+mpalarm 15 ^pa synthetic voice is heard in the ship ^w'Landing complete.'^N
+mpalarm 15 mpsetvar $i landed 1
+mpalarm 15 mpsavevar $i landed
+mpalarm 15 mpsetvar $n shipparkedloc 'Angelic Retreat#5'
+mpalarm 15 mpsavevar $n shipparkedloc
+mpalarm 15 mpsetvar $i shipparkedloc 'Angelic Retreat#5'
+mpalarm 15 mpsavevar $i shipparkedloc
+else
+mpechoat $n This is not your ship.
+endif
+else
+mpechoat $n You need to take off first.
+endif
+else
+mpechoat $n The console is not on.
+endif
+return cancel
+~
+
+cnclmsg_prog huh p destination
+mpechoat $n Try destionation <location> ex: destination moon.
+return cancel
+~
+
+cnclmsg_prog huh p exitship
+mploadvar $n shipparkedloc
+if var($n shipparkedloc != 0)
+mpecho $n begins to walk off the ramp of the ship.
+mpalarm 2 mpecho $n exits the ship.
+mpalarm 2 mptransfer '$n' '$%VAR($n shipparkedloc)%'
+else
+mpechoat $n The ship is not docked and the ramp is sealed.
+endif
+return cancel
+~

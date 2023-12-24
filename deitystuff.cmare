@@ -1,0 +1,312 @@
+<AREA><ACLAS>StdArea</ACLAS><ANAME>OOC Area</ANAME><ADESC /><ACLIM>0</ACLIM><ASUBS /><ATECH>0</ATECH><ADATA><ARCHP /><PARENTS /><CHILDREN /><PREJFC /><IGNMSK /><BUDGET /><DEVALR /><INVRER>0</INVRER><CURRENCY /><IPRICS /><IMG /><BEHAVES><BHAVE><BCLASS>WeatherAffects</BCLASS><BPARMS /></BHAVE></BEHAVES><AFFECS /><AUTHOR /><BLURBS /><AATMO>-1</AATMO></ADATA><AROOMS><AROOM><ROOMID>OOC Area#0</ROOMID><RAREA>OOC Area</RAREA><RCLAS>StoneRoom</RCLAS><RDISP>Deity hang out</RDISP><RDESC>^#500don`t forget to `save room` when done and even do `EXPORT ROOM DEITYROOMBACKUP` to be safe. If deities disappeared try modify (name) then enter, it should refresh them.</RDESC><RTEXT>&lt;RCLIM&gt;0&lt;/RCLIM&gt;&lt;RATMO&gt;-1&lt;/RATMO&gt;&lt;IMG /&gt;&lt;BEHAVES /&gt;&lt;AFFECS /&gt;</RTEXT><ROOMEXITS><REXIT><XDIRE>0</XDIRE><XDOOR>START</XDOOR><XEXIT><EXID>Open</EXID><EXDAT /></XEXIT></REXIT></ROOMEXITS><ROOMCONTENT><ROOMMOBS><RMOB><MCLAS>GenDeity</MCLAS><MLEVL>140</MLEVL><MABLE>11</MABLE><MREJV>2147483647</MREJV><MTEXT>&lt;NAME&gt;Lady Moonbeam&lt;/NAME&gt;&lt;DESC&gt;Domains: Sex, Dreams, Illusion, Moonlight --- History: Lady Moonbeam was just a human... A gifted psion human. Born in a small town not too long before the Silence, Living with her mom in a rundown house, as her father left long before her birth. Her mother took care of her best she can despite the bad economic situation they were in. Moonbeam always liked the night`s silence and loneliness, the dim comfortable light of her room by the moon and the moon itself. Before bed and the sweet embrace of sleep at last, she would look up at the good old moon every night with it bearing a new face with different `shape` in the sky gazing back at her. Not having any friends her whole life, and those that are around her would mock and hurt her for being ironically lacking in social skills... She didn`t mind it that much. She was alright, The other kids didn`t match her intelligence anyways. About when `Moonbeam` is 15 years old, a strong typhoon hits and the house finally gives it`s last breath and crumbles to rubble, the two barely making out of there alive with nothing but the clothes on their backs. They begin to live in the streets and whatever safe-ish alleyway they could find, until the town is hit by a deadly plague when Moonbeam hits 16,  She found out at the executions of the town that it was the doing of some people that offered blood sacrifice to the devil in exchange for immortality or great power, either way the plague was eating at flesh and everything of a person, rotting it from inside out and slowly killing them without a cure, painfully too. Moonbeam and her now older mom, living in the dirt of streets all this time, trying to get some money so they may get another night in an inn`s safety, did last quite an impressive amount of time without catching the plague, or having it be known for so long. At 17, Moonbeam`s mother died cause of the disease rotting away her organs, leaving her alone in the world with nobody to rely on, she never got into crime no matter how desperate the times got, then the silence happens, Moonbeam, already diseased midway and in great pain, laying broken and hopeless in a empty, filthy alleyway, Her mind unable to protect or delay what`s to come anymore, with the last of her strength, she shunts her soul into the astral plane, in hopes to buy time but, turns out it will be longer than she planned, her body soon died after her leave, getting more unrecoverable by the second, she was eternally stuck in the astral plane... Her mind, after recovering some of her focus and mental capacity, watched and gazed over the former home of hers, watching it be torn apart, and rot to hell, the ghost town doesn"t stand long, buildings crumble in time, nature take over what it once was it is own until nothing is left of the former land. Being captivated in the astral plane without a physical form for so long, she had no other option but to try and improve her gift until she can find a way to set herself free, and be alive again. If this could be called death. With no body and no intent to take over someone else`s, she remains a bodiless, astral form taking on an ever-changing cosmic body when she must be seen. Often not speaking, but showing, finding that easier to express herself, her forms often have no mouth, but white glowing wide eyes to take attention, Her most common appearance would be that of a female humanoid shaped pattern of stars and cosmos with flowing hair. Naming herself `Lady Moonbeam`, as her favorite thing in the world that didn`t leave her, except that is, she left to the astral plane following her body`s death.She then began harvesting the mental energy of the mortals that sleep, as their minds are the most active then, once she reaches a higher understanding of the universe, after her studies from afar in her captivity... Which is no longer, as a wandering consciousness that got her power back and above enough to leave if she wished and did for a while, Finding what"s remaining of a dead god with still traces of its mental energy and power still harvestable, which she did. And gathered an even deeper, Maybe horrifying level of understanding of the universe without losing her mind, thanks to her juicy brain and freshly harvested godly power keeping her sane and intact after the overflow of the said same power. She returned to the astral plane and began building her astral `dreamland` empire out of people`s sweetest dreams... Or wet, whatever pleases the wandering dreamer.&lt;/DESC&gt;&lt;DISP&gt;Lady Moonbeam stands here.&lt;/DISP&gt;&lt;PROP&gt;11|-200|100|100|1048576|140|2147483647|4.0|135|68|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES /&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;MONEY&gt;83&lt;/MONEY&gt;&lt;VARMONEY&gt;0.0&lt;/VARMONEY&gt;&lt;GENDER&gt;F&lt;/GENDER&gt;&lt;MRACE&gt;Spirit&lt;/MRACE&gt;&lt;FACTIONS&gt;&lt;FCTN ID="ALIGNMENT.INI"&gt;10000&lt;/FCTN&gt;&lt;FCTN ID="INCLINATION.INI"&gt;1600&lt;/FCTN&gt;&lt;/FACTIONS&gt;&lt;INVEN /&gt;&lt;ABLTYS /&gt;&lt;CLEREQ&gt;-ALUGNMENT +NEUTRAL +GOOD -EVIL&lt;/CLEREQ&gt;&lt;WORREQ&gt;-ALUGNMENT +NEUTRAL +GOOD -EVIL&lt;/WORREQ&gt;&lt;CLERIT&gt;RIDING holy altar of lady moonbeam&SAY oh lady moonbeam bless my cock today so i may follow your path, through this sister`s holy pussy.|SAY oh lady moonbeam bless my cunt today so i may feel your path through this brother`s holy cock.&WAIT 1&EMOTE grabs the other worshipper by her thighs and sits her on his lap, slipping into her pussy in one motion.|EMOTE spreads her legs wide in the air from where she sits, another worshipper mount her and slip inside her pussy fully in one motion.&WAIT 3&SAY Lady Moonbeam may you guide my cum into this sister`s womb.|SAY Lady Moonbeam may you guide this brother`s cum into my womb.&WAIT 1&OTHERSAY Lady Moonbeam may you guide the cum into the womb.&WAIT 1&EMOTE continues to thrust harder into the woman on him, cock sliding in and out of her until it throbs, ejaculating thick loads of cum into her pussy, inflating her belly a bit.|EMOTE keeps her legs spread as the man begins to hump rougher, eventually beginning to unload thick loads into her pussy, inflating her belly a bit.&WAIT 1&EMOTE once done cumming, he pulls out and pants.|EMOTE pants as the cleric pulls out of her cummy hole.&WAIT 1ALLSAY Amen.`&lt;/CLERIT&gt;&lt;WORRIT&gt;SITTING 0&WAIT 1&EMOTE grabs his miniature Lady Moonbeam statuette, praying quietly as he places the pussy of it to his cock`s tip.|EMOTE places her miniature lady moonbeam statuette in front of her, moving over it and places her pussy against the head of it.&WAIT 1&EMOTE suddenly slams into the statuette, as if it`s a real pussy, beginning to jack off using the statue.|EMOTE slams her hips down, hilting the base of the statuette before beginning to ride violently as she keeps praying.&WAIT 4&EMOTE hilts the statuette and moans as the prayer ends, cumming into the statue, but the cum does not come out much or clog up the statue to any bit, as if disappearing into it.|EMOTE slams her hips down and hilts the statue one more time and begins to cum hard onto the floor, moaning the end of her prayer and panting.&WAIT 1&EMOTE pulls the statuette off.&YOUSAY Amen.&lt;/WORRIT&gt;&lt;CLERSIT&gt;RIDING holy altar of lady moonbeam&WAIT 1&EMOTE calls over the two evil-aura`d randoms she paid and bends over to expose her holes.|EMOTE calls over the evil-aura`d woman he paid, presenting your cock.&WAIT 1&EMOTE gets penetrated by the both evil people as one gets below and other gets behind her, thrusting out of sync in her holes.|EMOTE holds the woman`s ass as she gets on top to ride his cock, bouncing on it fully.&WAIT 1&EMOTE shudders and cums as the two guys begin to pump their filthy evil load into her, going to town with her cummy holes for another three hours before leaving her in a cummy, sinful mess.|EMOTE keeps getting ridden by the woman for a while before he begins to cum into her, the woman does not stop and keep going for a couple more hours, leaving a cummy mess.&lt;/CLERSIT&gt;&lt;WORRSIT&gt;RIDING holy altar of lady moonbeam&WAIT 1&EMOTE calls over the two evil randoms she paid and bends over to expose her holes.|EMOTE calls over the evil woman he paid, presenting your cock.&WAIT 1&EMOTE gets penetrated by the both evil people as one gets below and other gets behind her, thrusting out of sync in her holes.|EMOTE holds the woman`s ass as she gets on top to ride his cock, bouncing on it fully.&WAIT 1&EMOTE shudders and cums as the two guys begin to pump their filthy evil load into her, going to town with her cummy holes for another three hours before leaving her in a cummy, sinful mess.|EMOTE keeps getting ridden by the woman for a while before he begins to cum into her, the woman does not stop and keep going for a couple more hours, leaving a cummy mess.&lt;/WORRSIT&gt;&lt;CLERPOW&gt;RIDING Astral Wolf &WAIT 2&EMOTE holds their hands together and begins to pray as they are taken from behind by Astral Wolf rougher and rougher, mixing some moans into prayer.&WAIT 3&EMOTE grunts and begins to cum soon as the astral knotty cock slips fully in and knots them for good, filling them with iridiscent cum, inflating their belly. &WAIT 2&YOUSAY OH LADY MOONBEAM THROUGH THIS ASTRAL BEAST`S COCK AND CUM, GRANT ME THE POWER TO CARRY YOUR WORD!&WAIT 2ALLSAY Amen.&lt;/CLERPOW&gt;&lt;SVCRIT&gt;SITTING 0&SAY We will to fuck in your name today.&WAIT 10&&WAIT 10ALLSAY Lady Moonbeam, may you taste our cum. Amen.&lt;/SVCRIT&gt;&lt;BLESSINGS&gt;&lt;BLESS&gt;&lt;BLCLASS&gt;Chant_Fertility&lt;/BLCLASS&gt;&lt;BLONLY&gt;false&lt;/BLONLY&gt;&lt;BLDATA&gt;&lt;AWRAP /&gt;&lt;/BLDATA&gt;&lt;/BLESS&gt;&lt;BLESS&gt;&lt;BLCLASS&gt;Chant_SpeedBirth&lt;/BLCLASS&gt;&lt;BLONLY&gt;false&lt;/BLONLY&gt;&lt;BLDATA&gt;&lt;AWRAP /&gt;&lt;/BLDATA&gt;&lt;/BLESS&gt;&lt;BLESS&gt;&lt;BLCLASS&gt;Milkable&lt;/BLCLASS&gt;&lt;BLONLY&gt;false&lt;/BLONLY&gt;&lt;BLDATA&gt;&lt;AWRAP /&gt;&lt;/BLDATA&gt;&lt;/BLESS&gt;&lt;BLESS&gt;&lt;BLCLASS&gt;Spell_Telepathy&lt;/BLCLASS&gt;&lt;BLONLY&gt;true&lt;/BLONLY&gt;&lt;BLDATA&gt;&lt;AWRAP /&gt;&lt;/BLDATA&gt;&lt;/BLESS&gt;&lt;BLESS&gt;&lt;BLCLASS&gt;Spell_MindBlock&lt;/BLCLASS&gt;&lt;BLONLY&gt;false&lt;/BLONLY&gt;&lt;BLDATA&gt;&lt;AWRAP /&gt;&lt;/BLDATA&gt;&lt;/BLESS&gt;&lt;BLESS&gt;&lt;BLCLASS&gt;Spell_RogueLimb&lt;/BLCLASS&gt;&lt;BLONLY&gt;true&lt;/BLONLY&gt;&lt;BLDATA&gt;&lt;AWRAP /&gt;&lt;/BLDATA&gt;&lt;/BLESS&gt;&lt;BLESS&gt;&lt;BLCLASS&gt;Spell_ResistDisease&lt;/BLCLASS&gt;&lt;BLONLY&gt;false&lt;/BLONLY&gt;&lt;BLDATA&gt;&lt;AWRAP /&gt;&lt;/BLDATA&gt;&lt;/BLESS&gt;&lt;BLESS&gt;&lt;BLCLASS&gt;Spell_Hungerless&lt;/BLCLASS&gt;&lt;BLONLY&gt;true&lt;/BLONLY&gt;&lt;BLDATA&gt;&lt;AWRAP /&gt;&lt;/BLDATA&gt;&lt;/BLESS&gt;&lt;BLESS&gt;&lt;BLCLASS&gt;Spell_Thirstless&lt;/BLCLASS&gt;&lt;BLONLY&gt;true&lt;/BLONLY&gt;&lt;BLDATA&gt;&lt;AWRAP /&gt;&lt;/BLDATA&gt;&lt;/BLESS&gt;&lt;BLESS&gt;&lt;BLCLASS&gt;Spell_DivineBeauty&lt;/BLCLASS&gt;&lt;BLONLY&gt;false&lt;/BLONLY&gt;&lt;BLDATA&gt;&lt;AWRAP /&gt;&lt;/BLDATA&gt;&lt;/BLESS&gt;&lt;BLESS&gt;&lt;BLCLASS&gt;Spell_Enlightenment&lt;/BLCLASS&gt;&lt;BLONLY&gt;false&lt;/BLONLY&gt;&lt;BLDATA&gt;&lt;AWRAP /&gt;&lt;/BLDATA&gt;&lt;/BLESS&gt;&lt;/BLESSINGS&gt;&lt;CURSES&gt;&lt;CURSE&gt;&lt;CUCLASS&gt;Disease_Depression&lt;/CUCLASS&gt;&lt;CUONLY&gt;false&lt;/CUONLY&gt;&lt;CUDATA&gt;&lt;AWRAP /&gt;&lt;/CUDATA&gt;&lt;/CURSE&gt;&lt;CURSE&gt;&lt;CUCLASS&gt;Poison_Mindsap&lt;/CUCLASS&gt;&lt;CUONLY&gt;false&lt;/CUONLY&gt;&lt;CUDATA&gt;&lt;AWRAP /&gt;&lt;/CUDATA&gt;&lt;/CURSE&gt;&lt;CURSE&gt;&lt;CUCLASS&gt;Undead_EnergyDrain&lt;/CUCLASS&gt;&lt;CUONLY&gt;false&lt;/CUONLY&gt;&lt;CUDATA&gt;&lt;AWRAP /&gt;&lt;/CUDATA&gt;&lt;/CURSE&gt;&lt;CURSE&gt;&lt;CUCLASS&gt;Prayer_Fidelity&lt;/CUCLASS&gt;&lt;CUONLY&gt;true&lt;/CUONLY&gt;&lt;CUDATA&gt;&lt;AWRAP /&gt;&lt;/CUDATA&gt;&lt;/CURSE&gt;&lt;/CURSES&gt;&lt;POWERS&gt;&lt;POWER&gt;&lt;POCLASS&gt;WingFlying&lt;/POCLASS&gt;&lt;PODATA&gt;&lt;AWRAP /&gt;&lt;/PODATA&gt;&lt;/POWER&gt;&lt;POWER&gt;&lt;POCLASS&gt;Prayer_SacredImbuingQuest&lt;/POCLASS&gt;&lt;PODATA&gt;&lt;AWRAP /&gt;&lt;/PODATA&gt;&lt;/POWER&gt;&lt;POWER&gt;&lt;POCLASS&gt;Power_TrapSense&lt;/POCLASS&gt;&lt;PODATA&gt;&lt;AWRAP /&gt;&lt;/PODATA&gt;&lt;/POWER&gt;&lt;POWER&gt;&lt;POCLASS&gt;Spell_LimitedWish&lt;/POCLASS&gt;&lt;PODATA&gt;&lt;AWRAP /&gt;&lt;/PODATA&gt;&lt;/POWER&gt;&lt;POWER&gt;&lt;POCLASS&gt;Spell_Geas&lt;/POCLASS&gt;&lt;PODATA&gt;&lt;AWRAP /&gt;&lt;/PODATA&gt;&lt;/POWER&gt;&lt;POWER&gt;&lt;POCLASS&gt;Spell_SuperiorImage&lt;/POCLASS&gt;&lt;PODATA&gt;&lt;AWRAP /&gt;&lt;/PODATA&gt;&lt;/POWER&gt;&lt;/POWERS&gt;&lt;TATTS&gt;a full moon and stars around it;&lt;/TATTS&gt;</MTEXT><MRIDE /></RMOB></ROOMMOBS><ROOMITEMS /></ROOMCONTENT></AROOM>
+</AROOMS></AREA><FILES><FILE NAME="/resources/factions/AREA_OOC_AREA.ini">#
+#  Copyright 2000-2022 Bo Zimmerman
+#
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#  http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+#
+# The INI file specifies all settings for the faction
+# Name is what the player will see in their faction listings.
+# It is also used for easy editing of which mobs a faction belongs to.
+# Example: NAME=My Name
+NAME=OOC Area Reputation
+
+# MINIMUM / MAXIMUM are the low / high values one can achieve
+# While traditionally the scale was a 1000 point system, going
+# to a larger system can allow for a more gradual approach.
+# Negatives, positives, zeros are all OK here.
+# Example: MINIMUM= -10000
+# Example: MAXIMUM= -10000
+MINIMUM=-10000
+
+MAXIMUM=10000
+
+# Whether this faction is always displayed in the player SCORE
+# The SCORE should be set to TRUE to show this faction in the
+# score command.
+# Example: SCOREDISPLAY= FALSE
+SCOREDISPLAY=FALSE
+
+# Whether this faction is displayed in the list of factions
+# when the FACTIONS command is used. The value should be set 
+# to TRUE to show this faction in the factions command.
+# Example: SHOWINFACTIONSCMD=FALSE
+SHOWINFACTIONSCMD=FALSE
+
+# Whether this faction gets averaged and shown in area reports
+# Only one faction will be selected for this honor.  The
+# SPECIALREPORTED should be set to TRUE to turn this feature on for
+# this faction.
+# Example: SPECIALREPORTED= FALSE
+SPECIALREPORTED=FALSE
+
+# Whether this faction gets a shortcut to it shown in the editors
+# Example: EDITALONE= FALSE
+EDITALONE=FALSE
+
+# Whether this faction is inherited by children
+# Example: INHERITED= TRUE
+INHERITED=TRUE
+# DEFAULT is a semi-colon delimited set of Zappers and values
+# These values are applied whenever a faction is added manually,
+# or as the result of an event.  This tag should always have at
+# least one value, and should never be empty.  Default is 0.
+# Example: DEFAULT=-10000 -RACE +DWARF; 10000 -RACE +ELF; 10
+DEFAULT=10000  -PLAYER -HOME "+OOC Area";0
+
+# AUTODEFAULTS is a semi-colon delimited set of Zappers and values
+# These values are applied when a mob or player is created.  This
+# faction, with the value listed, will be applied ONLY if the zapper
+# mask is met by the player or mob at creation time, and only if
+# a value has not been previously saved.  An empty value will prevent
+# this faction from ever being added to mobs or players automatically.
+# Example: AUTODEFAULTS=-1000 -RACE +DWARF; 1000 -RACE +ELF
+AUTODEFAULTS=0      -MOB -AREA "+OOC Area";7500  -PLAYER -HOME "+OOC Area"
+
+# AUTOCHOICES is a semi-colon delimited set of zappers and values
+# which may be chosen from during player creation.
+# The names of the choices will be drawn from the Ranges settings below.
+# To not have any values from this faction selectable at player creation,
+# just make this value blank.
+# Example: AUTOCHOICES=-10000 ; 10000 ; 10
+AUTOCHOICES=
+
+# CHOICEINTRO is the name of the resource file containing information
+# for players who will be given a choice at player create time to select a default
+# value for this faction.  This file will only be shown if the player has one or
+# more choices from the CHOICES setting above.
+# Example: CHOICEINTRO= text/myfactionintro.txt
+CHOICEINTRO=
+
+# RATEMODIFIER - Multiplier to accelerate or slow the rate of change.
+# Default is 1.0 (use the default rate of change).
+# Example: RATEMODIFIER=1.0
+RATEMODIFIER=1.0
+
+# Faction Ranges
+# This is used when the user is listing what standing they have
+# with a given faction.
+#   [Code Name] is the term is used by zappers.  It should be a simple
+#   code word used to represent that range.    A code name must be unique.
+#   [Align Flag] is in case the faction is being used as an alignment
+#                replacement.
+# Syntax: RANGEX = [low]  ; [high]; [long name]   ; [code name] ; [align flag]
+# Example: RANGE1 = 0  ; 500; Long Range name   ; LONGRCODENM ;
+RANGE1=8000;10000;Hero;OOC_AREA_HERO;INDIFF
+RANGE2=-8000;-1500;Hated;OOC_AREA_HATED;INDIFF
+RANGE3=-500;500;Neutral;OOC_AREA_NEUTRAL;INDIFF
+RANGE4=-10000;-8000;Villain;OOC_AREA_VILLAIN;INDIFF
+RANGE5=500;1500;Liked;OOC_AREA_LIKED;INDIFF
+RANGE6=1500;8000;Loved;OOC_AREA_LOVED;INDIFF
+RANGE7=-1500;-500;Disliked;OOC_AREA_DISLIKED;INDIFF
+
+# Experience factor
+# Does being the same/opposite end of the faction have impact on experience gained?
+# Values include:
+# NONE - this faction has no impact on experience gained
+# EXTREME - experience is proportional to the faction differences.
+# HIGHER - experience bonus goes up as my factions value goes toward maximum
+# LOWER - experience bonus goes up as my factions value goes toward minimum
+# FOLLOWHIGHER - experience bonus goes up as my enemies faction approaches maximum
+# FOLLOWLOWER - experience bonus goes up as my enemies value approaches minimum
+# Example: EXPERIENCE=EXTREME
+EXPERIENCE=NONE
+
+# Zapper Factoring
+# Certain groups can optionally gain/lose faction more easily
+# Syntax: FACTORX = [gain] ; [loss] ; [zapper]
+# Example: FACTOR1=0.5;1.5;-RACE +DWARF
+
+# Relationships with other factions
+# Any faction change affecting this faction will affect all the
+# ones listed here.  The % sets how much so, positively or negatively.
+# Syntax: RELATIONX = [Faction] [x.xx%]/[-x.xx%]
+# Example: RELATION1 = ALIGNMENT.INI 5.35%
+
+# Change Triggers - these decide how a faction value changes, when, by how much,
+# and under what circumstances.  The first value in the list of changes is the 
+# trigger type.  Types include the following:
+# MURDER - when someone with this faction is killed who matches the ZAPPER part
+#   of the change trigger definition.
+# KILL - when someone with this faction kills another who matches the ZAPPER part
+#   of the change trigger definition. Param WAIT=[TICKS] to prevent spamming.
+# TIME - a change in value that occurs every 10 ticks (around 40 seconds) to those
+#   with standing in this faction, and who meet the ZAPPER mask requirements.  The
+#   time can be modified with a ROUNDS= parameter.
+# BRIBE - when someone with this faction gives money to another. Parameters include
+#   PCT to require an amount = to a percent of the receivers money, or AMOUNT.
+# SOCIAL - when someone with this faction does a social to another. Parameters include
+#   ID = the Social ID, ID=ALL, and/or WAIT=[TICKS] to prevent spamming.
+# TALK - when someone with this faction speaks to another. Parameters include
+#   REGEX as a regular expression of whats said, WAIT=[TICKS] to prevent spamming.
+# MUDCHAT - when someone with this faction converses with a mudchat mob. This
+#   refers to the MudChat behavior.
+# ARRESTED - when someone with this faction is arrested by a legal mob.
+# AREAKILL - triggered when % of area mobs killed.  PCT parameter required. Group kills.
+# AREAASS - triggered when % of highest lvl mobs killed by grp - PCT parameter required.
+# AREAEXPLORE - triggered when % of area expired, PCT parameter required
+# DYING - triggered when death occurs from any cause.
+# Ability ID - the ID of a skill, spell, or similar Ability.  Ability IDs can be
+#   seen by entering from the command line: list skills, list spells, etc..
+# Ability type description - the name of a type of an ability (SPELL, PRAYER, SKILLS, 
+#   SONG, CHANT, COMMON SKILL, THIEF SKILL, etc..)
+# Ability domain description - the name of a spell domain (ILLUSION, TRANSMUTATION, 
+#   INVOCATION/EVOCATION, DIVINATION, etc...)
+# Ability flag description - the name of one of the ability flags defined in the 
+#   coffeemud source code in interfaces/Ability.java.  HEALING, for instance, 
+#   if you want ANY healing abilities to initiate this change.
+# Social code - the social keyword AND either the optional argument (<T-NAME> or SELF)
+#   or an asterisk to catch any of the many usages.  Use WAIT= to prevent spamming.
+# Message type - the CMMsg type word (prefix MSG_) with optional arguments:
+#   SRC, TGT, OTH, SMSG, TMSG, OMSG.  Use "me" to denote faction Holder.
+# ADDOUTSIDER - this trigger occurs every 10 ticks, and allows a player who
+#   does not have standing in the faction, so long as they meet the target trigger
+#   requirements, to have the faction added using the ADD flag in the next 
+#   (Direction) section of this trigger definition.
+# * Any of the above triggers can be modified with parameters whose names are  
+#   unique to each trigger.  The format for this VAR=NUMBER or VAR="VALUE". 
+# * All triggers support a MASK parameter to filter on event sources.
+# * All triggers support a CHANCE=x to give a percent chance of triggering x%.
+# * All triggers support a WITHIN=x to trigger only with x ticks of timer reset
+# * Some triggers support param WAIT=[TICKS] to prevent spamming.
+# 
+# 1) The Directions:
+#   a. UP – Faction increases by the standard amount (plus any adjustments)
+#   b. DOWN – Faction decreases by the standard amount (plus any adjustments)
+#   c. TOWARDS - Faction increases or decreases towards the faction of the target.
+#      If there is no target, then there is no change.
+#   d. AWAY - Faction increases or decreases away from the faction of the target.
+#      If there is no target, then there is no change.
+#   c. OPPOSITE – Faction decreases away from and proportional to the faction
+#      of the target. If there is no target, then there is no change.
+#   d. MINIMUM – the player instantly gets the lowest possible faction
+#   e. MAXIMUM – the player instantly gets the highest possible faction
+#   f. REMOVE  - the player has the faction removed from their list.
+#   g. ADD - the player has the faction added to their list using above DEFAULTs.
+#      Only useful with the ADDOUTSIDER trigger.
+# 
+# 2) Change factor – a multiplier for the change.  This can be used for major/minor 
+#    infractions. Since normal values are between 0 and 150 points, this can be used 
+#    to raise or lower this amount.
+# 
+# 3) FLAGS - this section may contain one or more of the following, space delimited:
+#
+#      OUTSIDER Flag – Normally, when a target is present, the change only applies if the 
+#      target also has standing in this faction.  Including this flag will allow the 
+#      change to apply even if the target does not.
+# 
+#      SELFOK flag.  Normally a change event will NOT trigger if the source and target are 
+#      the same person. This flag will allow a change event to trigger on an action that 
+#      is targeting the source.  This is not recommended because someone can just spam 
+#      their faction in one direction or another.
+# 
+#      JUST100 flag.  Normally the base unadjusted amount of a movement is based partially
+#      on a comparison between the levels of the source and target, making sure they are
+#      within the range contemplated by the "EXPRATE" entry in the coffeemud.ini file.  
+#      Including this flag overrides this adjustment, leaving the base rate of 100 points.
+# 
+#      XP=x key/value.  To grant bonus xp to the source of the trigger event, subject to
+#      all the normal level and other xp adjustments for a source and target.
+# 
+#      RPXP=x key/value.  To grant bonus roleplay xp to the source of the trigger event.
+#      Will only work if RolePlay XP is enabled in the coffeemud.ini file.
+# 
+#      RESTIME=x key/value.  x = name of another change trigger id.  Resets WITHIN timers.
+#
+#      ANNOUNCE=A message to say whenever this event is triggered
+#
+# 4) Zapper string.  You can specify a target mob filter for change events.  So, in
+#    “#CHANGE3=Prayer_Bless;UP;100%;OUTSIDER;-RACE +RODENT”, anytime a player with the
+#    Alignment faction blesses a mob with the Rodent race, their faction will go up.
+#    This change will not trigger if cast on a human.
+#
+# Change string format:
+# Syntax: CHANGEX = [TYPE](PARMS);[DIRECTION];[FACTOR %];[FLAGS];[ZAPPER]
+# Example: CHANGE1 = MURDER;OPPOSITE;100%;JUST100;-RACE +Elf
+# Example: CHANGE1=TIME(ROUNDS=40);UP;20%;OUTSIDER JUST100;+MOOD -MEAN -chance 99
+CHANGE1=ARRESTED;DOWN;100%;OUTSIDER JUST100;-AREA "+OOC Area"
+CHANGE2=TIME(ROUNDS=10);UP;1%;OUTSIDER JUST100;+FACTION "-AREA_OOC_AREA.HERO" "-AREA_OOC_AREA.LOVED" -AREA "+OOC Area" +MOOD -ANGRY -RUDE -MEAN -GRUMPY
+CHANGE3=BRIBE(PCT=100%);UP;5%;OUTSIDER JUST100;-HOME "+OOC Area"
+CHANGE4=ADDOUTSIDER;ADD;100%;OUTSIDER SELFOK;-AREA "+OOC Area"
+CHANGE5=MUDCHAT(WAIT=3 MASK="+MOOD -ANGRY -RUDE -MEAN -GRUMPY");UP;2%;OUTSIDER JUST100;-HOME "+OOC Area"
+CHANGE6=KILL;DOWN;10%;OUTSIDER JUST100;-HOME "+OOC Area" +INT 5
+
+# Ability Usage Controls
+# Controlling whether, by default, an ability of the type, or with the given flag, 
+# is flagged as being appropriate for the given range of faction.  This has a big
+# impact on some character classes, and especially on MOB skill usage.
+# The first parameter is either a skill ID, type, spell domain, or flag name.  Flag
+# names can be prefixed with a "!" to denote the requirement that this flag NOT be found.
+# All first parm values must match a given skill before the faction range check 
+# is made to evaluate elligibility. 
+# Syntax: ABILITYX = [SKILL NAME/TYPE/DOMAIN/FLAGS];[MIN RANGE];[MAX RANGE]
+# Example: ABILITY1=PRAYER HOLY !UNHOLY;4501;10000
+
+# Affects/Behaviors
+# Adds affects and behaviors to mobs who have this faction (not players).
+#   [Ability/Behavior ID] 
+#   [Parameters] the official parameters for the affect or behavior
+#   [MOB mask] a mask to determine if any given mob with this faction gets the 
+#              affect or behavior
+# Syntax: AFFBEHAVX = [Ability/Behavior ID]  ; [Parameters]   ; [MOB mask]
+# Example: AFFBEHAV1 = Aggressive  ;Message="Die!" -FACTION +RANGE3; -RACE +ELF
+AFFBEHAV1=SPELL_WELLDRESSED;4; -AREA "+OOC Area" -FACTION "+AREA_OOC_AREA_LOVED"
+
+# Reaction Affects/Behaviors/Commands
+# Adds very temporary affects and behaviors to mobs who match the reaction zapper
+# mask, and who are in the same room as someone with standing in this faction.
+#   [RangeName] the code name of the range that triggers this
+#   [MOB mask] a mask to determine if any given mob in the presence of a faction
+#              bearer will receive 
+#   [Ability/Command/Behavior ID] 
+#   [Parameters] the official parameters for the affect or behavior or command, 
+#                You may use <TARGET> to substitute the faction bearers name.
+# Syntax: REACTIONX = [RANGENAME]; [MOB mask]; [Ability/Behavior/Command ID]; [Parameters]
+# Example: REACTION1 = EVIL; -EVIL -NEUTRAL; Aggressive;Message="Die Evil Scum!" -FACTION +EVIL
+REACTION1=OOC_AREA_HATED;-HOME "+OOC Area" +INT 5;Mood;mean
+REACTION2=OOC_AREA_HATED;-HOME "+OOC Area" +INT 5 -CHANCE 95;Aggressive;CHECKLEVEL -NAMES "+<TARGET>"
+REACTION3=OOC_AREA_VILLAIN;-HOME "+OOC Area" +INT 5;Mood;mean
+REACTION4=OOC_AREA_VILLAIN;-HOME "+OOC Area" +INT 5 -CHANCE 75;VeryAggressive;CHECKLEVEL -NAMES "+<TARGET>"
+REACTION5=OOC_AREA_DISLIKED;-HOME "+OOC Area" +INT 5 -CHANCE 85;Mood;grumpy
+REACTION6=OOC_AREA_DISLIKED;-HOME "+OOC Area" +INT 5 -CHANCE 90 +DISPOSITION -ISHIDDEN -ISINVISIBLE;Emote;gives you a dirty look.
+REACTION7=OOC_AREA_LIKED;-HOME "+OOC Area" +INT 5 -CHANCE 85;Mood;happy
+REACTION8=OOC_AREA_LIKED;-HOME "+OOC Area" +INT 5 -CHANCE 85;Emote;smiles.
+REACTION9=OOC_AREA_LOVED;-HOME "+OOC Area" +INT 5 -CHANCE 80;Say;Hello <TARGET>.
+REACTION10=OOC_AREA_HERO;-HOME "+OOC Area" +INT 5;Spell_AweOther;<TARGET>
+REACTION11=OOC_AREA_HATED;-HOME "+OOC Area" +INT 5 -CHANCE 80;NastyAbilities;
+REACTION12=OOC_AREA_VILLAIN;-HOME "+OOC Area" +INT 5;NastyAbilities;
+REACTION13=OOC_AREA_LOVED;-HOME "+OOC Area" +INT 5;MudChat;
+REACTION14=OOC_AREA_LOVED;-HOME "+OOC Area" +INT 5;Mood;happy
+REACTION15=OOC_AREA_HERO;-HOME "+OOC Area" +INT 5;MudChat;
+REACTION16=OOC_AREA_HERO;-HOME "+OOC Area" +INT 5;Mood;happy
+REACTION17=OOC_AREA_LOVED;-HOME "+OOC Area" +INT 5 -JAVACLASS +StdShopkeeper +GenShopkeeper;Skill_Befriend;<TARGET>=8
+REACTION18=OOC_AREA_LOVED;-HOME "+OOC Area" +INT 5 -CHANCE 80;NiceAbilities;
+REACTION19=OOC_AREA_DISLIKED;-HOME "+OOC Area" +INT 5 -JAVACLASS +StdShopkeeper +GenShopkeeper;Skill_Befriend;<TARGET>=-3
+REACTION20=OOC_AREA_LIKED;-HOME "+OOC Area" +INT 5 -JAVACLASS +StdShopkeeper +GenShopkeeper;Skill_Befriend;<TARGET>=3
+REACTION21=OOC_AREA_VILLAIN;-HOME "+OOC Area" +INT 5 -JAVACLASS +StdShopkeeper +GenShopkeeper;Skill_Befriend;<TARGET>=-13
+REACTION22=OOC_AREA_HERO;-HOME "+OOC Area" +INT 5 -JAVACLASS +StdShopkeeper +GenShopkeeper;Skill_Befriend;<TARGET>=13
+REACTION23=OOC_AREA_HERO;-HOME "+OOC Area";Guard;<TARGET>
+REACTION24=OOC_AREA_HATED;-HOME "+OOC Area" +INT 5 -JAVACLASS +StdShopkeeper +GenShopkeeper;Skill_Befriend;<TARGET>=-8
+REACTION25=OOC_AREA_HERO;-HOME "+OOC Area" +INT 5;NiceAbilities;
+REACTION26=OOC_AREA_HERO;-HOME "+OOC Area" +INT 5 -CHANCE 80;Say;Hail <TARGET>, hero of OOC Area!
+
+# Use Light Reactions relates to the reaction list above.
+# Set to false to use the normal reaction system, or true to use the 'light' reaction system.
+# The normal system uses more resources, but players with different faction values will conflict
+# when in the same room, making mob reactions go to the winner.  However, all properties and 
+# behaviors will work as expected.
+# The light system uses less resources, and allows players with different faction values to get
+# some functionality when in the same room with each other.  However, some properties and 
+# behaviors may not work as expected.
+USELIGHTREACTIONS=true
+
+</FILE></FILES>

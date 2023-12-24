@@ -1,0 +1,36 @@
+cnclmsg_prog huh p consenttoggle Test
+mploadvar $n consenttest
+if var($n ConsentTest == 'Test, ')
+mpsetvar $n ConsentTest ''
+mpechoat $n Your consent tag (Test) has been toggled off
+else
+mpsetvar $n ConsentTest 'Test, '
+mpechoat $n Your consent tag (Test) has been toggled on
+endif
+mpsavevar $n consenttest
+return cancel
+~
+
+cnclmsg_prog huh p consenttoggle sexpref
+mploadvar $n consentsexpref
+## makes it so the first time, when the pref would be blank instead is straight as default so it doesnt break.
+if var($n consentsexpref == '')
+mpechoat $n You had no preference, so sexpref is set to Straight. consenttoggle sexpref again to switch to the next option.
+mpsetvar $n consentsexpref straight
+mpsavevar $n consentsexpref
+endif
+if var($n consentsexpref == 'straight')
+mpsetvar $n consentsexpref gay
+mpechoat $n Your sexpref is now set to Gay, this only affects some emotes produced by minor jobs etc.
+else
+mpsetvar $n consentsexpref straight
+mpechoat $n Your sexpref is now set to Straight, this only affects some emotes produced by minor jobs etc.
+endif
+mpsavevar $n consentsexpref
+return cancel
+~
+
+cnclmsg_prog huh p consenttoggle list
+mpechoat $n Your tags are $<$n consenttest>
+return cancel
+~

@@ -1,0 +1,21 @@
+cnclmsg_prog huh p fillup citizen document
+if isname($i 'A citizenship document')
+if var($n fillingdocument != 1)
+mpsetvar $n fillingdocument 1
+mpprompt $n freecityname Enter the name of settlement/free city you work in. (ex. Phantom City, Frozen City)
+mpprompt $n citizenname Enter citizen 's full name.
+mpprompt $n citizenage Enter citizen's date of birth.
+mpprompt $n citizenrace Enter citizen's race.
+mpprompt $n citizenreason Enter reason for citizenship allowed.
+mpprompt $n citizenpicture Enter picture (Short description and optional link for real pic)
+mpprompt $n stamp Enter a stamp for your government department (ex. Phantom City Justice Force, Fun Police of Boredom City)
+mpprompt $n writername Enter your title and name (ex. Judge John Doe.)
+mpgset $i name A citizen information document for $<$n citizenname>
+mpgset $i READABLETEXT ^COFFICIAL CITIZENSHIP DOCUMENT^N%0D%0DName: $<$n citizenname>%0DDOB: $<$n citizenage>%0DRace: $<$n citizenrace>%0DPicture: $<$n citizenpicture>%0D%0DReason for Citizenship: $<$n citizenreason>%0D%0DGovernment of $<$n freecityname>.%0D$<$n stamp>%0DProcessing Officer: $<$n writername>.
+mpgset $i description A paperwork proving citizenship. It has fields for Name, optional surname, gender, birth location, birth date, time of citizenship, picture (a short text about the obvious appearance). You can READ it.
+mpsetvar $n fillingdocument 0
+mpalarm 1 mpunbehave scriptable $i
+return cancel
+ENDIF
+endif
+~

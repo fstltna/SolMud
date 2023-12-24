@@ -1,0 +1,78 @@
+-
+TABLE_VERSION
+0
+\?
+1
+\?
+-
+INFO
+0
+\?
+1
+\?
+-
+INFO
+1
+0
+1682719227117
+0,1163264,1049600,0,27,2007,StdMOB:^</B^>,,,^Q^<CHANNEL "INFO"^><S-NAME> [INFO] 'Moonbeam has just been created.'^</CHANNEL^>^?^.,&null;,^Q^<CHANNEL "INFO"^><S-NAME> [INFO] 'Moonbeam has just been created.'^</CHANNEL^>^?^.
+-
+CLANTALK
+0
+\?
+4
+\?
+-
+CLANTALK
+1
+0
+1682719238076
+0,1163264,1049600,0,27,2006,StdMOB:^</B^>,,,^Q^<CHANNEL "CLANTALK"^><S-NAME> [CLANTALK] 'Moonbeam has logged out'^</CHANNEL^>^?^.,&null;,^Q^<CHANNEL "CLANTALK"^><S-NAME> [CLANTALK] 'Moonbeam has logged out'^</CHANNEL^>^?^.
+-
+WIZINFO
+0
+\?
+4
+\?
+-
+WIZINFO
+1
+0
+1682719238150
+0,1163264,1049600,0,27,2008,StdMOB:^</B^>,,,^Q^<CHANNEL "WIZINFO"^><S-NAME> [WIZINFO] 'Moonbeam has logged out'^</CHANNEL^>^?^.,&null;,^Q^<CHANNEL "WIZINFO"^><S-NAME> [WIZINFO] 'Moonbeam has logged out'^</CHANNEL^>^?^.
+-
+CLANTALK
+2
+0
+1682720059498
+0,1163264,1049600,0,27,2006,StdMOB:^</B^>,,,^Q^<CHANNEL "CLANTALK"^><S-NAME> [CLANTALK] 'Moonbeam has logged on.'^</CHANNEL^>^?^.,&null;,^Q^<CHANNEL "CLANTALK"^><S-NAME> [CLANTALK] 'Moonbeam has logged on.'^</CHANNEL^>^?^.
+-
+WIZINFO
+2
+0
+1682720059531
+0,1163264,1049600,0,27,2008,StdMOB:^</B^>,,,^Q^<CHANNEL "WIZINFO"^><S-NAME> [WIZINFO] 'Moonbeam has logged on.'^</CHANNEL^>^?^.,&null;,^Q^<CHANNEL "WIZINFO"^><S-NAME> [WIZINFO] 'Moonbeam has logged on.'^</CHANNEL^>^?^.
+-
+CLANTALK
+3
+0
+1682724963122
+0,1163264,1049600,0,27,2006,StdMOB:^</B^>,,,^Q^<CHANNEL "CLANTALK"^><S-NAME> [CLANTALK] 'Moonbeam has logged on.'^</CHANNEL^>^?^.,&null;,^Q^<CHANNEL "CLANTALK"^><S-NAME> [CLANTALK] 'Moonbeam has logged on.'^</CHANNEL^>^?^.
+-
+WIZINFO
+3
+0
+1682724963156
+0,1163264,1049600,0,27,2008,StdMOB:^</B^>,,,^Q^<CHANNEL "WIZINFO"^><S-NAME> [WIZINFO] 'Moonbeam has logged on.'^</CHANNEL^>^?^.,&null;,^Q^<CHANNEL "WIZINFO"^><S-NAME> [WIZINFO] 'Moonbeam has logged on.'^</CHANNEL^>^?^.
+-
+CLANTALK
+4
+0
+1682725006649
+0,1163264,1049600,0,27,2006,StdMOB:^</B^>,,,^Q^<CHANNEL "CLANTALK"^><S-NAME> [CLANTALK] 'Moonbeam has logged out'^</CHANNEL^>^?^.,&null;,^Q^<CHANNEL "CLANTALK"^><S-NAME> [CLANTALK] 'Moonbeam has logged out'^</CHANNEL^>^?^.
+-
+WIZINFO
+4
+0
+1682725006682
+0,1163264,1049600,0,27,2008,StdMOB:^</B^>,,,^Q^<CHANNEL "WIZINFO"^><S-NAME> [WIZINFO] 'Moonbeam has logged out'^</CHANNEL^>^?^.,&null;,^Q^<CHANNEL "WIZINFO"^><S-NAME> [WIZINFO] 'Moonbeam has logged out'^</CHANNEL^>^?^.

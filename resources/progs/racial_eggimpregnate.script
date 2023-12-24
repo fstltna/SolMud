@@ -1,0 +1,258 @@
+## race and if checker
+casting_prog p racial_eggimpregnate
+mpalarm 6 mpunaffect '$t' racial_eggimpregnate
+##xenomorph
+if var('$n' eggimper == 1)
+else
+mpsetvar '$n' eggimper 1
+mpalarm 2 mpsetvar '$n' eggimper 0
+if affected('$t' prop_xenolarvae)
+mpechoat '$n' ^PThey are already a host.^N
+mpunaffect '$t' racial_eggimpregnate
+else
+if race('$n' == Xeno)
+if race('$t' == Xeno)
+mpechoat '$n' ^PWe can not make hosts of our own kind.^N
+mpunaffect '$t' racial_eggimpregnate
+else
+if islike('$n' '-names "+^#400a fa^#410ceh^#420ugg^#430er ^#420xe^#410no^N"')
+mpcallfunc larvaevagtime
+ else
+ mpechoat '$n' ^PWe have no means of doing that.^N
+ mpunaffect '$t' racial_eggimpregnate
+endif
+endif
+endif
+endif
+endif
+##plantperson
+if race('$n' == Plantperson)
+if race('$t' == Plantperson)
+mpechoat '$n'  ^GI can't breed other plant. Find fleshy things.^N
+mpunaffect '$t' racial_eggimpregnate
+else
+if affected('$n' Prop_Plantseeded)
+mpechoat '$n' ^GI can't have more fleshy thing pollen in me yet.'
+mpunaffect '$n' racial_eggimpregnate
+else
+if affected('$t' Prop_Plantseeded)
+mpechoat '$n' ^Gfleshy thing already have pollen inside.'
+mpunaffect '$t' racial_eggimpregnate
+else
+if sex('$n' != $%sex($t)%)
+mpcallfunc plantpersonpollinate
+else
+mpechoat '$t' ^Gthey don't have correct thing to fit ours^N
+endif
+endif
+endif
+endif
+endif
+##giantinsect
+if race('$n' == giantinsect)
+if race('$t' == giantinsect)
+mpechoat '$n'  ^GI can't breed another insect like that^N
+mpunaffect '$t' racial_eggimpregnate
+else
+if affected('$n' Prop_insecteggimpreg)
+mpechoat '$n' ^GI can't have more cum in me yet.'
+mpunaffect '$n' racial_eggimpregnate
+else
+if affected('$t' Prop_insecteggimpreg)
+mpechoat '$n' ^GIt already has eggs inside it.'
+mpunaffect '$t' racial_eggimpregnate
+else
+mpcallfunc insectimpregg
+endif
+endif
+endif
+endif
+~
+~
+
+function_prog plantpersonpollinate
+if wornon($n legs all)
+mpforce $n remove all.legs
+endif
+if wornon($n groin all)
+mpforce $n remove all.groin
+endif
+if wornon($t legs all)
+mpforce $t remove all.legs
+endif
+if wornon($t groin all)
+mpforce $t remove all.groin
+endif
+if sex($n == M) or sex($n == O) or sex($n == U)
+mpecho ^p$n shoves $m rough plant cock in $t's cunt and humps into it rapidly!^N *plap* *plop*
+mpalarm 1 mpecho ^p*plop* *clop* $n doesn't stop thrusting as $m balls begin to empty sticky honeylike substance into $t's womb, filling it up. *splurt* *splat*
+mpalarm 2 mpecho ^p*slip* $n pulls $m cock out of $t with a wet sticky noise.
+mpalarm 3 mpaffect Prop_Plantseeded $t
+if affected('$t' sexual_cumbloat3)
+mpalarm 3 mpecho $t's belly can't get inflated any more but it is filled with fresh cum over again...
+mpalarm 3 mpunaffect '$t' sexual_cumbloat3
+mpalarm 3 mpaffect Sexual_Cumbloat3 '$t'
+else
+if affected('$t' sexual_cumbloat2)
+mpalarm 3 mpecho $t's belly inflate even more with the large amount of cum splurted into it!
+mpalarm 3 mpunaffect '$t' sexual_cumbloat2
+mpalarm 3 mpaffect Sexual_Cumbloat3 '$t'
+else
+if affected('$t' sexual_cumbloat1)
+mpalarm 3 mpecho $t's belly inflate more with the large amount of cum splurted into it!
+mpalarm 3 mpunaffect '$t' sexual_cumbloat1
+mpalarm 3 mpaffect Sexual_Cumbloat2 '$t'
+else
+mpalarm 3 mpecho $t's belly inflate with the large amount of cum splurted into it!
+mpalarm 3 mpaffect Sexual_Cumbloat1 '$t'
+endif
+endif
+endif
+endif
+if sex($n == F) or sex($n == A) or sex($n == H)
+mpecho ^p$n slams $m plant pussy on $t's cock in one move and begins to move rapidly!^N *plap* *plop*
+mpalarm 1 mpecho ^p*plop* *clop* $n doesn't stop moving $m hips as $t's balls begin to empty into $n's womb, filling it up! *splurt* *splat*
+mpalarm 2 mpecho ^p*slip* $n pulls $t's cock out of $m with a wet sticky noise.
+mpalarm 3 mpaffect Prop_Plantseeded $n
+if affected('$n' sexual_cumbloat3)
+mpalarm 3 mpecho $n's belly can't get inflated any more but it is filled with fresh cum over again...
+mpalarm 3 mpunaffect '$n' sexual_cumbloat3
+mpalarm 3 mpaffect Sexual_Cumbloat3 '$n'
+else
+if affected('$n' sexual_cumbloat2)
+mpalarm 3 mpecho $n's belly inflate even more with the large amount of cum splurted into it!
+mpalarm 3 mpunaffect '$n' sexual_cumbloat2
+mpalarm 3 mpaffect Sexual_Cumbloat3 '$n'
+else
+if affected('$n' sexual_cumbloat1)
+mpalarm 3 mpecho $n's belly inflate more with the large amount of cum splurted into it!
+mpalarm 3 mpunaffect '$n' sexual_cumbloat1
+mpalarm 3 mpaffect Sexual_Cumbloat2 '$n'
+else
+mpalarm 3 mpecho $n's belly inflate with the large amount of cum splurted into it!
+mpalarm 3 mpaffect Sexual_Cumbloat1 '$n'
+endif
+endif
+endif
+endif
+~
+
+function_prog larvaevagtime
+if sex('$t' == f)
+if affected('$t' prop_xenolarvaevag)
+mpecho ^r$n leaps onto $t's face and latches onto $S with it's tail coiling around $S neck tightly, something like a cock thrusting into $M mouth!^N
+mpalarm 1 mpecho ^p$n keeps plapping $t in the face rapidly!^p
+mpalarm 2 mpaffect prop_xenolarvae '$t'
+mpalarm 2 mpgset '$n' hits 1
+mpalarm 3 mpecho ^r$n injects something through $t's throat along with weird, resin-like cum, latching off, falling off motionless.^N
+mpalarm 3 mpdamage '$n' 100 100 kill
+else
+if wornon($t legs all)
+mpforce $t remove all.legs
+endif
+if wornon($t groin all)
+mpforce $t remove all.groin
+endif
+mpecho ^r$n leaps onto $t's pussy and latches onto $S with it's tail coiling around $S legs tightly, something like a cock thrusting into $M cunt!^N
+mpalarm 1 mpecho ^p$n keeps plapping $t in the cunt rapidly!^p
+mpalarm 2 mpgset '$n' hits 1
+mpalarm 2 mpecho ^r$n injects something inside $t's womb along with weird, resin-like cum, latching off, falling off motionless.^N
+mpalarm 3 mpdamage '$n' 100 100 kill
+mpalarm 2 mpaffect prop_xenolarvaevag '$t'
+endif
+else
+mpecho ^r$n leaps onto $t's face and latches onto $S with it's tail coiling around $S neck tightly, something like a cock thrusting into $M mouth!^N
+mpalarm 1 mpecho ^p$n keeps plapping $t in the face rapidly!^N
+mpalarm 2 mpaffect prop_xenolarvae '$t'
+mpalarm 2 mpgset '$n' hits 1
+mpalarm 3 mpecho ^r$n injects something through $t's throat along with weird, resin-like cum, latching off, falling off motionless.^N
+mpalarm 3 mpdamage '$n' 100 100 kill
+endif
+if affected('$t' sexual_cumbloat3)
+mpalarm 3 mpecho $t's belly can't get inflated any more but it is filled with fresh cum over again...
+mpalarm 3 mpunaffect '$t' sexual_cumbloat3
+mpalarm 3 mpaffect Sexual_Cumbloat3 '$t'
+else
+if affected('$t' sexual_cumbloat2)
+mpalarm 3 mpecho $t's belly inflate even more with the large amount of cum splurted into it!
+mpalarm 3 mpunaffect '$t' sexual_cumbloat2
+mpalarm 3 mpaffect Sexual_Cumbloat3 '$t'
+else
+if affected('$t' sexual_cumbloat1)
+mpalarm 3 mpecho $t's belly inflate more with the large amount of cum splurted into it!
+mpalarm 3 mpunaffect '$t' sexual_cumbloat1
+mpalarm 3 mpaffect Sexual_Cumbloat2 '$t'
+else
+mpalarm 3 mpecho $t's belly inflate with the large amount of cum splurted into it!
+mpalarm 3 mpaffect Sexual_Cumbloat1 '$t'
+endif
+endif
+endif
+~
+
+function_prog insectimpregg
+if wornon($n legs all)
+mpforce $n remove all.legs
+endif
+if wornon($n groin all)
+mpforce $n remove all.groin
+endif
+if wornon($t legs all)
+mpforce $t remove all.legs
+endif
+if wornon($t groin all)
+mpforce $t remove all.groin
+endif
+if sex($n == M) or sex($n == O) or sex($n == U)
+mpecho ^p$n shoves $m rough insect genital in $t's cunt and humps into it rapidly!^N *plap* *plop*
+mpalarm 1 mpecho ^p*plop* *clop* $n doesn't stop thrusting as $m balls begin to empty sticky green substance into $t's womb, filling it up. *splurt* *splat*
+mpalarm 2 mpecho ^p*slip* $n pulls $m genital out of $t with a wet sticky noise.
+mpalarm 3 mpaffect Prop_insecteggimpreg $t
+if affected('$t' sexual_cumbloat3)
+mpalarm 3 mpecho $t's belly can't get inflated any more but it is filled with fresh cum over again...
+mpalarm 3 mpunaffect '$t' sexual_cumbloat3
+mpalarm 3 mpaffect Sexual_Cumbloat3 '$t'
+else
+if affected('$t' sexual_cumbloat2)
+mpalarm 3 mpecho $t's belly inflate even more with the large amount of cum splurted into it!
+mpalarm 3 mpunaffect '$t' sexual_cumbloat2
+mpalarm 3 mpaffect Sexual_Cumbloat3 '$t'
+else
+if affected('$t' sexual_cumbloat1)
+mpalarm 3 mpecho $t's belly inflate more with the large amount of cum splurted into it!
+mpalarm 3 mpunaffect '$t' sexual_cumbloat1
+mpalarm 3 mpaffect Sexual_Cumbloat2 '$t'
+else
+mpalarm 3 mpecho $t's belly inflate with the large amount of cum splurted into it!
+mpalarm 3 mpaffect Sexual_Cumbloat1 '$t'
+endif
+endif
+endif
+endif
+if sex($n == F) or sex($n == A) or sex($n == H)
+mpecho ^p$n slams $m ovipositor on $t's cock in one move and begins to move rapidly!^N *plap* *plop*
+mpalarm 1 mpecho ^p*plop* *clop* $n doesn't stop moving $m hips as $t's balls begin to empty into $n, filling them up! *splurt* *splat*
+mpalarm 2 mpecho ^p*slip* $n pulls $t's cock out of $m with a wet sticky noise.
+mpalarm 3 mpaffect Prop_insecteggimpreg $n
+if affected('$n' sexual_cumbloat3)
+mpalarm 3 mpecho $n's belly can't get inflated any more but it is filled with fresh cum over again...
+mpalarm 3 mpunaffect '$n' sexual_cumbloat3
+mpalarm 3 mpaffect Sexual_Cumbloat3 '$n'
+else
+if affected('$n' sexual_cumbloat2)
+mpalarm 3 mpecho $n's belly inflate even more with the large amount of cum splurted into it!
+mpalarm 3 mpunaffect '$n' sexual_cumbloat2
+mpalarm 3 mpaffect Sexual_Cumbloat3 '$n'
+else
+if affected('$n' sexual_cumbloat1)
+mpalarm 3 mpecho $n's belly inflate more with the large amount of cum splurted into it!
+mpalarm 3 mpunaffect '$n' sexual_cumbloat1
+mpalarm 3 mpaffect Sexual_Cumbloat2 '$n'
+else
+mpalarm 3 mpecho $n's belly inflate with the large amount of cum splurted into it!
+mpalarm 3 mpaffect Sexual_Cumbloat1 '$n'
+endif
+endif
+endif
+endif
+~

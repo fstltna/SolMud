@@ -47,3 +47,16 @@ grape skins	FOOD		33	grapes	1
 bottom fermented yeast	FOOD		38	flour	1	sugar	1	water	1								
 wild yeast	FOOD		44	sugar	1	herbs	1										
 strawberry shortcake	FOOD		76	shortcake	1	strawberries	1	cream	2								
+XL condom full of horse cum	DRINK		10	CUM	5	RUBBER											
+cumshake	DRINK		10	CUM	1	MILK	1										
+cummy fish sandwich	FOOD		28	fish sandwich		CUM											
+cummy beef sandwich	FOOD		29	beef sandwich		CUM											
+cummy sushi	FOOD		25	sushi		CUM											
+cum jelly	FOOD		9	CUM		SUGAR											
+cummy caesar salad	FOOD		26	CUM		caesar salad											
+cum cheese	FOOD		4	CUM		MILK											
+cum cheese sandwich	FOOD		24	cum cheese				BREAD									
+cum shortcake	FOOD		77	shortcake		CUM											
+cum pudding	FOOD		27	CUM		cream											
+cummy chocolate pudding	FOOD		27	COCOA		CUM		cream									
+cum sandwich	FOOD		24	CUM		BREAD											

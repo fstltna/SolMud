@@ -89,11 +89,11 @@
       <TRAVELDIRECTION>west</TRAVELDIRECTION>
       <DOORSDIRECTION>north</DOORSDIRECTION>
       <INSIDE>
-        <ARRIVALINFO>The subway car stops at $disproom and the doors to the $inopendir swish opened.</ARRIVALINFO>
+        <ARRIVALINFO>The subway car stops at $disproom and the doors to the $inopendir swish opened. !!SOUND(dong.wav V=50 P=25 U=http://secretoflife.pocketmud.com:27744/sounds/)</ARRIVALINFO>
         <DEPARTINFO>The subway car doors swish closed and the train departs to the $traveldir.\nA crackly voice coming through the small speakers on the car roof says,\n       'Next Stop $disproom.'</DEPARTINFO>
       </INSIDE>
       <OUTSIDE>
-        <ARRIVALINFO>A $traveldirbound subway car arrives on the platform to the $outopendir and the doors swish opened.</ARRIVALINFO>
+        <ARRIVALINFO>A $traveldirbound subway car arrives on the platform to the $outopendir and the doors swish opened. !!SOUND(dong.wav V=50 P=25 U=http://secretoflife.pocketmud.com:27744/sounds/)</ARRIVALINFO>
         <DEPARTINFO>The subway cars doors swish closed\nThe subway car departs $traveldir down the tunnel.</DEPARTINFO>
       </OUTSIDE>
     </NORMALDIRECTION>
@@ -101,11 +101,11 @@
       <TRAVELDIRECTION>east</TRAVELDIRECTION>
       <DOORSDIRECTION>south</DOORSDIRECTION>
       <INSIDE>
-        <ARRIVALINFO>The subway car stops at $disproom and the doors to the $inopendir swish opened.</ARRIVALINFO>
+        <ARRIVALINFO>The subway car stops at $disproom and the doors to the $inopendir swish opened. !!SOUND(dong.wav V=50 P=25 U=http://secretoflife.pocketmud.com:27744/sounds/)</ARRIVALINFO>
         <DEPARTINFO>The subway car doors swish closed and the train departs to the $traveldir.\nA crackly voice coming through the small speakers on the car roof says,\n       'Next Stop $disproom.'</DEPARTINFO>
       </INSIDE>
       <OUTSIDE>
-        <ARRIVALINFO>An $traveldirbound subway car arrives on the platform to the $outopendir and the doors swish opened.</ARRIVALINFO>
+        <ARRIVALINFO>A $traveldirbound subway car arrives on the platform to the $outopendir and the doors swish opened. !!SOUND(dong.wav V=50 P=25 U=http://secretoflife.pocketmud.com:27744/sounds/)</ARRIVALINFO>
         <DEPARTINFO>The subway cars doors swish closed\nThe subway car departs $traveldir down the tunnel.</DEPARTINFO>
       </OUTSIDE>
     </REVERSEDIRECTION>
@@ -146,11 +146,11 @@
       <TRAVELDIRECTION>west</TRAVELDIRECTION>
       <DOORSDIRECTION>north</DOORSDIRECTION>
       <INSIDE>
-        <ARRIVALINFO>The bus comes to a stop, doors to the $inopendir open.\nThe driver yells:\n       '$disproom'</ARRIVALINFO>
+        <ARRIVALINFO>The bus comes to a stop, doors to the $inopendir open. !!SOUND(dong.wav V=50 P=25 U=http://secretoflife.pocketmud.com:27744/sounds/)\nThe driver yells:\n       '$disproom'</ARRIVALINFO>
         <DEPARTINFO>The drive closes the door and the bus lurches foreward.</DEPARTINFO>
       </INSIDE>
       <OUTSIDE>
-        <ARRIVALINFO>The $traveldirbound Bus number 1 arrives.\nThe doors swing opened.</ARRIVALINFO>
+        <ARRIVALINFO>The $traveldirbound Bus number 1 arrives.!!SOUND(dong.wav V=50 P=25 U=http://secretoflife.pocketmud.com:27744/sounds/)\nThe doors swing opened.</ARRIVALINFO>
         <DEPARTINFO>The bus doors swing closed.\nThe bus speeds off $traveldir</DEPARTINFO>
       </OUTSIDE>
     </NORMALDIRECTION>
@@ -158,11 +158,11 @@
       <TRAVELDIRECTION>east</TRAVELDIRECTION>
       <DOORSDIRECTION>north</DOORSDIRECTION>
       <INSIDE>
-        <ARRIVALINFO>The bus comes to a stop, doors to the $inopendir open.\nThe driver yells:\n       '$disproom'</ARRIVALINFO>
+        <ARRIVALINFO>The bus comes to a stop, doors to the $inopendir open.!!SOUND(dong.wav V=50 P=25 U=http://secretoflife.pocketmud.com:27744/sounds/)\nThe driver yells:\n       '$disproom'</ARRIVALINFO>
         <DEPARTINFO>The drive closes the door and the bus lurches foreward.</DEPARTINFO>
       </INSIDE>
       <OUTSIDE>
-        <ARRIVALINFO>The $traveldirbound Bus number 1 arrives.\nThe doors swing opened.</ARRIVALINFO>
+        <ARRIVALINFO>The $traveldirbound Bus number 1 arrives.!!SOUND(dong.wav V=50 P=25 U=http://secretoflife.pocketmud.com:27744/sounds/)\nThe doors swing opened.</ARRIVALINFO>
         <DEPARTINFO>The bus doors swing closed.\nThe bus speeds off $traveldir</DEPARTINFO>
       </OUTSIDE>
     </REVERSEDIRECTION>
@@ -189,4 +189,174 @@
       </REVERSEDIRECTION>
     </ROOMDESCRIPTIONS>
   </BUSONE>
+  <PCFASTTRAIN>
+  <ROOMPRINTNAME>PC Subway Train</ROOMPRINTNAME>
+  <LINEPRINTNAME>PC Subway Train</LINEPRINTNAME>
+  <DISPLOC>true</DISPLOC>
+  <STOPS>
+    <STOP1>Phantom City#78</STOP1>
+    <STOP2>Phantom City#81</STOP2>
+    <STOP3>sector minus#8</STOP3>
+    <STOP4>sector minus#14</STOP4>
+  </STOPS>
+  <NORMALDIRECTION>
+    <TRAVELDIRECTION>downside</TRAVELDIRECTION>
+    <DOORSDIRECTION>south</DOORSDIRECTION>
+    <INSIDE>
+      <ARRIVALINFO>The train stops at $disproom and the doors to the $inopendir swish opened.!!SOUND(dong.wav V=50 P=25 U=http://secretoflife.pocketmud.com:27744/sounds/)</ARRIVALINFO>
+      <DEPARTINFO>The train doors swish closed and the train departs to the $traveldir.\nA crackly voice coming through the small speakers on the train roof says,\n       'Next Stop $disproom.'</DEPARTINFO>
+    </INSIDE>
+    <OUTSIDE>
+      <ARRIVALINFO>A $traveldirbound train arrives on the platform to the $outopendir and the doors swish opened.!!SOUND(dong.wav V=50 P=25 U=http://secretoflife.pocketmud.com:27744/sounds/)</ARRIVALINFO>
+      <DEPARTINFO>The subway train's doors swish closed\nThe train departs $traveldir down the tunnel.</DEPARTINFO>
+    </OUTSIDE>
+  </NORMALDIRECTION>
+  <REVERSEDIRECTION>
+    <TRAVELDIRECTION>upside</TRAVELDIRECTION>
+    <DOORSDIRECTION>north</DOORSDIRECTION>
+    <INSIDE>
+      <ARRIVALINFO>The train stops at $disproom and the doors to the $inopendir swish opened.!!SOUND(dong.wav V=50 P=25 U=http://secretoflife.pocketmud.com:27744/sounds/)</ARRIVALINFO>
+      <DEPARTINFO>The train doors swish closed and the train departs to the $traveldir.\nA crackly voice coming through the small speakers on the train roof says,\n       'Next Stop $disproom.'</DEPARTINFO>
+    </INSIDE>
+    <OUTSIDE>
+      <ARRIVALINFO>An $traveldirbound train arrives on the platform to the $outopendir and the doors swish opened.!!SOUND(dong.wav V=50 P=25 U=http://secretoflife.pocketmud.com:27744/sounds/)</ARRIVALINFO>
+      <DEPARTINFO>The subway train's doors swish closed\nThe train departs $traveldir down the tunnel.</DEPARTINFO>
+    </OUTSIDE>
+  </REVERSEDIRECTION>
+  <ROOMDESCRIPTIONS>
+    <NORMALDIRECTION>
+      <INSIDE>
+        <DOOROPENED>A metalic sliding door to the $inopendir leads to the platform of $disproom.</DOOROPENED>
+  <DOORCLOSED>Both metalic sliding doors are closed.  The train is traveling $traveldir.</DOORCLOSED>
+      </INSIDE>
+      <OUTSIDE>
+  <DOOROPENED>A $traveldirbound train is waiting at the platform to the $outopendir.</DOOROPENED>
+  <DOORCLOSED>The tracks are empty of subway trains.</DOORCLOSED>
+      </OUTSIDE>
+    </NORMALDIRECTION>
+    <REVERSEDIRECTION>
+      <INSIDE>
+        <DOOROPENED>A metalic sliding door to the $inopendir leads to the platform of $disproom.</DOOROPENED>
+  <DOORCLOSED>Both metalic sliding doors are closed.  The train is traveling $traveldir.</DOORCLOSED>
+      </INSIDE>
+      <OUTSIDE>
+  <DOOROPENED>A $traveldirbound train is waiting at the platform to the $outopendir.</DOOROPENED>
+  <DOORCLOSED>The tracks are empty of subway trains.</DOORCLOSED>
+      </OUTSIDE>
+    </REVERSEDIRECTION>
+  </ROOMDESCRIPTIONS>
+</PCFASTTRAIN>
+<PCFASTTRAIN2>
+  <ROOMPRINTNAME>PC Subway Train 2</ROOMPRINTNAME>
+  <LINEPRINTNAME>PC Subway Train 2</LINEPRINTNAME>
+  <DISPLOC>true</DISPLOC>
+  <STOPS>
+    <STOP1>sector minus#14</STOP1>
+    <STOP2>sector minus#8</STOP2>
+    <STOP3>Phantom City#81</STOP3>
+    <STOP4>Phantom City#78</STOP4>
+  </STOPS>
+  <NORMALDIRECTION>
+    <TRAVELDIRECTION>upside</TRAVELDIRECTION>
+    <DOORSDIRECTION>north</DOORSDIRECTION>
+    <INSIDE>
+      <ARRIVALINFO>The train stops at $disproom and the doors to the $inopendir swish opened.!!SOUND(dong.wav V=50 P=25 U=http://secretoflife.pocketmud.com:27744/sounds/)</ARRIVALINFO>
+      <DEPARTINFO>The train doors swish closed and the train departs to the $traveldir.\nA crackly voice coming through the small speakers on the train roof says,\n       'Next Stop $disproom.'</DEPARTINFO>
+    </INSIDE>
+    <OUTSIDE>
+      <ARRIVALINFO>A $traveldirbound train arrives on the platform to the $outopendir and the doors swish opened.!!SOUND(dong.wav V=50 P=25 U=http://secretoflife.pocketmud.com:27744/sounds/)</ARRIVALINFO>
+      <DEPARTINFO>The subway train's doors swish closed\nThe train departs $traveldir down the tunnel.</DEPARTINFO>
+    </OUTSIDE>
+  </NORMALDIRECTION>
+  <REVERSEDIRECTION>
+    <TRAVELDIRECTION>downside</TRAVELDIRECTION>
+    <DOORSDIRECTION>south</DOORSDIRECTION>
+    <INSIDE>
+      <ARRIVALINFO>The train stops at $disproom and the doors to the $inopendir swish opened.!!SOUND(dong.wav V=50 P=25 U=http://secretoflife.pocketmud.com:27744/sounds/)</ARRIVALINFO>
+      <DEPARTINFO>The train doors swish closed and the train departs to the $traveldir.\nA crackly voice coming through the small speakers on the train roof says,\n       'Next Stop $disproom.'</DEPARTINFO>
+    </INSIDE>
+    <OUTSIDE>
+      <ARRIVALINFO>An $traveldirbound train arrives on the platform to the $outopendir and the doors swish opened.!!SOUND(dong.wav V=50 P=25 U=http://secretoflife.pocketmud.com:27744/sounds/)</ARRIVALINFO>
+      <DEPARTINFO>The subway train's doors swish closed\nThe train departs $traveldir down the tunnel.</DEPARTINFO>
+    </OUTSIDE>
+  </REVERSEDIRECTION>
+  <ROOMDESCRIPTIONS>
+    <NORMALDIRECTION>
+      <INSIDE>
+        <DOOROPENED>A metalic sliding door to the $inopendir leads to the platform of $disproom.</DOOROPENED>
+  <DOORCLOSED>Both metalic sliding doors are closed.  The train is traveling $traveldir.</DOORCLOSED>
+      </INSIDE>
+      <OUTSIDE>
+  <DOOROPENED>A $traveldirbound train is waiting at the platform to the $outopendir.</DOOROPENED>
+  <DOORCLOSED>The tracks are empty of subway trains.</DOORCLOSED>
+      </OUTSIDE>
+    </NORMALDIRECTION>
+    <REVERSEDIRECTION>
+      <INSIDE>
+        <DOOROPENED>A metalic sliding door to the $inopendir leads to the platform of $disproom.</DOOROPENED>
+  <DOORCLOSED>Both metalic sliding doors are closed.  The train is traveling $traveldir.</DOORCLOSED>
+      </INSIDE>
+      <OUTSIDE>
+  <DOOROPENED>A $traveldirbound train is waiting at the platform to the $outopendir.</DOOROPENED>
+  <DOORCLOSED>The tracks are empty of subway trains.</DOORCLOSED>
+      </OUTSIDE>
+    </REVERSEDIRECTION>
+  </ROOMDESCRIPTIONS>
+</PCFASTTRAIN2>
+<PCFERRY>
+  <ROOMPRINTNAME>PC Ferry</ROOMPRINTNAME>
+  <LINEPRINTNAME>PC Ferry</LINEPRINTNAME>
+  <DISPLOC>true</DISPLOC>
+  <STOPS>
+    <STOP1>Phantom City#60</STOP1>
+    <STOP2>Angelic Retreat#22</STOP2>
+    <STOP3>No Mans Land#47</STOP3>
+  </STOPS>
+  <NORMALDIRECTION>
+    <TRAVELDIRECTION>no man's land</TRAVELDIRECTION>
+    <DOORSDIRECTION>east</DOORSDIRECTION>
+    <INSIDE>
+      <ARRIVALINFO>The ferry stops at $disproom and the doors to the $inopendir swish opened.!!SOUND(dong.wav V=50 P=25 U=http://secretoflife.pocketmud.com:27744/sounds/)</ARRIVALINFO>
+      <DEPARTINFO>The ferry doors swish closed and the ferry departs to the $traveldir.\nA crackly voice coming through the small speakers says,\n       'Next Stop $disproom.'</DEPARTINFO>
+    </INSIDE>
+    <OUTSIDE>
+      <ARRIVALINFO>A $traveldirbound ferry arrives on the port to the $outopendir and the doors swish opened.!!SOUND(dong.wav V=50 P=25 U=http://secretoflife.pocketmud.com:27744/sounds/)</ARRIVALINFO>
+      <DEPARTINFO>The ferry's doors swish closed\nThe ferry departs $traveldir.</DEPARTINFO>
+    </OUTSIDE>
+  </NORMALDIRECTION>
+  <REVERSEDIRECTION>
+    <TRAVELDIRECTION>phantom city</TRAVELDIRECTION>
+    <DOORSDIRECTION>east</DOORSDIRECTION>
+    <INSIDE>
+      <ARRIVALINFO>The ferry stops at $disproom and the doors to the $inopendir swish opened.!!SOUND(dong.wav V=50 P=25 U=http://secretoflife.pocketmud.com:27744/sounds/)</ARRIVALINFO>
+      <DEPARTINFO>The ferry doors swish closed and the ferry departs to the $traveldir.\nA crackly voice coming through the small speakers says,\n       'Next Stop $disproom.'</DEPARTINFO>
+    </INSIDE>
+    <OUTSIDE>
+      <ARRIVALINFO>An $traveldirbound ferry arrives on the port to the $outopendir and the doors swish opened.!!SOUND(dong.wav V=50 P=25 U=http://secretoflife.pocketmud.com:27744/sounds/)</ARRIVALINFO>
+      <DEPARTINFO>The ferry's doors swish closed\nThe ferry departs $traveldir.</DEPARTINFO>
+    </OUTSIDE>
+  </REVERSEDIRECTION>
+  <ROOMDESCRIPTIONS>
+    <NORMALDIRECTION>
+      <INSIDE>
+        <DOOROPENED>A metalic sliding door to the $inopendir leads to the platform of $disproom.</DOOROPENED>
+  <DOORCLOSED>Both metalic sliding doors are closed.  The ferry is traveling to $traveldir.</DOORCLOSED>
+      </INSIDE>
+      <OUTSIDE>
+  <DOOROPENED>A $traveldirbound ferry is waiting at the platform to the $outopendir.</DOOROPENED>
+  <DOORCLOSED>The port is empty of ferries.</DOORCLOSED>
+      </OUTSIDE>
+    </NORMALDIRECTION>
+    <REVERSEDIRECTION>
+      <INSIDE>
+        <DOOROPENED>A metalic sliding door to the $inopendir leads to the platform of $disproom.</DOOROPENED>
+  <DOORCLOSED>Both metalic sliding doors are closed.  The ferry is traveling to $traveldir.</DOORCLOSED>
+      </INSIDE>
+      <OUTSIDE>
+  <DOOROPENED>A $traveldirbound ferry is waiting at the platform to the $outopendir.</DOOROPENED>
+  <DOORCLOSED>The port is empty of ferries.</DOORCLOSED>
+      </OUTSIDE>
+    </REVERSEDIRECTION>
+  </ROOMDESCRIPTIONS>
+</PCFERRY>
 </MOVINGDATA>

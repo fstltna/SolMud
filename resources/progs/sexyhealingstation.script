@@ -1,0 +1,342 @@
+cnclmsg_prog MOUNT mount
+mpaffect property:Prop_RideEnabler $i healstationriding
+##mount and initiation
+if sex($n == M) or sex($n == O) or sex($n == U)
+mpalarm 1 mpecho ^#401$n positions $m cock in place, ready to pound!
+mpalarm 1 mpechoat $n (Moving away will interrupt the process.)
+else
+endif
+if sex($n == F) or sex($n == A) or sex($n == H)
+mpalarm 1 mpecho ^#401$n moves $m pussy in position, ready to slam!
+mpalarm 1 mpechoat $n (Moving away will interrupt the process.)
+else
+endif
+mpsetvar $i fucks 0
+if hitprcnt($i >= 5)
+if wornon($n legs all)
+mpforce $n remove all.legs
+endif
+if wornon($n groin all)
+mpforce $n remove all.groin
+endif
+if wornon($t legs all)
+mpforce $t remove all.legs
+endif
+if wornon($t groin all)
+mpforce $t remove all.groin
+endif
+mpalarm 1 MPCALLFUNC SEXING
+else
+if isable($n Skill_SloppySeconds)
+ mpalarm 1 MPCALLFUNC SEXING
+ else
+mpforce $n dismount
+mpecho $n realizes $i's bits are far too damaged to use.
+ endif
+endif
+~
+
+FUNCTION_PROG SEXING
+if isable($n healstationriding)
+mpecho ($<$i fucks>/5) Until Orgasm...
+if sex($n == M) or sex($n == O) or sex($n == U)
+mpalarm 1 MPCALLFUNC MALECHECK
+else
+mpalarm 1 MPCALLFUNC FEMALECHECK
+endif
+else
+if sex($n == M) or sex($n == O) or sex($n == U)
+mpecho $n pulled out early and stopped.
+CALLFUNC DISMOUNT
+else
+mpecho $n hopped off early and stopped.
+CALLFUNC DISMOUNT
+endif
+endif
+~
+
+FUNCTION_PROG MALECHECK
+##male
+ if sex($n == M) or sex($n == O) or sex($n == U)
+  switch $%RANDNUM(5)%
+  case 1
+  mpecho ^#401$n accidentally slips out and grinds $m shaft on $i, then $e lines $m tip with $i's entrance, slipping in and beginning to pound again! *SLICK* *PLAP* *PLAP*
+   mpecho $n ^#555gain ^#045barely any ^#555health from this!
+   mpechoat $n ^#555You lost ^#3005 ^#555XP.
+   mpheal $n 15 25
+    switch $%RANDNUM(3)%
+     case 1
+      mpecho $i's ^#555hole takes ^#045no damage from this!
+     case 2
+     mpecho $i's ^#555hole takes ^#300almost no damage ^#555from this!
+     mpdamage $i 10 15
+     case 3
+     mpecho $i's ^#555hole takes ^#045no damage ^#555from this... the humiliation of yours ^#250tighten it a little instead^#555!
+     mpheal $i 15 25
+    endswitch
+   mpexp $n -5
+   mpsetvar $i fucks +1
+  case 2
+   mpecho ^#401*PLAP* *PLOP* *SLOP* $n grips tighter to something nearby and picks up the pace, slamming with full force into that poor hole! *PLAP* *PLAP* *SLAP*
+   mpecho $n ^#555gain ^#045a bit of ^#555health from this!
+   mpheal $i 25 35
+   switch $%RANDNUM(2)%
+    case 1
+     mpecho $i's ^#555hole takes ^#045no damage from this!
+    case 2
+    mpecho $i's ^#555hole takes ^#300a little damage ^#555from this!
+    mpdamage $i 15 30
+   endswitch
+   mpexp $n 5
+   mpsetvar $i fucks +1
+  case 3
+   mpecho ^#401*PLAP* *SLICK* *SLOP* $n pulls $m cock back to the tip in the hole and slams it all the way in, repeating the rough slamming. *PLAP* *PLOP* *PLOP*
+   mpecho $n ^#555gain ^#045some ^#555health from this!
+   mpheal $n 40 55
+   switch $%RANDNUM(2)%
+    case 1
+     mpecho $i's ^#555hole takes ^#045no damage from this!
+    case 2
+    mpecho $i's ^#555hole takes ^#300quite a bit of damage ^#555from this!
+    mpdamage $i 25 40
+   endswitch
+   mpexp $n 5
+   mpsetvar $i fucks +1
+  case 4
+  mpecho ^#401*GRIIIND* *SLICK* *SLOP* $n thoroughly explores every spot inside $i's hole between thrusts, grinding $m cock roughly against all of it's walls.*PLAP* *GRIIND* *PLOP*
+   mpecho $n ^#555gain ^#045a good amount of ^#555health from this!
+   mpheal $n 60 75
+   switch $%RANDNUM(2)%
+    case 1
+     mpecho $i's ^#555hole takes ^#045no damage from this!
+    case 2
+    mpecho $i's ^#555hole seems to be ^#300tearing a little ^#555from this!
+    mpdamage $i 40 55
+   endswitch
+   mpexp $n 5
+   mpsetvar $i fucks +1
+  case 5
+  mpecho ^#401*PLAP* *BAM* *PLAP* $n begins to put all of $m power into the pounding, balls slapping loudly against $i as $n slams ballsdeep with maximum power. *BAM* *PLOP* *PLAP*
+   mpecho $n ^#555gain ^#045alot of ^#555health from this!
+   mpheal $n 80 100
+   switch $%RANDNUM(3)%
+    case 1
+     mpecho $i's ^#555hole takes ^#045no damage from this!
+    case 2
+    mpecho $i's ^#555hole takes ^#300alot of damage and bleeds a little ^#555from this!
+    mpdamage $i 55 70
+    case 3
+    mpecho $i's ^#555hole audibly and visibly ^#300tears ^#555from this!!!
+    mpdamage $i 70 100
+   endswitch
+   mpexp $n 10
+   mpsetvar $i fucks +1
+  endswitch
+  MPCALLFUNC MALEENDCHECK
+  else
+  endif
+~
+
+FUNCTION_PROG FEMALECHECK
+##female check
+if sex($n == F) or sex($n == A) or sex($n == H)
+ switch $%RANDNUM(5)%
+ case 1
+  mpecho ^#401$n accidentally causes $i's cock to slip out and grind $M shaft on $m cunny lips and groin, then $e lines $M tip with $m entrance, slipping it in and beginning to pound again! *SLICK* *PLAP* *PLAP*
+  mpecho $n ^#555gain ^#045barely any ^#555health from this!
+  mpechoat $n ^#555You lost ^#3005 ^#555XP.
+  mpheal $n 15 25
+   switch $%RANDNUM(3)%
+    case 1
+     mpecho $i's ^#555cock takes ^#045no damage from this!
+    case 2
+    mpecho $i's ^#555cock takes ^#300almost no damage ^#555from this!
+    mpdamage $i 10 15
+    case 3
+    mpecho $i's ^#555cock takes ^#045no damage ^#555from this... the humiliation of yours ^#250get it a little harder instead^#555!
+    mpheal $i 10 25
+   endswitch
+  mpexp $n -5
+  mpsetvar $i fucks +1
+ case 2
+  mpecho ^#401*PLAP* *PLOP* *SLOP* $n grips tighter to something nearby and picks up the pace, slamming with full force on that poor cock! *PLAP* *PLAP* *SLAP*
+  mpecho $n ^#555gain ^#045a bit of ^#555health from this!
+  mpheal $i 25 35
+  switch $%RANDNUM(2)%
+   case 1
+    mpecho $i's ^#555cock takes ^#045no damage from this!
+   case 2
+   mpecho $i's ^#555cock takes ^#300a little damage ^#555from this!
+   mpdamage $i 15 30
+  endswitch
+  mpexp $n 5
+  mpsetvar $i fucks +1
+ case 3
+  mpecho ^#401*PLAP* *SLICK* *SLOP* $n pulls $m pussy back to the tip of the cock and slams it all the way in, repeating the rough slamming. *PLAP* *PLOP* *PLOP*
+  mpecho $n ^#555gain ^#045some ^#555health from this!
+  mpheal $n 40 55
+  switch $%RANDNUM(2)%
+   case 1
+    mpecho $i's ^#555cock takes ^#045no damage from this!
+   case 2
+   mpecho $i's ^#555cock takes ^#300quite a bit of damage ^#555from this!
+   mpdamage $i 25 40
+  endswitch
+  mpexp $n 5
+  mpsetvar $i fucks +1
+ case 4
+  mpecho ^#401*GRIIIND* *SLICK* *SLOP* $n thoroughly rolls $m hips and grinds $i's cock to all of $m walls between thrusts.*PLAP* *GRIIND* *PLOP*
+  mpecho $n ^#555gain ^#045a good amount of ^#555health from this!
+  mpheal $n 60 75
+  switch $%RANDNUM(2)%
+   case 1
+    mpecho $i's ^#555cock takes ^#045no damage from this!
+   case 2
+   mpecho $i's ^#555cock seems to be ^#300getting reddish ^#555from this!
+   mpdamage $i 40 55
+  endswitch
+  mpexp $n 5
+  mpsetvar $i fucks +1
+ case 5
+  mpecho ^#401*PLAP* *BAM* *PLAP* $n begins to put all of $m power into the pounding, $i's balls slapping loudly against $n as $e slams $S ballsdeep in with maximum power. *BAM* *PLOP* *PLAP*
+  mpecho $n ^#555gain ^#04510 ^#555XP from this!
+  mpecho $n ^#555gain ^#045alot of ^#555health from this!
+  mpheal $n 80 100
+  switch $%RANDNUM(3)%
+   case 1
+  mpecho $i's ^#555cock takes ^#045no damage from this!
+   case 2
+   mpecho $i's ^#555cock takes ^#300alot of damage and looks redder ^#555from this!
+   mpdamage $i 55 70
+   case 3
+   mpecho $i's ^#555cock visibly ^#300burns red and bleeds a bit at the sides ^#555from this!!!
+   mpdamage $i 70 100
+  endswitch
+  mpexp $n 10
+  mpsetvar $i fucks +1
+ endswitch
+ MPCALLFUNC FEMALEENDCHECK
+ else
+mpalarm 1 MPCALLFUNC NEUTERCHECK
+ endif
+~
+
+##neuter message
+FUNCTION_PROG NEUTERCHECK
+if sex($n == N) or sex($n == E)
+ mpechoat $n ^#300What are you going to use!? You are a Neuter!
+ mpforce $n dismount
+ else
+ endif
+~
+
+FUNCTION_PROG FEMALEENDCHECK
+if sex($n == F) or sex($n == A) or sex($n == H)
+  if VAR($i fucks <= '5')
+   if hitprcnt($i >= 10)
+    mpalarm 1 MPCALLFUNC SEXING
+    else
+    if isable($n Skill_SloppySeconds)
+    mpalarm 1 mpecho (SloppySeconds) ^#300$n feels the cock is far too limp, bloody and weak but $e does not stop!
+    mpalarm 1 MPCALLFUNC SEXING
+    else
+    ##end by too much damage
+    mpalarm 1 mpecho ^#300$n stops and pulls out as the bloody, reddened cock as it gets far too limp and weak to do anything with it now.
+    mpalarm 1 mpecho $n ^#555gain ^#04510 ^#555XP for hurting a poor cock...?
+    mpalarm 1 mpforce $n dismount
+    mpalarm 1 mpexp $n 10
+    endif
+    endif
+   else
+   ##end by cumming
+   mpalarm 1 mpforce $i mate $n
+   mpalarm 1 mpecho ^#401$i begins to cum together with $n, getting pumped good and full of cum before $n wipe $i's tip around $m cunny and that general area before letting go of the junk, a job well done.
+if sex($n == M) or sex($n == O) or sex($n == U)
+ if sex($t == N)
+ if affected($t sexual_cumbloat3)
+ mpalarm 2 mpecho $t's belly can't get inflated any more but it is filled with fresh cum over again...
+ mpunaffect $t sexual_cumbloat3
+ mpaffect sexual_cumbloat3 $t
+ else
+ if affected($t sexual_cumbloat2)
+ mpalarm 2 mpecho $t's belly inflate even more with the large amount of cum splurted into it!
+ mpunaffect $t sexual_cumbloat2
+ mpaffect sexual_cumbloat3 $t
+ else
+ if affected($t sexual_cumbloat1)
+ mpalarm 2 mpecho $t's belly inflate more with the large amount of cum splurted into it!
+ mpunaffect $t sexual_cumbloat1
+ mpaffect sexual_cumbloat2 $t
+ else
+ mpalarm 2 mpecho $t's belly inflate with the large amount of cum splurted into it!
+ mpaffect sexual_cumbloat1 $t
+ endif
+ endif
+ endif
+ endif
+ else
+ if sex($n == F) or sex($n == A) or sex($n == H)
+ if sex($t == N)
+ if affected($n sexual_cumbloat3)
+ mpalarm 2 mpecho $n's belly can't get inflated any more but it is filled with fresh cum over again...
+ mpunaffect $n sexual_cumbloat3
+ mpaffect sexual_cumbloat3 $n
+ else
+ if affected($n sexual_cumbloat2)
+ mpalarm 2 mpecho $n's belly inflate even more with the large amount of cum splurted into it!
+ mpunaffect $n sexual_cumbloat2
+ mpaffect sexual_cumbloat3 $n
+ else
+ if affected($n sexual_cumbloat1)
+ mpalarm 2 mpecho $n's belly inflate more with the large amount of cum splurted into it!
+ mpunaffect $n sexual_cumbloat1
+ mpaffect sexual_cumbloat2 $n
+ else
+ mpalarm 2 mpecho $n's belly inflate with the large amount of cum splurted into it!
+ mpaffect Sexual_Cumbloat1 $n
+ endif
+ endif
+ endif
+ endif
+ endif
+ endif
+   mpalarm 1 mpecho $n ^#555gain ^#04520 ^#555XP for cumming and making $i cum!
+   mpalarm 1 mpforce $n dismount
+   mpalarm 1 mpexp $n 20
+ endif
+else
+endif
+~
+
+FUNCTION_PROG MALEENDCHECK
+if sex($n == M) or sex($n == O) or sex($n == U)
+  if VAR($i fucks <= '5')
+   if hitprcnt($i >= 10)
+    mpalarm 1 MPCALLFUNC SEXING
+    else
+    if isable($n Skill_SloppySeconds)
+    mpalarm 1 mpecho (SloppySeconds) ^#300$n feels the hole is far too loose, cummy, bloody and weak but ^#401$e does not stop!
+    mpalarm 1 MPCALLFUNC SEXING
+    else
+    ##end by too much damage
+    mpalarm 1 mpecho ^#401$n stops and pulls out as the bloody, torn hole gets far too loose to do anything with it now.
+    mpalarm 1 mpecho $n ^#555gain ^#04520 ^#555XP for breaking a poor hole...?
+    mpalarm 1 mpforce $n dismount
+    mpalarm 1 mpexp $n 10
+    endif
+    endif
+   else
+   ##end by cumming
+   mpalarm 1 mpecho ^#401$n begins to cum into $i, pumping it good and full of cum before wiping $m tip around the hole and that general area before packing the junk, a job well done.
+   mpalarm 1 mpecho $n ^#555gain ^#04520 ^#555XP for cumming!
+   mpalarm 1 mpforce $n dismount
+   mpalarm 1 mpexp $n 20
+ endif
+else
+endif
+~
+
+##Dismount end.
+FUNCTION_PROG DISMOUNT
+return
+~

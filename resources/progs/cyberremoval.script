@@ -1,0 +1,34 @@
+cast_prog p cyberremoval
+mpechoat $n ^#111Target is $t.^N
+##prompts
+mpprompt $n itemval ^rPlease enter the name of the cybernetic item to remove. Enter nothing to cancel.^N
+mpchoose $n DECISION YN N Are you certain you wrote that correctly? (Y/N)
+if  VAR($n DECISION == 'Y')
+## checks for yes
+## checks if entered blank
+if  VAR($n itemval != '')
+##check for sitting
+if position($t == SITTING)
+##start of process
+mpcallfunc removaltime
+else
+## not sitting
+mpechoat $n Target is not sitting, canceled.
+endif
+else
+## Blank itemval
+mpechoat $n Canceled.
+endif
+else
+## N
+mpechoat $ Canceled.
+endif
+~
+
+function_prog removaltime
+mpforce $t mpgset $<$n itemval> isremovable true
+mpforce $t remove $<$n itemval>
+mpforce $t give $<$n itemval> $n
+mpforce $n mpgset $<$n itemval> isremovable false
+mpforce $n mpaffect Prop_WearZapper $<$n itemval> -RACE
+~

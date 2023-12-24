@@ -1,14 +1,40 @@
-
-
-^xCharacter creation complete!^.^?^N
-Your next step is to begin exploring.  Follow any instructions you read 
-on the screen, and enter the commands LOOK or HELP if you need some
-additional clues.
-
 ^xThe Rules of @MudInfo?NAME@!^.^?^N
-^H1.^N No killing, stealing from, or otherwise harassing newbie players.
-^H2.^N Maintain the illusion of fantasy by role-playing your character.
-^H3.^N Exploitation of any system problems is forbidden! If you find a bug, or a loophole in the gameplay, report it with the BUG command!
-^H4.^N Bot-Killing other players is not allowed.
+^H1.^N You should be role-playing your character as long as your are out of the OOC area, though ooc channels exist and you may use them for random chatter, No IC information or else can be transmitted through them and any metagaming is in for punishment.
+^H2.^N Exploitation of any system problems is forbidden! If you find a bug, or a loophole in the gameplay, report it with the BUG command, you can even get some QP and exp cookies for it!
+^H3.^N Bot-Killing other players is not allowed.
+^H4.^N Do not be mean OOCly to other players under any circumstances, this is not supposed to be another bitter place in everyone's possibly already bitter lives.
+^H5.^N If you are asked by another player to take your ERP elsewhere while in a public space that is not meant for that, such as surface Phantom City or else please do so.
+^H6.^N Remember that everyone is here to have fun, antagonizing and PK actions should not be bullying, rather story-building kind. If you do not trust yourself to keep it that way it may be best to stay away from such roleplay for everyone's sake and your own.
+^H7.^N You are not supposed to cross-breed as half-breeds, you should only breed with fullbreeds or same half-breeds. mixing up more half breeds in a soup ends up terribly bloating the race list and causing odd mixes to be born. If you really wish to go on with it ask staff over STAFFMAIL. Therefore -do not- go harem mode and breed random npcs for nothing, if you must make a half-half breed and so on, do it only with a player partner, if must.
+^H8.^N You can give tips for dungeons and secret places to your friends, though don't just hand-hold them and lead them through everything if they haven't seen it before.. let them explore themselves somewhat.
+^H9.^N No sexual interactions with children.
+^H10.^N You are expected to act reasonably and as someone who lives in such universe would, so you are not meant to find strange exploits, cast random spells on npcs such as find mate spell and wreak havoc cause you can get away with it until an admin hears of it. Act as a sane person would and keep the immersion up for everyone.
 
-Press Enter to begin:
+^xThe PK Rules of @MudInfo?Name@!^.^?^N
+^H1.^N You must have a good reason and escalation if you wish to try to murder another player and you must ALWAYS post a PKMAIL including date, witnesses and all sorts of information for staff if you commit an offensive action towards any other player such as murder, assault, robbery, mugging and everything that goes into action and not just words, so staff may keep track of what's going on between players and also make sure there is no random killings and all, though you may rob and steal from people just because you are a thief, but please do not steal from the same person over and over in so little timeframe and turn it into targeted harassments. We believe you will have sufficient conscience to know what to do here.
+^H2.^N PK murder victims will experience trauma and memory-loss due cloning or else (how far of a memory loss is of your discretion, but it has to include the whole murder scene including the murderer's identity.) after the event and resurrection, the victim may not look into their own death but allies investigating the event may act on their own, victims can not be put back in the loop of their death. Once someone dies the matter leading to the death is considered to be over so it will not go on forever, avenging deaths in a deathmatch that never ends is not allowed. Murder is means to end a conflict, not spark it.
+^H3.^N Remember to always be 'cool' OOCly to your PKers and your victims, of course.
+^H4.^N Using any sort of spell or anything on another character without their consent such as 'See Aura' is also a PK action even if it dont cause a fight, and the other character can even attack you for it. (In fact, don't use 'See Aura' on other characters without their consent at all, even if intending to PK.)
+^H5.^N Don't bully lower level characters or antagonize them unless they start something first, the level difference in coffeemud is for some reason massive and nothing at a difference of even 5 levels will survive a round most times.
+
+^xThe Alt Char Rules of @MudInfo?Name@!^.^?^N
+^H1.^N Alts, aka your side-characters can not share equipment, money or cast spells on each other (or help each other in any way possible). Though they can share a property (housing) they still have to keep their own items in check and not share anything. An account can have multiple housings provided they can keep up with the rental pricing, though it's heavily recommended an account only keeps one housing as it takes others' opportunities of having a place. (Max you can have is 3 lots.)
+^H2.^N Your alts can not help each other in plots, or avenge each others' deaths or anything, they should generally be unaware of each others actions and general being unless they are related or living in the same place and all. So keep your alts as distant to each other as possible with all of them having their own lives.
+^H3.^N You can puppet up to two alts in same room in -private locations- and you are required to let everyone else in the room aware which characters are your alts therefore you can not play two chars and manipulate some conflict or people by appearing as two different people, this was mostly allowed for more casual fun rp than competitive PK stuff, so be careful about that.
+^H4.^N You can not have your alts in the same room just to farm RPXP, this will get you a massive exp reduction and eventually ban if you keep that up.
+^H5.^N Child alts played by one of the parents can take funds from the parent(s) and be equipped with whatever means they may have, they have family relations and they are not affected by the whole seperate life rule for the most part.
+
+^xThe Other Rules of @MudInfo?Name@!^.^?^N
+^H1.^N Due code difficulties it is forbidden to steal vehicles and steal from vehicles at any circumstance.
+^H1.^N Doing things such running in a room, mating with some random person and running out and other Low RP things are not acceptable, this is a RP focused supposedly chill place, that and similar behavior is against the rules.
+
+^xKeep in mind there is low tolerance to breaking any of those rules and it may result in severe consequences such as (scaling from severity):
+^H1. Massive EXP deduction on exploiting character (5000XP-50000XP) depending on severity and situation.
+^H2. -25 to -50% or more experience gain rate for a month or more
+^H3. Temporary ban starting from a week to a year.
+^H4. A permanent ban.
+
+
+
+
+^xWelcome to @MudInfo?NAME@!^.^?^N

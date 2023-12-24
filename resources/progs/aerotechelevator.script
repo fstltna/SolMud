@@ -1,0 +1,77 @@
+##To Ground Floor - Stellarhaven#56
+cnclmsg_prog HUH p button 0
+if inroom($n == Stellarhaven#56)
+mpechoat $n ^#111Nothing happens as you are already there.^N
+else
+mpalarm 1 mpechoat $n ^#111The elevator doors swish closed and elevator begins to move towards the chosen floor.
+##transfer to Stellarhaven#56
+mpalarm 3 mptransfer $n Stellarhaven#56
+mpalarm 3 mpechoat $n ^#111The elevator halts and the doors swish open.
+endif
+return cancel
+~
+
+##To Floor 1 - Stellarhaven#89
+cnclmsg_prog HUH p button 1
+if inroom($n == Stellarhaven#89)
+mpechoat $n ^#111Nothing happens as you are already there.^N
+else
+mpalarm 1 mpechoat $n ^#111The elevator doors swish closed and elevator begins to move towards the chosen floor.
+##transfer to Stellarhaven#89
+mpalarm 3 mptransfer $n Stellarhaven#89
+mpalarm 3 mpechoat $n ^#111The elevator halts and the doors swish open.
+endif
+return cancel
+~
+
+##To Floor 2 - Stellarhaven#91
+cnclmsg_prog HUH p button 2
+if inroom($n == Stellarhaven#91)
+mpechoat $n ^#111Nothing happens as you are already there.^N
+else
+mpalarm 1 mpechoat $n ^#111The elevator doors swish closed and elevator begins to move towards the chosen floor.
+##transfer to Stellarhaven#91
+mpalarm 3 mptransfer $n Stellarhaven#91
+mpalarm 3 mpechoat $n ^#111The elevator halts and the doors swish open.
+endif
+return cancel
+~
+
+##To Floor 3 - Stellarhaven#92
+cnclmsg_prog HUH p button 3
+if inroom($n == Stellarhaven#92)
+mpechoat $n ^#111Nothing happens as you are already there.^N
+else
+mpalarm 1 mpechoat $n ^#111The elevator doors swish closed and elevator begins to move towards the chosen floor.
+##transfer to Stellarhaven#92
+mpalarm 3 mptransfer $n Stellarhaven#92
+mpalarm 3 mpechoat $n ^#111The elevator halts and the doors swish open.
+endif
+return cancel
+~
+
+##To Floor 4 - Stellarhaven#93
+cnclmsg_prog HUH p button 4
+if inroom($n == Stellarhaven#93)
+mpechoat $n ^#111Nothing happens as you are already there.^N
+else
+mpalarm 1 mpechoat $n ^#111The elevator doors swish closed and elevator begins to move towards the chosen floor.
+##transfer to Stellarhaven#93
+mpalarm 3 mptransfer $n Stellarhaven#93
+mpalarm 3 mpechoat $n ^#111The elevator halts and the doors swish open.
+endif
+return cancel
+~
+
+##To Floor 5 - Stellarhaven#94
+cnclmsg_prog HUH p button 5
+if inroom($n == Stellarhaven#94)
+mpechoat $n ^#111Nothing happens as you are already there.^N
+else
+mpalarm 1 mpechoat $n ^#111The elevator doors swish closed and elevator begins to move towards the chosen floor.
+##transfer to Stellarhaven#94
+mpalarm 3 mptransfer $n Stellarhaven#94
+mpalarm 3 mpechoat $n ^#111The elevator halts and the doors swish open.
+endif
+return cancel
+~

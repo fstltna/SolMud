@@ -1,0 +1,33 @@
+once_prog
+if affected($n thief_trappedcunny)
+mpechoat $n ^#111You can not shove any more caltrops into yourself!^N
+mpunaffect $n Thief_poisonpussy
+else
+if affected($n thief_poisonedcunny)
+mpechoat $n ^#111You can not shove any more caltrops into yourself!^N
+mpunaffect $n Thief_poisonpussy
+else
+mpaffect property:Spell_Hold $n
+mpechoat $n ^#111You grab a handful of special, smaller ^#444caltrops ^#111and begin to ^#100dull ^#111their edges a bit... ^w(0%)^N
+mpechoaround $n ^#111$n grabs handful of small ^#333caltrops ^#111and begin to ^#100dull ^#111their edges... ^w(0%)^N
+mpalarm 5 mpechoat $n ^#111You finish dulling the caltrops then undress your bottom and sit down on the ground and ^#203spread your legs^#111, getting some sort of ^#322oil ^#111 and ^#121poison ^#111from your bag and beginning to ^#322oil#111 and ^#121poison ^#111the ^#333caltrops. ^w(20%)^N
+mpalarm 5 mpechoaround $n ^#111$n Completes dulling the caltrops, she undresses, sits on the ground and ^#203spreads her legs^#111, grabbing some sort of ^#322oil and ^#121a tiny green vial ^#111from her bag and beginning to ^#322oil#111 and ^#121poison ^#111the ^#333caltrops. ^w(20%)^N
+mpalarm 10 mpechoat $n ^#111You finish ^#322oiling^#111 up the ^#333caltrops, ^#111finally producing ^#555a thin, wire like steel tool ^#111from your bag from a ^#320ster^#234i^#320le case^#111, slowly inserting it into ^#203your pussy^#111. A ^#255shiver ^#111forces itself out of you as the ^#144coldness ^#111of the ^#555tool ^#111is felt inside you. Then you squeeze the start of the ^#555tool^#111 a little, causing it to spread up your inner walls and lips. ^w(40%)^N
+mpalarm 10 mpechoaround $n ^#111$n finishes ^#322oiling^#111 up the ^#333caltrops^#111. Then produces ^#555a thin steel tool^#111 from her bag, from a ^#320ster^#234i^#320le case^#111 and slowly inserts it into herself, squeezing the end of it and making the device spread and cause her walls and lips to spread a bit, looking uncomfortable. ^w(40%)^N
+mpalarm 15 mpechoat $n ^#111You first get ^#210a thin almost-transparent, medicine smelling coffee-tinted film^#111 from your bag before grab ^#555another tool ^#111that looks like a larger tweezer, using it to get the ^#210film ^#111and begin to ^#203neatly stuff it into yourself^#111, making sure it is not noticable and it covers all of your walls so the caltrops will not cut into you when you move. ^w(60%)^N
+mpalarm 15 mpechoaround $n ^#111$n gets another tool that looks like a larger tweezer from her sterile case of tools and a thin, nearly transparent coffee-tinted film from her bag and gets it with the device, beginning to stuff her hole with it, making sure to not make it noticable and also covering of all her inner walls. ^w(60%)^N
+mpalarm 20 mpechoat $n ^#111You finish ^#010d^#012e^#015c^#101o^#113r^#212a^#200t^#205i^#221n^#023g^#111 your ^#203inner walls ^#111with the ^#210mediciney-film^#111, with a sigh you begin to grab the ^#333caltrops ^#111with the ^#555tweezer-like tool ^#111one by one and ^#200insert ^#111them inside your hole carefully... ^w(80%)^N
+mpalarm 20 mpechoaround $n ^#111$n finishes putting the ^#210film ^#111in her ^#203pussy ^#111and begins to get the ^#333caltrops ^#111with the ^#555tool ^#111in her hand and place them carefully inside herself... ^w(80%)^N
+mpalarm 23 mpecho $n ^#111finishes trapping her pussy for any unwanted guests and stands up. ^w(100%)^N
+mpalarm 23 mpunaffect $n Spell_Hold
+mpalarm 23 mpaffect Thief_poisonedcunny $n
+mpalarm 23 mpunaffect $n Thief_poisonpussy
+endif
+endif
+return cancel
+~
+damage_prog
+mpunaffect $n Spell_Hold
+mpunaffect $n Thief_poisonpussy
+return cancel
+~

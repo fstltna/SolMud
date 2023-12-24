@@ -1,0 +1,811 @@
+20231102.1810.23 info  MUD            CoffeeMud v5.10.2
+20231102.1810.23 info  MUD            (C) 2000-2023 Bo Zimmerman
+20231102.1810.23 info  MUD            http://www.coffeemud.org
+20231102.1810.23 error CMSecurity     Unknown or duplicate disable flag: AUTOFORWARD
+20231102.1810.23 info  HOST0          Disabled subsystems: DBERRORQUESTART, QUITREASON, SLOW_AGEING, DEATHCRY, AUTOMOODS, AUTOFORWARD, FATIGUE, ALLERGIES, NEWPLAYERS, 
+20231102.1810.23 info  MUD@5555       MUD Server started on port: 5555
+20231102.1810.24 info  HOST0          Connected to jdbc:mysql://localhost:3306/coffeemud2
+20231102.1810.24 debug HOST0          SSL not configured.
+20231102.1810.24 debug HOST0          SSL not configured.
+20231102.1810.24 info  cweb-pub0      Started http pub0 on port 27744
+20231102.1810.24 info  cweb-admin0    Started http admin0 on port 27777
+20231102.1810.24 debug cweb-pub0Timeo Timeout Thread started
+20231102.1810.24 debug cweb-admin0Tim Timeout Thread started
+20231102.1810.25 info  HOST0          WebMacros loaded  : 199
+20231102.1810.26 info  HOST0          MOB Types loaded  : 148
+20231102.1810.26 info  HOST0          Exit Types loaded : 31
+20231102.1810.26 info  HOST0          Area Types loaded : 14
+20231102.1810.26 info  HOST0          Locales loaded    : 127
+20231102.1810.26 info  HOST0          Fighter Skills    : 153
+20231102.1810.27 info  HOST0          Chants loaded     : 318
+20231102.1810.27 info  HOST0          Languages loaded  : 59
+20231102.1810.28 info  HOST0          Properties loaded : 310
+20231102.1810.28 info  HOST0          Prayers loaded    : 357
+20231102.1810.28 info  HOST0          Thief Skills      : 179
+20231102.1810.29 info  HOST0          Skills loaded     : 338
+20231102.1810.29 info  HOST0          Songs loaded      : 156
+20231102.1810.29 info  HOST0          Spells loaded     : 416
+20231102.1810.29 info  HOST0          Heroics loaded    : 6
+20231102.1810.29 info  HOST0          Tech Skills loaded: 2
+20231102.1810.29 info  HOST0          Traps loaded      : 82
+20231102.1810.30 info  HOST0          GenAbles loaded   : 105
+20231102.1810.30 info  HOST0          Basic Items loaded: 137
+20231102.1810.30 info  HOST0          Weapons loaded    : 61
+20231102.1810.30 info  HOST0          Armor loaded      : 51
+20231102.1810.30 info  HOST0          Magic Items loaded: 46
+20231102.1810.30 info  HOST0          Clan Items loaded : 29
+20231102.1810.31 info  HOST0          Electronics loaded: 98
+20231102.1810.31 info  HOST0          Behaviors loaded  : 97
+20231102.1810.31 info  HOST0          Commands loaded   : 300
+20231102.1810.32 info  HOST0          Races loaded      : 301
+20231102.1810.33 info  HOST0          Classes loaded    : 97
+20231102.1810.37 info  HOST0          Expertises defined: 1820
+20231102.1810.37 info  HOST0          Channels loaded   : 29
+20231102.1810.37 info  HOST0          Socials loaded    : 342
+20231102.1810.38 info  HOST0          Clans loaded      : 12
+20231102.1810.38 info  CM1Server0@277 Started CM1Server0@27733 on port 27733
+20231102.1810.38 info  I3Server       InterMud3 Core (c)1996 George Reese
+20231102.1811.02 info  Intermud3      I3 client connection: 204.209.44.3@8080
+20231102.1811.02 info  I3Server       InterMud3 Server started on port 27766
+20231102.1811.02 info  HOST0          Loading catalog...
+20231102.1811.02 info  HOST0          Loading map...
+20231102.1811.09 error ClanHelper     Unknown clan activated." for ^#222A ^#111N^#222T^#333C^r-^#111O^#222M^#333N^#222I ^#111A^#222l^#333l^r-^#222P^#111u^#222r^#333p^#222o^#111s^#222e ^#333D^#222r^#111o^#222i^#333d^N in 
+20231102.1811.09 error ClanHelper     Unknown clan activated. for ^#111N^#222T^#333C^r-^#1110^#2220^#3330^r2 ^#550P^#540r^#550e^#540m^#550i^#540u^#550m ^#222D^#333r^ro^#222i^#111d^N in OOC Area#15
+20231102.1811.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.10 error ClanHelper     Unknown clan activated." for ^#222A ^#111N^#222T^#333C^r-^#111O^#222M^#333N^#222I ^#111A^#222l^#333l^r-^#222P^#111u^#222r^#333p^#222o^#111s^#222e ^#333D^#222r^#111o^#222i^#333d^N in 
+20231102.1811.10 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.10 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.10 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.10 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.10 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.10 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.10 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.10 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.10 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.10 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.10 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.10 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.10 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.10 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error ClanHelper     Unknown clan activated." for ^#111N^#222T^#333C^r-^#1110^#2220^#3330^r1 ^#550P^#540r^#550e^#540m^#550i^#540u^#550m ^#222D^#333r^ro^#222i^#111d^N in 
+20231102.1811.11 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.11 error HOST0          Bad ZapperMask parm '+THIEF' @ -BASECLASS +THIEF
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.12 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.13 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.13 error ClanHelper     Unknown clan activated." for ^#222A ^#111N^#222T^#333C^r-^#111O^#222M^#333N^#222I ^#111A^#222l^#333l^r-^#222P^#111u^#222r^#333p^#222o^#111s^#222e ^#333D^#222r^#111o^#222i^#333d^N in 
+20231102.1811.13 error ClanHelper     Unknown clan activated." for ^#222A ^#111N^#222T^#333C^r-^#111O^#222M^#333N^#222I ^#111A^#222l^#333l^r-^#222P^#111u^#222r^#333p^#222o^#111s^#222e ^#333D^#222r^#111o^#222i^#333d^N in 
+20231102.1811.14 error ClanHelper     Unknown clan activated." for ^#111N^#222T^#333C^r-^#1110^#2220^#3330^r1 ^#550P^#540r^#550e^#540m^#550i^#540u^#550m ^#222D^#333r^ro^#222i^#111d^N in 
+20231102.1811.14 error ClanHelper     Unknown clan activated." for ^#111N^#222T^#333C^r-^#1110^#2220^#3330^r1 ^#550P^#540r^#550e^#540m^#550i^#540u^#550m ^#222D^#333r^ro^#222i^#111d^N in 
+20231102.1811.14 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.14 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.14 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.14 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.14 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.14 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.14 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.14 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.14 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.14 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.14 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.14 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.14 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.14 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.14 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.14 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.14 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.14 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.14 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.14 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.15 error ClanHelper     Unknown clan activated." for ^#222A ^#111N^#222T^#333C^r-^#111O^#222M^#333N^#222I ^#111A^#222l^#333l^r-^#222P^#111u^#222r^#333p^#222o^#111s^#222e ^#333D^#222r^#111o^#222i^#333d^N in 
+20231102.1811.15 error ClanHelper     Unknown clan activated." for ^#222A ^#111N^#222T^#333C^r-^#111O^#222M^#333N^#222I ^#111A^#222l^#333l^r-^#222P^#111u^#222r^#333p^#222o^#111s^#222e ^#333D^#222r^#111o^#222i^#333d^N in 
+20231102.1811.15 error ClanHelper     Unknown clan activated. for ^#111N^#222T^#333C^r-^#1110^#2220^#3330^r2 ^#550P^#540r^#550e^#540m^#550i^#540u^#550m ^#222D^#333r^ro^#222i^#111d^N in OOC Area#15
+20231102.1811.16 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.16 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.16 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.16 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.16 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.16 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.16 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.16 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.16 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.16 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.17 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.17 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.17 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.17 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.17 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.17 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.17 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.17 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.17 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.17 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.17 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.17 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.17 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.17 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.17 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.17 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.17 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.17 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.17 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.17 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.17 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.17 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.17 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.17 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.17 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.17 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.17 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.17 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1811.19 info  HOST0          Preparing map...
+20231102.1811.20 info  HOST0          Mapped rooms      : 3267 in 74 areas
+20231102.1811.20 info  HOST0          Space objects     : 6
+20231102.1811.20 info  HOST0          Clan owned items  : 0
+20231102.1811.20 error CMFile         Access error on file 'resources/quests/brotheljob.quest'.
+20231102.1811.20 info  QuestLoader    Unable to load Quest 'Brotheljob'.  Suspending.
+20231102.1811.20 error CMFile         Access error on file 'resources/quests/brotheljob.quest'.
+20231102.1811.20 info  QuestLoader    Unable to load Quest 'Brotheljob#1'.  Suspending.
+20231102.1811.20 info  HOST0          Quests loaded     : 8
+20231102.1811.20 info  HOST0          Services and utilities started
+20231102.1811.20 info  HOST0          Host#0 initializated.
+20231102.1811.20 info  MUD            Initialization complete.
+20231102.1811.21 error CombatAbilitie the woods does not want to fight.
+20231102.1811.25 info  MudChat        Chat Data by Chris Busch & Jeremy Vyska
+20231102.1811.25 info  MudChat        Chat Data by Chris Busch & Jeremy Vyska
+20231102.1811.35 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231102.1811.35 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231102.1811.40 info  MudChat        Chat Data by Chris Busch & Jeremy Vyska
+20231102.1812.18 info  MUD@5555       Connection from 78.164.52.23
+20231102.1812.24 info  Worker0#2      78.164.52.23 Mudlet 4.16.0 MXP MSDP GMCP CMP ANSI, account login: Moonbeam
+20231102.1812.25 info  Worker0#1      78.164.52.23 Mudlet 4.16.0 MXP MSDP GMCP CMP ANSI, character login: Moonbeam
+20231102.1814.57 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1814.57 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1814.57 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1814.57 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1814.57 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1814.57 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1814.57 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1814.57 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231102.1821.43 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231102.1821.43 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231102.1829.23 info  Items          Moonbeam destroyed item ^#111A ^#200N^#300i^#400n^#500eta^#400i^#300l^#200s ^RN^re^#222ur^#333al ^#111Ope^#222rat^Rin^rg ^#111Sy^#222ste^#333m ^RI^#222mp^#333la^#222n^#111t^N.
+20231102.1829.25 info  SysopUtils     Moonbeam 1 copied GenArmor item.
+20231102.1831.39 error ClanHelper     Unknown clan activated. for ^#111N^#222T^#333C^r-^#1110^#2220^#3330^r2 ^#550P^#540r^#550e^#540m^#550i^#540u^#550m ^#222D^#333r^ro^#222i^#111d^N in OOC Area#15
+20231102.1831.45 error ClanHelper     Unknown clan activated." for ^#111N^#222T^#333C^r-^#1110^#2220^#3330^r2 ^#550P^#540r^#550e^#540m^#550i^#540u^#550m ^#222D^#333r^ro^#222i^#111d^N in OOC Area#15
+20231102.1831.48 error ClanHelper     Unknown clan activated." for ^#111N^#222T^#333C^r-^#1110^#2220^#3330^r2 ^#550P^#540r^#550e^#540m^#550i^#540u^#550m ^#222D^#333r^ro^#222i^#111d^N in OOC Area#15
+20231102.1831.48 info  CreateEdit     Moonbeam modified mob ^#111N^#222T^#333C^r-^#1110^#2220^#3330^r2 ^#550P^#540r^#550e^#540m^#550i^#540u^#550m ^#222D^#333r^ro^#222i^#111d^N (GenMob) in OOC Area#15.
+20231102.1831.51 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231102.1831.51 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231102.1832.09 info  Items          Moonbeam destroyed item ^#111A bal^#222listic-he^#333lmet w^#222ith t^#111he ^#400N^#300T^#111 Lo^#222go w^#333ith a ^gNVG ^#111moun^#222ted^N.
+20231102.1832.10 info  Items          Moonbeam destroyed item ^#111A f^#222ul^#333l-b^#222od^#111y bl^#222ac^#333k c^#222am^#111o ^rN^RT ^#111t^#222ac^#333ti^#222ca^#111l a^#222rm^#333or^N.
+20231102.1832.11 info  Items          Moonbeam destroyed item ^#444a ^#555sl^ca^#444v^#555e ^#444im^#333p^cl^#222a^#333n^#555t^N.
+20231102.1832.11 info  Items          Moonbeam destroyed item ^#222A fu^#333ll^#500-^#333bo^#444dy ^#400PJF^#444 Po^#333we^#222r^#500-^#222Ar^#333mor^N.
+20231102.1832.12 info  Items          Moonbeam destroyed item ^#222A he^#333avy ^#305PC^#444 Kn^#333igh^#222t Ar^#333mor^N.
+20231102.1832.12 info  Items          Moonbeam destroyed item ^wAn advanced ^ctrauma ^rkit^N.
+20231102.1832.13 info  Items          Moonbeam destroyed item ^#111A ^#200N^#300i^#400n^#500eta^#400i^#300l^#200s ^RN^re^#222ur^#333al ^#111Ope^#222rat^Rin^rg ^#111Sy^#222ste^#333m ^RI^#222mp^#333la^#222n^#111t^N.
+20231102.1832.38 info  Items          Moonbeam destroyed item ^#310A ^ctrauma-team ^#210co^#310pp^#210er mem^#310bers^#210hip ca^#310rd^N (6 Months).
+20231102.1832.38 info  Items          Moonbeam destroyed item ^#222a ^cN^CM ^bMent^BX ^#111st^#222imu^#333la^#444nt in^#333jec^#222tor^N.
+20231102.1832.38 info  Items          Moonbeam destroyed item ^wa canister of ^cnanosurgeons^N.
+20231102.1832.38 info  Items          Moonbeam destroyed item ^wA ^#333se^#444lf^c-^#555st^#444er^#333ili^#444zi^#555ng ^#500l^#400a^#300s^#400e^#500r^c-^#555s^#444c^#333a^#222l^#111p^#222e^#333l^N.
+20231102.1832.38 info  Items          Moonbeam destroyed item ^#111A H^#222i^C-^#333Tec^#444h o^#333rga^#222n pr^#111int^#222er^N.
+20231102.1832.38 info  Items          Moonbeam destroyed item ^#444A bu^#333lky d^#555ef^#444^ri^#444b an^#333d r^#444evi^#555val ^#444ki^#333t^N.
+20231102.1832.38 info  Items          Moonbeam destroyed item ^#222a ^cN^CM ^cBrain^Cax ^#111st^#222imu^#333la^#444nt in^#333jec^#222tor^N.
+20231102.1832.38 info  Items          Moonbeam destroyed item ^#222a ^cN^CM ^PR^pizze^Pr ^#111st^#222imu^#333la^#444nt in^#333jec^#222tor^N.
+20231102.1832.38 info  Items          Moonbeam destroyed item ^#333A f^#444ert^#555ilit^#444y re^#333stor^#222ati^#333on k^#444it^N.
+20231102.1832.38 info  Items          Moonbeam destroyed item a barrel of nuclear fissile material.
+20231102.1832.38 info  Items          Moonbeam destroyed item ^#222a ^cN^CM ^RMega^rBuff ^#111st^#222imu^#333la^#444nt in^#333jec^#222tor^N.
+20231102.1832.38 info  Items          Moonbeam destroyed item ^rFresh blood^R`s ^gguide to ^cSoL^N.
+20231102.1832.38 info  Items          Moonbeam destroyed item a citizenship document.
+20231102.1832.38 info  Items          Moonbeam destroyed item ^#333An univ^#444ersa^pl ^#444birt^#333h cont^#222rol dev^#333ice^N.
+20231102.1832.38 info  Items          Moonbeam destroyed item ^#222a s^#344ampling ki^#333t^N.
+20231102.1832.38 info  Items          Moonbeam destroyed item a slave information document.
+20231102.1832.38 info  Items          Moonbeam destroyed item ^#222a ^cN^CM ^gStamin^GUp ^#111st^#222imu^#333la^#444nt in^#333jec^#222tor^N.
+20231102.1832.38 info  Items          Moonbeam destroyed item ^#222a ^cN^CM ^rVitaMax ^#111st^#222imu^#333la^#444nt in^#333jec^#222tor^N.
+20231102.1832.38 info  Items          Moonbeam destroyed item ^#333A ^ctrauma-team ^#222si^#333lv^#222er mem^#333bers^#222hip ca^#333rd^N (6 Months).
+20231102.1832.38 info  Items          Moonbeam destroyed item ^#555A ^#444por^#555tab^#444le ^#222ultr^#111aso^#333un^#222d ^#444dev^#555ice an^#555d ga^#444dge^#555ts^N.
+20231102.1832.38 info  Items          Moonbeam destroyed item ^#555A ^ctrauma-team ^#444pla^#333tin^#444um mem^#555bers^#444hip ca^#333rd^N (6 Months).
+20231102.1832.38 info  Items          Moonbeam destroyed item ^#222a ^cN^CM ^GRe^gFlex ^#111st^#222imu^#333la^#444nt in^#333jec^#222tor^N.
+20231102.1832.38 info  Items          Moonbeam destroyed item a barrel of nuclear fissile material.
+20231102.1832.38 info  Items          Moonbeam destroyed item A book of new beginnings.
+20231102.1832.38 info  Items          Moonbeam destroyed item ^#222a ^cN^CM ^RVitaLite ^#111st^#222imu^#333la^#444nt in^#333jec^#222tor^N.
+20231102.1832.38 info  Items          Moonbeam destroyed item A law-holopad for Phantom City central.
+20231102.1832.38 info  Items          Moonbeam destroyed item ^wA canister of ^Gb^giomatte^Gr^N.
+20231102.1832.38 info  Items          Moonbeam destroyed item a weapon license document.
+20231102.1832.38 info  Items          Moonbeam destroyed item ^#222a ^cN^CM ^CC^clarit^Cy ^#111st^#222imu^#333la^#444nt in^#333jec^#222tor^N.
+20231102.1832.38 info  Items          Moonbeam destroyed item ^#222a ^cN^CM ^yTank^YIt ^#111st^#222imu^#333la^#444nt in^#333jec^#222tor^N.
+20231102.1832.38 info  Items          Moonbeam destroyed item ^#550A ^ctrauma-team ^#440g^#330o^#440ld mem^#550bers^#440hip ca^#330rd^N (6 Months).
+20231102.1832.38 info  Items          Moonbeam destroyed item ^wA small canister of ^Cultrasound gel^N.
+20231102.1832.45 error Worker0#1      Bad Zappermask key '+ALL' @ +ALL
+20231102.1832.49 info  Mobs           Moonbeam destroyed mob A pharmacy laboratory and special manufactury machine.
+20231102.1835.03 error Scripting      PC Radio/sector minus#46/EVAL/SYNTAX/No ) for fuction (: IF, VAR, (/progs/pcradio.script
+20231102.1841.59 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231102.1841.59 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231102.1850.47 error Scripting      PC Radio/sector minus#46/MPLOG/Syntax/Unknown log type NNNEL for PC Radio/progs/pcradio.script
+20231102.1852.07 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231102.1852.07 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231102.1852.21 info  MUD@5555       Connection from 178.218.146.89
+20231102.1853.28 info  Worker0#3      Disconnect: 178.218.146.89 (1m 6s)
+20231102.1857.23 info  MUD@5555       Connection from 65.49.1.112
+20231102.1857.24 info  Worker0#3      Disconnect: 65.49.1.112 (1s 710ms)
+20231102.1901.33 info  MUD@5555       Connection from 104.156.100.167
+20231102.1902.15 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231102.1902.15 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231102.1902.35 info  Worker0#4      Disconnect: 104.156.100.167 (1m 2s)
+20231102.1908.55 error Scripting      PC Radio/sector minus#46/MPLOG/Syntax/Unknown log type NNNEL for PC Radio/progs/pcradio.script
+20231102.1912.23 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231102.1912.23 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231102.1922.31 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231102.1922.31 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231102.1926.38 error CM1Hndlr       CM1ReqHndler#1: Connection reset by peer
+20231102.1932.39 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231102.1932.39 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231102.1942.47 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231102.1942.47 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231102.1952.51 error Scripting      PC Radio/sector minus#46/EVAL/SYNTAX/No ) for fuction (: IF, VAR, (/progs/pcradio.script
+20231102.1952.55 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231102.1952.55 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231102.1956.31 error Scripting      PC Radio/sector minus#46/EVAL/SYNTAX/No ) for fuction (: IF, VAR, (/progs/pcradio.script
+20231102.2003.03 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231102.2003.03 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231102.2005.31 error Scripting      PC Radio/sector minus#46/MPLOG/Syntax/Unknown log type NNNEL for PC Radio/progs/pcradio.script
+20231102.2013.11 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231102.2013.11 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231102.2016.55 error Scripting      PC Radio/sector minus#46/MPLOG/Syntax/Unknown log type NNNEL for PC Radio/progs/pcradio.script
+20231102.2023.19 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231102.2023.19 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231102.2028.19 error Scripting      PC Radio/sector minus#46/MPLOG/Syntax/Unknown log type NNNEL for PC Radio/progs/pcradio.script
+20231102.2033.27 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231102.2033.27 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231102.2037.07 error Scripting      PC Radio/sector minus#46/EVAL/SYNTAX/No ) for fuction (: IF, VAR, (/progs/pcradio.script
+20231102.2040.47 error Scripting      PC Radio/sector minus#46/EVAL/SYNTAX/No ) for fuction (: IF, VAR, (/progs/pcradio.script
+20231102.2043.35 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231102.2043.35 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231102.2048.57 debug Intermud       UCache packet has # data: 9
+20231102.2048.57 debug Intermud       UCache Data: ucache-update 5 MoH 0 0 0 Lucavian Lucavian 0
+20231102.2050.15 error Scripting      PC Radio/sector minus#46/EVAL/SYNTAX/No ) for fuction (: IF, VAR, (/progs/pcradio.script
+20231102.2053.43 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231102.2053.43 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231102.2103.51 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231102.2103.51 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231102.2103.59 error Scripting      PC Radio/sector minus#46/EVAL/SYNTAX/No ) for fuction (: IF, VAR, (/progs/pcradio.script
+20231102.2106.49 info  MUD@5555       Connection from 2607:ff10:c8:594:0:0:0:d
+20231102.2107.39 error Scripting      PC Radio/sector minus#46/EVAL/SYNTAX/No ) for fuction (: IF, VAR, (/progs/pcradio.script
+20231102.2108.07 info  MUD@5555       Connection from 2607:ff10:c8:594:0:0:0:d
+20231102.2113.59 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231102.2113.59 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231102.2117.15 error Scripting      PC Radio/sector minus#46/EVAL/SYNTAX/No ) for fuction (: IF, VAR, (/progs/pcradio.script
+20231102.2121.21 info  THSessions0    Kicking out login session after 14m 26s 251ms.
+20231102.2121.21 info  Worker0#5      Disconnect: 2607:ff10:c8:594:0:0:0:d (14m)
+20231102.2121.24 info  THSessions0    Kicking out login session after 13m 15s 420ms.
+20231102.2121.24 info  Worker0#5      Disconnect: 2607:ff10:c8:594:0:0:0:d (13m)
+20231102.2124.07 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231102.2124.07 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231102.2132.59 error Scripting      PC Radio/sector minus#46/MPLOG/Syntax/Unknown log type NNNEL for PC Radio/progs/pcradio.script
+20231102.2134.15 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231102.2134.15 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231102.2144.23 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231102.2144.23 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231102.2154.31 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231102.2154.31 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231102.2201.33 info  MUD@5555       Connection from 104.156.100.167
+20231102.2204.39 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231102.2204.39 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231102.2206.59 error Scripting      PC Radio/sector minus#46/EVAL/SYNTAX/No ) for fuction (: IF, VAR, (/progs/pcradio.script
+20231102.2210.39 error Scripting      PC Radio/sector minus#46/EVAL/SYNTAX/No ) for fuction (: IF, VAR, (/progs/pcradio.script
+20231102.2211.21 info  THSessions0    Kicking out login session after 9m 46s 669ms.
+20231102.2211.21 info  Worker0#1      Disconnect: 104.156.100.167 (9m)
+20231102.2211.28 error ClanHelper     Unknown clan activated." for ^#222A ^#111N^#222T^#333C^r-^#111O^#222M^#333N^#222I ^#111A^#222l^#333l^r-^#222P^#111u^#222r^#333p^#222o^#111s^#222e ^#333D^#222r^#111o^#222i^#333d^N in 
+20231102.2214.47 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231102.2214.47 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231102.2224.55 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231102.2224.55 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231102.2225.35 error Scripting      PC Radio/sector minus#46/MPLOG/Syntax/Unknown log type NNNEL for PC Radio/progs/pcradio.script
+20231102.2235.03 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231102.2235.03 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231102.2245.11 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231102.2245.11 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231102.2255.19 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231102.2255.19 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231102.2256.19 error Scripting      PC Radio/sector minus#46/EVAL/SYNTAX/No ) for fuction (: IF, VAR, (/progs/pcradio.script
+20231102.2259.59 error Scripting      PC Radio/sector minus#46/EVAL/SYNTAX/No ) for fuction (: IF, VAR, (/progs/pcradio.script
+20231102.2303.25 info  MUD@5555       Connection from 85.227.85.186
+20231102.2304.01 info  Worker0#2      Disconnect: 85.227.85.186 (36s)
+20231102.2305.27 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231102.2305.27 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231102.2315.35 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231102.2315.35 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231102.2321.31 error Scripting      PC Radio/sector minus#46/MPLOG/Syntax/Unknown log type NNNEL for PC Radio/progs/pcradio.script
+20231102.2325.43 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231102.2325.43 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231102.2329.31 error Scripting      PC Radio/sector minus#46/EVAL/SYNTAX/No ) for fuction (: IF, VAR, (/progs/pcradio.script
+20231102.2335.52 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231102.2335.52 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231102.2346.00 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231102.2346.00 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231102.2354.32 error Scripting      PC Radio/sector minus#46/MPLOG/Syntax/Unknown log type NNNEL for PC Radio/progs/pcradio.script
+20231102.2356.08 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231102.2356.08 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0002.24 error Scripting      PC Radio/sector minus#46/EVAL/SYNTAX/No ) for fuction (: IF, VAR, (/progs/pcradio.script
+20231103.0006.16 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0006.16 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0016.24 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0016.24 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0017.20 error Scripting      PC Radio/sector minus#46/MPLOG/Syntax/Unknown log type NNNEL for PC Radio/progs/pcradio.script
+20231103.0019.09 info  MUD@5555       Connection from 64.62.197.100
+20231103.0019.15 info  Worker0#2      Disconnect: 64.62.197.100 (5s)
+20231103.0026.32 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0026.32 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0034.42 info  Worker0#2      Logout: Moonbeam (6h)
+20231103.0034.42 info  Worker0#2      Disconnect: Moonbeam: 78.164.52.23 (6h)
+20231103.0036.40 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0036.40 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0044.04 info  MUD@5555       Connection from 103.180.146.2
+20231103.0045.10 info  Worker0#1      Disconnect: 103.180.146.2 (1m 6s)
+20231103.0046.48 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0046.48 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0047.32 error Scripting      PC Radio/sector minus#46/EVAL/SYNTAX/No ) for fuction (: IF, VAR, (/progs/pcradio.script
+20231103.0056.43 error CM1Hndlr       CM1ReqHndler#2: Connection reset by peer
+20231103.0056.43 error CM1Hndlr       CM1ReqHndler#3: Connection reset by peer
+20231103.0056.43 error CM1Hndlr       CM1ReqHndler#4: Connection reset by peer
+20231103.0056.43 error CM1Hndlr       CM1ReqHndler#5: Connection reset by peer
+20231103.0056.43 error CM1Hndlr       CM1ReqHndler#6: Connection reset by peer
+20231103.0056.44 error CM1Hndlr       CM1ReqHndler#7: Connection reset by peer
+20231103.0056.56 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0056.56 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0101.33 info  MUD@5555       Connection from 104.156.100.167
+20231103.0102.35 info  Worker0#5      Disconnect: 104.156.100.167 (1m 2s)
+20231103.0107.04 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0107.04 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0116.08 info  MUD@5555       Connection from 103.178.229.184
+20231103.0117.12 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0117.12 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0117.15 info  Worker0#5      Disconnect: 103.178.229.184 (1m 6s)
+20231103.0119.56 error Scripting      PC Radio/sector minus#46/MPLOG/Syntax/Unknown log type NNNEL for PC Radio/progs/pcradio.script
+20231103.0126.00 error Scripting      PC Radio/sector minus#46/EVAL/SYNTAX/No ) for fuction (: IF, VAR, (/progs/pcradio.script
+20231103.0127.20 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0127.20 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0137.28 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0137.28 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0147.36 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0147.36 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0157.44 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0157.44 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0204.12 error Scripting      PC Radio/sector minus#46/MPLOG/Syntax/Unknown log type NNNEL for PC Radio/progs/pcradio.script
+20231103.0207.52 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0207.52 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0211.28 error ClanHelper     Unknown clan activated." for ^#222A ^#111N^#222T^#333C^r-^#111O^#222M^#333N^#222I ^#111A^#222l^#333l^r-^#222P^#111u^#222r^#333p^#222o^#111s^#222e ^#333D^#222r^#111o^#222i^#333d^N in 
+20231103.0216.40 info  MUD@5555       Connection from 103.178.229.184
+20231103.0217.46 info  Worker0#1      Disconnect: 103.178.229.184 (1m 6s)
+20231103.0218.00 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0218.00 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0222.16 error Scripting      PC Radio/sector minus#46/EVAL/SYNTAX/No ) for fuction (: IF, VAR, (/progs/pcradio.script
+20231103.0228.08 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0228.08 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0235.44 error Scripting      PC Radio/sector minus#46/EVAL/SYNTAX/No ) for fuction (: IF, VAR, (/progs/pcradio.script
+20231103.0238.16 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0238.16 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0247.31 info  MUD@5555       Connection from 162.142.125.226
+20231103.0247.36 info  Worker0#6      Disconnect: 162.142.125.226 (5s)
+20231103.0248.24 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0248.24 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0254.48 error Scripting      PC Radio/sector minus#46/MPLOG/Syntax/Unknown log type NNNEL for PC Radio/progs/pcradio.script
+20231103.0258.32 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0258.32 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0308.40 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0308.40 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0318.48 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0318.48 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0328.56 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0328.56 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0329.04 error Scripting      PC Radio/sector minus#46/EVAL/SYNTAX/No ) for fuction (: IF, VAR, (/progs/pcradio.script
+20231103.0338.04 error Scripting      PC Radio/sector minus#46/MPLOG/Syntax/Unknown log type NNNEL for PC Radio/progs/pcradio.script
+20231103.0339.04 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0339.04 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0340.08 error Scripting      PC Radio/sector minus#46/EVAL/SYNTAX/No ) for fuction (: IF, VAR, (/progs/pcradio.script
+20231103.0343.48 info  MUD@5555       Connection from 185.224.128.199
+20231103.0344.55 info  Worker0#1      Disconnect: 185.224.128.199 (1m 6s)
+20231103.0347.48 error Scripting      PC Radio/sector minus#46/EVAL/SYNTAX/No ) for fuction (: IF, VAR, (/progs/pcradio.script
+20231103.0349.12 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0349.12 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0351.28 error Scripting      PC Radio/sector minus#46/EVAL/SYNTAX/No ) for fuction (: IF, VAR, (/progs/pcradio.script
+20231103.0359.20 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0359.20 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0400.56 error Scripting      PC Radio/sector minus#46/EVAL/SYNTAX/No ) for fuction (: IF, VAR, (/progs/pcradio.script
+20231103.0401.32 info  MUD@5555       Connection from 104.156.100.167
+20231103.0402.34 info  Worker0#2      Disconnect: 104.156.100.167 (1m 1s)
+20231103.0409.28 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0409.28 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0409.56 error Scripting      PC Radio/sector minus#46/MPLOG/Syntax/Unknown log type NNNEL for PC Radio/progs/pcradio.script
+20231103.0416.00 error Scripting      PC Radio/sector minus#46/EVAL/SYNTAX/No ) for fuction (: IF, VAR, (/progs/pcradio.script
+20231103.0419.36 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0419.36 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0429.44 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0429.44 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0434.48 error Scripting      PC Radio/sector minus#46/MPLOG/Syntax/Unknown log type NNNEL for PC Radio/progs/pcradio.script
+20231103.0437.49 info  MUD@5555       Connection from 192.241.204.26
+20231103.0437.54 info  Worker0#2      Disconnect: 192.241.204.26 (5s)
+20231103.0439.03 info  MUD@5555       Connection from 134.122.106.248
+20231103.0439.03 info  MUD@5555       Connection from 134.122.106.248
+20231103.0439.04 info  MUD@5555       Connection from 134.122.106.248
+20231103.0439.04 info  MUD@5555       Connection from 134.122.106.248
+20231103.0439.04 info  MUD@5555       Connection from 134.122.106.248
+20231103.0439.04 info  MUD@5555       Blocking a connection from 134.122.106.248 (6)
+20231103.0439.05 info  Worker0#6      Disconnect: 134.122.106.248 (1s 793ms)
+20231103.0439.06 info  Worker0#1      Disconnect: 134.122.106.248 (1s 809ms)
+20231103.0439.09 info  Worker0#2      Disconnect: 134.122.106.248 (5s)
+20231103.0439.09 info  Worker0#7      Disconnect: 134.122.106.248 (5s)
+20231103.0439.10 info  Worker0#7      Disconnect: 134.122.106.248 (5s)
+20231103.0439.52 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0439.52 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0450.00 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0450.00 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0459.20 error Scripting      PC Radio/sector minus#46/EVAL/SYNTAX/No ) for fuction (: IF, VAR, (/progs/pcradio.script
+20231103.0500.08 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0500.08 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0510.16 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0510.16 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0517.59 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0517.59 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0517.59 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0517.59 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0517.59 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0517.59 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0517.59 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0517.59 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0517.59 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0517.59 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0517.59 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0517.59 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0517.59 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0517.59 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0517.59 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0517.59 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0517.59 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0517.59 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0517.59 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0517.59 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.00 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.00 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.00 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.00 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.00 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.00 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.00 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.00 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.00 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.00 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.00 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.00 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.00 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.00 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.00 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.00 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.00 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.00 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.00 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.00 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.00 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.00 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.00 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.00 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.09 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.10 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.10 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.10 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.10 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.10 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.10 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.10 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.10 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.10 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.10 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20231103.0518.10 error ClanHelper     Unknown clan activated." for ^#111N^#222T^#333C^r-^#1110^#2220^#3330^r1 ^#550P^#540r^#550e^#540m^#550i^#540u^#550m ^#222D^#333r^ro^#222i^#111d^N in 
+20231103.0520.24 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0520.24 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0527.24 error Scripting      PC Radio/sector minus#46/EVAL/SYNTAX/No ) for fuction (: IF, VAR, (/progs/pcradio.script
+20231103.0530.32 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0530.32 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0536.24 error Scripting      PC Radio/sector minus#46/MPLOG/Syntax/Unknown log type NNNEL for PC Radio/progs/pcradio.script
+20231103.0540.40 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0540.40 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0546.43 info  MUD@5555       Connection from 149.50.96.22
+20231103.0547.19 info  Worker0#1      Disconnect: 149.50.96.22 (36s)
+20231103.0550.48 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0550.48 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0551.04 error Scripting      PC Radio/sector minus#46/EVAL/SYNTAX/No ) for fuction (: IF, VAR, (/progs/pcradio.script
+20231103.0600.56 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0600.56 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0607.16 error Scripting      PC Radio/sector minus#46/EVAL/SYNTAX/No ) for fuction (: IF, VAR, (/progs/pcradio.script
+20231103.0611.04 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0611.04 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0611.29 error ClanHelper     Unknown clan activated." for ^#222A ^#111N^#222T^#333C^r-^#111O^#222M^#333N^#222I ^#111A^#222l^#333l^r-^#222P^#111u^#222r^#333p^#222o^#111s^#222e ^#333D^#222r^#111o^#222i^#333d^N in 
+20231103.0621.12 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0621.12 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0624.04 error Scripting      PC Radio/sector minus#46/EVAL/SYNTAX/No ) for fuction (: IF, VAR, (/progs/pcradio.script
+20231103.0631.20 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0631.20 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0640.25 info  MUD@5555       Connection from 103.178.228.62
+20231103.0641.28 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0641.29 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0641.32 info  Worker0#2      Disconnect: 103.178.228.62 (1m 6s)
+20231103.0651.37 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0651.37 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0656.45 error Scripting      PC Radio/sector minus#46/EVAL/SYNTAX/No ) for fuction (: IF, VAR, (/progs/pcradio.script
+20231103.0701.33 info  MUD@5555       Connection from 104.156.100.167
+20231103.0701.45 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0701.45 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0702.36 info  Worker0#6      Disconnect: 104.156.100.167 (1m 2s)
+20231103.0711.41 error Scripting      PC Radio/sector minus#46/MPLOG/Syntax/Unknown log type NNNEL for PC Radio/progs/pcradio.script
+20231103.0711.53 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0711.53 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0716.13 info  MUD@5555       Connection from 180.149.125.168
+20231103.0716.19 info  Worker0#5      Disconnect: 180.149.125.168 (5s)
+20231103.0722.01 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0722.01 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0723.33 error Scripting      PC Radio/sector minus#46/EVAL/SYNTAX/No ) for fuction (: IF, VAR, (/progs/pcradio.script
+20231103.0726.05 info  MUD@5555       Connection from 118.35.162.160
+20231103.0726.11 info  Worker0#5      Disconnect: 118.35.162.160 (5s)
+20231103.0731.16 info  MUD@5555       Connection from 198.235.24.48
+20231103.0731.16 info  MUD@5555       Connection from 198.235.24.48
+20231103.0731.18 info  Worker0#7      Disconnect: 198.235.24.48 (1s 807ms)
+20231103.0731.18 info  Worker0#7      Disconnect: 198.235.24.48 (1s 824ms)
+20231103.0732.09 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0732.09 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0738.21 error Scripting      PC Radio/sector minus#46/MPLOG/Syntax/Unknown log type NNNEL for PC Radio/progs/pcradio.script
+20231103.0740.25 error Scripting      PC Radio/sector minus#46/EVAL/SYNTAX/No ) for fuction (: IF, VAR, (/progs/pcradio.script
+20231103.0742.17 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0742.17 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0752.25 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0752.25 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0759.29 error Scripting      PC Radio/sector minus#46/MPLOG/Syntax/Unknown log type NNNEL for PC Radio/progs/pcradio.script
+20231103.0801.33 debug Intermud       UCache packet has # data: 9
+20231103.0801.33 debug Intermud       UCache Data: ucache-update 5 Aadaria 0 0 0 Shryp Shryp 0
+20231103.0802.33 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0802.33 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0812.41 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0812.41 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0822.49 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0822.49 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0832.57 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0832.57 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0834.48 info  MUD@5555       Connection from 103.178.228.62
+20231103.0835.54 info  Worker0#4      Disconnect: 103.178.228.62 (1m 6s)
+20231103.0842.05 error Scripting      PC Radio/sector minus#46/MPLOG/Syntax/Unknown log type NNNEL for PC Radio/progs/pcradio.script
+20231103.0843.05 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0843.05 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0853.13 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0853.13 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0859.33 error Scripting      PC Radio/sector minus#46/MPLOG/Syntax/Unknown log type NNNEL for PC Radio/progs/pcradio.script
+20231103.0903.21 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0903.21 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0908.01 info  MUD@5555       Connection from 103.178.228.62
+20231103.0909.07 info  Worker0#3      Disconnect: 103.178.228.62 (1m 6s)
+20231103.0913.29 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0913.29 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0923.37 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0923.37 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0931.37 error Scripting      PC Radio/sector minus#46/EVAL/SYNTAX/No ) for fuction (: IF, VAR, (/progs/pcradio.script
+20231103.0933.45 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0933.45 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0942.01 error Scripting      PC Radio/sector minus#46/EVAL/SYNTAX/No ) for fuction (: IF, VAR, (/progs/pcradio.script
+20231103.0943.53 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0943.53 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0954.01 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.0954.01 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.0956.57 error Scripting      PC Radio/sector minus#46/MPLOG/Syntax/Unknown log type NNNEL for PC Radio/progs/pcradio.script
+20231103.1001.32 info  MUD@5555       Connection from 104.156.100.167
+20231103.1002.56 info  MUD@5555       Connection from 78.164.52.23
+20231103.1003.09 info  Worker0#4      78.164.52.23 Mudlet 4.16.0 MXP MSDP GMCP CMP ANSI, account login: Moonbeam
+20231103.1003.10 info  Worker0#6      78.164.52.23 Mudlet 4.16.0 MXP MSDP GMCP CMP ANSI, character login: Moonbeam
+20231103.1004.09 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.1004.09 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.1011.25 info  THSessions0    Kicking out login session after 9m 51s 704ms.
+20231103.1011.25 info  Worker0#3      Disconnect: 104.156.100.167 (9m)
+20231103.1011.30 error ClanHelper     Unknown clan activated." for ^#222A ^#111N^#222T^#333C^r-^#111O^#222M^#333N^#222I ^#111A^#222l^#333l^r-^#222P^#111u^#222r^#333p^#222o^#111s^#222e ^#333D^#222r^#111o^#222i^#333d^N in 
+20231103.1014.17 error Prop_Artifact  Unable to reset: GenWeapon-1482921244@34a824420.9288669979118432 to Elizabeth in New Area#1
+20231103.1014.17 error Prop_Artifact  Unable to reset: GenArmor-292055729@11045f1c0.8550620052801546 to Nyx in New Area#1
+20231103.1024.16 error CommandProcess Moonbeam starts system shutdown...
+20231103.1024.16 info  Shutdown0      New Connections are now closed
+20231103.1024.16 info  Shutdown0      All users saved.
+20231103.1024.16 info  Shutdown0      Stats saved.
+20231103.1024.16 info  ServiceEngine  Scheduler stopped
+20231103.1024.16 info  Shutdown0      Notifying all objects of shutdown...
+20231103.1024.16 debug Shutdown0      Destroying flag of clan NineTails Corporation in NineTails Corporation#33 because reset.
+20231103.1024.16 error CMFile         Access error on file 'resources/quests/brotheljob.quest'.
+20231103.1024.16 error CMFile         Access error on file 'resources/quests/brotheljob.quest'.
+20231103.1024.17 info  CM1Server      Shutdown complete
+20231103.1024.19 info  Shutdown0      CM1Server0@27733 stopped
+20231103.1024.19 info  Intermud       Shutdown!!!
+20231103.1024.20 info  Shutdown0      I3Server stopped
+20231103.1024.23 info  Shutdown0      All users logged off.
+20231103.1024.25 info  ServiceEngine  Shutdown complete.
+20231103.1024.25 info  Shutdown0      Map Threads Stopped.
+20231103.1024.26 info  Shutdown0      Resources Cleared.
+20231103.1024.26 info  Shutdown0      Database connections closed.
+20231103.1024.26 info  cweb-pub0      Shutdown complete
+20231103.1024.26 info  cweb-pub0Timeo Timeout Thread shutdown
+20231103.1024.26 info  Shutdown0      Web server cweb-pub0 stopped.
+20231103.1024.26 info  cweb-admin0Tim Timeout Thread shutdown
+20231103.1024.26 info  cweb-admin0    Shutdown complete
+20231103.1024.26 info  Shutdown0      Web server cweb-admin0 stopped.
+20231103.1024.26 info  Shutdown0      CoffeeMud shutdown complete.
+20231103.1024.28 info  MUD@5555       Server cleaning up.
+20231103.1024.28 info  MUD@5555       MUD on port 5555 stopped!
+20231103.1024.28 debug Shutdown0      Used memory = 40080656

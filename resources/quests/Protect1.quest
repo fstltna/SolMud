@@ -1,0 +1,229 @@
+set name Protect1
+set display Protect PJF Supplies
+set author Moonbeam
+set questtype competitive_protect1
+set category 
+set instructions Go down to sector minus and protect our supplies and the driver until we can deploy, neutralizing about 6 hostiles should make them reconsider.
+
+set wait 300 minutes
+set interval 1
+#quiet
+
+set minplayers 1
+set playermask 
+set area "Phantom City"
+set room "Phantom City#32"
+
+set mobgroup
+set mob "A HOJ Receptionist"
+give stat keyplayer true
+give script LOAD=Protect1_announcer.script
+
+set mobgroup
+set mob
+set area "sector minus"
+set room "sector minus#15"
+import mobs Protect1_protected.xml
+load mob any
+give script LOAD=Protect1_protected.script
+give behavior CombatAbilities
+
+set duration 120 minutes
+<?xml version="1.0"?>
+<FILE><NAME>Protect1_rewarditems.xml</NAME><DATA><ITEMS></ITEMS></DATA></FILE>
+<FILE><NAME>Protect1_protected.xml</NAME><DATA><MOBS><MOB><MCLAS>GenMob</MCLAS><MLEVL>50</MLEVL><MABLE>11</MABLE><MREJV>180</MREJV><MTEXT>&lt;NAME&gt;A driver&lt;/NAME&gt;&lt;DESC&gt;He looks bloody and terrible.&lt;/DESC&gt;&lt;DISP&gt;The driver of the burning PJF truck is crawling out of the vehicle.&lt;/DISP&gt;&lt;PROP&gt;20|40|20|20|0|20|180|1.0|188|77|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES /&gt;&lt;AFFECS&gt;&lt;AFF&gt;&lt;ACLASS&gt;Prayer_Regeneration&lt;/ACLASS&gt;&lt;ATEXT /&gt;&lt;/AFF&gt;&lt;/AFFECS&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;MONEY&gt;20&lt;/MONEY&gt;&lt;VARMONEY&gt;0.0&lt;/VARMONEY&gt;&lt;CLAN ROLE=1&gt;Phantom City Justice Force&lt;/CLAN&gt;&lt;GENDER&gt;M&lt;/GENDER&gt;&lt;MRACE&gt;Human&lt;/MRACE&gt;&lt;FACTIONS&gt;&lt;FCTN ID="ALIGNMENT.INI"&gt;0&lt;/FCTN&gt;&lt;FCTN ID="INCLINATION.INI"&gt;0&lt;/FCTN&gt;&lt;/FACTIONS&gt;&lt;INVEN /&gt;&lt;ABLTYS /&gt;</MTEXT></MOB>
+</MOBS></DATA></FILE>
+<FILE><NAME>Protect1_attackers.xml</NAME><DATA><MOBS><MOB><MCLAS>GenMob</MCLAS><MLEVL>38</MLEVL><MABLE>11</MABLE><MREJV>2147483647</MREJV><MTEXT>&lt;NAME&gt;a cloaked slummer&lt;/NAME&gt;&lt;DESC&gt;He looks armed.&lt;/DESC&gt;&lt;DISP&gt;a cloaked slummer is here.&lt;/DISP&gt;&lt;PROP&gt;11|10|60|60|1048576|40|2147483647|3.0|150|75|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;Fighterness&lt;/BCLASS&gt;&lt;BPARMS&gt;OFFENSIVE&lt;/BPARMS&gt;&lt;/BHAVE&gt;&lt;/BEHAVES&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;MONEY&gt;1507&lt;/MONEY&gt;&lt;VARMONEY&gt;300.0&lt;/VARMONEY&gt;&lt;GENDER&gt;M&lt;/GENDER&gt;&lt;MRACE&gt;Resurgentis&lt;/MRACE&gt;&lt;FACTIONS&gt;&lt;FCTN ID="ALIGNMENT.INI"&gt;0&lt;/FCTN&gt;&lt;FCTN ID="AREA_SECTOR_MINUS.INI"&gt;7500&lt;/FCTN&gt;&lt;FCTN ID="AREA_PHANTOM_CITY.INI"&gt;7500&lt;/FCTN&gt;&lt;FCTN ID="INCLINATION.INI"&gt;0&lt;/FCTN&gt;&lt;FCTN ID="AREA_OOC_AREA.INI"&gt;7500&lt;/FCTN&gt;&lt;/FACTIONS&gt;&lt;INVEN&gt;&lt;ITEM&gt;&lt;ICLASS&gt;GenWeapon&lt;/ICLASS&gt;&lt;IDATA&gt;&lt;NAME&gt;^#222a he^#111avy-^#222duty c^#111hain&lt;/NAME&gt;&lt;DESC&gt;This -will- break bones when hitting with it.&lt;/DESC&gt;&lt;DISP&gt;^#222a he^#111avy-^#222duty c^#111hain sits here.&lt;/DISP&gt;&lt;PROP&gt;0|0|30|39|0|50|0|1.0|5|0|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES /&gt;&lt;AFFECS&gt;&lt;AFF&gt;&lt;ACLASS&gt;Prop_FightSpellCast&lt;/ACLASS&gt;&lt;ATEXT&gt;5%;Spell_choke&lt;/ATEXT&gt;&lt;/AFF&gt;&lt;/AFFECS&gt;&lt;FLAG&gt;11&lt;/FLAG&gt;&lt;IDENT /&gt;&lt;VALUE&gt;2888&lt;/VALUE&gt;&lt;MTRAL&gt;811&lt;/MTRAL&gt;&lt;WORNL&gt;false&lt;/WORNL&gt;&lt;WORNB&gt;1536&lt;/WORNB&gt;&lt;READ /&gt;&lt;ACAPA&gt;0&lt;/ACAPA&gt;&lt;TYPE&gt;3&lt;/TYPE&gt;&lt;CLASS&gt;3&lt;/CLASS&gt;&lt;MINR&gt;0&lt;/MINR&gt;&lt;MAXR&gt;1&lt;/MAXR&gt;&lt;IWORN&gt;1024&lt;/IWORN&gt;&lt;ILOC /&gt;&lt;IUSES&gt;100&lt;/IUSES&gt;&lt;ILEVL&gt;50&lt;/ILEVL&gt;&lt;IABLE&gt;0&lt;/IABLE&gt;&lt;/IDATA&gt;&lt;/ITEM&gt;&lt;ITEM&gt;&lt;ICLASS&gt;GenArmor&lt;/ICLASS&gt;&lt;IDATA&gt;&lt;NAME&gt;^#111a thick leather belt with an ^wiron strap&lt;/NAME&gt;&lt;DESC&gt;A thick belt you could possibly hang things like chains or whatever on&lt;/DESC&gt;&lt;DISP&gt;^#111a thick leather belt with an ^wiron strap sits here.&lt;/DISP&gt;&lt;PROP&gt;0|4|0|0|0|40|0|1.0|4|65|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES /&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;27&lt;/FLAG&gt;&lt;IDENT /&gt;&lt;VALUE&gt;111&lt;/VALUE&gt;&lt;MTRAL&gt;566&lt;/MTRAL&gt;&lt;WORNL&gt;false&lt;/WORNL&gt;&lt;WORNB&gt;8192&lt;/WORNB&gt;&lt;READ /&gt;&lt;CAPA&gt;10&lt;/CAPA&gt;&lt;CONT&gt;16&lt;/CONT&gt;&lt;OPENTK&gt;30&lt;/OPENTK&gt;&lt;LAYR&gt;1&lt;/LAYR&gt;&lt;LAYA&gt;1&lt;/LAYA&gt;&lt;IID&gt;com.planet_ink.coffee_mud.Items.Armor.GenArmor@2fb960fb&lt;/IID&gt;&lt;IWORN&gt;8192&lt;/IWORN&gt;&lt;ILOC /&gt;&lt;IUSES&gt;100&lt;/IUSES&gt;&lt;ILEVL&gt;40&lt;/ILEVL&gt;&lt;IABLE&gt;0&lt;/IABLE&gt;&lt;/IDATA&gt;&lt;/ITEM&gt;&lt;/INVEN&gt;&lt;ABLTYS&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Chopping&lt;/ACLASS&gt;&lt;APROF&gt;50&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Common&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;FireBuilding&lt;/ACLASS&gt;&lt;APROF&gt;50&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Skill_ConsumeCorpse&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Skill_Track&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Undercommon&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;/ABLTYS&gt;</MTEXT></MOB>
+<MOB><MCLAS>GenMob</MCLAS><MLEVL>40</MLEVL><MABLE>11</MABLE><MREJV>2147483647</MREJV><MTEXT>&lt;NAME&gt;a cloaked slummer&lt;/NAME&gt;&lt;DESC&gt;He looks armed.&lt;/DESC&gt;&lt;DISP&gt;a cloaked slummer is here.&lt;/DISP&gt;&lt;PROP&gt;11|10|60|60|1048576|40|2147483647|3.0|150|75|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;Fighterness&lt;/BCLASS&gt;&lt;BPARMS&gt;OFFENSIVE&lt;/BPARMS&gt;&lt;/BHAVE&gt;&lt;/BEHAVES&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;MONEY&gt;1507&lt;/MONEY&gt;&lt;VARMONEY&gt;300.0&lt;/VARMONEY&gt;&lt;GENDER&gt;M&lt;/GENDER&gt;&lt;MRACE&gt;Resurgentis&lt;/MRACE&gt;&lt;FACTIONS&gt;&lt;FCTN ID="ALIGNMENT.INI"&gt;0&lt;/FCTN&gt;&lt;FCTN ID="AREA_SECTOR_MINUS.INI"&gt;7500&lt;/FCTN&gt;&lt;FCTN ID="AREA_PHANTOM_CITY.INI"&gt;7500&lt;/FCTN&gt;&lt;FCTN ID="INCLINATION.INI"&gt;0&lt;/FCTN&gt;&lt;FCTN ID="AREA_OOC_AREA.INI"&gt;7500&lt;/FCTN&gt;&lt;/FACTIONS&gt;&lt;INVEN&gt;&lt;ITEM&gt;&lt;ICLASS&gt;GenWeapon&lt;/ICLASS&gt;&lt;IDATA&gt;&lt;NAME&gt;^#222a he^#111avy-^#222duty c^#111hain&lt;/NAME&gt;&lt;DESC&gt;This -will- break bones when hitting with it.&lt;/DESC&gt;&lt;DISP&gt;^#222a he^#111avy-^#222duty c^#111hain sits here.&lt;/DISP&gt;&lt;PROP&gt;0|0|30|39|0|50|0|1.0|5|0|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES /&gt;&lt;AFFECS&gt;&lt;AFF&gt;&lt;ACLASS&gt;Prop_FightSpellCast&lt;/ACLASS&gt;&lt;ATEXT&gt;5%;Spell_choke&lt;/ATEXT&gt;&lt;/AFF&gt;&lt;/AFFECS&gt;&lt;FLAG&gt;11&lt;/FLAG&gt;&lt;IDENT /&gt;&lt;VALUE&gt;2888&lt;/VALUE&gt;&lt;MTRAL&gt;811&lt;/MTRAL&gt;&lt;WORNL&gt;false&lt;/WORNL&gt;&lt;WORNB&gt;1536&lt;/WORNB&gt;&lt;READ /&gt;&lt;ACAPA&gt;0&lt;/ACAPA&gt;&lt;TYPE&gt;3&lt;/TYPE&gt;&lt;CLASS&gt;3&lt;/CLASS&gt;&lt;MINR&gt;0&lt;/MINR&gt;&lt;MAXR&gt;1&lt;/MAXR&gt;&lt;IWORN&gt;1024&lt;/IWORN&gt;&lt;ILOC /&gt;&lt;IUSES&gt;100&lt;/IUSES&gt;&lt;ILEVL&gt;50&lt;/ILEVL&gt;&lt;IABLE&gt;0&lt;/IABLE&gt;&lt;/IDATA&gt;&lt;/ITEM&gt;&lt;ITEM&gt;&lt;ICLASS&gt;GenArmor&lt;/ICLASS&gt;&lt;IDATA&gt;&lt;NAME&gt;^#111a thick leather belt with an ^wiron strap&lt;/NAME&gt;&lt;DESC&gt;A thick belt you could possibly hang things like chains or whatever on&lt;/DESC&gt;&lt;DISP&gt;^#111a thick leather belt with an ^wiron strap sits here.&lt;/DISP&gt;&lt;PROP&gt;0|4|0|0|0|40|0|1.0|4|65|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES /&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;27&lt;/FLAG&gt;&lt;IDENT /&gt;&lt;VALUE&gt;111&lt;/VALUE&gt;&lt;MTRAL&gt;566&lt;/MTRAL&gt;&lt;WORNL&gt;false&lt;/WORNL&gt;&lt;WORNB&gt;8192&lt;/WORNB&gt;&lt;READ /&gt;&lt;CAPA&gt;10&lt;/CAPA&gt;&lt;CONT&gt;16&lt;/CONT&gt;&lt;OPENTK&gt;30&lt;/OPENTK&gt;&lt;LAYR&gt;1&lt;/LAYR&gt;&lt;LAYA&gt;1&lt;/LAYA&gt;&lt;IID&gt;com.planet_ink.coffee_mud.Items.Armor.GenArmor@3f1fe92e&lt;/IID&gt;&lt;IWORN&gt;8192&lt;/IWORN&gt;&lt;ILOC /&gt;&lt;IUSES&gt;100&lt;/IUSES&gt;&lt;ILEVL&gt;40&lt;/ILEVL&gt;&lt;IABLE&gt;0&lt;/IABLE&gt;&lt;/IDATA&gt;&lt;/ITEM&gt;&lt;/INVEN&gt;&lt;ABLTYS&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Chopping&lt;/ACLASS&gt;&lt;APROF&gt;50&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Common&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;FireBuilding&lt;/ACLASS&gt;&lt;APROF&gt;50&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Skill_ConsumeCorpse&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Skill_Track&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Undercommon&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;/ABLTYS&gt;</MTEXT></MOB>
+<MOB><MCLAS>GenMob</MCLAS><MLEVL>40</MLEVL><MABLE>11</MABLE><MREJV>2147483647</MREJV><MTEXT>&lt;NAME&gt;a cloaked slummer&lt;/NAME&gt;&lt;DESC&gt;He looks armed.&lt;/DESC&gt;&lt;DISP&gt;a cloaked slummer is here.&lt;/DISP&gt;&lt;PROP&gt;11|10|60|60|1048576|40|2147483647|3.0|150|75|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;Fighterness&lt;/BCLASS&gt;&lt;BPARMS&gt;OFFENSIVE&lt;/BPARMS&gt;&lt;/BHAVE&gt;&lt;/BEHAVES&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;MONEY&gt;1507&lt;/MONEY&gt;&lt;VARMONEY&gt;300.0&lt;/VARMONEY&gt;&lt;GENDER&gt;M&lt;/GENDER&gt;&lt;MRACE&gt;Resurgentis&lt;/MRACE&gt;&lt;FACTIONS&gt;&lt;FCTN ID="ALIGNMENT.INI"&gt;0&lt;/FCTN&gt;&lt;FCTN ID="AREA_SECTOR_MINUS.INI"&gt;7500&lt;/FCTN&gt;&lt;FCTN ID="AREA_PHANTOM_CITY.INI"&gt;7500&lt;/FCTN&gt;&lt;FCTN ID="INCLINATION.INI"&gt;0&lt;/FCTN&gt;&lt;FCTN ID="AREA_OOC_AREA.INI"&gt;7500&lt;/FCTN&gt;&lt;/FACTIONS&gt;&lt;INVEN&gt;&lt;ITEM&gt;&lt;ICLASS&gt;GenWeapon&lt;/ICLASS&gt;&lt;IDATA&gt;&lt;NAME&gt;^#222a he^#111avy-^#222duty c^#111hain&lt;/NAME&gt;&lt;DESC&gt;This -will- break bones when hitting with it.&lt;/DESC&gt;&lt;DISP&gt;^#222a he^#111avy-^#222duty c^#111hain sits here.&lt;/DISP&gt;&lt;PROP&gt;0|0|30|39|0|50|0|1.0|5|0|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES /&gt;&lt;AFFECS&gt;&lt;AFF&gt;&lt;ACLASS&gt;Prop_FightSpellCast&lt;/ACLASS&gt;&lt;ATEXT&gt;5%;Spell_choke&lt;/ATEXT&gt;&lt;/AFF&gt;&lt;/AFFECS&gt;&lt;FLAG&gt;11&lt;/FLAG&gt;&lt;IDENT /&gt;&lt;VALUE&gt;2888&lt;/VALUE&gt;&lt;MTRAL&gt;811&lt;/MTRAL&gt;&lt;WORNL&gt;false&lt;/WORNL&gt;&lt;WORNB&gt;1536&lt;/WORNB&gt;&lt;READ /&gt;&lt;ACAPA&gt;0&lt;/ACAPA&gt;&lt;TYPE&gt;3&lt;/TYPE&gt;&lt;CLASS&gt;3&lt;/CLASS&gt;&lt;MINR&gt;0&lt;/MINR&gt;&lt;MAXR&gt;1&lt;/MAXR&gt;&lt;IWORN&gt;1024&lt;/IWORN&gt;&lt;ILOC /&gt;&lt;IUSES&gt;100&lt;/IUSES&gt;&lt;ILEVL&gt;50&lt;/ILEVL&gt;&lt;IABLE&gt;0&lt;/IABLE&gt;&lt;/IDATA&gt;&lt;/ITEM&gt;&lt;ITEM&gt;&lt;ICLASS&gt;GenArmor&lt;/ICLASS&gt;&lt;IDATA&gt;&lt;NAME&gt;^#111a thick leather belt with an ^wiron strap&lt;/NAME&gt;&lt;DESC&gt;A thick belt you could possibly hang things like chains or whatever on&lt;/DESC&gt;&lt;DISP&gt;^#111a thick leather belt with an ^wiron strap sits here.&lt;/DISP&gt;&lt;PROP&gt;0|4|0|0|0|40|0|1.0|4|65|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES /&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;27&lt;/FLAG&gt;&lt;IDENT /&gt;&lt;VALUE&gt;111&lt;/VALUE&gt;&lt;MTRAL&gt;566&lt;/MTRAL&gt;&lt;WORNL&gt;false&lt;/WORNL&gt;&lt;WORNB&gt;8192&lt;/WORNB&gt;&lt;READ /&gt;&lt;CAPA&gt;10&lt;/CAPA&gt;&lt;CONT&gt;16&lt;/CONT&gt;&lt;OPENTK&gt;30&lt;/OPENTK&gt;&lt;LAYR&gt;1&lt;/LAYR&gt;&lt;LAYA&gt;1&lt;/LAYA&gt;&lt;IID&gt;com.planet_ink.coffee_mud.Items.Armor.GenArmor@121cdbb8&lt;/IID&gt;&lt;IWORN&gt;8192&lt;/IWORN&gt;&lt;ILOC /&gt;&lt;IUSES&gt;100&lt;/IUSES&gt;&lt;ILEVL&gt;40&lt;/ILEVL&gt;&lt;IABLE&gt;0&lt;/IABLE&gt;&lt;/IDATA&gt;&lt;/ITEM&gt;&lt;/INVEN&gt;&lt;ABLTYS&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Chopping&lt;/ACLASS&gt;&lt;APROF&gt;50&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Common&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;FireBuilding&lt;/ACLASS&gt;&lt;APROF&gt;50&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Skill_ConsumeCorpse&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Skill_Track&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Undercommon&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;/ABLTYS&gt;</MTEXT></MOB>
+<MOB><MCLAS>GenMob</MCLAS><MLEVL>40</MLEVL><MABLE>11</MABLE><MREJV>2147483647</MREJV><MTEXT>&lt;NAME&gt;a cloaked slummer&lt;/NAME&gt;&lt;DESC&gt;He looks armed.&lt;/DESC&gt;&lt;DISP&gt;a cloaked slummer is here.&lt;/DISP&gt;&lt;PROP&gt;11|10|60|60|1048576|40|2147483647|3.0|150|75|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;Fighterness&lt;/BCLASS&gt;&lt;BPARMS&gt;OFFENSIVE&lt;/BPARMS&gt;&lt;/BHAVE&gt;&lt;/BEHAVES&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;MONEY&gt;1507&lt;/MONEY&gt;&lt;VARMONEY&gt;300.0&lt;/VARMONEY&gt;&lt;GENDER&gt;M&lt;/GENDER&gt;&lt;MRACE&gt;Resurgentis&lt;/MRACE&gt;&lt;FACTIONS&gt;&lt;FCTN ID="ALIGNMENT.INI"&gt;0&lt;/FCTN&gt;&lt;FCTN ID="AREA_SECTOR_MINUS.INI"&gt;7500&lt;/FCTN&gt;&lt;FCTN ID="AREA_PHANTOM_CITY.INI"&gt;7500&lt;/FCTN&gt;&lt;FCTN ID="INCLINATION.INI"&gt;0&lt;/FCTN&gt;&lt;FCTN ID="AREA_OOC_AREA.INI"&gt;7500&lt;/FCTN&gt;&lt;/FACTIONS&gt;&lt;INVEN&gt;&lt;ITEM&gt;&lt;ICLASS&gt;GenWeapon&lt;/ICLASS&gt;&lt;IDATA&gt;&lt;NAME&gt;^#222a he^#111avy-^#222duty c^#111hain&lt;/NAME&gt;&lt;DESC&gt;This -will- break bones when hitting with it.&lt;/DESC&gt;&lt;DISP&gt;^#222a he^#111avy-^#222duty c^#111hain sits here.&lt;/DISP&gt;&lt;PROP&gt;0|0|30|39|0|50|0|1.0|5|0|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES /&gt;&lt;AFFECS&gt;&lt;AFF&gt;&lt;ACLASS&gt;Prop_FightSpellCast&lt;/ACLASS&gt;&lt;ATEXT&gt;5%;Spell_choke&lt;/ATEXT&gt;&lt;/AFF&gt;&lt;/AFFECS&gt;&lt;FLAG&gt;11&lt;/FLAG&gt;&lt;IDENT /&gt;&lt;VALUE&gt;2888&lt;/VALUE&gt;&lt;MTRAL&gt;811&lt;/MTRAL&gt;&lt;WORNL&gt;false&lt;/WORNL&gt;&lt;WORNB&gt;1536&lt;/WORNB&gt;&lt;READ /&gt;&lt;ACAPA&gt;0&lt;/ACAPA&gt;&lt;TYPE&gt;3&lt;/TYPE&gt;&lt;CLASS&gt;3&lt;/CLASS&gt;&lt;MINR&gt;0&lt;/MINR&gt;&lt;MAXR&gt;1&lt;/MAXR&gt;&lt;IWORN&gt;1024&lt;/IWORN&gt;&lt;ILOC /&gt;&lt;IUSES&gt;100&lt;/IUSES&gt;&lt;ILEVL&gt;50&lt;/ILEVL&gt;&lt;IABLE&gt;0&lt;/IABLE&gt;&lt;/IDATA&gt;&lt;/ITEM&gt;&lt;ITEM&gt;&lt;ICLASS&gt;GenArmor&lt;/ICLASS&gt;&lt;IDATA&gt;&lt;NAME&gt;^#111a thick leather belt with an ^wiron strap&lt;/NAME&gt;&lt;DESC&gt;A thick belt you could possibly hang things like chains or whatever on&lt;/DESC&gt;&lt;DISP&gt;^#111a thick leather belt with an ^wiron strap sits here.&lt;/DISP&gt;&lt;PROP&gt;0|4|0|0|0|40|0|1.0|4|65|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES /&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;27&lt;/FLAG&gt;&lt;IDENT /&gt;&lt;VALUE&gt;111&lt;/VALUE&gt;&lt;MTRAL&gt;566&lt;/MTRAL&gt;&lt;WORNL&gt;false&lt;/WORNL&gt;&lt;WORNB&gt;8192&lt;/WORNB&gt;&lt;READ /&gt;&lt;CAPA&gt;10&lt;/CAPA&gt;&lt;CONT&gt;16&lt;/CONT&gt;&lt;OPENTK&gt;30&lt;/OPENTK&gt;&lt;LAYR&gt;1&lt;/LAYR&gt;&lt;LAYA&gt;1&lt;/LAYA&gt;&lt;IID&gt;com.planet_ink.coffee_mud.Items.Armor.GenArmor@40213068&lt;/IID&gt;&lt;IWORN&gt;8192&lt;/IWORN&gt;&lt;ILOC /&gt;&lt;IUSES&gt;100&lt;/IUSES&gt;&lt;ILEVL&gt;40&lt;/ILEVL&gt;&lt;IABLE&gt;0&lt;/IABLE&gt;&lt;/IDATA&gt;&lt;/ITEM&gt;&lt;/INVEN&gt;&lt;ABLTYS&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Chopping&lt;/ACLASS&gt;&lt;APROF&gt;50&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Common&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;FireBuilding&lt;/ACLASS&gt;&lt;APROF&gt;50&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Skill_ConsumeCorpse&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Skill_Track&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Undercommon&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;/ABLTYS&gt;</MTEXT></MOB>
+<MOB><MCLAS>GenMob</MCLAS><MLEVL>40</MLEVL><MABLE>11</MABLE><MREJV>2147483647</MREJV><MTEXT>&lt;NAME&gt;a cloaked slummer&lt;/NAME&gt;&lt;DESC&gt;He looks armed.&lt;/DESC&gt;&lt;DISP&gt;a cloaked slummer is here.&lt;/DISP&gt;&lt;PROP&gt;11|10|60|60|1048576|40|2147483647|3.0|150|75|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;Fighterness&lt;/BCLASS&gt;&lt;BPARMS&gt;OFFENSIVE&lt;/BPARMS&gt;&lt;/BHAVE&gt;&lt;/BEHAVES&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;MONEY&gt;1507&lt;/MONEY&gt;&lt;VARMONEY&gt;300.0&lt;/VARMONEY&gt;&lt;GENDER&gt;M&lt;/GENDER&gt;&lt;MRACE&gt;Resurgentis&lt;/MRACE&gt;&lt;FACTIONS&gt;&lt;FCTN ID="ALIGNMENT.INI"&gt;0&lt;/FCTN&gt;&lt;FCTN ID="AREA_SECTOR_MINUS.INI"&gt;7500&lt;/FCTN&gt;&lt;FCTN ID="AREA_PHANTOM_CITY.INI"&gt;7500&lt;/FCTN&gt;&lt;FCTN ID="INCLINATION.INI"&gt;0&lt;/FCTN&gt;&lt;FCTN ID="AREA_OOC_AREA.INI"&gt;7500&lt;/FCTN&gt;&lt;/FACTIONS&gt;&lt;INVEN&gt;&lt;ITEM&gt;&lt;ICLASS&gt;GenWeapon&lt;/ICLASS&gt;&lt;IDATA&gt;&lt;NAME&gt;^#222a he^#111avy-^#222duty c^#111hain&lt;/NAME&gt;&lt;DESC&gt;This -will- break bones when hitting with it.&lt;/DESC&gt;&lt;DISP&gt;^#222a he^#111avy-^#222duty c^#111hain sits here.&lt;/DISP&gt;&lt;PROP&gt;0|0|30|39|0|50|0|1.0|5|0|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES /&gt;&lt;AFFECS&gt;&lt;AFF&gt;&lt;ACLASS&gt;Prop_FightSpellCast&lt;/ACLASS&gt;&lt;ATEXT&gt;5%;Spell_choke&lt;/ATEXT&gt;&lt;/AFF&gt;&lt;/AFFECS&gt;&lt;FLAG&gt;11&lt;/FLAG&gt;&lt;IDENT /&gt;&lt;VALUE&gt;2888&lt;/VALUE&gt;&lt;MTRAL&gt;811&lt;/MTRAL&gt;&lt;WORNL&gt;false&lt;/WORNL&gt;&lt;WORNB&gt;1536&lt;/WORNB&gt;&lt;READ /&gt;&lt;ACAPA&gt;0&lt;/ACAPA&gt;&lt;TYPE&gt;3&lt;/TYPE&gt;&lt;CLASS&gt;3&lt;/CLASS&gt;&lt;MINR&gt;0&lt;/MINR&gt;&lt;MAXR&gt;1&lt;/MAXR&gt;&lt;IWORN&gt;1024&lt;/IWORN&gt;&lt;ILOC /&gt;&lt;IUSES&gt;100&lt;/IUSES&gt;&lt;ILEVL&gt;50&lt;/ILEVL&gt;&lt;IABLE&gt;0&lt;/IABLE&gt;&lt;/IDATA&gt;&lt;/ITEM&gt;&lt;ITEM&gt;&lt;ICLASS&gt;GenArmor&lt;/ICLASS&gt;&lt;IDATA&gt;&lt;NAME&gt;^#111a thick leather belt with an ^wiron strap&lt;/NAME&gt;&lt;DESC&gt;A thick belt you could possibly hang things like chains or whatever on&lt;/DESC&gt;&lt;DISP&gt;^#111a thick leather belt with an ^wiron strap sits here.&lt;/DISP&gt;&lt;PROP&gt;0|4|0|0|0|40|0|1.0|4|65|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES /&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;27&lt;/FLAG&gt;&lt;IDENT /&gt;&lt;VALUE&gt;111&lt;/VALUE&gt;&lt;MTRAL&gt;566&lt;/MTRAL&gt;&lt;WORNL&gt;false&lt;/WORNL&gt;&lt;WORNB&gt;8192&lt;/WORNB&gt;&lt;READ /&gt;&lt;CAPA&gt;10&lt;/CAPA&gt;&lt;CONT&gt;16&lt;/CONT&gt;&lt;OPENTK&gt;30&lt;/OPENTK&gt;&lt;LAYR&gt;1&lt;/LAYR&gt;&lt;LAYA&gt;1&lt;/LAYA&gt;&lt;IID&gt;com.planet_ink.coffee_mud.Items.Armor.GenArmor@247b2e2f&lt;/IID&gt;&lt;IWORN&gt;8192&lt;/IWORN&gt;&lt;ILOC /&gt;&lt;IUSES&gt;100&lt;/IUSES&gt;&lt;ILEVL&gt;40&lt;/ILEVL&gt;&lt;IABLE&gt;0&lt;/IABLE&gt;&lt;/IDATA&gt;&lt;/ITEM&gt;&lt;/INVEN&gt;&lt;ABLTYS&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Chopping&lt;/ACLASS&gt;&lt;APROF&gt;50&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Common&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;FireBuilding&lt;/ACLASS&gt;&lt;APROF&gt;50&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Skill_ConsumeCorpse&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Skill_Track&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Undercommon&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;/ABLTYS&gt;</MTEXT></MOB>
+<MOB><MCLAS>GenMob</MCLAS><MLEVL>40</MLEVL><MABLE>11</MABLE><MREJV>2147483647</MREJV><MTEXT>&lt;NAME&gt;a cloaked slummer&lt;/NAME&gt;&lt;DESC&gt;He looks armed.&lt;/DESC&gt;&lt;DISP&gt;a cloaked slummer is here.&lt;/DISP&gt;&lt;PROP&gt;11|10|60|60|1048576|40|2147483647|3.0|150|75|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;Fighterness&lt;/BCLASS&gt;&lt;BPARMS&gt;OFFENSIVE&lt;/BPARMS&gt;&lt;/BHAVE&gt;&lt;/BEHAVES&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;MONEY&gt;1507&lt;/MONEY&gt;&lt;VARMONEY&gt;300.0&lt;/VARMONEY&gt;&lt;GENDER&gt;M&lt;/GENDER&gt;&lt;MRACE&gt;Resurgentis&lt;/MRACE&gt;&lt;FACTIONS&gt;&lt;FCTN ID="ALIGNMENT.INI"&gt;0&lt;/FCTN&gt;&lt;FCTN ID="AREA_SECTOR_MINUS.INI"&gt;7500&lt;/FCTN&gt;&lt;FCTN ID="AREA_PHANTOM_CITY.INI"&gt;7500&lt;/FCTN&gt;&lt;FCTN ID="INCLINATION.INI"&gt;0&lt;/FCTN&gt;&lt;FCTN ID="AREA_OOC_AREA.INI"&gt;7500&lt;/FCTN&gt;&lt;/FACTIONS&gt;&lt;INVEN&gt;&lt;ITEM&gt;&lt;ICLASS&gt;GenWeapon&lt;/ICLASS&gt;&lt;IDATA&gt;&lt;NAME&gt;^#222a he^#111avy-^#222duty c^#111hain&lt;/NAME&gt;&lt;DESC&gt;This -will- break bones when hitting with it.&lt;/DESC&gt;&lt;DISP&gt;^#222a he^#111avy-^#222duty c^#111hain sits here.&lt;/DISP&gt;&lt;PROP&gt;0|0|30|39|0|50|0|1.0|5|0|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES /&gt;&lt;AFFECS&gt;&lt;AFF&gt;&lt;ACLASS&gt;Prop_FightSpellCast&lt;/ACLASS&gt;&lt;ATEXT&gt;5%;Spell_choke&lt;/ATEXT&gt;&lt;/AFF&gt;&lt;/AFFECS&gt;&lt;FLAG&gt;11&lt;/FLAG&gt;&lt;IDENT /&gt;&lt;VALUE&gt;2888&lt;/VALUE&gt;&lt;MTRAL&gt;811&lt;/MTRAL&gt;&lt;WORNL&gt;false&lt;/WORNL&gt;&lt;WORNB&gt;1536&lt;/WORNB&gt;&lt;READ /&gt;&lt;ACAPA&gt;0&lt;/ACAPA&gt;&lt;TYPE&gt;3&lt;/TYPE&gt;&lt;CLASS&gt;3&lt;/CLASS&gt;&lt;MINR&gt;0&lt;/MINR&gt;&lt;MAXR&gt;1&lt;/MAXR&gt;&lt;IWORN&gt;1024&lt;/IWORN&gt;&lt;ILOC /&gt;&lt;IUSES&gt;100&lt;/IUSES&gt;&lt;ILEVL&gt;50&lt;/ILEVL&gt;&lt;IABLE&gt;0&lt;/IABLE&gt;&lt;/IDATA&gt;&lt;/ITEM&gt;&lt;ITEM&gt;&lt;ICLASS&gt;GenArmor&lt;/ICLASS&gt;&lt;IDATA&gt;&lt;NAME&gt;^#111a thick leather belt with an ^wiron strap&lt;/NAME&gt;&lt;DESC&gt;A thick belt you could possibly hang things like chains or whatever on&lt;/DESC&gt;&lt;DISP&gt;^#111a thick leather belt with an ^wiron strap sits here.&lt;/DISP&gt;&lt;PROP&gt;0|4|0|0|0|40|0|1.0|4|65|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES /&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;27&lt;/FLAG&gt;&lt;IDENT /&gt;&lt;VALUE&gt;111&lt;/VALUE&gt;&lt;MTRAL&gt;566&lt;/MTRAL&gt;&lt;WORNL&gt;false&lt;/WORNL&gt;&lt;WORNB&gt;8192&lt;/WORNB&gt;&lt;READ /&gt;&lt;CAPA&gt;10&lt;/CAPA&gt;&lt;CONT&gt;16&lt;/CONT&gt;&lt;OPENTK&gt;30&lt;/OPENTK&gt;&lt;LAYR&gt;1&lt;/LAYR&gt;&lt;LAYA&gt;1&lt;/LAYA&gt;&lt;IID&gt;com.planet_ink.coffee_mud.Items.Armor.GenArmor@646de517&lt;/IID&gt;&lt;IWORN&gt;8192&lt;/IWORN&gt;&lt;ILOC /&gt;&lt;IUSES&gt;100&lt;/IUSES&gt;&lt;ILEVL&gt;40&lt;/ILEVL&gt;&lt;IABLE&gt;0&lt;/IABLE&gt;&lt;/IDATA&gt;&lt;/ITEM&gt;&lt;/INVEN&gt;&lt;ABLTYS&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Chopping&lt;/ACLASS&gt;&lt;APROF&gt;50&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Common&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;FireBuilding&lt;/ACLASS&gt;&lt;APROF&gt;50&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Skill_ConsumeCorpse&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Skill_Track&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Undercommon&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;/ABLTYS&gt;</MTEXT></MOB>
+</MOBS></DATA></FILE>
+<FILE><NAME>Protect1_announcer.script</NAME>
+<DATA>
+ONCE_PROG 100
+MPQSET * INSTRUCTIONS $i in $a wants you to 'Go down to sector minus and protect our supplies and the driver until we can deploy, neutralizing about 6 hostiles should make them reconsider.'
+MPSETVAR * Protect1_ALREADY_TOLD ''
+MPSETVAR * Protect1_REWARDED ''
+MPSETVAR * Protect1_WARNED ''
+MPSETVAR * Protect1_ACCEPTED ''
+MPSETVAR * Protect1_CHECKEDROOM ''
+MPSETVAR * Protect1_ATTACKED ''
+MPSETVAR * Protect1_NUMACCEPTED ''
+QUESTCHAT New mercenary contract available, a terrorist attack on the northern street caused PJF truck to drop their supplies to sector minus. Come over swiftly to Hall of Justice for details. (Recommended level: 40+ and 60+ for corporate players)
+~
+
+QUEST_TIME_PROG * -1
+mpsetvar $i Protect1_NUMACCEPTED '$<$i Protect1_ACCEPTED>.LENGTH#'
+for $0 = 0 to< '$<$i Protect1_NUMACCEPTED>'
+if !QUESTWINNER('$<$i Protect1_ACCEPTED>.$0' *)
+tell "$<$i Protect1_ACCEPTED>.$0" You failed to complete your protection quest in time.
+endif
+mpqset * STATISTICS FAILED
+next
+MPSETVAR * Protect1_NUMACCEPTED ''
+MPSETVAR * Protect1_ALREADY_TOLD ''
+MPSETVAR * Protect1_ACCEPTED ''
+MPSETVAR * Protect1_REWARDED ''
+MPSETVAR * Protect1_WARNED ''
+MPSETVAR * Protect1_CHECKEDROOM ''
+MPSETVAR * Protect1_ATTACKED ''
+~
+
+GREET_PROG 100
+if ISLIKE($n '') and ISPC($n) and ( EVAL('YES' != 'PREV') or QUESTWINNER($n previous) )
+if EVAL('YES' == 'YES') OR !QUESTWINNER($n *)
+if !STRIN('$<$i Protect1_ALREADY_TOLD>' '$n')
+if VAR($n Protect1_ACCEPTED == '')
+sayto "$n" I need someone to quickly go to sector minus northern main street and protect our driver and supplies. -- just say 'i accept' to take on this quest.
+MPSETVAR $i Protect1_ALREADY_TOLD '$<$i Protect1_ALREADY_TOLD> "$n"'
+endif
+endif
+endif
+endif
+~
+
+FUNCTION_PROG CAN_ACCEPT
+if ISLIKE($n '') and ISPC($n) and ( EVAL('YES' != 'PREV') or QUESTWINNER($n previous) )
+if EVAL('YES' == 'YES') OR !QUESTWINNER($n *)
+if VAR($n Protect1_ACCEPTED == '')
+RETURN TRUE
+endif
+endif
+endif
+RETURN CANCEL
+~
+
+FUNCTION_PROG DO_ACCEPT
+mpqset * REMAINING 90 minutes
+MPSETVAR $i Protect1_ACCEPTED '$<$i Protect1_ACCEPTED> $n'
+mpsetvar $n Protect1_ACCEPTED 'YES'
+mpqset * STATISTICS ACCEPTED
+mpscript $n INDIVIDUAL LOAD=Protect1_playertrack.script
+~
+
+SPEECH_PROG p i accept
+if CALLFUNC(CAN_ACCEPT)
+sayto "$n" Go down to sector minus and protect our supplies and the driver until we can deploy, neutralizing about 6 hostiles should make them reconsider.
+MPCALLFUNC DO_ACCEPT
+else
+sayto "$n" Yes, yes, I know .. now off with you.
+endif
+~
+
+</DATA></FILE>
+<FILE><NAME>Protect1_protected.script</NAME>
+<DATA>
+QUEST_TIME_PROG * 1
+if VAR ($i Protect1_WARNED == '')
+mpsetvar $i Protect1_WARNED 'WARNED'
+say You have less than a minute left to complete the protection quest.
+endif
+~
+
+DEATH_PROG 99
+mpecho ^x$i has died.  You've failed the protection quest.^.^N
+mpendquest *
+~
+
+RAND_PROG 15
+if NUMPCSROOM(== 0)
+return
+endif
+mpargset $8 ''
+mpargset $9 $%NUMMOBSROOM(*)%
+for $0 = 1 to $9
+mpargset $1 '$%ROOMMOB($0)%'
+if ISPC($1) AND QUESTSCRIPTED($1 *)
+mpargset $8 $1
+endif
+next
+if EVAL($8 == '')
+return
+endif
+
+mpmload fromfile Protect1_attackers.xml any
+mpqset * QUESTOBJ $b
+MPGSET $b REJUV 0
+mpecho $b enters the room. 
+mpalarm 2 mpforce $b kill $i
+if !ISFIGHT($b)
+mpforce $b kill all
+endif
+mpscript $b LOAD=Protect1_attacker.script
+~
+
+</DATA>
+</FILE>
+<FILE><NAME>Protect1_attacker.script</NAME>
+<DATA>
+DEATH_PROG 99
+if QUESTSCRIPTED($n *) and ISPC($n)
+IF INROOM($n == ${2 *})
+mpsetvar $n Protect1_DEFEATED ++
+mpforce '${2 *}' sayto "$n" Thanks $n!
+IF VAR($n Protect1_DEFEATED >= 6) AND VAR($n Protect1_REWARDED != 'REWARDED')
+mpsetvar $n Protect1_REWARDED 'REWARDED'
+if  EVAL('YES' != 'YES') AND QUESTWINNER($n *)
+# do nothing
+else
+if EVAL('30%' != '')
+mpexp $n 30%
+endif
+if EVAL('' != '')
+mpfaction $n  +
+endif
+if EVAL('YES' == 'YES') AND !QUESTWINNER($n *)
+mpforce '${2 *}' mpoload QuestPoint
+mpforce '${2 *}' GIVE "a quest point" $n
+endif
+if EVAL('15000' != '') AND EVAL('15000' > 0)
+mpforce '${2 *}' mpoload 15000
+mpforce '${2 *}' GIVE "15000" $n
+endif
+mpforce ${2 *} mpoload fromfile Protect1_rewarditems.xml any
+if EVAL('$b' != '')
+mpforce '${2 *}' give "$b" "$n"
+endif
+mpquestwin $n *
+mpecho Contract complete, we'll take it from here.
+mpendquest *
+mpqset * STATISTICS SUCCESS
+IF EVAL('' != '')
+mpstartquest 
+ELSE
+IF EVAL('YES' == 'PREV')
+mptransfer $n $n
+ENDIF
+ENDIF
+endif
+endif
+endif
+endif
+~
+</DATA></FILE>
+<FILE><NAME>Protect1_playertrack.script</NAME>
+<DATA>
+ONCE_PROG 100
+mpsetvar $i INSTRUCTIONS Go down to sector minus and protect our supplies and the driver until we can deploy, neutralizing about 6 hostiles should make them reconsider.
+if VAR($i Protect1_DEFEATED == '')
+mpsetvar $i Protect1_DEFEATED 0
+endif
+~
+
+QUEST_TIME_PROG * -1
+if !QUESTWINNER($i *)
+mpechoat $i The quest 'Protect PJF Supplies' has ended
+endif
+mpqset * STATISTICS FAILED
+~
+
+RAND_PROG 99
+if QVAR(* REMAINING == '')
+MPENDQUEST $i
+else
+mpsetvar $i TIME_REMAINING $%QVAR(* REMAINING)%
+endif
+~
+</DATA></FILE>

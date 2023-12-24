@@ -1,5 +1,5 @@
-flysting	DRINK	Poison_Sting	1	SOME INSECT GUTS	1	WATER	1										
-beesting	DRINK	Poison_BeeSting	1	SOME INSECT GUTS	1	LEMONS	1										
+flysting	DRINK	*Poison_Sting;	1	A PILE OF GIANT INSECT GUTS	1	WATER	1										
+beesting	DRINK	*Poison_BeeSting;	1	A PILE OF GIANT INSECT GUTS	1	LEMONS	1										
 bloodboil	DRINK	Poison_Bloodboil	5	SOME UNDEAD BLOOD	1	WATER	1	LEMONS	1								
 peppersauce	DRINK	Poison_Peppersauce	7	PEPPERS	1	WATER	1										
 venom	DRINK	Poison_Venom	10	SOME SNAKE BLOOD	1												
@@ -9,7 +9,7 @@ goblindrip	DRINK	Poison_GoblinDrip	16	SOME GOBLIN BLOOD	1	COPPER	1
 decrepifier	DRINK	Poison_Decreptifier	20	ESSENCE OF GOLEM	1	TOMATOES	1	WATER	1								
 XXX	DRINK	Poison_XXX	18	SOME SNAKE BLOOD	1	LEAD	1	SOME TROLL BLOOD	1								
 slumberall	DRINK	Poison_Slumberall	9	POULTRY	1	MILK	1	SEAWEED	1								
-glowgell	DRINK	*Poison_Glowgell;	1	SOME INSECT GUTS	1	HONEY	1										
+glowgell	DRINK	*Poison_Glowgell;	1	A PILE OF GIANT INSECT GUTS	1	HONEY	1										
 ghoultouch	DRINK	Poison_Ghoultouch	25	SOME UNDEAD BLOOD	1	KNUCKLE BONE	1										
 simple perfume	GenPerfume	smell(s) good.;<S-HAS-HAVE> a grand aroma.;smell(s) flowery.;	1	FLOWERS	1	WATER	1										
 eau d`garbage	GenPerfume	smell(s) like a rat drowned in a puddle.	2	DIRT	1	MILK	1										

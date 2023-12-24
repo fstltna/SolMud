@@ -1,0 +1,38 @@
+##To Ground Floor - Novamed Hospital#20
+cnclmsg_prog HUH p button 1
+if inroom($n == Novamed Hospital#20)
+mpechoat $n ^#111Nothing happens as you are already there.^N
+else
+mpechoat $n ^#111The elevator doors swish closed and elevator begins to move towards the chosen floor.
+##transfer to Novamed Hospital#20
+mpalarm 1 mptransfer $n Novamed Hospital#20
+mpalarm 1 mpechoat $n ^#111The elevator halts and the doors swish open.
+endif
+return cancel
+~
+
+##To Floor 5 - Novamed Hospital#21
+cnclmsg_prog HUH p button 2
+if inroom($n == Novamed Hospital#21)
+mpechoat $n ^#111Nothing happens as you are already there.^N
+else
+mpechoat $n ^#111The elevator doors swish closed and elevator begins to move towards the chosen floor.
+##transfer to Novamed Hospital#21
+mpalarm 1 mptransfer $n Novamed Hospital#21
+mpalarm 1 mpechoat $n ^#111The elevator halts and the doors swish open.
+endif
+return cancel
+~
+
+##To Floor 10 - Novamed Hospital#22
+cnclmsg_prog HUH p button 3
+if inroom($n == Novamed Hospital#22)
+mpechoat $n ^#111Nothing happens as you are already there.^N
+else
+mpechoat $n ^#111The elevator doors swish closed and elevator begins to move towards the chosen floor.
+##transfer to Novamed Hospital#22
+mpalarm 1 mptransfer $n Novamed Hospital#22
+mpalarm 1 mpechoat $n ^#111The elevator halts and the doors swish open.
+endif
+return cancel
+~

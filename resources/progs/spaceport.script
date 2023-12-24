@@ -1,0 +1,11 @@
+cnclmsg_prog huh p entership
+mploadvar $n shipparkedloc
+mploadvar $n claimedshiploc
+if inroom($n == $<$n shipparkedloc>)
+mptransfer $n '$%VAR($n claimedshiploc)%'
+mpecho $n gets on their spaceship.
+else
+mpechoat $n Your ship is not parked here. You recall it is at $<$n shipparkedloc>.
+endif
+return cancel
+~

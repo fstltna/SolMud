@@ -1,0 +1,38 @@
+##To Ground Floor - ArcherCorp SS Epsilon#85
+cnclmsg_prog HUH p button 1
+if inroom($n == ArcherCorp SS Epsilon#85)
+mpechoat $n ^#111Nothing happens as you are already there.^N
+else
+mpalarm 1 mpecho ^#111The elevator doors swish closed and elevator begins to move towards the chosen floor.
+##transfer to ArcherCorp SS Epsilon#85
+mpalarm 3 mptransfer all ArcherCorp SS Epsilon#85
+mpalarm 3 mpechoat 'ArcherCorp SS Epsilon#85' ^#111The elevator halts and the doors swish open.
+endif
+return cancel
+~
+
+##To Floor 5 - ArcherCorp SS Epsilon#30
+cnclmsg_prog HUH p button 2
+if inroom($n == ArcherCorp SS Epsilon#30)
+mpechoat $n ^#111Nothing happens as you are already there.^N
+else
+mpalarm 1 mpecho ^#111The elevator doors swish closed and elevator begins to move towards the chosen floor.
+##transfer to ArcherCorp SS Epsilon#30
+mpalarm 3 mptransfer all ArcherCorp SS Epsilon#30
+mpalarm 3 mpechoat 'ArcherCorp SS Epsilon#30' ^#111The elevator halts and the doors swish open.
+endif
+return cancel
+~
+
+##To Floor 10 - ArcherCorp SS Epsilon#47
+cnclmsg_prog HUH p button 3
+if inroom($n == ArcherCorp SS Epsilon#47)
+mpechoat $n ^#111Nothing happens as you are already there.^N
+else
+mpalarm 1 mpecho ^#111The elevator doors swish closed and elevator begins to move towards the chosen floor.
+##transfer to ArcherCorp SS Epsilon#47
+mpalarm 3 mptransfer all ArcherCorp SS Epsilon#47
+mpalarm 3 mpechoat 'ArcherCorp SS Epsilon#47' ^#111The elevator halts and the doors swish open.
+endif
+return cancel
+~

@@ -1,0 +1,24 @@
+time_prog 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
+switch $%RANDNUM(10)%
+case 1
+mpchannel !IMPLANT %0D_________________________________________________________%0DArcherCorp, for a better future in and out of this world.%0D_________________________________________________________^N
+case 2
+mpchannel !IMPLANT %0D___________________________________________________________________________%0DSuspect your wife is having an affair with ten other guys? or Need sec-work handled? or just want a cutting edge tech new car? (or a new refrigerator?)%0D .-.*.-.NineTails Corporation got you covered with almost anything!.-.*.-. %0D___________________________________________________________________________^N
+case 3
+mpchannel !IMPLANT %0D___________________________________________________________________________%0DDon't flatline at your prime days now, Novamed Cloning and Medevac services are available for it's subscribers at all times. Contact Novamed Today! ++ %0D___________________________________________________________________________^N
+case 4
+mpchannel !IMPLANT %0D___________________________________________________________________________%0DDo you want to experience an adult adventure? With unlimited access to erotic scenarios with famous people from Phantom City? Ad free with the with the subscription plan "wet4us"! Only 50c a month.%0D___________________________________________________________________________^N
+case 5
+mpchannel !IMPLANT %0D___________________________________________________________________________%0D.*.*.*.*.*..*.Got no bitches? Need to get your dose of nudies? Crimson Veil Strip Club under NineTails Tower is waiting for you..*.*.*.*.*.*.*.*.*.*.*.%0D___________________________________________________________________________^N
+case 6
+mpchannel !IMPLANT %0D____________________________________________________________________________%0DSuccubi's Magic shop at Sector Minus is expecting all of you hot, submissive and breedable boys to come buy some magic goodies-! .*.*.*.*.*.*.*.*.*.*.*. %0D____________________________________________________________________________^N
+case 7
+mpchannel !IMPLANT %0D___________________________________________________________________%0D-***- Obey The Law -***- A lawful citizen is a happy citizen. -***-%0D -***- Hall of Justice of Phantom City -***--***--***--***--***--**%0D___________________________________________________________________^N
+case 8
+mpchannel !IMPLANT %0D___________________________________________________________________________%0DFluffy Tail Inn at sector minus, a safe place for a little price for you to not spend the night in the spooky scary streets! Come over and get a room! %0D___________________________________________________________________________^N
+case 9
+mpchannel !IMPLANT %0D___________________________________________________________________________%0DNeed to let yours hang free? Come over to the Bareback down in sector minus and let it swing. (We don't give a damn if you get your shit stolen though)%0D___________________________________________________________________________^N
+case 10
+mpchannel !IMPLANT %0D________________________________________________________________________%0DNeed a real meat, quality meal once in a while? The Big Byte at surface Phantom City is waiting for you. Contact us to make reservations today!%0D________________________________________________________________________^N
+endswitch
+~

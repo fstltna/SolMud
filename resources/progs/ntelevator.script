@@ -1,0 +1,94 @@
+##To Ground Floor - NineTails Corporation#4
+cnclmsg_prog HUH p button 0
+if inroom($n == NineTails Corporation#4)
+mpechoat $n ^#111Nothing happens as you are already there.^N
+else
+mpalarm 1 mpecho ^#111The elevator doors swish closed and elevator begins to move towards the chosen floor.
+##transfer to NineTails Corporation#4
+mpalarm 3 mptransfer all NineTails Corporation#4
+mpalarm 3 mpechoat 'NineTails Corporation#4' ^#111The elevator halts and the doors swish open.
+endif
+return cancel
+~
+
+##To Floor 5 - NineTails Corporation#12
+cnclmsg_prog HUH p button 5
+if inroom($n == NineTails Corporation#12)
+mpechoat $n ^#111Nothing happens as you are already there.^N
+else
+mpalarm 1 mpecho ^#111The elevator doors swish closed and elevator begins to move towards the chosen floor.
+##transfer to NineTails Corporation#12
+mpalarm 3 mptransfer all NineTails Corporation#12
+mpalarm 3 mpechoat 'NineTails Corporation#12' ^#111The elevator halts and the doors swish open.
+endif
+return cancel
+~
+
+##To Floor 10 - NineTails Corporation#13
+cnclmsg_prog HUH p button 10
+if inroom($n == NineTails Corporation#13)
+mpechoat $n ^#111Nothing happens as you are already there.^N
+else
+mpalarm 1 mpecho ^#111The elevator doors swish closed and elevator begins to move towards the chosen floor.
+##transfer to NineTails Corporation#13
+mpalarm 3 mptransfer all NineTails Corporation#13
+mpalarm 3 mpechoat 'NineTails Corporation#13' ^#111The elevator halts and the doors swish open.
+endif
+return cancel
+~
+
+##To Floor 15 - NineTails Corporation#14
+cnclmsg_prog HUH p button 15
+if inroom($n == NineTails Corporation#14)
+mpechoat $n ^#111Nothing happens as you are already there.^N
+else
+mpalarm 1 mpecho ^#111The elevator doors swish closed and elevator begins to move towards the chosen floor.
+##transfer to NineTails Corporation#14
+mpalarm 3 mptransfer all NineTails Corporation#14
+mpalarm 3 mpechoat 'NineTails Corporation#14' ^#111The elevator halts and the doors swish open.
+endif
+return cancel
+~
+
+##To Floor 20 - NineTails Corporation#15
+cnclmsg_prog HUH p button 20
+if inroom($n == NineTails Corporation#15)
+mpechoat $n ^#111Nothing happens as you are already there.^N
+else
+mpalarm 1 mpecho ^#111The elevator doors swish closed and elevator begins to move towards the chosen floor.
+##transfer to NineTails Corporation#15
+mpalarm 3 mptransfer all NineTails Corporation#15
+mpalarm 3 mpechoat 'NineTails Corporation#15' ^#111The elevator halts and the doors swish open.
+endif
+return cancel
+~
+
+##To Floor 25 - NineTails Corporation#16
+cnclmsg_prog HUH p button 25
+if inroom($n == NineTails Corporation#16)
+mpechoat $n ^#111Nothing happens as you are already there.^N
+else
+mpalarm 1 mpecho ^#111The elevator doors swish closed and elevator begins to move towards the chosen floor.
+##transfer to NineTails Corporation#16
+mpalarm 3 mptransfer all NineTails Corporation#16
+mpalarm 3 mpechoat 'NineTails Corporation#16' ^#111The elevator halts and the doors swish open.
+endif
+return cancel
+~
+
+##To Floor 30 - NineTails Corporation#17
+cnclmsg_prog HUH p button 30
+if islike($n -clan "+Ninetails Corporation")
+if inroom($n == NineTails Corporation#17)
+mpechoat $n ^#111Nothing happens as you are already there.^N
+else
+mpalarm 1 mpecho ^#111The elevator doors swish closed and elevator begins to move towards the chosen floor.
+##transfer to NineTails Corporation#17
+mpalarm 3 mptransfer all NineTails Corporation#17
+mpalarm 3 mpechoat 'NineTails Corporation#17' ^#111The elevator halts and the doors swish open.
+endif
+else
+mpecho $n presses a button on the elevator it beeps '^rAccess Denied.^w' !!SOUND(accessdenied.wav V=50 P=25 U=http://secretoflife.pocketmud.com:27744/sounds/)^N
+endif
+return cancel
+~
