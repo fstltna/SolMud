@@ -46,3 +46,4 @@ SURGERY_RESTOREFERTILITY=(inventory:consumed:1:^#333A F^#444ERT^#555ILIT^#444Y R
 SURGERY_ABORTION=(inventory:kept:1:^wA ^#333se^#444lf^c-^#555st^#444er^#333ili^#444zi^#555ng ^#500l^#400a^#300s^#400e^#500r^c-^#555s^#444c^#333a^#222l^#111p^#222e^#333l^N:)
 SURGERY_MEDKIT=(inventory:kept:1:^wAn advanced ^ctrauma ^rkit^N:)
 SURGERY_DEFIBRILLATOR=(nearby:kept:1:^#444A d^#555ef^#444^ri^#444br^#333ill^#444ato^#555r ^#444se^#333t^N:)
+SPELL_LIGHT=(trigger:SAY light &STANDING &INCLUDE 1 -NPC &ASSISTSAY okee:)

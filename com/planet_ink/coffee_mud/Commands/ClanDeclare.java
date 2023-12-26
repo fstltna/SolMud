@@ -142,6 +142,17 @@ public class ClanDeclare extends StdCommand
 				{
 					mob.tell(L("@x1 is already in that state with @x2.",C.getName(),C2.getName()));
 					return false;
+
+				}
+				long lastRelationshipChangeMs=C.getLastRelationChange(C2.clanID());
+				if(lastRelationshipChangeMs>(CMProps.getIntVar(CMProps.Int.TICKSPERMUDMONTH)*CMProps.getTickMillis()))
+				{
+					lastRelationshipChangeMs=lastRelationshipChangeMs+(CMProps.getIntVar(CMProps.Int.TICKSPERMUDMONTH)*CMProps.getTickMillis());
+					if(System.currentTimeMillis()<lastRelationshipChangeMs)
+					{
+						mob.tell(L("You must wait at least 1 mud month between relation changes."));
+						return false;
+					}
 				}
 				commands.clear();
 				commands.add(getAccessWords()[0]);
