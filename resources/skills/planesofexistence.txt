@@ -1,6 +1,6 @@
 # Planes of Existence
-# (C) 2000-2022 Bo Zimmerman
-# The Format:  One plane per line, line must begin with quote ", then the 
+# (C) 2000-2024 Bo Zimmerman
+# The Format:  One plane per line, line must begin with quote ", then the
 # name of the plane, then ending quote, a space, and one or more arguments,
 # separated by spaces.  Argument values can also be in quotes.  Argument
 # keys include:
@@ -39,7 +39,7 @@
 # MIXRACE: RaceID of race to make every planar mob a mix of
 # ELITE: elite level 1+, increases hit points, attack, damage, saves
 # ROOMCOLOR: A color code (^r) or "UP " followed by color, for room title
-# ROOMADJS: Comma delimited list of adjectives to sprinkle in room 
+# ROOMADJS: Comma delimited list of adjectives to sprinkle in room
 #           descriptions.  List may be prefixed with a number for % chance.
 #           List may also begin with "UP " to make description uppercase.
 # FACTIONS: Space delimited list of FactionIDs(AMOUNT) to give mobs faction.
@@ -48,10 +48,10 @@
 # DESCRIPTION: arbitrary description shown to players with planar lore
 # PROMOTIONS: Comma delimited List of promotion names with % chance in ()
 #
-# * In normal areas, add tattoo NOPLANE <plane name> to prevent a mob from 
+# * In normal areas, add tattoo NOPLANE <plane name> to prevent a mob from
 #   spawning in a plane.
 
 "Astral" transitional="true" roomadjs="30 silvery" mixrace="Githyanki" prefix="astral,gith" specflags="BADMUNDANEARMOR ALLBREATHE" bonusdamagestat="wisdom" category="Transitional" reffect="Spell_MagicalAura" reqweapons="magical natural karate" leveladj=2 hours=3000 roomcolor="UP ^p" id="Astral" promotions="Shimmering(20),Shining(5),Glowing(1)" absorb="enhanced 100% alteration 100% creation" opposed="Ethereal" fatiguerate=1000 aeffect="Emoter(min=20 max=60 chance=25;visual You see the silver shimmer of an adjacent plane.;visual You duck beneath a silver cord of another astral traveller.;visual You zip past the astral terrain in the blink of an eye.) Emoter() Emoter(emoter) Emoter(min=20 max=60 chance=25;visual You see the silver shimmer of an adjacent plane.;visual You duck beneath a silver cord of another astral traveller.;visual You zip past the astral terrain in the blink of an eye.)"
-"Cum" alignment=0 prefix="oozing,slimey,sludgey,cummy" mobresist="water+100" behave="CombatAbilities" enable="matingpress" bonusdamagestat="charisma" atmosphere="cum" mixrace="Succubus" roomcolor="^w" roomadjs="30 oozing,slimey,cummy" promotions="dripping(70)" 
-"Shadow" alignment=-5000 prefix="dark,fading,shadowy" mobresist="evil+100" behave="CombatAbilities" reqweapons="magical" atmosphere="nothing" fatiguerate=2 specflags="NOINFRAVISION BADMUNDANEARMOR" mixrace="Shadow" roomcolor="^k" roomadjs="30 dark,twisted" 
-"Tenebrae" alignment=-2500 prefix="ethereal,ghostly,faded" mobresist="cold+50" behave="CombatAbilities" reqweapons="magical" atmosphere="nothing" fatiguerate=2 specflags="NOINFRAVISION BADMUNDANEARMOR" mixrace="Shadow" roomcolor="^k" roomadjs="30 twisted,faded,strange,mirrored" like="SHADOW" description="The dark realm of ghosts, djinns and all sorts of ghostly creatures that reside. Also where the most fucked up things can happen." 
+"Cum" alignment=0 prefix="oozing,slimey,sludgey,cummy" mobresist="water+100" behave="CombatAbilities" enable="matingpress" bonusdamagestat="charisma" atmosphere="cum" mixrace="Succubus" roomcolor="^w" roomadjs="30 oozing,slimey,cummy" promotions="dripping(70)"
+"Shadow" alignment=-5000 prefix="dark,fading,shadowy" mobresist="evil+100" behave="CombatAbilities" reqweapons="magical" atmosphere="nothing" fatiguerate=2 specflags="NOINFRAVISION BADMUNDANEARMOR" mixrace="Shadow" roomcolor="^k" roomadjs="30 dark,twisted"
+"Tenebrae" alignment=-2500 prefix="ethereal,ghostly,faded" mobresist="cold+50" behave="CombatAbilities" reqweapons="magical" atmosphere="nothing" fatiguerate=2 specflags="NOINFRAVISION BADMUNDANEARMOR" mixrace="Shadow" roomcolor="^k" roomadjs="30 twisted,faded,strange,mirrored" like="SHADOW" description="The dark realm of ghosts, djinns and all sorts of ghostly creatures that reside. Also where the most fucked up things can happen."

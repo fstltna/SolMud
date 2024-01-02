@@ -36,7 +36,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /*
-   Copyright 2008-2023 Bo Zimmerman
+   Copyright 2008-2024 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -13279,11 +13279,11 @@ public class DefaultScriptingEngine implements ScriptingEngine
 					logError(scripted,"MPPOSSESS","RunTime",tt[1]+" is not a player.");
 					break;
 				}
-				final String amt=varify(source,target,scripted,monster,primaryItem,secondaryItem,msg,tmp,tt[2]);
-				final String achieveID=varify(source,target,scripted,monster,primaryItem,secondaryItem,msg,tmp,tt[3]);
+				final String achieveID=varify(source,target,scripted,monster,primaryItem,secondaryItem,msg,tmp,tt[2]);
+				final String amt=varify(source,target,scripted,monster,primaryItem,secondaryItem,msg,tmp,tt[3]);
 				if((amt.length()==0)||(!CMath.isInteger(amt)))
 				{
-					logError(scripted,"MPACHIEVE","Syntax","No Amount '"+amt+"'");
+					logError(scripted,"MPACHIEVE","Syntax","Not an amount '"+amt+"'");
 					break;
 				}
 				final Achievement A = CMLib.achievements().getAchievement(achieveID);

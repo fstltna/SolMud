@@ -18,7 +18,7 @@ import com.planet_ink.coffee_mud.Races.interfaces.*;
 import java.util.*;
 
 /*
-   Copyright 2003-2023 Bo Zimmerman
+   Copyright 2003-2024 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -90,16 +90,16 @@ public class Skill_Conduct extends BardSkill
 	@Override
 	public boolean invoke(final MOB mob, final List<String> commands, final Physical givenTarget, final boolean auto, final int asLevel)
 	{
-		Ability SYMPHONY=mob.fetchAbility("Play_Symphony");
-		if((!auto)&&(SYMPHONY==null))
+		Ability symphonyA=mob.fetchAbility("Play_Symphony");
+		if((!auto)&&(symphonyA==null))
 		{
 			mob.tell(L("But you don't know how to play a symphony."));
 			return false;
 		}
-		if(SYMPHONY==null)
+		if(symphonyA==null)
 		{
-			SYMPHONY=CMClass.getAbility("Play_Symphony");
-			SYMPHONY.setProficiency(100);
+			symphonyA=CMClass.getAbility("Play_Symphony");
+			symphonyA.setProficiency(100);
 		}
 		if(!super.invoke(mob,commands,givenTarget,auto,asLevel))
 			return false;
@@ -132,6 +132,9 @@ public class Skill_Conduct extends BardSkill
 					final MOB follower=(MOB)element;
 					if(follower == null)
 						continue;
+					if((follower==mob)
+					&&(Play.getInstrument(mob, null, false)==null))
+						continue;
 					final Room R=follower.location();
 					if(R!=null)
 					{
@@ -146,7 +149,12 @@ public class Skill_Conduct extends BardSkill
 							{
 								R.send(follower,msg2);
 								if(msg2.value()<=0)
-									SYMPHONY.invoke(follower,new Vector<String>(),null,false,asLevel+(3*getXLEVELLevel(mob)));
+								{
+									final Ability oldA = follower.fetchEffect(symphonyA.ID());
+									if(oldA != null)
+										oldA.unInvoke();
+									symphonyA.invoke(follower,new Vector<String>(),null,false,asLevel+(3*getXLEVELLevel(mob)));
+								}
 							}
 						}
 					}
