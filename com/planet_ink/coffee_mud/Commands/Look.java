@@ -57,7 +57,7 @@ public class Look extends StdCommand
 	{
 		final Vector<String> origCmds=new XVector<String>(commands);
 		final Room R=mob.location();
-		boolean quiet=true;
+		boolean quiet=false;
 		if((commands!=null)
 		&&(commands.size()>1)
 		&&(commands.get(commands.size()-1).equalsIgnoreCase("UNOBTRUSIVELY")))
@@ -264,7 +264,7 @@ public class Look extends StdCommand
 			if(thisThang!=null)
 			{
 				String name="at <T-NAMESELF>";
- 				if((thisThang instanceof Room)||(thisThang instanceof Exit))
+				if((thisThang instanceof Room)||(thisThang instanceof Exit))
 				{
 					if(thisThang==R)
 						name="around";
