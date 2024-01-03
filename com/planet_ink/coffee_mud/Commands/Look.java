@@ -57,7 +57,7 @@ public class Look extends StdCommand
 	{
 		final Vector<String> origCmds=new XVector<String>(commands);
 		final Room R=mob.location();
-		boolean quiet=false;
+		boolean quiet=true;
 		if((commands!=null)
 		&&(commands.size()>1)
 		&&(commands.get(commands.size()-1).equalsIgnoreCase("UNOBTRUSIVELY")))
