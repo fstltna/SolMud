@@ -112,7 +112,10 @@ high-capacity % pistol	91	160	4	11475	GenGun	medium rounds	30	81	2			1
 % clockwork shotgun	91	230	12	18020	GenGun	shotshell	12	102	2			2
 pack of 250 birdshot	91	175	16	175	GenAmmunition	shotshell	250				Prop_WearAdjuster;attacks+50	
 % sniper rifle	91	210	18	14025	GenGun	large rounds	8	85	7			2
+<<<<<<< HEAD
 An Universal Plasma Cell	91	20	20	5	GenAmmunition	PlasmaCell	30					
+=======
+>>>>>>> f41f782f7eb39a34a1b4b790c9f5527db4b1481b
 magazine of 30 .45 ACP rounds	1	7	1	10	GenAmmunition	.45 ACP 30			
 magazine of 30 .45 ACP blank rounds	2	7	1	10	GenAmmunition	.45 ACP	30				Prop_NoDamage;Prop_FightSpellCast;50% Spell_ColorSpray	
 magazine of 30 .45 ACP snakeshot rounds	3	7	1	10	GenAmmunition	.45 ACP	30				Prop_WearAdjuster;attacks+20;Prop_AddDamage;15% BASHING	
