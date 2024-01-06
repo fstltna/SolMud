@@ -134,7 +134,7 @@ if class($n == TacticalJoy)
 mpsetvar $n joydamage $%MATH($<$n randhealamt> / 2)%
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt> - $<$n joydamage>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n randhealamt>)%
 if sex($n == F) or sex($n == A) or sex($n == H)
@@ -145,7 +145,7 @@ endif
 else
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n randhealamt>)%
 endif
@@ -183,7 +183,7 @@ if class($n == TacticalJoy)
 mpsetvar $n joydamage $%MATH($<$n randhealamt> / 2)%
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt> - $<$n joydamage>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n randhealamt>)%
 if sex($n == F) or sex($n == A) or sex($n == H)
@@ -194,7 +194,7 @@ endif
 else
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n randhealamt>)%
 endif
@@ -211,7 +211,7 @@ if class($n == TacticalJoy)
 mpsetvar $n joydamage $%MATH($<$n randhealamt> / 2)%
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt> - $<$n joydamage>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n randhealamt>)%
 if sex($n == F) or sex($n == A) or sex($n == H)
@@ -222,7 +222,7 @@ endif
 else
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n randhealamt>)%
 endif
@@ -239,7 +239,7 @@ if class($n == TacticalJoy)
 mpsetvar $n joydamage $%MATH($<$n randhealamt> / 2)%
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt> - $<$n joydamage>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n randhealamt>)%
 if sex($n == F) or sex($n == A) or sex($n == H)
@@ -250,7 +250,7 @@ endif
 else
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n randhealamt>)%
 endif
@@ -267,7 +267,7 @@ if class($n == TacticalJoy)
 mpsetvar $n joydamage $%MATH($<$n randhealamt> / 2)%
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt> - $<$n joydamage>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n randhealamt>)%
 if sex($n == F) or sex($n == A) or sex($n == H)
@@ -278,7 +278,7 @@ endif
 else
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n randhealamt>)%
 endif
@@ -299,7 +299,7 @@ if class($n == TacticalJoy)
 mpsetvar $n joydamage $%MATH($<$n randhealamt> / 2)%
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt> - $<$n joydamage>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n randhealamt>)%
 if sex($n == F) or sex($n == A) or sex($n == H)
@@ -310,7 +310,7 @@ endif
 else
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n randhealamt>)%
 endif
@@ -349,7 +349,7 @@ if class($n == TacticalJoy)
 mpsetvar $n joydamage $%MATH($<$n randhealamt> / 2)%
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt> - $<$n joydamage>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n randhealamt>)%
 if sex($n == F) or sex($n == A) or sex($n == H)
@@ -360,7 +360,7 @@ endif
 else
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n randhealamt>)%
 endif
@@ -377,7 +377,7 @@ if class($n == TacticalJoy)
 mpsetvar $n joydamage $%MATH($<$n randhealamt> / 2)%
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt> - $<$n joydamage>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n randhealamt>)%
 if sex($n == F) or sex($n == A) or sex($n == H)
@@ -388,7 +388,7 @@ endif
 else
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n randhealamt>)%
 endif
@@ -402,7 +402,7 @@ MPSETVAR $n CurHits $%GSTAT($n Hits)%
 MPSETVAR $t CurHits $%GSTAT($t Hits)%
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 mpecho ^#401*PLAP* *PLOP* $n holds $t down and slams down ballsdeep ($<$n randhealamt>) and with massive force!*PLAP* *PLAP*
 mpsetvar $n randhealamt + 30
@@ -419,7 +419,7 @@ if class($n == TacticalJoy)
 mpsetvar $n joydamage $%MATH($<$n randhealamt> / 2)%
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt> - $<$n joydamage>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n randhealamt>)%
 if sex($n == F) or sex($n == A) or sex($n == H)
@@ -430,7 +430,7 @@ endif
 else
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n randhealamt>)%
 endif
@@ -452,7 +452,7 @@ if class($n == TacticalJoy)
 mpsetvar $n joydamage $%MATH($<$n randhealamt> / 2)%
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt> - $<$n joydamage>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n randhealamt>)%
 if sex($n == F) or sex($n == A) or sex($n == H)
@@ -463,7 +463,7 @@ endif
 else
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n randhealamt>)%
 endif
@@ -502,7 +502,7 @@ if class($n == TacticalJoy)
 mpsetvar $n joydamage $%MATH($<$n randhealamt> / 2)%
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt> - $<$n joydamage>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n randhealamt>)%
 if sex($n == F) or sex($n == A) or sex($n == H)
@@ -513,7 +513,7 @@ endif
 else
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n randhealamt>)%
 endif
@@ -530,7 +530,7 @@ if class($n == TacticalJoy)
 mpsetvar $n joydamage $%MATH($<$n randhealamt> / 2)%
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt> - $<$n joydamage>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n randhealamt>)%
 if sex($n == F) or sex($n == A) or sex($n == H)
@@ -541,7 +541,7 @@ endif
 else
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n randhealamt>)%
 endif
@@ -558,7 +558,7 @@ if class($n == TacticalJoy)
 mpsetvar $n joydamage $%MATH($<$n randhealamt> / 2)%
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt> - $<$n joydamage>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n randhealamt>)%
 if sex($n == F) or sex($n == A) or sex($n == H)
@@ -569,7 +569,7 @@ endif
 else
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n randhealamt>)%
 endif
@@ -586,7 +586,7 @@ if class($n == TacticalJoy)
 mpsetvar $n joydamage $%MATH($<$n randhealamt> / 2)%
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt> - $<$n joydamage>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n randhealamt>)%
 if sex($n == F) or sex($n == A) or sex($n == H)
@@ -597,7 +597,7 @@ endif
 else
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n randhealamt>)%
 endif
@@ -618,7 +618,7 @@ if class($n == TacticalJoy)
 mpsetvar $n joydamage $%MATH($<$n randhealamt> / 2)%
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt> - $<$n joydamage>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n randhealamt>)%
 if sex($n == F) or sex($n == A) or sex($n == H)
@@ -629,7 +629,7 @@ endif
 else
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n randhealamt>)%
 endif
@@ -648,7 +648,7 @@ if class($n == TacticalJoy)
 mpsetvar $n joydamage $%MATH($<$n randhealamt> / 2)%
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt> - $<$n joydamage>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n randhealamt>)%
 if sex($n == F) or sex($n == A) or sex($n == H)
@@ -659,7 +659,7 @@ endif
 else
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n randhealamt>)%
 endif
@@ -676,7 +676,7 @@ if class($n == TacticalJoy)
 mpsetvar $n joydamage $%MATH($<$n randhealamt> / 2)%
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt> - $<$n joydamage>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n randhealamt>)%
 if sex($n == F) or sex($n == A) or sex($n == H)
@@ -687,7 +687,7 @@ endif
 else
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n randhealamt>)%
 endif
@@ -704,7 +704,7 @@ if class($n == TacticalJoy)
 mpsetvar $n joydamage $%MATH($<$n randhealamt> / 2)%
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt> - $<$n joydamage>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n randhealamt>)%
 if sex($n == F) or sex($n == A) or sex($n == H)
@@ -715,7 +715,7 @@ endif
 else
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n randhealamt>)%
 endif
@@ -732,7 +732,7 @@ if class($n == TacticalJoy)
 mpsetvar $n joydamage $%MATH($<$n randhealamt> / 2)%
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt> - $<$n joydamage>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n randhealamt>)%
 if sex($n == F) or sex($n == A) or sex($n == H)
@@ -743,7 +743,7 @@ endif
 else
 MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
 if var($t HitsCalc < 1)
-mpkill $t
+mpslay $t
 endif
 MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n randhealamt>)%
 endif
