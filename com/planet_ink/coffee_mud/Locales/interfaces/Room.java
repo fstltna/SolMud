@@ -105,7 +105,8 @@ public interface Room extends PhysicalAgent, ItemPossessor, Places
 	public final static int DOMAIN_OUTDOORS_SPACEPORT=12;
 	/** Domain type mask denoting whether the room is outdoors, at a seaport @see {@link Room#domainType()} */
 	public final static int DOMAIN_OUTDOORS_SEAPORT=13;
-
+    public final static int MAX_HISTORY = 200;
+    public final static long MESSAGE_AGE = 3600000; 
 	/** Domain description array indexed by the DOMAIN_OUTDOOR_* constants. @see {@link Room#DOMAIN_OUTDOORS_CITY} */
 	public final static String[] DOMAIN_OUTDOOR_DESCS=
 	{

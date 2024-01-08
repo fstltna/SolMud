@@ -910,7 +910,20 @@ public class StdRoom implements Room
 	public void executeMsg(final Environmental myHost, final CMMsg msg)
 	{
 		getArea().executeMsg(this,msg);
-
+        if (msg.tool() instanceof Social)
+        {
+            addRoomHistory(msg);
+        }
+        else
+        {
+            switch (msg.sourceMinor())
+            {
+                case CMMsg.TYP_SPEAK:
+                case CMMsg.TYP_EMOTE:
+                        addRoomHistory(msg);
+                    break;
+			}
+		}
 		if(msg.amITarget(this))
 		{
 			final MOB mob=msg.source();
@@ -1352,7 +1365,6 @@ public class StdRoom implements Room
 	}
 
 	private final static int phyStatsMaskOut = ~(PhyStats.IS_DARK|PhyStats.IS_LIGHTSOURCE|PhyStats.IS_SLEEPING|PhyStats.IS_HIDDEN|PhyStats.IS_SWIMMING|PhyStats.IS_NOT_SEEN);
-
 	@Override
 	public void affectPhyStats(final Physical affected, final PhyStats affectableStats)
 	{
@@ -3280,4 +3292,54 @@ public class StdRoom implements Room
 		}
 		return true;
 	}
+/**
+     * Look back of the history, if the player has no activity in the room, show the last 30 minutes otherwise
+     * allow it to go back where there is no more than 40 minute gap between thier posts.
+     */
+    //Look back 30 minutes by default
+    private static int OLD_MESSAGE = 1800000; //30 minutes if you've not been involved
+    private static int GAP_MESSAGE = 2400000; //40 minute interval if you have
+    public List<RoomHistoryEntry> getRoomHistory(MOB mob)
+	{
+        Vector<RoomHistoryEntry > messages = new Vector<RoomHistoryEntry >(); 
+        
+        
+        Date earliest = new Date(System.currentTimeMillis()-OLD_MESSAGE);
+        //Date firstPost = new Date(System.currentTimeMillis());
+        Date lastpost = new Date();
+
+        //Find the mobs oldest post
+        for(int i = roomHistory.size()-1; i >= 0;i--) {
+            RoomHistoryEntry entry = roomHistory.elementAt(i);
+            
+            if(entry.message.source().equals(mob)) {
+                long diffInMillies = lastpost.getTime() - entry.dtWhen.getTime();
+
+                //If the gap from the previous message is to big, stop.
+                if(diffInMillies > GAP_MESSAGE)
+                    break;
+                
+                lastpost = entry.dtWhen;
+                
+                if(earliest.after(lastpost)){
+                    earliest = lastpost;
+                }
+            }
+        }
+                
+        for(RoomHistoryEntry entry : roomHistory){
+            if(entry.dtWhen.after(earliest)||(entry.dtWhen.equals(earliest))) {
+                        messages.add(entry);
+                }
+            }
+        return messages;
+    }
+    public void addRoomHistory(CMMsg msg)
+    {
+        roomHistory.addElement(new RoomHistoryEntry(msg));
+        if (roomHistory.size()>Room.MAX_HISTORY){
+            roomHistory.removeElementAt(0);
+        }
+	}
+    protected Vector<RoomHistoryEntry> roomHistory = new Vector<RoomHistoryEntry>();
 }
