@@ -106,19 +106,19 @@ public class ReplayRoom extends StdCommand {
 		return false;
 	}
 	//tried to un-deprecate shit
-	boolean isBeforeToday(Calendar d) {
-		Calendar today = new Calendar();
-		today.set(Calendar.HOUR, 0);
-		today.set(Calendar.MINUTE, 0);
-		today.set(Calendar.SECOND, 0);
+	boolean isBeforeToday(Date d) {
+		Date today = new Date();
+		today.setHours(0);
+		today.setMinutes(0);
+		today.setSeconds(0);
 		return d.before(today);
 	}
 
-	boolean isAfterToday(Calendar d) {
-		Calendar today = new Calendar();
-		today.set(Calendar.HOUR, 0);
-		today.set(Calendar.MINUTE, 0);
-		today.set(Calendar.SECOND, 0);
+	boolean isAfterToday(Date d) {
+		Date today = new Date();
+		today.setHours(0);
+		today.setMinutes(0);
+		today.setSeconds(0);
 		return d.after(today);
 	}
 
