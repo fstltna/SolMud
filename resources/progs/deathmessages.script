@@ -255,5 +255,18 @@ IF GSTAT($n HITS < $<$n MaxHits>)
     ENDIF
     MPGSET $n HITS $%VAR($n HitsCalc)%
 ENDIF
-mpecho ^p*FWOP* *PLAP* *PLOP* $n ^pheals $sself on $t ^pfor ^g($<$n sexheallevelmobkill>)^p! *PLOP* *PLAP* *FAP*^N
+mpecho ^r*FWOP* *PLAP* *PLOP* $n ^rheals $sself on $t ^pfor ^g($<$n sexheallevelmobkill>)^r! *PLOP* *PLAP* *FAP*^N
+
+## Area checks for capture ends
+if inarea($t == 'World Tree Roots')
+mptransfer $t 'World Tree Roots#20'
+mpalarm 1 mpgset $? NAME 'A cache of $t s items.'
+mpalarm 1 mpgset cache DISPLAY 'A cache of $t s items.'
+mpalarm 1 mpgset cache DESCRIPTION 'A cache of $t s items.'
+mpalarm 1 mptransfer $t 'World Tree Roots#20'
+mpecho ^r$t's body is suddenly dragged deeper into the dungeon by something!!^N
+mpalarm 2 mptransfer $t 'World Tree Roots#20'
+mpalarm 2 mpaffect property:Sexual_Cumbloat3 $n
+mpalarm 3 mpechoat $t You find yourself returning to consciousness... ^#210You are constricted by roots, and all of your holes are filled to the brim with rigid tree roots! You are pretty much impaled and have no way out. The roots start to thrust rapidly into your holes again, over and over, they creak and crack as they violate you and occasionally, somehow pump cum-like liquid into you. You can not do much but try to ^CRESIST^N.
+endif
 ~

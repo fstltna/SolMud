@@ -48,12 +48,13 @@
 1 Herbology 
 1 Hunting MASK=+WIS 8 
 1 Ignan 
-1 Milkable PROF=100 AUTOGAIN MASK=-gender +female 
+1 Milkable PROF=100 
 1 ooc_bailooc PROF=100 AUTOGAIN 
 1 ooc_reward PROF=100 AUTOGAIN 
 1 Orcish 
 1 Property_Cyberpsychosistracker PROF=100 AUTOGAIN 
 1 Property_EmergencyCall PROF=100 AUTOGAIN 
+1 Prop_Permabreed PROF=100 AUTOGAIN 
 1 RP_ActingI PROF=100 AUTOGAIN MASK=-EXPERTISES +acting5 
 1 RP_ActingII PROF=100 AUTOGAIN MASK=-EXPERTISES +acting10 
 1 RP_Breedingi PROF=100 AUTOGAIN MASK=-EXPERTISES +breeder5 REQUIRES=matingpress 

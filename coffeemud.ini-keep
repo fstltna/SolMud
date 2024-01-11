@@ -897,9 +897,9 @@ MANAMINCOST=-1, 10
 # Example: SKILLCOST=1 TRAIN, Spell_Sleep 50*@x1 GOLD
 # The defaults: 1 TRAIN for SKILLCOST, 3 PRACTICES for LANGCOST.
 #               and 1 TRAIN for COMMONCOST.
-COMMONCOST=50*@x1 XP
-SKILLCOST=100*@x1 XP
-LANGCOST=5000 XP
+COMMONCOST=25*@x1-(10*@x2)>25 XP
+SKILLCOST=50*@x1-(10*@x2)>50 XP
+LANGCOST=2500-(10*@x2)>250 XP
 
 # WALKCOST AND RUNCOST are the two fields which define the number of 
 # movement points required to traverse one room.
@@ -915,8 +915,8 @@ RUNCOST=6
 # 2 for crafting skills, 5 for non-crafting skills, and 3 for langs.
 MAXCOMMONSKILLS=0
 MAXCRAFTINGSKILLS=6
-MAXNONCRAFTINGSKILLS=0
-MAXLANGUAGES=5
+MAXNONCRAFTINGSKILLS=10
+MAXLANGUAGES=3
 
 # The ABILITY TIMES are default values to use for the number
 # of actions required to cast a spell or use a skill.  DEFABLETIME

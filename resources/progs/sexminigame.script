@@ -282,8 +282,6 @@ endif
 MPSETVAR $n energydiff $%MATH(150?200)%
 MPSETVAR $n ppdiff $%MATH(5?15)%
 MPSETVAR $i pdiff $%MATH(20?60)%
-mpsetvar $n gdiffregen $%MATH(1?3)%
-MPSETVAR $n genitaldamage $%MATH($<$n genitaldamage> - $<$n gdiffregen> > 0)%
 MPSETVAR $n curenergy $%MATH($<$n Curenergy> - $<$n energydiff>)%
 MPSETVAR $n gddiff $%MATH($<$n genitaldamage>/2)%
 mpecho ^p*SPLAT* ^N$n's battered sensitive hole causes extra ^p(^w$<$n gddiff>^p)^N pleasure damage to $m! ^p*FWOP*^N
@@ -338,8 +336,6 @@ endif
 MPSETVAR $n energydiff $%MATH(250?300)%
 MPSETVAR $n ppdiff $%MATH(10?25)%
 MPSETVAR $i pdiff $%MATH(15?30)%
-mpsetvar $n gdiffregen $%MATH(1?3)%
-MPSETVAR $n genitaldamage $%MATH($<$n genitaldamage> - $<$n gdiffregen> > 0)%
 MPSETVAR $n curenergy $%MATH($<$n Curenergy> - $<$n energydiff>)%
 MPSETVAR $n gddiff $%MATH($<$n genitaldamage>/2)%
 mpecho ^p*SPLAT* ^N$n's battered sensitive hole causes extra ^p(^w$<$n gddiff>^p)^N pleasure damage to $m! ^p*FWOP*^N
@@ -353,15 +349,13 @@ if var('$n' squeezeactive == 1)
 mpsetvar '$n' squeezeactive 0
 MPSETVAR $n ppdiff $%MATH(5?10)%
 MPSETVAR $i pdiff $%MATH(5?15)%
-mpsetvar $n gdiffregen $%MATH(1?3)%
-MPSETVAR $n genitaldamage $%MATH($<$n genitaldamage> - $<$n gdiffregen> > 0)%
 MPSETVAR $n gddiff $%MATH($<$n genitaldamage>/2)%
 mpecho ^p*SPLAT* ^N$n's battered sensitive hole causes extra ^p(^w$<$n gddiff>^p)^N pleasure damage to $m! ^p*FWOP*^N
 mpsetvar $n playerpleasureamountcalc $%MATH($<$n playerpleasureamount> + $<$n ppdiff> + $<$n gddiff>)%
 mpsetvar $n playerpleasureamount $<$n playerpleasureamountcalc>
 mpsetvar $i pleasureamountcalc $%MATH($<$i pleasureamount> + $<$i pdiff>)%
 mpsetvar $i pleasureamount $<$i pleasureamountcalc>
-mpecho ^p*PLAP* *PLAP* ^N$n squeezes $i's cock for ^p(^w$<$i pdiff>^P)^N damage during the tight-fuck! ^P*PLAP* *PLAP*^N
+mpecho ^P*PLAP* *PLAP* ^N$n squeezes $i's cock for ^p(^w$<$i pdiff>^P)^N damage during the tight-fuck! ^P*PLAP* *PLAP*^N
 mpecho ^P*PLAP* *PLAP* ^N$n gets pleasured for ^P(^w$<$n ppdiff>^P)^N damage during the tight-fuck! ^P*PLAP* *PLAP*^N
 endif
 endif
@@ -407,8 +401,6 @@ endif
 MPSETVAR $n energydiff $%MATH(75?150)%
 MPSETVAR $n ppdiff $%MATH(10?20)%
 MPSETVAR $i pdiff $%MATH(5?25)%
-mpsetvar $n gdiffregen $%MATH(1?3)%
-MPSETVAR $n genitaldamage $%MATH($<$n genitaldamage> - $<$n gdiffregen> > 0)%
 MPSETVAR $n curenergy $%MATH($<$n Curenergy> + $<$n energydiff>)%
 MPSETVAR $n gddiff $%MATH($<$n genitaldamage>/2)%
 mpecho ^p*SPLAT* ^N$n's battered sensitive hole causes extra ^p(^w$<$n gddiff>^p)^N pleasure damage to $m! ^p*FWOP*^N
@@ -450,8 +442,6 @@ endif
 MPSETVAR $n energydiff $%MATH(50?100)%
 MPSETVAR $n ppdiff $%MATH(10?25)%
 MPSETVAR $i pdiff $%MATH(5?15)%
-mpsetvar $n gdiffregen $%MATH(1?3)%
-MPSETVAR $n genitaldamage $%MATH($<$n genitaldamage> - $<$n gdiffregen> > 0)%
 MPSETVAR $n curenergy $%MATH($<$n Curenergy> + $<$n energydiff>)%
 MPSETVAR $n gddiff $%MATH($<$n genitaldamage>/2)%
 mpecho ^p*SPLAT* ^N$n's battered sensitive hole causes extra ^p(^w$<$n gddiff>^p)^N pleasure damage to $m! ^p*FWOP*^N
@@ -500,8 +490,6 @@ endif
 MPSETVAR $n energydiff $%MATH(30?65)%
 MPSETVAR $n ppdiff $%MATH(25?40)%
 MPSETVAR $i pdiff $%MATH(5?15)%
-mpsetvar $n gdiffregen $%MATH(1?3)%
-MPSETVAR $n genitaldamage $%MATH($<$n genitaldamage> - $<$n gdiffregen> > 0)%
 MPSETVAR $n curenergy $%MATH($<$n Curenergy> - $<$n energydiff>)%
 MPSETVAR $n gddiff $%MATH($<$n genitaldamage>/2)%
 mpecho ^p*SPLAT* ^N$n's battered sensitive hole causes extra ^p(^w$<$n gddiff>^p)^N pleasure damage to $m! ^p*FWOP*^N
@@ -540,8 +528,6 @@ endif
 MPSETVAR $n energydiff $%MATH(40?85)%
 MPSETVAR $n ppdiff $%MATH(10?25)%
 MPSETVAR $i pdiff $%MATH(3?10)%
-mpsetvar $n gdiffregen $%MATH(1?3)%
-MPSETVAR $n genitaldamage $%MATH($<$n genitaldamage> - $<$n gdiffregen> > 0)%
 MPSETVAR $n curenergy $%MATH($<$n Curenergy> - $<$n energydiff>)%
 MPSETVAR $n gddiff $%MATH($<$n genitaldamage>/2)%
 mpecho ^p*SPLAT* ^N$n's battered sensitive hole causes extra ^p(^w$<$n gddiff>^p)^N pleasure damage to $m! ^p*FWOP*^N
@@ -810,7 +796,7 @@ switch $%RANDNUM(3)%
 case 1
 mpecho ^B[^bEndure^B]^N $n seems to be trying to loosen $m hole and think of something else as $i is about to pound $m hard...
 case 2
-mpecho ^B[^bEndure^B]^N $n manages to reach down and spread $m ass wide with $i still inside $m...
+mpecho ^B[^bEndure^B]^N $n manages to reach down and spread $m hole wide with $i still inside $m...
 case 3
 mpecho ^B[^bEndure^B]^N $n focuses on moving $m hips along with $i to reduce the impact...
 endswitch
@@ -821,7 +807,7 @@ switch $%RANDNUM(3)%
 case 1
 mpecho ^R[^rFail^R]^N $n seems to be trying to loosen $m hole but fails as $i is about to pound $m hard...
 case 2
-mpecho ^R[^rFail^R]^N $n tries to reach down and spread $m ass wide while $i is still inside $m but it is futile...
+mpecho ^R[^rFail^R]^N $n tries to reach down and spread $m hole while $i is still inside $m but it is futile...
 case 3
 mpecho ^R[^rFail^R]^N $n tries to move $m hips along with $i to reduce the impact but could not synchronize...
 endswitch
@@ -1026,7 +1012,7 @@ mpunaffect $n sexual_cumbloat1
 mpaffect sexual_cumbloat3 $n
 mpexp '$n' 15%
 mpjunk '$i'
-mpcallfunc sexvictory
+mpalarm 1 mpcallfunc sexvictory
 ~
 
 function_prog playerlose
@@ -1055,7 +1041,7 @@ mpaffect sexual_cumbloat3 $n
 ~
 
 cnclmsg_prog huh p helpinfo
-mpechoat $n Welcome to the battlefuck minigame!%0DYou may take pleasure damage by most actions, yours or enemys' and regen 1-3 genital damage when you act or and your turn start.%0DThe more damaged your genital is the faster you'll gain arousal due lost composure and increased sensitivity. Your genitals will be damaged for half the arousal you received. Geni.Damage will add 1 points of extra arousal for each 2 genital damage. Special circumstances may change this.%0DYou lose when your energy becomes 0 so make sure to try to keep it high! You will instnatly lose 500 energy if your arousal reaches maximum and you cum.%0DEnemy will lose some arousal time to time, you will feel that by the cock's actions inside.%0DBlocking an attack will halve it's effects, while dodging while harder to do, will completely skip the enemy's attack. Resting will regain some energy but you will take full damage from the attack... Though you will get no energy and take full damage anyway if you mess up a defense.%0DUse your abilities to make your opponent cum before you (or before they break your hole)!%0DMake sure to keep an eye on your genital! If it gets too damaged it'll become an unusable gorey pulp and you'll lose!%0D%0DIf you wish to add new emotes to any sex ability in the game, please write them down and share them in discord contributions channel!%0D^rIf you notice something wrong with the system, or the math despite what it shows please BUG it or report in discord!^N
+mpechoat $n Welcome to the battlefuck minigame!%0DYou may take pleasure damage by most actions, yours or enemys'. You can regen 1-3 genital damage when your turn start or if you choose to do nothing on your defense turn, you can regen 1-15 genital damage, though you'll still regain some more during enemy's turn. %0DThe more damaged your genital is the faster you'll gain arousal due lost composure and increased sensitivity. Your genitals will be damaged for half the arousal you received. Geni.Damage will add 1 points of extra arousal for each 2 genital damage. Special circumstances may change this.%0DYou lose when your energy becomes 0 so make sure to try to keep it high! You will instnatly lose 500 energy if your arousal reaches maximum and you cum.%0DEnemy will lose some arousal time to time, you will feel that by the cock's actions inside.%0DBlocking an attack will halve it's effects, while dodging while harder to do, will completely skip the enemy's attack. Resting will regain some energy but you will take full damage from the attack... Though you will get no energy and take full damage anyway if you mess up a defense.%0DUse your abilities to make your opponent cum before you (or before they break your hole)!%0DMake sure to keep an eye on your genital! If it gets too damaged it'll become an unusable gorey pulp and you'll lose!%0D%0DIf you wish to add new emotes to any sex ability in the game, please write them down and share them in discord contributions channel!%0D^rIf you notice something wrong with the system, or the math despite what it shows please BUG it or report in discord!^N
 return cancel
 ~
 
