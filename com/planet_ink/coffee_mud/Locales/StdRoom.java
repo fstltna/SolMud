@@ -3342,4 +3342,8 @@ public class StdRoom implements Room
         }
 	}
     protected Vector<RoomHistoryEntry> roomHistory = new Vector<RoomHistoryEntry>();
+	@Override
+    public void clearRoomHistory(){
+        roomHistory.clear();    
+    }
 }
