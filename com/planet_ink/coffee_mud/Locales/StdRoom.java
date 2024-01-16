@@ -19,9 +19,12 @@ import com.planet_ink.coffee_mud.Items.interfaces.*;
 import com.planet_ink.coffee_mud.Locales.interfaces.*;
 import com.planet_ink.coffee_mud.MOBS.interfaces.*;
 import com.planet_ink.coffee_mud.Races.interfaces.*;
+import com.planet_ink.coffee_mud.Locales.interfaces.RoomHistoryEntry;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.ArrayList;
+import java.util.List;
 /*
    Copyright 2001-2024 Bo Zimmerman
 
@@ -3342,6 +3345,8 @@ public class StdRoom implements Room
         }
 	}
     protected Vector<RoomHistoryEntry> roomHistory = new Vector<RoomHistoryEntry>();
+
+
 	@Override
     public void clearRoomHistory(){
         roomHistory.clear();    

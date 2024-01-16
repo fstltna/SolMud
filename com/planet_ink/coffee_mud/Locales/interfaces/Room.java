@@ -1,4 +1,5 @@
 package com.planet_ink.coffee_mud.Locales.interfaces;
+
 import com.planet_ink.coffee_mud.core.interfaces.*;
 import com.planet_ink.coffee_mud.core.interfaces.ItemPossessor.Expire;
 import com.planet_ink.coffee_mud.core.*;
@@ -15,8 +16,11 @@ import com.planet_ink.coffee_mud.Libraries.interfaces.*;
 import com.planet_ink.coffee_mud.Locales.interfaces.*;
 import com.planet_ink.coffee_mud.MOBS.interfaces.*;
 import com.planet_ink.coffee_mud.Races.interfaces.*;
+import com.planet_ink.coffee_mud.Locales.interfaces.RoomHistoryEntry;
 
 import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /*
    Copyright 2001-2024 Bo Zimmerman
@@ -628,6 +632,8 @@ public interface Room extends PhysicalAgent, ItemPossessor, Places
 	 * @param source the first receiver of the message, typically the agent/source.
 	 * @param msg the message to send
 	 */
+	public List<RoomhistoryEntry> getRoomHistory(MOB mob);
+	public void clearRoomHistory();
 	public void send(MOB source, CMMsg msg);
 
 	/**
@@ -1260,4 +1266,5 @@ public interface Room extends PhysicalAgent, ItemPossessor, Places
 	 * @return the mob, item, or exit that matches the search string
 	 */
 	public PhysicalAgent fetchFromMOBRoomFavorsMOBs(MOB mob, Item goodLocation, String thingName, Filterer<Environmental> filter);
+
 }

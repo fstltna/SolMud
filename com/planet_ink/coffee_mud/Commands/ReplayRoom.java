@@ -105,7 +105,7 @@ public class ReplayRoom extends StdCommand {
 		}
 		return false;
 	}
-	//tried to un-deprecate shit
+
 	boolean isBeforeToday(Date d) {
 		Date today = new Date();
 		today.setHours(0);
@@ -126,4 +126,5 @@ public class ReplayRoom extends StdCommand {
 	public boolean canBeOrdered() {
 		return false;
 	}
+	
 }
