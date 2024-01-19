@@ -5,14 +5,13 @@ mpsetvar $n fillingdocument 1
 mpprompt $n freecityname Enter the name of settlement/free city you work in. (ex. Phantom City, Frozen City)
 mpprompt $n ownername Enter slave owner's full name.
 mpprompt $n slavename Enter slave's full name.
-mpprompt $n slaveage Enter slave's date of birth.
 mpprompt $n slaverace Enter slave's race.
 mpprompt $n slavereason Enter reason for enslavement.
 mpprompt $n slavedebt Enter debt or end date.
 mpprompt $n stamp Enter a stamp for your government department (ex. Phantom City Justice Force, Fun Police of Boredom City)
 mpprompt $n writername Enter your title and name (ex. Judge John Doe.)
 mpgset $i name A slave information document for $<$n slavename>
-mpgset $i READABLETEXT ^COFFICIAL SLAVE DOCUMENT^N%0D%0DSlave's Name: $<$n slavename>%0DSlave's DOB: $<$n slaveage>%0DSlave's Race: $<$n slaverace>%0D%0DOwner Name: $<$n ownername>%0DReason for Enslavement: $<$n slavereason>%0DSlave debt or end date: $<$n slavedebt>%0D%0DGovernment of $<$n freecityname>.%0D$<$n stamp>%0DProcessing Officer: $<$n writername>.
+mpgset $i READABLETEXT ^COFFICIAL SLAVE DOCUMENT^N%0D%0DSlave's Name: $<$n slavename>%0DSlave's Race: $<$n slaverace>%0D%0DOwner Name: $<$n ownername>%0DReason for Enslavement: $<$n slavereason>%0DSlave debt or end date: $<$n slavedebt>%0D%0DGovernment of $<$n freecityname>.%0D$<$n stamp>%0DProcessing Officer: $<$n writername>.
 mpgset $i description A paperwork proving slave ownership and slave information. It has fields for Owner name, Slave name, date of birth, race, day enslaved, reason enslaved, debt in credits or end date. You can READ it.
 mpsetvar $n fillingdocument 0
 mpalarm 1 mpunbehave scriptable $i

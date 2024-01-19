@@ -1,5 +1,7 @@
 cnclmsg_prog huh p fuck
-if islike($n '+tattoos -corporate')
+if islike($n '-tattoos +corporate')
+mpechoat $n They don't trust the corpo.
+else
 mploadvar $n brothelworktimes
 mpsetvar $n brothelworktimes ++
 mpsavevar $n brothelworktimes
@@ -7,114 +9,112 @@ mpsavevar $n brothelworktimes
 switch $%RANDNUM(4)%
 case 1
 ## if 1 this happens
-if sex($t == M) or sex($t == O) or sex($t == U)
+if sex($n == M) or sex($n == O) or sex($n == U)
 mpecho $n approaches the client and gets handed a credstick, $e gets $m meat out and pushes the client against one of the couches with $s on her, he gets right down to business, sliding in the client with a condom that the madam tosses over, $e begins to slam rapidly into the client as she squirms and moans out in middle of the other groups who are constantly fucking in the public area of the brothel. After quite a bit of cave-exploring $n manages to time it to cum at the same time as the client, both exhausted lay together for a while before getting up, sending off the client satisfied. Adding one to $m cum balloon collection... ^p(^w$<$n brothelworktimes>^p) ^C[^cSuccess^C]^N
 mpechoat $n You earned ^g400c^N
 mpoloadroom fromfile resources/itemspawnlists/brothelcumballoon.cmare any
-mpmoney $n +400
+mpmoney $n +400 credit
 mpjunk $i
 else
 if sex($n == F) or sex($n == A) or sex($n == H)
 mpecho $n approaches the client and gets handed a credstick, $e gets the client's meat out seductively and suddenly gets pushed by the client against one of the couches with him on $s, he gets right down to business, sliding in $n with a condom that the madam tosses over to the client, he begins to slam rapidly into $n as $e squirms and moans out in middle of the other groups who are constantly fucking in the public area of the brothel. After quite a bit of cave-exploring the client dumps a huge load into the condom inside, both exhausted lay together for a while before getting up, sending off the client satisfied, $n adds one to $m cum balloon collection... ^p(^w$<$n brothelworktimes>^p) ^C[^cSuccess^C]^N
 mpechoat $n You earned ^g400c^N
 mpoloadroom fromfile resources/itemspawnlists/brothelcumballoon.cmare any
-mpmoney $n +400
+mpmoney $n +400 credit
 mpjunk $i
 endif
 endif
 case 2
-if sex($t == M) or sex($t == O) or sex($t == U)
+if sex($n == M) or sex($n == O) or sex($n == U)
 mpecho $n approaches the client and gets handed a credstick, who wastes no time undressing and pressing her body up against a wall, legs spread, sex dripping. $n slides a condom on and starts to press inside her needy slit, rapid hard thrusts pinning $n against the wall. Their moans are lost in the din of the brothel as the client demands $n go harder until $e is pistoning inside $m noisily. Before long, the client creams explosively all over the floor and $m cock, and $e cums with them, ballooining that condom with cum. The client appears very satisfied, winking before they pull away with a wet shlick and wander off. $n adds one to $m cum balloon collection... ^p(^w$<$n brothelworktimes>^p) ^C[^cSuccess^C]^N
 mpechoat $n You earned ^g400c^N
 mpoloadroom fromfile resources/itemspawnlists/brothelcumballoon.cmare any
-mpmoney $n +400
+mpmoney $n +400 credit
 mpjunk $i
 else
 if sex($n == F) or sex($n == A) or sex($n == H)
 mpecho $n approaches the client and gets handed a credstick, who wastes no time spinning $m around and mashing $m up against a wall. $n spreads her legs apart while the client slides a condom on and starts to press inside quickly, rapid hard thrusts pinning $n against the wall. Their moans are lost in the din of the brothel as the client takes his pleasure from $n and holds $m in place, pistoning inside $m. Before long, $m can feel the client orgasm, ballooining that condom with cum. The client appears very satisfied, slapping $n on the butt before they pull out and wander off. $n adds one to $m cum balloon collection... ^p(^w$<$n brothelworktimes>^p) ^C[^cSuccess^C]^N
 mpechoat $n You earned ^g400c^N
 mpoloadroom fromfile resources/itemspawnlists/brothelcumballoon.cmare any
-mpmoney $n +400
+mpmoney $n +400 credit
 mpjunk $i
 endif
 endif
 case 3
-if sex($t == M) or sex($t == O) or sex($t == U)
+if sex($n == M) or sex($n == O) or sex($n == U)
 mpecho $n approaches the client and gets handed a credstick. The client whispers what she wants, and $e guides her over to nearby chair, sitting on it as she clambers up onto $m lap. $E grabs their already hard fuckstick and unrolls a condom over the large length, $m hard cock jutting up in the air as he the client starts to stroke it. She eagerly positions herself over $m cock and starts to ease down with a loud greedy moan. $n grips her hips and bounces her along $m length, noisy claps of flesh on flesh filling the air of the brothel as they fuck right in the middle of the common area. The client shudders visibly, eyes rolled back and mouth agape as $n can feel her strangling $m cock, and $e can't help filling the condom inside her with cum before they both collapse together. After awhile, the client dismounts from the $n and their spent cock and leaves satisfied. $n adds one to $m cum balloon collection... ^p(^w$<$n brothelworktimes>^p) ^C[^cSuccess^C]^N
 mpechoat $n You earned ^g400c^N
 mpoloadroom fromfile resources/itemspawnlists/brothelcumballoon.cmare any
-mpmoney $n +400
+mpmoney $n +400 credit
 mpjunk $i
 else
 if sex($n == F) or sex($n == A) or sex($n == H)
 mpecho $n approaches the client and gets handed a credstick. $e guides him sit down on a nearby chair as she clambers up onto his lap. $E grabs his already hard fuckstick and unrolls a condom over the large length, starting to stroke it. The client impatiently grabs $n and pulls $m down onto his cock, who squeals at being stuffed at once. $n bounces on the client's length, noisy claps of flesh on flesh filling the air of the brothel as they fuck right in the middle of the common area. The client shudders visibly, and $n can feel him filling the condom inside $m before they both collapse together. After awhile, $m dismounts from the client's spent cock and sends them off satisfied. $n adds one to $m cum balloon collection... ^p(^w$<$n brothelworktimes>^p) ^C[^cSuccess^C]^N
 mpechoat $n You earned ^g400c^N
 mpoloadroom fromfile resources/itemspawnlists/brothelcumballoon.cmare any
-mpmoney $n +400
+mpmoney $n +400 credit
 mpjunk $i
 endif
 endif
 case 4
-if sex($t == M) or sex($t == O) or sex($t == U)
+if sex($n == M) or sex($n == O) or sex($n == U)
 mpecho $n approaches the client and gets handed a credstick. $e begins to lead her off to a bed, but the client whistles sharply, bending over some cushions and waggling her ass on all fours. $n gives the client what they want, unrolling a condom over $m length courtsey of the madam, before mounting her there on the floor like an animal, sliding $m cock inside deeply. $n jostles the client about on the floor as they arches their back and takes it, moaning loudly out into brothel. The client seems to have stamina too, demanding more and more until $n might have been sore, fucking for what feels like forever, until she finally explodes all over the floor in a wet gush, as she quivers in pure pleasure. Grunting, $n matches her, emptying $m load into the condom. The happy client stands and leaves without looking back, juices running down her thighs and onto the floor as she walks off satisfied. $n adds one to $m cum balloon collection... ^p(^w$<$n brothelworktimes>^p) ^C[^cSuccess^C]^N
 mpechoat $n You earned ^g400c^N
 mpoloadroom fromfile resources/itemspawnlists/brothelcumballoon.cmare any
-mpmoney $n +400
+mpmoney $n +400 credit
 mpjunk $i
 else
 if sex($n == F) or sex($n == A) or sex($n == H)
 mpecho $n approaches the client and gets handed a credstick. $e begins to lead him off to a bed, but the impatient client simply pulls $n down to the floor. $e looks back just as the client is putting on a condom courtsey of the madam, before mounting $m there on the floor like an animal, sliding his cock inside $m deeply. $n is jostled about on the floor as $e arches $m back and takes it, moaning loudly out into brothel. The client seems to have stamina too, hungrily fucking $n for what feels like forever, until he finally explodes into that condom. Grunting, the client stands and leaves $n on the floor as he walks off satisfied. $n adds one to $m cum balloon collection... ^p(^w$<$n brothelworktimes>^p) ^C[^cSuccess^C]^N
 mpechoat $n You earned ^g400c^N
 mpoloadroom fromfile resources/itemspawnlists/brothelcumballoon.cmare any
-mpmoney $n +400
+mpmoney $n +400 credit
 mpjunk $i
 endif
 endif
 endswitch
-else
-mpechoat $n They don't trust the corpo.
 endif
 ##
 ##fake achievement checker
 if var($n brothelworktimes == 10)
 mpechoat $n ^cYou have completed the 'Novice Whore' achievement!^N%0DCollect 10 balloons in a brothel.^N%0D^cYou have gained '$n, the Novice Whore' title!^N%0D^cYou have been awarded 10000XP, 5000 Currency and 1QP.^N
 mptitle $n '*, the Novice Whore'
-mpmoney $n +5000
+mpmoney $n +5000 credit
 mpexp $n 10000
 mpquestpoints $n ++1
 endif
 if var($n brothelworktimes == 30)
 mpechoat $n ^cYou have completed the 'Whore' achievement!^N%0DCollect 30 balloons in a brothel. Festive!!^N%0D^cYou have gained '$n, the Whore' title!^N%0D^cYou have been awarded 15000XP, 10000 Currency and 2QP.^N
 mptitle $n '*, the Whore'
-mpmoney $n +10000
+mpmoney $n +10000 credit
 mpexp $n 15000
 mpquestpoints $n ++2
 endif
 if var($n brothelworktimes == 60)
 mpechoat $n ^cYou have completed the 'Master Whore' achievement!^N%0DCollect 60 balloons in a brothel. Festiveness!^N%0D^cYou have gained '$n, the Master Whore' title!^N%0D^cYou have been awarded 20000XP, 15000 Currency and 3QP.^N
 mptitle $n '*, the Master Whore'
-mpmoney $n +15000
+mpmoney $n +15000 credit
 mpexp $n 20000
 mpquestpoints $n ++3
 endif
 if var($n brothelworktimes == 100)
 mpechoat $n ^cYou have completed the 'Grandmaster Whore' achievement!^N%0DCollect 100 balloons in a brothel. Festivity!!!^N%0D^cYou have gained '$n, the Grandmaster Whore' title!^N%0D^cYou have been awarded 25000XP, 20000 Currency and 4QP.^N
 mptitle $n '*, the Grandmaster Whore'
-mpmoney $n +20000
+mpmoney $n +20000 credit
 mpexp $n 25000
 mpquestpoints $n ++4
 endif
 if var($n brothelworktimes == 150)
 mpechoat $n ^cYou have completed the 'Legendary Whore' achievement!^N%0DCollect 150 balloons in a brothel. Hope you got your own stdfree supplier!^N%0D^cYou have gained '$n, the Legendary Whore' title!^N%0D^cYou have been awarded 30000XP, 25000 Currency and 5QP.^N
 mptitle $n '*, the Legendary Whore'
-mpmoney $n +25000
+mpmoney $n +25000 credit
 mpexp $n 30000
 mpquestpoints $n ++5
 endif
 if var($n brothelworktimes == 200)
 mpechoat $n ^cYou have completed the 'New world bicycle' achievement!^N%0DCollect 200 balloons in a brothel. You fucked a good percentage of the new world population.^N%0D^cYou have gained '$n, the New World Bicycle' title!^N%0D^cYou have been awarded 30000XP, 25000 Currency and 5QP.^N
 mptitle $n '*, the New World Bicycle'
-mpmoney $n +25000
+mpmoney $n +25000 credit
 mpexp $n 30000
 mpquestpoints $n ++5
 mpechoat $n ^RThere is no more awards to this right now, you did it. Congrats.^N

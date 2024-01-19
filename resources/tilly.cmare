@@ -142,7 +142,7 @@ else
  mpecho As $i gets to be let go with a pop of her prolapsed bloody pussy, another smaller yet still giant insect swoop in to snatch her in the air and slam her on the ground on her head with a *BANG* then beginning to pound her to hell and back... You won't be able to keep this loop. But you learned now, and she spilled some gold on the way down which you got...
  mpquestwin $n CunnyRescue1
  mpexp $n 5000
- mpmoney $n +500
+ mpmoney $n +500 credit
  mpsetvar $n cunnysaves +1
  mpsavevar $n cunnysaves
 endif

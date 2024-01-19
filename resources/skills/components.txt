@@ -47,3 +47,5 @@ SURGERY_ABORTION=(inventory:kept:1:^wA ^#333se^#444lf^c-^#555st^#444er^#333ili^#
 SURGERY_MEDKIT=(inventory:kept:1:^wAn advanced ^ctrauma ^rkit^N:)
 SURGERY_DEFIBRILLATOR=(nearby:kept:1:^#444A d^#555ef^#444^ri^#444br^#333ill^#444ato^#555r ^#444se^#333t^N:)
 SPELL_LIGHT=(trigger:SAY light &STANDING &INCLUDE 1 -NPC &ASSISTSAY okee:)
+THIEF_DAZZLINGCALTROPS=(inventory:consumed:1:METAL:)
+THIEF_CALTROPS=(inventory:consumed:1:METAL:)

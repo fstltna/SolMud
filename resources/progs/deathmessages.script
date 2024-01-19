@@ -1,4 +1,9 @@
 kill_prog
+## npc to pc
+if isnpc($n)
+mpsetvar $n snufftoggle 1
+endif
+if var($n snufftoggle == 1)
 ## corrupted witch
 if isname($n '^#111A ^#444"wi^#333tc^#444h"')
 if sex($n == M) or sex($n == O) or sex($n == U)
@@ -243,8 +248,30 @@ endif
 endif
 endif
 endif
+## cannibal boss Daakh
+if isname($n 'Daakh')
+	if sex($t == F) or sex($t == A) or sex($t == H)
+	switch $%RANDNUM(2)%
+	case 1
+		mpecho $n '$n strikes swiftly forward to $t's neck, crushing $M windpipe instantly, $E could not even wheeze and collapse holding $M throat just for $n to sit on $M face with $m hairy black cunt further choking $t as $S flails around with lack of air, $n closes $m thighs around the head of $M and begins to crush $M skull with great strength. Soon the flailing and struggling stops. $n keeps rolling $m hips on the still staying $t until $e begins to squirt all over the face of $t, standing and leaving the body to be prepared by the tribe, unsatisfied.'
+	case 2
+		mpecho $n '$n grapples $t's legs and flips $M head over heels, slamming $M head on the floor and crushing $M skull with her bare foot instantly, $n goes limp and $t claims her reward by licking and sucking on $n's pussy, perhaps getting a taste-test as she takes some nibbles on the cunt lips of $M aswell. Smacking $m mouth and nodding a bit, $n drops the body and calls the chefs of the tribe.'
+	endswitch
+	else
+		if sex($t == M) or sex($t == O) or sex($t == U)
+		switch $%RANDNUM(3)%
+		case 1
+		mpecho $n '$n strikes swiftly forward to $t's neck, crushing $M windpipe instantly, $E could not even wheeze and collapse holding $M throat just for $n to sit on $M face with $m hairy black cunt further choking $t as $S flails around with lack of air, $n closes $m thighs around the head of $M and begins to crush $M skull with great strength. Soon the flailing and struggling stops. $n keeps rolling $m hips on the still staying $t until $e begins to squirt all over the face of $t, standing and leaving the body to be prepared by the tribe, unsatisfied.'
+		case 2
+		mpecho $n '$n grapples $t's legs and flips $M head over heels, slamming $M head on the floor and crushing $M skull with her bare foot instantly, $n goes limp and $t claims her reward by licking and sucking on $n's cock rapidly, perhaps getting a taste-test as she takes some nibbles on the balls of $M aswell. Smacking $m mouth and nodding a bit, $n drops the body and calls the chefs of the tribe.'
+		case 3
+		mpecho $n '$n punches right through $t's chest and grabs $M heart, dropping it down as it still beats a few times, then $n pulls $m hand out and shakes the blood off, though it remains bloody. $t slumps down on the floor motionless and $n hops on $S and slips $M cock inside her bushy black cunt, rapidly riding it until $m squirts all over $M and pops the now softened cock out, and stands.'
+		endswitch
+		endif
+	endif
+endif
 ## heal on fuckkill
-MPSETVAR $n sexhealLevel $%Level($n)%
+MPSETVAR $n sexhealLevel $%Level($t)%
 mpsetvar $n sexheallevelmobkill $%MATH(1?20 + $<$n sexheallevel>*2)%
 MPSETVAR $n MaxHits $%GSTAT($n BASEHITS)%
 IF GSTAT($n HITS < $<$n MaxHits>)
@@ -255,12 +282,12 @@ IF GSTAT($n HITS < $<$n MaxHits>)
     ENDIF
     MPGSET $n HITS $%VAR($n HitsCalc)%
 ENDIF
-mpecho ^r*FWOP* *PLAP* *PLOP* $n ^rheals $sself on $t ^pfor ^g($<$n sexheallevelmobkill>)^r! *PLOP* *PLAP* *FAP*^N
+mpecho ^r*FWOP* *PLAP* *PLOP* $n ^rheals $sself on $t ^rfor ^g($<$n sexheallevelmobkill>)^r! *PLOP* *PLAP* *FAP*^N
 
 ## Area checks for capture ends
 if inarea($t == 'World Tree Roots')
 mptransfer $t 'World Tree Roots#20'
-mpalarm 1 mpgset $? NAME 'A cache of $t s items.'
+mpalarm 1 mpgset $t NAME 'A cache of $t s items.'
 mpalarm 1 mpgset cache DISPLAY 'A cache of $t s items.'
 mpalarm 1 mpgset cache DESCRIPTION 'A cache of $t s items.'
 mpalarm 1 mptransfer $t 'World Tree Roots#20'
@@ -269,4 +296,375 @@ mpalarm 2 mptransfer $t 'World Tree Roots#20'
 mpalarm 2 mpaffect property:Sexual_Cumbloat3 $n
 mpalarm 3 mpechoat $t You find yourself returning to consciousness... ^#210You are constricted by roots, and all of your holes are filled to the brim with rigid tree roots! You are pretty much impaled and have no way out. The roots start to thrust rapidly into your holes again, over and over, they creak and crack as they violate you and occasionally, somehow pump cum-like liquid into you. You can not do much but try to ^CRESIST^N.
 endif
+endif
+~
+
+kill_prog
+##i fucking hate myself for not making this tabbed properly long ago, as seen above.
+##if you must do a more specific deathmessage, insert it above all of the others and copy the heal part, then add a RETURN to the end to prevent doubling.
+##player sus deathmessages against enemies
+if ispc($n)
+	mploadvar $n snufftoggle
+	if var($n snufftoggle == 1)
+		if prog(10)
+			mpecho $n '^COOC: if you are interested please ask in discord to contribute for deathmessages if you feel like writing some! We got not enough. :c^N'
+		endif
+		## Humanoid and humanlike targets, when adding new racecat specific text, remove from this IF.
+		if racecat($t == Humanoid) or racecat($t == Undead) or racecat($t == Devil) or racecat($t == 'Metal Golem') /
+			or racecat($t == Elf) or racecat($t == Celesial) or racecat($t == Illithid) or racecat($t == 'Wood Golem') /
+			or racecat($t == 'Stone Golem') or racecat($t == Demon) or racecat($t == Unknown) or racecat($t == Unique) /
+			or racecat($t == Mephit) or racecat($t == Elemental) or racecat($t == Ophidian)
+			if sex($n == M) or sex($n == O) or sex($n == U)
+				if sex($t == M) or sex($t == O) or sex($t == U)
+					## M player on M target
+					## 25% chance to trigger class based deathmessages, otherwise regulars.
+					if prog(50)
+						## classbased messages
+						## if the player is an baseclass artisan
+						if baseclass($n == Artisan)
+							switch $%RANDNUM(2)%
+								case 1
+									mpecho ''
+								case 2
+									mpecho ''
+							endswitch
+						endif
+						## if the player is an baseclass fighter
+						if baseclass($n == Fighter)
+							switch $%RANDNUM(2)%
+								case 1
+									mpecho ''
+								case 2
+									mpecho ''
+							endswitch
+						endif
+						## if the player is an baseclass druid
+						if baseclass($n == Druid)
+							switch $%RANDNUM(2)%
+								case 1
+									mpecho ''
+								case 2
+									mpecho ''
+							endswitch
+						endif
+						## if the player is an baseclass mage
+						if baseclass($n == Mage)
+							switch $%RANDNUM(2)%
+								case 1
+									mpecho ''
+								case 2
+									mpecho ''
+							endswitch
+						endif
+						## if the player is an baseclass cleric
+						if baseclass($n == Cleric)
+							switch $%RANDNUM(2)%
+								case 1
+									mpecho ''
+								case 2
+									mpecho ''
+							endswitch
+						endif
+						## if the player is an baseclass thief
+						if baseclass($n == Thief)
+							switch $%RANDNUM(2)%
+								case 1
+									mpecho ''
+								case 2
+									mpecho ''
+							endswitch
+						endif
+						## if the player is an baseclass bard
+						if baseclass($n == bard)
+							switch $%RANDNUM(2)%
+								case 1
+									mpecho ''
+								case 2
+									mpecho ''
+							endswitch
+						endif
+					else
+					## non-classbased messages for any and all.
+						switch $%RANDNUM(3)%
+							case 1
+								mpecho ''
+							case 2
+								mpecho ''
+						endswitch
+					endif
+				else
+					if sex($t == F) or sex($t == A) or sex($t == H)
+						## M player on F target
+						## 25% chance to trigger class based deathmessages, otherwise regulars.
+						if prog(50)
+							## classbased messages
+							## if the player is an baseclass artisan
+							if baseclass($n == Artisan)
+								switch $%RANDNUM(2)%
+									case 1
+										mpecho ''
+									case 2
+										mpecho ''
+								endswitch
+							endif
+							## if the player is an baseclass fighter
+							if baseclass($n == Fighter)
+								switch $%RANDNUM(2)%
+									case 1
+										mpecho ''
+									case 2
+										mpecho ''
+								endswitch
+							endif
+							## if the player is an baseclass druid
+							if baseclass($n == Druid)
+								switch $%RANDNUM(2)%
+									case 1
+										mpecho ''
+									case 2
+										mpecho ''
+								endswitch
+							endif
+							## if the player is an baseclass mage
+							if baseclass($n == Mage)
+								switch $%RANDNUM(2)%
+									case 1
+										mpecho ''
+									case 2
+										mpecho ''
+								endswitch
+							endif
+							## if the player is an baseclass cleric
+							if baseclass($n == Cleric)
+								switch $%RANDNUM(2)%
+									case 1
+										mpecho ''
+									case 2
+										mpecho ''
+								endswitch
+							endif
+							## if the player is an baseclass thief
+							if baseclass($n == Thief)
+								switch $%RANDNUM(2)%
+									case 1
+										mpecho ''
+									case 2
+										mpecho ''
+								endswitch
+							endif
+							## if the player is an baseclass bard
+							if baseclass($n == bard)
+								switch $%RANDNUM(2)%
+									case 1
+										mpecho ''
+									case 2
+										mpecho ''
+								endswitch
+							endif
+						else
+						## non-classbased messages for any and all.
+							switch $%RANDNUM(3)%
+								case 1
+									mpecho ''
+								case 2
+									mpecho ''
+							endswitch
+						endif
+					endif
+				endif
+			endif
+				if sex($n == F) or sex($n == A) or sex($n == H)
+					if sex($t == F) or sex($t == A) or sex($t == H)
+						## F player on F target
+						## 25% chance to trigger class based deathmessages, otherwise regulars.
+						if prog(50)
+							## classbased messages
+							## if the player is an baseclass artisan
+							if baseclass($n == Artisan)
+								switch $%RANDNUM(2)%
+									case 1
+										mpecho ''
+									case 2
+										mpecho ''
+								endswitch
+							endif
+							## if the player is an baseclass fighter
+							if baseclass($n == Fighter)
+								switch $%RANDNUM(2)%
+									case 1
+										mpecho ''
+									case 2
+										mpecho ''
+								endswitch
+							endif
+							## if the player is an baseclass druid
+							if baseclass($n == Druid)
+								switch $%RANDNUM(2)%
+									case 1
+										mpecho ''
+									case 2
+										mpecho ''
+								endswitch
+							endif
+							## if the player is an baseclass mage
+							if baseclass($n == Mage)
+								switch $%RANDNUM(2)%
+									case 1
+										mpecho ''
+									case 2
+										mpecho ''
+								endswitch
+							endif
+							## if the player is an baseclass cleric
+							if baseclass($n == Cleric)
+								switch $%RANDNUM(2)%
+									case 1
+										mpecho ''
+									case 2
+										mpecho ''
+								endswitch
+							endif
+							## if the player is an baseclass thief
+							if baseclass($n == Thief)
+								switch $%RANDNUM(2)%
+									case 1
+										mpecho ''
+									case 2
+										mpecho ''
+								endswitch
+							endif
+							## if the player is an baseclass bard
+							if baseclass($n == bard)
+								switch $%RANDNUM(2)%
+									case 1
+										mpecho ''
+									case 2
+										mpecho ''
+								endswitch
+							endif
+						else
+						## non-classbased messages for any and all.
+							switch $%RANDNUM(3)%
+								case 1
+									mpecho ''
+								case 2
+									mpecho ''
+							endswitch
+						endif
+					else
+						if sex($t == M) or sex($t == O) or sex($t == U)
+							## f player on M target
+							## 25% chance to trigger class based deathmessages, otherwise regulars.
+							if prog(50)
+								## classbased messages
+								## if the player is an baseclass artisan
+								if baseclass($n == Artisan)
+									switch $%RANDNUM(2)%
+										case 1
+											mpecho ''
+										case 2
+											mpecho ''
+									endswitch
+								endif
+								## if the player is an baseclass fighter
+								if baseclass($n == Fighter)
+									switch $%RANDNUM(2)%
+										case 1
+											mpecho ''
+										case 2
+											mpecho ''
+									endswitch
+								endif
+								## if the player is an baseclass druid
+								if baseclass($n == Druid)
+									switch $%RANDNUM(2)%
+										case 1
+											mpecho ''
+										case 2
+											mpecho ''
+									endswitch
+								endif
+								## if the player is an baseclass mage
+								if baseclass($n == Mage)
+									switch $%RANDNUM(2)%
+										case 1
+											mpecho ''
+										case 2
+											mpecho ''
+									endswitch
+								endif
+								## if the player is an baseclass cleric
+								if baseclass($n == Cleric)
+									switch $%RANDNUM(2)%
+										case 1
+											mpecho ''
+										case 2
+											mpecho ''
+									endswitch
+								endif
+								## if the player is an baseclass thief
+								if baseclass($n == Thief)
+									switch $%RANDNUM(2)%
+										case 1
+											mpecho ''
+										case 2
+											mpecho ''
+									endswitch
+								endif
+								## if the player is an baseclass bard
+								if baseclass($n == bard)
+									switch $%RANDNUM(2)%
+										case 1
+											mpecho ''
+										case 2
+											mpecho ''
+									endswitch
+								endif
+							else
+							## non-classbased messages for any and all.
+								switch $%RANDNUM(3)%
+									case 1
+										mpecho ''
+									case 2
+										mpecho ''
+								endswitch
+							endif
+						endif
+					endif
+				endif
+			endif
+		endif
+## heal on fuckkill
+MPSETVAR $n sexhealLevel $%Level($t)%
+if class($n 'Tacticaljoy')
+mpsetvar $n sexheallevelmobkill $%MATH(1?20 + $<$n sexheallevel>*2)%
+mpecho ^p$n gets double juice out of this one for being a specialist!^N
+else
+mpsetvar $n sexheallevelmobkill $%MATH(1?20 + $<$n sexheallevel>)%
+endif
+MPSETVAR $n MaxHits $%GSTAT($n BASEHITS)%
+IF GSTAT($n HITS < $<$n MaxHits>)
+    MPSETVAR $n CurHits $%GSTAT($n Hits)%
+    MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n sexheallevelmobkill>)%
+    IF GSTAT($n BASEHITS < $<$n HitsCalc>)
+        MPSETVAR $n HitsCalc $<$n MaxHits>
+    ENDIF
+    MPGSET $n HITS $%VAR($n HitsCalc)%
+ENDIF
+mpecho ^r*FWOP* *PLAP* *PLOP* $n ^rheals $sself on $t ^rfor ^g($<$n sexheallevelmobkill>)^r! *PLOP* *PLAP* *FAP*^N
+else
+endif
+~
+cnclmsg_prog huh p deathdrain
+mploadvar $n snufftoggle
+if var($n snufftoggle != 1)
+mpsetvar $n snufftoggle 1
+mpechoat $n You will now snuff enemies and receive healing from kills.
+mpsavevar $n snufftoggle
+else
+mpsetvar $n snufftoggle 0
+mpechoat $n You will now not snuff enemies and receive healing from kills.
+mpsavevar $n snufftoggle
+endif
+return cancel
 ~

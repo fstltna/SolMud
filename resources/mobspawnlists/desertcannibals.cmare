@@ -1,9 +1,17 @@
-<MOBS><MOB><MCLAS>GenMob</MCLAS><MLEVL>18</MLEVL><MABLE>11</MABLE><MREJV>60</MREJV><MTEXT>&lt;NAME&gt;^#105a nak^#205ed resu^#105rgent^#205is female no^#105mad^N&lt;/NAME&gt;&lt;DESC&gt;An exile, nomad without any clothing, their skin darkened and leathery from the constant sun exposure. They seem to look at other humanoids with hunger, must be their only food source since they are so uncivilized... Cannibals. Her breasts are small, matching her skinny body with ribs showing, her pussy is covered in sand particles and dry as the desert.&lt;/DESC&gt;&lt;DISP&gt;^#105a nak^#205ed resu^#105rgent^#205is female no^#105mad^N is here.&lt;/DISP&gt;&lt;PROP&gt;11|62|15|15|0|18|60|1.0|162|67|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;MobileAggressive&lt;/BCLASS&gt;&lt;BPARMS&gt;min=10 max=20 chance=75 message="aha!!" -all +desert&lt;/BPARMS&gt;&lt;/BHAVE&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;Scriptable&lt;/BCLASS&gt;&lt;BPARMS&gt;load=progs/deathmessages.script~&lt;/BPARMS&gt;&lt;/BHAVE&gt;&lt;/BEHAVES&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;MONEY&gt;5&lt;/MONEY&gt;&lt;VARMONEY&gt;0.0&lt;/VARMONEY&gt;&lt;GENDER&gt;F&lt;/GENDER&gt;&lt;MRACE&gt;Human&lt;/MRACE&gt;&lt;FACTIONS&gt;&lt;FCTN ID="ALIGNMENT.INI"&gt;-5000&lt;/FCTN&gt;&lt;FCTN ID="INCLINATION.INI"&gt;-5999&lt;/FCTN&gt;&lt;/FACTIONS&gt;&lt;INVEN&gt;&lt;ITEM&gt;&lt;ICLASS&gt;GenWeapon&lt;/ICLASS&gt;&lt;IDATA&gt;&lt;NAME&gt;a primitive spear&lt;/NAME&gt;&lt;DESC&gt;a primitive spear made with a bone blade, attached to a dried wooden shaft. In poor condition&lt;/DESC&gt;&lt;DISP&gt;a primitive spear made with bone&lt;/DISP&gt;&lt;PROP&gt;0|0|10|15|0|15|0|1.0|2|0|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES /&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;11&lt;/FLAG&gt;&lt;IDENT /&gt;&lt;VALUE&gt;313&lt;/VALUE&gt;&lt;MTRAL&gt;2648&lt;/MTRAL&gt;&lt;WORNL&gt;true&lt;/WORNL&gt;&lt;WORNB&gt;1536&lt;/WORNB&gt;&lt;READ /&gt;&lt;ACAPA&gt;0&lt;/ACAPA&gt;&lt;TYPE&gt;2&lt;/TYPE&gt;&lt;CLASS&gt;6&lt;/CLASS&gt;&lt;MINR&gt;0&lt;/MINR&gt;&lt;MAXR&gt;0&lt;/MAXR&gt;&lt;IWORN&gt;1536&lt;/IWORN&gt;&lt;ILOC /&gt;&lt;IUSES&gt;100&lt;/IUSES&gt;&lt;ILEVL&gt;15&lt;/ILEVL&gt;&lt;IABLE&gt;0&lt;/IABLE&gt;&lt;/IDATA&gt;&lt;/ITEM&gt;&lt;/INVEN&gt;&lt;ABLTYS&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Chopping&lt;/ACLASS&gt;&lt;APROF&gt;50&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Common&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;FireBuilding&lt;/ACLASS&gt;&lt;APROF&gt;0&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;matingpress&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Matingpress&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;Matingpressed&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Spell_ChangeSexSelf&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Change Sex Self&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Change sex self)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;/ABLTYS&gt;</MTEXT></MOB>
-<MOB><MCLAS>GenMob</MCLAS><MLEVL>20</MLEVL><MABLE>11</MABLE><MREJV>60</MREJV><MTEXT>&lt;NAME&gt;^#105a nak^#205ed ^wbon^We-armo^wred^N ^#205resu^#105rgent^#205is male no^#105mad^N&lt;/NAME&gt;&lt;DESC&gt;An exile, nomad without any clothing but strapped human bones on his limbs that provide armor for him, their skin darkened and leathery from the constant sun exposure. They seem to look at other humanoids with hunger, must be their only food source since they are so uncivilized... Cannibals. He seems more well-fed compared to others, maybe an elite of a tribe, his cock dangles below his knees and balls are larger than most.&lt;/DESC&gt;&lt;DISP&gt;^#105a nak^#205ed ^wbon^We-armo^wred^N ^#205resu^#105rgent^#205is male no^#105mad^N is here.&lt;/DISP&gt;&lt;PROP&gt;11|62|15|15|0|20|60|1.0|202|81|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;MobileAggressive&lt;/BCLASS&gt;&lt;BPARMS&gt;min=10 max=20 chance=75 message="aha!!" -all +desert&lt;/BPARMS&gt;&lt;/BHAVE&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;Scriptable&lt;/BCLASS&gt;&lt;BPARMS&gt;load=progs/deathmessages.script~&lt;/BPARMS&gt;&lt;/BHAVE&gt;&lt;/BEHAVES&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;MONEY&gt;5&lt;/MONEY&gt;&lt;VARMONEY&gt;0.0&lt;/VARMONEY&gt;&lt;GENDER&gt;M&lt;/GENDER&gt;&lt;MRACE&gt;Resurgentis&lt;/MRACE&gt;&lt;FACTIONS&gt;&lt;FCTN ID="ALIGNMENT.INI"&gt;-5000&lt;/FCTN&gt;&lt;FCTN ID="INCLINATION.INI"&gt;-5999&lt;/FCTN&gt;&lt;/FACTIONS&gt;&lt;INVEN&gt;&lt;ITEM&gt;&lt;ICLASS&gt;GenWeapon&lt;/ICLASS&gt;&lt;IDATA&gt;&lt;NAME&gt;a primitive spear&lt;/NAME&gt;&lt;DESC&gt;a primitive spear made with a bone blade, attached to a dried wooden shaft. In poor condition&lt;/DESC&gt;&lt;DISP&gt;a primitive spear made with bone&lt;/DISP&gt;&lt;PROP&gt;0|0|10|15|0|15|0|1.0|2|0|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES /&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;11&lt;/FLAG&gt;&lt;IDENT /&gt;&lt;VALUE&gt;313&lt;/VALUE&gt;&lt;MTRAL&gt;2648&lt;/MTRAL&gt;&lt;WORNL&gt;true&lt;/WORNL&gt;&lt;WORNB&gt;1536&lt;/WORNB&gt;&lt;READ /&gt;&lt;ACAPA&gt;0&lt;/ACAPA&gt;&lt;TYPE&gt;2&lt;/TYPE&gt;&lt;CLASS&gt;6&lt;/CLASS&gt;&lt;MINR&gt;0&lt;/MINR&gt;&lt;MAXR&gt;0&lt;/MAXR&gt;&lt;IWORN&gt;1536&lt;/IWORN&gt;&lt;ILOC /&gt;&lt;IUSES&gt;100&lt;/IUSES&gt;&lt;ILEVL&gt;15&lt;/ILEVL&gt;&lt;IABLE&gt;0&lt;/IABLE&gt;&lt;/IDATA&gt;&lt;/ITEM&gt;&lt;ITEM&gt;&lt;ICLASS&gt;GenArmor&lt;/ICLASS&gt;&lt;IDATA&gt;&lt;NAME&gt;a bone body armor&lt;/NAME&gt;&lt;DESC&gt;a bone body armor.  &lt;/DESC&gt;&lt;DISP&gt;a bone body armor lies here&lt;/DISP&gt;&lt;PROP&gt;0|32|0|0|0|18|0|1.0|18|81|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES /&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;27&lt;/FLAG&gt;&lt;IDENT&gt;This is the work of Moonbeam.&lt;/IDENT&gt;&lt;VALUE&gt;642&lt;/VALUE&gt;&lt;MTRAL&gt;2648&lt;/MTRAL&gt;&lt;WORNL&gt;true&lt;/WORNL&gt;&lt;WORNB&gt;16396&lt;/WORNB&gt;&lt;READ /&gt;&lt;CAPA&gt;0&lt;/CAPA&gt;&lt;CONT&gt;0&lt;/CONT&gt;&lt;OPENTK&gt;30&lt;/OPENTK&gt;&lt;LAYR&gt;0&lt;/LAYR&gt;&lt;LAYA&gt;1&lt;/LAYA&gt;&lt;IWORN&gt;16396&lt;/IWORN&gt;&lt;ILOC /&gt;&lt;IUSES&gt;100&lt;/IUSES&gt;&lt;ILEVL&gt;18&lt;/ILEVL&gt;&lt;IABLE&gt;0&lt;/IABLE&gt;&lt;/IDATA&gt;&lt;/ITEM&gt;&lt;/INVEN&gt;&lt;ABLTYS&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Chopping&lt;/ACLASS&gt;&lt;APROF&gt;50&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Common&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;FireBuilding&lt;/ACLASS&gt;&lt;APROF&gt;0&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;matingpress&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Matingpress&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;Matingpressed&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Skill_ConsumeCorpse&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Skill_Track&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Spell_ChangeSexSelf&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Change Sex Self&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Change sex self)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Undercommon&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;/ABLTYS&gt;</MTEXT></MOB>
-<MOB><MCLAS>GenMob</MCLAS><MLEVL>15</MLEVL><MABLE>11</MABLE><MREJV>60</MREJV><MTEXT>&lt;NAME&gt;^#111a nak^#211ed h^#111um^#211an fe^#111mal^#211e no^#111mad^N&lt;/NAME&gt;&lt;DESC&gt;An exile, nomad without any clothing, their skin darkened and leathery from the constant sun exposure. They seem to look at other humanoids with hunger, must be their only food source since they are so uncivilized... Cannibals. Her breasts are small, matching her skinny body with ribs showing, her pussy is covered in sand particles and dry as the desert.&lt;/DESC&gt;&lt;DISP&gt;^#111a nak^#211ed h^#111um^#211an fe^#111mal^#211e no^#111mad^N is here.&lt;/DISP&gt;&lt;PROP&gt;11|62|15|15|0|15|60|1.0|162|67|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;MobileAggressive&lt;/BCLASS&gt;&lt;BPARMS&gt;min=10 max=20 chance=75 message="aha!!" -all +desert&lt;/BPARMS&gt;&lt;/BHAVE&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;Scriptable&lt;/BCLASS&gt;&lt;BPARMS&gt;load=progs/deathmessages.script~&lt;/BPARMS&gt;&lt;/BHAVE&gt;&lt;/BEHAVES&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;MONEY&gt;5&lt;/MONEY&gt;&lt;VARMONEY&gt;0.0&lt;/VARMONEY&gt;&lt;GENDER&gt;F&lt;/GENDER&gt;&lt;MRACE&gt;Human&lt;/MRACE&gt;&lt;FACTIONS&gt;&lt;FCTN ID="ALIGNMENT.INI"&gt;-5000&lt;/FCTN&gt;&lt;FCTN ID="INCLINATION.INI"&gt;-5999&lt;/FCTN&gt;&lt;/FACTIONS&gt;&lt;INVEN&gt;&lt;ITEM&gt;&lt;ICLASS&gt;GenWeapon&lt;/ICLASS&gt;&lt;IDATA&gt;&lt;NAME&gt;a primitive spear&lt;/NAME&gt;&lt;DESC&gt;a primitive spear made with a bone blade, attached to a dried wooden shaft. In poor condition&lt;/DESC&gt;&lt;DISP&gt;a primitive spear made with bone&lt;/DISP&gt;&lt;PROP&gt;0|0|10|15|0|15|0|1.0|2|0|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES /&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;11&lt;/FLAG&gt;&lt;IDENT /&gt;&lt;VALUE&gt;313&lt;/VALUE&gt;&lt;MTRAL&gt;2648&lt;/MTRAL&gt;&lt;WORNL&gt;true&lt;/WORNL&gt;&lt;WORNB&gt;1536&lt;/WORNB&gt;&lt;READ /&gt;&lt;ACAPA&gt;0&lt;/ACAPA&gt;&lt;TYPE&gt;2&lt;/TYPE&gt;&lt;CLASS&gt;6&lt;/CLASS&gt;&lt;MINR&gt;0&lt;/MINR&gt;&lt;MAXR&gt;0&lt;/MAXR&gt;&lt;IWORN&gt;1536&lt;/IWORN&gt;&lt;ILOC /&gt;&lt;IUSES&gt;100&lt;/IUSES&gt;&lt;ILEVL&gt;15&lt;/ILEVL&gt;&lt;IABLE&gt;0&lt;/IABLE&gt;&lt;/IDATA&gt;&lt;/ITEM&gt;&lt;/INVEN&gt;&lt;ABLTYS&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Chopping&lt;/ACLASS&gt;&lt;APROF&gt;50&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Common&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;FireBuilding&lt;/ACLASS&gt;&lt;APROF&gt;0&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;matingpress&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Matingpress&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;Matingpressed&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Spell_ChangeSexSelf&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Change Sex Self&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Change sex self)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;/ABLTYS&gt;</MTEXT></MOB>
-<MOB><MCLAS>GenMob</MCLAS><MLEVL>15</MLEVL><MABLE>11</MABLE><MREJV>60</MREJV><MTEXT>&lt;NAME&gt;^#111a nak^#211ed h^#111um^#211an ^#111mal^#211e no^#111mad^N&lt;/NAME&gt;&lt;DESC&gt;An exile, nomad without any clothing, their skin darkened and leathery from the constant sun exposure. They seem to look at other humanoids with hunger, must be their only food source since they are so uncivilized... Cannibals. He is slender and his ribs are visible, his cock is dark as his skin and uncut, hanging below him almost reaching his knee with fist size balls beneath.&lt;/DESC&gt;&lt;DISP&gt;^#111a nak^#211ed h^#111um^#211an ^#111mal^#211e no^#111mad^N is here.&lt;/DISP&gt;&lt;PROP&gt;11|62|15|15|0|15|60|1.0|162|67|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;MobileAggressive&lt;/BCLASS&gt;&lt;BPARMS&gt;min=10 max=20 chance=75 message="aha!!" -all +desert&lt;/BPARMS&gt;&lt;/BHAVE&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;Scriptable&lt;/BCLASS&gt;&lt;BPARMS&gt;load=progs/deathmessages.script~&lt;/BPARMS&gt;&lt;/BHAVE&gt;&lt;/BEHAVES&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;MONEY&gt;5&lt;/MONEY&gt;&lt;VARMONEY&gt;0.0&lt;/VARMONEY&gt;&lt;GENDER&gt;M&lt;/GENDER&gt;&lt;MRACE&gt;Human&lt;/MRACE&gt;&lt;FACTIONS&gt;&lt;FCTN ID="ALIGNMENT.INI"&gt;-5000&lt;/FCTN&gt;&lt;FCTN ID="INCLINATION.INI"&gt;-5999&lt;/FCTN&gt;&lt;/FACTIONS&gt;&lt;INVEN&gt;&lt;ITEM&gt;&lt;ICLASS&gt;GenWeapon&lt;/ICLASS&gt;&lt;IDATA&gt;&lt;NAME&gt;a primitive spear&lt;/NAME&gt;&lt;DESC&gt;a primitive spear made with a bone blade, attached to a dried wooden shaft. In poor condition&lt;/DESC&gt;&lt;DISP&gt;a primitive spear made with bone&lt;/DISP&gt;&lt;PROP&gt;0|0|10|15|0|15|0|1.0|2|0|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES /&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;11&lt;/FLAG&gt;&lt;IDENT /&gt;&lt;VALUE&gt;313&lt;/VALUE&gt;&lt;MTRAL&gt;2648&lt;/MTRAL&gt;&lt;WORNL&gt;true&lt;/WORNL&gt;&lt;WORNB&gt;1536&lt;/WORNB&gt;&lt;READ /&gt;&lt;ACAPA&gt;0&lt;/ACAPA&gt;&lt;TYPE&gt;2&lt;/TYPE&gt;&lt;CLASS&gt;6&lt;/CLASS&gt;&lt;MINR&gt;0&lt;/MINR&gt;&lt;MAXR&gt;0&lt;/MAXR&gt;&lt;IWORN&gt;1536&lt;/IWORN&gt;&lt;ILOC /&gt;&lt;IUSES&gt;100&lt;/IUSES&gt;&lt;ILEVL&gt;15&lt;/ILEVL&gt;&lt;IABLE&gt;0&lt;/IABLE&gt;&lt;/IDATA&gt;&lt;/ITEM&gt;&lt;/INVEN&gt;&lt;ABLTYS&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Chopping&lt;/ACLASS&gt;&lt;APROF&gt;50&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Common&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;FireBuilding&lt;/ACLASS&gt;&lt;APROF&gt;0&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;matingpress&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Matingpress&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;Matingpressed&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Spell_ChangeSexSelf&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Change Sex Self&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Change sex self)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;/ABLTYS&gt;</MTEXT></MOB>
-<MOB><MCLAS>GenMob</MCLAS><MLEVL>18</MLEVL><MABLE>11</MABLE><MREJV>60</MREJV><MTEXT>&lt;NAME&gt;^#105a nak^#205ed resu^#105rgent^#205is male no^#105mad^N&lt;/NAME&gt;&lt;DESC&gt;An exile, nomad without any clothing, their skin darkened and leathery from the constant sun exposure. They seem to look at other humanoids with hunger, must be their only food source since they are so uncivilized... Cannibals. He is slender and his ribs are visible, his cock is dark as his skin and uncut, hanging below him reaching past his knee with large balls beneath.&lt;/DESC&gt;&lt;DISP&gt;^#105a nak^#205ed resu^#105rgent^#205is male no^#105mad^N is here.&lt;/DISP&gt;&lt;PROP&gt;11|62|15|15|0|18|60|1.0|162|67|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;MobileAggressive&lt;/BCLASS&gt;&lt;BPARMS&gt;min=10 max=20 chance=75 message="aha!!" -all +desert&lt;/BPARMS&gt;&lt;/BHAVE&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;Scriptable&lt;/BCLASS&gt;&lt;BPARMS&gt;load=progs/deathmessages.script~&lt;/BPARMS&gt;&lt;/BHAVE&gt;&lt;/BEHAVES&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;MONEY&gt;5&lt;/MONEY&gt;&lt;VARMONEY&gt;0.0&lt;/VARMONEY&gt;&lt;GENDER&gt;M&lt;/GENDER&gt;&lt;MRACE&gt;Human&lt;/MRACE&gt;&lt;FACTIONS&gt;&lt;FCTN ID="ALIGNMENT.INI"&gt;-5000&lt;/FCTN&gt;&lt;FCTN ID="INCLINATION.INI"&gt;-5999&lt;/FCTN&gt;&lt;/FACTIONS&gt;&lt;INVEN&gt;&lt;ITEM&gt;&lt;ICLASS&gt;GenWeapon&lt;/ICLASS&gt;&lt;IDATA&gt;&lt;NAME&gt;a primitive spear&lt;/NAME&gt;&lt;DESC&gt;a primitive spear made with a bone blade, attached to a dried wooden shaft. In poor condition&lt;/DESC&gt;&lt;DISP&gt;a primitive spear made with bone&lt;/DISP&gt;&lt;PROP&gt;0|0|10|15|0|15|0|1.0|2|0|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES /&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;11&lt;/FLAG&gt;&lt;IDENT /&gt;&lt;VALUE&gt;313&lt;/VALUE&gt;&lt;MTRAL&gt;2648&lt;/MTRAL&gt;&lt;WORNL&gt;true&lt;/WORNL&gt;&lt;WORNB&gt;1536&lt;/WORNB&gt;&lt;READ /&gt;&lt;ACAPA&gt;0&lt;/ACAPA&gt;&lt;TYPE&gt;2&lt;/TYPE&gt;&lt;CLASS&gt;6&lt;/CLASS&gt;&lt;MINR&gt;0&lt;/MINR&gt;&lt;MAXR&gt;0&lt;/MAXR&gt;&lt;IWORN&gt;1536&lt;/IWORN&gt;&lt;ILOC /&gt;&lt;IUSES&gt;100&lt;/IUSES&gt;&lt;ILEVL&gt;15&lt;/ILEVL&gt;&lt;IABLE&gt;0&lt;/IABLE&gt;&lt;/IDATA&gt;&lt;/ITEM&gt;&lt;/INVEN&gt;&lt;ABLTYS&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Chopping&lt;/ACLASS&gt;&lt;APROF&gt;50&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Common&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;FireBuilding&lt;/ACLASS&gt;&lt;APROF&gt;0&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;matingpress&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Matingpress&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;Matingpressed&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Spell_ChangeSexSelf&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Change Sex Self&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Change sex self)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;/ABLTYS&gt;</MTEXT></MOB>
-</MOBS><CUSTOM><ABILITY ID="matingpress" TYPE="GenAbility"><CLASS>matingpress</CLASS><NAME>Matingpress</NAME><DISPLAY>Matingpressed</DISPLAY><TRIGSTR>MP, MATING, MATINGPRESS, PRESS</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,BREEDING</CLASSIFICATION><OVERRIDEMANA>100</OVERRIDEMANA><USAGEMASK>MOVEMENT</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>MALICIOUS</QUALITY><HERESTATS>str-2 dex-2 con-2 savemin-5 attacks+2 ability-2 move-50 armor-20 savepierce-5 saveslash+10 damage+5</HERESTATS><CASTMASK>+GENDER -neuter</CASTMASK><SCRIPT>LOAD=progs/matingpress.script</SCRIPT><TARGETMASK>+EFFECTS "-Matingpressed"</TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempts to tackle &lt;T-NAME&gt; into a battlefuck mating press but is evaded.</FIZZLEMSG><AUTOCASTMSG>An amazing thing happens to &lt;T-NAME&gt;!</AUTOCASTMSG><CASTMSG>&lt;T-NAME&gt; is held in a battlefuck mating press by &lt;S-NAME&gt;!</CASTMSG><POSTCASTMSG>*SLAP* *PLAP* &lt;S-NAME&gt; &lt;DAMAGE&gt; &lt;T-NAME&gt; with the intense matingpress pounding! *PLAP* *PLOP*</POSTCASTMSG><ATTACKCODE>MIND</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>2*@x1-@x2</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt; By grappling and putting your enemy under you, you can sexually assault your enemy for some damage and healing! You may grind your genitals if of same gender with the target but obviously pregnancy is out of the question. This puts the target into submission, increasing target`s offense due your position but decreases their defenses greatly due theirs...</HELP><TICKSBETWEENCASTS>6</TICKSBETWEENCASTS><TICKSOVERRIDE>6</TICKSOVERRIDE><TICKAFFECTS>true</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG>&lt;S-NAME&gt; pulls away from &lt;T-NAME&gt; and gets back up.</UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG></ABILITY><ABILITY ID="Spell_ChangeSexSelf" TYPE="GenAbility"><CLASS>Spell_ChangeSexSelf</CLASS><NAME>Change Sex Self</NAME><DISPLAY>(Change sex self)</DISPLAY><TRIGSTR>CAST, CA, C</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SPELL,NOTHING</CLASSIFICATION><OVERRIDEMANA>-1</OVERRIDEMANA><USAGEMASK>MANA</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>OK_SELF</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT></SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; fizzles a spell.</FIZZLEMSG><AUTOCASTMSG></AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; cast(s) a spell of transformation over &lt;T-NAME&gt;.</CASTMSG><POSTCASTMSG>&lt;S-NAME&gt; shift(s) and transform(s) into to the opposite gender!</POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;Allows caster to change their own sex for a while.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>100</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG>&lt;S-NAME&gt; shift(s) back to the original form.</UNINVOKEMSG><MOCKABILITY>Spell_ChangeSex</MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG></ABILITY><ABILITY ID="matingpress" TYPE="GenAbility"><CLASS>matingpress</CLASS><NAME>Matingpress</NAME><DISPLAY>Matingpressed</DISPLAY><TRIGSTR>MP, MATING, MATINGPRESS, PRESS</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,BREEDING</CLASSIFICATION><OVERRIDEMANA>100</OVERRIDEMANA><USAGEMASK>MOVEMENT</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>MALICIOUS</QUALITY><HERESTATS>str-2 dex-2 con-2 savemin-5 attacks+2 ability-2 move-50 armor-20 savepierce-5 saveslash+10 damage+5</HERESTATS><CASTMASK>+GENDER -neuter</CASTMASK><SCRIPT>LOAD=progs/matingpress.script</SCRIPT><TARGETMASK>+EFFECTS "-Matingpressed"</TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempts to tackle &lt;T-NAME&gt; into a battlefuck mating press but is evaded.</FIZZLEMSG><AUTOCASTMSG>An amazing thing happens to &lt;T-NAME&gt;!</AUTOCASTMSG><CASTMSG>&lt;T-NAME&gt; is held in a battlefuck mating press by &lt;S-NAME&gt;!</CASTMSG><POSTCASTMSG>*SLAP* *PLAP* &lt;S-NAME&gt; &lt;DAMAGE&gt; &lt;T-NAME&gt; with the intense matingpress pounding! *PLAP* *PLOP*</POSTCASTMSG><ATTACKCODE>MIND</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>2*@x1-@x2</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt; By grappling and putting your enemy under you, you can sexually assault your enemy for some damage and healing! You may grind your genitals if of same gender with the target but obviously pregnancy is out of the question. This puts the target into submission, increasing target`s offense due your position but decreases their defenses greatly due theirs...</HELP><TICKSBETWEENCASTS>6</TICKSBETWEENCASTS><TICKSOVERRIDE>6</TICKSOVERRIDE><TICKAFFECTS>true</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG>&lt;S-NAME&gt; pulls away from &lt;T-NAME&gt; and gets back up.</UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG></ABILITY><ABILITY ID="matingpress" TYPE="GenAbility"><CLASS>matingpress</CLASS><NAME>Matingpress</NAME><DISPLAY>Matingpressed</DISPLAY><TRIGSTR>MP, MATING, MATINGPRESS, PRESS</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,BREEDING</CLASSIFICATION><OVERRIDEMANA>100</OVERRIDEMANA><USAGEMASK>MOVEMENT</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>MALICIOUS</QUALITY><HERESTATS>str-2 dex-2 con-2 savemin-5 attacks+2 ability-2 move-50 armor-20 savepierce-5 saveslash+10 damage+5</HERESTATS><CASTMASK>+GENDER -neuter</CASTMASK><SCRIPT>LOAD=progs/matingpress.script</SCRIPT><TARGETMASK>+EFFECTS "-Matingpressed"</TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempts to tackle &lt;T-NAME&gt; into a battlefuck mating press but is evaded.</FIZZLEMSG><AUTOCASTMSG>An amazing thing happens to &lt;T-NAME&gt;!</AUTOCASTMSG><CASTMSG>&lt;T-NAME&gt; is held in a battlefuck mating press by &lt;S-NAME&gt;!</CASTMSG><POSTCASTMSG>*SLAP* *PLAP* &lt;S-NAME&gt; &lt;DAMAGE&gt; &lt;T-NAME&gt; with the intense matingpress pounding! *PLAP* *PLOP*</POSTCASTMSG><ATTACKCODE>MIND</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>2*@x1-@x2</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt; By grappling and putting your enemy under you, you can sexually assault your enemy for some damage and healing! You may grind your genitals if of same gender with the target but obviously pregnancy is out of the question. This puts the target into submission, increasing target`s offense due your position but decreases their defenses greatly due theirs...</HELP><TICKSBETWEENCASTS>6</TICKSBETWEENCASTS><TICKSOVERRIDE>6</TICKSOVERRIDE><TICKAFFECTS>true</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG>&lt;S-NAME&gt; pulls away from &lt;T-NAME&gt; and gets back up.</UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG></ABILITY><ABILITY ID="matingpress" TYPE="GenAbility"><CLASS>matingpress</CLASS><NAME>Matingpress</NAME><DISPLAY>Matingpressed</DISPLAY><TRIGSTR>MP, MATING, MATINGPRESS, PRESS</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,BREEDING</CLASSIFICATION><OVERRIDEMANA>100</OVERRIDEMANA><USAGEMASK>MOVEMENT</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>MALICIOUS</QUALITY><HERESTATS>str-2 dex-2 con-2 savemin-5 attacks+2 ability-2 move-50 armor-20 savepierce-5 saveslash+10 damage+5</HERESTATS><CASTMASK>+GENDER -neuter</CASTMASK><SCRIPT>LOAD=progs/matingpress.script</SCRIPT><TARGETMASK>+EFFECTS "-Matingpressed"</TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempts to tackle &lt;T-NAME&gt; into a battlefuck mating press but is evaded.</FIZZLEMSG><AUTOCASTMSG>An amazing thing happens to &lt;T-NAME&gt;!</AUTOCASTMSG><CASTMSG>&lt;T-NAME&gt; is held in a battlefuck mating press by &lt;S-NAME&gt;!</CASTMSG><POSTCASTMSG>*SLAP* *PLAP* &lt;S-NAME&gt; &lt;DAMAGE&gt; &lt;T-NAME&gt; with the intense matingpress pounding! *PLAP* *PLOP*</POSTCASTMSG><ATTACKCODE>MIND</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>2*@x1-@x2</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt; By grappling and putting your enemy under you, you can sexually assault your enemy for some damage and healing! You may grind your genitals if of same gender with the target but obviously pregnancy is out of the question. This puts the target into submission, increasing target`s offense due your position but decreases their defenses greatly due theirs...</HELP><TICKSBETWEENCASTS>6</TICKSBETWEENCASTS><TICKSOVERRIDE>6</TICKSOVERRIDE><TICKAFFECTS>true</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG>&lt;S-NAME&gt; pulls away from &lt;T-NAME&gt; and gets back up.</UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG></ABILITY><ABILITY ID="matingpress" TYPE="GenAbility"><CLASS>matingpress</CLASS><NAME>Matingpress</NAME><DISPLAY>Matingpressed</DISPLAY><TRIGSTR>MP, MATING, MATINGPRESS, PRESS</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,BREEDING</CLASSIFICATION><OVERRIDEMANA>100</OVERRIDEMANA><USAGEMASK>MOVEMENT</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>MALICIOUS</QUALITY><HERESTATS>str-2 dex-2 con-2 savemin-5 attacks+2 ability-2 move-50 armor-20 savepierce-5 saveslash+10 damage+5</HERESTATS><CASTMASK>+GENDER -neuter</CASTMASK><SCRIPT>LOAD=progs/matingpress.script</SCRIPT><TARGETMASK>+EFFECTS "-Matingpressed"</TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempts to tackle &lt;T-NAME&gt; into a battlefuck mating press but is evaded.</FIZZLEMSG><AUTOCASTMSG>An amazing thing happens to &lt;T-NAME&gt;!</AUTOCASTMSG><CASTMSG>&lt;T-NAME&gt; is held in a battlefuck mating press by &lt;S-NAME&gt;!</CASTMSG><POSTCASTMSG>*SLAP* *PLAP* &lt;S-NAME&gt; &lt;DAMAGE&gt; &lt;T-NAME&gt; with the intense matingpress pounding! *PLAP* *PLOP*</POSTCASTMSG><ATTACKCODE>MIND</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>2*@x1-@x2</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt; By grappling and putting your enemy under you, you can sexually assault your enemy for some damage and healing! You may grind your genitals if of same gender with the target but obviously pregnancy is out of the question. This puts the target into submission, increasing target`s offense due your position but decreases their defenses greatly due theirs...</HELP><TICKSBETWEENCASTS>6</TICKSBETWEENCASTS><TICKSOVERRIDE>6</TICKSOVERRIDE><TICKAFFECTS>true</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG>&lt;S-NAME&gt; pulls away from &lt;T-NAME&gt; and gets back up.</UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG></ABILITY><ABILITY ID="Spell_ChangeSexSelf" TYPE="GenAbility"><CLASS>Spell_ChangeSexSelf</CLASS><NAME>Change Sex Self</NAME><DISPLAY>(Change sex self)</DISPLAY><TRIGSTR>CAST, CA, C</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SPELL,NOTHING</CLASSIFICATION><OVERRIDEMANA>-1</OVERRIDEMANA><USAGEMASK>MANA</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>OK_SELF</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT></SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; fizzles a spell.</FIZZLEMSG><AUTOCASTMSG></AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; cast(s) a spell of transformation over &lt;T-NAME&gt;.</CASTMSG><POSTCASTMSG>&lt;S-NAME&gt; shift(s) and transform(s) into to the opposite gender!</POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;Allows caster to change their own sex for a while.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>100</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG>&lt;S-NAME&gt; shift(s) back to the original form.</UNINVOKEMSG><MOCKABILITY>Spell_ChangeSex</MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG></ABILITY><ABILITY ID="Spell_ChangeSexSelf" TYPE="GenAbility"><CLASS>Spell_ChangeSexSelf</CLASS><NAME>Change Sex Self</NAME><DISPLAY>(Change sex self)</DISPLAY><TRIGSTR>CAST, CA, C</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SPELL,NOTHING</CLASSIFICATION><OVERRIDEMANA>-1</OVERRIDEMANA><USAGEMASK>MANA</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>OK_SELF</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT></SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; fizzles a spell.</FIZZLEMSG><AUTOCASTMSG></AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; cast(s) a spell of transformation over &lt;T-NAME&gt;.</CASTMSG><POSTCASTMSG>&lt;S-NAME&gt; shift(s) and transform(s) into to the opposite gender!</POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;Allows caster to change their own sex for a while.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>100</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG>&lt;S-NAME&gt; shift(s) back to the original form.</UNINVOKEMSG><MOCKABILITY>Spell_ChangeSex</MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG></ABILITY><RACE><ID>Resurgentis</ID><NAME>Resurgentis</NAME><CAT>Humanoid</CAT><MHEIGHT>75</MHEIGHT><FHEIGHT>73</FHEIGHT><VHEIGHT>10</VHEIGHT><BWEIGHT>180</BWEIGHT><VWEIGHT>40</VWEIGHT><WEAR>0</WEAR><AVAIL>1</AVAIL><RIDE>false</RIDE><DESTROYBODY>false</DESTROYBODY><BODY>0;2;2;1;1;2;2;1;2;2;1;0;1;1;0;0;</BODY><XPADJ>0</XPADJ><HEALTHRACE>Humanoid</HEALTHRACE><EVENTRACE>Humanoid</EVENTRACE><WEAPONRACE>Humanoid</WEAPONRACE><ARRIVE>arrives</ARRIVE><LEAVE>leaves</LEAVE><HELP /><AGING>0, 1, 3, 15, 35, 53, 70, 74, 78</AGING><ESTATS>0|5|5|15|0|0|0|0.0|0|0|128|</ESTATS><ASTATS>0|0|0|0|0|0|0|0|-10|-20|0|0|3|0|0|0|0|0|10|0|0|0|2|0|2|3|0|0|0|-3|0|0|0|0|0|0|0|0|0|0|0|0|50|0|0|0|</ASTATS><CSTATS/><ASTATE>0|100|0|0|200|0|</ASTATE><STARTASTATE>0|100|0|0|100|0|</STARTASTATE><DISFLAGS>0</DISFLAGS><RESOURCES/><OUTFIT/><WEAPON><ICLASS>StdWeapon</ICLASS><IDATA /></WEAPON><RABILITIES><RABILITY><RCLASS>Fighter_Berzerk</RCLASS><RLEVEL>1</RLEVEL><RPROFF>100</RPROFF><RAGAIN>false</RAGAIN><RPARM></RPARM></RABILITY></RABILITIES><BREATHELIST>4021</BREATHELIST><REFFECTS/><CABILITIES><CABILITY><CCLASS>Undercommon</CCLASS><CPROFF>50</CPROFF><CPLEVL>5</CPLEVL><CGAIN>true</CGAIN></CABILITY><CABILITY><CCLASS>Skill_ConsumeCorpse</CCLASS><CPROFF>100</CPROFF><CPLEVL>10</CPLEVL><CGAIN>true</CGAIN></CABILITY><CABILITY><CCLASS>Skill_Track</CCLASS><CPROFF>100</CPROFF><CPLEVL>15</CPLEVL><CGAIN>true</CGAIN></CABILITY><CABILITY><CCLASS>Common</CCLASS><CPROFF>100</CPROFF><CPLEVL>0</CPLEVL><CGAIN>true</CGAIN></CABILITY></CABILITIES><IABILITIES/></RACE><ABILITY ID="Spell_ChangeSexSelf" TYPE="GenAbility"><CLASS>Spell_ChangeSexSelf</CLASS><NAME>Change Sex Self</NAME><DISPLAY>(Change sex self)</DISPLAY><TRIGSTR>CAST, CA, C</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SPELL,NOTHING</CLASSIFICATION><OVERRIDEMANA>-1</OVERRIDEMANA><USAGEMASK>MANA</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>OK_SELF</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT></SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; fizzles a spell.</FIZZLEMSG><AUTOCASTMSG></AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; cast(s) a spell of transformation over &lt;T-NAME&gt;.</CASTMSG><POSTCASTMSG>&lt;S-NAME&gt; shift(s) and transform(s) into to the opposite gender!</POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;Allows caster to change their own sex for a while.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>100</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG>&lt;S-NAME&gt; shift(s) back to the original form.</UNINVOKEMSG><MOCKABILITY>Spell_ChangeSex</MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG></ABILITY><ABILITY ID="Spell_ChangeSexSelf" TYPE="GenAbility"><CLASS>Spell_ChangeSexSelf</CLASS><NAME>Change Sex Self</NAME><DISPLAY>(Change sex self)</DISPLAY><TRIGSTR>CAST, CA, C</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SPELL,NOTHING</CLASSIFICATION><OVERRIDEMANA>-1</OVERRIDEMANA><USAGEMASK>MANA</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>OK_SELF</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT></SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; fizzles a spell.</FIZZLEMSG><AUTOCASTMSG></AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; cast(s) a spell of transformation over &lt;T-NAME&gt;.</CASTMSG><POSTCASTMSG>&lt;S-NAME&gt; shift(s) and transform(s) into to the opposite gender!</POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;Allows caster to change their own sex for a while.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>100</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG>&lt;S-NAME&gt; shift(s) back to the original form.</UNINVOKEMSG><MOCKABILITY>Spell_ChangeSex</MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG></ABILITY></CUSTOM><FILES><FILE NAME="progs/deathmessages.script">kill_prog
+<MOBS><MOB><MCLAS>GenMob</MCLAS><MLEVL>18</MLEVL><MABLE>11</MABLE><MREJV>60</MREJV><MTEXT>&lt;NAME&gt;^#105a nak^#205ed resu^#105rgent^#205is male can^#105nibal^N&lt;/NAME&gt;&lt;DESC&gt;An exile, nomad without any clothing, their skin darkened and leathery from the constant sun exposure. They seem to look at other humanoids with hunger, must be their only food source since they are so uncivilized... Cannibals. He is slender and his ribs are visible, his cock is dark as his skin and uncut, hanging below him reaching past his knee with large balls beneath.&lt;/DESC&gt;&lt;DISP&gt;^#105a nak^#205ed resu^#105rgent^#205is male can^#105nibal^N ^#333wit^#222h a s^#333pea^#222r^N is here.&lt;/DISP&gt;&lt;PROP&gt;11|51|18|18|0|18|60|1.0|162|67|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;CombatAbilities&lt;/BCLASS&gt;&lt;BPARMS /&gt;&lt;/BHAVE&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;MobileAggressive&lt;/BCLASS&gt;&lt;BPARMS&gt;min=10 max=20 chance=75 message="aha!!" -all +desert&lt;/BPARMS&gt;&lt;/BHAVE&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;Scriptable&lt;/BCLASS&gt;&lt;BPARMS&gt;load=progs/deathmessages.script~&lt;/BPARMS&gt;&lt;/BHAVE&gt;&lt;/BEHAVES&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;MONEY&gt;5&lt;/MONEY&gt;&lt;VARMONEY&gt;0.0&lt;/VARMONEY&gt;&lt;GENDER&gt;M&lt;/GENDER&gt;&lt;MRACE&gt;Human&lt;/MRACE&gt;&lt;FACTIONS&gt;&lt;FCTN ID="ALIGNMENT.INI"&gt;-5000&lt;/FCTN&gt;&lt;FCTN ID="INCLINATION.INI"&gt;-5999&lt;/FCTN&gt;&lt;/FACTIONS&gt;&lt;INVEN&gt;&lt;ITEM&gt;&lt;ICLASS&gt;GenWeapon&lt;/ICLASS&gt;&lt;IDATA&gt;&lt;NAME&gt;a primitive spear&lt;/NAME&gt;&lt;DESC&gt;a primitive spear made with a bone blade, attached to a dried wooden shaft. In poor condition&lt;/DESC&gt;&lt;DISP&gt;a primitive spear made with bone&lt;/DISP&gt;&lt;PROP&gt;0|0|10|15|0|15|0|1.0|2|0|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES /&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;11&lt;/FLAG&gt;&lt;IDENT /&gt;&lt;VALUE&gt;313&lt;/VALUE&gt;&lt;MTRAL&gt;2648&lt;/MTRAL&gt;&lt;WORNL&gt;true&lt;/WORNL&gt;&lt;WORNB&gt;1536&lt;/WORNB&gt;&lt;READ /&gt;&lt;ACAPA&gt;0&lt;/ACAPA&gt;&lt;TYPE&gt;2&lt;/TYPE&gt;&lt;CLASS&gt;6&lt;/CLASS&gt;&lt;MINR&gt;0&lt;/MINR&gt;&lt;MAXR&gt;0&lt;/MAXR&gt;&lt;IWORN&gt;1536&lt;/IWORN&gt;&lt;ILOC /&gt;&lt;IUSES&gt;100&lt;/IUSES&gt;&lt;ILEVL&gt;15&lt;/ILEVL&gt;&lt;IABLE&gt;0&lt;/IABLE&gt;&lt;/IDATA&gt;&lt;/ITEM&gt;&lt;/INVEN&gt;&lt;ABLTYS&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Chopping&lt;/ACLASS&gt;&lt;APROF&gt;50&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Common&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;FireBuilding&lt;/ACLASS&gt;&lt;APROF&gt;0&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;matingpress&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Matingpress&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;Matingpressed&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Spell_ChangeSexSelf&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Change Sex Self&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Change sex self)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;/ABLTYS&gt;</MTEXT></MOB>
+<MOB><MCLAS>GenMob</MCLAS><MLEVL>15</MLEVL><MABLE>11</MABLE><MREJV>60</MREJV><MTEXT>&lt;NAME&gt;^#111a nak^#211ed h^#111um^#211an ^#111mal^#211e can^#111nibal^N&lt;/NAME&gt;&lt;DESC&gt;An exile, nomad without any clothing, their skin darkened and leathery from the constant sun exposure. They seem to look at other humanoids with hunger, must be their only food source since they are so uncivilized... Cannibals. He is slender and his ribs are visible, his cock is dark as his skin and uncut, hanging below him almost reaching his knee with fist size balls beneath.&lt;/DESC&gt;&lt;DISP&gt;^#111a nak^#211ed h^#111um^#211an ^#111mal^#211e can^#111nibal^N ^#333wit^#222h a s^#333pea^#222r^N is here.&lt;/DISP&gt;&lt;PROP&gt;11|62|15|15|0|15|60|1.0|162|67|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;CombatAbilities&lt;/BCLASS&gt;&lt;BPARMS /&gt;&lt;/BHAVE&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;MobileAggressive&lt;/BCLASS&gt;&lt;BPARMS&gt;min=10 max=20 chance=75 message="aha!!" -all +desert&lt;/BPARMS&gt;&lt;/BHAVE&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;Scriptable&lt;/BCLASS&gt;&lt;BPARMS&gt;load=progs/deathmessages.script~&lt;/BPARMS&gt;&lt;/BHAVE&gt;&lt;/BEHAVES&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;MONEY&gt;5&lt;/MONEY&gt;&lt;VARMONEY&gt;0.0&lt;/VARMONEY&gt;&lt;GENDER&gt;M&lt;/GENDER&gt;&lt;MRACE&gt;Human&lt;/MRACE&gt;&lt;FACTIONS&gt;&lt;FCTN ID="ALIGNMENT.INI"&gt;-5000&lt;/FCTN&gt;&lt;FCTN ID="INCLINATION.INI"&gt;-5999&lt;/FCTN&gt;&lt;/FACTIONS&gt;&lt;INVEN&gt;&lt;ITEM&gt;&lt;ICLASS&gt;GenWeapon&lt;/ICLASS&gt;&lt;IDATA&gt;&lt;NAME&gt;a primitive spear&lt;/NAME&gt;&lt;DESC&gt;a primitive spear made with a bone blade, attached to a dried wooden shaft. In poor condition&lt;/DESC&gt;&lt;DISP&gt;a primitive spear made with bone&lt;/DISP&gt;&lt;PROP&gt;0|0|10|15|0|15|0|1.0|2|0|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES /&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;11&lt;/FLAG&gt;&lt;IDENT /&gt;&lt;VALUE&gt;313&lt;/VALUE&gt;&lt;MTRAL&gt;2648&lt;/MTRAL&gt;&lt;WORNL&gt;true&lt;/WORNL&gt;&lt;WORNB&gt;1536&lt;/WORNB&gt;&lt;READ /&gt;&lt;ACAPA&gt;0&lt;/ACAPA&gt;&lt;TYPE&gt;2&lt;/TYPE&gt;&lt;CLASS&gt;6&lt;/CLASS&gt;&lt;MINR&gt;0&lt;/MINR&gt;&lt;MAXR&gt;0&lt;/MAXR&gt;&lt;IWORN&gt;1536&lt;/IWORN&gt;&lt;ILOC /&gt;&lt;IUSES&gt;100&lt;/IUSES&gt;&lt;ILEVL&gt;15&lt;/ILEVL&gt;&lt;IABLE&gt;0&lt;/IABLE&gt;&lt;/IDATA&gt;&lt;/ITEM&gt;&lt;/INVEN&gt;&lt;ABLTYS&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Chopping&lt;/ACLASS&gt;&lt;APROF&gt;50&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Common&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;FireBuilding&lt;/ACLASS&gt;&lt;APROF&gt;0&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;matingpress&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Matingpress&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;Matingpressed&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Spell_ChangeSexSelf&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Change Sex Self&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Change sex self)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;/ABLTYS&gt;</MTEXT></MOB>
+<MOB><MCLAS>GenMob</MCLAS><MLEVL>20</MLEVL><MABLE>11</MABLE><MREJV>60</MREJV><MTEXT>&lt;NAME&gt;^#105a nak^#205ed ^wbon^We-armo^wred^N ^#205resu^#105rgent^#205is male can^#105nibal^N&lt;/NAME&gt;&lt;DESC&gt;An exile, nomad without any clothing but strapped human bones on his limbs that provide armor for him, their skin darkened and leathery from the constant sun exposure. They seem to look at other humanoids with hunger, must be their only food source since they are so uncivilized... Cannibals. He seems more well-fed compared to others, maybe an elite of a tribe, his cock dangles below his knees and balls are larger than most.&lt;/DESC&gt;&lt;DISP&gt;^#105a nak^#205ed ^wbon^We-armo^wred^N ^#205resu^#105rgent^#205is male can^#105nibal^N is here.&lt;/DISP&gt;&lt;PROP&gt;11|44|20|20|0|20|60|1.0|202|81|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;CombatAbilities&lt;/BCLASS&gt;&lt;BPARMS /&gt;&lt;/BHAVE&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;MobileAggressive&lt;/BCLASS&gt;&lt;BPARMS&gt;min=20 max=30 chance=50 delay=2 nogang message="aha!!" -all +desert&lt;/BPARMS&gt;&lt;/BHAVE&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;Scriptable&lt;/BCLASS&gt;&lt;BPARMS&gt;load=progs/deathmessages.script~&lt;/BPARMS&gt;&lt;/BHAVE&gt;&lt;/BEHAVES&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;MONEY&gt;5&lt;/MONEY&gt;&lt;VARMONEY&gt;0.0&lt;/VARMONEY&gt;&lt;GENDER&gt;M&lt;/GENDER&gt;&lt;MRACE&gt;Resurgentis&lt;/MRACE&gt;&lt;FACTIONS&gt;&lt;FCTN ID="ALIGNMENT.INI"&gt;-5000&lt;/FCTN&gt;&lt;FCTN ID="INCLINATION.INI"&gt;-5999&lt;/FCTN&gt;&lt;/FACTIONS&gt;&lt;INVEN&gt;&lt;ITEM&gt;&lt;ICLASS&gt;GenArmor&lt;/ICLASS&gt;&lt;IDATA&gt;&lt;NAME&gt;a bone body armor&lt;/NAME&gt;&lt;DESC&gt;a bone body armor.  &lt;/DESC&gt;&lt;DISP&gt;a bone body armor lies here&lt;/DISP&gt;&lt;PROP&gt;0|32|0|0|0|18|0|1.0|18|81|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES /&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;27&lt;/FLAG&gt;&lt;IDENT&gt;This is the work of Moonbeam.&lt;/IDENT&gt;&lt;VALUE&gt;642&lt;/VALUE&gt;&lt;MTRAL&gt;2648&lt;/MTRAL&gt;&lt;WORNL&gt;true&lt;/WORNL&gt;&lt;WORNB&gt;16396&lt;/WORNB&gt;&lt;READ /&gt;&lt;CAPA&gt;0&lt;/CAPA&gt;&lt;CONT&gt;0&lt;/CONT&gt;&lt;OPENTK&gt;30&lt;/OPENTK&gt;&lt;LAYR&gt;0&lt;/LAYR&gt;&lt;LAYA&gt;1&lt;/LAYA&gt;&lt;IWORN&gt;16396&lt;/IWORN&gt;&lt;ILOC /&gt;&lt;IUSES&gt;100&lt;/IUSES&gt;&lt;ILEVL&gt;18&lt;/ILEVL&gt;&lt;IABLE&gt;0&lt;/IABLE&gt;&lt;/IDATA&gt;&lt;/ITEM&gt;&lt;ITEM&gt;&lt;ICLASS&gt;GenWeapon&lt;/ICLASS&gt;&lt;IDATA&gt;&lt;NAME&gt;a wicked bone short sword&lt;/NAME&gt;&lt;DESC&gt;a wicked bone short sword.  &lt;/DESC&gt;&lt;DISP&gt;a wicked bone short sword lies here&lt;/DISP&gt;&lt;PROP&gt;0|0|0|15|0|19|0|1.0|9|0|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES /&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;11&lt;/FLAG&gt;&lt;IDENT /&gt;&lt;VALUE&gt;383&lt;/VALUE&gt;&lt;MTRAL&gt;2648&lt;/MTRAL&gt;&lt;WORNL&gt;false&lt;/WORNL&gt;&lt;WORNB&gt;1536&lt;/WORNB&gt;&lt;READ /&gt;&lt;ACAPA&gt;0&lt;/ACAPA&gt;&lt;TYPE&gt;2&lt;/TYPE&gt;&lt;CLASS&gt;8&lt;/CLASS&gt;&lt;MINR&gt;0&lt;/MINR&gt;&lt;MAXR&gt;0&lt;/MAXR&gt;&lt;IWORN&gt;1024&lt;/IWORN&gt;&lt;ILOC /&gt;&lt;IUSES&gt;100&lt;/IUSES&gt;&lt;ILEVL&gt;19&lt;/ILEVL&gt;&lt;IABLE&gt;0&lt;/IABLE&gt;&lt;/IDATA&gt;&lt;/ITEM&gt;&lt;/INVEN&gt;&lt;ABLTYS&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Chopping&lt;/ACLASS&gt;&lt;APROF&gt;50&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Common&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;FireBuilding&lt;/ACLASS&gt;&lt;APROF&gt;0&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;matingpress&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Matingpress&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;Matingpressed&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Skill_ConsumeCorpse&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Skill_Track&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Spell_ChangeSexSelf&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Change Sex Self&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Change sex self)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Undercommon&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;/ABLTYS&gt;</MTEXT></MOB>
+<MOB><MCLAS>GenMob</MCLAS><MLEVL>15</MLEVL><MABLE>11</MABLE><MREJV>60</MREJV><MTEXT>&lt;NAME&gt;^#111a nak^#211ed h^#111um^#211an ^#111mal^#211e can^#111nibal^N&lt;/NAME&gt;&lt;DESC&gt;An exile, nomad without any clothing, their skin darkened and leathery from the constant sun exposure. They seem to look at other humanoids with hunger, must be their only food source since they are so uncivilized... Cannibals. He is slender and his ribs are visible, his cock is dark as his skin and uncut, hanging below him almost reaching his knee with fist size balls beneath.&lt;/DESC&gt;&lt;DISP&gt;^#111a nak^#211ed h^#111um^#211an ^#111mal^#211e can^#111nibal^N ^#333wit^#222h a ^#111ma^#222ce^N&lt;/DISP&gt;&lt;PROP&gt;11|62|15|15|0|15|60|1.0|162|67|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;CombatAbilities&lt;/BCLASS&gt;&lt;BPARMS /&gt;&lt;/BHAVE&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;MobileAggressive&lt;/BCLASS&gt;&lt;BPARMS&gt;min=10 max=20 chance=75 message="aha!!" -all +desert&lt;/BPARMS&gt;&lt;/BHAVE&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;Scriptable&lt;/BCLASS&gt;&lt;BPARMS&gt;load=progs/deathmessages.script~&lt;/BPARMS&gt;&lt;/BHAVE&gt;&lt;/BEHAVES&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;MONEY&gt;5&lt;/MONEY&gt;&lt;VARMONEY&gt;0.0&lt;/VARMONEY&gt;&lt;GENDER&gt;M&lt;/GENDER&gt;&lt;MRACE&gt;Human&lt;/MRACE&gt;&lt;FACTIONS&gt;&lt;FCTN ID="ALIGNMENT.INI"&gt;-5000&lt;/FCTN&gt;&lt;FCTN ID="INCLINATION.INI"&gt;-5999&lt;/FCTN&gt;&lt;/FACTIONS&gt;&lt;INVEN&gt;&lt;ITEM&gt;&lt;ICLASS&gt;GenWeapon&lt;/ICLASS&gt;&lt;IDATA&gt;&lt;NAME&gt;a skull mace&lt;/NAME&gt;&lt;DESC&gt;a skull mace made from ivory. &lt;/DESC&gt;&lt;DISP&gt;a skull mace lies here&lt;/DISP&gt;&lt;PROP&gt;0|0|-5|17|0|15|0|1.0|19|0|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES /&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;11&lt;/FLAG&gt;&lt;IDENT /&gt;&lt;VALUE&gt;545&lt;/VALUE&gt;&lt;MTRAL&gt;2663&lt;/MTRAL&gt;&lt;WORNL&gt;false&lt;/WORNL&gt;&lt;WORNB&gt;1536&lt;/WORNB&gt;&lt;READ /&gt;&lt;ACAPA&gt;0&lt;/ACAPA&gt;&lt;TYPE&gt;3&lt;/TYPE&gt;&lt;CLASS&gt;1&lt;/CLASS&gt;&lt;MINR&gt;0&lt;/MINR&gt;&lt;MAXR&gt;0&lt;/MAXR&gt;&lt;IWORN&gt;1024&lt;/IWORN&gt;&lt;ILOC /&gt;&lt;IUSES&gt;100&lt;/IUSES&gt;&lt;ILEVL&gt;15&lt;/ILEVL&gt;&lt;IABLE&gt;0&lt;/IABLE&gt;&lt;/IDATA&gt;&lt;/ITEM&gt;&lt;/INVEN&gt;&lt;ABLTYS&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Chopping&lt;/ACLASS&gt;&lt;APROF&gt;50&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Common&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;FireBuilding&lt;/ACLASS&gt;&lt;APROF&gt;0&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;matingpress&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Matingpress&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;Matingpressed&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Spell_ChangeSexSelf&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Change Sex Self&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Change sex self)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;/ABLTYS&gt;</MTEXT></MOB>
+<MOB><MCLAS>GenMob</MCLAS><MLEVL>15</MLEVL><MABLE>11</MABLE><MREJV>60</MREJV><MTEXT>&lt;NAME&gt;^#111a nak^#211ed h^#111um^#211an fe^#111mal^#211e can^#111nibal^N&lt;/NAME&gt;&lt;DESC&gt;An exile, nomad without any clothing, their skin darkened and leathery from the constant sun exposure. They seem to look at other humanoids with hunger, must be their only food source since they are so uncivilized... Cannibals. Her breasts are small, matching her skinny body with ribs showing, her pussy is covered in sand particles and dry as the desert.&lt;/DESC&gt;&lt;DISP&gt;^#111a nak^#211ed h^#111um^#211an fe^#111mal^#211e can^#111nibal^N ^#333wit^#222h a s^#333pea^#222r^N is here.&lt;/DISP&gt;&lt;PROP&gt;11|62|15|15|0|15|60|1.0|162|67|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;CombatAbilities&lt;/BCLASS&gt;&lt;BPARMS /&gt;&lt;/BHAVE&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;MobileAggressive&lt;/BCLASS&gt;&lt;BPARMS&gt;min=10 max=20 chance=75 message="aha!!" -all +desert&lt;/BPARMS&gt;&lt;/BHAVE&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;Scriptable&lt;/BCLASS&gt;&lt;BPARMS&gt;load=progs/deathmessages.script~&lt;/BPARMS&gt;&lt;/BHAVE&gt;&lt;/BEHAVES&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;MONEY&gt;5&lt;/MONEY&gt;&lt;VARMONEY&gt;0.0&lt;/VARMONEY&gt;&lt;GENDER&gt;F&lt;/GENDER&gt;&lt;MRACE&gt;Human&lt;/MRACE&gt;&lt;FACTIONS&gt;&lt;FCTN ID="ALIGNMENT.INI"&gt;-5000&lt;/FCTN&gt;&lt;FCTN ID="INCLINATION.INI"&gt;-5999&lt;/FCTN&gt;&lt;/FACTIONS&gt;&lt;INVEN&gt;&lt;ITEM&gt;&lt;ICLASS&gt;GenWeapon&lt;/ICLASS&gt;&lt;IDATA&gt;&lt;NAME&gt;a primitive spear&lt;/NAME&gt;&lt;DESC&gt;a primitive spear made with a bone blade, attached to a dried wooden shaft. In poor condition&lt;/DESC&gt;&lt;DISP&gt;a primitive spear made with bone&lt;/DISP&gt;&lt;PROP&gt;0|0|10|15|0|15|0|1.0|2|0|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES /&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;11&lt;/FLAG&gt;&lt;IDENT /&gt;&lt;VALUE&gt;313&lt;/VALUE&gt;&lt;MTRAL&gt;2648&lt;/MTRAL&gt;&lt;WORNL&gt;true&lt;/WORNL&gt;&lt;WORNB&gt;1536&lt;/WORNB&gt;&lt;READ /&gt;&lt;ACAPA&gt;0&lt;/ACAPA&gt;&lt;TYPE&gt;2&lt;/TYPE&gt;&lt;CLASS&gt;6&lt;/CLASS&gt;&lt;MINR&gt;0&lt;/MINR&gt;&lt;MAXR&gt;0&lt;/MAXR&gt;&lt;IWORN&gt;1536&lt;/IWORN&gt;&lt;ILOC /&gt;&lt;IUSES&gt;100&lt;/IUSES&gt;&lt;ILEVL&gt;15&lt;/ILEVL&gt;&lt;IABLE&gt;0&lt;/IABLE&gt;&lt;/IDATA&gt;&lt;/ITEM&gt;&lt;/INVEN&gt;&lt;ABLTYS&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Chopping&lt;/ACLASS&gt;&lt;APROF&gt;50&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Common&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;FireBuilding&lt;/ACLASS&gt;&lt;APROF&gt;0&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;matingpress&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Matingpress&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;Matingpressed&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Spell_ChangeSexSelf&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Change Sex Self&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Change sex self)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;/ABLTYS&gt;</MTEXT></MOB>
+<MOB><MCLAS>GenMob</MCLAS><MLEVL>17</MLEVL><MABLE>11</MABLE><MREJV>60</MREJV><MTEXT>&lt;NAME&gt;^#111a nak^#211ed h^#111um^#211an fe^#111mal^#211e can^#111nibal^N&lt;/NAME&gt;&lt;DESC&gt;An exile, nomad without any clothing, their skin darkened and leathery from the constant sun exposure. They seem to look at other humanoids with hunger, must be their only food source since they are so uncivilized... Cannibals. Her breasts are small, matching her skinny body with ribs showing, her pussy is covered in sand particles and dry as the desert.&lt;/DESC&gt;&lt;DISP&gt;^#111a nak^#211ed h^#111um^#211an fe^#111mal^#211e can^#111nibal^N ^#333wit^#222h a ^#211sling^N&lt;/DISP&gt;&lt;PROP&gt;11|55|17|17|0|17|60|1.0|162|67|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;CombatAbilities&lt;/BCLASS&gt;&lt;BPARMS /&gt;&lt;/BHAVE&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;MobileAggressive&lt;/BCLASS&gt;&lt;BPARMS&gt;min=10 max=20 chance=75 message="aha!!" -all +desert&lt;/BPARMS&gt;&lt;/BHAVE&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;Scriptable&lt;/BCLASS&gt;&lt;BPARMS&gt;load=progs/deathmessages.script~&lt;/BPARMS&gt;&lt;/BHAVE&gt;&lt;/BEHAVES&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;MONEY&gt;5&lt;/MONEY&gt;&lt;VARMONEY&gt;0.0&lt;/VARMONEY&gt;&lt;GENDER&gt;F&lt;/GENDER&gt;&lt;MRACE&gt;Human&lt;/MRACE&gt;&lt;FACTIONS&gt;&lt;FCTN ID="ALIGNMENT.INI"&gt;-5000&lt;/FCTN&gt;&lt;FCTN ID="INCLINATION.INI"&gt;-5999&lt;/FCTN&gt;&lt;/FACTIONS&gt;&lt;INVEN&gt;&lt;ITEM&gt;&lt;ICLASS&gt;GenAmmunition&lt;/ICLASS&gt;&lt;IDATA&gt;&lt;NAME&gt;a pack of 20 bullets&lt;/NAME&gt;&lt;DESC&gt;a pack of 20 bullets made from stone. &lt;/DESC&gt;&lt;DISP&gt;a pack of 20 bullets lies here&lt;/DISP&gt;&lt;PROP&gt;0|0|0|0|0|3|0|1.0|2|0|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES /&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;11&lt;/FLAG&gt;&lt;IDENT /&gt;&lt;VALUE&gt;1&lt;/VALUE&gt;&lt;MTRAL&gt;2585&lt;/MTRAL&gt;&lt;WORNL&gt;false&lt;/WORNL&gt;&lt;WORNB&gt;512&lt;/WORNB&gt;&lt;READ&gt;bullets&lt;/READ&gt;&lt;IWORN&gt;0&lt;/IWORN&gt;&lt;ILOC /&gt;&lt;IUSES&gt;10&lt;/IUSES&gt;&lt;ILEVL&gt;3&lt;/ILEVL&gt;&lt;IABLE&gt;0&lt;/IABLE&gt;&lt;/IDATA&gt;&lt;/ITEM&gt;&lt;ITEM&gt;&lt;ICLASS&gt;GenSling&lt;/ICLASS&gt;&lt;IDATA&gt;&lt;NAME&gt;a crude sling&lt;/NAME&gt;&lt;DESC&gt;a crude sling made from wood. &lt;/DESC&gt;&lt;DISP&gt;a crude sling lies here&lt;/DISP&gt;&lt;PROP&gt;0|0|0|6|0|15|0|1.0|1|0|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES /&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;11&lt;/FLAG&gt;&lt;IDENT /&gt;&lt;VALUE&gt;134&lt;/VALUE&gt;&lt;MTRAL&gt;1325&lt;/MTRAL&gt;&lt;WORNL&gt;false&lt;/WORNL&gt;&lt;WORNB&gt;1536&lt;/WORNB&gt;&lt;READ&gt;bullets&lt;/READ&gt;&lt;ACAPA&gt;10&lt;/ACAPA&gt;&lt;TYPE&gt;3&lt;/TYPE&gt;&lt;CLASS&gt;7&lt;/CLASS&gt;&lt;MINR&gt;1&lt;/MINR&gt;&lt;MAXR&gt;1&lt;/MAXR&gt;&lt;IWORN&gt;1024&lt;/IWORN&gt;&lt;ILOC /&gt;&lt;IUSES&gt;10&lt;/IUSES&gt;&lt;ILEVL&gt;15&lt;/ILEVL&gt;&lt;IABLE&gt;0&lt;/IABLE&gt;&lt;/IDATA&gt;&lt;/ITEM&gt;&lt;ITEM&gt;&lt;ICLASS&gt;GenWeapon&lt;/ICLASS&gt;&lt;IDATA&gt;&lt;NAME&gt;a bone knife&lt;/NAME&gt;&lt;DESC&gt;a bone knife.  &lt;/DESC&gt;&lt;DISP&gt;a bone knife lies here&lt;/DISP&gt;&lt;PROP&gt;0|0|0|5|0|16|0|1.0|3|0|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES /&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;11&lt;/FLAG&gt;&lt;IDENT /&gt;&lt;VALUE&gt;77&lt;/VALUE&gt;&lt;MTRAL&gt;2648&lt;/MTRAL&gt;&lt;WORNL&gt;false&lt;/WORNL&gt;&lt;WORNB&gt;1536&lt;/WORNB&gt;&lt;READ /&gt;&lt;ACAPA&gt;0&lt;/ACAPA&gt;&lt;TYPE&gt;2&lt;/TYPE&gt;&lt;CLASS&gt;9&lt;/CLASS&gt;&lt;MINR&gt;0&lt;/MINR&gt;&lt;MAXR&gt;0&lt;/MAXR&gt;&lt;IWORN&gt;512&lt;/IWORN&gt;&lt;ILOC /&gt;&lt;IUSES&gt;100&lt;/IUSES&gt;&lt;ILEVL&gt;16&lt;/ILEVL&gt;&lt;IABLE&gt;0&lt;/IABLE&gt;&lt;/IDATA&gt;&lt;/ITEM&gt;&lt;/INVEN&gt;&lt;ABLTYS&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Chopping&lt;/ACLASS&gt;&lt;APROF&gt;50&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Common&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;FireBuilding&lt;/ACLASS&gt;&lt;APROF&gt;0&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;matingpress&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Matingpress&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;Matingpressed&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Skill_TwoWeaponFighting&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Spell_ChangeSexSelf&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Change Sex Self&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Change sex self)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;/ABLTYS&gt;</MTEXT></MOB>
+<MOB><MCLAS>GenMob</MCLAS><MLEVL>18</MLEVL><MABLE>11</MABLE><MREJV>60</MREJV><MTEXT>&lt;NAME&gt;^#105a nak^#205ed resu^#105rgent^#205is female can^#205nibal^N&lt;/NAME&gt;&lt;DESC&gt;An exile, nomad without any clothing, their skin darkened and leathery from the constant sun exposure. They seem to look at other humanoids with hunger, must be their only food source since they are so uncivilized... Cannibals. Her breasts are small, matching her skinny body with ribs showing, her pussy is covered in sand particles and dry as the desert.&lt;/DESC&gt;&lt;DISP&gt;^#105a nak^#205ed resu^#105rgent^#205is female can^#205nibal^N ^#333wit^#222h a s^#333pea^#222r^N&lt;/DISP&gt;&lt;PROP&gt;11|51|18|18|0|18|60|1.0|162|67|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;CombatAbilities&lt;/BCLASS&gt;&lt;BPARMS /&gt;&lt;/BHAVE&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;MobileAggressive&lt;/BCLASS&gt;&lt;BPARMS&gt;min=10 max=20 chance=75 message="aha!!" -all +desert&lt;/BPARMS&gt;&lt;/BHAVE&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;Scriptable&lt;/BCLASS&gt;&lt;BPARMS&gt;load=progs/deathmessages.script~&lt;/BPARMS&gt;&lt;/BHAVE&gt;&lt;/BEHAVES&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;MONEY&gt;5&lt;/MONEY&gt;&lt;VARMONEY&gt;0.0&lt;/VARMONEY&gt;&lt;GENDER&gt;F&lt;/GENDER&gt;&lt;MRACE&gt;Human&lt;/MRACE&gt;&lt;FACTIONS&gt;&lt;FCTN ID="ALIGNMENT.INI"&gt;-5000&lt;/FCTN&gt;&lt;FCTN ID="INCLINATION.INI"&gt;-5999&lt;/FCTN&gt;&lt;/FACTIONS&gt;&lt;INVEN&gt;&lt;ITEM&gt;&lt;ICLASS&gt;GenWeapon&lt;/ICLASS&gt;&lt;IDATA&gt;&lt;NAME&gt;a primitive spear&lt;/NAME&gt;&lt;DESC&gt;a primitive spear made with a bone blade, attached to a dried wooden shaft. In poor condition&lt;/DESC&gt;&lt;DISP&gt;a primitive spear made with bone&lt;/DISP&gt;&lt;PROP&gt;0|0|10|15|0|15|0|1.0|2|0|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES /&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;11&lt;/FLAG&gt;&lt;IDENT /&gt;&lt;VALUE&gt;313&lt;/VALUE&gt;&lt;MTRAL&gt;2648&lt;/MTRAL&gt;&lt;WORNL&gt;true&lt;/WORNL&gt;&lt;WORNB&gt;1536&lt;/WORNB&gt;&lt;READ /&gt;&lt;ACAPA&gt;0&lt;/ACAPA&gt;&lt;TYPE&gt;2&lt;/TYPE&gt;&lt;CLASS&gt;6&lt;/CLASS&gt;&lt;MINR&gt;0&lt;/MINR&gt;&lt;MAXR&gt;0&lt;/MAXR&gt;&lt;IWORN&gt;1536&lt;/IWORN&gt;&lt;ILOC /&gt;&lt;IUSES&gt;100&lt;/IUSES&gt;&lt;ILEVL&gt;15&lt;/ILEVL&gt;&lt;IABLE&gt;0&lt;/IABLE&gt;&lt;/IDATA&gt;&lt;/ITEM&gt;&lt;/INVEN&gt;&lt;ABLTYS&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Chopping&lt;/ACLASS&gt;&lt;APROF&gt;50&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Common&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;FireBuilding&lt;/ACLASS&gt;&lt;APROF&gt;0&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;matingpress&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Matingpress&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;Matingpressed&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Spell_ChangeSexSelf&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Change Sex Self&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Change sex self)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;/ABLTYS&gt;</MTEXT></MOB>
+</MOBS><CUSTOM><ABILITY ID="Spell_ChangeSexSelf" TYPE="GenAbility"><CLASS>Spell_ChangeSexSelf</CLASS><NAME>Change Sex Self</NAME><DISPLAY>(Change sex self)</DISPLAY><TRIGSTR>CAST, CA, C</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SPELL,NOTHING</CLASSIFICATION><OVERRIDEMANA>-1</OVERRIDEMANA><USAGEMASK>MANA</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>OK_SELF</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT></SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; fizzles a spell.</FIZZLEMSG><AUTOCASTMSG></AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; cast(s) a spell of transformation over &lt;T-NAME&gt;.</CASTMSG><POSTCASTMSG>&lt;S-NAME&gt; shift(s) and transform(s) into to the opposite gender!</POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;Allows caster to change their own sex for a while.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>100</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG>&lt;S-NAME&gt; shift(s) back to the original form.</UNINVOKEMSG><MOCKABILITY>Spell_ChangeSex</MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG></ABILITY><ABILITY ID="Spell_ChangeSexSelf" TYPE="GenAbility"><CLASS>Spell_ChangeSexSelf</CLASS><NAME>Change Sex Self</NAME><DISPLAY>(Change sex self)</DISPLAY><TRIGSTR>CAST, CA, C</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SPELL,NOTHING</CLASSIFICATION><OVERRIDEMANA>-1</OVERRIDEMANA><USAGEMASK>MANA</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>OK_SELF</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT></SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; fizzles a spell.</FIZZLEMSG><AUTOCASTMSG></AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; cast(s) a spell of transformation over &lt;T-NAME&gt;.</CASTMSG><POSTCASTMSG>&lt;S-NAME&gt; shift(s) and transform(s) into to the opposite gender!</POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;Allows caster to change their own sex for a while.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>100</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG>&lt;S-NAME&gt; shift(s) back to the original form.</UNINVOKEMSG><MOCKABILITY>Spell_ChangeSex</MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG></ABILITY><ABILITY ID="matingpress" TYPE="GenAbility"><CLASS>matingpress</CLASS><NAME>Matingpress</NAME><DISPLAY>Matingpressed</DISPLAY><TRIGSTR>MP, MATING, MATINGPRESS, PRESS</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,BREEDING</CLASSIFICATION><OVERRIDEMANA>100</OVERRIDEMANA><USAGEMASK>MOVEMENT</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>MALICIOUS</QUALITY><HERESTATS>str-2 dex-2 con-2 savemin-5 attacks+2 ability-2 move-50 armor-20 savepierce-5 saveslash+10 damage+5</HERESTATS><CASTMASK>+GENDER -neuter</CASTMASK><SCRIPT>LOAD=progs/matingpress.script</SCRIPT><TARGETMASK>+EFFECTS </TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempts to tackle &lt;T-NAME&gt; into a battlefuck mating press but is evaded.</FIZZLEMSG><AUTOCASTMSG>An amazing thing happens to &lt;T-NAME&gt;!</AUTOCASTMSG><CASTMSG>&lt;T-NAME&gt; is held in a battlefuck mating press by &lt;S-NAME&gt;!</CASTMSG><POSTCASTMSG>*SLAP* *PLAP* &lt;S-NAME&gt; &lt;DAMAGE&gt; &lt;T-NAME&gt; with the intense matingpress pounding! *PLAP* *PLOP*</POSTCASTMSG><ATTACKCODE>MIND</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>2*@x1-@x2</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt; By grappling and putting your enemy under you, you can sexually assault your enemy for some damage and healing! You may grind your genitals if of same gender with the target but obviously pregnancy is out of the question. This puts the target into submission, increasing target`s offense due your position but decreases their defenses greatly due theirs...</HELP><TICKSBETWEENCASTS>6</TICKSBETWEENCASTS><TICKSOVERRIDE>6</TICKSOVERRIDE><TICKAFFECTS>true</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG>&lt;S-NAME&gt; pulls away from &lt;T-NAME&gt; and gets back up.</UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG></ABILITY><ABILITY ID="Spell_ChangeSexSelf" TYPE="GenAbility"><CLASS>Spell_ChangeSexSelf</CLASS><NAME>Change Sex Self</NAME><DISPLAY>(Change sex self)</DISPLAY><TRIGSTR>CAST, CA, C</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SPELL,NOTHING</CLASSIFICATION><OVERRIDEMANA>-1</OVERRIDEMANA><USAGEMASK>MANA</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>OK_SELF</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT></SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; fizzles a spell.</FIZZLEMSG><AUTOCASTMSG></AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; cast(s) a spell of transformation over &lt;T-NAME&gt;.</CASTMSG><POSTCASTMSG>&lt;S-NAME&gt; shift(s) and transform(s) into to the opposite gender!</POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;Allows caster to change their own sex for a while.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>100</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG>&lt;S-NAME&gt; shift(s) back to the original form.</UNINVOKEMSG><MOCKABILITY>Spell_ChangeSex</MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG></ABILITY><ABILITY ID="matingpress" TYPE="GenAbility"><CLASS>matingpress</CLASS><NAME>Matingpress</NAME><DISPLAY>Matingpressed</DISPLAY><TRIGSTR>MP, MATING, MATINGPRESS, PRESS</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,BREEDING</CLASSIFICATION><OVERRIDEMANA>100</OVERRIDEMANA><USAGEMASK>MOVEMENT</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>MALICIOUS</QUALITY><HERESTATS>str-2 dex-2 con-2 savemin-5 attacks+2 ability-2 move-50 armor-20 savepierce-5 saveslash+10 damage+5</HERESTATS><CASTMASK>+GENDER -neuter</CASTMASK><SCRIPT>LOAD=progs/matingpress.script</SCRIPT><TARGETMASK>+EFFECTS </TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempts to tackle &lt;T-NAME&gt; into a battlefuck mating press but is evaded.</FIZZLEMSG><AUTOCASTMSG>An amazing thing happens to &lt;T-NAME&gt;!</AUTOCASTMSG><CASTMSG>&lt;T-NAME&gt; is held in a battlefuck mating press by &lt;S-NAME&gt;!</CASTMSG><POSTCASTMSG>*SLAP* *PLAP* &lt;S-NAME&gt; &lt;DAMAGE&gt; &lt;T-NAME&gt; with the intense matingpress pounding! *PLAP* *PLOP*</POSTCASTMSG><ATTACKCODE>MIND</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>2*@x1-@x2</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt; By grappling and putting your enemy under you, you can sexually assault your enemy for some damage and healing! You may grind your genitals if of same gender with the target but obviously pregnancy is out of the question. This puts the target into submission, increasing target`s offense due your position but decreases their defenses greatly due theirs...</HELP><TICKSBETWEENCASTS>6</TICKSBETWEENCASTS><TICKSOVERRIDE>6</TICKSOVERRIDE><TICKAFFECTS>true</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG>&lt;S-NAME&gt; pulls away from &lt;T-NAME&gt; and gets back up.</UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG></ABILITY><ABILITY ID="matingpress" TYPE="GenAbility"><CLASS>matingpress</CLASS><NAME>Matingpress</NAME><DISPLAY>Matingpressed</DISPLAY><TRIGSTR>MP, MATING, MATINGPRESS, PRESS</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,BREEDING</CLASSIFICATION><OVERRIDEMANA>100</OVERRIDEMANA><USAGEMASK>MOVEMENT</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>MALICIOUS</QUALITY><HERESTATS>str-2 dex-2 con-2 savemin-5 attacks+2 ability-2 move-50 armor-20 savepierce-5 saveslash+10 damage+5</HERESTATS><CASTMASK>+GENDER -neuter</CASTMASK><SCRIPT>LOAD=progs/matingpress.script</SCRIPT><TARGETMASK>+EFFECTS </TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempts to tackle &lt;T-NAME&gt; into a battlefuck mating press but is evaded.</FIZZLEMSG><AUTOCASTMSG>An amazing thing happens to &lt;T-NAME&gt;!</AUTOCASTMSG><CASTMSG>&lt;T-NAME&gt; is held in a battlefuck mating press by &lt;S-NAME&gt;!</CASTMSG><POSTCASTMSG>*SLAP* *PLAP* &lt;S-NAME&gt; &lt;DAMAGE&gt; &lt;T-NAME&gt; with the intense matingpress pounding! *PLAP* *PLOP*</POSTCASTMSG><ATTACKCODE>MIND</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>2*@x1-@x2</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt; By grappling and putting your enemy under you, you can sexually assault your enemy for some damage and healing! You may grind your genitals if of same gender with the target but obviously pregnancy is out of the question. This puts the target into submission, increasing target`s offense due your position but decreases their defenses greatly due theirs...</HELP><TICKSBETWEENCASTS>6</TICKSBETWEENCASTS><TICKSOVERRIDE>6</TICKSOVERRIDE><TICKAFFECTS>true</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG>&lt;S-NAME&gt; pulls away from &lt;T-NAME&gt; and gets back up.</UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG></ABILITY><ABILITY ID="Spell_ChangeSexSelf" TYPE="GenAbility"><CLASS>Spell_ChangeSexSelf</CLASS><NAME>Change Sex Self</NAME><DISPLAY>(Change sex self)</DISPLAY><TRIGSTR>CAST, CA, C</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SPELL,NOTHING</CLASSIFICATION><OVERRIDEMANA>-1</OVERRIDEMANA><USAGEMASK>MANA</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>OK_SELF</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT></SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; fizzles a spell.</FIZZLEMSG><AUTOCASTMSG></AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; cast(s) a spell of transformation over &lt;T-NAME&gt;.</CASTMSG><POSTCASTMSG>&lt;S-NAME&gt; shift(s) and transform(s) into to the opposite gender!</POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;Allows caster to change their own sex for a while.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>100</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG>&lt;S-NAME&gt; shift(s) back to the original form.</UNINVOKEMSG><MOCKABILITY>Spell_ChangeSex</MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG></ABILITY><ABILITY ID="Spell_ChangeSexSelf" TYPE="GenAbility"><CLASS>Spell_ChangeSexSelf</CLASS><NAME>Change Sex Self</NAME><DISPLAY>(Change sex self)</DISPLAY><TRIGSTR>CAST, CA, C</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SPELL,NOTHING</CLASSIFICATION><OVERRIDEMANA>-1</OVERRIDEMANA><USAGEMASK>MANA</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>OK_SELF</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT></SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; fizzles a spell.</FIZZLEMSG><AUTOCASTMSG></AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; cast(s) a spell of transformation over &lt;T-NAME&gt;.</CASTMSG><POSTCASTMSG>&lt;S-NAME&gt; shift(s) and transform(s) into to the opposite gender!</POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;Allows caster to change their own sex for a while.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>100</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG>&lt;S-NAME&gt; shift(s) back to the original form.</UNINVOKEMSG><MOCKABILITY>Spell_ChangeSex</MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG></ABILITY><ABILITY ID="matingpress" TYPE="GenAbility"><CLASS>matingpress</CLASS><NAME>Matingpress</NAME><DISPLAY>Matingpressed</DISPLAY><TRIGSTR>MP, MATING, MATINGPRESS, PRESS</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,BREEDING</CLASSIFICATION><OVERRIDEMANA>100</OVERRIDEMANA><USAGEMASK>MOVEMENT</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>MALICIOUS</QUALITY><HERESTATS>str-2 dex-2 con-2 savemin-5 attacks+2 ability-2 move-50 armor-20 savepierce-5 saveslash+10 damage+5</HERESTATS><CASTMASK>+GENDER -neuter</CASTMASK><SCRIPT>LOAD=progs/matingpress.script</SCRIPT><TARGETMASK>+EFFECTS </TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempts to tackle &lt;T-NAME&gt; into a battlefuck mating press but is evaded.</FIZZLEMSG><AUTOCASTMSG>An amazing thing happens to &lt;T-NAME&gt;!</AUTOCASTMSG><CASTMSG>&lt;T-NAME&gt; is held in a battlefuck mating press by &lt;S-NAME&gt;!</CASTMSG><POSTCASTMSG>*SLAP* *PLAP* &lt;S-NAME&gt; &lt;DAMAGE&gt; &lt;T-NAME&gt; with the intense matingpress pounding! *PLAP* *PLOP*</POSTCASTMSG><ATTACKCODE>MIND</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>2*@x1-@x2</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt; By grappling and putting your enemy under you, you can sexually assault your enemy for some damage and healing! You may grind your genitals if of same gender with the target but obviously pregnancy is out of the question. This puts the target into submission, increasing target`s offense due your position but decreases their defenses greatly due theirs...</HELP><TICKSBETWEENCASTS>6</TICKSBETWEENCASTS><TICKSOVERRIDE>6</TICKSOVERRIDE><TICKAFFECTS>true</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG>&lt;S-NAME&gt; pulls away from &lt;T-NAME&gt; and gets back up.</UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG></ABILITY><RACE><ID>Resurgentis</ID><NAME>Resurgentis</NAME><CAT>Humanoid</CAT><MHEIGHT>75</MHEIGHT><FHEIGHT>73</FHEIGHT><VHEIGHT>10</VHEIGHT><BWEIGHT>180</BWEIGHT><VWEIGHT>40</VWEIGHT><WEAR>0</WEAR><AVAIL>1</AVAIL><RIDE>false</RIDE><DESTROYBODY>false</DESTROYBODY><BODY>0;2;2;1;1;2;2;1;2;2;1;0;1;1;0;0;</BODY><XPADJ>0</XPADJ><HEALTHRACE>Humanoid</HEALTHRACE><EVENTRACE>Humanoid</EVENTRACE><WEAPONRACE>Humanoid</WEAPONRACE><ARRIVE>arrives</ARRIVE><LEAVE>leaves</LEAVE><HELP /><AGING>0, 1, 3, 15, 35, 53, 70, 74, 78</AGING><ESTATS>0|5|5|15|0|0|0|0.0|0|0|128|</ESTATS><ASTATS>0|0|0|0|0|0|0|0|-10|-20|0|0|3|0|0|0|0|0|10|0|0|0|2|0|2|3|0|0|0|-3|0|0|0|0|0|0|0|0|0|0|0|0|50|0|0|0|0|</ASTATS><CSTATS/><ASTATE>0|100|0|0|200|0|</ASTATE><STARTASTATE>0|100|0|0|100|0|</STARTASTATE><DISFLAGS>0</DISFLAGS><RESOURCES/><OUTFIT/><WEAPON><ITEMS><ITEM><ICLAS>StdWeapon</ICLAS><IUSES>100</IUSES><ILEVL>0</ILEVL><IABLE>0</IABLE><IREJV>0</IREJV><ITEXT /></ITEM>
+</ITEMS></WEAPON><RABILITIES><RABILITY><RCLASS>Fighter_Berzerk</RCLASS><RLEVEL>1</RLEVEL><RPROFF>100</RPROFF><RAGAIN>false</RAGAIN><RPARM></RPARM></RABILITY></RABILITIES><BREATHELIST>4021</BREATHELIST><REFFECTS/><CABILITIES><CABILITY><CCLASS>Undercommon</CCLASS><CPROFF>50</CPROFF><CPLEVL>5</CPLEVL><CGAIN>true</CGAIN></CABILITY><CABILITY><CCLASS>Skill_ConsumeCorpse</CCLASS><CPROFF>100</CPROFF><CPLEVL>10</CPLEVL><CGAIN>true</CGAIN></CABILITY><CABILITY><CCLASS>Skill_Track</CCLASS><CPROFF>100</CPROFF><CPLEVL>15</CPLEVL><CGAIN>true</CGAIN></CABILITY><CABILITY><CCLASS>Common</CCLASS><CPROFF>100</CPROFF><CPLEVL>0</CPLEVL><CGAIN>true</CGAIN></CABILITY></CABILITIES><IABILITIES/></RACE><ABILITY ID="matingpress" TYPE="GenAbility"><CLASS>matingpress</CLASS><NAME>Matingpress</NAME><DISPLAY>Matingpressed</DISPLAY><TRIGSTR>MP, MATING, MATINGPRESS, PRESS</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,BREEDING</CLASSIFICATION><OVERRIDEMANA>100</OVERRIDEMANA><USAGEMASK>MOVEMENT</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>MALICIOUS</QUALITY><HERESTATS>str-2 dex-2 con-2 savemin-5 attacks+2 ability-2 move-50 armor-20 savepierce-5 saveslash+10 damage+5</HERESTATS><CASTMASK>+GENDER -neuter</CASTMASK><SCRIPT>LOAD=progs/matingpress.script</SCRIPT><TARGETMASK>+EFFECTS </TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempts to tackle &lt;T-NAME&gt; into a battlefuck mating press but is evaded.</FIZZLEMSG><AUTOCASTMSG>An amazing thing happens to &lt;T-NAME&gt;!</AUTOCASTMSG><CASTMSG>&lt;T-NAME&gt; is held in a battlefuck mating press by &lt;S-NAME&gt;!</CASTMSG><POSTCASTMSG>*SLAP* *PLAP* &lt;S-NAME&gt; &lt;DAMAGE&gt; &lt;T-NAME&gt; with the intense matingpress pounding! *PLAP* *PLOP*</POSTCASTMSG><ATTACKCODE>MIND</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>2*@x1-@x2</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt; By grappling and putting your enemy under you, you can sexually assault your enemy for some damage and healing! You may grind your genitals if of same gender with the target but obviously pregnancy is out of the question. This puts the target into submission, increasing target`s offense due your position but decreases their defenses greatly due theirs...</HELP><TICKSBETWEENCASTS>6</TICKSBETWEENCASTS><TICKSOVERRIDE>6</TICKSOVERRIDE><TICKAFFECTS>true</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG>&lt;S-NAME&gt; pulls away from &lt;T-NAME&gt; and gets back up.</UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG></ABILITY><ABILITY ID="Spell_ChangeSexSelf" TYPE="GenAbility"><CLASS>Spell_ChangeSexSelf</CLASS><NAME>Change Sex Self</NAME><DISPLAY>(Change sex self)</DISPLAY><TRIGSTR>CAST, CA, C</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SPELL,NOTHING</CLASSIFICATION><OVERRIDEMANA>-1</OVERRIDEMANA><USAGEMASK>MANA</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>OK_SELF</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT></SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; fizzles a spell.</FIZZLEMSG><AUTOCASTMSG></AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; cast(s) a spell of transformation over &lt;T-NAME&gt;.</CASTMSG><POSTCASTMSG>&lt;S-NAME&gt; shift(s) and transform(s) into to the opposite gender!</POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;Allows caster to change their own sex for a while.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>100</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG>&lt;S-NAME&gt; shift(s) back to the original form.</UNINVOKEMSG><MOCKABILITY>Spell_ChangeSex</MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG></ABILITY><ABILITY ID="matingpress" TYPE="GenAbility"><CLASS>matingpress</CLASS><NAME>Matingpress</NAME><DISPLAY>Matingpressed</DISPLAY><TRIGSTR>MP, MATING, MATINGPRESS, PRESS</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,BREEDING</CLASSIFICATION><OVERRIDEMANA>100</OVERRIDEMANA><USAGEMASK>MOVEMENT</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>MALICIOUS</QUALITY><HERESTATS>str-2 dex-2 con-2 savemin-5 attacks+2 ability-2 move-50 armor-20 savepierce-5 saveslash+10 damage+5</HERESTATS><CASTMASK>+GENDER -neuter</CASTMASK><SCRIPT>LOAD=progs/matingpress.script</SCRIPT><TARGETMASK>+EFFECTS </TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempts to tackle &lt;T-NAME&gt; into a battlefuck mating press but is evaded.</FIZZLEMSG><AUTOCASTMSG>An amazing thing happens to &lt;T-NAME&gt;!</AUTOCASTMSG><CASTMSG>&lt;T-NAME&gt; is held in a battlefuck mating press by &lt;S-NAME&gt;!</CASTMSG><POSTCASTMSG>*SLAP* *PLAP* &lt;S-NAME&gt; &lt;DAMAGE&gt; &lt;T-NAME&gt; with the intense matingpress pounding! *PLAP* *PLOP*</POSTCASTMSG><ATTACKCODE>MIND</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>2*@x1-@x2</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt; By grappling and putting your enemy under you, you can sexually assault your enemy for some damage and healing! You may grind your genitals if of same gender with the target but obviously pregnancy is out of the question. This puts the target into submission, increasing target`s offense due your position but decreases their defenses greatly due theirs...</HELP><TICKSBETWEENCASTS>6</TICKSBETWEENCASTS><TICKSOVERRIDE>6</TICKSOVERRIDE><TICKAFFECTS>true</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG>&lt;S-NAME&gt; pulls away from &lt;T-NAME&gt; and gets back up.</UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG></ABILITY><ABILITY ID="matingpress" TYPE="GenAbility"><CLASS>matingpress</CLASS><NAME>Matingpress</NAME><DISPLAY>Matingpressed</DISPLAY><TRIGSTR>MP, MATING, MATINGPRESS, PRESS</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,BREEDING</CLASSIFICATION><OVERRIDEMANA>100</OVERRIDEMANA><USAGEMASK>MOVEMENT</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>MALICIOUS</QUALITY><HERESTATS>str-2 dex-2 con-2 savemin-5 attacks+2 ability-2 move-50 armor-20 savepierce-5 saveslash+10 damage+5</HERESTATS><CASTMASK>+GENDER -neuter</CASTMASK><SCRIPT>LOAD=progs/matingpress.script</SCRIPT><TARGETMASK>+EFFECTS </TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempts to tackle &lt;T-NAME&gt; into a battlefuck mating press but is evaded.</FIZZLEMSG><AUTOCASTMSG>An amazing thing happens to &lt;T-NAME&gt;!</AUTOCASTMSG><CASTMSG>&lt;T-NAME&gt; is held in a battlefuck mating press by &lt;S-NAME&gt;!</CASTMSG><POSTCASTMSG>*SLAP* *PLAP* &lt;S-NAME&gt; &lt;DAMAGE&gt; &lt;T-NAME&gt; with the intense matingpress pounding! *PLAP* *PLOP*</POSTCASTMSG><ATTACKCODE>MIND</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>2*@x1-@x2</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt; By grappling and putting your enemy under you, you can sexually assault your enemy for some damage and healing! You may grind your genitals if of same gender with the target but obviously pregnancy is out of the question. This puts the target into submission, increasing target`s offense due your position but decreases their defenses greatly due theirs...</HELP><TICKSBETWEENCASTS>6</TICKSBETWEENCASTS><TICKSOVERRIDE>6</TICKSOVERRIDE><TICKAFFECTS>true</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG>&lt;S-NAME&gt; pulls away from &lt;T-NAME&gt; and gets back up.</UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG></ABILITY><ABILITY ID="Spell_ChangeSexSelf" TYPE="GenAbility"><CLASS>Spell_ChangeSexSelf</CLASS><NAME>Change Sex Self</NAME><DISPLAY>(Change sex self)</DISPLAY><TRIGSTR>CAST, CA, C</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SPELL,NOTHING</CLASSIFICATION><OVERRIDEMANA>-1</OVERRIDEMANA><USAGEMASK>MANA</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>OK_SELF</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT></SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; fizzles a spell.</FIZZLEMSG><AUTOCASTMSG></AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; cast(s) a spell of transformation over &lt;T-NAME&gt;.</CASTMSG><POSTCASTMSG>&lt;S-NAME&gt; shift(s) and transform(s) into to the opposite gender!</POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;Allows caster to change their own sex for a while.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>100</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG>&lt;S-NAME&gt; shift(s) back to the original form.</UNINVOKEMSG><MOCKABILITY>Spell_ChangeSex</MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG></ABILITY></CUSTOM><FILES><FILE NAME="progs/deathmessages.script">kill_prog
+## npc to pc
+if isnpc($n)
+mpsetvar $n snufftoggle 1
+endif
+if var($n snufftoggle == 1)
 ## corrupted witch
 if isname($n '^#111A ^#444"wi^#333tc^#444h"')
 if sex($n == M) or sex($n == O) or sex($n == U)
@@ -20,7 +28,7 @@ case 1
 mpecho ^r$n ^rtackles $t down, corrupted pussy pressing on $M's, $n^r rolls her hips around in a crazy speed, almost causing the friction to create fire. Suddenly $n^r stabs $t's throat with her clawed hands and squirts black gooey liquid out of her vagina at the same time as $t as $E goes limp right after.^N
 endswitch
 else
-if sex($t == F) or sex($t == A) or sex($t == H)
+if sex($t == M) or sex($t == O) or sex($t == U)
 switch $%RANDNUM(3)%
 case 1
 mpecho ^r$n ^rswipes her claw across $t's throat in one swift motion causing blood to spray out consistently, as $E slumps on the ground $n^r tackles $S causing $S to fall backwards with knees bent and gurgling with blood filled airpipe. $n^r inserts $M cock in her corrupted pussy and thrusts back and forth fast enough to become a blur down there! ^p*PLAP* *PLAP* *PLAP*^r And after a little while $t busts $M last big load into the corrupted depths of $n^r's pussy, causing the witch to get off the now dead $t, satisfied with a filling of cream in her.^N
@@ -69,7 +77,7 @@ endif
 if sex($n == F) or sex($n == A) or sex($n == H)
 if sex($t == F) or sex($t == A) or sex($t == H)
 else
-if sex($t == F) or sex($t == A) or sex($t == H)
+if sex($t == M) or sex($t == O) or sex($t == U)
 endif
 endif
 endif
@@ -112,7 +120,7 @@ case 1
 mpecho ^r$t ^rfalls on the ground too wounded to fight, $n^r scuttles to $M vagina, sniffing and beginning to bite at the lips as $t screams in pain, $n^r tries to force itself inside the hole, stretching and ripping it as $t begins to pass out from blood loss and pain, soon $E is motionless as $t made it's way in the womb, figuring there aint much in there, it crawls back out, leaving a massive gaping hole behind.^N
 endswitch
 else
-if sex($t == F) or sex($t == A) or sex($t == H)
+if sex($t == M) or sex($t == O) or sex($t == U)
 switch $%RANDNUM(1)%
 case 1
 mpecho  $t ^rfalls on the ground too wounded to fight, $n^r hops on $M cock, sniffing and nibbling the balls, causing $t to scream in pain for a second until $n^r climbs and eases it's pussy on the cock, rapidly moving back and forth and making $t pump into itself as $t bleeds out and passes out slowly. Once $t steals a third fat load from $n, $E is finally motionless. $t hops off the cock.^N
@@ -121,9 +129,136 @@ endif
 endif
 endif
 endif
+## desert nomad cannibals
+if isname($n '^#111a nak^#211ed h^#111um^#211an ^#111mal^#211e no^#111mad^N') or isname($n '^#111a nak^#211ed h^#111um^#211an ^#111mal^#211e no^#111mad^N') or isname($n '^#105a nak^#205ed resu^#105rgent^#205is male no^#105mad^N') or isname($n '^#105a nak^#205ed resu^#105rgent^#205is female no^#105mad^N') or isname($n '^#105a nak^#205ed ^wbon^We-armo^wred^N ^#205resu^#105rgent^#205is male no^#105mad^N')
+if sex($n == M) or sex($n == O) or sex($n == U)
+if sex($t == M) or sex($t == O) or sex($t == U)
+switch $%RANDNUM(2)%
+case 1
+mpecho $n stabs his spear through $t's chest and grounds the spear's butt down, making it hold the impaled $t on foot as $E gasps and coughs blood, reaching out but it's futile. $n moves behind $t and sticks his large dark cock in $t's ass, rapidly pumping and causing $t to slide a little on the spear, quickly fading away as the buttfucking continues, Soon $n unloads a fat load straight in the guts of $t and pulls out, moving to pull the spear off the now motionless $t in a bloody spray.
+case 2
+mpecho $n stabs his spear through $t and raises the impaled $t in the air, causing $M to slide down the spear and scream in pain and gasp. $n grounds the spear on the ground upright as $t is still impaled by the middle, $n holds $M legs and begins to roughly fuck $M ass while $E tries not to move up or down the spear to not suffer any more while $E passes out slowly, clapping noises rise as $n dumps a load in, and goes for another and another... Eventually $t is motionless when $n dries his balls in and pulls his spear off and stands.
+endswitch
+else
+if sex($t == F) or sex($t == A) or sex($t == H)
+switch $%RANDNUM(3)%
+case 1
+mpecho $n stabs his spear through $t's chest and grounds the spear's butt down, making it hold the impaled $t on foot as $E gasps and coughs blood, reaching out but it's futile. $n moves behind $t and sticks his large dark cock in $t's ass, rapidly pumping and causing $t to slide a little on the spear, quickly fading away as the buttfucking continues, Soon $n unloads a fat load straight in the guts of $t and pulls out, moving to pull the spear off the now motionless $t in a bloody spray.
+case 2
+mpecho $n stabs his spear through $t's chest and grounds the spear's butt down, making it hold the impaled $t on foot as $E gasps and coughs blood, reaching out but it's futile. $n moves behind $t and sticks his large dark cock in $t's pussy, rapidly pumping and causing $t to slide a little on the spear, quickly fading away as the brutal fucking continues, Soon $n unloads a fat load straight in the womb of $t and pulls out, moving to pull the spear off the now motionless $t in a bloody spray.
+case 3
+mpecho $n stabs his spear through $t and raises the impaled $t in the air, causing $M to slide down the spear and scream in pain and gasp. $n grounds the spear on the ground upright as $t is still impaled by the middle, $n holds $M legs and spreads them, beginning to roughly fuck $M pussy while $E tries not to move up or down the spear to not suffer any more while $E passes out slowly, clapping noises rise as $n dumps a load in, and goes for another and another... Eventually $t is motionless when $n dries his balls in and pulls his spear off and stands.
+endswitch
+endif
+endif
+endif
+if sex($n == F) or sex($n == A) or sex($n == H)
+if sex($t == F) or sex($t == A) or sex($t == H)
+switch $%RANDNUM(2)%
+case 1
+mpecho $n stabs her spear through $t's chest and grounds the spear on the ground, as $t chokes and reaches for the spear with no gain, $n gets behind $S, grabs $M ass with both hands and raises $M pussy to mouth height, lapping and licking on the tasty fresh pussy of $t while $E is in agony and lightheaded, bleeding out and choking. $n drinks the juices expelled from $t's vagina as $E slowly goes limp, eventually letting $M ass go and let $M slide down the spear as $n pulls it off, thinking how she'll eat that pussy pretty literally once they cook it at camp.
+case 2
+mpecho $n lunges at $t, impaling $M on the spear and pulling it out, $t slumps back on the ground, facing the sky as $M chokes and coughs blood. $n moves over $t and sits on $M face with her desert-dry, sand covered pussy. rolling her hips and getting a good seat while she chokes the already blood choking $t under her pussy, forcing $M to try to breath from it, after quite some time and $n managing to cum into the choking mouth of $t, $t ends up coughing blood and pussy juice onto the dark pussy and eventually go limp. Causing $n to get up.
+endswitch
+else
+if sex($t == M) or sex($t == O) or sex($t == U)
+switch $%RANDNUM(3)%
+case 1
+mpecho $n lunges at $t, impaling $M on the spear and pulling it out, $t slumps back on the ground, facing the sky as $M chokes and coughs blood. $n moves over $t and sits on $M face with her desert-dry, sand covered pussy. rolling her hips and getting a good seat while she chokes the already blood choking $t under her pussy, forcing $M to try to breath from it, after quite some time and $n managing to cum into the choking mouth of $t, $t ends up coughing blood and pussy juice onto the dark pussy and eventually go limp. Causing $n to get up.
+case 2
+mpecho $n stabs her spear through $t's chest and grounds the spear on the ground, as $t chokes and reaches for the spear with no gain, $n gets behind $S, grabs $M ass with both hands and raises $M cock to mouth height, lapping and licking on the tasty cock and balls of $t while $E is in agony and lightheaded, bleeding out and choking. $n gets $S cock and balls fully in her mouth at once and drinks the load of $t as $E cum and slowly go limp, eventually $n lets $M ass go and let $M slide down the spear, thinking how she'll eat that tasty cock quite literally once they cook it at camp.
+case 3
+mpecho $n impales $t with her spear and lets $S fall down, still impaled. $n gets on top and positions $t's cock up to slide in her desert-dry sand covered pussy as she begins to bounce violently. $t coughs out blood and reaches for the spear but soon goes too weak. $n keeps bouncing and receiving load after load from $t until $E finally goes fully limp, $n stands up satisfied and leaking cum out of her now wettened pussy like it's a waterfall.. of cum.
+endswitch
+endif
+endif
+endif
+endif
+## crypt mobs
+if isname($n 'an undead woman in a ripped dress') or isname($n 'a semi-skeletal undead woman') or isname($n 'a semi-skeletal undead man') or isname($n 'a skeletal woman in armor') or isname($n 'a skeletal man in armor')
+if sex($n == M) or sex($n == O) or sex($n == U)
+if sex($t == M) or sex($t == O) or sex($t == U)
+switch $%RANDNUM(1)%
+case 1
+mpecho [M ON M MESSAGE]
+endswitch
+else
+if sex($t == F) or sex($t == A) or sex($t == H)
+switch $%RANDNUM(1)%
+case 1
+mpecho [M ON F MESSAGE]
+endswitch
+endif
+endif
+endif
+if sex($n == F) or sex($n == A) or sex($n == H)
+if sex($t == F) or sex($t == A) or sex($t == H)
+switch $%RANDNUM(1)%
+case 1
+mpecho [F ON F MESSAGE]
+endswitch
+else
+if sex($t == M) or sex($t == O) or sex($t == U)
+switch $%RANDNUM(1)%
+case 1
+mpecho [F ON M MESSAGE]
+endswitch
+endif
+endif
+endif
+endif
+## insect cave mobs
+if isname($n 'A filthy giant insect') or isname($n 'a Giant Insect') or isname($n 'a larger giant insect') or isname($n a giant insect queen)
+if sex($n == M) or sex($n == O) or sex($n == U)
+if sex($t == M) or sex($t == O) or sex($t == U)
+switch $%RANDNUM(4)%
+case 1
+mpecho $n ^rtackles injured $t onto the ground belly first, inserting it's genital right into $t's ass and beginning to pump rapidly as it holds $M down with all it's legs and biting on $M as it does to kill $M. $t screams into the ground but soon it stops as $n begins to pump green slimey cum into $M ass pulls out to cover the motionless $t in it after.
+case 2
+mpecho $t ^rslumps back on the ground too injured to stand, $n jumps onto $S and inserts it's massive genital into $M mouth and begins to pump rapidly, choking $t with it's size as it does, pumping load after load as time passes, after second load $t was already limp. $n pumps about four loads of green oozy glowing cum into $M stomach and pulls out, complimentarily cumming all over $M face as it steps off.
+case 3
+mpecho ^r$t ^rslumps on the ground too wounded to fight, $n^r leaps on $t's face, inserting it's large genital into $E eye which causes $t to scream loudly while $n^r begins to pump into the bloody hole as $t squirms and screams, which is soon stopped as $t falls limp, $n^r keeps pumping his fresh new hole for a while before busting a nut into it and pulling out, still dripping oozy green cum from the tip, moving to the other one... Once done busting a second load to the other 'hole' it hops off.^N
+case 4
+mpecho ^r$n ^rtackles $t and inserts his genital directly into a random wound on $E's torso, rapidly pumping the bleeding hole as $t screams and tries to get $n^r out, with no success. $n^r pumps it's first load into the hole as $t shakes and slowly falls limp. $n^r takes it's time busting atleast three loads in various alternative holes it find on the body before becoming dry of oozy green cum and leaving it alone.^N
+endswitch
+else
+if sex($t == F) or sex($t == A) or sex($t == H)
+switch $%RANDNUM(5)%
+case 1
+mpecho $n ^rtackles injured $t onto the ground belly first, inserting it's genital right into $t's ass and beginning to pump rapidly as it holds $M down with all it's legs and biting on $M as it tries to kill $M. $t screams into the ground but soon it stops as $n begins to pump green slimey cum into $M ass then pulls out to cover the motionless $t in it after.
+case 2
+mpecho $n ^rtackles injured $t onto the ground on $S back, inserting it's genital right into $t's pussy and beginning to pump rapidly as it holds $M down with all it's legs and biting on $M as it tries to kill $M. $t screams but soon it stops as $n begins to pump green slimey cum into $M womb then pulls out to cover the motionless $t in it after.
+case 3
+mpecho $t ^rslumps back on the ground too injured to stand, $n jumps onto $S and inserts it's massive genital into $M mouth and begins to pump rapidly, choking $t with it's size as it does, pumping load after load as time passes, after second load $t was already limp. $n pumps about four loads of green oozy glowing cum into $M stomach and pulls out, complimentarily cumming all over $M face as it steps off.
+case 4
+mpecho ^r$t ^rslumps on the ground too wounded to fight, $n^r leaps on $t's face, inserting it's large genital into $E eye which causes $t to scream loudly while $n^r begins to pump into the bloody hole as $t squirms and screams, which is soon stopped as $t falls limp, $n^r keeps pumping his fresh new hole for a while before busting a nut into it and pulling out, still dripping oozy green cum from the tip, moving to the other one... Once done busting a second load to the other 'hole' it hops off.^N
+case 5
+mpecho ^r$n ^rtackles $t and inserts his genital directly into a random wound on $E's torso, rapidly pumping the bleeding hole as $t screams and tries to get $n^r out, with no success. $n^r pumps it's first load into the hole as $t shakes and slowly falls limp. $n^r takes it's time busting atleast three loads in various alternative holes it find on the body before becoming dry of oozy green cum and leaving it alone.^N
+endswitch
+endif
+endif
+endif
+if sex($n == F) or sex($n == A) or sex($n == H)
+if sex($t == F) or sex($t == A) or sex($t == H)
+switch $%RANDNUM(2)%
+case 1
+mpecho $n grabs the wounded $t and impales $M on it's gigantic ovipositor, almost tearing $S vagina in two. $n begins to move $t on the genital as $t screams in agony and bleeds even more, soon $n begins to unload egg after egg directly into $t's womb and fill $M up like $E's pregnant and then throw the now limp $t away in that state to be a motionless fuckdoll for the male drones of the hive.^N
+case 2
+mpecho $n grabs the wounded $t and impales $M on it's gigantic ovipositor, almost tearing $S ass in two. $n begins to move $t on the genital as $t screams in agony and bleeds even more, soon $n begins to unload egg after egg directly into $t's guts and fill $M up like $E's pregnant and then throw the now limp $t away in that state to be a motionless fuckdoll for the male drones of the hive.^N
+endswitch
+else
+if sex($t == M) or sex($t == O) or sex($t == U)
+switch $%RANDNUM(1)%
+case 1
+mpecho $n grabs the wounded $t and impales $M on it's gigantic ovipositor, almost tearing $S ass in two. $n begins to move $t on the genital as $t screams in agony and bleeds even more, soon $n begins to unload egg after egg directly into $t's guts and fill $M up like $E's pregnant and then throw the now limp $t away in that state to be a motionless fuckdoll for the male drones of the hive.^N
+endswitch
+endif
+endif
+endif
+endif
 ## heal on fuckkill
 MPSETVAR $n sexhealLevel $%Level($n)%
-mpsetvar $n sexheallevelmobkill $%MATH(1?20 + $<$n sexheallevel>*2)%
+mpsetvar $n sexheallevelmobkill $%MATH(1?20 + $<$n sexheallevel>*3)%
 MPSETVAR $n MaxHits $%GSTAT($n BASEHITS)%
 IF GSTAT($n HITS < $<$n MaxHits>)
     MPSETVAR $n CurHits $%GSTAT($n Hits)%
@@ -133,10 +268,385 @@ IF GSTAT($n HITS < $<$n MaxHits>)
     ENDIF
     MPGSET $n HITS $%VAR($n HitsCalc)%
 ENDIF
-mpecho ^p*FWOP* *PLAP* *PLOP* $n ^pheals $sself on $t ^pfor ^g($<$n sexheallevelmobkill>)^p! *PLOP* *PLAP* *FAP*^N
-##$m	The pronoun his/her of the source of the trigger.
-##$M	The pronoun his/her of the target of the trigger.
-##$s	The pronoun him/her of the source of the trigger.
-##$S	The pronoun him/her of the target of the trigger.
+mpecho ^r*FWOP* *PLAP* *PLOP* $n ^rheals $sself on $t ^rfor ^g($<$n sexheallevelmobkill>)^r! *PLOP* *PLAP* *FAP*^N
+
+## Area checks for capture ends
+if inarea($t == 'World Tree Roots')
+mptransfer $t 'World Tree Roots#20'
+mpalarm 1 mpgset $t NAME 'A cache of $t s items.'
+mpalarm 1 mpgset cache DISPLAY 'A cache of $t s items.'
+mpalarm 1 mpgset cache DESCRIPTION 'A cache of $t s items.'
+mpalarm 1 mptransfer $t 'World Tree Roots#20'
+mpecho ^r$t's body is suddenly dragged deeper into the dungeon by something!!^N
+mpalarm 2 mptransfer $t 'World Tree Roots#20'
+mpalarm 2 mpaffect property:Sexual_Cumbloat3 $n
+mpalarm 3 mpechoat $t You find yourself returning to consciousness... ^#210You are constricted by roots, and all of your holes are filled to the brim with rigid tree roots! You are pretty much impaled and have no way out. The roots start to thrust rapidly into your holes again, over and over, they creak and crack as they violate you and occasionally, somehow pump cum-like liquid into you. You can not do much but try to ^CRESIST^N.
+endif
+endif
+~
+
+kill_prog
+##i fucking hate myself for not making this tabbed properly long ago, as seen above.
+##if you must do a more specific deathmessage, insert it above all of the others and copy the heal part, then add a RETURN to the end to prevent doubling.
+##player sus deathmessages against enemies
+if ispc($n)
+	mploadvar $n snufftoggle
+	if var($n snufftoggle == 1)
+		if prog(10)
+			mpecho $n '^COOC: if you are interested please ask in discord to contribute for deathmessages if you feel like writing some! We got not enough. :c^N'
+		endif
+		## Humanoid and humanlike targets, when adding new racecat specific text, remove from this IF.
+		if racecat($t == Humanoid) or racecat($t == Undead) or racecat($t == Devil) or racecat($t == 'Metal Golem') /
+			or racecat($t == Elf) or racecat($t == Celesial) or racecat($t == Illithid) or racecat($t == 'Wood Golem') /
+			or racecat($t == 'Stone Golem') or racecat($t == Demon) or racecat($t == Unknown) or racecat($t == Unique) /
+			or racecat($t == Mephit) or racecat($t == Elemental) or racecat($t == Ophidian)
+			if sex($n == M) or sex($n == O) or sex($n == U)
+				if sex($t == M) or sex($t == O) or sex($t == U)
+					## M player on M target
+					## 25% chance to trigger class based deathmessages, otherwise regulars.
+					if prog(50)
+						## classbased messages
+						## if the player is an baseclass artisan
+						if baseclass($n == Artisan)
+							switch $%RANDNUM(2)%
+								case 1
+									mpecho ''
+								case 2
+									mpecho ''
+							endswitch
+						endif
+						## if the player is an baseclass fighter
+						if baseclass($n == Fighter)
+							switch $%RANDNUM(2)%
+								case 1
+									mpecho ''
+								case 2
+									mpecho ''
+							endswitch
+						endif
+						## if the player is an baseclass druid
+						if baseclass($n == Druid)
+							switch $%RANDNUM(2)%
+								case 1
+									mpecho ''
+								case 2
+									mpecho ''
+							endswitch
+						endif
+						## if the player is an baseclass mage
+						if baseclass($n == Mage)
+							switch $%RANDNUM(2)%
+								case 1
+									mpecho ''
+								case 2
+									mpecho ''
+							endswitch
+						endif
+						## if the player is an baseclass cleric
+						if baseclass($n == Cleric)
+							switch $%RANDNUM(2)%
+								case 1
+									mpecho ''
+								case 2
+									mpecho ''
+							endswitch
+						endif
+						## if the player is an baseclass thief
+						if baseclass($n == Thief)
+							switch $%RANDNUM(2)%
+								case 1
+									mpecho ''
+								case 2
+									mpecho ''
+							endswitch
+						endif
+						## if the player is an baseclass bard
+						if baseclass($n == bard)
+							switch $%RANDNUM(2)%
+								case 1
+									mpecho ''
+								case 2
+									mpecho ''
+							endswitch
+						endif
+					else
+					## non-classbased messages for any and all.
+						switch $%RANDNUM(3)%
+							case 1
+								mpecho ''
+							case 2
+								mpecho ''
+						endswitch
+					endif
+				else
+					if sex($t == F) or sex($t == A) or sex($t == H)
+						## M player on F target
+						## 25% chance to trigger class based deathmessages, otherwise regulars.
+						if prog(50)
+							## classbased messages
+							## if the player is an baseclass artisan
+							if baseclass($n == Artisan)
+								switch $%RANDNUM(2)%
+									case 1
+										mpecho ''
+									case 2
+										mpecho ''
+								endswitch
+							endif
+							## if the player is an baseclass fighter
+							if baseclass($n == Fighter)
+								switch $%RANDNUM(2)%
+									case 1
+										mpecho ''
+									case 2
+										mpecho ''
+								endswitch
+							endif
+							## if the player is an baseclass druid
+							if baseclass($n == Druid)
+								switch $%RANDNUM(2)%
+									case 1
+										mpecho ''
+									case 2
+										mpecho ''
+								endswitch
+							endif
+							## if the player is an baseclass mage
+							if baseclass($n == Mage)
+								switch $%RANDNUM(2)%
+									case 1
+										mpecho ''
+									case 2
+										mpecho ''
+								endswitch
+							endif
+							## if the player is an baseclass cleric
+							if baseclass($n == Cleric)
+								switch $%RANDNUM(2)%
+									case 1
+										mpecho ''
+									case 2
+										mpecho ''
+								endswitch
+							endif
+							## if the player is an baseclass thief
+							if baseclass($n == Thief)
+								switch $%RANDNUM(2)%
+									case 1
+										mpecho ''
+									case 2
+										mpecho ''
+								endswitch
+							endif
+							## if the player is an baseclass bard
+							if baseclass($n == bard)
+								switch $%RANDNUM(2)%
+									case 1
+										mpecho ''
+									case 2
+										mpecho ''
+								endswitch
+							endif
+						else
+						## non-classbased messages for any and all.
+							switch $%RANDNUM(3)%
+								case 1
+									mpecho ''
+								case 2
+									mpecho ''
+							endswitch
+						endif
+					endif
+				endif
+			endif
+				if sex($n == F) or sex($n == A) or sex($n == H)
+					if sex($t == F) or sex($t == A) or sex($t == H)
+						## F player on F target
+						## 25% chance to trigger class based deathmessages, otherwise regulars.
+						if prog(50)
+							## classbased messages
+							## if the player is an baseclass artisan
+							if baseclass($n == Artisan)
+								switch $%RANDNUM(2)%
+									case 1
+										mpecho ''
+									case 2
+										mpecho ''
+								endswitch
+							endif
+							## if the player is an baseclass fighter
+							if baseclass($n == Fighter)
+								switch $%RANDNUM(2)%
+									case 1
+										mpecho ''
+									case 2
+										mpecho ''
+								endswitch
+							endif
+							## if the player is an baseclass druid
+							if baseclass($n == Druid)
+								switch $%RANDNUM(2)%
+									case 1
+										mpecho ''
+									case 2
+										mpecho ''
+								endswitch
+							endif
+							## if the player is an baseclass mage
+							if baseclass($n == Mage)
+								switch $%RANDNUM(2)%
+									case 1
+										mpecho ''
+									case 2
+										mpecho ''
+								endswitch
+							endif
+							## if the player is an baseclass cleric
+							if baseclass($n == Cleric)
+								switch $%RANDNUM(2)%
+									case 1
+										mpecho ''
+									case 2
+										mpecho ''
+								endswitch
+							endif
+							## if the player is an baseclass thief
+							if baseclass($n == Thief)
+								switch $%RANDNUM(2)%
+									case 1
+										mpecho ''
+									case 2
+										mpecho ''
+								endswitch
+							endif
+							## if the player is an baseclass bard
+							if baseclass($n == bard)
+								switch $%RANDNUM(2)%
+									case 1
+										mpecho ''
+									case 2
+										mpecho ''
+								endswitch
+							endif
+						else
+						## non-classbased messages for any and all.
+							switch $%RANDNUM(3)%
+								case 1
+									mpecho ''
+								case 2
+									mpecho ''
+							endswitch
+						endif
+					else
+						if sex($t == M) or sex($t == O) or sex($t == U)
+							## f player on M target
+							## 25% chance to trigger class based deathmessages, otherwise regulars.
+							if prog(50)
+								## classbased messages
+								## if the player is an baseclass artisan
+								if baseclass($n == Artisan)
+									switch $%RANDNUM(2)%
+										case 1
+											mpecho ''
+										case 2
+											mpecho ''
+									endswitch
+								endif
+								## if the player is an baseclass fighter
+								if baseclass($n == Fighter)
+									switch $%RANDNUM(2)%
+										case 1
+											mpecho ''
+										case 2
+											mpecho ''
+									endswitch
+								endif
+								## if the player is an baseclass druid
+								if baseclass($n == Druid)
+									switch $%RANDNUM(2)%
+										case 1
+											mpecho ''
+										case 2
+											mpecho ''
+									endswitch
+								endif
+								## if the player is an baseclass mage
+								if baseclass($n == Mage)
+									switch $%RANDNUM(2)%
+										case 1
+											mpecho ''
+										case 2
+											mpecho ''
+									endswitch
+								endif
+								## if the player is an baseclass cleric
+								if baseclass($n == Cleric)
+									switch $%RANDNUM(2)%
+										case 1
+											mpecho ''
+										case 2
+											mpecho ''
+									endswitch
+								endif
+								## if the player is an baseclass thief
+								if baseclass($n == Thief)
+									switch $%RANDNUM(2)%
+										case 1
+											mpecho ''
+										case 2
+											mpecho ''
+									endswitch
+								endif
+								## if the player is an baseclass bard
+								if baseclass($n == bard)
+									switch $%RANDNUM(2)%
+										case 1
+											mpecho ''
+										case 2
+											mpecho ''
+									endswitch
+								endif
+							else
+							## non-classbased messages for any and all.
+								switch $%RANDNUM(3)%
+									case 1
+										mpecho ''
+									case 2
+										mpecho ''
+								endswitch
+							endif
+						endif
+					endif
+				endif
+			endif
+		endif
+## heal on fuckkill
+MPSETVAR $n sexhealLevel $%Level($n)%
+mpsetvar $n sexheallevelmobkill $%MATH(1?20 + $<$n sexheallevel>*3)%
+MPSETVAR $n MaxHits $%GSTAT($n BASEHITS)%
+IF GSTAT($n HITS < $<$n MaxHits>)
+    MPSETVAR $n CurHits $%GSTAT($n Hits)%
+    MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n sexheallevelmobkill>)%
+    IF GSTAT($n BASEHITS < $<$n HitsCalc>)
+        MPSETVAR $n HitsCalc $<$n MaxHits>
+    ENDIF
+    MPGSET $n HITS $%VAR($n HitsCalc)%
+ENDIF
+mpecho ^r*FWOP* *PLAP* *PLOP* $n ^rheals $sself on $t ^rfor ^g($<$n sexheallevelmobkill>)^r! *PLOP* *PLAP* *FAP*^N
+else
+endif
+~
+cnclmsg_prog huh p deathdrain
+mploadvar $n snufftoggle
+if var($n snufftoggle != 1)
+mpsetvar $n snufftoggle 1
+mpechoat $n You will now snuff enemies and receive healing from kills.
+mpsavevar $n snufftoggle
+else
+mpsetvar $n snufftoggle 0
+mpechoat $n You will now not snuff enemies and receive healing from kills.
+mpsavevar $n snufftoggle
+endif
+return cancel
 ~
 </FILE></FILES>

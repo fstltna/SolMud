@@ -1,684 +1,585 @@
-20231226.1229.56 info  MUD            CoffeeMud v5.10.2.4
-20231226.1229.56 info  MUD            (C) 2000-2023 Bo Zimmerman
-20231226.1229.56 info  MUD            http://www.coffeemud.org
-20231226.1229.56 error CMSecurity     Unknown or duplicate disable flag: AUTOFORWARD
-20231226.1229.56 info  HOST0          Disabled subsystems: DBERRORQUESTART, QUITREASON, SLOW_AGEING, DEATHCRY, AUTOMOODS, AUTOFORWARD, FATIGUE, ALLERGIES, NEWPLAYERS, 
-20231226.1229.56 info  MUD@5555       MUD Server started on port: 5555
-20231226.1229.57 info  HOST0          Connected to jdbc:mysql://localhost:3306/coffeemud2
-20231226.1229.57 debug HOST0          SSL not configured.
-20231226.1229.57 debug HOST0          SSL not configured.
-20231226.1229.57 info  cweb-admin0    Started http admin0 on port 27777
-20231226.1229.57 info  cweb-pub0      Started http pub0 on port 27744
-20231226.1229.57 debug cweb-admin0Tim Timeout Thread started
-20231226.1229.57 debug cweb-pub0Timeo Timeout Thread started
-20231226.1229.58 info  HOST0          WebMacros loaded  : 200
-20231226.1229.59 info  HOST0          MOB Types loaded  : 149
-20231226.1229.59 info  HOST0          Exit Types loaded : 31
-20231226.1229.59 info  HOST0          Area Types loaded : 14
-20231226.1229.59 info  HOST0          Locales loaded    : 127
-20231226.1229.59 info  HOST0          Fighter Skills    : 203
-20231226.1230.00 info  HOST0          Chants loaded     : 318
-20231226.1230.00 info  HOST0          Languages loaded  : 59
-20231226.1230.00 info  HOST0          Properties loaded : 313
-20231226.1230.01 info  HOST0          Prayers loaded    : 362
-20231226.1230.01 info  HOST0          Thief Skills      : 180
-20231226.1230.02 info  HOST0          Skills loaded     : 355
-20231226.1230.02 info  HOST0          Songs loaded      : 156
-20231226.1230.02 info  HOST0          Spells loaded     : 419
-20231226.1230.02 info  HOST0          Heroics loaded    : 6
-20231226.1230.02 info  HOST0          Tech Skills loaded: 2
-20231226.1230.02 info  HOST0          Traps loaded      : 82
-20231226.1230.03 info  HOST0          GenAbles loaded   : 105
-20231226.1230.03 info  HOST0          Basic Items loaded: 140
-20231226.1230.03 info  HOST0          Weapons loaded    : 62
-20231226.1230.03 info  HOST0          Armor loaded      : 51
-20231226.1230.03 info  HOST0          Magic Items loaded: 47
-20231226.1230.03 info  HOST0          Clan Items loaded : 29
-20231226.1230.03 info  HOST0          Electronics loaded: 100
-20231226.1230.04 info  HOST0          Behaviors loaded  : 97
-20231226.1230.04 info  HOST0          Commands loaded   : 301
-20231226.1230.05 info  HOST0          Races loaded      : 315
-20231226.1230.06 info  HOST0          Classes loaded    : 98
-20231226.1230.11 info  HOST0          Expertises defined: 1820
-20231226.1230.11 info  HOST0          Channels loaded   : 29
-20231226.1230.11 info  HOST0          Socials loaded    : 342
-20231226.1230.12 info  HOST0          Clans loaded      : 12
-20231226.1230.12 info  I3Server       InterMud3 Core (c)1996 George Reese
-20231226.1230.12 info  CM1Server0@277 Started CM1Server0@27733 on port 27733
-20231226.1230.12 info  Intermud3      I3 client connection: 204.209.44.3@8080
-20231226.1230.12 info  I3Server       InterMud3 Server started on port 27766
-20231226.1230.13 info  HOST0          Loading catalog...
-20231226.1230.13 info  HOST0          Loading map...
-20231226.1230.21 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.21 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.21 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.21 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.21 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.21 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.21 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.21 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.21 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.21 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.21 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.21 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.21 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.21 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.21 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.21 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.21 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.21 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.21 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.21 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.21 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.21 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.21 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.21 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.21 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error ClanHelper     Unknown clan activated." for ^#222A ^#111N^#222T^#333C^r-^#111O^#222M^#333N^#222I ^#111A^#222l^#333l^r-^#222P^#111u^#222r^#333p^#222o^#111s^#222e ^#333D^#222r^#111o^#222i^#333d^N in 
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error ClanHelper     Unknown clan activated." for ^#111N^#222T^#333C^r-^#1110^#2220^#3330^r2 ^#550P^#540r^#550e^#540m^#550i^#540u^#550m ^#222D^#333r^ro^#222i^#111d^N in OOC Area#15
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error ClanHelper     Unknown clan activated." for ^#111N^#222T^#333C^r-^#1110^#2220^#3330^r1 ^#550P^#540r^#550e^#540m^#550i^#540u^#550m ^#222D^#333r^ro^#222i^#111d^N in 
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.22 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error HOST0          Bad ZapperMask parm '+THIEF' @ -BASECLASS +THIEF
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.25 error ClanHelper     Unknown clan activated." for ^#222A ^#111N^#222T^#333C^r-^#111O^#222M^#333N^#222I ^#111A^#222l^#333l^r-^#222P^#111u^#222r^#333p^#222o^#111s^#222e ^#333D^#222r^#111o^#222i^#333d^N in 
-20231226.1230.25 error ClanHelper     Unknown clan activated." for ^#222A ^#111N^#222T^#333C^r-^#111O^#222M^#333N^#222I ^#111A^#222l^#333l^r-^#222P^#111u^#222r^#333p^#222o^#111s^#222e ^#333D^#222r^#111o^#222i^#333d^N in 
-20231226.1230.27 error ClanHelper     Unknown clan activated." for ^#111N^#222T^#333C^r-^#1110^#2220^#3330^r1 ^#550P^#540r^#550e^#540m^#550i^#540u^#550m ^#222D^#333r^ro^#222i^#111d^N in 
-20231226.1230.28 error ClanHelper     Unknown clan activated." for ^#111N^#222T^#333C^r-^#1110^#2220^#3330^r1 ^#550P^#540r^#550e^#540m^#550i^#540u^#550m ^#222D^#333r^ro^#222i^#111d^N in 
-20231226.1230.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.31 error ClanHelper     Unknown clan activated." for ^#111N^#222T^#333C^r-^#1110^#2220^#3330^r2 ^#550P^#540r^#550e^#540m^#550i^#540u^#550m ^#222D^#333r^ro^#222i^#111d^N in OOC Area#15
-20231226.1230.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.38 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.38 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.38 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.38 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.38 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.38 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.38 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.38 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.38 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.38 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.38 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.38 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.38 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.38 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.39 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.39 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.39 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.39 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.39 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.39 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.39 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.39 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.39 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.39 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.39 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.39 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.39 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.39 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.43 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1230.44 info  HOST0          Preparing map...
-20231226.1230.46 info  HOST0          Mapped rooms      : 3304 in 76 areas
-20231226.1230.46 info  HOST0          Space objects     : 6
-20231226.1230.46 info  HOST0          Clan owned items  : 0
-20231226.1230.46 error CMFile         Access error on file 'resources/quests/brotheljob.quest'.
-20231226.1230.46 info  QuestLoader    Unable to load Quest 'Brotheljob'.  Suspending.
-20231226.1230.46 error CMFile         Access error on file 'resources/quests/brotheljob.quest'.
-20231226.1230.46 info  QuestLoader    Unable to load Quest 'Brotheljob#1'.  Suspending.
-20231226.1230.46 info  HOST0          Quests loaded     : 8
-20231226.1230.47 info  HOST0          Services and utilities started
-20231226.1230.47 info  HOST0          Host#0 initializated.
-20231226.1230.47 info  MUD            Initialization complete.
-20231226.1230.49 error CombatAbilitie the woods does not want to fight.
-20231226.1230.52 info  MudChat        Chat Data by Chris Busch & Jeremy Vyska
-20231226.1230.52 info  MudChat        Chat Data by Chris Busch & Jeremy Vyska
-20231226.1231.00 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1
-20231226.1231.00 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1
-20231226.1231.03 info  MUD@5555       Connection from 78.175.228.65
-20231226.1231.07 info  MudChat        Chat Data by Chris Busch & Jeremy Vyska
-20231226.1231.07 info  Worker0#2      78.175.228.65 Mudlet 4.16.0 MXP MSDP GMCP CMP ANSI, account login: Moonbeam
-20231226.1231.09 info  Worker0#6      78.175.228.65 Mudlet 4.16.0 MXP MSDP GMCP CMP ANSI, character login: Moonbeam
-20231226.1236.28 error Worker0#2      Destroying a Male Judge Resurgentis because he's not ticking anywhere at all!
-20231226.1236.28 error Worker0#2      Destroying A Female Judge Resurgentis because he's not ticking anywhere at all!
-20231226.1236.48 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1236.48 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1236.48 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1236.48 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1236.48 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1236.48 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1236.48 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1236.48 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1236.48 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1236.48 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1236.48 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1236.48 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1236.48 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1236.48 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1236.48 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1236.48 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1236.48 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1236.48 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1236.48 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1236.48 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1236.48 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1236.48 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1236.48 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1236.48 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1236.48 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1236.48 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1236.48 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1236.48 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1236.48 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1236.48 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1236.48 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1236.48 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1241.08 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1
-20231226.1241.08 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1
-20231226.1251.16 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1
-20231226.1251.16 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1
-20231226.1254.46 info  MUD@5555       Connection from 161.35.124.58
-20231226.1254.47 info  MUD@5555       Connection from 161.35.124.58
-20231226.1254.49 info  MUD@5555       Connection from 161.35.124.58
-20231226.1254.51 info  MUD@5555       Connection from 161.35.124.58
-20231226.1254.51 info  Worker0#2      Disconnect: 161.35.124.58 (5s)
-20231226.1254.53 info  Worker0#2      Disconnect: 161.35.124.58 (5s)
-20231226.1254.54 info  MUD@5555       Connection from 161.35.124.58
-20231226.1254.55 info  Worker0#2      Disconnect: 161.35.124.58 (5s)
-20231226.1254.56 info  MUD@5555       Blocking a connection from 161.35.124.58 (6)
-20231226.1254.57 info  MUD@5555       Blocking a connection from 161.35.124.58 (9)
-20231226.1254.59 info  MUD@5555       Blocking a connection from 161.35.124.58 (14)
-20231226.1255.00 info  Worker0#5      Disconnect: 161.35.124.58 (5s)
-20231226.1255.02 info  MUD@5555       Blocking a connection from 161.35.124.58 (21)
-20231226.1255.05 info  MUD@5555       Blocking a connection from 161.35.124.58 (30)
-20231226.1255.10 info  MUD@5555       Blocking a connection from 161.35.124.58 (41)
-20231226.1255.23 info  Worker0#2      Disconnect: 161.35.124.58 (31s)
-20231226.1300.47 warni THSessions0    Suspect Session: Moonbeam (OOC Area#12), out for 22m 9s 270ms
-STATUS  is :MAINLOOP, LASTCMD was :[modify, class, paladin]
-20231226.1301.24 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1
-20231226.1301.24 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1
-20231226.1303.34 info  MUD@5555       Connection from 45.227.254.8
-20231226.1303.40 info  Worker0#3      Disconnect: 45.227.254.8 (5s)
-20231226.1311.32 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1
-20231226.1311.32 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1
-20231226.1321.40 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1
-20231226.1321.40 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1
-20231226.1331.48 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1
-20231226.1331.48 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1
-20231226.1341.56 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1
-20231226.1341.56 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1
-20231226.1352.04 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1
-20231226.1352.04 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1
-20231226.1401.37 info  MUD@5555       Connection from 104.156.100.167
-20231226.1402.12 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1
-20231226.1402.12 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1
-20231226.1410.47 info  THSessions0    Kicking out login session after 9m 8s 759ms.
-20231226.1410.47 info  Worker0#4      Disconnect: 104.156.100.167 (9m)
-20231226.1412.20 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1
-20231226.1412.20 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1
-20231226.1422.28 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1
-20231226.1422.28 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1
-20231226.1427.10 info  MUD@5555       Connection from 103.180.148.159
-20231226.1428.16 info  Worker0#2      Disconnect: 103.180.148.159 (1m 6s)
-20231226.1432.36 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1
-20231226.1432.36 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1
-20231226.1442.44 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1
-20231226.1442.44 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1
-20231226.1443.33 info  MUD@5555       Connection from 68.231.114.196
-20231226.1443.50 info  Worker0#2      68.231.114.196 XTERM CMP ANSI, account login: Robotdjcool
-20231226.1443.54 info  Scripting      Sawyer was MPENABLED with Animate Weapon
-20231226.1443.54 info  Scripting      Sawyer was MPENABLED with Claireaudience
-20231226.1443.54 info  Scripting      Sawyer was MPENABLED with Clairevoyance
-20231226.1443.54 info  Scripting      Sawyer was MPENABLED with Comprehend Languages
-20231226.1443.54 info  Scripting      Sawyer was MPENABLED with Distant Vision
-20231226.1443.54 info  Scripting      Sawyer was MPENABLED with Feeblemind
-20231226.1443.54 info  Scripting      Sawyer was MPENABLED with Fly
-20231226.1443.54 info  Scripting      Sawyer was MPENABLED with Forget
-20231226.1443.54 info  Scripting      Sawyer was MPENABLED with Friends
-20231226.1443.54 info  Scripting      Sawyer was MPENABLED with Mind Block
-20231226.1443.54 info  Scripting      Sawyer was MPENABLED with Mind Light
-20231226.1443.54 info  Scripting      Sawyer was MPENABLED with Scry
-20231226.1443.54 info  Scripting      Sawyer was MPENABLED with Slow Projectiles
-20231226.1443.54 info  Scripting      Sawyer was MPENABLED with Telepathy
-20231226.1443.54 info  Scripting      Sawyer was MPENABLED with Combat Precognition
-20231226.1443.54 info  Scripting      Sawyer was MPENABLED with Hear Thoughts
-20231226.1443.54 info  Scripting      Sawyer was MPAFFECTED by Combat Precognition
-20231226.1443.54 info  Scripting      Sawyer was MPAFFECTED by Ability Immunity
-20231226.1443.54 info  Worker0#1      68.231.114.196 XTERM CMP ANSI, character login: Sawyer
-20231226.1446.00 info  Worker0#3      Logout: Moonbeam (2h)
-20231226.1446.00 info  Scripting      Elizabeth was MPENABLED with Animate Weapon
-20231226.1446.00 info  Scripting      Elizabeth was MPENABLED with Claireaudience
-20231226.1446.00 info  Scripting      Elizabeth was MPENABLED with Clairevoyance
-20231226.1446.00 info  Scripting      Elizabeth was MPENABLED with Comprehend Languages
-20231226.1446.00 info  Scripting      Elizabeth was MPENABLED with Distant Vision
-20231226.1446.00 info  Scripting      Elizabeth was MPENABLED with Feeblemind
-20231226.1446.00 info  Scripting      Elizabeth was MPENABLED with Fly
-20231226.1446.00 info  Scripting      Elizabeth was MPENABLED with Forget
-20231226.1446.00 info  Scripting      Elizabeth was MPENABLED with Friends
-20231226.1446.00 info  Scripting      Elizabeth was MPENABLED with Mind Block
-20231226.1446.00 info  Scripting      Elizabeth was MPENABLED with Mind Light
-20231226.1446.00 info  Scripting      Elizabeth was MPENABLED with Scry
-20231226.1446.00 info  Scripting      Elizabeth was MPENABLED with Slow Projectiles
-20231226.1446.00 info  Scripting      Elizabeth was MPENABLED with Telepathy
-20231226.1446.00 info  Scripting      Elizabeth was MPENABLED with Combat Precognition
-20231226.1446.00 info  Scripting      Elizabeth was MPENABLED with Hear Thoughts
-20231226.1446.00 info  Scripting      Elizabeth was MPAFFECTED by Combat Precognition
-20231226.1446.00 info  Scripting      Elizabeth was MPAFFECTED by Ability Immunity
-20231226.1446.00 info  Worker0#3      Moonbeam switched login to: Elizabeth
-20231226.1452.52 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1
-20231226.1452.52 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1
-20231226.1503.00 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1
-20231226.1503.00 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1
-20231226.1513.08 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1
-20231226.1513.08 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1
-20231226.1523.16 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1
-20231226.1523.16 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1
-20231226.1526.24 info  MUD@5555       Connection from 78.175.228.65
-20231226.1526.30 info  Worker0#1      78.175.228.65 BlowTorch CMP ANSI, account login: Moonbeam
-20231226.1526.31 info  Worker0#4      Session swap for Elizabeth.
-20231226.1526.31 info  Worker0#6      Disconnect: Moonbeam: 78.175.228.65 (2h)
-20231226.1526.32 info  Worker0#4      78.175.228.65 BlowTorch CMP ANSI, character login: Elizabeth
-20231226.1533.24 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1
-20231226.1533.24 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1
-20231226.1541.06 info  MUD@5555       Connection from 78.175.228.65
-20231226.1541.15 info  Worker0#2      78.175.228.65 Mudlet 4.16.0 MXP MSDP GMCP CMP ANSI, account login: Moonbeam
-20231226.1541.17 info  Worker0#2      Session swap for Elizabeth.
-20231226.1541.17 info  Worker0#2      78.175.228.65 Mudlet 4.16.0 MXP MSDP GMCP CMP ANSI, character login: Elizabeth
-20231226.1541.17 info  Worker0#6      Disconnect: Moonbeam: 78.175.228.65 (14m)
-20231226.1543.32 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1
-20231226.1543.32 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1
-20231226.1552.32 info  Scripting      Elizabeth was MPUNAFFECTED by Pregnancy
-20231226.1552.32 info  Scripting      Elizabeth was MPAFFECTED by Vaginal Larvae Carrier
-20231226.1553.40 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1
-20231226.1553.40 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1
-20231226.1558.25 info  MUD@5555       Connection from 78.175.228.65
-20231226.1558.34 info  Worker0#2      78.175.228.65 Mudlet 4.16.0 MXP MSDP GMCP CMP ANSI, account login: Moonbeam
-20231226.1558.36 info  Worker0#5      78.175.228.65 Mudlet 4.16.0 MXP MSDP GMCP CMP ANSI, character login: Moonbeam
-20231226.1558.41 info  CMGenEditor    Moonbeam edited user Elizabeth
-20231226.1559.25 info  MUD@5555       Connection from 172.104.210.105
-20231226.1559.31 info  Worker0#2      Disconnect: 172.104.210.105 (5s)
-20231226.1559.40 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1559.40 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1559.40 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1559.40 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1559.40 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1559.40 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
-20231226.1559.46 info  CMGenEditor    Moonbeam edited user Moonbeam
-20231226.1603.23 info  Scripting      Elizabeth was MPUNAFFECTED by Vaginal Larvae Carrier
-20231226.1603.48 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1
-20231226.1603.48 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1
-20231226.1609.54 info  MUD@5555       Connection from 45.79.181.223
-20231226.1609.56 info  Worker0#1      Disconnect: 45.79.181.223 (1s 875ms)
-20231226.1612.46 info  Worker0#6      Logout: Sawyer (1h 28m)
-20231226.1612.46 info  Worker0#6      Disconnect: Sawyer: 68.231.114.196 (1h 29m)
-20231226.1613.56 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1
-20231226.1613.56 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1
-20231226.1615.38 info  MUD@5555       Connection from 91.92.245.67
-20231226.1615.43 info  Worker0#4      Disconnect: 91.92.245.67 (5s)
-20231226.1624.04 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1
-20231226.1624.04 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1
-20231226.1630.54 error ClanHelper     Unknown clan activated." for ^#222A ^#111N^#222T^#333C^r-^#111O^#222M^#333N^#222I ^#111A^#222l^#333l^r-^#222P^#111u^#222r^#333p^#222o^#111s^#222e ^#333D^#222r^#111o^#222i^#333d^N in 
-20231226.1634.12 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1
-20231226.1634.12 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1
-20231226.1640.47 info  Worker0#5      Logout: Elizabeth (59m)
-20231226.1640.47 info  Worker0#5      Disconnect: Elizabeth: 78.175.228.65 (59m)
-20231226.1644.20 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1
-20231226.1644.20 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1
-20231226.1645.09 info  MUD@5555       Connection from 141.98.7.19
-20231226.1646.15 info  Worker0#6      Disconnect: 141.98.7.19 (1m 6s)
-20231226.1646.22 error ShutdownHook   
-
-Thread Dump:
- ^HTGRP^?  ^Hsystem^?
-  ok   Reference Handler   : Thread[Reference Handler,10,system]
-   java.lang.ref.Reference: waitForReferencePendingList(Reference.java: -2)
-   java.lang.ref.Reference: processPendingReferences(Reference.java: 241)
-   java.lang.ref.Reference$ReferenceHandler: run(Reference.java: 213)
-  ok   Finalizer           : Thread[Finalizer,8,system]
-   java.lang.Object: wait(Object.java: -2)
-   java.lang.ref.ReferenceQueue: remove(ReferenceQueue.java: 155)
-   java.lang.ref.ReferenceQueue: remove(ReferenceQueue.java: 176)
-   java.lang.ref.Finalizer$FinalizerThread: run(Finalizer.java: 170)
-  ok   Signal Dispatcher   : Thread[Signal Dispatcher,9,system]
-  ok   SIGTERM handler     : Thread[SIGTERM handler,9,system]
-   java.lang.Object: wait(Object.java: -2)
-   java.lang.Thread: join(Thread.java: 1308)
-   java.lang.Thread: join(Thread.java: 1375)
-   java.lang.ApplicationShutdownHooks: runHooks(ApplicationShutdownHooks.java: 107)
-   java.lang.ApplicationShutdownHooks$1: run(ApplicationShutdownHooks.java: 46)
-   java.lang.Shutdown: runHooks(Shutdown.java: 130)
-   java.lang.Shutdown: exit(Shutdown.java: 174)
-   java.lang.Terminator$1: handle(Terminator.java: 51)
-   jdk.internal.misc.Signal$1: run(Signal.java: 220)
-   java.lang.Thread: run(Thread.java: 835)
-{
- ^HTGRP^?  ^Hmain^?
-  ok   MUD                 : Thread[MUD,5,main]
-   java.lang.Object: wait(Object.java: -2)
-   java.lang.Thread: join(Thread.java: 1308)
-   java.lang.Thread: join(Thread.java: 1375)
-   com.planet_ink.coffee_mud.application.MUD: main(MUD.java: 2109)
-  ok   ShutdownHook        : Thread[ShutdownHook,5,main]
-   java.lang.Thread: getStackTrace(Thread.java: 1602)
-   com.planet_ink.coffee_mud.core.threads.ServiceEngine: debugDumpThreadGroup(ServiceEngine.java: 1510)
-   com.planet_ink.coffee_mud.core.threads.ServiceEngine: debugDumpThreadGroup(ServiceEngine.java: 1522)
-   com.planet_ink.coffee_mud.core.threads.ServiceEngine: panicDumpAllThreads(ServiceEngine.java: 1833)
-   com.planet_ink.coffee_mud.application.MUD$2: run(MUD.java: 2042)
-{
- ^HTGRP^?  ^H0-MUD^?
-  ok   HOST0               : Thread[HOST0,5,0-MUD]
-   java.lang.Object: wait(Object.java: -2)
-   java.lang.Thread: join(Thread.java: 1308)
-   java.lang.Thread: join(Thread.java: 1375)
-   com.planet_ink.coffee_mud.application.MUD$HostGroup: run(MUD.java: 1915)
-  ok   Scheduler0          : Thread[Scheduler0,5,0-MUD]
-   java.lang.Thread: sleep(Thread.java: -2)
-   com.planet_ink.coffee_mud.core.threads.ServiceEngine: run(ServiceEngine.java: 1733)
-   java.lang.Thread: run(Thread.java: 835)
-  ok   MUD@5555            : MUD: WAITING
-   java.net.PlainSocketImpl: socketAccept(PlainSocketImpl.java: -2)
-   java.net.AbstractPlainSocketImpl: accept(AbstractPlainSocketImpl.java: 458)
-   java.net.ServerSocket: implAccept(ServerSocket.java: 556)
-   java.net.ServerSocket: accept(ServerSocket.java: 524)
-   com.planet_ink.coffee_mud.application.MUD: run(MUD.java: 360)
-  ok   Abandoned connection: Thread[Abandoned connection cleanup thread,5,0-MUD]
-   java.lang.Object: wait(Object.java: -2)
-   java.lang.ref.ReferenceQueue: remove(ReferenceQueue.java: 155)
-   com.mysql.jdbc.AbandonedConnectionCleanupThread: run(AbandonedConnectionCleanupThread.java: 64)
-   java.util.concurrent.ThreadPoolExecutor: runWorker(ThreadPoolExecutor.java: 1128)
-   java.util.concurrent.ThreadPoolExecutor$Worker: run(ThreadPoolExecutor.java: 628)
-   java.lang.Thread: run(Thread.java: 835)
-  ok   cweb-pub0           : Thread[cweb-pub0,5,0-MUD]
-   sun.nio.ch.EPoll: wait(EPoll.java: -2)
-   sun.nio.ch.EPollSelectorImpl: doSelect(EPollSelectorImpl.java: 120)
-   sun.nio.ch.SelectorImpl: lockAndDoSelect(SelectorImpl.java: 124)
-   sun.nio.ch.SelectorImpl: select(SelectorImpl.java: 141)
-   com.planet_ink.coffee_web.server.WebServer: run(WebServer.java: 398)
-  ok   cweb-admin0         : Thread[cweb-admin0,5,0-MUD]
-   sun.nio.ch.EPoll: wait(EPoll.java: -2)
-   sun.nio.ch.EPollSelectorImpl: doSelect(EPollSelectorImpl.java: 120)
-   sun.nio.ch.SelectorImpl: lockAndDoSelect(SelectorImpl.java: 124)
-   sun.nio.ch.SelectorImpl: select(SelectorImpl.java: 141)
-   com.planet_ink.coffee_web.server.WebServer: run(WebServer.java: 398)
-  ok   cweb-admin0Timeout  : Thread[cweb-admin0Timeout,5,0-MUD]
-   java.lang.Thread: sleep(Thread.java: -2)
-   com.planet_ink.coffee_web.server.WebServer$1: run(WebServer.java: 210)
-  ok   cweb-pub0Timeout    : Thread[cweb-pub0Timeout,5,0-MUD]
-   java.lang.Thread: sleep(Thread.java: -2)
-   com.planet_ink.coffee_web.server.WebServer$1: run(WebServer.java: 210)
-  ok   Worker0#1           : Thread[Worker0#1,5,0-MUD]
-   jdk.internal.misc.Unsafe: park(Unsafe.java: -2)
-   java.util.concurrent.locks.LockSupport: parkNanos(LockSupport.java: 235)
-   java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject: awaitNanos(AbstractQueuedSynchronizer.java: 2123)
-   java.util.concurrent.ArrayBlockingQueue: poll(ArrayBlockingQueue.java: 432)
-   java.util.concurrent.ThreadPoolExecutor: getTask(ThreadPoolExecutor.java: 1053)
-   java.util.concurrent.ThreadPoolExecutor: runWorker(ThreadPoolExecutor.java: 1114)
-   java.util.concurrent.ThreadPoolExecutor$Worker: run(ThreadPoolExecutor.java: 628)
-   java.lang.Thread: run(Thread.java: 835)
-  ok   CM1Server0@27733    : Thread[CM1Server0@27733,5,0-MUD]
-   sun.nio.ch.EPoll: wait(EPoll.java: -2)
-   sun.nio.ch.EPollSelectorImpl: doSelect(EPollSelectorImpl.java: 120)
-   sun.nio.ch.SelectorImpl: lockAndDoSelect(SelectorImpl.java: 124)
-   sun.nio.ch.SelectorImpl: select(SelectorImpl.java: 141)
-   com.planet_ink.coffee_mud.core.intermud.cm1.CM1Server: run(CM1Server.java: 129)
-  ok   I3Listener@27766    : Thread[I3Listener@27766,5,0-MUD]
-   java.net.PlainSocketImpl: socketAccept(PlainSocketImpl.java: -2)
-   java.net.AbstractPlainSocketImpl: accept(AbstractPlainSocketImpl.java: 458)
-   java.net.ServerSocket: implAccept(ServerSocket.java: 556)
-   java.net.ServerSocket: accept(ServerSocket.java: 524)
-   com.planet_ink.coffee_mud.core.intermud.i3.net.ListenThread: run(ListenThread.java: 68)
-  ok   I3Client:204.209.44.: Thread[I3Client:204.209.44.3@8080,5,0-MUD]
-   java.net.SocketInputStream: socketRead0(SocketInputStream.java: -2)
-   java.net.SocketInputStream: socketRead(SocketInputStream.java: 115)
-   java.net.SocketInputStream: read(SocketInputStream.java: 168)
-   java.net.SocketInputStream: read(SocketInputStream.java: 140)
-   java.net.SocketInputStream: read(SocketInputStream.java: 200)
-   java.io.DataInputStream: readInt(DataInputStream.java: 392)
-   com.planet_ink.coffee_mud.core.intermud.i3.packets.Intermud: run(Intermud.java: 668)
-   java.lang.Thread: run(Thread.java: 835)
-  ok   Worker0#2           : Thread[Worker0#2,5,0-MUD]
-   jdk.internal.misc.Unsafe: park(Unsafe.java: -2)
-   java.util.concurrent.locks.LockSupport: parkNanos(LockSupport.java: 235)
-   java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject: awaitNanos(AbstractQueuedSynchronizer.java: 2123)
-   java.util.concurrent.ArrayBlockingQueue: poll(ArrayBlockingQueue.java: 432)
-   java.util.concurrent.ThreadPoolExecutor: getTask(ThreadPoolExecutor.java: 1053)
-   java.util.concurrent.ThreadPoolExecutor: runWorker(ThreadPoolExecutor.java: 1114)
-   java.util.concurrent.ThreadPoolExecutor$Worker: run(ThreadPoolExecutor.java: 628)
-   java.lang.Thread: run(Thread.java: 835)
-  ok   Worker0#3           : Thread[Worker0#3,5,0-MUD]
-   jdk.internal.misc.Unsafe: park(Unsafe.java: -2)
-   java.util.concurrent.locks.LockSupport: parkNanos(LockSupport.java: 235)
-   java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject: awaitNanos(AbstractQueuedSynchronizer.java: 2123)
-   java.util.concurrent.ArrayBlockingQueue: poll(ArrayBlockingQueue.java: 432)
-   java.util.concurrent.ThreadPoolExecutor: getTask(ThreadPoolExecutor.java: 1053)
-   java.util.concurrent.ThreadPoolExecutor: runWorker(ThreadPoolExecutor.java: 1114)
-   java.util.concurrent.ThreadPoolExecutor$Worker: run(ThreadPoolExecutor.java: 628)
-   java.lang.Thread: run(Thread.java: 835)
-  ok   Worker0#4           : Thread[Worker0#4,5,0-MUD]
-   jdk.internal.misc.Unsafe: park(Unsafe.java: -2)
-   java.util.concurrent.locks.LockSupport: parkNanos(LockSupport.java: 235)
-   java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject: awaitNanos(AbstractQueuedSynchronizer.java: 2123)
-   java.util.concurrent.ArrayBlockingQueue: poll(ArrayBlockingQueue.java: 432)
-   java.util.concurrent.ThreadPoolExecutor: getTask(ThreadPoolExecutor.java: 1053)
-   java.util.concurrent.ThreadPoolExecutor: runWorker(ThreadPoolExecutor.java: 1114)
-   java.util.concurrent.ThreadPoolExecutor$Worker: run(ThreadPoolExecutor.java: 628)
-   java.lang.Thread: run(Thread.java: 835)
-  ok   Worker0#5           : Thread[Worker0#5,5,0-MUD]
-   jdk.internal.misc.Unsafe: park(Unsafe.java: -2)
-   java.util.concurrent.locks.LockSupport: parkNanos(LockSupport.java: 235)
-   java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject: awaitNanos(AbstractQueuedSynchronizer.java: 2123)
-   java.util.concurrent.ArrayBlockingQueue: poll(ArrayBlockingQueue.java: 432)
-   java.util.concurrent.ThreadPoolExecutor: getTask(ThreadPoolExecutor.java: 1053)
-   java.util.concurrent.ThreadPoolExecutor: runWorker(ThreadPoolExecutor.java: 1114)
-   java.util.concurrent.ThreadPoolExecutor$Worker: run(ThreadPoolExecutor.java: 628)
-   java.lang.Thread: run(Thread.java: 835)
-  ok   Worker0#6           : Thread[Worker0#6,5,0-MUD]
-   jdk.internal.misc.Unsafe: park(Unsafe.java: -2)
-   java.util.concurrent.locks.LockSupport: parkNanos(LockSupport.java: 235)
-   java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject: awaitNanos(AbstractQueuedSynchronizer.java: 2123)
-   java.util.concurrent.ArrayBlockingQueue: poll(ArrayBlockingQueue.java: 432)
-   java.util.concurrent.ThreadPoolExecutor: getTask(ThreadPoolExecutor.java: 1053)
-   java.util.concurrent.ThreadPoolExecutor: runWorker(ThreadPoolExecutor.java: 1114)
-   java.util.concurrent.ThreadPoolExecutor$Worker: run(ThreadPoolExecutor.java: 628)
-   java.lang.Thread: run(Thread.java: 835)
-  ok   I3_Worker0#5        : Thread[I3_Worker0#5,5,0-MUD]
-   java.lang.Thread: sleep(Thread.java: -2)
-   com.planet_ink.coffee_mud.core.intermud.i3.net.InputThread: run(Interactive.java: 702)
-   java.lang.Thread: run(Thread.java: 835)
-  ok   I3_Worker0#2        : Thread[I3_Worker0#2,5,0-MUD]
-   java.lang.Thread: sleep(Thread.java: -2)
-   com.planet_ink.coffee_mud.core.intermud.i3.net.InputThread: run(Interactive.java: 702)
-   java.lang.Thread: run(Thread.java: 835)
-  ok   I3_Worker0#5        : Thread[I3_Worker0#5,5,0-MUD]
-   java.lang.Thread: sleep(Thread.java: -2)
-   com.planet_ink.coffee_mud.core.intermud.i3.net.InputThread: run(Interactive.java: 702)
-   java.lang.Thread: run(Thread.java: 835)
-}
- ^HTGRP^?  ^HInnocuousThreadGroup^?
-  ok   Common-Cleaner      : Thread[Common-Cleaner,8,InnocuousThreadGroup]
-   java.lang.Object: wait(Object.java: -2)
-   java.lang.ref.ReferenceQueue: remove(ReferenceQueue.java: 155)
-   jdk.internal.ref.CleanerImpl: run(CleanerImpl.java: 148)
-   java.lang.Thread: run(Thread.java: 835)
-   jdk.internal.misc.InnocuousThread: run(InnocuousThread.java: 134)
-}
-
-20231226.1646.22 info  ShutdownHook   New Connections are now closed
-Exception in thread "ShutdownHook" java.lang.NullPointerException
-	at com.planet_ink.coffee_mud.core.CMClass.abilities(CMClass.java:816)
-	at com.planet_ink.coffee_mud.Races.StdRace.racialEffectsList(StdRace.java:1189)
-	at com.planet_ink.coffee_mud.Races.StdRace.numRacialEffects(StdRace.java:1118)
-	at com.planet_ink.coffee_mud.MOBS.StdMOB.numAllEffects(StdMOB.java:5153)
-	at com.planet_ink.coffee_mud.application.MUD.globalShutdown(MUD.java:499)
-	at com.planet_ink.coffee_mud.application.MUD$2.run(MUD.java:2043)
+20240109.2134.58 info  MUD            CoffeeMud v5.10.3
+20240109.2134.58 info  MUD            (C) 2000-2024 Bo Zimmerman
+20240109.2134.58 info  MUD            http://www.coffeemud.org
+20240109.2134.58 error CMSecurity     Unknown or duplicate disable flag: AUTOFORWARD
+20240109.2134.59 info  HOST0          Disabled subsystems: DBERRORQUESTART, QUITREASON, SLOW_AGEING, DEATHCRY, AUTOMOODS, AUTOFORWARD,FATIGUE, ALLERGIES, NEWPLAYERS
+20240109.2134.59 info  MUD@5555       MUD Server started on port: 5555
+20240109.2134.59 info  HOST0          Connected to jdbc:mysql://localhost:3306/coffeemud2
+20240109.2135.00 debug HOST0          SSL not configured.
+20240109.2135.00 debug HOST0          SSL not configured.
+20240109.2135.00 info  cweb-pub0      Started http pub0 on port 27744
+20240109.2135.00 info  cweb-admin0    Started http admin0 on port 27777
+20240109.2135.00 debug cweb-pub0Timeo Timeout Thread started
+20240109.2135.00 debug cweb-admin0Tim Timeout Thread started
+20240109.2135.00 info  HOST0          WebMacros loaded  : 200
+20240109.2135.01 info  HOST0          MOB Types loaded  : 149
+20240109.2135.01 info  HOST0          Exit Types loaded : 31
+20240109.2135.01 info  HOST0          Area Types loaded : 14
+20240109.2135.02 info  HOST0          Locales loaded    : 127
+20240109.2135.02 info  HOST0          Fighter Skills    : 203
+20240109.2135.02 info  HOST0          Chants loaded     : 318
+20240109.2135.03 info  HOST0          Languages loaded  : 59
+20240109.2135.03 info  HOST0          Properties loaded : 313
+20240109.2135.03 info  HOST0          Prayers loaded    : 362
+20240109.2135.04 info  HOST0          Thief Skills      : 180
+20240109.2135.04 info  HOST0          Skills loaded     : 355
+20240109.2135.04 info  HOST0          Songs loaded      : 156
+20240109.2135.05 info  HOST0          Spells loaded     : 420
+20240109.2135.05 info  HOST0          Heroics loaded    : 6
+20240109.2135.05 info  HOST0          Tech Skills loaded: 2
+20240109.2135.05 info  HOST0          Traps loaded      : 82
+20240109.2135.05 info  HOST0          GenAbles loaded   : 108
+20240109.2135.06 info  HOST0          Basic Items loaded: 140
+20240109.2135.06 info  HOST0          Weapons loaded    : 62
+20240109.2135.06 info  HOST0          Armor loaded      : 51
+20240109.2135.06 info  HOST0          Magic Items loaded: 47
+20240109.2135.06 info  HOST0          Clan Items loaded : 29
+20240109.2135.06 info  HOST0          Electronics loaded: 100
+20240109.2135.07 info  HOST0          Behaviors loaded  : 97
+20240109.2135.07 info  HOST0          Commands loaded   : 301
+20240109.2135.07 info  HOST0          Races loaded      : 317
+20240109.2135.09 info  HOST0          Classes loaded    : 99
+20240109.2135.14 info  HOST0          Expertises defined: 1820
+20240109.2135.14 info  HOST0          Channels loaded   : 29
+20240109.2135.14 info  HOST0          Socials loaded    : 342
+20240109.2135.15 info  HOST0          Clans loaded      : 13
+20240109.2135.15 info  I3Server       InterMud3 Core (c)1996 George Reese
+20240109.2135.15 info  CM1Server0@277 Started CM1Server0@27733 on port 27733
+20240109.2135.15 info  Intermud3      I3 client connection: 204.209.44.3@8080
+20240109.2135.15 info  I3Server       InterMud3 Server started on port 27766
+20240109.2135.16 info  HOST0          Loading catalog...
+20240109.2135.16 info  HOST0          Loading map...
+20240109.2135.17 info  Area           Creating unhandled area: Chiasa Paradise
+20240109.2135.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.23 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.24 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.24 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.24 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.24 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.24 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.24 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.24 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.24 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.24 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.24 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.24 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.24 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.24 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.24 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error ClanHelper     Unknown clan activated." for ^#111N^#222T^#333C^r-^#1110^#2220^#3330^r1 ^#550P^#540r^#550e^#540m^#550i^#540u^#550m ^#222D^#333r^ro^#222i^#111d^N in 
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.25 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.26 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.27 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.27 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.27 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.27 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.27 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.27 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.27 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.27 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.28 error ClanHelper     Unknown clan activated." for ^#111N^#222T^#333C^r-^#1110^#2220^#3330^r1 ^#550P^#540r^#550e^#540m^#550i^#540u^#550m ^#222D^#333r^ro^#222i^#111d^N in 
+20240109.2135.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.28 error ClanHelper     Unknown clan activated." for ^#111N^#222T^#333C^r-^#1110^#2220^#3330^r1 ^#550P^#540r^#550e^#540m^#550i^#540u^#550m ^#222D^#333r^ro^#222i^#111d^N in 
+20240109.2135.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.28 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.29 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.31 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.31 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.31 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.31 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.31 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.31 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.31 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.31 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.31 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.31 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.31 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.31 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.31 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.31 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.31 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.31 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.31 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.31 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.31 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.31 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.31 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.31 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.31 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.31 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.31 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.31 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.31 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.31 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.31 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.31 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.31 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.31 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.31 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.31 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2135.33 info  HOST0          Preparing map...
+20240109.2135.34 info  HOST0          Mapped rooms      : 3376 in 77 areas
+20240109.2135.34 info  HOST0          Space objects     : 6
+20240109.2135.34 info  HOST0          Clan owned items  : 0
+20240109.2135.34 info  HOST0          Quests loaded     : 8
+20240109.2135.34 info  HOST0          Services and utilities started
+20240109.2135.34 info  HOST0          Host#0 initializated.
+20240109.2135.34 info  MUD            Initialization complete.
+20240109.2135.36 error CombatAbilitie the woods does not want to fight.
+20240109.2135.38 info  MUD@5555       Connection from 78.175.227.9
+20240109.2135.40 info  MudChat        Chat Data by Chris Busch & Jeremy Vyska
+20240109.2135.40 info  MudChat        Chat Data by Chris Busch & Jeremy Vyska
+20240109.2135.43 info  Worker0#3      78.175.227.9 Mudlet 4.16.0 MXP MSDP GMCP CMP ANSI, account login: Moonbeam
+20240109.2135.45 info  Scripting      Moonbeam was MPENABLED with Combat Precognition
+20240109.2135.45 info  Scripting      Moonbeam was MPENABLED with Detect Ambush
+20240109.2135.45 info  Scripting      Moonbeam was MPENABLED with Find Directions
+20240109.2135.45 info  Scripting      Moonbeam was MPENABLED with Forecast Weather
+20240109.2135.45 info  Scripting      Moonbeam was MPENABLED with Know Fate
+20240109.2135.45 info  Scripting      Moonbeam was MPENABLED with Know Province
+20240109.2135.45 info  Scripting      Moonbeam was MPAFFECTED by Chronos
+20240109.2135.45 info  Scripting      Moonbeam was MPAFFECTED by Combat Precognition
+20240109.2135.45 info  Scripting      Moonbeam was MPAFFECTED by Detect Ambush
+20240109.2135.45 info  Scripting      Moonbeam was MPAFFECTED by Find Directions
+20240109.2135.45 info  Scripting      Moonbeam was MPAFFECTED by Know Fate
+20240109.2135.45 info  Scripting      Moonbeam was MPAFFECTED by Addictions
+20240109.2135.45 info  Worker0#1      78.175.227.9 Mudlet 4.16.0 MXP MSDP GMCP CMP ANSI, character login: Moonbeam
+20240109.2135.49 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1 from 
+20240109.2135.49 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1 from 
+20240109.2135.55 info  MudChat        Chat Data by Chris Busch & Jeremy Vyska
+20240109.2136.00 info  MUD@5555       Connection from 78.175.227.9
+20240109.2136.06 info  Worker0#4      78.175.227.9 Mudlet 4.16.0 MXP MSDP GMCP CMP ANSI, account login: Moonbeam
+20240109.2136.08 info  Worker0#1      78.175.227.9 Mudlet 4.16.0 MXP MSDP GMCP CMP ANSI, character login: Komi
+20240109.2136.18 info  Worker0#6      Logout: Komi (10s)
+20240109.2136.19 info  Worker0#6      Komi switched login to: Lucina
+20240109.2137.53 info  MUD@5555       Connection from 76.237.172.255
+20240109.2138.08 info  Worker0#5      76.237.172.255 Mudlet 4.17.2 MXP GMCP CMP ANSI, account login: Valen
+20240109.2138.16 info  Worker0#6      76.237.172.255 Mudlet 4.17.2 MXP GMCP CMP ANSI, character login: Gael
+20240109.2139.05 info  CreateEdit     Moonbeam modified mob Commissary Ishyo (GenMob) in Phantom City#48.
+20240109.2139.24 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2139.24 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2139.24 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2139.24 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2139.24 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2139.24 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2139.24 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2139.24 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2139.24 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2139.24 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2139.24 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2139.24 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2139.24 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2139.24 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2139.24 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2139.24 error CoffeeMaker    unpackItemsFromXML: null 'ITEMS' <ITEMS> in empty pieces list
+20240109.2139.42 info  Items          Moonbeam created item GenSuperPill.
+20240109.2139.43 info  Items          Moonbeam created item GenSuperPill.
+20240109.2139.43 info  Items          Moonbeam created item GenSuperPill.
+20240109.2139.43 info  Items          Moonbeam created item GenSuperPill.
+20240109.2139.43 info  Items          Moonbeam created item GenSuperPill.
+20240109.2139.43 info  Items          Moonbeam created item GenSuperPill.
+20240109.2139.43 info  Items          Moonbeam created item GenSuperPill.
+20240109.2139.43 info  Items          Moonbeam created item GenSuperPill.
+20240109.2139.44 info  Items          Moonbeam created item GenSuperPill.
+20240109.2139.44 info  Items          Moonbeam created item GenSuperPill.
+20240109.2142.25 warni Worker0#6      Destroy: ^BA s^bh^Ci^cn^cy ^bX^BP ^bc^Co^co^Ck^bi^Be^N is unowned.
+20240109.2142.29 warni Worker0#6      Destroy: ^BA s^bh^Ci^cn^cy ^bX^BP ^bc^Co^co^Ck^bi^Be^N is unowned.
+20240109.2142.45 warni Worker0#1      Destroy: ^BA s^bh^Ci^cn^cy ^bX^BP ^bc^Co^co^Ck^bi^Be^N is unowned.
+20240109.2142.47 error Worker0#4      Bad Zappermask key '+ALL' @ +ALL
+20240109.2143.17 warni Worker0#5      Destroy: ^BA s^bh^Ci^cn^cy ^bX^BP ^bc^Co^co^Ck^bi^Be^N is unowned.
+20240109.2143.21 warni Worker0#1      Destroy: ^BA s^bh^Ci^cn^cy ^bX^BP ^bc^Co^co^Ck^bi^Be^N is unowned.
+20240109.2143.41 warni Worker0#2      Destroy: ^BA s^bh^Ci^cn^cy ^bX^BP ^bc^Co^co^Ck^bi^Be^N is unowned.
+20240109.2143.45 warni Worker0#4      Destroy: ^BA s^bh^Ci^cn^cy ^bX^BP ^bc^Co^co^Ck^bi^Be^N is unowned.
+20240109.2144.05 warni Worker0#2      Destroy: ^BA s^bh^Ci^cn^cy ^bX^BP ^bc^Co^co^Ck^bi^Be^N is unowned.
+20240109.2144.13 warni Worker0#5      Destroy: ^BA s^bh^Ci^cn^cy ^bX^BP ^bc^Co^co^Ck^bi^Be^N is unowned.
+20240109.2144.41 warni Worker0#5      Destroy: ^BA s^bh^Ci^cn^cy ^bX^BP ^bc^Co^co^Ck^bi^Be^N is unowned.
+20240109.2145.57 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1 from 
+20240109.2145.57 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1 from 
+20240109.2148.31 info  CreateEdit     Moonbeam modified mob a white-essence resurgentis psion (GenMob) in Phantom City#118.
+20240109.2148.46 info  Worker0#5      Logout: Moonbeam (13m)
+20240109.2148.46 info  Worker0#5      Disconnect: Moonbeam: 78.175.227.9 (13m)
+20240109.2148.46 info  Worker0#5      Logout: Lucina (12m)
+20240109.2148.46 info  Worker0#5      Disconnect: Lucina: 78.175.227.9 (12m)
+20240109.2148.59 info  MUD@5555       Connection from 78.175.227.9
+20240109.2149.04 info  Worker0#4      78.175.227.9 Mudlet 4.16.0 MXP MSDP GMCP CMP ANSI, account login: Moonbeam
+20240109.2149.06 info  Worker0#1      78.175.227.9 Mudlet 4.16.0 MXP MSDP GMCP CMP ANSI, character login: Moonbeam
+20240109.2149.58 info  CreateEdit     Moonbeam modified mob a white-essence resurgentis psion (GenMob) in Phantom City#118.
+20240109.2151.37 info  Worker0#3      Logout: Moonbeam (2m)
+20240109.2151.37 info  Worker0#3      Moonbeam switched login to: Lucina
+20240109.2152.41 error Worker0#3      Bad Zappermask key '+ALL' @ +ALL
+20240109.2156.05 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1 from 
+20240109.2156.05 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1 from 
+20240109.2158.01 info  MUD@5555       Connection from 99.242.211.161
+20240109.2158.04 info  MUD@5555       Connection from 78.175.227.9
+20240109.2158.12 info  Worker0#3      78.175.227.9 BlowTorch CMP ANSI, account login: Moonbeam
+20240109.2158.13 info  Worker0#4      Session swap for Lucina.
+20240109.2158.13 info  Worker0#5      Disconnect: Moonbeam: 78.175.227.9 (9m)
+20240109.2158.14 info  Worker0#4      78.175.227.9 BlowTorch CMP ANSI, character login: Lucina
+20240109.2158.48 info  Worker0#1      99.242.211.161 Mudlet 4.17.2 MXP GMCP CMP ANSI, account login: Nuki
+20240109.2158.48 info  Worker0#5      Logout: Lucina (33s)
+20240109.2158.48 info  Worker0#5      Lucina switched login to: Moonbeam
+20240109.2158.50 info  Worker0#1      99.242.211.161 Mudlet 4.17.2 MXP GMCP CMP ANSI, character login: Moira
+20240109.2200.04 error Worker0#6      Bad Zappermask key '+ALL' @ +ALL
+20240109.2201.50 info  Worker0#6      Logout: Moonbeam (3m)
+20240109.2201.51 info  Worker0#6      Moonbeam switched login to: Lucina
+20240109.2203.40 info  MUD@5555       Connection from 78.175.227.9
+20240109.2203.45 info  Worker0#5      78.175.227.9 BlowTorch CMP ANSI, account login: Moonbeam
+20240109.2203.47 info  Worker0#2      78.175.227.9 BlowTorch CMP ANSI, character login: Moonbeam
+20240109.2206.13 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1 from 
+20240109.2206.13 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1 from 
+20240109.2207.03 info  MUD@5555       Connection from 103.180.149.156
+20240109.2208.09 info  Worker0#4      Disconnect: 103.180.149.156 (1m 6s)
+20240109.2208.13 info  Worker0#7      Logout: Moonbeam (4m)
+20240109.2208.13 info  Worker0#7      Disconnect: Moonbeam: 78.175.227.9 (4m)
+20240109.2211.42 debug Intermud       UCache packet has # data: 9
+20240109.2211.42 debug Intermud       UCache Data: ucache-update 5 MoH 0 0 0 Cal Cal 0
+20240109.2215.50 info  Worker0#6      Logout: Lucina (17m)
+20240109.2215.50 info  Worker0#6      Lucina switched login to: Moonbeam
+20240109.2216.21 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1 from 
+20240109.2216.21 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1 from 
+20240109.2216.31 info  Worker0#2      Logout: Moonbeam (18m)
+20240109.2216.31 info  Worker0#2      Moonbeam switched login to: Lucina
+20240109.2217.28 info  Worker0#2      Logout: Lucina (19m)
+20240109.2217.29 info  Worker0#2      Lucina switched login to: Moonbeam
+20240109.2218.01 info  Worker0#1      Logout: Moonbeam (19m)
+20240109.2218.01 info  Worker0#1      Moonbeam switched login to: Lucina
+20240109.2222.40 error Worker0#5      Bad Zappermask key '+ALL' @ +ALL
+20240109.2226.29 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1 from 
+20240109.2226.29 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1 from 
+20240109.2236.37 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1 from 
+20240109.2236.37 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1 from 
+20240109.2246.45 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1 from 
+20240109.2246.45 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1 from 
+20240109.2256.53 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1 from 
+20240109.2256.53 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1 from 
+20240109.2301.35 info  MUD@5555       Connection from 104.156.100.167
+20240109.2303.05 error Worker0#5      Bad Zappermask key '+ALL' @ +ALL
+20240109.2303.24 info  MUD@5555       Connection from 78.175.227.9
+20240109.2303.29 info  Worker0#2      78.175.227.9 BlowTorch CMP ANSI, account login: Moonbeam
+20240109.2303.32 info  Worker0#1      78.175.227.9 BlowTorch CMP ANSI, character login: Moonbeam
+20240109.2304.06 info  CreateEdit     Moonbeam modified mob Hank (GenShopkeeper) in sector minus#12.
+20240109.2304.26 info  Worker0#3      Logout: Moonbeam (53s)
+20240109.2304.26 info  Worker0#3      Disconnect: Moonbeam: 78.175.227.9 (1m 1s)
+20240109.2307.01 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1 from 
+20240109.2307.01 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1 from 
+20240109.2310.13 info  Scripting      Lucina has HITS MPGSETTED to 158
+20240109.2310.13 info  Scripting      Lucina was MPAFFECTED by Light Cumbloat
+20240109.2310.13 info  Scripting      Lucina was MPUNAFFECTED by Matingpress
+20240109.2310.13 info  MUD@5555       Connection from 2.200.204.242
+20240109.2312.39 info  Scripting      Gael was MPUNAFFECTED by Heal Sex
+20240109.2315.35 info  THSessions0    Kicking out login session after 13m 58s 44ms.
+20240109.2315.35 info  Worker0#1      Disconnect: 104.156.100.167 (13m)
+20240109.2315.38 info  THSessions0    Kicking out login session after 5m 22s 561ms.
+20240109.2315.38 info  Worker0#1      Disconnect: 2.200.204.242 (5m)
+20240109.2316.49 info  Worker0#1      Logout: Lucina (1h 18m)
+20240109.2316.49 info  Worker0#1      Lucina switched login to: Komi
+20240109.2317.09 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1 from 
+20240109.2317.09 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1 from 
+20240109.2320.37 info  Scripting      Komi has HITS MPGSETTED to 586
+20240109.2320.37 info  Scripting      Komi was MPAFFECTED by Light Cumbloat
+20240109.2320.37 info  Scripting      Komi was MPUNAFFECTED by Matingpress
+20240109.2320.42 info  MUD@5555       Connection from 103.72.57.192
+20240109.2321.49 info  Worker0#7      Disconnect: 103.72.57.192 (1m 6s)
+20240109.2327.17 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1 from 
+20240109.2327.17 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1 from 
+20240109.2337.25 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1 from 
+20240109.2337.25 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1 from 
+20240109.2345.05 info  Scripting      Gael has HITS MPGSETTED to 361
+20240109.2345.09 info  Scripting      Gael was MPUNAFFECTED by Full Nelson
+20240109.2347.33 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1 from 
+20240109.2347.33 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1 from 
+20240109.2347.39 info  MUD@5555       Connection from 103.180.149.156
+20240109.2348.45 info  Worker0#7      Disconnect: 103.180.149.156 (1m 6s)
+20240109.2357.41 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1 from 
+20240109.2357.41 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1 from 
+20240110.0000.18 info  Worker0#1      Logout: Komi (2h)
+20240110.0000.18 info  Worker0#1      Disconnect: Komi: 78.175.227.9 (2h)
+20240110.0007.49 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1 from 
+20240110.0007.49 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1 from 
+20240110.0017.57 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1 from 
+20240110.0017.57 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1 from 
+20240110.0028.05 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1 from 
+20240110.0028.05 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1 from 
+20240110.0038.13 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1 from 
+20240110.0038.13 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1 from 
+20240110.0044.23 info  MUD@5555       Connection from 76.24.243.98
+20240110.0048.21 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1 from 
+20240110.0048.21 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1 from 
+20240110.0055.35 info  THSessions0    Kicking out login session after 11m 10s 898ms.
+20240110.0055.35 info  Worker0#2      Disconnect: 76.24.243.98 (11m)
+20240110.0058.29 error Prop_Artifact  Unable to find artifact NPC: GenWeapon-1482921244@34a824420.9288669979118432 from Elizabeth in New Area#1 from 
+20240110.0058.29 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in New Area#1 from 

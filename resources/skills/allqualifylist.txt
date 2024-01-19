@@ -48,7 +48,7 @@
 1 Herbology 
 1 Hunting MASK=+WIS 8 
 1 Ignan 
-1 Milkable PROF=100 
+1 Milkable PROF=100 AUTOGAIN MASK=-GENDER +FEMALE 
 1 ooc_bailooc PROF=100 AUTOGAIN 
 1 ooc_reward PROF=100 AUTOGAIN 
 1 Orcish 
@@ -74,10 +74,11 @@
 1 SignLanguage 
 1 Skill_Climb PROF=100 AUTOGAIN 
 1 Skill_ConsentToggle PROF=100 AUTOGAIN 
+1 Skill_DeathDrain PROF=100 AUTOGAIN 
 1 Skill_Home PROF=100 AUTOGAIN 
+1 skill_masturbate PROF=100 AUTOGAIN 
 1 Skill_Recall PROF=100 AUTOGAIN 
 1 Skill_Revoke PROF=100 AUTOGAIN 
-1 Skill_wank PROF=100 AUTOGAIN 
 1 Unbinding PROF=75 AUTOGAIN 
 1 Undercommon 
 

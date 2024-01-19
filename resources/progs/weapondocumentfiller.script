@@ -4,14 +4,13 @@ if var($n fillingdocument != 1)
 mpsetvar $n fillingdocument 1
 mpprompt $n freecityname Enter the name of settlement/free city you work in. (ex. Phantom City, Frozen City)
 mpprompt $n licenseename Enter name.
-mpprompt $n licenseeage Enter date of birth.
 mpprompt $n licenseerace Enter race.
 mpprompt $n permitreason Enter reason for permit.
 mpprompt $n weaponclass Enter highest weapon class allowed for this person. (A/B/C/D/E)
 mpprompt $n stamp Enter a stamp for your government department (ex. Phantom City Justice Force, Fun Police of Boredom City)
 mpprompt $n writername Enter your title and name (ex. Judge John Doe.)
 mpgset $i name A weapon license for $<$n licenseename>
-mpgset $i READABLETEXT ^COFFICIAL WEAPON LICENSE DOCUMENT^N%0D%0DName: $<$n licenseename>%0DDOB: $<$n licenseeage>%0DRace: $<$n licenseerace>%0D%0DLicensing Reason: $<$n permitreason>%0DHighest Class allowed: $<$n weaponclass>%0D%0DGovernment of $<$n freecityname>.%0D$<$n stamp>%0DProcessing Officer: $<$n writername>.
+mpgset $i READABLETEXT ^COFFICIAL WEAPON LICENSE DOCUMENT^N%0D%0DName: $<$n licenseename>%0DRace: $<$n licenseerace>%0D%0DLicensing Reason: $<$n permitreason>%0DHighest Class allowed: $<$n weaponclass>%0D%0DGovernment of $<$n freecityname>.%0D$<$n stamp>%0DProcessing Officer: $<$n writername>.
 mpgset $i description A paperwork that passes as a weapons permit for classes of weapons, each class starting from A include the class before it.%0D%0DA: Semi automatic ballistic  rifles.%0DB: Automatic ballistic pistols and rifles.%0DC: Semi automatic plasma weaponry and melee weapons.%0DD: Automatic plasma weaponry.%0DE: Explosives and other heavy weaponry etc. You can READ it.
 mpsetvar $n fillingdocument 0
 mpalarm 1 mpunbehave scriptable $i
