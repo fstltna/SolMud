@@ -1,0 +1,5 @@
+ONCE_PROG
+	MPECHOAT $i ^HStaffmail! Here is your staffmail (of whatever kind you chose) description so far:%0D ^.^N$^H$%INROOM()%^N -- $<$i VALUE>
+	MPPROMPT $i MORERESPONSE ^HPlease any additional details about your situation%0D: ^.^N
+	MPSETVAR $i VALUE $<$i VALUE>. ^w$<$i MORERESPONSE>. ^gRoom: $%INROOM()% $d^w^.^N
+~

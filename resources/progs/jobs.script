@@ -1,0 +1,42 @@
+cnclmsg_prog HUH p save
+mpnotrigger cnclmsg_prog 4
+//vars for later changing easiness.
+mpsetvar $i jobmoney 50
+mpsetvar $i jobexp 50
+mpsetvar $i profjobmoney 150
+mpsetvar $i profjobexp 150
+// actual script below
+if isname('$i' 'a lost citizen')
+if clan('$n' in 'Phantom City Justice Force')
+mpecho $n swiftly kills the insect and saves the poor breeder, reporting the incident to PJF in <S-H?S-HER> implant. ^P[^pProfession Bonus^P]^N ^C[^cSuccess^C]^N
+mpmoney $n +$<'$i' profjobmoney> credit
+mpechoat $n You earned ^g$<'$i' profjobmoney>c^N.
+mpexp $n $<'$i' profjobexp>
+else
+mpecho $n intimidates the insect into fleeing into the depths of the cave and saves the poor breeder ^C[^cSuccess^C]^N
+mpmoney $n +$<'$i' jobmoney> credit
+mpechoat $n You earned ^g$<'$i' jobmoney>c^N.
+mpexp $n $<'$i' jobexp>
+endif
+mpjunk '$i'
+endif
+return cancel
+~
+
+//ntc crime scene job
+cnclmsg_prog HUH p investigate
+mpsetvar $i jobmoney 250
+mpsetvar $i jobexp 150
+if isname('$i' 'a crime scene')
+if clan('$n' in 'NineTails Corporation')
+mpecho $n approaches the crime scene and passes through the holo-tape covering the scene. $n begins to investigate the crime scene and take photos and notes of everything and goes around requesting camera footages from nearby establishments, eventually getting done and leaving. ^C[^cSuccess^C]^N
+mpechoat $n You earned ^g$<$i jobmoney>c^N.
+mpmoney $n +$<$i jobmoney> credit
+mpexp $n $<'$i jobexp>
+mpjunk $i
+else
+mpechoat $n That is not your job to do.
+endif
+endif
+return cancel
+~
