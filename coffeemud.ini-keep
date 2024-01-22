@@ -360,7 +360,7 @@ INJURYSYSTEM=100,60,25,100,2,10,15,20,100
 # ONEWAY-X   Same as OPTIONAL-X, but player can never turn PKILL off.
 # NEVER      Players may never kill each other.
 # The above does not affect DUELing.
-PLAYERKILL=ONEWAY
+PLAYERKILL=ONEWAY-5
 
 # The PLAYERDEATH describes what happens to a player when they die.
 # Multiple entries may be included, and are separated by commas.
@@ -378,7 +378,7 @@ PLAYERKILL=ONEWAY
 # (expression) The players lost experience is calculated based on the
 #              give math expression, using + - * / (), and using @x1 to
 #              stand for the players level, and @x2 the killers level
-PLAYERDEATH=EXPERIENCE
+PLAYERDEATH=1000
 # MOBDEATH describes what happens to a non-player when they die.
 # The default is DEATH, but you can also use one of the following:
 # DEATH        They die.  They don't come back until they rejuv.
@@ -416,7 +416,7 @@ EXPRATE=6
 # them (default), SELFONLY will only allow the players to loot
 # their own corpses, and the PKONLY flag will allow the players, or 
 # other players with the playerkill flag turned on to loot.
-CORPSEGUARD=PKONLY
+CORPSEGUARD=ALL
 
 # The ITEMLOOTPOLICY is left blank to not implement any item-loss
 # when mobs are killed.  Otherwise you can implement one or more
@@ -430,7 +430,7 @@ CORPSEGUARD=PKONLY
 # ending keyword MASK= followed by a Zapper Mask (see HELP ZAPPERMASKS).
 # Example: ITEMLOOTPOLICY=10% RUIN;15% LOSS; 99% RUIN MASK=-MATERIAL +WOODEN
 # Default is 20% RUIN.
-ITEMLOOTPOLICY=80% RUIN WORN
+ITEMLOOTPOLICY=75% RUIN WORN
 
 # The AUTOREACTION system is a general way to get mobs to react to
 # players based on their past behavior.  The value is a comma 
@@ -798,7 +798,7 @@ EXPDEFER=
 #          SOCIAL-NPC 1, SOCIAL-OTH 1, EMOTE-PC 5, EMOTE-NPC 1, EMOTE-OTH 1, GOAFK -25, \
 #          CHANNEL-NAMED(GOSSIP,CHAT) -10
 # Default is empty (role playing xp is disabled)
-RPAWARDS=9999999 2, INTRODUCE-PC 250, SAY-PC 100, SOCIAL-PC 50, EMOTE-PC 250
+RPAWARDS=9999999 2, INTRODUCE-PC 250, SAY-PC 100, SOCIAL-OTH 50, SOCIAL-PC 50, EMOTE-PC 250
 
 # LOGOUTMASK is an optional zappermask that the player must match in order 
 # to logout of the game, quit, or switch to another account character.  
@@ -816,7 +816,7 @@ LOGOUTMASK=
 # Example: HITPOINTS 10 1 GOLD, MANA 20 3 PRACTICE
 # Defaults: HITPOINTS 10 1 TRAIN, MANA 20 1 TRAIN, MOVES 20 1 TRAIN,
 #           TRAINS 1 7 PRACTICE, PRACTICES 5 1 TRAIN
-TRAINCOSTS=HITPOINTS 10 5000 XP, MANA 20 5000 XP, MOVES 20 5000 XP
+TRAINCOSTS=HITPOINTS 10 2000 XP, MANA 20 2000 XP, MOVES 20 2000 XP
 
 ######################################################################
 # Ability/Skill related configuration variables
@@ -858,7 +858,7 @@ EFFECTCAP=0
 #      @x3=minimum mana cost, @x4=adjusted mob skill level, @x5=# levels above qual
 # Example: MANACOST=-3, Spell_Shield @x2*3, Skill_Recall 10
 # Default is: -1, Skill_Recall 25
-MANACOST=10 Skill_Recall 25
+MANACOST-1 Skill_Recall 25
 
 # MANACOMPOUND is an optional system to increase the amount of 
 # mana/move/whatever used whenever a skill is used again within
@@ -1137,7 +1137,7 @@ PROMPTBEHAVIOR=CRLF
 # the number of minutes for each of the following types of items respectively:
 # Monster loot, Player drops, Gathered natural resources, Monster corpses,
 # and Player corpses.  The defaults are 30, 1200, 60, 30, 1330 respectively. 
-EXPIRATIONS=30,1200,60,30,0
+EXPIRATIONS=30,1200,60,30,1330
 
 # COLORSCHEME - This is a series of default ANSI color definitions in the 
 # form of COLORCODE=COLOR,COLORCODE=COLOR+COLOR,COLORCODE=COLOR.
@@ -1478,13 +1478,12 @@ CHANNELS=\
 COMMANDJOURNALS=\
 	TASK ASSIGN=ALL:,\
 	TYPO ADDROOM=on ASSIGN=ALL:,\
-	PLOT CHANNEL=WIZINFO ADDROOM=on ADMINECHO=on CONFIRM=on ASSIGN=ALL:,\
-	BUG CONFIRM=on ADMINECHO=on SCRIPT=progs/bugreport.script ASSIGN=ALL:,\
-	IDEA ADMINECHO=on ASSIGN=ALL:,\
+	PLOT CONFIRM=on CHANNEL=WIZINFO ADMINECHO=on SCRIPT=progs/staffmail.script ASSIGN=ALL:,\
+	BUG CONFIRM=on CHANNEL=WIZINFO ADMINECHO=on SCRIPT=progs/bugreport.script ASSIGN=ALL:,\
+	IDEA CONFIRM=on CHANNEL=WIZINFO ADMINECHO=on SCRIPT=progs/staffmail.script ASSIGN=ALL:,\
 	STUCK CHANNEL=WIZINFO EXPIRE=2 ADMINECHO=on ASSIGN=ALL:,\
-	BUILD CHANNEL=BUILDER ADDROOM=on ADMINECHO=on CONFIRM=on ASSIGN=ALL:,\
-	PKMAIL CHANNEL=WIZINFO ADDROOM=on ADMINECHO=on CONFIRM=on ASSIGN=ALL:,\
-	STAFFMAIL CHANNEL=WIZINFO ADDROOM=on ADMINECHO=on ASSIGN=ALL:,\
+	PKMAIL CONFIRM=on CHANNEL=WIZINFO ADMINECHO=on SCRIPT=progs/staffmail.script ASSIGN=ALL:,\
+	STAFFMAIL CONFIRM=on CHANNEL=WIZINFO ADMINECHO=on SCRIPT=progs/staffmail.script ASSIGN=ALL:,\
 	
 # FORUMJOURNALS is a list, separated by commas, as below.  
 # These are journals that act as open forums for users, esp on the
@@ -2251,7 +2250,7 @@ PRIVATERESOURCEPATH=
 # FORMULA_NPCHITPOINTS is the formula for the basic legacy npc hit points calculation 
 # @x1=npc level, @x2=npc "ability" hit points modifier (usually 11)
 # Default is: 3 + @x1 + (@x1 * ((@x2/2) + (1?(@x2/2))))
-FORMULA_NPCHITPOINTS=150 + @x1 + (@x1 * ((@x2/2) + (1?(@x2/2))))
+FORMULA_NPCHITPOINTS=5 + @x1 + (@x1 * ((@x2/2) + (1?(@x2/2))))
 
 # FORMULA_ATTACKADJUSTMENT is the formula for a players standard attack adjustments
 # @x1=base attack, @x2=curr.str>max.str?max.str:curr.str, @x3=base.str>max.str?max.str:base.str, 

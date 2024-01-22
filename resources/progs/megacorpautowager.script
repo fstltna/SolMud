@@ -1,44 +1,44 @@
 day_prog 15
 if clandata('Ninetails Corporation' SIZE >= 3)
 if clandata('Ninetails Corporation' status == Active)
-mpforce ntcwager mpoload 100 megacredit
+mpforce ntcwager mpoload 50 megacredit
 mpforce ntcwager deposit all bank
-mpforce ntcwager clantalk 100 Megacredits income has been paid out.
+mpforce ntcwager clantalk 50 Megacredits income has been paid out.
 endif
 endif
 if clandata('Novamed Corporation' SIZE >= 3)
 if clandata('Novamed Corporation' status == Active)
-mpforce nmwager mpoload 100 megacredit
+mpforce nmwager mpoload 50 megacredit
 mpforce nmwager deposit all bank
-mpforce nmwager clantalk 100 Megacredits income has been paid out.
+mpforce nmwager clantalk 50 Megacredits income has been paid out.
 endif
 endif
 if clandata('ArcherCorp' SIZE >= 3)
 if clandata('ArcherCorp' status == Active)
-mpforce acwager mpoload 100 megacredit
+mpforce acwager mpoload 50 megacredit
 mpforce acwager deposit all bank
-mpforce acwager clantalk 100 Megacredits income has been paid out.
+mpforce acwager clantalk 50 Megacredits income has been paid out.
 endif
 endif
 if clandata('Novamed Corporation' SIZE >= 3)
 if clandata('Novamed Corporation' status == Active)
-mpforce nmwager mpoload 100 megacredit
+mpforce nmwager mpoload 50 megacredit
 mpforce nmwager deposit all bank
-mpforce nmwager clantalk 100 Megacredits income has been paid out.
+mpforce nmwager clantalk 50 Megacredits income has been paid out.
 endif
 endif
 if clandata('TRANSco' SIZE >= 3)
 if clandata('TRANSco' status == Active)
-mpforce tcwager mpoload 100 megacredit
+mpforce tcwager mpoload 50 megacredit
 mpforce tcwager deposit all bank
-mpforce tcwager clantalk 100 Megacredits income has been paid out.
+mpforce tcwager clantalk 50 Megacredits income has been paid out.
 endif
 endif
 if clandata('Phantom City Justice Force' SIZE >= 3)
 if clandata('Phantom City Justice Force' status == Active)
-mpforce pjfwager mpoload 100 megacredit
+mpforce pjfwager mpoload 50 megacredit
 mpforce pjfwager deposit all bank
-mpforce pjfwager clantalk 100 Megacredits income has been paid out.
+mpforce pjfwager clantalk 50 Megacredits income has been paid out.
 endif
 endif
 mpchannel !corpo Megacorporation monthly incomes paid out. If megacorp clans have less than 3 members or if the clan is inactive the money will not be paid out.
@@ -54,37 +54,37 @@ endif
 cnclmsg_prog huh p paynow
 if clandata('NineTails Corporation' SIZE >= 3)
 if clandata('NineTails Corporation' status == Active)
-mpforce ntcwager mpoload 100 megacredit
+mpforce ntcwager mpoload 50 megacredit
 mpforce ntcwager deposit all bank
 endif
 endif
 if clandata('Novamed Corporation' SIZE >= 3)
 if clandata('Novamed Corporation' status == Active)
-mpforce nmwager mpoload 100 megacredit
+mpforce nmwager mpoload 50 megacredit
 mpforce nmwager deposit all bank
 endif
 endif
 if clandata('ArcherCorp' SIZE >= 3)
 if clandata('ArcherCorp' status == Active)
-mpforce acwager mpoload 100 megacredit
+mpforce acwager mpoload 50 megacredit
 mpforce acwager deposit all bank
 endif
 endif
 if clandata('Novamed Corporation' SIZE >= 3)
 if clandata('Novamed Corporation' status == Active)
-mpforce nmwager mpoload 100 megacredit
+mpforce nmwager mpoload 50 megacredit
 mpforce nmwager deposit all bank
 endif
 endif
 if clandata('TRANSco' SIZE >= 3)
 if clandata('TRANSco' status == Active)
-mpforce tcwager mpoload 100 megacredit
+mpforce tcwager mpoload 50 megacredit
 mpforce tcwager deposit all bank
 endif
 endif
 if clandata('Phantom City Justice Force' SIZE >= 3)
 if clandata('Phantom City Justice Force' status == Active)
-mpforce pjfwager mpoload 100 megacredit
+mpforce pjfwager mpoload 50 megacredit
 mpforce pjfwager deposit all bank
 endif
 endif

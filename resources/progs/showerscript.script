@@ -54,42 +54,42 @@ endif
 return cancel
 ~
 
-cnclmsg_prog HUH p fap into toilet
+cnclmsg_prog HUH p fap in shower
 if var($n usingappliance != 1)
 if sex($n == M)
 mpsetvar $n usingappliance 1
 mpaffect property:spell_Hold $n 2TICKS
-mpecho $n undoes any clothing that may be on the way and aims the 'big iron'
-mpalarm 1 mpecho $n begins to fap rapidly, trying to keep aim.
-mpalarm 3 mpecho $n plops a few fat loads into $i and packs back up, sighing out.
+mpecho $n undoes any clothing that may be on the way and grabs his 'iron'
+mpalarm 1 mpecho $n begins to fap rapidly, making weird wet noises.
+mpalarm 3 mpecho $n plops a few fat loads in $i then leaves it to dry and dress up.
 mpalarm 2 mpunaffect $n spell_hold
 mpalarm 3 mpsetvar $n usingappliance 0
 mpalarm 2 mploadvar $i showerstate
 mpalarm 3 mpsetvar $i showerstate ++
 mpalarm 3 mpsavevar $i showerstate
 if var($i showerstate <= 3)
-mpset $i description a standing shower to be installed in a house, it's made to fit a corner of the room, with slidable doors to cover the user, you see some strands of white goo here. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a standing shower to be installed in a house, it's made to fit a corner of the room, with slidable doors to cover the user, you see some strands of white goo here. %0D%0D^CCommands:%0DWash in shower%0DFap in shower%0DClean shower^N
 else
 if var($i showerstate <= 6)
-mpset $i description a standing shower to be installed in a house, it's made to fit a corner of the room, with slidable doors to cover the user, you see some strands of white goo here. It is ^#332a little dirty and gathered with hair^N. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a standing shower to be installed in a house, it's made to fit a corner of the room, with slidable doors to cover the user, you see some strands of white goo here. It is ^#332a little dirty and gathered with hair^N. %0D%0D^CCommands:%0DWash in shower%0DFap in shower%0DClean shower^N
 else
 if var($i showerstate <= 8)
-mpset $i description a standing shower to be installed in a house, it's made to fit a corner of the room, with slidable doors to cover the user, you see some strands of white goo here. It is ^#310dirty and clogged up^N. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a standing shower to be installed in a house, it's made to fit a corner of the room, with slidable doors to cover the user, you see some strands of white goo here. It is ^#310dirty and clogged up^N. %0D%0D^CCommands:%0DWash in shower%0DFap in shower%0DClean shower^N
 else
 if var($i showerstate <= 10)
-mpset $i description a standing shower to be installed in a house, it's made to fit a corner of the room, with slidable doors to cover the user, you see some strands of white goo here. It's ^#210very filthy and clogged to hell and back^N. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a standing shower to be installed in a house, it's made to fit a corner of the room, with slidable doors to cover the user, you see some strands of white goo here. It's ^#210very filthy and clogged to hell and back^N. %0D%0D^CCommands:%0DWash in shower%0DFap in shower%0DClean shower^N
 endif
 endif
 endif
 endif
 else
 if sex($n == F)
-mpforce $n sit toilet
+mpforce $n sit shower
 mpsetvar $n usingappliance 1
 mpaffect property:spell_Hold $n 2TICKS
-mpecho $n undoes any clothing that may be on the way and sits on the toilet.
+mpecho $n undoes any clothing that may be on the way and gets in the shower.
 mpalarm 1 mpecho $n begins to rub herself and play around with both hands.
-mpalarm 3 mpecho $n shudders with release right into $i then packs back up, standing up.
+mpalarm 3 mpecho $n shudders with release right in $i then leaves it to dry and dress up.
 mpalarm 2 mpunaffect $n spell_hold
 mpalarm 3 mpforce $n stand
 mpalarm 3 mpsetvar $n usingappliance 0
@@ -97,16 +97,16 @@ mpalarm 2 mploadvar $i showerstate
 mpalarm 3 mpsetvar $i showerstate ++
 mpalarm 3 mpsavevar $i showerstate
 if var($i showerstate <= 3)
-mpset $i description a standing shower to be installed in a house, it's made to fit a corner of the room, with slidable doors to cover the user, you catch glimpse of some clear goo here and there. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a standing shower to be installed in a house, it's made to fit a corner of the room, with slidable doors to cover the user, you catch glimpse of some clear goo here and there. %0D%0D^CCommands:%0DWash in shower%0DFap in shower%0DClean shower^N
 else
 if var($i showerstate <= 6)
-mpset $i description a standing shower to be installed in a house, it's made to fit a corner of the room, with slidable doors to cover the user, you catch glimpse of some clear goo here and there. It is ^#332a little dirty and gathered with hair^N. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a standing shower to be installed in a house, it's made to fit a corner of the room, with slidable doors to cover the user, you catch glimpse of some clear goo here and there. It is ^#332a little dirty and gathered with hair^N. %0D%0D^CCommands:%0DWash in shower%0DFap in shower%0DClean shower^N
 else
 if var($i showerstate <= 8)
-mpset $i description a standing shower to be installed in a house, it's made to fit a corner of the room, with slidable doors to cover the user, you catch glimpse of some clear goo here and there. It is ^#310dirty and clogged up^N. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a standing shower to be installed in a house, it's made to fit a corner of the room, with slidable doors to cover the user, you catch glimpse of some clear goo here and there. It is ^#310dirty and clogged up^N. %0D%0D^CCommands:%0DWash in shower%0DFap in shower%0DClean shower^N
 else
 if var($i showerstate <= 10)
-mpset $i description a standing shower to be installed in a house, it's made to fit a corner of the room, with slidable doors to cover the user, you catch glimpse of some clear goo here and there. It's ^#210very filthy and clogged to hell and back^N. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a standing shower to be installed in a house, it's made to fit a corner of the room, with slidable doors to cover the user, you catch glimpse of some clear goo here and there. It's ^#210very filthy and clogged to hell and back^N. %0D%0D^CCommands:%0DWash in shower%0DFap in shower%0DClean shower^N
 endif
 endif
 endif

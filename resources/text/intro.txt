@@ -18,7 +18,7 @@
 ^#222|                                                     |
 ^#222|             ^#143Welcome to @MudInfo?NAME@          ^#222     |
 ^#222|_____________________________________________________|
- ^#222Hosted by ^#552www.pocketmud.com^N
+ ^#222Hosted by ^#552https://pocketmud.com^N
  ^#222Our discord: ^chttps://discord.gg/TXsNYrqYCY^N
  ^#222------------------------------------------------------^N
  ^#500To get an account apply at the ^cDiscord^#500 server!

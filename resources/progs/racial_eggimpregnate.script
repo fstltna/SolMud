@@ -17,9 +17,8 @@ mpunaffect '$t' racial_eggimpregnate
 else
 if islike('$n' '-names "+^#400a fa^#410ceh^#420ugg^#430er ^#420xe^#410no^N"')
 mpcallfunc larvaevagtime
- else
- mpechoat '$n' ^PWe have no means of doing that.^N
- mpunaffect '$t' racial_eggimpregnate
+else
+mpcallfunc xenoplaptime
 endif
 endif
 endif
@@ -138,6 +137,18 @@ endif
 ~
 
 function_prog larvaevagtime
+if wornon($n legs all)
+mpforce $n remove all.legs
+endif
+if wornon($n groin all)
+mpforce $n remove all.groin
+endif
+if wornon($t legs all)
+mpforce $t remove all.legs
+endif
+if wornon($t groin all)
+mpforce $t remove all.groin
+endif
 if sex('$t' == f)
 if affected('$t' prop_xenolarvaevag)
 mpecho ^r$n leaps onto $t's face and latches onto $S with it's tail coiling around $S neck tightly, something like a cock thrusting into $M mouth!^N
@@ -252,6 +263,56 @@ else
 mpalarm 3 mpecho $n's belly inflate with the large amount of cum splurted into it!
 mpalarm 3 mpaffect Sexual_Cumbloat1 '$n'
 endif
+endif
+endif
+endif
+~
+
+function_prog xenoplaptime
+if sex('$t' == f)
+if affected('$t' prop_xenolarvaevag)
+mpecho ^r$n grabs $t's head and starts to thrust $s cock into $M mouth!^N
+mpalarm 1 mpecho ^p$n keeps plapping $t in the face rapidly!^p
+mpalarm 2 mpaffect prop_xenolarvae '$t'
+mpalarm 3 mpecho ^r$n cums some slightly-acidic cum down $t's throat!^N
+mpdamage '$t' 100 200
+else
+if wornon($t legs all)
+mpforce $t remove all.legs
+endif
+if wornon($t groin all)
+mpforce $t remove all.groin
+endif
+mpecho ^r$n grabs $t's head and starts to thrust $s cock into $M cunt!^N
+mpalarm 1 mpecho ^p$n keeps plapping $t in the cunt rapidly!^p
+mpalarm 2 mpecho ^r$n cums some slightly-acidic cum into $t's womb!^N
+mpalarm 2 mpaffect prop_xenolarvaevag '$t'
+mpdamage '$t' 100 200
+endif
+else
+mpecho ^r$n grabs $t's head and starts to thrust $s cock into $M mouth!^N
+mpalarm 1 mpecho ^p$n keeps plapping $t in the face rapidly!^p
+mpalarm 2 mpaffect prop_xenolarvae '$t'
+mpalarm 3 mpecho ^r$n cums some slightly-acidic cum down $t's throat!^N
+mpdamage '$t' 100 200
+endif
+if affected('$t' sexual_cumbloat3)
+mpalarm 3 mpecho $t's belly can't get inflated any more but it is filled with fresh cum over again...
+mpalarm 3 mpunaffect '$t' sexual_cumbloat3
+mpalarm 3 mpaffect Sexual_Cumbloat3 '$t'
+else
+if affected('$t' sexual_cumbloat2)
+mpalarm 3 mpecho $t's belly inflate even more with the large amount of cum splurted into it!
+mpalarm 3 mpunaffect '$t' sexual_cumbloat2
+mpalarm 3 mpaffect Sexual_Cumbloat3 '$t'
+else
+if affected('$t' sexual_cumbloat1)
+mpalarm 3 mpecho $t's belly inflate more with the large amount of cum splurted into it!
+mpalarm 3 mpunaffect '$t' sexual_cumbloat1
+mpalarm 3 mpaffect Sexual_Cumbloat2 '$t'
+else
+mpalarm 3 mpecho $t's belly inflate with the large amount of cum splurted into it!
+mpalarm 3 mpaffect Sexual_Cumbloat1 '$t'
 endif
 endif
 endif
