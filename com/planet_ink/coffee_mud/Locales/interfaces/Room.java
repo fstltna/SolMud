@@ -1,4 +1,5 @@
 package com.planet_ink.coffee_mud.Locales.interfaces;
+
 import com.planet_ink.coffee_mud.core.interfaces.*;
 import com.planet_ink.coffee_mud.core.interfaces.ItemPossessor.Expire;
 import com.planet_ink.coffee_mud.core.*;
@@ -15,8 +16,11 @@ import com.planet_ink.coffee_mud.Libraries.interfaces.*;
 import com.planet_ink.coffee_mud.Locales.interfaces.*;
 import com.planet_ink.coffee_mud.MOBS.interfaces.*;
 import com.planet_ink.coffee_mud.Races.interfaces.*;
+import com.planet_ink.coffee_mud.Locales.interfaces.RoomHistoryEntry;
 
 import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /*
    Copyright 2001-2024 Bo Zimmerman
@@ -105,7 +109,8 @@ public interface Room extends PhysicalAgent, ItemPossessor, Places
 	public final static int DOMAIN_OUTDOORS_SPACEPORT=12;
 	/** Domain type mask denoting whether the room is outdoors, at a seaport @see {@link Room#domainType()} */
 	public final static int DOMAIN_OUTDOORS_SEAPORT=13;
-
+    public final static int MAX_HISTORY = 200;
+    public final static long MESSAGE_AGE = 3600000; 
 	/** Domain description array indexed by the DOMAIN_OUTDOOR_* constants. @see {@link Room#DOMAIN_OUTDOORS_CITY} */
 	public final static String[] DOMAIN_OUTDOOR_DESCS=
 	{
@@ -627,6 +632,8 @@ public interface Room extends PhysicalAgent, ItemPossessor, Places
 	 * @param source the first receiver of the message, typically the agent/source.
 	 * @param msg the message to send
 	 */
+	public List<RoomhistoryEntry> getRoomHistory(MOB mob);
+	public void clearRoomHistory();
 	public void send(MOB source, CMMsg msg);
 
 	/**
@@ -1259,4 +1266,5 @@ public interface Room extends PhysicalAgent, ItemPossessor, Places
 	 * @return the mob, item, or exit that matches the search string
 	 */
 	public PhysicalAgent fetchFromMOBRoomFavorsMOBs(MOB mob, Item goodLocation, String thingName, Filterer<Environmental> filter);
+
 }
