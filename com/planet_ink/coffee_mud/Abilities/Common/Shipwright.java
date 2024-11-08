@@ -120,16 +120,13 @@ public class Shipwright extends CraftingSkill implements ItemCraftor, MendingSki
 		List<Item> shipPrototypes = (List<Item>)Resources.getResource(allItemID);
 		if(shipPrototypes == null)
 		{
-			final CMFile F=new CMFile(Resources.makeFileResourceName("skills/"+getRecipeFilename()),null);
-			if(F.exists())
-			{
-				shipPrototypes=new Vector<Item>();
+			shipPrototypes=new Vector<Item>();
+			for(final CMFile F : CMFile.getExistingExtendedFiles(Resources.makeFileResourceName("skills/"+getRecipeFilename()), null, CMFile.FLAG_FORCEALLOW))
 				CMLib.coffeeMaker().addItemsFromXML(F.textUnformatted().toString(), shipPrototypes, null);
-				for(final Item I : shipPrototypes)
-					CMLib.threads().unTickAll(I);
-				if(shipPrototypes.size()>0)
-					Resources.submitResource(allItemID, shipPrototypes);
-			}
+			for(final Item I : shipPrototypes)
+				CMLib.threads().unTickAll(I);
+			if(shipPrototypes.size()>0)
+				Resources.submitResource(allItemID, shipPrototypes);
 		}
 		return shipPrototypes;
 	}
@@ -338,8 +335,8 @@ public class Shipwright extends CraftingSkill implements ItemCraftor, MendingSki
 							{
 								final Boardable ship=(Boardable)buildingI;
 								MOB buyer = mob;
-								if(buyer.isMonster() && (buyer.amFollowing()!=null))
-									buyer = buyer.amUltimatelyFollowing();
+								if(buyer.isMonster())
+									buyer = buyer.getGroupLeader();
 								if(buyer.isMonster())
 									((Boardable)buildingI).rename(""+CMLib.dice().roll(1, 999, 0));
 								else
@@ -965,7 +962,7 @@ public class Shipwright extends CraftingSkill implements ItemCraftor, MendingSki
 			//buildingI.setDisplayText(L("@x1 lies here",itemName));
 			//buildingI.setDescription(itemName+". ");
 			//buildingI.basePhyStats().setWeight(getStandardWeight(woodRequired+compData[CF_AMOUNT],bundling));
-			buildingI.setBaseValue(CMath.s_int(foundRecipe.get(RCP_VALUE)+lostValue));
+			buildingI.setBaseValue(CMath.s_int(foundRecipe.get(RCP_VALUE))+lostValue);
 			//buildingI.basePhyStats().setLevel(CMath.s_int(foundRecipe.get(RCP_LEVEL)));
 			setBrand(mob, buildingI);
 			key=null;

@@ -111,6 +111,7 @@ public class Prop_UseAdjuster extends Prop_Adjuster implements ArchonOnly
 		parameters=CMLib.masking().separateMaskStrs(text());
 	}
 
+	@Override
 	public void adjCharState(final MOB mob, final Object[] changes, final CharState charState)
 	{
 		if(changes==null)
@@ -125,10 +126,10 @@ public class Prop_UseAdjuster extends Prop_Adjuster implements ArchonOnly
 					charState.adjHitPoints((int)Math.round(CMath.mul(charState.getHitPoints(), CMath.div(((Integer) changes[c + 1]).intValue(),100))-charState.getHitPoints()),mob.maxState());
 					break;
 				case CharState.STAT_HUNGER:
-					charState.adjHunger(((Integer) changes[c + 1]).intValue(),mob.maxState().maxHunger(mob.baseWeight()));
+					charState.adjHunger(((Integer) changes[c + 1]).doubleValue(),mob.maxState().maxHunger(mob.baseWeight()));
 					break;
 				case CharState.STAT_THIRST:
-					charState.adjThirst(((Integer) changes[c + 1]).intValue(),mob.maxState().maxThirst(mob.baseWeight()));
+					charState.adjThirst(((Integer) changes[c + 1]).doubleValue(),mob.maxState().maxThirst(mob.baseWeight()));
 					break;
 				case CharState.STAT_MANA:
 					charState.adjMana((int)Math.round(CMath.mul(charState.getMana(), CMath.div(((Integer) changes[c + 1]).intValue(),100))-charState.getMana()),mob.maxState());

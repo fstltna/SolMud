@@ -1,6 +1,5 @@
 package com.planet_ink.coffee_mud.Items.CompTech;
 import com.planet_ink.coffee_mud.core.interfaces.*;
-import com.planet_ink.coffee_mud.core.interfaces.BoundedObject.BoundedCube;
 import com.planet_ink.coffee_mud.core.*;
 import com.planet_ink.coffee_mud.core.collections.*;
 import com.planet_ink.coffee_mud.Abilities.interfaces.*;
@@ -393,24 +392,32 @@ public class GenShipViewScreen extends GenShipOpticalSensor implements ShipDirec
 					}
 
 					@Override
-					public BoundedCube getBounds()
+					public BoundedCube getCube()
 					{
 						if(obj instanceof SpaceObject)
-							return ((SpaceObject)obj).getBounds();
+							return ((SpaceObject)obj).getCube();
 						return smallCube;
 					}
 
 					@Override
-					public long[] coordinates()
+					public BoundedSphere getSphere()
+					{
+						if(obj instanceof SpaceObject)
+							return ((SpaceObject)obj).getSphere();
+						return smallSphere;
+					}
+
+					@Override
+					public Coord3D coordinates()
 					{
 						final SpaceObject sobj =CMLib.space().getSpaceObject(obj, false);
 						if(sobj!=null)
-							return Arrays.copyOf(sobj.coordinates(), sobj.coordinates().length);
+							return sobj.coordinates().copyOf();
 						return emptyCoords;
 					}
 
 					@Override
-					public void setCoords(final long[] coords)
+					public void setCoords(final Coord3D coords)
 					{
 					}
 
@@ -424,12 +431,18 @@ public class GenShipViewScreen extends GenShipOpticalSensor implements ShipDirec
 					}
 
 					@Override
+					public Coord3D center()
+					{
+						return coordinates();
+					}
+
+					@Override
 					public void setRadius(final long radius)
 					{
 					}
 
 					@Override
-					public double[] direction()
+					public Dir3D direction()
 					{
 						final SpaceObject sobj =CMLib.space().getSpaceObject(obj, false);
 						if(sobj!=null)
@@ -438,7 +451,7 @@ public class GenShipViewScreen extends GenShipOpticalSensor implements ShipDirec
 					}
 
 					@Override
-					public void setDirection(final double[] dir)
+					public void setDirection(final Dir3D dir)
 					{
 					}
 
@@ -552,7 +565,7 @@ public class GenShipViewScreen extends GenShipOpticalSensor implements ShipDirec
 				{
 					final SpaceShip ship=(SpaceShip)spaceMe;
 					final SpaceObject sobj = (SpaceObject)obj;
-					final double[] proposedDirection=CMLib.space().getDirection(ship, sobj);
+					final Dir3D proposedDirection=CMLib.space().getDirection(ship, sobj);
 					final ShipDir dir = CMLib.space().getDirectionFromDir(ship.facing(), ship.roll(), proposedDirection);
 					if (CMParms.contains(me.getFacingDirs(), dir))
 					{

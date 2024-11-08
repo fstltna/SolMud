@@ -95,6 +95,7 @@ public class Chant_AnimalSpy extends Chant
 			return;
 		if(canBeUninvoked())
 		{
+			final MOB invoker=this.invoker();
 			if(invoker!=null)
 			{
 				final Ability A=invoker.fetchEffect(this.ID());
@@ -178,7 +179,7 @@ public class Chant_AnimalSpy extends Chant
 		if(target!=null)
 		{
 			newRoom=target.location();
-			if((!CMLib.flags().isAnimalIntelligence(target))
+			if((!CMLib.flags().isAnAnimal(target))
 			||(target.amFollowing()!=mob))
 			{
 				mob.tell(L("You have no animal follower named '@x1' here.",mobName));

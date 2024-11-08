@@ -29,6 +29,7 @@ import com.planet_ink.coffee_mud.Exits.interfaces.*;
 import com.planet_ink.coffee_mud.Items.interfaces.*;
 import com.planet_ink.coffee_mud.Libraries.interfaces.*;
 import com.planet_ink.coffee_mud.Libraries.interfaces.PlayerLibrary.PlayerCode;
+import com.planet_ink.coffee_mud.Libraries.interfaces.PlayerLibrary.ThinPlayer;
 import com.planet_ink.coffee_mud.Locales.interfaces.*;
 import com.planet_ink.coffee_mud.MOBS.interfaces.*;
 import com.planet_ink.coffee_mud.Races.interfaces.*;
@@ -324,7 +325,7 @@ public interface DatabaseEngine extends CMLibrary
 	 *
 	 * @see DatabaseEngine#DBReadContent(String, Room, boolean)
 	 * @see DatabaseEngine#DBReReadRoomData(Room)
-	 * @see DatabaseEngine#DBReadRoomObject(String, boolean)
+	 * @see DatabaseEngine#DBReadRoomObject(String, boolean, boolean)
 	 *
 	 * @param roomID the room id of the room object to load
 	 * @param reportStatus true to populate global status, false otherwise
@@ -350,10 +351,11 @@ public interface DatabaseEngine extends CMLibrary
 	 * to an area or to the map.
 	 * @see DatabaseEngine#DBReadRoom(String, boolean)
 	 * @param roomIDtoLoad the id of the room to load
+	 * @param loadXML populates room effects, behavs, etc
 	 * @param reportStatus true to populate global status, false otherwise
 	 * @return the room loaded, or null if it could not be
 	 */
-	public Room DBReadRoomObject(String roomIDtoLoad, boolean reportStatus);
+	public Room DBReadRoomObject(String roomIDtoLoad, boolean loadXML, boolean reportStatus);
 
 	/**
 	 * Table category: DBMAP
@@ -714,43 +716,37 @@ public interface DatabaseEngine extends CMLibrary
 
 	/**
 	 * Table category: DBPLAYERS
-	 * Re-builds the entire top-10 player tables from the
-	 * database.  It returns a two dimensional array of
-	 * lists of players and their scores, in reverse sorted
-	 * order by score.  The first dimension of the array is
-	 * the time period ordinal (month, year, whatever), and the
-	 * second is the pridestat ordinal.
+	 * Scans the player pride stat xml and calls back your method
+	 * on every chunk of player data found.  You should use this
+	 * data to compile your top 10 pride stat indexes.
 	 *
 	 * The cpu percent is the percent (0-100) of each second of work
 	 * to spend actually working.  The balance is spent sleeping.
 	 *
 	 * @see com.planet_ink.coffee_mud.Common.interfaces.TimeClock.TimePeriod
-	 * @see com.planet_ink.coffee_mud.Common.interfaces.AccountStats.PrideStat
-	 * @param topThisMany the number of items in each list
+	 * @see com.planet_ink.coffee_mud.Common.interfaces.PrideStats.PrideStat
+	 * @param callBack a call back containing the user id and data for each period
 	 * @param scanCPUPercent the percent (0-100) to spend working
 	 * @return the arrays of lists of top winner players
 	 */
-	public List<Pair<String,Integer>>[][] DBScanPridePlayerWinners(int topThisMany, short scanCPUPercent);
+	public void DBScanPridePlayerWinners(final CMCallback<Pair<ThinPlayer,Pair<Long,int[]>[]>> callBack, final short scanCPUPercent);
 
 	/**
 	 * Table category: DBPLAYERS
-	 * Re-builds the entire top-10 account tables from the
-	 * database.  It returns a two dimensional array of
-	 * lists of accounts and their scores, in reverse sorted
-	 * order by score.  The first dimension of the array is
-	 * the time period ordinal (month, year, whatever), and the
-	 * second is the pridestat ordinal.
+	 * Scans the account pride stat xml and calls back your method
+	 * on every chunk of account data found.  You should use this
+	 * data to compile your top 10 pride stat indexes.
 	 *
 	 * The cpu percent is the percent (0-100) of each second of work
 	 * to spend actually working.  The balance is spent sleeping.
 	 *
 	 * @see com.planet_ink.coffee_mud.Common.interfaces.TimeClock.TimePeriod
-	 * @see com.planet_ink.coffee_mud.Common.interfaces.AccountStats.PrideStat
-	 * @param topThisMany the number of items in each list
+	 * @see com.planet_ink.coffee_mud.Common.interfaces.PrideStats.PrideStat
+	 * @param callBack a call back containing the user id and data for each period
 	 * @param scanCPUPercent the percent (0-100) to spend working
 	 * @return the arrays of lists of top winner accounts
 	 */
-	public List<Pair<String,Integer>>[][] DBScanPrideAccountWinners(int topThisMany, short scanCPUPercent);
+	public void DBScanPrideAccountWinners(final CMCallback<Pair<String,Pair<Long,int[]>[]>> callBack, final short scanCPUPercent);
 
 	/**
 	 * Table category: DBPLAYERS
@@ -1115,6 +1111,20 @@ public interface DatabaseEngine extends CMLibrary
 	 * @return the list of all the clans members
 	 */
 	public List<MemberRecord> DBReadClanMembers(String clan);
+
+	/**
+	 * Table category: DBCLANS
+	 * Given a user, this will return the clans that user
+	 * belongs to.  You an then lookup the clan and get their
+	 * member records.
+	 *
+	 * @see DatabaseEngine#DBGetClanMember(String, String)
+	 * @see DatabaseEngine#DBUpdateClanMembership(String, String, int)
+	 * @see DatabaseEngine#DBUpdateClanKills(String, String, int, int)
+	 * @param clan the name of the clan to read members for
+	 * @return the list of all the members clans
+	 */
+	public List<String> DBReadMemberClans(String userID);
 
 	/**
 	 * Table category: DBCLANS
@@ -2010,7 +2020,7 @@ public interface DatabaseEngine extends CMLibrary
 	/**
 	 * Table category: DBPLAYERDATA
 	 * Creates or Updates a single player data entry.  This is the same as an
-	 * upset where, if the key already exists, an update is done, otherwise
+	 * upsert where, if the key already exists, an update is done, otherwise
 	 * an insert is done.
 	 * All fields are required.
 	 * @see DatabaseEngine.PlayerData
@@ -2313,6 +2323,19 @@ public interface DatabaseEngine extends CMLibrary
 	 * @return the group of statistics requested.
 	 */
 	public List<CoffeeTableRow> DBReadStats(long startTime, long endTime);
+
+	/**
+	 * Table category: DBSTATS
+	 * Read the oldest start recorded.
+
+	 * @see DatabaseEngine#DBUpdateStat(long, String)
+	 * @see DatabaseEngine#DBDeleteStat(long)
+	 * @see DatabaseEngine#DBCreateStat(long, long, String)
+	 * @see DatabaseEngine#DBReadStat(long)
+	 *
+	 * @return startTime the timestamp of the first row
+	 */
+	public long DBReadOldestStatMs();
 
 	/**
 	 * Table category: DBPOLLS

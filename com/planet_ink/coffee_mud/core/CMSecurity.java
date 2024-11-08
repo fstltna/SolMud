@@ -68,7 +68,7 @@ public class CMSecurity
 	public static final int JSCRIPT__NO_APPROVAL = 0;
 	public static final int JSCRIPT_REQ_APPROVAL = 1;
 	public static final int JSCRIPT_ALL_APPROVAL = 2;
-	
+
 	public static final long CONN_LAST_DELAY_MS	 = (5*60*1000);
 	public static final long CONN_MAX_PER_ADDR	 = 6;
 
@@ -1366,7 +1366,8 @@ public class CMSecurity
 			if(flagList.size()>0)
 			{
 				final String flag = getFinalSpecialXableFlagName(flagList.get(0));
-				if(!set.containsKey(flag))
+				if((!set.containsKey(flag))
+				||(CMClass.getCharClass(flag)!=null))
 				{
 					flagList.remove(0);
 					set.put(flag,flagList.toArray(new String[0]));
@@ -2172,12 +2173,12 @@ public class CMSecurity
 		Resources.updateFileResource("::banned.ini",str);
 		return -1;
 	}
-	
+
 	/**
 	 * When an external connection occurs, this is the resulting
 	 * state from examining the incoming ip address against the
 	 * various security checks.
-	 * 
+	 *
 	 * @author Bo Zimmerman
 	 *
 	 */
@@ -2191,7 +2192,7 @@ public class CMSecurity
 	/**
 	 * Returns the String version of the socket ip address,
 	 * or the word 'unknown'.
-	 * 
+	 *
 	 * @param sock the socket to get the address from
 	 * @return the word 'unknown' or the socket address
 	 */
@@ -2223,15 +2224,15 @@ public class CMSecurity
 		}
 		return accessed;
 	}
-	
+
 	/**
-	 * If the given socket appears on the temporary ip block list, 
+	 * If the given socket appears on the temporary ip block list,
 	 * then this will remove the entry.
 	 * @param sock the socket to prevent blockage for
 	 */
 	public static final void clearConnectState(final Socket sock)
 	{
-		String address=getSocketAddress(sock);
+		final String address=getSocketAddress(sock);
 		if(!isDisabled(DisFlag.CONNSPAMBLOCK))
 		{
 			if(!CMProps.isOnWhiteList(CMProps.WhiteList.IPSCONN, address))
@@ -2252,21 +2253,21 @@ public class CMSecurity
 			}
 		}
 	}
-	
+
 	/**
-	 * Checks the ban list, ip block whitelist, temporary block list, and black list for the 
+	 * Checks the ban list, ip block whitelist, temporary block list, and black list for the
 	 * given ip address in the given socket, and returns the appropriate state.  This will
 	 * bump the number of connections within a period, so it should be carefully used.
-	 *  
+	 *
 	 * @see CMSecurity.ConnectState
-	 * 
-	 * @param sock the socket to check and bump 
-	 * @param numAtAddress null, or a 1 dimensional array to return the number of recent conns 
+	 *
+	 * @param sock the socket to check and bump
+	 * @param numAtAddress null, or a 1 dimensional array to return the number of recent conns
 	 * @return the connect state
 	 */
 	public static final ConnectState getConnectState(final Socket sock, final int[] numAtAddress)
 	{
-		String address=getSocketAddress(sock);
+		final String address=getSocketAddress(sock);
 		ConnectState proceed=ConnectState.NORMAL;
 		if(isBanned(address))
 			proceed=ConnectState.BANNED;
@@ -2914,7 +2915,9 @@ public class CMSecurity
 		RITUALS("rituals and services"),
 		CRONTRACE("cron job tracing"),
 		CALENDAR("calendar event tracing"),
-		TROPHIES("clan trophy logic tracing")
+		TROPHIES("clan trophy logic tracing"),
+		PROPTAXES("property tax changes"),
+		RANDOMQUESTS("random quests generated")
 		;
 		private final String desc;
 
@@ -3036,7 +3039,10 @@ public class CMSecurity
 		SPACETHREAD("space thread"),
 		CRONJOBS("cron jobs"),
 		AUTOAWARDS("auto-awards system"),
-		FATIGUE("fatigue system")
+		NPCAUTOAWARDS("auto-awards system for npcs"),
+		FATIGUE("fatigue system"),
+		UNLEVELXP("unleveling from xp"),
+		UNLEVEL("unleveling at all")
 		;
 		private final String desc;
 

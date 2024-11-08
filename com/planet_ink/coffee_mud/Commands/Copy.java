@@ -185,7 +185,8 @@ public class Copy extends StdCommand
 			E = CMClass.getAbility(commands.get(0));
 			if(E != null)
 			{
-				final String newID = CMParms.combine(commands,1);
+				String newID = CMParms.combine(commands,1);
+				newID = CMStrings.replaceAll(newID, " ", "");
 				if(CMClass.getAbility(newID)!=null)
 				{
 					mob.tell(L("The ability ID '@x1' already exists.\n\r",newID));
@@ -194,12 +195,21 @@ public class Copy extends StdCommand
 				}
 				final Ability CR;
 				if(E.isGeneric())
-					CR = (Ability)E.copyOf();
+				{
+					CR = CMClass.getAbility(E.getStat("JAVACLASS"));
+					CR.setStat("CLASS", newID);
+					CR.setStat("LEVEL","1");
+					CR.setStat("NAME", newID);
+					for(int i=1;i<E.getStatCodes().length;i++)
+						CR.setStat(E.getStatCodes()[i], E.getStat(E.getStatCodes()[i]));
+				}
 				else
+				{
 					CR=CMLib.ableParms().convertAbilityToGeneric((Ability)E);
-				CR.setStat("CLASS", newID);
-				CR.setStat("LEVEL","1");
-				CR.setStat("NAME", newID);
+					CR.setStat("CLASS", newID);
+					CR.setStat("LEVEL","1");
+					CR.setStat("NAME", newID);
+				}
 				CMLib.database().DBCreateAbility(CR.ID(),CMLib.ableParms().getGenericClassID((Ability)E),CR.getStat("ALLXML"));
 				mob.location().showHappens(CMMsg.MSG_OK_ACTION,L("The skill of the world just increased!"));
 				return true;

@@ -34,7 +34,7 @@ import java.util.*;
    limitations under the License.
 */
 
-public class MOBEater extends ActiveTicker
+public class MOBEater extends ActiveTicker implements MOBPossessor, ItemCollection
 {
 	@Override
 	public String ID()
@@ -54,12 +54,13 @@ public class MOBEater extends ActiveTicker
 		return super.flags() | Behavior.FLAG_POTENTIALLYAUTODEATHING;
 	}
 
-	protected Room	stomachR			= null;
+	protected Room	myStomachR			= null;
 	protected int	digestDown			= 4;
 	protected Room	lastKnownLocationR	= null;
 	protected MOB	lastKnownEaterM		= null;
 	protected int	chanceToEat			= 5;
 	protected int	pctAcidHp			= 10;
+	protected int	dmgBonus			= 0;
 
 	@Override
 	public String accountForYourself()
@@ -81,20 +82,29 @@ public class MOBEater extends ActiveTicker
 		pctAcidHp=CMParms.getParmInt(parms,"acidpct",50);
 	}
 
+	protected Room getStomach()
+	{
+		if(myStomachR==null)
+		{
+			final Area A = CMClass.getAreaType("StdArea");
+			A.setName("a stomach");
+			myStomachR = CMClass.getLocale("StoneRoom");
+			myStomachR.setSavable(false);
+			myStomachR.setRoomID("");
+			myStomachR.setArea(A);
+		}
+		return myStomachR;
+	}
+
 	@Override
 	public void startBehavior(final PhysicalAgent forMe)
 	{
 		if(forMe instanceof MOB)
 		{
-			if(stomachR==null)
-			{
-				stomachR = CMClass.getLocale("StoneRoom");
-				stomachR.setSavable(false);
-				stomachR.setRoomID("");
-			}
+			final Room stomachR = getStomach();
 			lastKnownEaterM=(MOB)forMe;
 			lastKnownLocationR=((MOB)forMe).location();
-			if(lastKnownLocationR!=null)
+			if((lastKnownLocationR!=null)&&(stomachR.getArea() != lastKnownLocationR.getArea()))
 				stomachR.setArea(lastKnownLocationR.getArea());
 			stomachR.setDisplayText(L("The Stomach of @x1",forMe.name()));
 			stomachR.setName(L("the stomach of @x1",forMe.name()));
@@ -132,7 +142,11 @@ public class MOBEater extends ActiveTicker
 							if("ATTACK".startsWith(cmd)||"KILL".startsWith(cmd))
 							{
 								final String rest = CMParms.combine(parsedFail,1).toUpperCase().trim();
-								if("HERE".equals(rest)||"STOMACH".startsWith(rest)||"WALLS".startsWith(rest))
+								if("HERE".equals(rest)
+								||"ALL".equals(rest)
+								||"STOMACH".startsWith(rest)
+								||rest.startsWith("ALL.")
+								||"WALLS".startsWith(rest))
 								{
 									Item I=msg.source().fetchWieldedItem();
 									if(I == null)
@@ -160,8 +174,12 @@ public class MOBEater extends ActiveTicker
 										final MOB M=CMClass.getFactoryMOB(L("Someone inside @x1",forMe.name()), msg.source().phyStats().level(), ((MOB)forMe).location());
 										try
 										{
-											if(stomachR.show(msg.source(), forMe, CMMsg.MSG_NOISYMOVEMENT, L("<S-NAME> @x1 <T-YOUPOSS> stomach with @x2!",CMLib.combat().standardHitWord(weapon.weaponDamageType(),dmg),I.name(msg.source()))))
-												CMLib.combat().postDamage(M, (MOB)forMe, I, dmg, CMMsg.MSG_WEAPONATTACK, weapon.weaponDamageType(), L("<S-NAME> <DAMAGE> <T-HIM-HER>!"));
+											final String hitWord = CMLib.combat().standardHitWord(weapon.weaponDamageType(),dmg);
+											if(stomachR.show(msg.source(), forMe, CMMsg.MSG_NOISYMOVEMENT, L("<S-NAME> @x1 <T-YOUPOSS> stomach with @x2!",hitWord,I.name(msg.source()))))
+											{
+												CMLib.combat().postDamage(M, (MOB)forMe, I, dmg, CMMsg.MSG_WEAPONATTACK, weapon.weaponDamageType(),
+														L("<S-NAME> <DAMAGE> <T-HIM-HER>!"));
+											}
 										}
 										finally
 										{
@@ -181,7 +199,7 @@ public class MOBEater extends ActiveTicker
 
 	public void kill()
 	{
-		final Room stomachR = this.stomachR;
+		final Room stomachR = getStomach();
 		if((lastKnownLocationR==null)
 		||(stomachR==null))
 			return;
@@ -240,12 +258,10 @@ public class MOBEater extends ActiveTicker
 	@Override
 	public boolean tick(final Tickable ticking, final int tickID)
 	{
-		super.tick(ticking,tickID);
-		if(ticking==null)
-			return true;
+		if(!super.tick(ticking,tickID))
+			return false;
 		if(!(ticking instanceof MOB))
 			return true;
-
 		final MOB mob=(MOB)ticking;
 		if(this.lastKnownEaterM!=mob)
 			this.lastKnownEaterM=mob;
@@ -257,7 +273,7 @@ public class MOBEater extends ActiveTicker
 			digestDown=4;
 			digestTastyMorsels(mob);
 		}
-		final Room stomachR = this.stomachR;
+		final Room stomachR = getStomach();
 		if(stomachR != null)
 		{
 			final int morselCount = stomachR.numInhabitants();
@@ -292,12 +308,12 @@ public class MOBEater extends ActiveTicker
 
 	protected boolean trySwallowWhole(final MOB mob)
 	{
-		final Room stomachR = this.stomachR;
+		final Room stomachR = getStomach();
 		if(stomachR==null)
 			return true;
 		if (CMLib.flags().isAliveAwakeMobile(mob,true)
-			&&(mob.rangeToTarget()==0)
-			&&(CMLib.flags().canHear(mob)||CMLib.flags().canSee(mob)||CMLib.flags().canSmell(mob)))
+		&&(mob.rangeToTarget()==0)
+		&&(CMLib.flags().canHear(mob)||CMLib.flags().canSee(mob)||CMLib.flags().canSmell(mob)))
 		{
 			final MOB tastyMorselM = mob.getVictim();
 			if(tastyMorselM==null)
@@ -327,7 +343,10 @@ public class MOBEater extends ActiveTicker
 							CMLib.achievements().possiblyBumpAchievement(tastyMorselM, Event.AREAVISIT, 1, new Object[] {stomachR.getArea(), stomachR});
 					}
 					else
-						tastyMorselM.location().show(tastyMorselM, null, CMMsg.MSG_OK_VISUAL, L("<S-NAME> avoid(s) being eaten!"));
+					{
+						tastyMorselM.location().show(tastyMorselM, null, CMMsg.MSG_OK_VISUAL,
+								L("<S-NAME> avoid(s) being eaten!"));
+					}
 				}
 			}
 		}
@@ -336,6 +355,7 @@ public class MOBEater extends ActiveTicker
 
 	protected boolean digestTastyMorsels(final MOB mob)
 	{
+		final Room stomachR = getStomach();
 		if(stomachR==null)
 			return true;
 		// ===== loop through all inhabitants of the stomach
@@ -353,14 +373,218 @@ public class MOBEater extends ActiveTicker
 													 L("<S-NAME> digest(s) <T-NAMESELF>!!"));
 				// no OKaffectS, since the dragon is not in his own stomach.
 				stomachR.send(mob,digestMsg);
-				int damage=(int)Math.round(tastyMorselM.curState().getHitPoints() * CMath.div(pctAcidHp, 100));
+				int damage=dmgBonus + (int)Math.round(tastyMorselM.curState().getHitPoints() * CMath.div(pctAcidHp, 100));
 				if(damage<2)
 					damage=2;
 				if(digestMsg.value()!=0)
 					damage=damage/2;
-				CMLib.combat().postDamage(mob,tastyMorselM,null,damage,CMMsg.MASK_ALWAYS|CMMsg.TYP_ACID,Weapon.TYPE_MELTING,L("The stomach acid <DAMAGE> <T-NAME>!"));
+				CMLib.combat().postDamage(mob,tastyMorselM,null,damage,CMMsg.MASK_ALWAYS|CMMsg.TYP_ACID,Weapon.TYPE_MELTING,
+						L("The stomach acid <DAMAGE> <T-NAME>!"));
 			}
 		}
+		if(morselCount == 0)
+			dmgBonus = 0;
+		else
+			dmgBonus++;
 		return true;
+	}
+
+	@Override
+	public MOB fetchInhabitant(final String inhabitantID)
+	{
+		if(getStomach() != null)
+			return getStomach().fetchInhabitant(inhabitantID);
+		return null;
+	}
+
+	@Override
+	public void eachInhabitant(final EachApplicable<MOB> applier)
+	{
+		if(getStomach() != null)
+			getStomach().eachInhabitant(applier);
+	}
+
+	@Override
+	public MOB fetchInhabitantExact(final String inhabitantID)
+	{
+		if(getStomach() != null)
+			return getStomach().fetchInhabitantExact(inhabitantID);
+		return null;
+	}
+
+	@Override
+	public List<MOB> fetchInhabitants(final String inhabitantID)
+	{
+		if(getStomach() != null)
+			return getStomach().fetchInhabitants(inhabitantID);
+		return null;
+	}
+
+	@Override
+	public MOB fetchInhabitant(final int i)
+	{
+		if(getStomach() != null)
+			return getStomach().fetchInhabitant(i);
+		return null;
+	}
+
+	@Override
+	public Enumeration<MOB> inhabitants()
+	{
+		if(getStomach() != null)
+			return getStomach().inhabitants();
+		return null;
+	}
+
+	@Override
+	public void addInhabitant(final MOB mob)
+	{
+		if(getStomach() != null)
+			getStomach().addInhabitant(mob);
+	}
+
+	@Override
+	public void delInhabitant(final MOB mob)
+	{
+		if(getStomach() != null)
+			getStomach().delInhabitant(mob);
+	}
+
+	@Override
+	public int numInhabitants()
+	{
+		if(getStomach() != null)
+			return getStomach().numInhabitants();
+		return 0;
+	}
+
+	@Override
+	public boolean isInhabitant(final MOB mob)
+	{
+		if(getStomach() != null)
+			return getStomach().isInhabitant(mob);
+		return false;
+	}
+
+	@Override
+	public void delAllInhabitants(final boolean destroy)
+	{
+		if(getStomach() != null)
+			getStomach().delAllInhabitants(destroy);
+	}
+
+	@Override
+	public MOB fetchRandomInhabitant()
+	{
+		if(getStomach() != null)
+			return getStomach().fetchRandomInhabitant();
+		return null;
+	}
+
+	@Override
+	public void bringMobHere(final MOB mob, final boolean andFollowers)
+	{
+		if(getStomach() != null)
+			getStomach().bringMobHere(mob, andFollowers);
+	}
+
+	@Override
+	public void addItem(final Item item)
+	{
+		if(getStomach() != null)
+			getStomach().addItem(item);
+	}
+
+	@Override
+	public void delItem(final Item item)
+	{
+		if(getStomach() != null)
+			getStomach().delItem(item);
+	}
+
+	@Override
+	public int numItems()
+	{
+		if(getStomach() != null)
+			return getStomach().numItems();
+		return 0;
+	}
+
+	@Override
+	public Item getItem(final int i)
+	{
+		if(getStomach() != null)
+			return getStomach().getItem(i);
+		return null;
+	}
+
+	@Override
+	public Item getRandomItem()
+	{
+		if(getStomach() != null)
+			return getStomach().getRandomItem();
+		return null;
+	}
+
+	@Override
+	public Enumeration<Item> items()
+	{
+		if(getStomach() != null)
+			return getStomach().items();
+		return null;
+	}
+
+	@Override
+	public Item findItem(final Item goodLocation, final String itemID)
+	{
+		if(getStomach() != null)
+			return getStomach().findItem(goodLocation, itemID);
+		return null;
+	}
+
+	@Override
+	public Item findItem(final String itemID)
+	{
+		if(getStomach() != null)
+			return getStomach().findItem(itemID);
+		return null;
+	}
+
+	@Override
+	public List<Item> findItems(final Item goodLocation, final String itemID)
+	{
+		if(getStomach() != null)
+			return getStomach().findItems(goodLocation, itemID);
+		return null;
+	}
+
+	@Override
+	public List<Item> findItems(final String itemID)
+	{
+		if(getStomach() != null)
+			return getStomach().findItems(itemID);
+		return null;
+	}
+
+	@Override
+	public boolean isContent(final Item item)
+	{
+		if(getStomach() != null)
+			return getStomach().isContent(item);
+		return false;
+	}
+
+	@Override
+	public void delAllItems(final boolean destroy)
+	{
+		if(getStomach() != null)
+			getStomach().delAllItems(destroy);
+	}
+
+	@Override
+	public void eachItem(final EachApplicable<Item> applier)
+	{
+		if(getStomach() != null)
+			getStomach().eachItem(applier);
 	}
 }

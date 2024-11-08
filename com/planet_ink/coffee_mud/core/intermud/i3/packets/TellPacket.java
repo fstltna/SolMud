@@ -47,7 +47,7 @@ import java.util.Vector;
  * @author George Reese (borg@imaginary.com)
  * @version 1.0
  */
-public class TellPacket extends Packet
+public class TellPacket extends MudPacket
 {
 	/**
 	 * The display name for the person sending the tell.
@@ -61,7 +61,7 @@ public class TellPacket extends Packet
 	public TellPacket()
 	{
 		super();
-		type = Packet.TELL;
+		type = Packet.PacketType.TELL;
 	}
 
 	/**
@@ -74,7 +74,7 @@ public class TellPacket extends Packet
 		super(v);
 		try
 		{
-			type = Packet.TELL;
+			type = Packet.PacketType.TELL;
 			sender_visible_name = (String)v.elementAt(6);
 			message = (String)v.elementAt(7);
 		}
@@ -94,7 +94,7 @@ public class TellPacket extends Packet
 	public TellPacket(final Interactive u, final String who, final String mud, final String msg)
 	{
 		super();
-		type = Packet.TELL;
+		type = Packet.PacketType.TELL;
 		sender_name = u.getKeyName();
 		target_mud = mud;
 		target_name = who;
@@ -128,7 +128,7 @@ public class TellPacket extends Packet
 	@Override
 	public String toString()
 	{
-		return "({\"tell\",5,\"" + I3Server.getMudName() +
+		return "({\"tell\",5,\"" + sender_mud +
 			   "\",\"" + sender_name + "\",\"" + target_mud +
 			   "\",\"" + target_name + "\",\"" +
 			   sender_visible_name + "\",\"" + message + "\",})";

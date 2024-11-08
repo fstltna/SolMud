@@ -1041,6 +1041,8 @@ public class Destroy extends StdCommand
 				final Runnable doDelete = new Runnable()
 				{
 					final List<Environmental> todo=delts;
+
+					@Override
 					public void run()
 					{
 						for(final Environmental E : todo)
@@ -1460,12 +1462,14 @@ public class Destroy extends StdCommand
 					}
 					else
 					if((!trashI.amWearingAt(Wearable.WORN_HELD))
-					&&(!trashI.amWearingAt(Wearable.WORN_WIELD)))
+					&&(!trashI.amWearingAt(Wearable.WORN_WIELD))
+					&&(!trashI.amWearingAt(Wearable.IN_INVENTORY)))
 					{
 						mob.tell(L("You must remove that first."));
 						return false;
 					}
 					else
+					if(!trashI.amWearingAt(Wearable.IN_INVENTORY))
 					{
 						final CMMsg newMsg=CMClass.getMsg(mob,trashI,null,CMMsg.MSG_REMOVE,null);
 						if(mob.location().okMessage(mob,newMsg))

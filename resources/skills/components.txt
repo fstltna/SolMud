@@ -3,11 +3,12 @@
 #    Spell/Skill ID=[PARAMETERS LIST]
 # [PARAMETERS LIST] are as follows:
 #    Spell_Sleep=([COMPONENT PARAMETER])&&([COMPONENT PARAMETER])||([COMPONENT PARAMETER])&&..etc..
+#    May also end with a "description of the component requirement", in quotes, instead of &&/||
 # [COMPONENT PARAMETER] are as follows:
 #    ([DISPOSITION]:[FATE]:[AMOUNT]:[COMPONENT ID]:[MASK])
 #  	 - OR -
 #    (TRIGGER:[RITUAL]:[MASK])
-# [DISPOSITION] is either: inventory, held, worn, nearby, onground (default inventory)
+# [DISPOSITION] is either: inventory, have, held, worn, nearby, onground (default inventory)
 # [FATE] is either: consumed, kept (default consumed)
 # [AMOUNT] is the number of amount of the component required (default 1)
 # [COMPONENT ID] is one of the following:
@@ -17,8 +18,8 @@
 #   an item name for a string match (like "a long crooked stick" or "stick" or "crooked"
 # * NOTE! If you use && or || conjunctions, the same item may be found multiple times!
 # [MASK] is the zapper mask for which players in which conditions require this component.
-#     Note that only ONE trigger component is permitted per mob/player per skill requirement, 
-#     so this mask might be important in ensuring that can't happens for skill requirements 
+#     Note that only ONE trigger component is permitted per mob/player per skill requirement,
+#     so this mask might be important in ensuring that can't happens for skill requirements
 #     that have multiple TRIGGER type components in them.
 #     See the help entry for ZAPPERMASKS for more information on creating zapper masks.
 # [RITUAL] is a triggering ritual. (see AHELP RITUALS or Archon Guide under StdDeity "Cleric Ritual")
@@ -29,9 +30,12 @@
 # SPELL_SLEEP=(held:consumed:1:cotton:-CLASS +MAGE) || (inventory:consumed:10:sand:-CLASS +MAGE)
 #   (the above requires either cotton in hand, or 10 sand in inventory to cast sleep -- applies only to mages)
 # SPELL_SLEEP=(held:consumed:5:SAND:-class +wizard)&&(trigger:say you are feeling sleepy&social+ GOODNIGHT <T-NAME>:-class +wizard)
-#   (the aove requires held sane if you are a wizard AND a trigger ritual with SAY and GOODNIGHT social.)
-Thief_Autocaltrops=(inventory:consumed:10:METAL:)||(inventory:consumed:10:MITHRIL:)
+#   (the aove requires held sand if you are a wizard AND a trigger ritual with SAY and GOODNIGHT social.)
 BANDAGING=(inventory:consumed:1:CLOTH:)||(held:consumed:5:DUST:-race +elf)
+Thief_Runecasting=(have:kept:1:RUNE TILE:)||(have:kept:1:RUNE STONE:)||(have:kept:1:RUNE CUBE:) "a crafted rune cube, tile, or stone"
+THIEF_TAROTREADING=(have:kept:1:tarot cards:) "a deck of tarot cards"
+THIEF_TASSEOGRAPHY=(have:consumed:1:coffee:) "some coffee"
+THIEF_FORTUNETELLING=(have:kept:1:crystal ball:) "a crystal ball
 THIEF_ROGUEPUSSY=(inventory:consumed:1:METAL:)&&(inventory:consumed:1:^#444A V^#333IA^#444L O^#333F ^#432SL^#231IM^#233E ^#322OI^#211L M^#322IX^#231TU^#322RE ^#111AND A ^#210THIN FI^#211LM OF ^#210ME^#211DICIN^#210AL HER^#211BS^N:)&&(inventory:kept:1:^#111A ^#320STER^#234I^#320LE CASE^#111 OF ODD TOOLS^N:)
 THIEF_POISONPUSSY=(inventory:consumed:1:METAL:)&&(inventory:kept:1:^#444A V^#333IA^#444L O^#333F ^#432SL^#231IM^#233E ^#322OI^#211L M^#322IX^#231TU^#322RE ^#111AND A ^#210THIN FI^#211LM OF ^#210ME^#211DICIN^#210AL HER^#211BS:)&&(inventory:consumed:1:^#111a spherical vial of strange liquid^N:)
 SPELL_SILHOUETTEFULLNELSON=(onground:consumed:5:GOLD:)&&(onground:consumed:1:PUSSYJUICE:)&&(onground:consumed:1:MEAT:)&&(onground:consumed:5:BONE:)&&(onground:kept:1:DIAMOND:)&&(trigger:SITTING &EMOTE "cuts their hand and drips the blood onto the diamond." &SAY "I call forth a darkened soul from the depths of hell. Do as I wish and you shall be set free to the world.":)

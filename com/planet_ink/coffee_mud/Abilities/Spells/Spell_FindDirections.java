@@ -68,6 +68,12 @@ public class Spell_FindDirections extends Spell
 	}
 
 	@Override
+	public long flags()
+	{
+		return super.flags() | Ability.FLAG_DIVINING;
+	}
+
+	@Override
 	public int classificationCode()
 	{
 		return Ability.ACODE_SPELL|Ability.DOMAIN_DIVINATION;
@@ -124,7 +130,8 @@ public class Spell_FindDirections extends Spell
 			if(mob.location().okMessage(mob,msg))
 			{
 				mob.location().send(mob,msg);
-				commonTelL(mob,"The directions are taking shape in your mind: \n\r@x1",CMLib.tracking().getTrailToDescription(targetR, new Vector<Room>(), A.Name(), null, 100, null,1));
+				commonTelL(mob,"The directions are taking shape in your mind: \n\r@x1",
+						CMLib.tracking().getTrailToDescription(targetR, new Vector<Room>(), A.Name(), null, 100, null,", ",1));
 			}
 		}
 		else

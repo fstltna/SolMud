@@ -10,3 +10,5 @@ cocaine baggie	FOOD	*Prayer_Invigorate;	1	VINE	3	poppy
 ecstasy pill	FOOD	Poison_Hallucinogen;Spell_Friends;Prayer_Invigorate	1	COFFEEBEANS		Meth											
 heroin baggie	FOOD	Spell_MindFog;Spell_Slow;Spell_Friends	1	poppy													
 meth	FOOD	Spell_MindFog;Spell_Slow;Poison_Hallucinogen	1	PEPPERS				^ca c^Col^cdof^Cf pi^cll^N	3								
+sharpsugar	FOOD	Poison_Clarity	1	SUGAR	1	COFFEEBEANS	1
+caffeine	FOOD	Poison_Caffeine	1	COFFEEBEANS	5	POPPY	1

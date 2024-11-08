@@ -45,9 +45,9 @@ public class StdSpaceBody extends StdItem implements SpaceObject
 		return "StdSpaceBody";
 	}
 
-	protected long[]		coordinates	= new long[3];
+	protected Coord3D		coordinates	= new Coord3D();
 	protected long			radius;
-	protected double[]		direction	= new double[2];
+	protected Dir3D			direction	= new Dir3D();
 	protected double		speed		= 0;
 	protected SpaceObject	spaceSource = null;
 	protected SpaceObject	spaceTarget = null;
@@ -106,21 +106,36 @@ public class StdSpaceBody extends StdItem implements SpaceObject
 	}
 
 	@Override
-	public BoundedCube getBounds()
+	public CMObject copyOf()
 	{
-		return new BoundedObject.BoundedCube(coordinates(),radius());
+		final StdSpaceBody E=(StdSpaceBody)super.copyOf();
+		E.coordinates = coordinates.copyOf();
+		E.direction = direction.copyOf();
+		return E;
 	}
 
 	@Override
-	public long[] coordinates()
+	public BoundedCube getCube()
+	{
+		return new BoundedCube(coordinates(),radius());
+	}
+
+	@Override
+	public BoundedSphere getSphere()
+	{
+		return new BoundedSphere(coordinates(),radius());
+	}
+
+	@Override
+	public Coord3D coordinates()
 	{
 		return coordinates;
 	}
 
 	@Override
-	public void setCoords(final long[] coords)
+	public void setCoords(final Coord3D coords)
 	{
-		if((coords!=null)&&(coords.length==3))
+		if((coords!=null)&&(coords.length()==3))
 			CMLib.space().moveSpaceObject(this,coords);
 	}
 
@@ -131,21 +146,27 @@ public class StdSpaceBody extends StdItem implements SpaceObject
 	}
 
 	@Override
+	public Coord3D center()
+	{
+		return coordinates();
+	}
+
+	@Override
 	public void setRadius(final long radius)
 	{
 		this.radius=radius;
 	}
 
 	@Override
-	public double[] direction()
+	public Dir3D direction()
 	{
 		return direction;
 	}
 
 	@Override
-	public void setDirection(final double[] dir)
+	public void setDirection(final Dir3D dir)
 	{
-		if((dir!=null)&&(dir.length==2))
+		if((dir!=null)&&(dir.length()==2))
 			direction=dir;
 	}
 

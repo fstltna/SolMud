@@ -33,14 +33,15 @@ import java.util.Vector;
  * limitations under the License.
  *
  */
-public class ChannelAdd extends Packet
+public class ChannelAdd extends MudPacket
 {
 	public String channel = null;
+	public int	channelType = 0;
 
 	public ChannelAdd()
 	{
 		super();
-		type = Packet.CHAN_ADD;
+		type = Packet.PacketType.CHANNEL_ADD;
 	}
 
 	public ChannelAdd(final Vector<?> v) throws InvalidPacketException
@@ -48,8 +49,9 @@ public class ChannelAdd extends Packet
 		super(v);
 		try
 		{
-			type = Packet.CHAN_ADD;
+			type = Packet.PacketType.CHANNEL_ADD;
 			channel = (String)v.elementAt(6);
+			channelType = ((Integer)v.elementAt(7)).intValue();
 		}
 		catch( final ClassCastException e )
 		{
@@ -57,12 +59,13 @@ public class ChannelAdd extends Packet
 		}
 	}
 
-	public ChannelAdd(final int t, final String chan, final String who)
+	public ChannelAdd(final String chan, final String who, final int chtyp)
 	{
 		super();
-		type = t;
+		type = Packet.PacketType.CHANNEL_ADD;
 		channel = chan;
 		sender_name = who;
+		channelType = chtyp;
 	}
 
 	@Override
@@ -77,10 +80,9 @@ public class ChannelAdd extends Packet
 	@Override
 	public String toString()
 	{
-		final NameServer n = Intermud.getNameServer();
 		final String cmd=
-			 "({\"channel-add\",5,\"" + I3Server.getMudName() + "\",\"" +
-			   sender_name + "\",\""+n.name+"\",0,\"" + channel + "\",0,})";
+			 "({\"channel-add\",5,\"" + sender_mud + "\",\"" +
+			   sender_name + "\",\""+target_name+"\",0,\"" + channel + "\",0,})";
 		return cmd;
 	}
 }

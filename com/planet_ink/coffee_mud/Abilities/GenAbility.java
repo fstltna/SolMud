@@ -81,8 +81,9 @@ public class GenAbility extends StdAbility
 	private static final int V_MOCK=31;//S
 	private static final int V_MOKT=32;//S
 	private static final int V_TMSF=33;//S
+	private static final int V_NARG=34;//I
 
-	private static final int NUM_VS=34;//S
+	private static final int NUM_VS=35;//S
 
 	private static final Object[] makeEmpty()
 	{
@@ -121,6 +122,7 @@ public class GenAbility extends StdAbility
 		O[V_MOCK]="";
 		O[V_MOKT]="";
 		O[V_TMSF]="";
+		O[V_NARG]=Integer.valueOf(0);
 		return O;
 	}
 
@@ -415,6 +417,7 @@ public class GenAbility extends StdAbility
 			return false;
 		}
 		// dont forget to allow super. calls to Spell.invoke, Chant.invoke, etc.. based on classification?
+		final int nargs = ((Integer)V(ID,V_NARG)).intValue();
 		Physical target=givenTarget;
 		if((this.abstractQuality()==Ability.QUALITY_BENEFICIAL_SELF)
 		||(this.abstractQuality()==Ability.QUALITY_OK_SELF))
@@ -430,15 +433,26 @@ public class GenAbility extends StdAbility
 		}
 		else
 		{
+			List<String> targWords = commands;
+			if(nargs > 1)
+			{
+				targWords = new XVector<String>(commands.get(0));
+				if(commands.size()>nargs)
+				{
+					commands.set(nargs-1, CMParms.combine(commands,nargs-1));
+					while(commands.size()>nargs)
+						commands.remove(commands.size()-1);
+				}
+			}
 			switch(canTargetCode())
 			{
 			case Ability.CAN_MOBS:
-				target=super.getTarget(mob, commands, givenTarget);
+				target=super.getTarget(mob, targWords, givenTarget);
 				if(target==null)
 					return false;
 				break;
 			case Ability.CAN_ITEMS:
-				target=super.getTarget(mob, mob.location(), givenTarget, commands, Wearable.FILTER_ANY);
+				target=super.getTarget(mob, mob.location(), givenTarget, targWords, Wearable.FILTER_ANY);
 				if(target==null)
 					return false;
 				break;
@@ -454,7 +468,7 @@ public class GenAbility extends StdAbility
 				break;
 			case Ability.CAN_EXITS:
 			{
-				final String whatToOpen=CMParms.combine(commands,0);
+				final String whatToOpen=CMParms.combine(targWords,0);
 				Environmental openThis=null;
 				final int dirCode=CMLib.directions().getGoodDirectionCode(whatToOpen);
 				if(dirCode>=0)
@@ -468,7 +482,7 @@ public class GenAbility extends StdAbility
 			case 0:
 				break;
 			default:
-				target=super.getAnyTarget(mob,commands, givenTarget, Wearable.FILTER_ANY);
+				target=super.getAnyTarget(mob,targWords, givenTarget, Wearable.FILTER_ANY);
 				if(target==null)
 					return false;
 				break;
@@ -779,8 +793,9 @@ public class GenAbility extends StdAbility
 								if((success[0])&&(S!=null))
 								{
 									final CMMsg msg3=CMClass.getMsg(mob,finalTarget,me,CMMsg.MSG_OK_VISUAL,null,null,ID);
+									final Object[] args = commands.toArray(new Object[12]);
 									S.executeMsg(mob, msg3);
-									S.dequeResponses();
+									S.dequeResponses(args);
 								}
 								mob.location().recoverRoomStats();
 							}
@@ -951,7 +966,7 @@ public class GenAbility extends StdAbility
 				{
 					final CMMsg msg3=CMClass.getMsg(invoker(),aff,this,CMMsg.MSG_OK_VISUAL,null,null,"UNINVOKE-"+ID);
 					S.executeMsg(aff, msg3);
-					S.dequeResponses();
+					S.dequeResponses(null);
 				}
 			}
 			final String uninMsg = (String)V(ID,V_UNIN);
@@ -1081,6 +1096,7 @@ public class GenAbility extends StdAbility
 										 "MOCKABILITY", //33A
 										 "MOCKABLETEXT", //34S
 										 "TARGETFAILMSG", //35S
+										 "NUMARGS"//36I
 										};
 
 	@Override
@@ -1177,6 +1193,8 @@ public class GenAbility extends StdAbility
 			return (String) V(ID,V_MOKT);
 		case 35:
 			return (String) V(ID, V_TMSF);
+		case 36:
+			return ((Integer) V(ID, V_NARG)).toString();
 		default:
 			if (code.equalsIgnoreCase("javaclass"))
 				return "GenAbility";
@@ -1324,6 +1342,9 @@ public class GenAbility extends StdAbility
 		case 35:
 			SV(ID, V_TMSF, val);
 			break;
+		case 36:
+			SV(ID, V_NARG, Integer.valueOf(CMath.s_int(val)));
+			break;
 		default:
 			if (code.equalsIgnoreCase("allxml") && ID.equalsIgnoreCase("GenAbility"))
 				parseAllXML(val);
@@ -1368,32 +1389,32 @@ public class GenAbility extends StdAbility
 		{
 			val=V.get(v);
 			int tacod=-1;
-			for(int a=0;a<Ability.ACODE_DESCS.length;a++)
+			for(int a=0;a<Ability.ACODE.DESCS.size();a++)
 			{
-				if(val.equalsIgnoreCase(Ability.ACODE_DESCS[a]))
+				if(val.equalsIgnoreCase(Ability.ACODE.DESCS.get(a)))
 					tacod=a;
 			}
 			if(tacod<0)
 			{
-				for(int i=0;i<Ability.ACODE_DESCS.length;i++)
+				for(int i=0;i<Ability.ACODE.DESCS.size();i++)
 				{
-					if(Ability.ACODE_DESCS[i].toUpperCase().startsWith(val.toUpperCase()))
+					if(Ability.ACODE.DESCS.get(i).toUpperCase().startsWith(val.toUpperCase()))
 						tacod=i;
 				}
 				if(tacod<0)
 				{
 					int tdom=-1;
-					for(int a=0;a<Ability.DOMAIN_DESCS.length;a++)
+					for(int a=0;a<Ability.DOMAIN.DESCS.size();a++)
 					{
-						if(val.equalsIgnoreCase(Ability.DOMAIN_DESCS[a]))
+						if(val.equalsIgnoreCase(Ability.DOMAIN.DESCS.get(a)))
 							tdom=a<<5;
 					}
 					if(tdom<0)
 					{
-						for(int i=0;i<Ability.DOMAIN_DESCS.length;i++)
+						for(int i=0;i<Ability.DOMAIN.DESCS.size();i++)
 						{
-							if(Ability.DOMAIN_DESCS[i].toUpperCase().startsWith(val.toUpperCase())
-									||Ability.DOMAIN_DESCS[i].toUpperCase().endsWith(val.toUpperCase()))
+							if(Ability.DOMAIN.DESCS.get(i).toUpperCase().startsWith(val.toUpperCase())
+									||Ability.DOMAIN.DESCS.get(i).toUpperCase().endsWith(val.toUpperCase()))
 							{
 								tdom = i << 5;
 								break;
@@ -1414,9 +1435,9 @@ public class GenAbility extends StdAbility
 	{
 		final int dom=(val&Ability.ALL_DOMAINS)>>5;
 		final int acod=val&Ability.ALL_ACODES;
-		if((acod>=0)&&(acod<Ability.ACODE_DESCS.length)
-		&&(dom>=0)&&(dom<Ability.DOMAIN_DESCS.length))
-			return Ability.ACODE_DESCS[acod]+","+Ability.DOMAIN_DESCS[dom];
+		if((acod>=0)&&(acod<Ability.ACODE.DESCS.size())
+		&&(dom>=0)&&(dom<Ability.DOMAIN.DESCS.size()))
+			return Ability.ACODE.DESCS.get(acod)+","+Ability.DOMAIN.DESCS.get(dom);
 		return ""+val;
 	}
 

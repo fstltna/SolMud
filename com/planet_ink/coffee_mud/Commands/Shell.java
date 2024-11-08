@@ -48,7 +48,7 @@ public class Shell extends StdCommand
 		return access;
 	}
 
-	protected static DVector pwds=new DVector(2);
+	protected static PairVector<MOB,String> pwds=new PairVector<MOB,String>();
 
 	protected enum SubCmds
 	{
@@ -236,7 +236,7 @@ public class Shell extends StdCommand
 	@Override
 	public Object executeInternal(final MOB mob, final int metaFlags, final Object... args) throws java.io.IOException
 	{
-		final String pwd=(pwds.contains(mob))?(String)pwds.get(pwds.indexOf(mob),2):"";
+		final String pwd=(pwds.containsFirst(mob))?(String)pwds.get(pwds.indexOfFirst(mob)).second:"";
 		if((args.length>0)&&(args[0].equals(".")))
 			return pwd;
 		return null;
@@ -246,7 +246,7 @@ public class Shell extends StdCommand
 	public boolean execute(final MOB mob, final List<String> commands, final int metaFlags)
 		throws java.io.IOException
 	{
-		String pwd=(pwds.contains(mob))?(String)pwds.get(pwds.indexOf(mob),2):"";
+		String pwd=(pwds.containsFirst(mob))?(String)pwds.get(pwds.indexOfFirst(mob)).second:"";
 		commands.remove(0);
 		if(commands.size()==0)
 		{
@@ -571,7 +571,7 @@ public class Shell extends StdCommand
 			}
 			pwd=changeTo;
 			mob.tell(L("Directory is now: /@x1",pwd));
-			pwds.removeElement(mob);
+			pwds.removeElementFirst(mob);
 			pwds.add(mob,pwd);
 			return true;
 		}
@@ -1101,14 +1101,25 @@ public class Shell extends StdCommand
 				if(s.trim().length()>0)
 					text2.append(s.trim()).append("\n\r");
 			}
-			final LinkedList<CMStrings.Diff> diffs=CMStrings.diff_main(text1.toString(), text2.toString(), false);
-			boolean flipFlop=false;
-			for(final CMStrings.Diff d : diffs)
+			final LinkedList<CMStrings.Diff> diffs=CMStrings.diffMain(text1.toString(), text2.toString(), false);
 			{
-				final StringBuilder str=new StringBuilder("\n\r^H"+d.operation.toString()+": ");
-				str.append(flipFlop?"^N":"^w");
-				flipFlop=!flipFlop;
-				str.append(d.text);
+				final StringBuilder str = new StringBuilder("");
+				for(final CMStrings.Diff d : diffs)
+				{
+					switch(d.operation)
+					{
+					case DELETE:
+						str.append("^r");
+						break;
+					case EQUAL:
+						str.append("^N");
+						break;
+					case INSERT:
+						str.append("^g");
+						break;
+					}
+					str.append(d.text);
+				}
 				mob.session().colorOnlyPrintln(str.toString());
 			}
 			mob.tell(L("^HDONE."));

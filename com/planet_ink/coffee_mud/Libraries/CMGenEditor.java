@@ -20,6 +20,7 @@ import com.planet_ink.coffee_mud.Behaviors.interfaces.*;
 import com.planet_ink.coffee_mud.CharClasses.interfaces.*;
 import com.planet_ink.coffee_mud.Commands.interfaces.*;
 import com.planet_ink.coffee_mud.Common.interfaces.*;
+import com.planet_ink.coffee_mud.Common.interfaces.AbilityComponent.CompConnector;
 import com.planet_ink.coffee_mud.Common.interfaces.Clan.MemberRecord;
 import com.planet_ink.coffee_mud.Common.interfaces.PlayerAccount.AccountFlag;
 import com.planet_ink.coffee_mud.Common.interfaces.PlayerStats.PlayerFlag;
@@ -34,6 +35,7 @@ import com.planet_ink.coffee_mud.MOBS.interfaces.*;
 import com.planet_ink.coffee_mud.Races.interfaces.*;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.*;
 import java.util.Map.Entry;
 import java.util.regex.*;
@@ -105,6 +107,25 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 				newFlags.add(values[index]);
 		}
 		return newFlags;
+	}
+
+	@SuppressWarnings("rawtypes")
+	@Override
+	public Enum<? extends Enum> promptEnumChoice(final MOB mob, final Enum<? extends Enum> val, final Enum<? extends Enum>[] cs, final int showNumber, final int showFlag, final String fieldDisplayStr) throws IOException
+	{
+		final String help=CMParms.toListString(cs);
+		final String oldVal = val.name();
+		while((mob.session()!=null)&&(!mob.session().isStopped()))
+		{
+			final String newVal = CMLib.genEd().prompt(mob, oldVal, showNumber, showFlag, fieldDisplayStr, false, help);
+			if(newVal.equalsIgnoreCase(oldVal)||(newVal==null)||(newVal.length()==0))
+				return val;
+			final Enum<? extends Enum> newEnum= CMath.s_valueOf(val.getClass(), newVal.toUpperCase().trim());
+			if(newEnum != null)
+				return newEnum;
+			mob.tell(L("@x1 is not a proper value, try '@x2'.",newVal,help));
+		}
+		return val;
 	}
 
 	@Override
@@ -347,7 +368,38 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 						continue;
 					}
 				}
-				final List<String> curSet=CMParms.parseAny(oldVal,delimiter,true);
+				final List<String> curSet;
+				if((prefix2!=null)&&prefix2.equals("("))
+				{
+					curSet = new ArrayList<String>();
+					int parDepth = 0;
+					int start=0;
+					for(int o=0;o<oldVal.length();o++)
+					{
+						if((oldVal.charAt(o)==delimiter)
+						&&(parDepth == 0))
+						{
+							final String val = oldVal.substring(start,o).trim();
+							if(val.length()>0)
+								curSet.add(val);
+							start=o+1;
+						}
+						else
+						if(oldVal.charAt(o)=='(')
+							parDepth++;
+						else
+						if(oldVal.charAt(o)==')')
+							parDepth--;
+					}
+					if(start<oldVal.length())
+					{
+						final String val = oldVal.substring(start).trim();
+						if(val.length()>0)
+							curSet.add(val);
+					}
+				}
+				else
+					curSet=CMParms.parseAny(oldVal,delimiter,true);
 				String oldOne=null;
 				for(final String c : curSet)
 				{
@@ -358,7 +410,7 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 				{
 					for(final String c : curSet)
 					{
-						if(c.toLowerCase().startsWith((oldOne+prefix2).toLowerCase()))
+						if(c.toLowerCase().startsWith((newName+prefix2).toLowerCase()))
 							oldOne=c;
 					}
 				}
@@ -1102,19 +1154,26 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 			report.append("3. Day Hour: "+TC.getDawnToDusk()[TimeClock.TimeOfDay.DAY.ordinal()]+"\n\r");
 			report.append("4. Dusk Hour: "+TC.getDawnToDusk()[TimeClock.TimeOfDay.DUSK.ordinal()]+"\n\r");
 			report.append("5. Night Hour: "+TC.getDawnToDusk()[TimeClock.TimeOfDay.NIGHT.ordinal()]+"\n\r");
-			report.append("6. Weekdays: "+CMParms.toListString(TC.getWeekNames())+"\n\r");
-			report.append("7. Months: "+CMParms.toListString(TC.getMonthNames())+"\n\r");
-			report.append("8. Year Title(s): "+CMParms.toListString(TC.getYearNames()));
+			report.append("6. Days/Month: "+TC.getDaysInMonth()+"\n\r");
+			report.append("7. Weekdays: "+CMParms.toListString(TC.getWeekNames())+"\n\r");
+			report.append("8. Months: "+CMParms.toListString(TC.getMonthNames())+"\n\r");
+			report.append("9. Year Title(s): "+CMParms.toListString(TC.getYearNames()));
 			mob.tell(report.toString());
-			newName=mob.session().prompt(L("Enter one to change:"),"");
+			newName=mob.session().prompt(L("Enter one to change (or global):"),"");
 			if(newName.length()==0)
 				break;
+			if(newName.equalsIgnoreCase("global"))
+			{
+				A.setTimeObj((TimeClock)CMLib.time().globalClock().copyOf());
+				continue;
+			}
+
 			final int which=CMath.s_int(newName);
 
-			if((which<0)||(which>8))
+			if((which<0)||(which>9))
 				mob.tell(L("Invalid: @x1",""+which));
 			else
-			if(which<=5)
+			if(which<=6)
 			{
 				newName="";
 				final String newNum=mob.session().prompt(L("Enter a new number:"),"");
@@ -1157,6 +1216,9 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 					else
 						TC.getDawnToDusk()[TimeClock.TimeOfDay.NIGHT.ordinal()]=val;
 					break;
+				case 6:
+					TC.setDaysInMonth(val);
+					break;
 				}
 			}
 			else
@@ -1168,13 +1230,13 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 				else
 				switch(which)
 				{
-				case 6:
-					TC.setDaysInWeek(CMParms.toStringArray(CMParms.parseCommas(newNum,true)));
-					break;
 				case 7:
-					TC.setMonthsInYear(CMParms.toStringArray(CMParms.parseCommas(newNum,true)));
+					TC.setWeekNames(CMParms.toStringArray(CMParms.parseCommas(newNum,true)));
 					break;
 				case 8:
+					TC.setMonthsInYear(CMParms.toStringArray(CMParms.parseCommas(newNum,true)));
+					break;
+				case 9:
 					TC.setYearNames(CMParms.toStringArray(CMParms.parseCommas(newNum,true)));
 					break;
 				}
@@ -2699,7 +2761,7 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 			return;
 		}
 		String c="Q";
-		final String commandStr="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()=+-";
+		final String commandStr="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()=+-[]{}|_;:<>,.?/";
 		while((mob.session()!=null)&&(!mob.session().isStopped())&&(!c.equals("\n")))
 		{
 			for(final int i : CharStats.CODES.ALLCODES())
@@ -4107,8 +4169,7 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 									classLevels.append(";"+L2);
 								}
 							}
-							M.baseCharStats().setMyClasses(charClasses.toString());
-							M.baseCharStats().setMyLevels(classLevels.toString());
+							M.baseCharStats().setAllClassInfo(charClasses.toString(), classLevels.toString());
 						}
 					}
 					else
@@ -4619,7 +4680,7 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 		if((showFlag!=showNumber)&&(showFlag>-999))
 			return;
 		boolean q=false;
-		final String sel="LWACBTEDG";
+		final String sel="LWACBTEDGH";
 		while(!q)
 		{
 			final String newType=mob.session().choose(L("Enter a new value (?)\n\r:"),sel+"?","");
@@ -4645,7 +4706,7 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 
 	protected void genRideableRideCapacity(final MOB mob, final Rideable E, final int showNumber, final int showFlag) throws IOException
 	{
-		E.setRiderCapacity(prompt(mob, E.riderCapacity(), showNumber, showFlag, "Number of MOBs held"));
+		E.setRiderCapacity(prompt(mob, E.riderCapacity(), showNumber, showFlag, "Rider capacity"));
 	}
 
 	protected void genShopkeeperType(final MOB mob, final ShopKeeper M, final int showNumber, final int showFlag)
@@ -5125,7 +5186,13 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 			{
 				final Ability A=M.fetchAbility(a);
 				if((A!=null)&&(A.isSavable()))
-					abilitiestr+=A.ID()+", ";
+				{
+					abilitiestr+=A.ID();
+					if(A.text().length()>0)
+						abilitiestr+="(), ";
+					else
+						abilitiestr+=", ";
+				}
 			}
 			if(abilitiestr.length()>0)
 				abilitiestr=abilitiestr.substring(0,abilitiestr.length()-2);
@@ -5141,6 +5208,13 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 					mob.tell(CMLib.lister().build3ColTable(mob,CMClass.abilities(),-1).toString());
 				else
 				{
+					String parms = null;
+					final int x = behave.indexOf('(');
+					if((x>0)&&(behave.endsWith(")")))
+					{
+						parms = behave.substring(x+1,behave.length()-1);
+						behave = behave.substring(0,x);
+					}
 					Ability chosenOne=null;
 					for(int a=0;a<M.numAbilities();a++)
 					{
@@ -5164,6 +5238,8 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 							chosenOne=null;
 						if(chosenOne!=null)
 						{
+							if(parms == null)
+								parms = mob.session().prompt(L("Enter any arguments: "),"");
 							final boolean alreadyHasIt=(M.fetchAbility(chosenOne.ID())!=null);
 							if(!alreadyHasIt)
 								mob.tell(L("@x1 added.",chosenOne.ID()));
@@ -5173,6 +5249,8 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 							{
 								chosenOne=(Ability)chosenOne.copyOf();
 								M.addAbility(chosenOne);
+								if((parms != null)&&(parms.length()>0))
+									chosenOne.setMiscText(parms);
 								chosenOne.setProficiency(75);
 								chosenOne.autoInvocation(M, false);
 							}
@@ -5617,7 +5695,12 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 			{
 				final Ability A=E.fetchBlessing(a);
 				if((A!=null)&&(A.isSavable()))
-					abilitiestr+=A.ID()+", ";
+				{
+					if(A.text().length()>0)
+						abilitiestr+=A.ID()+"("+A.text()+"), ";
+					else
+						abilitiestr+=A.ID()+", ";
+				}
 			}
 			if(abilitiestr.length()>0)
 				abilitiestr=abilitiestr.substring(0,abilitiestr.length()-2);
@@ -5659,13 +5742,15 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 								if((A!=null)&&(A.ID().equals(chosenOne.ID())))
 									alreadyHasIt=true;
 							}
+							final String arg=mob.session().prompt(L("Enter any arguments: "),"");
 							final boolean clericOnly=mob.session().confirm(L("Is this for clerics only (y/N)?"),"N");
 							if(!alreadyHasIt)
 								mob.tell(L("@x1 added.",chosenOne.ID()));
 							else
 								mob.tell(L("@x1 re-added.",chosenOne.ID()));
-							if(!alreadyHasIt)
-								E.addBlessing((Ability)chosenOne.copyOf(),clericOnly);
+							if(arg.length()>0)
+								chosenOne.setMiscText(arg);
+							E.addBlessing(chosenOne,clericOnly);
 						}
 						else
 						{
@@ -5692,7 +5777,12 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 			{
 				final Ability A=E.fetchCurse(a);
 				if((A!=null)&&(A.isSavable()))
-					abilitiestr+=A.ID()+", ";
+				{
+					if(A.text().length()>0)
+						abilitiestr+=A.ID()+"("+A.text()+"), ";
+					else
+						abilitiestr+=A.ID()+", ";
+				}
 			}
 			if(abilitiestr.length()>0)
 				abilitiestr=abilitiestr.substring(0,abilitiestr.length()-2);
@@ -5734,13 +5824,15 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 								if((A!=null)&&(A.ID().equals(chosenOne.ID())))
 									alreadyHasIt=true;
 							}
+							final String arg=mob.session().prompt(L("Enter any arguments: "),"");
 							final boolean clericOnly=mob.session().confirm(L("Is this for clerics only (y/N)?"),"N");
 							if(!alreadyHasIt)
 								mob.tell(L("@x1 added.",chosenOne.ID()));
 							else
 								mob.tell(L("@x1 re-added.",chosenOne.ID()));
-							if(!alreadyHasIt)
-								E.addCurse((Ability)chosenOne.copyOf(),clericOnly);
+							if(arg.length()>0)
+								chosenOne.setMiscText(arg);
+							E.addCurse(chosenOne,clericOnly);
 						}
 						else
 						{
@@ -5767,7 +5859,12 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 			{
 				final Ability A=E.fetchPower(a);
 				if((A!=null)&&(A.isSavable()))
-					abilitiestr+=A.ID()+", ";
+				{
+					if(A.text().length()>0)
+						abilitiestr+=A.ID()+"("+A.text()+"), ";
+					else
+						abilitiestr+=A.ID()+", ";
+				}
 			}
 			if(abilitiestr.length()>0)
 				abilitiestr=abilitiestr.substring(0,abilitiestr.length()-2);
@@ -5809,12 +5906,14 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 								if((A!=null)&&(A.ID().equals(chosenOne.ID())))
 									alreadyHasIt=true;
 							}
+							final String arg=mob.session().prompt(L("Enter any arguments: "),"");
 							if(!alreadyHasIt)
 								mob.tell(L("@x1 added.",chosenOne.ID()));
 							else
 								mob.tell(L("@x1 re-added.",chosenOne.ID()));
-							if(!alreadyHasIt)
-								E.addPower((Ability)chosenOne.copyOf());
+							if(arg.length()>0)
+								chosenOne.setMiscText(arg);
+							E.addPower(chosenOne);
 						}
 						else
 						{
@@ -5878,9 +5977,9 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 	protected void genLocationCoords(final MOB mob, final LocationRoom E, final int showNumber, final int showFlag) throws IOException
 	{
 		final double[] newDir=new double[2];
-		newDir[0]=Math.toRadians(prompt(mob,Math.toDegrees(E.getDirectionFromCore()[0]),showNumber,showFlag,"Horiz. Dir From Core","This is a horizontal direction in degrees from 0 to 360.",0,360));
-		newDir[1]=Math.toRadians(prompt(mob,Math.toDegrees(E.getDirectionFromCore()[1]),showNumber,showFlag,"Vert. Dir From Core","This is a vertical direction in degrees from 0 to 360.",0,360));
-		E.setDirectionFromCore(newDir);
+		newDir[0]=Math.toRadians(prompt(mob,Math.toDegrees(E.getDirectionFromCore().xyd()),showNumber,showFlag,"Horiz. Dir From Core","This is a horizontal direction in degrees from 0 to 360.",0,360));
+		newDir[1]=Math.toRadians(prompt(mob,Math.toDegrees(E.getDirectionFromCore().zd()),showNumber,showFlag,"Vert. Dir From Core","This is a vertical direction in degrees from 0 to 360.",0,360));
+		E.setDirectionFromCore(new Dir3D(newDir));
 	}
 
 	public void genSpaceGate(final MOB mob, final SpaceObject.SpaceGateway E, final int showNumber, final int showFlag) throws IOException
@@ -5890,7 +5989,7 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 		final StringBuilder buf=new StringBuilder();
 		buf.append(showNumber+". ");
 		final String targetName = E.knownTarget() == null ? "NONE" : E.knownTarget().Name();
-		final String targetLoc = E.knownTarget() == null ? "N/A" : CMLib.english().coordDescShort(E.knownTarget().coordinates());
+		final String targetLoc = E.knownTarget() == null ? "N/A" : CMLib.english().coordDescShort(E.knownTarget().coordinates().toLongs());
 		buf.append(L("Target: @x1  (Coords in space: @x2)",targetName,targetLoc));
 		if((showFlag!=showNumber)&&(showFlag>-999))
 			return;
@@ -5936,12 +6035,12 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 		{
 			final StringBuilder buf=new StringBuilder();
 			buf.append(showNumber+". ");
-			buf.append(L("Radius: @x1, Coords in space: @x2\n\r",CMLib.english().sizeDescShort(E.radius()),CMLib.english().coordDescShort(E.coordinates())));
+			buf.append(L("Radius: @x1, Coords in space: @x2\n\r",CMLib.english().sizeDescShort(E.radius()),CMLib.english().coordDescShort(E.coordinates().toLongs())));
 			buf.append(L("@x1. Moving: ",CMStrings.SPACES.substring(0,(""+showNumber).length())));
 			if(E.speed()<=0)
 				buf.append("no");
 			else
-				buf.append(CMLib.english().speedDescShort(E.speed())+", Direction: "+CMLib.english().directionDescShort(E.direction()));
+				buf.append(CMLib.english().speedDescShort(E.speed())+", Direction: "+CMLib.english().directionDescShort(E.direction().toDoubles()));
 			mob.tell(buf.toString());
 			return;
 		}
@@ -5953,7 +6052,7 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 				mob.tell(L("(unchanged)"));
 				break;
 			}
-			final Long newValue=CMLib.english().parseSpaceDistance(val);
+			final BigDecimal newValue=CMLib.english().parseSpaceDistance(val);
 			if((newValue==null)||(newValue.longValue()<0))
 				mob.tell(L("Unknown radius: '@x1', valid units include: @x2.",val,SpaceObject.Distance.getFullList()));
 			else
@@ -5969,7 +6068,7 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 		final String coordHelp2=L("Valid distance units include: @x1.",SpaceObject.Distance.getFullList());
 		while((mob!=null)&&(mob.session()!=null)&&(!mob.session().isStopped()))
 		{
-			String val=mob.session().prompt(L("@x1. Coordinates in Space (ENTER=@x2): ",""+showNumber,(CMLib.english().coordDescShort(E.coordinates()))));
+			String val=mob.session().prompt(L("@x1. Coordinates in Space (ENTER=@x2): ",""+showNumber,(CMLib.english().coordDescShort(E.coordinates().toLongs()))));
 			if((val==null)||(val.trim().length()==0))
 			{
 				mob.tell(L("(unchanged)"));
@@ -5981,7 +6080,7 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 				final List<String> tokens=CMParms.parseSpaces(val,true);
 				final int x=utokens.indexOf("FROM");
 				final int y=utokens.indexOf("TOWARD");
-				double[] direction;
+				Dir3D direction;
 				if(y>0)
 				{
 					final List<String> degreeStr=CMParms.parseCommas(CMParms.combine(tokens,y+1),true);
@@ -5995,16 +6094,16 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 						continue;
 					}
 					final double[] degreesDbl=CMParms.toDoubleArray(degreeStr);
-					direction=new double[]{Math.toRadians(degreesDbl[0]),Math.toRadians(degreesDbl[1])};
+					direction=new Dir3D(new double[]{Math.toRadians(degreesDbl[0]),Math.toRadians(degreesDbl[1])});
 					while(tokens.size()>=y)
 						tokens.remove(tokens.size()-1);
 				}
 				else
-					direction=new double[]{Math.toRadians(CMLib.dice().roll(1, 360, -1)),Math.toRadians(CMLib.dice().roll(1,180,-1))};
+					direction=new Dir3D(new double[]{Math.toRadians(CMLib.dice().roll(1, 360, -1)),Math.toRadians(CMLib.dice().roll(1,180,-1))});
 
 				final String distStr=CMParms.combine(tokens,0,x);
 				final String objName=CMParms.combine(tokens,x+1);
-				final Long dist=CMLib.english().parseSpaceDistance(distStr);
+				final BigDecimal dist=CMLib.english().parseSpaceDistance(distStr);
 				if(dist==null)
 				{
 					mob.tell(L("Unknown distance:")+" '"+distStr+"'. "+coordHelp2);
@@ -6022,7 +6121,7 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 					mob.tell(L("Unknown relative space object")+" '"+objName+"'.\n\r"+coordHelp2);
 					continue;
 				}
-				val=CMParms.toListString(CMLib.space().getLocation(O.coordinates(), direction, dist.longValue()));
+				val=CMParms.toListString(CMLib.space().getLocation(O.coordinates(), direction, dist.longValue()).toLongs());
 			}
 
 			final List<String> valsL=CMParms.parseCommas(val,true);
@@ -6031,10 +6130,10 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 			else
 			{
 				boolean fail=true;
-				final Long[] valL=new Long[3];
+				final BigDecimal[] valL=new BigDecimal[3];
 				for(int i=0;i<3;i++)
 				{
-					final Long newValue=CMLib.english().parseSpaceDistance(valsL.get(i));
+					final BigDecimal newValue=CMLib.english().parseSpaceDistance(valsL.get(i));
 					if(newValue==null)
 					{
 						mob.tell(L("Unknown coord: '@x1'. @x2",valsL.get(i),coordHelp2));
@@ -6049,10 +6148,10 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 				}
 				if(!fail)
 				{
-					E.setCoords(new long[]{valL[0].longValue(),valL[1].longValue(),valL[2].longValue()});
-					E.coordinates()[0] = E.coordinates()[0] % SpaceObject.Distance.GalaxyRadius.dm;
-					E.coordinates()[1] = E.coordinates()[1] % SpaceObject.Distance.GalaxyRadius.dm;
-					E.coordinates()[2] = E.coordinates()[2] % SpaceObject.Distance.GalaxyRadius.dm;
+					E.setCoords(new Coord3D(valL));
+					E.coordinates().x(E.coordinates().x().longValue() % SpaceObject.Distance.GalaxyRadius.dm);
+					E.coordinates().y(E.coordinates().y().longValue() % SpaceObject.Distance.GalaxyRadius.dm);
+					E.coordinates().z(E.coordinates().z().longValue() % SpaceObject.Distance.GalaxyRadius.dm);
 					break;
 				}
 			}
@@ -6070,7 +6169,7 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 				val=val.substring(0,val.length()-4);
 			if(val.trim().toLowerCase().endsWith("/second"))
 				val=val.substring(0,val.length()-7);
-			final Long newValue=CMLib.english().parseSpaceDistance(val);
+			final BigDecimal newValue=CMLib.english().parseSpaceDistance(val);
 			if((newValue==null)||(newValue.longValue()<0))
 				mob.tell(L("Unknown speed/sec: '@x1', valid units include: @x2.",val,SpaceObject.Distance.getAbbrList()));
 			else
@@ -6081,7 +6180,8 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 		}
 		while((mob!=null)&&(mob.session()!=null)&&(!mob.session().isStopped())&&(E.speed()>0))
 		{
-			String val=mob.session().prompt(L("@x1. Direction in Space (ENTER=@x2): ",""+showNumber,(CMLib.english().directionDescShort(E.direction()))));
+			String val=mob.session().prompt(L("@x1. Direction in Space (ENTER=@x2): ",""+showNumber,
+					(CMLib.english().directionDescShort(E.direction().toDoubles()))));
 			if((val==null)||(val.trim().length()==0))
 			{
 				mob.tell(L("(unchanged)"));
@@ -6099,7 +6199,8 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 				mob.tell(L("Invalid direction in degrees: '@x1', you might need to include 'mark' in the direction.",val));
 			else
 			{
-				E.setDirection(new double[]{Math.toRadians(CMath.s_double(val.substring(0,x).trim())),Math.toRadians(CMath.s_double(val.substring(x+6).trim()))});
+				E.setDirection(new Dir3D(new double[]{Math.toRadians(CMath.s_double(val.substring(0,x).trim())),
+						Math.toRadians(CMath.s_double(val.substring(x+6).trim()))}));
 				break;
 			}
 		}
@@ -6400,14 +6501,14 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 		String newName="?";
 		while((mob.session()!=null)&&(!mob.session().isStopped())&&(newName.equals("?")))
 		{
-			final StringBuilder disabled=new StringBuilder("");
+			final List<String> disabledL=new ArrayList<String>();
 			for(int i=0;i<Race.GENFLAG_DESCS.length;i++)
 			{
 				if(CMath.isSet(flags,i))
-					disabled.append(Race.GENFLAG_DESCS[i]);
+					disabledL.add(Race.GENFLAG_DESCS[i]);
 			}
 
-			mob.tell(L("@x1. Disabled: '@x2'.",""+showNumber,disabled.toString()));
+			mob.tell(L("@x1. Disabled: '@x2'.",""+showNumber,CMParms.toListString(disabledL)));
 			if((showFlag!=showNumber)&&(showFlag>-999))
 				return;
 
@@ -7271,7 +7372,7 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 		{
 			final StringBuilder parts=new StringBuilder("");
 			final int numResources=CMath.s_int(E.getStat("NUMRSC"));
-			final DVector DV=new DVector(2);
+			final PairList<Item,Integer> DV=new PairArrayList<Item,Integer>();
 			for(int r=0;r<numResources;r++)
 			{
 				final Item I=CMClass.getItem(E.getStat("GETRSCID"+r));
@@ -7282,23 +7383,23 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 					boolean done=false;
 					for(int v=0;v<DV.size();v++)
 					{
-						if(I.sameAs((Environmental)DV.elementAt(v,1)))
+						if(I.sameAs(DV.get(v).first))
 						{
-							DV.setElementAt(v, 2, Integer.valueOf(((Integer) DV.elementAt(v, 2)).intValue() + 1));
+							DV.get(v).second = Integer.valueOf(DV.get(v).second.intValue() + 1);
 							done = true;
 							break;
 						}
 					}
 					if(!done)
-						DV.addElement(I,Integer.valueOf(1));
+						DV.add(I,Integer.valueOf(1));
 				}
 				else
 					parts.append("Unknown: "+E.getStat("GETRSCID"+r)+", ");
 			}
 			for(int v=0;v<DV.size();v++)
 			{
-				final Item I=(Item)DV.elementAt(v,1);
-				final int i=((Integer)DV.elementAt(v,2)).intValue();
+				final Item I=DV.get(v).first;
+				final int i=DV.get(v).second.intValue();
 				if(i<2)
 					parts.append(I.name()+", ");
 				else
@@ -7318,7 +7419,7 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 				int partNum=-1;
 				for(int i=0;i<DV.size();i++)
 				{
-					if(CMLib.english().containsString(((Item)DV.elementAt(i,1)).name(),newName))
+					if(CMLib.english().containsString(DV.get(i).first.name(),newName))
 					{
 						partNum=i;
 						break;
@@ -7340,15 +7441,15 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 								boolean done=false;
 								for(int v=0;v<DV.size();v++)
 								{
-									if(I.sameAs((Environmental)DV.elementAt(v,1)))
+									if(I.sameAs(DV.get(v).first))
 									{
-										DV.setElementAt(v,2,Integer.valueOf(((Integer)DV.elementAt(v,2)).intValue()+1));
+										DV.get(v).second = Integer.valueOf(DV.get(v).second.intValue()+1);
 										done=true;
 										break;
 									}
 								}
 								if(!done)
-									DV.addElement(I,Integer.valueOf(1));
+									DV.add(I,Integer.valueOf(1));
 								else
 									I.destroy();
 								mob.tell(L("@x1 added.",I.name()));
@@ -7359,12 +7460,12 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 				}
 				else
 				{
-					final Item I=(Item)DV.elementAt(partNum,1);
-					final int i=((Integer)DV.elementAt(partNum,2)).intValue();
+					final Item I=DV.get(partNum).first;
+					final int i=DV.get(partNum).second.intValue();
 					if(i<2)
-						DV.removeElementAt(partNum);
+						DV.remove(partNum);
 					else
-						DV.setElementAt(partNum,2,Integer.valueOf(i-1));
+						DV.get(partNum).second = Integer.valueOf(i-1);
 					mob.tell(L("@x1 removed.",I.name()));
 					updateList=true;
 				}
@@ -7372,23 +7473,23 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 				{
 					int dex=0;
 					for(int i=0;i<DV.size();i++)
-						dex+=((Integer)DV.elementAt(i,2)).intValue();
+						dex+=DV.get(i).second.intValue();
 					E.setStat("NUMRSC",""+dex);
 					dex=0;
 					Item I=null;
 					Integer N=null;
 					for(int i=0;i<DV.size();i++)
 					{
-						I=(Item)DV.elementAt(i,1);
-						N=(Integer)DV.elementAt(i,2);
+						I=DV.get(i).first;
+						N=DV.get(i).second;
 						for(int n=0;n<N.intValue();n++)
 							E.setStat("GETRSCID"+(dex++),I.ID());
 					}
 					dex=0;
 					for(int i=0;i<DV.size();i++)
 					{
-						I=(Item)DV.elementAt(i,1);
-						N=(Integer)DV.elementAt(i,2);
+						I=DV.get(i).first;
+						N=DV.get(i).second;
 						for(int n=0;n<N.intValue();n++)
 							E.setStat("GETRSCPARM"+(dex++),I.text());
 					}
@@ -8220,20 +8321,21 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 		}
 	}
 
-	@SuppressWarnings("unchecked")
-	protected DVector genClassAbleMod(final MOB mob, final DVector sets, final String ableID, final int origLevelIndex, int origAbleIndex)
-	throws IOException
+	protected PairList<Integer,List<AbilityMapper.AbilityMapping>> genClassAbleMod(final MOB mob,
+								final PairList<Integer,List<AbilityMapper.AbilityMapping>> sets,
+								final String ableID, final int origLevelIndex, int origAbleIndex)
+										throws IOException
 	{
 		Integer level=null;
 		if(origLevelIndex>=0)
 		{
 			if(mob.session().confirm(L("Enter Y to DELETE, or N to modify (y/N)?"),"N"))
 			{
-				final List<AbilityMapper.AbilityMapping> set=(List<AbilityMapper.AbilityMapping>)sets.elementAt(origLevelIndex,2);
+				final List<AbilityMapper.AbilityMapping> set=sets.get(origLevelIndex).second;
 				set.remove(origAbleIndex);
 				return null;
 			}
-			level=(Integer)sets.elementAt(origLevelIndex,1);
+			level=sets.get(origLevelIndex).first;
 		}
 		else
 			level=Integer.valueOf(1);
@@ -8258,22 +8360,22 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 		}
 		else
 		{
-			final List<AbilityMapper.AbilityMapping> levelSet=(List<AbilityMapper.AbilityMapping>)sets.elementAt(origLevelIndex,2);
+			final List<AbilityMapper.AbilityMapping> levelSet=sets.get(origLevelIndex).second;
 			aMAP=levelSet.get(origAbleIndex);
 			levelSet.remove(origAbleIndex);
 			origAbleIndex=-1;
 		}
 
-		int newlevelIndex=sets.indexOf(level);
+		int newlevelIndex=sets.indexOfFirst(level);
 		List<AbilityMapper.AbilityMapping> levelSet=null;
 		if(newlevelIndex<0)
 		{
 			newlevelIndex=sets.size();
 			levelSet=new Vector<AbilityMapper.AbilityMapping>();
-			sets.addElement(level,levelSet);
+			sets.add(level,levelSet);
 		}
 		else
-			levelSet=(List<AbilityMapper.AbilityMapping>)sets.elementAt(newlevelIndex,2);
+			levelSet=sets.get(newlevelIndex).second;
 		aMAP.defaultProficiency(CMath.s_int(mob.session().prompt(L("Enter the (default) proficiency level (@x1): ",""+aMAP.defaultProficiency()),aMAP.defaultProficiency()+"")));
 		aMAP.maxProficiency(CMath.s_int(mob.session().prompt(L("Enter the (maximum) proficiency level (@x1): ",""+aMAP.maxProficiency()),aMAP.maxProficiency()+"")));
 		aMAP.autoGain(mob.session().confirm(L("Is this skill automatically gained@x1?",(aMAP.autoGain()?"(Y/n)":"(y/N)")),""+aMAP.autoGain()));
@@ -8306,7 +8408,6 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 		return sets;
 	}
 
-	@SuppressWarnings("unchecked")
 	protected void genClassAbilities(final MOB mob, final CharClass E, final int showNumber, final int showFlag)
 		throws IOException
 	{
@@ -8321,7 +8422,8 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 		{
 			final StringBuilder parts=new StringBuilder("");
 			int numAbles=CMath.s_int(E.getStat("NUMCABLE"));
-			final DVector levelSets=new DVector(2);
+			final PairList<Integer,List<AbilityMapper.AbilityMapping>> levelSets=
+					new PairArrayList<Integer,List<AbilityMapper.AbilityMapping>>();
 			int maxAbledLevel=Integer.MIN_VALUE;
 			for(int v=0;v<numAbles;v++)
 			{
@@ -8342,18 +8444,18 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 					aMAP.defaultParm(E.getStat("GETCABLEPARM"+v));
 					aMAP.originalSkillPreReqList(E.getStat("GETCABLEPREQ"+v));
 					aMAP.extraMask(E.getStat("GETCABLEMASK"+v));
-					final int lvlIndex=levelSets.indexOf(Integer.valueOf(aMAP.qualLevel()));
-					Vector<AbilityMapper.AbilityMapping> set=null;
+					final int lvlIndex=levelSets.indexOfFirst(Integer.valueOf(aMAP.qualLevel()));
+					List<AbilityMapper.AbilityMapping> set=null;
 					if(lvlIndex<0)
 					{
-						set=new Vector<AbilityMapper.AbilityMapping>();
-						levelSets.addElement(Integer.valueOf(aMAP.qualLevel()),set);
+						set=new ArrayList<AbilityMapper.AbilityMapping>();
+						levelSets.add(Integer.valueOf(aMAP.qualLevel()),set);
 						if(aMAP.qualLevel()>maxAbledLevel)
 							maxAbledLevel=aMAP.qualLevel();
 					}
 					else
-						set=(Vector<AbilityMapper.AbilityMapping>)levelSets.elementAt(lvlIndex,2);
-					set.addElement(aMAP);
+						set=levelSets.get(lvlIndex).second;
+					set.add(aMAP);
 				}
 			}
 			final String header=showNumber+". Class Abilities: ";
@@ -8370,10 +8472,10 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 							   );
 			for(int i=0;i<=maxAbledLevel;i++)
 			{
-				final int index=levelSets.indexOf(Integer.valueOf(i));
+				final int index=levelSets.indexOfFirst(Integer.valueOf(i));
 				if(index<0)
 					continue;
-				final List<AbilityMapper.AbilityMapping> set=(List<AbilityMapper.AbilityMapping>)levelSets.elementAt(index,2);
+				final List<AbilityMapper.AbilityMapping> set=levelSets.get(index).second;
 				for(int s=0;s<set.size();s++)
 				{
 					final AbilityMapper.AbilityMapping aMAP=set.get(s);
@@ -8401,7 +8503,7 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 				List<AbilityMapper.AbilityMapping> myLevelSet=null;
 				for(int s=0;s<levelSets.size();s++)
 				{
-					final List<AbilityMapper.AbilityMapping> lvls=(List<AbilityMapper.AbilityMapping>)levelSets.elementAt(s,2);
+					final List<AbilityMapper.AbilityMapping> lvls=levelSets.get(s).second;
 					for(int l=0;l<lvls.size();l++)
 					{
 						if(CMLib.english().containsString(lvls.get(l).abilityID(),newName))
@@ -8459,8 +8561,8 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 					int dex=0;
 					for(int s=0;s<levelSets.size();s++)
 					{
-						final Integer lvl=(Integer)levelSets.elementAt(s,1);
-						final List<AbilityMapper.AbilityMapping> lvls=(List<AbilityMapper.AbilityMapping>)levelSets.elementAt(s,2);
+						final Integer lvl=levelSets.get(s).first;
+						final List<AbilityMapper.AbilityMapping> lvls=levelSets.get(s).second;
 						for(int l=0;l<lvls.size();l++)
 						{
 							final AbilityMapper.AbilityMapping aMAP=lvls.get(l);
@@ -8552,7 +8654,11 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 				{
 					parts.append("("+A.ID()+"/"+E.getStat("GETCABLEPROF"+v)+"), ");
 					ables.addElement(A);
-					data.addElement(A.ID()+";"+E.getStat("GETCABLEPROF"+v)+";"+E.getStat("GETCABLELVL"+v)+";"+E.getStat("GETCABLEGAIN"+v));
+					data.addElement(A.ID()+";"+
+							E.getStat("GETCABLEPROF"+v)+";"+
+							E.getStat("GETCABLELVL"+v)+";"+
+							E.getStat("GETCABLEGAIN"+v)+";"+
+							E.getStat("GETCABLEPARM"+v));
 				}
 			}
 			if(parts.toString().endsWith(", "))
@@ -8599,6 +8705,9 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 						final String gainStr=Boolean.valueOf(mob.session().confirm(L("Enter Y if it is auto-gained (Y/n)? "),"Y")).toString();
 						str.append(";");
 						str.append(gainStr);
+						final String parmStr=mob.session().prompt(L("Enter default params (): "),"");
+						str.append(";");
+						str.append(""+parmStr);
 						data.addElement(str.toString());
 						ables.addElement(A);
 						mob.tell(L("@x1 added.",A.name()));
@@ -8626,6 +8735,7 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 						E.setStat("GETCABLEPROF"+i,V.get(1));
 						E.setStat("GETCABLELVL"+i,V.get(2));
 						E.setStat("GETCABLEGAIN"+i,V.get(3));
+						E.setStat("GETCABLEPARM"+i,CMParms.combineWith(V,';',4,V.size()));
 					}
 				}
 			}
@@ -8943,7 +9053,7 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 			final String varHelp = "You can insert variables into the arguments, such as: @x1=caster level, @x2=target level, @x3=level expertise, "
 					+ "@x4-@x8=x1-x5 expertise, @x9=adjusted caster level.";
 			promptStatStr(mob,me,null,++showNumber,showFlag,"Ability/Skill name","NAME",false);
-			promptStatStr(mob,me,CMParms.toListString(Ability.ACODE_DESCS)+","+CMParms.toListString(Ability.DOMAIN_DESCS),++showNumber,showFlag,"Type, Domain","CLASSIFICATION",false);
+			promptStatStr(mob,me,CMParms.toListString(Ability.ACODE.DESCS)+","+CMParms.toListString(Ability.DOMAIN.DESCS),++showNumber,showFlag,"Type, Domain","CLASSIFICATION",false);
 			promptStatStr(mob,me,null,++showNumber,showFlag,"Command Words (comma sep)","TRIGSTR",false);
 			promptStatStr(mob,me,CMParms.toListString(Ability.RANGE_CHOICES),++showNumber,showFlag,"Minimum Range","MINRANGE",false);
 			promptStatStr(mob,me,CMParms.toListString(Ability.RANGE_CHOICES),++showNumber,showFlag,"Maximum Range","MAXRANGE",false);
@@ -8954,6 +9064,7 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 			promptStatStr(mob,me,"0,"+CMParms.toListString(Ability.FLAG_DESCS),++showNumber,showFlag,"Skill Flags (comma sep)","FLAGS",true);
 			promptStatInt(mob,me,"-1,x,"+Integer.MAX_VALUE+","+Integer.MAX_VALUE+"-(1 to 100)",++showNumber,showFlag,"Override Cost","OVERRIDEMANA");
 			promptStatStr(mob,me,CMParms.toListString(Ability.USAGE_DESCS),++showNumber,showFlag,"Cost Type","USAGEMASK",false);
+			promptStatInt(mob,me,++showNumber,showFlag,"Num. Arguments","NUMARGS");
 			promptStatStr(mob,me,"0,"+CMParms.toListString(Ability.CAN_DESCS),++showNumber,showFlag,"Can Affect","CANAFFECTMASK",true);
 			promptStatBool(mob,me,++showNumber,showFlag,"Tick/Periodic Affects","TICKAFFECTS");
 			promptStatStr(mob,me,"0,"+CMParms.toListString(Ability.CAN_DESCS),++showNumber,showFlag,"Can Target","CANTARGETMASK",true);
@@ -9421,34 +9532,42 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 		boolean ok=false;
 		if((showFlag == -1) && (CMProps.getIntVar(CMProps.Int.EDITORTYPE)>0))
 			showFlag=-999;
+		else
+		if(showFlag > 0)
+			showFlag=1;
 		final String choices="Your choices are: ";
 		final String allComponents=CMParms.toListString(RawMaterial.Material.values())+","+CMParms.toListString(RawMaterial.CODES.NAMES());
 		while((mob.session()!=null)&&(!mob.session().isStopped())&&(!ok))
 		{
 			int showNumber=0;
-			genText(mob,decoded,(new String[]{"&&","||","X"}),choices+" &&, ||, X",++showNumber,showFlag,"Conjunction (X Deletes) (?)","ANDOR");
+			genText(mob,decoded,(new String[]{"&&","||","\"", "X"}),choices+" &&, ||, \", X",++showNumber,showFlag,"Conjunction (X Deletes) (?)","ANDOR");
 			if(decoded.get(0).second.equalsIgnoreCase("X"))
 				return false;
-			final String oldT = (decoded.size()>2)?decoded.getSecond(1):"";
-			genText(mob,decoded,(new String[]{"INVENTORY","HELD","WORN","ONGROUND","NEARBY","TRIGGER"}),
-						choices+" INVENTORY, HELD, WORN, ONGROUND, NEARBY, TRIGGER",++showNumber,showFlag,"Component position (?)","DISPOSITION");
-			final String newT = (decoded.size()>2)?decoded.getSecond(1):"";
-			if((!oldT.equalsIgnoreCase(newT))
-			&&(oldT.equalsIgnoreCase("TRIGGER")||newT.equalsIgnoreCase("TRIGGER")))
+			if(!decoded.get(0).second.equalsIgnoreCase("\""))
 			{
-				CMLib.ableComponents().setAbilityComponentCodedFromCodedPairs(decoded,comp);
-				decoded=CMLib.ableComponents().getAbilityComponentCoded(comp);
+				final String oldT = (decoded.size()>2)?decoded.getSecond(1):"";
+				genText(mob,decoded,(new String[]{"INVENTORY","HELD","WORN","ONGROUND","NEARBY","TRIGGER"}),
+							choices+" INVENTORY, HELD, WORN, ONGROUND, NEARBY, TRIGGER",++showNumber,showFlag,"Component position (?)","DISPOSITION");
+				final String newT = (decoded.size()>2)?decoded.getSecond(1):"";
+				if((!oldT.equalsIgnoreCase(newT))
+				&&(oldT.equalsIgnoreCase("TRIGGER")||newT.equalsIgnoreCase("TRIGGER")))
+				{
+					CMLib.ableComponents().setAbilityComponentCodedFromCodedPairs(decoded,comp);
+					decoded=CMLib.ableComponents().getAbilityComponentCoded(comp);
+				}
+				if(newT.equalsIgnoreCase("TRIGGER"))
+					genText(mob,decoded,null,null,++showNumber,showFlag,"Trigger Ritual","TRIGGER");
+				else
+				{
+					genText(mob,decoded,(new String[]{"KEPT","CONSUMED"}),choices+" KEPT, CONSUMED",++showNumber,showFlag,"Component fate (?)","FATE");
+					genText(mob,decoded,null,null,++showNumber,showFlag,"Amount of component","AMOUNT");
+					genText(mob,decoded,null,allComponents,++showNumber,showFlag,"Type of component (?)","COMPONENTID");
+					genText(mob,decoded,null,allComponents,++showNumber,showFlag,"Component Subtype","SUBTYPE");
+				}
+				genText(mob,decoded,null,CMLib.masking().maskHelp("\n","disallow"),++showNumber,showFlag,"Component applies-to mask (?)","MASK");
 			}
-			if(newT.equalsIgnoreCase("TRIGGER"))
-				genText(mob,decoded,null,null,++showNumber,showFlag,"Trigger Ritual","TRIGGER");
 			else
-			{
-				genText(mob,decoded,(new String[]{"KEPT","CONSUMED"}),choices+" KEPT, CONSUMED",++showNumber,showFlag,"Component fate (?)","FATE");
-				genText(mob,decoded,null,null,++showNumber,showFlag,"Amount of component","AMOUNT");
-				genText(mob,decoded,null,allComponents,++showNumber,showFlag,"Type of component (?)","COMPONENTID");
-				genText(mob,decoded,null,allComponents,++showNumber,showFlag,"Component Subtype","SUBTYPE");
-			}
-			genText(mob,decoded,null,CMLib.masking().maskHelp("\n","disallow"),++showNumber,showFlag,"Component applies-to mask (?)","MASK");
+				genText(mob,decoded,null,null,++showNumber,showFlag,"Description","MASK");
 
 			if (showFlag < -900)
 			{
@@ -9502,21 +9621,24 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 			}
 			while((mob.session()!=null)&&(!mob.session().isStopped()))
 			{
-				showNumber++;
-				mob.tell(L("@x1. Add new component requirement.",""+showNumber));
-				if((showFlag==showNumber)||(showFlag<=-999))
+				if((codedDV.size()==0)||(codedDV.get(codedDV.size()-1).getConnector()!=CompConnector.MESSAGE))
 				{
-					final AbilityComponent comp = CMLib.ableComponents().createBlankAbilityComponent("");
-					final boolean success=modifyComponent(mob,comp,showFlag);
-					if(!success)
+					showNumber++;
+					mob.tell(L("@x1. Add new component requirement.",""+showNumber));
+					if((showFlag==showNumber)||(showFlag<=-999))
 					{
-						// do nothing
-					}
-					else
-					{
-						codedDV.add(comp);
-						if(showFlag<=-999)
-							continue;
+						final AbilityComponent comp = CMLib.ableComponents().createBlankAbilityComponent("");
+						final boolean success=modifyComponent(mob,comp,showFlag);
+						if(!success)
+						{
+							// do nothing
+						}
+						else
+						{
+							codedDV.add(comp);
+							if(showFlag<=-999)
+								continue;
+						}
 					}
 				}
 				break;
@@ -9616,7 +9738,7 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 		final List<String> enableV = new ArrayList<String>();
 		enableV.add("number");
 		final List<String> flags = new ConvertingList<String,String>(Arrays.asList(Ability.FLAG_DESCS),Converter.toLowerCase);
-		enableV.addAll(new ConvertingList<String,String>(Arrays.asList(Ability.DOMAIN_DESCS),Converter.toLowerCase));
+		enableV.addAll(new ConvertingList<String,String>(Ability.DOMAIN.DESCS,Converter.toLowerCase));
 		enableV.addAll(flags);
 		enableV.addAll(new XVector<String>(
 				new ConvertingEnumeration<Ability,String>(
@@ -10149,6 +10271,8 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 			genImage(mob,me,++showNumber,showFlag);
 			for(int x=me.getSaveStatIndex();x<me.getStatCodes().length;x++)
 				me.setStat(me.getStatCodes()[x],prompt(mob,me.getStat(me.getStatCodes()[x]),++showNumber,showFlag,CMStrings.capitalizeAndLower(me.getStatCodes()[x])));
+			if(me.numScripts()>0)
+				genScripts(mob,me,++showNumber,showFlag);
 
 			if (showFlag < -900)
 			{
@@ -10212,6 +10336,8 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 			genImage(mob,me,++showNumber,showFlag);
 			for(int x=me.getSaveStatIndex();x<me.getStatCodes().length;x++)
 				me.setStat(me.getStatCodes()[x],prompt(mob,me.getStat(me.getStatCodes()[x]),++showNumber,showFlag,CMStrings.capitalizeAndLower(me.getStatCodes()[x])));
+			if(me.numScripts()>0)
+				genScripts(mob,me,++showNumber,showFlag);
 
 			if (showFlag < -900)
 			{
@@ -10238,7 +10364,7 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 		}
 	}
 
-	protected void genScripts(final MOB mob, final MOB E, final int showNumber, final int showFlag)
+	protected void genScripts(final MOB mob, final PhysicalAgent E, final int showNumber, final int showFlag)
 	throws IOException
 	{
 		if((showFlag>0)&&(showFlag!=showNumber))
@@ -10252,7 +10378,13 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 			{
 				final ScriptingEngine SE=e.nextElement();
 				if(SE!=null)
+				if(SE.defaultQuestName().length()>0)
 					behaviorstr+=b+":"+SE.defaultQuestName()+", ";
+				else
+				if((showFlag==showNumber)||(showFlag<=-999))
+					behaviorstr+=b+":"+CMStrings.ellipse(SE.getScript(),200)+", ";
+				else
+					behaviorstr+=b+":"+CMStrings.ellipse(SE.getScript(),40)+", ";
 			}
 			if(behaviorstr.length()>0)
 				behaviorstr=behaviorstr.substring(0,behaviorstr.length()-2);
@@ -10330,6 +10462,8 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 			genImage(mob,me,++showNumber,showFlag);
 			for(int x=me.getSaveStatIndex();x<me.getStatCodes().length;x++)
 				me.setStat(me.getStatCodes()[x],prompt(mob,me.getStat(me.getStatCodes()[x]),++showNumber,showFlag,CMStrings.capitalizeAndLower(me.getStatCodes()[x])));
+			if((me instanceof PhysicalAgent) && (((PhysicalAgent)me).numScripts()>0))
+				genScripts(mob,(PhysicalAgent)me,++showNumber,showFlag);
 
 			if (showFlag < -900)
 			{
@@ -10435,6 +10569,8 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 			genImage(mob,me,++showNumber,showFlag);
 			for(int x=me.getSaveStatIndex();x<me.getStatCodes().length;x++)
 				me.setStat(me.getStatCodes()[x],prompt(mob,me.getStat(me.getStatCodes()[x]),++showNumber,showFlag,CMStrings.capitalizeAndLower(me.getStatCodes()[x])));
+			if(me.numScripts()>0)
+				genScripts(mob,me,++showNumber,showFlag);
 
 			if (showFlag < -900)
 			{
@@ -10569,6 +10705,8 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 			genImage(mob,me,++showNumber,showFlag);
 			for(int x=me.getSaveStatIndex();x<me.getStatCodes().length;x++)
 				me.setStat(me.getStatCodes()[x],prompt(mob,me.getStat(me.getStatCodes()[x]),++showNumber,showFlag,CMStrings.capitalizeAndLower(me.getStatCodes()[x])));
+			if(me.numScripts()>0)
+				genScripts(mob,me,++showNumber,showFlag);
 
 			if (showFlag < -900)
 			{
@@ -10678,6 +10816,8 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 			genImage(mob,me,++showNumber,showFlag);
 			for(int x=me.getSaveStatIndex();x<me.getStatCodes().length;x++)
 				me.setStat(me.getStatCodes()[x],prompt(mob,me.getStat(me.getStatCodes()[x]),++showNumber,showFlag,CMStrings.capitalizeAndLower(me.getStatCodes()[x])));
+			if(me.numScripts()>0)
+				genScripts(mob,me,++showNumber,showFlag);
 
 			if (showFlag < -900)
 			{
@@ -10762,6 +10902,8 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 			genImage(mob,me,++showNumber,showFlag);
 			for(int x=me.getSaveStatIndex();x<me.getStatCodes().length;x++)
 				me.setStat(me.getStatCodes()[x],prompt(mob,me.getStat(me.getStatCodes()[x]),++showNumber,showFlag,CMStrings.capitalizeAndLower(me.getStatCodes()[x])));
+			if(me.numScripts()>0)
+				genScripts(mob,me,++showNumber,showFlag);
 
 			if (showFlag < -900)
 			{
@@ -10826,6 +10968,8 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 			genImage(mob,me,++showNumber,showFlag);
 			for(int x=me.getSaveStatIndex();x<me.getStatCodes().length;x++)
 				me.setStat(me.getStatCodes()[x],prompt(mob,me.getStat(me.getStatCodes()[x]),++showNumber,showFlag,CMStrings.capitalizeAndLower(me.getStatCodes()[x])));
+			if(me.numScripts()>0)
+				genScripts(mob,me,++showNumber,showFlag);
 
 			if (showFlag < -900)
 			{
@@ -10885,6 +11029,8 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 			genImage(mob,me,++showNumber,showFlag);
 			for(int x=me.getSaveStatIndex();x<me.getStatCodes().length;x++)
 				me.setStat(me.getStatCodes()[x],prompt(mob,me.getStat(me.getStatCodes()[x]),++showNumber,showFlag,CMStrings.capitalizeAndLower(me.getStatCodes()[x])));
+			if(me.numScripts()>0)
+				genScripts(mob,me,++showNumber,showFlag);
 
 			if (showFlag < -900)
 			{
@@ -11590,6 +11736,14 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 				((Auctioneer)me).setMinTimedAuctionDays(genAuctionPrompt(mob,((Auctioneer)me).minTimedAuctionDays(),++showNumber,showFlag,"Minimum number of auction mud-days"));
 			}
 			else
+			if(me instanceof CraftBroker)
+			{
+				((CraftBroker)me).setBrokerChain(prompt(mob,((CraftBroker)me).brokerChain(),++showNumber,showFlag,"Broker Chain"));
+				((CraftBroker)me).setMaxTimedListingDays(genAuctionPrompt(mob,((CraftBroker)me).maxTimedListingDays(),++showNumber,showFlag,"Maximum number of listing mud-days"));
+				((CraftBroker)me).setMaxListings(genAuctionPrompt(mob,((CraftBroker)me).maxListings(),++showNumber,showFlag,"Maximum number of listings"));
+				((CraftBroker)me).setCommissionPct(genAuctionPrompt(mob,((CraftBroker)me).commissionPct(),++showNumber,showFlag,"Commission Pct%",true));
+			}
+			else
 			{
 				genEconomicsPriceFactors(mob,me,++showNumber,showFlag);
 				genEconomicsBudget(mob,me,++showNumber,showFlag);
@@ -11968,8 +12122,10 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 			mapped.qualLevel(prompt(mob,mapped.qualLevel(),++showNumber,showFlag,"Qualifying Level: "));
 			mapped.autoGain(prompt(mob,mapped.autoGain(),++showNumber,showFlag,"Auto-Gained: "));
 			mapped.defaultProficiency(prompt(mob,mapped.defaultProficiency(),++showNumber,showFlag,"Def. Proficiency: "));
+			mapped.secretFlag((SecretFlag)promptEnumChoice(mob, mapped.secretFlag(), SecretFlag.values(), ++showNumber, showFlag, "Visibility"));
 			mapped.extraMask(prompt(mob,mapped.extraMask(),++showNumber,showFlag,"Qualifying Mask (?): ", true, CMLib.masking().maskHelp("\n\r", "disallow")));
-			mapped.originalSkillPreReqList(prompt(mob,mapped.originalSkillPreReqList(),++showNumber,showFlag,"Required Skills (?): ", true, "Space delimited list of Ability IDs.  " +
+			mapped.originalSkillPreReqList(prompt(mob,mapped.originalSkillPreReqList(),++showNumber,showFlag,"Required Skills (?): ", true,
+					"Space delimited list of Ability IDs.  " +
 					"Put a required proficiency level in parenthesis after the Ability ID if desired.  " +
 					"For example: Skill_Write Skill_Trip Skill_Dirt(25) Hunting"));
 			if (showFlag < -900)
@@ -11990,7 +12146,7 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 			}
 		}
 		return CMLib.ableMapper().makeAbilityMapping(mapped.abilityID(), mapped.qualLevel(), mapped.abilityID(), mapped.defaultProficiency(), 100, "",
-													 mapped.autoGain(), SecretFlag.PUBLIC, true, CMParms.parseSpaces(mapped.originalSkillPreReqList().trim(), true),
+													 mapped.autoGain(), mapped.secretFlag(), true, CMParms.parseSpaces(mapped.originalSkillPreReqList().trim(), true),
 													 mapped.extraMask(), null);
 	}
 

@@ -43,7 +43,7 @@ public class Config extends StdCommand
 	{
 	}
 
-	private final String[] access=I(new String[]{"CONFIG","AUTO"});
+	private final String[] access=I(new String[]{"CONFIG","AUTO","CONFIGURATION"});
 	@Override
 	public String[] getAccessWords()
 	{
@@ -258,6 +258,9 @@ public class Config extends StdCommand
 					if("DISABLED".startsWith(newWrap.toUpperCase())&&(newWrap.length()>0))
 						newVal=0;
 					else
+					if("OFF".startsWith(newWrap.toUpperCase())&&(newWrap.length()>0))
+						newVal=0;
+					else
 					{
 						mob.tell(L("'@x1' is not a valid linewrap setting. Enter a number larger than 10 or 'disable'.",newWrap));
 						return false;
@@ -337,6 +340,17 @@ public class Config extends StdCommand
 					break;
 				case AUTOMELEE:
 					break;
+				case AUTOATTACK:
+					if(newSet)
+					{
+						if((CMProps.getIntVar(CMProps.Int.COMBATSYSTEM) == CombatLibrary.CombatSystem.TURNBASED.ordinal())
+						||(CMProps.getIntVar(CMProps.Int.COMBATSYSTEM) == CombatLibrary.CombatSystem.MANUAL.ordinal()))
+						{
+							mob.tell(L("Because of the combat system, this config doesn't really apply."));
+							return false;
+						}
+					}
+					break;
 				case AUTONOTIFY:
 					break;
 				case AUTORUN:
@@ -359,6 +373,8 @@ public class Config extends StdCommand
 				case NOBATTLESPAM:
 					break;
 				case NOREPROMPT:
+					break;
+				case NOSPAM:
 					break;
 				case NOFOLLOW:
 					break;

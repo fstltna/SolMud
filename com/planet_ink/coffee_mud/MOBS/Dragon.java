@@ -33,7 +33,7 @@ import java.util.*;
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-public class Dragon extends StdMOB
+public class Dragon extends StdMOB implements MOBPossessor
 {
 	@Override
 	public String ID()
@@ -44,6 +44,7 @@ public class Dragon extends StdMOB
 	protected int breatheDown=4;
 	protected int swallowDown=5;
 	protected int digestDown=4;
+	protected int dmgBonus=0;
 
 	protected int birthColor=0;
 	protected int birthAge=0;
@@ -364,11 +365,13 @@ public class Dragon extends StdMOB
 				myStomachR = CMClass.getLocale("StoneRoom");
 				if(myStomachR!=null)
 				{
+					final Area A = CMClass.getAreaType("StdArea");
+					A.setName("a stomach");
 					myStomachR.setSavable(false);
 					myStomachR.setRoomID("");
 					myStomachR.setName(L("Dragon Stomach"));
 					myStomachR.setDisplayText(L("Dragon Stomach"));
-					myStomachR.setArea(location().getArea());
+					myStomachR.setArea(A);
 					myStomachR.setDescription(L("You are in the stomach of a dragon.  It is wet with digestive acids, and the walls are grinding you to a pulp.  You have been Swallowed whole and are being digested."));
 				}
 			}
@@ -399,8 +402,8 @@ public class Dragon extends StdMOB
 	{
 		// ===== the text to post
 		MOB target = null;
-		int AffectCode = CMMsg.TYP_JUSTICE;
-		int WeaponType= Weapon.TYPE_BURNING;
+		int affectCode = CMMsg.TYP_JUSTICE;
+		int weaponType= Weapon.TYPE_BURNING;
 		String msgText = "";
 
 		// ===== if we are following don't Breath, we might
@@ -422,61 +425,61 @@ public class Dragon extends StdMOB
 		{
 		case WHITE:
 			msgText = "The dragon breathes frost at <T-NAME>.";
-			AffectCode = CMMsg.TYP_COLD;
-			WeaponType= Weapon.TYPE_FROSTING;
+			affectCode = CMMsg.TYP_COLD;
+			weaponType= Weapon.TYPE_FROSTING;
 			break;
 		case BLACK:
 			msgText = "The dragon spits acid at <T-NAME>.";
-			AffectCode = CMMsg.TYP_ACID;
-			WeaponType= Weapon.TYPE_MELTING;
+			affectCode = CMMsg.TYP_ACID;
+			weaponType= Weapon.TYPE_MELTING;
 			break;
 		case BLUE:
 			msgText = "Lightning shoots forth from the dragons mouth striking <T-NAME>.";
-			AffectCode = CMMsg.TYP_ELECTRIC;
-			WeaponType= Weapon.TYPE_STRIKING;
+			affectCode = CMMsg.TYP_ELECTRIC;
+			weaponType= Weapon.TYPE_STRIKING;
 			break;
 		case GREEN:
 			msgText = "The dragon breathes a cloud of noxious vapors choking <T-NAME>.";
-			AffectCode = CMMsg.TYP_GAS;
-			WeaponType= Weapon.TYPE_GASSING;
+			affectCode = CMMsg.TYP_GAS;
+			weaponType= Weapon.TYPE_GASSING;
 			break;
 		case RED:
 			msgText = "The dragon torches <T-NAME> with fiery breath!.";
-			AffectCode = CMMsg.TYP_FIRE;
-			WeaponType= Weapon.TYPE_BURNING;
+			affectCode = CMMsg.TYP_FIRE;
+			weaponType= Weapon.TYPE_BURNING;
 			break;
 		case BRASS:
 			msgText = "The dragon cooks <T-NAME> with a blast of pure heat!.";
-			AffectCode = CMMsg.TYP_FIRE;
-			WeaponType= Weapon.TYPE_BURNING;
+			affectCode = CMMsg.TYP_FIRE;
+			weaponType= Weapon.TYPE_BURNING;
 			break;
 		case COPPER:
 			msgText = "The dragon spits acid at <T-NAME>.";
-			AffectCode = CMMsg.TYP_ACID;
-			WeaponType= Weapon.TYPE_MELTING;
+			affectCode = CMMsg.TYP_ACID;
+			weaponType= Weapon.TYPE_MELTING;
 			break;
 		case BRONZE:
 			msgText = "Lightning shoots forth from the dragons mouth striking <T-NAME>.";
-			AffectCode = CMMsg.TYP_ELECTRIC;
-			WeaponType= Weapon.TYPE_STRIKING;
+			affectCode = CMMsg.TYP_ELECTRIC;
+			weaponType= Weapon.TYPE_STRIKING;
 			break;
 		case SILVER:
 			msgText = "The dragon breathes frost at <T-NAME>.";
-			AffectCode = CMMsg.TYP_COLD;
-			WeaponType= Weapon.TYPE_FROSTING;
+			affectCode = CMMsg.TYP_COLD;
+			weaponType= Weapon.TYPE_FROSTING;
 			break;
 		case GOLD:
 			if ((int)Math.round(Math.random())==1)
 			{
 				msgText = "The dragon torches <T-NAME> with fiery breath!.";
-				AffectCode = CMMsg.TYP_FIRE;
-				WeaponType= Weapon.TYPE_BURNING;
+				affectCode = CMMsg.TYP_FIRE;
+				weaponType= Weapon.TYPE_BURNING;
 			}
 			else
 			{
 				msgText = "The dragon breathes a cloud of noxious vapors choking <T-NAME>.";
-				AffectCode = CMMsg.TYP_GAS;
-				WeaponType= Weapon.TYPE_GASSING;
+				affectCode = CMMsg.TYP_GAS;
+				weaponType= Weapon.TYPE_GASSING;
 			}
 			break;
 		default:
@@ -484,7 +487,8 @@ public class Dragon extends StdMOB
 		}
 
 		final Room room=location();
-		if(room!=null)
+		if(room==null)
+			return false;
 		for (int x=0;x<room.numInhabitants();x++)
 		{
 			// ===== get the next target
@@ -492,30 +496,36 @@ public class Dragon extends StdMOB
 			// ===== do not attack yourself
 			if ((target!=null)&&(!target.ID().equals(ID())))
 			{
-				final CMMsg Message = CMClass.getMsg(this,
+				final CMMsg message = CMClass.getMsg(this,
 											  target,
 											  null,
-											  CMMsg.MSK_MALICIOUS_MOVE|AffectCode,
-											  CMMsg.MSK_MALICIOUS_MOVE|AffectCode,
+											  CMMsg.MSK_MALICIOUS_MOVE|affectCode,
+											  CMMsg.MSK_MALICIOUS_MOVE|affectCode,
 											  CMMsg.MSG_NOISYMOVEMENT,
 											  msgText);
-				if (room.okMessage(this,Message))
+				if (room.okMessage(this,message))
 				{
-					room.send(this,Message);
+					room.send(this,message);
 					int damage=((short)Math.round(CMath.div(CMath.mul(Math.random(),7*DragonAge()),2.0)));
-					if(Message.value()<=0)
+					if(message.value()<=0)
 						damage=((short)Math.round(Math.random()*7)*DragonAge());
 					if(dragonbreath==null)
 						dragonbreath=CMClass.getAbility("Dragonbreath");
-					CMLib.combat().postDamage(this,target,dragonbreath,damage,CMMsg.MASK_ALWAYS|AffectCode,WeaponType,L("The blast <DAMAGE> <T-NAME>."));
+					CMLib.combat().postDamage(this,target,dragonbreath,damage,CMMsg.MASK_ALWAYS|affectCode,weaponType,L("The blast <DAMAGE> <T-NAME>."));
 				}
 			}
 		}
 		return true;
 	}
 
+	public Room getStomach()
+	{
+		return myStomachR;
+	}
+
 	protected boolean trySwallowWhole()
 	{
+		final Room myStomachR = getStomach();
 		if(myStomachR==null)
 			return true;
 		if (CMLib.flags().isAliveAwakeMobileUnbound(this,true)
@@ -535,17 +545,17 @@ public class Dragon extends StdMOB
 				{
 					// ===== The player has been eaten.
 					// ===== move the tasty morsel to the stomach
-					final CMMsg EatMsg=CMClass.getMsg(this,
+					final CMMsg eatMsg=CMClass.getMsg(this,
 											   tastyMorselM,
 											   null,
 											   CMMsg.MSG_EAT,
 											   CMMsg.MASK_ALWAYS|CMMsg.TYP_JUSTICE,
 											   CMMsg.MSG_NOISYMOVEMENT,
 											   L("<S-NAME> swallow(es) <T-NAMESELF> WHOLE!"));
-					if(location().okMessage(tastyMorselM,EatMsg))
+					if(location().okMessage(tastyMorselM,eatMsg))
 					{
-						location().send(tastyMorselM,EatMsg);
-						if(EatMsg.value()==0)
+						location().send(tastyMorselM,eatMsg);
+						if(eatMsg.value()==0)
 						{
 							curState().setHunger(maxState().maxHunger(baseWeight()));
 							myStomachR.bringMobHere(tastyMorselM,false);
@@ -606,6 +616,7 @@ public class Dragon extends StdMOB
 
 	protected boolean digestTastyMorsels()
 	{
+		final Room myStomachR = getStomach();
 		if(myStomachR==null)
 			return true;
 		// ===== loop through all inhabitants of the stomach
@@ -616,20 +627,24 @@ public class Dragon extends StdMOB
 			final MOB TastyMorsel = myStomachR.fetchInhabitant(x);
 			if (TastyMorsel != null)
 			{
-				final CMMsg DigestMsg=CMClass.getMsg(this,
+				final CMMsg digestMsg=CMClass.getMsg(this,
 										   TastyMorsel,
 										   null,
 										   CMMsg.MSG_OK_ACTION,
 										   L("<S-NAME> digest(s) <T-NAMESELF>!!"));
-				myStomachR.send(this,DigestMsg);
-				int damage=((int)Math.round(CMath.div(TastyMorsel.curState().getHitPoints(),5)));
+				myStomachR.send(this,digestMsg);
+				int damage=dmgBonus + ((int)Math.round(CMath.div(TastyMorsel.curState().getHitPoints(),5)));
 				if(damage<(TastyMorsel.phyStats().level()+6))
 					damage=TastyMorsel.curState().getHitPoints()+1;
-				if(DigestMsg.value()!=0)
+				if(digestMsg.value()!=0)
 					damage=damage/2;
 				CMLib.combat().postDamage(this,TastyMorsel,null,damage,CMMsg.MASK_ALWAYS|CMMsg.TYP_ACID,Weapon.TYPE_BURNING,L("The stomach acid <DAMAGE> <T-NAME>!"));
 			}
 		}
+		if(morselCount == 0)
+			dmgBonus = 0;
+		else
+			dmgBonus++;
 		return true;
 	}
 
@@ -641,6 +656,7 @@ public class Dragon extends StdMOB
 		Room room = location();
 		if(room == null)
 			room = CMLib.map().getRandomRoom();
+		final Room myStomachR = getStomach();
 		if((myStomachR!=null)&&(room != null))
 		{
 			final int morselCount = myStomachR.numInhabitants();
@@ -668,4 +684,104 @@ public class Dragon extends StdMOB
 		// ===== Bury Him
 		return super.killMeDead(createBody);
 	}
+
+	@Override
+	public MOB fetchInhabitant(final String inhabitantID)
+	{
+		if(getStomach() != null)
+			return getStomach().fetchInhabitant(inhabitantID);
+		return null;
+	}
+
+	@Override
+	public MOB fetchInhabitantExact(final String inhabitantID)
+	{
+		if(getStomach() != null)
+			return getStomach().fetchInhabitantExact(inhabitantID);
+		return null;
+	}
+
+	@Override
+	public List<MOB> fetchInhabitants(final String inhabitantID)
+	{
+		if(getStomach() != null)
+			return getStomach().fetchInhabitants(inhabitantID);
+		return null;
+	}
+
+	@Override
+	public MOB fetchInhabitant(final int i)
+	{
+		if(getStomach() != null)
+			return getStomach().fetchInhabitant(i);
+		return null;
+	}
+
+	@Override
+	public Enumeration<MOB> inhabitants()
+	{
+		if(getStomach() != null)
+			return getStomach().inhabitants();
+		return null;
+	}
+
+	@Override
+	public void addInhabitant(final MOB mob)
+	{
+		if(getStomach() != null)
+			getStomach().addInhabitant(mob);
+	}
+
+	@Override
+	public void delInhabitant(final MOB mob)
+	{
+		if(getStomach() != null)
+			getStomach().delInhabitant(mob);
+	}
+
+	@Override
+	public int numInhabitants()
+	{
+		if(getStomach() != null)
+			return getStomach().numInhabitants();
+		return 0;
+	}
+
+	@Override
+	public boolean isInhabitant(final MOB mob)
+	{
+		if(getStomach() != null)
+			return getStomach().isInhabitant(mob);
+		return false;
+	}
+
+	@Override
+	public void delAllInhabitants(final boolean destroy)
+	{
+		if(getStomach() != null)
+			getStomach().delAllInhabitants(destroy);
+	}
+
+	@Override
+	public MOB fetchRandomInhabitant()
+	{
+		if(getStomach() != null)
+			return getStomach().fetchRandomInhabitant();
+		return null;
+	}
+
+	@Override
+	public void bringMobHere(final MOB mob, final boolean andFollowers)
+	{
+		if(getStomach() != null)
+			getStomach().bringMobHere(mob, andFollowers);
+	}
+
+	@Override
+	public void eachInhabitant(final EachApplicable<MOB> applier)
+	{
+		if(getStomach() != null)
+			getStomach().eachInhabitant(applier);
+	}
 }
+

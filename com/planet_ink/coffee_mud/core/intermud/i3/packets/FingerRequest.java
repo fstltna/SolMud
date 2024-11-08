@@ -33,12 +33,12 @@ import java.util.Vector;
  * limitations under the License.
  *
  */
-public class FingerRequest extends Packet
+public class FingerRequest extends MudPacket
 {
 	public FingerRequest()
 	{
 		super();
-		type = Packet.FINGER_REQUEST;
+		type = Packet.PacketType.FINGER_REQ;
 	}
 
 	public FingerRequest(final Vector<?> v) throws InvalidPacketException
@@ -46,7 +46,7 @@ public class FingerRequest extends Packet
 		super(v);
 		try
 		{
-			type = Packet.FINGER_REQUEST;
+			type = Packet.PacketType.FINGER_REQ;
 			target_mud=(String)v.elementAt(4);
 			target_name=(String)v.elementAt(6);
 		}
@@ -69,7 +69,7 @@ public class FingerRequest extends Packet
 	@Override
 	public String toString()
 	{
-		final String cmd="({\"finger-req\",5,\"" + I3Server.getMudName() +
+		final String cmd="({\"finger-req\",5,\"" + sender_mud +
 			   "\",\"" + sender_name + "\",\"" + target_mud + "\",0,\"" + target_name + "\",})";
 		return cmd;
 	}

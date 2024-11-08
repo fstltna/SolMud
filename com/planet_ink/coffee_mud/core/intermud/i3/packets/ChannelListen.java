@@ -33,15 +33,15 @@ import java.util.Vector;
  * limitations under the License.
  *
  */
-public class ChannelListen extends Packet
+public class ChannelListen extends MudPacket
 {
 	public String channel = null;
-	public String onoff="0";
+	public int onoff=0;
 
 	public ChannelListen()
 	{
 		super();
-		type = Packet.CHAN_LISTEN;
+		type = Packet.PacketType.CHANNEL_LISTEN;
 	}
 
 	public ChannelListen(final Vector<?> v) throws InvalidPacketException
@@ -49,9 +49,9 @@ public class ChannelListen extends Packet
 		super(v);
 		try
 		{
-			type = Packet.CHAN_LISTEN;
+			type = Packet.PacketType.CHANNEL_LISTEN;
 			channel = (String)v.elementAt(6);
-			onoff = (String)v.elementAt(7);
+			onoff = ((Integer)v.elementAt(7)).intValue();
 		}
 		catch( final ClassCastException e )
 		{
@@ -59,10 +59,10 @@ public class ChannelListen extends Packet
 		}
 	}
 
-	public ChannelListen(final int t, final String chan, final String setonoff)
+	public ChannelListen(final String chan, final int setonoff)
 	{
 		super();
-		type = t;
+		type = Packet.PacketType.CHANNEL_LISTEN;
 		channel = chan;
 		onoff=setonoff;
 	}
@@ -80,9 +80,8 @@ public class ChannelListen extends Packet
 	@Override
 	public String toString()
 	{
-		final NameServer n = Intermud.getNameServer();
 		final String cmd=
-			 "({\"channel-listen\",5,\"" + I3Server.getMudName() + "\",0,\""+n.name+"\",0,\"" + channel + "\"," +
+			 "({\"channel-listen\",5,\"" + sender_mud + "\",0,\""+target_mud+"\",0,\"" + channel + "\"," +
 			   onoff + ",})";
 		return cmd;
 	}

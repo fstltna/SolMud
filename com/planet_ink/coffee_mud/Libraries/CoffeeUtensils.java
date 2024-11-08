@@ -17,6 +17,7 @@ import com.planet_ink.coffee_mud.core.interfaces.CostDef.Cost;
 import com.planet_ink.coffee_mud.core.interfaces.CostDef.CostType;
 import com.planet_ink.coffee_mud.Locales.interfaces.*;
 import com.planet_ink.coffee_mud.MOBS.interfaces.*;
+import com.planet_ink.coffee_mud.MOBS.interfaces.MOB.Attrib;
 import com.planet_ink.coffee_mud.Races.interfaces.*;
 
 import java.io.ByteArrayOutputStream;
@@ -171,7 +172,7 @@ public class CoffeeUtensils extends StdLibrary implements CMMiscUtils
 				allRecipeLines.append( "\n" );
 			}
 		}
-		final List<List<String>> V=loadRecipeList(allRecipeLines.toString());
+		final List<List<String>> V=loadRecipeList(allRecipeLines.toString(), true);
 		for(int v=0;v<V.size();v++)
 		{
 			final List<String> V2=V.get(v);
@@ -238,7 +239,7 @@ public class CoffeeUtensils extends StdLibrary implements CMMiscUtils
 	}
 
 	@Override
-	public List<List<String>> loadRecipeList(final String str)
+	public List<List<String>> loadRecipeList(final String str, final boolean tabs)
 	{
 		final List<List<String>> V=new Vector<List<String>>();
 		if(str==null)
@@ -265,7 +266,7 @@ public class CoffeeUtensils extends StdLibrary implements CMMiscUtils
 				if(skipLine)
 					skipLine=false;
 				else
-				if(oneComma)
+				if(oneComma || (!tabs && (i > start+1)))
 				{
 					V2.add(str.substring(start,i));
 					if(V2.size()>longestList)
@@ -1142,7 +1143,7 @@ public class CoffeeUtensils extends StdLibrary implements CMMiscUtils
 			return;
 		final Race R=mob.charStats().getMyRace();
 		final long mobUnwearableBitmap=mob.charStats().getWearableRestrictionsBitmap();
-		final DVector reWearSet=new DVector(2);
+		final PairList<Item,Long> reWearSet=new PairArrayList<Item,Long>(Wearable.DEFAULT_WORN_DESCS.length);
 		Item item=null;
 		for(int i=0;i<mob.numItems();i++)
 		{
@@ -1153,16 +1154,16 @@ public class CoffeeUtensils extends StdLibrary implements CMMiscUtils
 				final Long oldCode=Long.valueOf(item.rawWornCode());
 				item.unWear();
 				if(reWearSet.size()==0)
-					reWearSet.addElement(item,oldCode);
+					reWearSet.add(item,oldCode);
 				else
 				{
 					final short layer=(item instanceof Armor)?((Armor)item).getClothingLayer():0;
 					int d=0;
 					for(;d<reWearSet.size();d++)
 					{
-						if(reWearSet.elementAt(d,1) instanceof Armor)
+						if(reWearSet.get(d).first instanceof Armor)
 						{
-							if(((Armor)reWearSet.elementAt(d,1)).getClothingLayer()>layer)
+							if(((Armor)reWearSet.get(d).first).getClothingLayer()>layer)
 								break;
 						}
 						else
@@ -1170,9 +1171,9 @@ public class CoffeeUtensils extends StdLibrary implements CMMiscUtils
 							break;
 					}
 					if(d>=reWearSet.size())
-						reWearSet.addElement(item,oldCode);
+						reWearSet.add(item,oldCode);
 					else
-						reWearSet.insertElementAt(d,item,oldCode);
+						reWearSet.add(d,item,oldCode);
 				}
 
 			}
@@ -1181,8 +1182,8 @@ public class CoffeeUtensils extends StdLibrary implements CMMiscUtils
 		final CMMsg removeMsg=CMClass.getMsg(mob,item,null,CMMsg.NO_EFFECT,null,CMMsg.TYP_REMOVE|CMMsg.MASK_ALWAYS,null,CMMsg.NO_EFFECT,null);
 		for(int r=0;r<reWearSet.size();r++)
 		{
-			item=(Item)reWearSet.elementAt(r,1);
-			final long oldCode=((Long)reWearSet.elementAt(r,2)).longValue();
+			item=reWearSet.get(r).first;
+			final long oldCode=reWearSet.get(r).second.longValue();
 			int msgCode=CMMsg.MSG_WEAR;
 			if((oldCode&Wearable.WORN_WIELD)>0)
 				msgCode=CMMsg.MSG_WIELD;
@@ -1226,7 +1227,8 @@ public class CoffeeUtensils extends StdLibrary implements CMMiscUtils
 		if(I==null)
 			return false;
 		if((CMath.bset(I.phyStats().disposition(),PhyStats.IS_UNSAVABLE))
-		||(CMath.bset(I.phyStats().sensesMask(), PhyStats.SENSE_ITEMNORUIN))
+		||((CMath.bset(I.phyStats().sensesMask(), PhyStats.SENSE_ITEMNORUIN))
+			&&(!(CMath.bset(I.phyStats().sensesMask(), PhyStats.SENSE_ALWAYSRUIN))))
 		||(CMath.bset(I.phyStats().sensesMask(), PhyStats.SENSE_UNDESTROYABLE))
 		||((I instanceof DeadBody)&&(((DeadBody)I).isPlayerCorpse()))
 		||(I instanceof Coins))
@@ -1302,6 +1304,9 @@ public class CoffeeUtensils extends StdLibrary implements CMMiscUtils
 			return I;
 		if(I.ID().equals("GenRuinedItem"))
 			return I;
+		if(CMath.bset(I.phyStats().sensesMask(), PhyStats.SENSE_ALWAYSRUIN))
+			return ruinItem(I);
+
 		final TriadVector<Integer,Integer,MaskingLibrary.CompiledZMask> policies=parseLootPolicyFor(mob);
 		for(int d=0;d<policies.size();d++)
 		{
@@ -1338,7 +1343,8 @@ public class CoffeeUtensils extends StdLibrary implements CMMiscUtils
 				{
 					if(M.baseCharStats().getMyClass(c)==oldC)
 					{
-						M.baseCharStats().setMyClasses(M.baseCharStats().getMyClassesStr());
+						final Pair<String, String> classInfo = M.baseCharStats().getAllClassInfo();
+						M.baseCharStats().setAllClassInfo(classInfo.first, classInfo.second);
 						break;
 					}
 				}
@@ -1346,7 +1352,8 @@ public class CoffeeUtensils extends StdLibrary implements CMMiscUtils
 				{
 					if(M.charStats().getMyClass(c)==oldC)
 					{
-						M.charStats().setMyClasses(M.charStats().getMyClassesStr());
+						final Pair<String, String> classInfo = M.charStats().getAllClassInfo();
+						M.charStats().setAllClassInfo(classInfo.first, classInfo.second);
 						break;
 					}
 				}
@@ -1358,7 +1365,8 @@ public class CoffeeUtensils extends StdLibrary implements CMMiscUtils
 				{
 					if(M.baseCharStats().getMyClass(c)==oldC)
 					{
-						M.baseCharStats().setMyClasses(M.baseCharStats().getMyClassesStr());
+						final Pair<String, String> classInfo = M.baseCharStats().getAllClassInfo();
+						M.baseCharStats().setAllClassInfo(classInfo.first, classInfo.second);
 						break;
 					}
 				}
@@ -1366,7 +1374,8 @@ public class CoffeeUtensils extends StdLibrary implements CMMiscUtils
 				{
 					if(M.charStats().getMyClass(c)==oldC)
 					{
-						M.charStats().setMyClasses(M.charStats().getMyClassesStr());
+						final Pair<String, String> classInfo = M.charStats().getAllClassInfo();
+						M.charStats().setAllClassInfo(classInfo.first, classInfo.second);
 						break;
 					}
 				}
@@ -1464,7 +1473,21 @@ public class CoffeeUtensils extends StdLibrary implements CMMiscUtils
 			if((rejuv==0)||(rejuv==PhyStats.NO_REJUV))
 				rejuv=rejuvedMOB.phyStats().level();
 			if(((!rejuvedMOB.isMonster())&&(rejuvedMOB.soulMate()==null)))
+			{
+				if(rejuvedMOB.isAttributeSet(Attrib.PLAYERKILL))
+				{
+					Ability tempA =rejuvedMOB.fetchEffect("TemporaryAffects");
+					if(tempA == null)
+					{
+						tempA = CMClass.getAbility("TemporaryAffects");
+						tempA.makeLongLasting();
+						rejuvedMOB.addEffect(tempA);
+					}
+					tempA.makeLongLasting();
+					tempA.setMiscText("+PLAYERKILL 4 false");
+				}
 				rejuv=1;
+			}
 			int bodyLevel = body.phyStats().level();
 			if(bodyLevel < 1)
 				bodyLevel = 1;
@@ -2482,11 +2505,11 @@ public class CoffeeUtensils extends StdLibrary implements CMMiscUtils
 							break;
 						}
 						case 'l':
-							buf.append(A.getAreaIStats()[Area.Stats.AVG_LEVEL.ordinal()]);
+							buf.append(A.getIStat(Area.Stats.AVG_LEVEL));
 							c+=2;
 							break;
 						case 'L':
-							buf.append(A.getAreaIStats()[Area.Stats.MED_LEVEL.ordinal()]);
+							buf.append(A.getIStat(Area.Stats.MED_LEVEL));
 							c+=2;
 							break;
 						case 'c':
@@ -2494,22 +2517,22 @@ public class CoffeeUtensils extends StdLibrary implements CMMiscUtils
 							c+=2;
 							break;
 						case 'a':
-							buf.append(A.getAreaIStats()[Area.Stats.AVG_ALIGNMENT.ordinal()]);
+							buf.append(A.getIStat(Area.Stats.AVG_ALIGNMENT));
 							c+=2;
 							break;
 						case 'A':
-							buf.append(A.getAreaIStats()[Area.Stats.MED_ALIGNMENT.ordinal()]);
+							buf.append(A.getIStat(Area.Stats.MED_ALIGNMENT));
 							c+=2;
 							break;
 						case 'n':
 						{
-							final Faction.FRange FR = CMLib.factions().getRange(CMLib.factions().getAlignmentID(), A.getAreaIStats()[Area.Stats.AVG_ALIGNMENT.ordinal()]);
+							final Faction.FRange FR = CMLib.factions().getRange(CMLib.factions().getAlignmentID(), A.getIStat(Area.Stats.AVG_ALIGNMENT));
 							buf.append((FR==null)?"":FR.name());
 							c+=2;
 							break;
 						}
 						case 'N':
-							final Faction.FRange FR = CMLib.factions().getRange(CMLib.factions().getAlignmentID(), A.getAreaIStats()[Area.Stats.MED_ALIGNMENT.ordinal()]);
+							final Faction.FRange FR = CMLib.factions().getRange(CMLib.factions().getAlignmentID(), A.getIStat(Area.Stats.MED_ALIGNMENT));
 							buf.append((FR==null)?"":FR.name());
 							c+=2;
 							break;
@@ -2631,7 +2654,9 @@ public class CoffeeUtensils extends StdLibrary implements CMMiscUtils
 		final Vector<Race> racesToBaseFrom=new Vector<Race>();
 		final Race human=CMClass.getRace("Human");
 		final Race halfling=CMClass.getRace("Halfling");
-		if((raceID.length()>1)&&(!raceID.endsWith("Race"))&&(Character.isUpperCase(raceID.charAt(0))))
+		if((raceID.length()>1)
+		&&(!raceID.endsWith("Race"))
+		&&(Character.isUpperCase(raceID.charAt(0))))
 		{
 			int lastStart=0;
 			int c=1;
@@ -2842,6 +2867,17 @@ public class CoffeeUtensils extends StdLibrary implements CMMiscUtils
 				return R;
 		}
 		return null;
+	}
+
+	private static final String[] ELEMENTS = new String[] {"Earth", "Air", "Water", "Electricity","Fire" };
+
+	private boolean isPureElemental(final Race R)
+	{
+		if(R==null)
+			return false;
+		return R.racialCategory().equals("Elemental")
+				&&R.ID().endsWith("Elemental")
+				&&(CMParms.containsIgnoreCase(ELEMENTS,R.ID().substring(0,R.ID().length()-9)));
 	}
 
 	@Override
@@ -3107,6 +3143,41 @@ public class CoffeeUtensils extends StdLibrary implements CMMiscUtils
 				else
 				{
 					R=R.mixRace(CMClass.getRace("Halfling"),halfRace,CMStrings.capitalizeAndLower(R.name())+"ling");
+					if(R.isGeneric() && (!R.ID().equals(motherRaceID))&& (!R.ID().equals(fatherRaceID)))
+					{
+						CMClass.addRace(R);
+						CMLib.database().DBCreateRace(R.ID(),R.racialParms());
+					}
+				}
+			}
+		}
+		else
+		if(((isPureElemental(motherR)&&(!isPureElemental(fatherR)))
+			||(isPureElemental(fatherR)&&(!isPureElemental(motherR))))
+		&&(motherR != null)
+		&&(fatherR != null))
+		{
+			final Race elemR=isPureElemental(motherR)?motherR:fatherR;
+			final String elemName = elemR.ID().substring(0,elemR.ID().length()-9);
+			R=isPureElemental(motherR)?fatherR:motherR;
+			if((R!=null)&&(!R.ID().startsWith(elemName)))
+			{
+				final String halfRace=elemName+R.ID();
+				Race testR=CMClass.getRace(halfRace);
+				if((testR!=null)&&(testR.isGeneric()))
+				{
+					if(CMLib.database().isRaceExpired(halfRace))
+					{
+						CMLib.database().DBDeleteRace(halfRace);
+						CMClass.delRace(testR);
+						testR=null;
+					}
+				}
+				if(testR!=null)
+					R=testR;
+				else
+				{
+					R=R.mixRace(elemR,halfRace,CMStrings.capitalizeAndLower(elemName+" "+R.name()));
 					if(R.isGeneric() && (!R.ID().equals(motherRaceID))&& (!R.ID().equals(fatherRaceID)))
 					{
 						CMClass.addRace(R);

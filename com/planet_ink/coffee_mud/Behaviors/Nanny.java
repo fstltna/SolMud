@@ -62,7 +62,7 @@ public class Nanny extends StdBehavior
 
 	protected List<DropOff>	dropOffs	= null;
 	protected List<Payment>	payments	= new SVector<Payment>();
-	protected DVector		sayLaters	= new DVector(2);
+	protected PairVector<MOB,String>	sayLaters	= new PairVector<MOB,String>();
 	// dynamic list of who belongs to what, before they leave
 	// and get added to official drop-offs.
 	protected List<DropOff> associations= new SVector<DropOff>();
@@ -228,7 +228,7 @@ public class Nanny extends StdBehavior
 		for(int v=0;v<V.size();v++)
 		{
 			final PhysicalAgent E=V.get(v);
-			if(CMLib.flags().isBaby(E)||CMLib.flags().isChild(E))
+			if(CMLib.flags().isBaby(E)||CMLib.flags().isAgedChild(E))
 				babies++;
 			else
 			if(isMount(E))
@@ -469,11 +469,11 @@ public class Nanny extends StdBehavior
 			return false;
 		if((watchesBabies)&&(CMLib.flags().isBaby(E)))
 			return true;
-		if((watchesChildren)&&(CMLib.flags().isChild(E))&&(!CMLib.flags().isBaby(E)))
+		if((watchesChildren)&&(CMLib.flags().isAgedChild(E))&&(!CMLib.flags().isBaby(E)))
 			return true;
 		if((watchesMounts)&&(isMount(E)))
 			return true;
-		if((watchesMOBFollowers)&&(E instanceof MOB)&&(!isMount(E))&&(!CMLib.flags().isChild(E))&&(!CMLib.flags().isBaby(E)))
+		if((watchesMOBFollowers)&&(E instanceof MOB)&&(!isMount(E))&&(!CMLib.flags().isAgedChild(E))&&(!CMLib.flags().isBaby(E)))
 			return true;
 		if((this.watchesWagons)
 		&&(E instanceof Rideable)
@@ -497,28 +497,18 @@ public class Nanny extends StdBehavior
 		return false;
 	}
 
-	public MOB ultimateFollowing(final Environmental E)
-	{
-		MOB ultimateFollowing=null;
-		if(E instanceof MOB)
-			ultimateFollowing=((MOB)E).amUltimatelyFollowing();
-		return ultimateFollowing;
-	}
-
 	public MOB getMommyOf(final Physical P)
 	{
 		if((P instanceof Item)
 		&&(((Item)P).owner() instanceof MOB)
 		&&(!((MOB)((Item)P).owner()).isMonster()))
 			return (MOB)((Item)P).owner();
+
 		if((P instanceof MOB)
 		&&(((MOB)P).amFollowing()!=null)
-		&&(!((MOB)P).amFollowing().isMonster()))
+		&&(((MOB)P).amFollowing().isPlayer()||(!((MOB)P).amFollowing().isMonster())))
 			return ((MOB)P).amFollowing();
-		if((P instanceof MOB)
-		&&(ultimateFollowing(P)!=null)
-		&&(!ultimateFollowing(P).isMonster()))
-			return ultimateFollowing(P);
+
 		if(P instanceof Rideable)
 		{
 			final Rideable R=(Rideable)P;
@@ -645,10 +635,12 @@ public class Nanny extends StdBehavior
 					list.append(", ");
 			}
 			if(list.length()>0)
+			{
 				sayLaters.addElement(msg.source(),"Welcome to my "+place+", "+msg.source().name()+"! You are welcome to leave " +
 							list.toString()+" here under my care and protection.  Be aware that I charge "
 							+CMLib.beanCounter().abbreviatedPrice(currency,hourlyRate)+" per hour, each.  " +
 							"No payment is due until you return to fetch your "+getPronoun(myAssocs)+".");
+			}
 
 			final double owed=getAllOwedBy(msg.source());
 			final double paid=getPaidBy(msg.source());
@@ -915,9 +907,9 @@ public class Nanny extends StdBehavior
 		for(int s=sayLaters.size()-1;s>=0;s--)
 		{
 			if(ticking instanceof MOB)
-				CMLib.commands().postSay((MOB)ticking,(MOB)sayLaters.elementAt(s,1),(String)sayLaters.elementAt(s,2));
+				CMLib.commands().postSay((MOB)ticking,sayLaters.get(s).first,sayLaters.get(s).second);
 			else
-				((MOB)sayLaters.elementAt(s,1)).tell((String)sayLaters.elementAt(s,2));
+				sayLaters.get(s).first.tell(sayLaters.get(s).second);
 			sayLaters.removeElementAt(s);
 		}
 
@@ -1049,7 +1041,7 @@ public class Nanny extends StdBehavior
 
 			}
 			else
-			if(CMLib.flags().isChild(PA))
+			if(CMLib.flags().isAgedChild(PA))
 			{
 				if(CMLib.dice().rollPercentage()>20)
 					R.show(mob, PA, CMMsg.MSG_NOISYMOVEMENT,L("<S-NAME> play(s) with <T-NAME>."));

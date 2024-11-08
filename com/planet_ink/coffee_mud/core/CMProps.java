@@ -1,5 +1,6 @@
 package com.planet_ink.coffee_mud.core;
 
+import com.planet_ink.coffee_mud.Abilities.interfaces.Ability;
 import com.planet_ink.coffee_mud.Common.interfaces.Session;
 import com.planet_ink.coffee_mud.Libraries.interfaces.CombatLibrary;
 import com.planet_ink.coffee_mud.Libraries.interfaces.ExpertiseLibrary;
@@ -255,7 +256,14 @@ public class CMProps extends Properties
 		FORMULA_MAXFOLLOW,
 		TRAINCOSTS,
 		DEFAULTABILITYARGS,
-		XPMOD
+		XPMOD,
+		MSXPVARS,
+		NEWDOMAINS,
+		NEWACODES,
+		PRIDECATS,
+		FORMULA_PROFGAIN,
+		DISCORD_JAR_PATH,
+		DISCORD_BOT_KEY
 	}
 
 	public final static int DEFAULT_MOB_HP_BASE = 11;
@@ -377,7 +385,10 @@ public class CMProps extends Properties
 		EFFECTCXL,
 		CLASSTRAINCOST,
 		CLASSSWITCHCOST,
-		LOGOUTMASKTICKS
+		LOGOUTMASKTICKS,
+		FIRSTCREATEDYEAR,
+		PRIDECOUNT,
+		PRACMAXPCT
 		;
 
 		public static final int	EXVIEW_DEFAULT		= 0;
@@ -546,6 +557,8 @@ public class CMProps extends Properties
 		ARMOR_CONDITION_OTHER,
 		GENDERS,
 		ISO_LANG_CODES,
+		CORPSE_BLURBS,
+		ANIMAL_ORDER_LIST,
 		WEATHER_CLEAR, // try to always and forever keep these at the end...
 		WEATHER_CLOUDY, // try to always and forever keep these at the end...
 		WEATHER_WINDY, // try to always and forever keep these at the end...
@@ -2239,7 +2252,7 @@ public class CMProps extends Properties
 			final List<Pair<String,String>> finalPairs = new ArrayList<Pair<String,String>>();
 			for(int i=0;i<pairStrs.size();i++)
 			{
-				List<String> pair = pairStrs.get(i);
+				final List<String> pair = pairStrs.get(i);
 				if(pair.size()==2)
 					finalPairs.add(new Pair<String,String>(pair.get(0).trim(), pair.get(1).trim()));
 			}
@@ -2478,7 +2491,7 @@ public class CMProps extends Properties
 				setIntVar(Int.CLASSTRAINCOST,""+Math.round(CMath.s_double(CMParms.getParmStr(cs,"GAIN", ""))));
 			else
 			if(CMath.isNumber(CMParms.getParmStr(cs,"SWITCH", "")))
-				setIntVar(Int.CLASSTRAINCOST,""+Math.round(CMath.s_double(CMParms.getParmStr(cs,"SWITCH", ""))));
+				setIntVar(Int.CLASSSWITCHCOST,""+Math.round(CMath.s_double(CMParms.getParmStr(cs,"SWITCH", ""))));
 			else
 				setVar(Str.MULTICLASS,cs.toUpperCase());
 		}
@@ -2521,6 +2534,53 @@ public class CMProps extends Properties
 			if(i>0)
 				ableArgs.put(set.substring(0,i).toUpperCase().trim(), set.substring(i+1));
 		}
+		setUpLowVar(Str.NEWDOMAINS,getStr("NEWDOMAINS"));
+		{
+			final List<String> newDoms = CMParms.parseCommas(getVar(Str.NEWDOMAINS), true);
+			if(newDoms.size() > 0)
+			{
+				try
+				{
+					Ability.DOMAIN.DESCS.clear();
+					Ability.DOMAIN.VERBS.clear();
+				}
+				catch(final Exception e)
+				{}
+				for(final String newDom : newDoms)
+				{
+					final int x = newDom.indexOf('=');
+					if(x > 0)
+					{
+						final String newDomainName = newDom.substring(0,x).toUpperCase().trim().replace(' ', '_');
+						final String newDomainVerb = newDom.substring(x+1).trim();
+						if(newDomainName.length()>0)
+						{
+							Ability.DOMAIN.DESCS.add(newDomainName);
+							Ability.DOMAIN.VERBS.add(newDomainVerb);
+						}
+					}
+				}
+			}
+		}
+		setVar(Str.NEWACODES,getStr("NEWACODES"));
+		{
+			final List<String> newCods = CMParms.parseCommas(getVar(Str.NEWACODES), true);
+			if(newCods.size() > 0)
+			{
+				Ability.ACODE.DESCS.clear();
+				Ability.ACODE.DESCS_.clear();
+				for(final String newCod : newCods)
+				{
+					if(newCod.length()>0)
+					{
+						Ability.ACODE.DESCS.add(newCod.toUpperCase().trim().replace('_', ' '));
+						Ability.ACODE.DESCS_.add(newCod.toUpperCase().trim().replace(' ', '_'));
+					}
+				}
+			}
+		}
+		setVar(Str.PRIDECATS,getStr("PRIDECATS"));
+		setIntVar(Int.PRIDECOUNT,getStr("PRIDECOUNT","10"));
 		setUpLowVar(Str.DEFAULTPARENTAREA,getStr("DEFAULTPARENTAREA"));
 		setUpLowVar(Str.CLANWEBSITES,getStr("CLANWEBSITES"));
 		setVar(Str.CHANNELBACKLOG,getStr("CHANNELBACKLOG"));
@@ -2650,6 +2710,7 @@ public class CMProps extends Properties
 		setVar(Str.DEFAULTPLAYERFLAGS,getStr("DEFAULTPLAYERFLAGS"));
 		setUpLowVar(Str.AUTOAREAPROPS,getStr("AUTOAREAPROPS"));
 		setUpLowVar(Str.MXPIMAGEPATH,getStr("MXPIMAGEPATH"));
+		setUpLowVar(Str.MSXPVARS,getStr("MSXPVARS"));
 		setBoolVar(Bool.ACCOUNTEXPIRATION,getStr("ACCOUNTEXPIRATION").equalsIgnoreCase("YES")?true:false);
 		setBoolVar(Bool.INTRODUCTIONSYSTEM,getStr("INTRODUCTIONSYSTEM").equalsIgnoreCase("YES")?true:false);
 		setBoolVar(Bool.HASHPASSWORDS,getStr("HASHPASSWORDS").equalsIgnoreCase("YES")?true:false);
@@ -2787,6 +2848,7 @@ public class CMProps extends Properties
 		setUpLowVar(Str.MANACOST,getStr("MANACOST"));
 		p().skillMaxManaDefault = CMProps.setManaCosts(getStr("MANACOST"), p().skillMaxManaExceptions);
 		setIntVar(Int.MANAMINCOST,(int)CMProps.setExceptionCosts(getStr("MANAMINCOST"),p().skillMinManaExceptions));
+		setIntVar(Int.PRACMAXPCT,getStr("PRACMAXPCT","75"),75);
 		setIntVar(Int.EDITORTYPE,(getStr("EDITORTYPE").equalsIgnoreCase("WIZARD")) ? 1 : 0);
 		setIntVar(Int.MINCLANMEMBERS,getStr("MINCLANMEMBERS"));
 		setIntVar(Int.MAXCLANMEMBERS,getStr("MAXCLANMEMBERS"));
@@ -2914,7 +2976,10 @@ public class CMProps extends Properties
 		setUpLowVar(Str.FORMULA_MAXCARRY, getStr("FORMULA_MAXCARRY","@x1 + ((@x2 + 10.0) * @x2 * @x1 / 150.0) + (@x2 * 5.0)"));
 		setUpLowVar(Str.FORMULA_MAXITEMS, getStr("FORMULA_MAXITEMS","(2 * @x1) + (2 * @x3) + (2 * @x2)"));
 		setUpLowVar(Str.FORMULA_MAXFOLLOW, getStr("FORMULA_MAXFOLLOW","1 + ( ( @x2 - 6.0 ) / 3.0)"));
+		setUpLowVar(Str.FORMULA_PROFGAIN, getStr("FORMULA_PROFGAIN","(100 - (@x3 * 50)) * ( (@x1 + 1 - @x2) / ( (@x1 * 2) + (10 * @x2) ) )"));
 
+		setUpLowVar(Str.DISCORD_JAR_PATH, getStr("DISCORD_JAR_PATH",""));
+		setUpLowVar(Str.DISCORD_BOT_KEY, getStr("DISCORD_BOT_KEY",""));
 		final LanguageLibrary lang = CMLib.lang();
 		Directions.instance().reInitialize(getInt("DIRECTIONS"), new Directions.DirectionWordTranslator()
 		{

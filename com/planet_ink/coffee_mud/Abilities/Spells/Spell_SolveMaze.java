@@ -68,6 +68,12 @@ public class Spell_SolveMaze extends Spell
 	}
 
 	@Override
+	public long flags()
+	{
+		return super.flags() | Ability.FLAG_DIVINING;
+	}
+
+	@Override
 	public int classificationCode()
 	{
 		return Ability.ACODE_SPELL|Ability.DOMAIN_DIVINATION;
@@ -135,7 +141,8 @@ public class Spell_SolveMaze extends Spell
 					outRoom=((GridLocale)outRoom).prepareGridLocale(targetR,outRoom, direction);
 				final int radius = (grid.xGridSize()*grid.yGridSize())+2;
 				commonTelL(mob,"The directions are taking shape in your mind: \n\r@x1",
-						CMLib.tracking().getTrailToDescription(targetR, new Vector<Room>(), CMLib.map().getExtendedRoomID(outRoom), null, radius, null,1));
+						CMLib.tracking().getTrailToDescription(targetR, new Vector<Room>(),
+								CMLib.map().getExtendedRoomID(outRoom), null, radius, null,", ",1));
 			}
 		}
 		else

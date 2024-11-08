@@ -168,9 +168,10 @@ public interface ProtocolLibrary extends CMLibrary
 	 * @param session the session of the mob to report to
 	 * @param data the command sent by the user
 	 * @param supportables map of supported GMCP features
+	 * @param reportables the msdp 'subscriptions' of the given session
 	 * @return null, or bytes to send to the user
 	 */
-	public byte[] processGmcp(final Session session, final String data, final Map<String,Double> supportables);
+	public byte[] processGmcp(final Session session, final String data, final Map<String,Double> supportables, final Map<Object,Object> reportables);
 
 	/**
 	 * Called every second from each player session to deal with periodic GMCP
@@ -183,9 +184,10 @@ public interface ProtocolLibrary extends CMLibrary
 	 * @param session the session of the mob to report to
 	 * @param reporteds the 'subscriptions' of the given session
 	 * @param supportables map of supported GMCP features
+	 * @param reportables the msdp 'subscriptions' of the given session
 	 * @return null, or bytes to send to the user
 	 */
-	public byte[] pingGmcp(final Session session, final Map<String,Long> reporteds, final Map<String,Double> supportables);
+	public byte[] pingGmcp(final Session session, final Map<String,Long> reporteds, final Map<String,Double> supportables, final Map<Object,Object> reportables);
 
 	/**
 	 * GMCP appears to support getting a report from the protocol when entering
@@ -198,9 +200,17 @@ public interface ProtocolLibrary extends CMLibrary
 	 * @param session the session of the mob to report to
 	 * @param reporteds the 'subscriptions' of the given session
 	 * @param supportables map of supported GMCP features
+	 * @param reportables the msdp 'subscriptions' of the given session
 	 * @return null, or bytes to send to the user
 	 */
-	public byte[] invokeRoomChangeGmcp(final Session session, final Map<String,Long> reporteds, final Map<String,Double> supportables);
+	public byte[] invokeRoomChangeGmcp(final Session session, final Map<String,Long> reporteds, final Map<String,Double> supportables, final Map<Object,Object> reportables);
+
+	/**
+	 * Returns all the MSSP variables for crawlers.
+	 * Values can be Strings, or String Arrays
+	 * @return all the MSSP variables for crawlers.
+	 */
+	public Map<String,Object> getMSSPPackage();
 
 	/**
 	 * Enumeration of all support GMCP commands
@@ -227,8 +237,9 @@ public interface ProtocolLibrary extends CMLibrary
 		char_items_inv, // means they want updates, dude
 		char_items_contents,
 		char_skills_get,
+		char_effects_get,
 		group,
-		room_info, // means they want room.wrongdir and room.enter
+		room_info, // means they want room.wrongdir and room.enter and room.leave
 		room_items_inv,
 		room_items_contents,
 		room_mobiles,
@@ -247,7 +258,8 @@ public interface ProtocolLibrary extends CMLibrary
 		maplevel,
 		client,
 		client_version,
-		external_discord_hello
+		external_discord_hello,
+		msdp
 	}
 
 	/**

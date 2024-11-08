@@ -4,6 +4,7 @@ import com.planet_ink.coffee_mud.core.*;
 import com.planet_ink.coffee_mud.core.CMClass.CMObjectType;
 import com.planet_ink.coffee_mud.core.CMSecurity.DbgFlag;
 import com.planet_ink.coffee_mud.core.collections.*;
+import com.planet_ink.coffee_mud.core.exceptions.CMException;
 import com.planet_ink.coffee_mud.Abilities.interfaces.*;
 import com.planet_ink.coffee_mud.Areas.interfaces.*;
 import com.planet_ink.coffee_mud.Behaviors.interfaces.*;
@@ -60,6 +61,7 @@ public class CMJournals extends StdLibrary implements JournalsLibrary
 	protected final Vector<ForumJournal>				forumJournalsSorted	= new Vector<ForumJournal>();
 	protected final SHashtable<String, ForumJournal>	forumJournals		= new SHashtable<String, ForumJournal>();
 	protected final Map<String, List<ForumJournal>>		clanForums			= new SHashtable<String, List<ForumJournal>>();
+	protected final Map<String, Integer>				itemJournals		= new SHashtable<String, Integer>();
 	protected final PairList<Long, String>				cronJobs			= new PairVector<Long, String>();
 	protected final List<JournalEntry>					nextEvents			= new LinkedList<JournalEntry>();
 
@@ -680,7 +682,7 @@ public class CMJournals extends StdLibrary implements JournalsLibrary
 		S.setVar(mob.Name(),"VALUE", oldValue);
 		final CMMsg msg2=CMClass.getMsg(mob,mob,null,CMMsg.MSG_OK_VISUAL,null,null,L("COMMANDJOURNAL_@x1",CMJ.NAME()));
 		S.executeMsg(mob, msg2);
-		S.dequeResponses();
+		S.dequeResponses(null);
 		S.tick(mob,Tickable.TICKID_MOB);
 		final String response=S.getVar("*","VALUE");
 		if(response!=null)
@@ -759,7 +761,22 @@ public class CMJournals extends StdLibrary implements JournalsLibrary
 				return E.update();
 			if(debug)
 				Log.debugOut("Running cron job "+E.subj());
-			final long interval = CMParms.getParmLong(E.data(), "INTERVAL", CMProps.getMillisPerMudHour());
+			long interval = CMProps.getMillisPerMudHour();
+			try
+			{
+				final String intStr = CMParms.getParmStr(E.data(), "INTERVAL", ""+CMProps.getMillisPerMudHour());
+				if(CMath.isLong(intStr))
+					interval = CMath.s_long(intStr);
+				else
+				{
+					final int ticks = CMLib.time().parseTickExpression(intStr);
+					interval = ticks * CMProps.getTickMillis();
+				}
+			}
+			catch(final CMException e)
+			{
+				Log.errOut("cron",e.getMessage());
+			}
 			touch = System.currentTimeMillis()+interval;
 			E.update(System.currentTimeMillis()+interval);
 			CMLib.database().DBTouchJournalMessage(jobKey, E.update());
@@ -808,7 +825,7 @@ public class CMJournals extends StdLibrary implements JournalsLibrary
 					S.setScript(str.toString());
 					final CMMsg msg2=CMClass.getMsg(mob,mob,null,CMMsg.MSG_OK_VISUAL,null,null,L("MPRUN"));
 					S.executeMsg(mob, msg2);
-					S.dequeResponses();
+					S.dequeResponses(null);
 					S.tick(mob,Tickable.TICKID_MOB);
 				}
 				else
@@ -952,8 +969,11 @@ public class CMJournals extends StdLibrary implements JournalsLibrary
 					{
 						newEntry.update(newEntry.date());
 						newEntry.expiration(newEntry.date() + durationMillis);
+
 						newEntry.key(null);
 						CMLib.database().DBWriteJournal("SYSTEM_CALENDAR", newEntry);
+						if(CMSecurity.isDebugging(DbgFlag.CALENDAR))
+							Log.debugOut("Next entry "+newEntry.key()+" will happen @ "+CMLib.time().date2String(newEntry.expiration())+".");
 						nextStart=newEntry;
 					}
 				}
@@ -969,6 +989,22 @@ public class CMJournals extends StdLibrary implements JournalsLibrary
 		setThreadStatus(serviceClient,"expiration journal sweeping");
 		try
 		{
+			for(final String journalName : itemJournals.keySet())
+			{
+				final Integer expireDays = itemJournals.get(journalName);
+				setThreadStatus(serviceClient,"updating journal "+journalName);
+				final long expirationDate = System.currentTimeMillis() - (TimeManager.MILI_DAY * expireDays.intValue());
+				final List<JournalEntry> items=CMLib.database().DBReadJournalMsgsOlderThan(journalName,null,expirationDate);
+				for(int i=items.size()-1;i>=0;i--)
+				{
+					final JournalEntry entry=items.get(i);
+					final String from=entry.from();
+					final String message=entry.msg();
+					Log.sysOut(Thread.currentThread().getName(),"Expired "+journalName+" from "+from+": "+message);
+					CMLib.database().DBDeleteJournal(journalName,entry.key());
+				}
+				setThreadStatus(serviceClient,"command journal sweeping");
+			}
 			for(final Enumeration<CommandJournal> e=commandJournals();e.hasMoreElements();)
 			{
 				final CommandJournal CMJ=e.nextElement();
@@ -1046,6 +1082,8 @@ public class CMJournals extends StdLibrary implements JournalsLibrary
 	@Override
 	public boolean activate()
 	{
+		if(!super.activate())
+			return false;
 		if(serviceClient==null)
 		{
 			name="THJournals"+Thread.currentThread().getThreadGroup().getName().charAt(0);
@@ -1124,7 +1162,7 @@ public class CMJournals extends StdLibrary implements JournalsLibrary
 			if(nextEvents.size()>0)
 			{
 				if(CMSecurity.isDebugging(DbgFlag.CALENDAR))
-					Log.debugOut("Next Calendar thread will process "+nextEvents.size()+" events.");
+					Log.debugOut("Next Calendar thread will process "+nextEvents.size()+" events @ "+CMLib.time().date2String(nextTime)+".");
 				CMLib.threads().startTickDown(this, Tickable.TICKID_EVENT, nextTime-System.currentTimeMillis(), 1);
 			}
 		}
@@ -1179,7 +1217,7 @@ public class CMJournals extends StdLibrary implements JournalsLibrary
 									me.nextEvents.clear();
 									nextEvents.add(nextStart);
 									if(CMSecurity.isDebugging(DbgFlag.CALENDAR))
-										Log.debugOut("Next Calendar thread will process "+nextEvents.size()+" events.");
+										Log.debugOut("Next Calendar thread: "+nextEvents.size()+" events.");
 									CMLib.threads().startTickDown(me, Tickable.TICKID_EVENT, nextStart.date()-System.currentTimeMillis(), 1);
 								}
 								else
@@ -1193,7 +1231,7 @@ public class CMJournals extends StdLibrary implements JournalsLibrary
 								me.nextEvents.clear();
 								nextEvents.add(nextStart);
 								if(CMSecurity.isDebugging(DbgFlag.CALENDAR))
-									Log.debugOut("Next Calendar thread will process "+nextEvents.size()+" events.");
+									Log.debugOut("Next Calendar thread will handle "+nextEvents.size()+" events.");
 								CMLib.threads().startTickDown(me, Tickable.TICKID_EVENT, nextStart.date()-System.currentTimeMillis(), 1);
 							}
 						}
@@ -1335,7 +1373,7 @@ public class CMJournals extends StdLibrary implements JournalsLibrary
 				processCalendarEvents();
 				if(CMSecurity.isDebugging(DbgFlag.CALENDAR))
 					Log.debugOut("Finished calendar processing for "+name());
-				return true;
+				return false; // processing ALWAYS reschedules, so KILL this one.
 			}
 
 			// here and below is the normal utilithread
@@ -1454,6 +1492,7 @@ public class CMJournals extends StdLibrary implements JournalsLibrary
 		clearCommandJournals();
 		clearForumJournals();
 		cronJobs.clear();
+		itemJournals.clear();
 		if(CMLib.threads().isTicking(this, TICKID_SUPPORT|Tickable.TICKID_SOLITARYMASK))
 		{
 			CMLib.threads().deleteTick(this, TICKID_SUPPORT|Tickable.TICKID_SOLITARYMASK);
@@ -2259,5 +2298,16 @@ public class CMJournals extends StdLibrary implements JournalsLibrary
 			Resources.updateCachedMultiLists("mailinglists.txt");
 		}
 		return updateMailingLists;
+	}
+
+	@Override
+	public void registerItemJournal(final Item itemJournal)
+	{
+		if(itemJournal != null)
+		{
+			final int expireDays = CMath.s_int(itemJournal.getStat("EXPIRE"));
+			if(expireDays > 0)
+				this.itemJournals.put(itemJournal.Name(), Integer.valueOf(expireDays));
+		}
 	}
 }

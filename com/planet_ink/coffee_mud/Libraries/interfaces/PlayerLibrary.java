@@ -13,6 +13,7 @@ import com.planet_ink.coffee_mud.Exits.interfaces.*;
 import com.planet_ink.coffee_mud.Items.interfaces.*;
 import com.planet_ink.coffee_mud.Libraries.interfaces.GenericBuilder.GenItemCode;
 import com.planet_ink.coffee_mud.Libraries.interfaces.GenericBuilder.GenMOBCode;
+import com.planet_ink.coffee_mud.Libraries.interfaces.PlayerLibrary.PrideCat;
 import com.planet_ink.coffee_mud.Libraries.interfaces.PlayerLibrary.ThinPlayer;
 import com.planet_ink.coffee_mud.Locales.interfaces.*;
 import com.planet_ink.coffee_mud.MOBS.interfaces.*;
@@ -317,6 +318,17 @@ public interface PlayerLibrary extends CMLibrary
 	public MOB getLoadPlayerByEmail(String email);
 
 	/**
+	 * Attempts to return the thread id associated with
+	 * the given player.  It first checks for a session
+	 * with a thread id, and then it looks for a player
+	 * library containing the mob, returning its id.
+	 *
+	 * @param mob the player to look for
+	 * @return thread id, or -1 if not found.
+	 */
+	public int getPlayerThreadId(final MOB mob);
+
+	/**
 	 * Returns a list of all player char names
 	 * in the database.
 	 *
@@ -435,6 +447,15 @@ public interface PlayerLibrary extends CMLibrary
 	 * @return the number of players saved
 	 */
 	public int savePlayers();
+
+	/**
+	 * Saves the given player, and all their followers and
+	 * all their things, no matter what.
+	 *
+	 * @param mob the player to save
+	 * @return true if the player saves, false otherwise
+	 */
+	public boolean savePlayer(final MOB mob);
 
 	/**
 	 * Factory method for a ThinnerPlayer object, so that
@@ -556,6 +577,15 @@ public interface PlayerLibrary extends CMLibrary
 	public void setPlayerValue(final String playerName, final PlayerCode code, final Object value);
 
 	/**
+	 * Constructs a ThinPlayer object out of a Modifiable that implements the following
+	 * fields: NAME, CHARCLASS, RACE, GENDER, LEVEL, AGE, LAST, EMAIL, IP, EXPERIENCE,
+	 * EXPERIENCENEEDED, LIEGE, DEITY, CLAN
+	 * @param mP the Modifiable object to use
+	 * @return the ThinPlayer, entirely fake
+	 */
+	public ThinPlayer makeThinModifiablePlayer(final Modifiable mP);
+
+	/**
 	 * Sometimes the list of players in a given room needs to be
 	 * determined rather instantly.  This method helps do that
 	 * by returning all player chars in the given room,
@@ -585,9 +615,9 @@ public interface PlayerLibrary extends CMLibrary
 	 * Causes the pride stats list to be reloaded from the
 	 * player database.
 	 *
-	 * @see PlayerLibrary#getTopPrideAccounts(com.planet_ink.coffee_mud.Common.interfaces.TimeClock.TimePeriod, com.planet_ink.coffee_mud.Common.interfaces.AccountStats.PrideStat)
-	 * @see PlayerLibrary#getTopPridePlayers(com.planet_ink.coffee_mud.Common.interfaces.TimeClock.TimePeriod, com.planet_ink.coffee_mud.Common.interfaces.AccountStats.PrideStat)
-	 * #see PlayerLibrary#bumpPrideStat(MOB, com.planet_ink.coffee_mud.Common.interfaces.AccountStats.PrideStat, int)
+	 * @see PlayerLibrary#getTopPrideAccounts(com.planet_ink.coffee_mud.Common.interfaces.TimeClock.TimePeriod, com.planet_ink.coffee_mud.Common.interfaces.PrideStats.PrideStat)
+	 * @see PlayerLibrary#getTopPridePlayers(com.planet_ink.coffee_mud.Common.interfaces.TimeClock.TimePeriod, com.planet_ink.coffee_mud.Common.interfaces.PrideStats.PrideStat)
+	 * #see PlayerLibrary#bumpPrideStat(MOB, com.planet_ink.coffee_mud.Common.interfaces.PrideStats.PrideStat, int)
 	 * @see PlayerLibrary#parsePrideStats(String[], String[])
 	 */
 	public void resetAllPrideStats();
@@ -597,9 +627,9 @@ public interface PlayerLibrary extends CMLibrary
 	 * pride stat values similarly indexed, this will generate an array
 	 * of pairs representing the data.
 	 *
-	 * @see PlayerLibrary#getTopPrideAccounts(com.planet_ink.coffee_mud.Common.interfaces.TimeClock.TimePeriod, com.planet_ink.coffee_mud.Common.interfaces.AccountStats.PrideStat)
-	 * @see PlayerLibrary#getTopPridePlayers(com.planet_ink.coffee_mud.Common.interfaces.TimeClock.TimePeriod, com.planet_ink.coffee_mud.Common.interfaces.AccountStats.PrideStat)
-	 * #see PlayerLibrary#bumpPrideStat(MOB, com.planet_ink.coffee_mud.Common.interfaces.AccountStats.PrideStat, int)
+	 * @see PlayerLibrary#getTopPrideAccounts(com.planet_ink.coffee_mud.Common.interfaces.TimeClock.TimePeriod, com.planet_ink.coffee_mud.Common.interfaces.PrideStats.PrideStat)
+	 * @see PlayerLibrary#getTopPridePlayers(com.planet_ink.coffee_mud.Common.interfaces.TimeClock.TimePeriod, com.planet_ink.coffee_mud.Common.interfaces.PrideStats.PrideStat)
+	 * #see PlayerLibrary#bumpPrideStat(MOB, com.planet_ink.coffee_mud.Common.interfaces.PrideStats.PrideStat, int)
 	 * @see PlayerLibrary#resetAllPrideStats()
 	 *
 	 * @param nextPeriods the timestamps by period
@@ -613,8 +643,8 @@ public interface PlayerLibrary extends CMLibrary
 	 * stat that changed, and the amount it changed by, this will update the pride lists
 	 * and return the given value.
 	 *
-	 * @see PlayerLibrary#getTopPrideAccounts(com.planet_ink.coffee_mud.Common.interfaces.TimeClock.TimePeriod, com.planet_ink.coffee_mud.Common.interfaces.AccountStats.PrideStat)
-	 * @see PlayerLibrary#getTopPridePlayers(com.planet_ink.coffee_mud.Common.interfaces.TimeClock.TimePeriod, com.planet_ink.coffee_mud.Common.interfaces.AccountStats.PrideStat)
+	 * @see PlayerLibrary#getTopPrideAccounts(com.planet_ink.coffee_mud.Common.interfaces.TimeClock.TimePeriod, com.planet_ink.coffee_mud.Common.interfaces.PrideStats.PrideStat)
+	 * @see PlayerLibrary#getTopPridePlayers(com.planet_ink.coffee_mud.Common.interfaces.TimeClock.TimePeriod, com.planet_ink.coffee_mud.Common.interfaces.PrideStats.PrideStat)
 	 * @see PlayerLibrary#parsePrideStats(String[], String[])
 	 * @see PlayerLibrary#resetAllPrideStats()
 	 *
@@ -623,14 +653,16 @@ public interface PlayerLibrary extends CMLibrary
 	 * @param amt the amount to change the stat by + or -
 	 * @return the give amt, or 0
 	 */
-	public int bumpPrideStat(final MOB mob, final AccountStats.PrideStat stat, final int amt);
+	public int bumpPrideStat(final MOB mob, final PrideStats.PrideStat stat, final int amt);
 
 	/**
 	 * Returns the top winning character names and the associated values that got them there, for the given time
 	 * period and given pridestat.
 	 *
-	 * @see PlayerLibrary#getTopPrideAccounts(com.planet_ink.coffee_mud.Common.interfaces.TimeClock.TimePeriod, com.planet_ink.coffee_mud.Common.interfaces.AccountStats.PrideStat)
-	 * #see PlayerLibrary#bumpPrideStat(MOB, com.planet_ink.coffee_mud.Common.interfaces.AccountStats.PrideStat, int)
+	 * @see PlayerLibrary#getTopPrideAccounts(com.planet_ink.coffee_mud.Common.interfaces.TimeClock.TimePeriod, com.planet_ink.coffee_mud.Common.interfaces.PrideStats.PrideStat)
+	 * @see PlayerLibrary#getPreviousTopPrideAccounts(com.planet_ink.coffee_mud.Common.interfaces.TimeClock.TimePeriod, com.planet_ink.coffee_mud.Common.interfaces.PrideStats.PrideStat)
+	 * @see PlayerLibrary#getPreviousTopPridePlayers(com.planet_ink.coffee_mud.Common.interfaces.TimeClock.TimePeriod, com.planet_ink.coffee_mud.Common.interfaces.PrideStats.PrideStat)
+	 * #see PlayerLibrary#bumpPrideStat(MOB, com.planet_ink.coffee_mud.Common.interfaces.PrideStats.PrideStat, int)
 	 * @see PlayerLibrary#parsePrideStats(String[], String[])
 	 * @see PlayerLibrary#resetAllPrideStats()
 	 *
@@ -638,14 +670,58 @@ public interface PlayerLibrary extends CMLibrary
 	 * @param stat the pridestat to find winners for
 	 * @return the list of top winners
 	 */
-	public List<Pair<String,Integer>> getTopPridePlayers(TimeClock.TimePeriod period, AccountStats.PrideStat stat);
+	public List<Pair<String,Integer>> getTopPridePlayers(TimeClock.TimePeriod period, PrideStats.PrideStat stat);
+
+	/**
+	 * Returns the top winning character names and the associated values that got them there, for the previous time
+	 * period and given pridestat.
+	 *
+	 * @see PlayerLibrary#getTopPrideAccounts(com.planet_ink.coffee_mud.Common.interfaces.TimeClock.TimePeriod, com.planet_ink.coffee_mud.Common.interfaces.PrideStats.PrideStat)
+	 * @see PlayerLibrary#getPreviousTopPrideAccounts(com.planet_ink.coffee_mud.Common.interfaces.TimeClock.TimePeriod, com.planet_ink.coffee_mud.Common.interfaces.PrideStats.PrideStat)
+	 * #see PlayerLibrary#bumpPrideStat(MOB, com.planet_ink.coffee_mud.Common.interfaces.PrideStats.PrideStat, int)
+	 * @see PlayerLibrary#parsePrideStats(String[], String[])
+	 * @see PlayerLibrary#resetAllPrideStats()
+	 *
+	 * @param period the time period to get the top character for
+	 * @param stat the pridestat to find winners for
+	 * @return the list of top winners
+	 */
+	public List<Pair<String,Integer>> getPreviousTopPridePlayers(TimeClock.TimePeriod period, PrideStats.PrideStat stat);
+
+	/**
+	 * Returns the top winning character names and the associated values that got them there, for the given time
+	 * period and given pridestat, in the given Pride Category, for the given Pride Category value.
+	 *
+	 * @see PlayerLibrary#getPreviousTopPridePlayers(PrideCat, String, com.planet_ink.coffee_mud.Common.interfaces.TimeClock.TimePeriod, com.planet_ink.coffee_mud.Common.interfaces.PrideStats.PrideStat)
+	 * @param category the pride category from the INI file, like RACE, CLASS, etc..
+	 * @param catUnit the category value to return data for, like Orc, Fighter, etc..
+	 * @param period the time period to get the top accounts for
+	 * @param stat the pridestat to find winners for
+	 * @return the list of top winners
+	 */
+	public List<Pair<String,Integer>> getTopPridePlayers(final PrideCat category, final String catUnit, final TimeClock.TimePeriod period, final PrideStats.PrideStat stat);
+
+	/**
+	 * Returns the top winning character names and the associated values that got them there, for the previous time
+	 * period and given pridestat, in the given Pride Category, for the given Pride Category value.
+	 *
+	 * @see PlayerLibrary#getTopPridePlayers(PrideCat, String, com.planet_ink.coffee_mud.Common.interfaces.TimeClock.TimePeriod, com.planet_ink.coffee_mud.Common.interfaces.PrideStats.PrideStat)
+	 * @param category the pride category from the INI file, like RACE, CLASS, etc..
+	 * @param catUnit the category value to return data for, like Orc, Fighter, etc..
+	 * @param period the time period to get the top accounts for
+	 * @param stat the pridestat to find winners for
+	 * @return the list of top winners
+	 */
+	public List<Pair<String,Integer>> getPreviousTopPridePlayers(final PrideCat category, final String catUnit, final TimeClock.TimePeriod period, final PrideStats.PrideStat stat);
 
 	/**
 	 * Returns the top winning account names and the associated values that got them there, for the given time
 	 * period and given pridestat.
 	 *
-	 * @see PlayerLibrary#getTopPridePlayers(com.planet_ink.coffee_mud.Common.interfaces.TimeClock.TimePeriod, com.planet_ink.coffee_mud.Common.interfaces.AccountStats.PrideStat)
-	 * #see PlayerLibrary#bumpPrideStat(MOB, com.planet_ink.coffee_mud.Common.interfaces.AccountStats.PrideStat, int)
+	 * @see PlayerLibrary#getTopPridePlayers(com.planet_ink.coffee_mud.Common.interfaces.TimeClock.TimePeriod, com.planet_ink.coffee_mud.Common.interfaces.PrideStats.PrideStat)
+	 * @see PlayerLibrary#getPreviousTopPrideAccounts(com.planet_ink.coffee_mud.Common.interfaces.TimeClock.TimePeriod, com.planet_ink.coffee_mud.Common.interfaces.PrideStats.PrideStat)
+	 * @see PlayerLibrary#getPreviousTopPridePlayers(com.planet_ink.coffee_mud.Common.interfaces.TimeClock.TimePeriod, com.planet_ink.coffee_mud.Common.interfaces.PrideStats.PrideStat)
+	 * #see PlayerLibrary#bumpPrideStat(MOB, com.planet_ink.coffee_mud.Common.interfaces.PrideStats.PrideStat, int)
 	 * @see PlayerLibrary#parsePrideStats(String[], String[])
 	 * @see PlayerLibrary#resetAllPrideStats()
 	 *
@@ -653,7 +729,23 @@ public interface PlayerLibrary extends CMLibrary
 	 * @param stat the pridestat to find winners for
 	 * @return the list of top winners
 	 */
-	public List<Pair<String,Integer>> getTopPrideAccounts(TimeClock.TimePeriod period, AccountStats.PrideStat stat);
+	public List<Pair<String,Integer>> getTopPrideAccounts(TimeClock.TimePeriod period, PrideStats.PrideStat stat);
+
+	/**
+	 * Returns the top winning account names and the associated values that got them there, for the previous given time
+	 * period and given pridestat.
+	 *
+	 * @see PlayerLibrary#getTopPridePlayers(com.planet_ink.coffee_mud.Common.interfaces.TimeClock.TimePeriod, com.planet_ink.coffee_mud.Common.interfaces.PrideStats.PrideStat)
+	 * @see PlayerLibrary#getPreviousTopPridePlayers(com.planet_ink.coffee_mud.Common.interfaces.TimeClock.TimePeriod, com.planet_ink.coffee_mud.Common.interfaces.PrideStats.PrideStat)
+	 * #see PlayerLibrary#bumpPrideStat(MOB, com.planet_ink.coffee_mud.Common.interfaces.PrideStats.PrideStat, int)
+	 * @see PlayerLibrary#parsePrideStats(String[], String[])
+	 * @see PlayerLibrary#resetAllPrideStats()
+	 *
+	 * @param period the time period to get the top accounts for
+	 * @param stat the pridestat to find winners for
+	 * @return the list of top winners
+	 */
+	public List<Pair<String,Integer>> getPreviousTopPrideAccounts(TimeClock.TimePeriod period, PrideStats.PrideStat stat);
 
 	/**
 	 * For systems that list users and allow sorting, here
@@ -678,6 +770,25 @@ public interface PlayerLibrary extends CMLibrary
 		{
 			this.altName=ln;
 		}
+	}
+
+	/**
+	 * Public supported pride stat categories
+	 *
+	 * @author Bo Zimmerman
+	 *
+	 */
+	public static enum PrideCat
+	{
+		ACCOUNT, // global placeholder
+		PLAYER, // global placeholder
+		CLASS,
+		RACE,
+		BASECLASS,
+		RACECAT,
+		LEVEL,
+		GENDER,
+		CLAN
 	}
 
 	/**
@@ -936,6 +1047,18 @@ public interface PlayerLibrary extends CMLibrary
 		 * @return the char worship/deity
 		 */
 		public String worship();
+
+		/**
+		 * Return the char gender name
+		 * @return the char gender name
+		 */
+		public String gender();
+
+		/**
+		 * Returns an enumerator over this mobs clans.
+		 * This may result in a query, so use sparingly.
+		 */
+		public Enumeration<String> clans();
 	}
 
 	/**

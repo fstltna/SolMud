@@ -13,7 +13,7 @@ import com.planet_ink.coffee_mud.Behaviors.interfaces.*;
 import com.planet_ink.coffee_mud.CharClasses.interfaces.*;
 import com.planet_ink.coffee_mud.Commands.interfaces.*;
 import com.planet_ink.coffee_mud.Common.interfaces.*;
-import com.planet_ink.coffee_mud.Common.interfaces.AccountStats.PrideStat;
+import com.planet_ink.coffee_mud.Common.interfaces.PrideStats.PrideStat;
 import com.planet_ink.coffee_mud.Common.interfaces.Clan.Trophy;
 import com.planet_ink.coffee_mud.Exits.interfaces.*;
 import com.planet_ink.coffee_mud.Items.interfaces.*;
@@ -53,17 +53,17 @@ public class CoffeeLevels extends StdLibrary implements ExpLevelLibrary
 	public int getManaBonusNextLevel(final MOB mob)
 	{
 		final CharClass charClass = mob.baseCharStats().getCurrentClass();
-		final double[] variables={
-				mob.phyStats().level(),
-				mob.charStats().getStat(CharStats.STAT_WISDOM),
-				CMProps.getIntVar(CMProps.Int.BASEMAXSTAT)+mob.charStats().getStat(CharStats.CODES.toMAXBASE(CharStats.STAT_WISDOM)),
-				mob.charStats().getStat(CharStats.STAT_INTELLIGENCE),
-				CMProps.getIntVar(CMProps.Int.BASEMAXSTAT)+mob.charStats().getStat(CharStats.CODES.toMAXBASE(CharStats.STAT_INTELLIGENCE)),
-				mob.charStats().getStat(charClass.getAttackAttribute()),
-				CMProps.getIntVar(CMProps.Int.BASEMAXSTAT)+mob.charStats().getStat(CharStats.CODES.toMAXBASE(charClass.getAttackAttribute())),
-				mob.charStats().getStat(CharStats.STAT_CHARISMA),
-				mob.charStats().getStat(CharStats.STAT_CONSTITUTION)
-			};
+		final double[] variables= {
+			mob.phyStats().level(),
+			mob.charStats().getStat(CharStats.STAT_WISDOM),
+			CMProps.getIntVar(CMProps.Int.BASEMAXSTAT)+mob.charStats().getStat(CharStats.CODES.toMAXBASE(CharStats.STAT_WISDOM)),
+			mob.charStats().getStat(CharStats.STAT_INTELLIGENCE),
+			CMProps.getIntVar(CMProps.Int.BASEMAXSTAT)+mob.charStats().getStat(CharStats.CODES.toMAXBASE(CharStats.STAT_INTELLIGENCE)),
+			mob.charStats().getStat(charClass.getAttackAttribute()),
+			CMProps.getIntVar(CMProps.Int.BASEMAXSTAT)+mob.charStats().getStat(CharStats.CODES.toMAXBASE(charClass.getAttackAttribute())),
+			mob.charStats().getStat(CharStats.STAT_CHARISMA),
+			mob.charStats().getStat(CharStats.STAT_CONSTITUTION)
+		};
 		return (int)Math.round(CMath.parseMathExpression(charClass.getManaFormula()+CMProps.getVar(Str.FORMULA_CLASSMNADD), variables));
 	}
 
@@ -298,21 +298,38 @@ public class CoffeeLevels extends StdLibrary implements ExpLevelLibrary
 			mob.phyStats().setLevel(mob.basePhyStats().level());
 		}
 		final CharClass curClass;
-		final int oldClassLevel;
+		final int newClassLevel;
 		synchronized(mob.baseCharStats())
 		{
+
+			int oldClassLevel = mob.baseCharStats().getClassLevel(mob.baseCharStats().getCurrentClass());
+			if((oldClassLevel == 0)&&(!gain))
+			{
+				// if curr class level == 0, try to switch to another class
+				for(int c=mob.baseCharStats().numClasses()-1;c>=0;c--)
+				{
+					final CharClass C = mob.baseCharStats().getMyClass(c);
+					final int lvl = mob.baseCharStats().getClassLevel(C);
+					if(lvl > 0)
+					{
+						oldClassLevel = lvl;
+						mob.baseCharStats().setCurrentClass(C);
+						break;
+					}
+				}
+			}
 			curClass=mob.baseCharStats().getCurrentClass();
-			oldClassLevel = mob.baseCharStats().getClassLevel(curClass);
-			mob.baseCharStats().setClassLevel(curClass,oldClassLevel+(gain?1:-1));
+			newClassLevel = oldClassLevel+(gain?1:-1);
+			mob.baseCharStats().setClassLevel(curClass,newClassLevel);
 		}
 		synchronized(mob.charStats())
 		{
-			mob.charStats().setClassLevel(curClass,oldClassLevel+(gain?1:-1));
+			mob.charStats().setClassLevel(curClass,newClassLevel);
 		}
 		final int classLevel;
 		synchronized(mob.baseCharStats())
 		{
-			classLevel=mob.baseCharStats().getClassLevel(mob.baseCharStats().getCurrentClass());
+			classLevel=mob.baseCharStats().getClassLevel(curClass);
 		}
 		int gained=mob.getExperience()-mob.getExpNextLevel();
 		if(gained<50)
@@ -374,10 +391,11 @@ public class CoffeeLevels extends StdLibrary implements ExpLevelLibrary
 	}
 
 	@Override
-	public void unLevel(final MOB mob)
+	public void unLevel(final MOB mob, final boolean adjustXP)
 	{
 		if((mob.basePhyStats().level()<2)
 		||(CMSecurity.isDisabled(CMSecurity.DisFlag.LEVELS))
+		||(CMSecurity.isDisabled(CMSecurity.DisFlag.UNLEVEL))
 		||(mob.charStats().getCurrentClass().leveless())
 		||(mob.charStats().getMyRace().leveless()))
 			return;
@@ -398,16 +416,19 @@ public class CoffeeLevels extends StdLibrary implements ExpLevelLibrary
 		}
 
 		final int level = mob.basePhyStats().level();
-		mob.setExperience(mob.getExperience() - mob.getExpNeededDelevel());
-		final CharClass curClass=mob.baseCharStats().getCurrentClass();
-		final int oldClassLevel=mob.baseCharStats().getClassLevel(curClass);
+		if(adjustXP && (mob.getExperience() >= getLevelExperience(mob, level-2)))
+			mob.setExperience(mob.getExperience() - mob.getExpNeededDelevel());
 		int[] costGains = new int[CostDef.CostType.values().length];
 		if(mob.playerStats() != null)
 			costGains = Arrays.copyOf(mob.playerStats().leveledCostGains(level), costGains.length);
+		final CharClass prevClass=mob.baseCharStats().getCurrentClass();
+		final int prevClassLevel = mob.baseCharStats().getClassLevel(prevClass);
 		doBaseLevelAdjustment(mob,costGains,false);
+		final CharClass curClass=mob.baseCharStats().getCurrentClass();
+		final int oldClassLevel = (curClass == prevClass) ? prevClassLevel : (mob.baseCharStats().getCurrentClassLevel() + 1);
 		int prac2Stat=mob.charStats().getStat(CharStats.STAT_WISDOM);
 		final int maxPrac2Stat=(CMProps.getIntVar(CMProps.Int.BASEMAXSTAT)
-					 +mob.charStats().getStat(CharStats.CODES.toMAXBASE(CharStats.STAT_WISDOM)));
+								+ mob.charStats().getStat(CharStats.CODES.toMAXBASE(CharStats.STAT_WISDOM)));
 		if(prac2Stat>maxPrac2Stat)
 			prac2Stat=maxPrac2Stat;
 		int practiceGain=(int)Math.floor(CMath.div(prac2Stat,6.0))+curClass.getBonusPracLevel();
@@ -426,7 +447,7 @@ public class CoffeeLevels extends StdLibrary implements ExpLevelLibrary
 		mob.recoverPhyStats();
 		mob.recoverCharStats();
 		mob.recoverMaxState();
-		mob.tell(L("^HYou are now a level @x1 @x2^N.\n\r",""+mob.charStats().getClassLevel(mob.charStats().getCurrentClass()),mob.charStats().getCurrentClass().name(mob.charStats().getCurrentClassLevel())));
+		mob.tell(L("^HYou are now a level @x1 @x2^N.\n\r",""+mob.charStats().getClassLevel(curClass),curClass.name(mob.charStats().getCurrentClassLevel())));
 		curClass.unLevel(mob);
 		Ability A=null;
 		final List<Ability> lose=new ArrayList<Ability>();
@@ -455,13 +476,14 @@ public class CoffeeLevels extends StdLibrary implements ExpLevelLibrary
 		mob.delExpertise(null); // clears the cache
 		CMLib.achievements().possiblyBumpAchievement(mob, AchievementLibrary.Event.LEVELSGAINED, -1, mob);
 		CMLib.achievements().possiblyBumpAchievement(mob, AchievementLibrary.Event.CLASSLEVELSGAINED, -1, mob);
+		CMLib.achievements().possiblyBumpAchievement(mob, AchievementLibrary.Event.LEVELDOWN, 1, mob);
+		CMLib.achievements().possiblyBumpAchievement(mob, AchievementLibrary.Event.CLASSLEVELDOWN, 1, mob);
 		if(mob.isPlayer()
 		&&(!CMLib.flags().isInTheGame(mob, true)))
 			CMLib.database().DBUpdatePlayerMOBOnly(mob);
 	}
 
-	@Override
-	public void loseExperience(final MOB mob, final String sourceId, int amount)
+	protected void loseExperience(final MOB mob, final String sourceId, int amount)
 	{
 		if((mob==null)||(mob.soulMate()!=null))
 			return;
@@ -486,11 +508,12 @@ public class CoffeeLevels extends StdLibrary implements ExpLevelLibrary
 		while(checkAgain
 		&&(mob.getExperience()<neededLowest)
 		&&(mob.basePhyStats().level()>1)
+		&&(!CMSecurity.isDisabled(CMSecurity.DisFlag.UNLEVELXP))
 		&&(neededLowest>0))
 		{
 			checkAgain=false;
 			final int baseLevel = mob.basePhyStats().level();
-			unLevel(mob);
+			unLevel(mob, false);
 			neededLowest=getLevelExperience(mob, mob.basePhyStats().level()-2);
 			checkAgain = mob.basePhyStats().level() < baseLevel;
 		}
@@ -553,8 +576,7 @@ public class CoffeeLevels extends StdLibrary implements ExpLevelLibrary
 		return amount;
 	}
 
-	@Override
-	public void loseRPExperience(final MOB mob, final String sourceId, int amount)
+	protected void loseRPExperience(final MOB mob, final String sourceId, int amount)
 	{
 		if((mob==null)||(mob.soulMate()!=null))
 			return;
@@ -834,8 +856,7 @@ public class CoffeeLevels extends StdLibrary implements ExpLevelLibrary
 		return newMods.toArray(new ModXP[newMods.size()]);
 	}
 
-	@Override
-	public void gainExperience(final MOB mob, final String sourceId, final MOB victim, String homageMessage, int amount, final boolean quiet)
+	protected void gainExperience(final MOB mob, final String sourceId, final MOB victim, String homageMessage, int amount, final boolean quiet)
 	{
 		if(mob==null)
 			return;
@@ -931,8 +952,7 @@ public class CoffeeLevels extends StdLibrary implements ExpLevelLibrary
 		checkedLevelGains(mob);
 	}
 
-	@Override
-	public void gainRPExperience(final MOB mob, final String sourceId, final MOB target, final String homageMessage, int amount, final boolean quiet)
+	protected void gainRPExperience(final MOB mob, final String sourceId, final MOB target, final String homageMessage, int amount, final boolean quiet)
 	{
 		if(mob==null)
 			return;
@@ -1239,7 +1259,7 @@ public class CoffeeLevels extends StdLibrary implements ExpLevelLibrary
 				final Ability A=mob.fetchAbility(newAbilityID);
 				if(A!=null)
 				{
-					final String type=Ability.ACODE_DESCS[(A.classificationCode()&Ability.ALL_ACODES)].toLowerCase();
+					final String type=Ability.ACODE.DESCS.get((A.classificationCode()&Ability.ALL_ACODES)).toLowerCase();
 					mob.tell(L("^NYou have learned the @x1 ^H@x2^?.^N",type,A.name()));
 				}
 			}
@@ -1289,6 +1309,8 @@ public class CoffeeLevels extends StdLibrary implements ExpLevelLibrary
 		}
 
 		CMLib.achievements().possiblyBumpAchievement(mob, AchievementLibrary.Event.LEVELSGAINED, 1, mob);
+		CMLib.achievements().possiblyBumpAchievement(mob, AchievementLibrary.Event.LEVELUP, 1, mob);
+		CMLib.achievements().possiblyBumpAchievement(mob, AchievementLibrary.Event.CLASSLEVELUP, 1, mob);
 		CMLib.achievements().possiblyBumpAchievement(mob, AchievementLibrary.Event.CLASSLEVELSGAINED, 1, mob);
 		if(mob.isPlayer()
 		&&(!CMLib.flags().isInTheGame(mob, true)))

@@ -216,6 +216,7 @@ public class Carpentry extends EnhancedCraftingSkill implements ItemCraftor
 			case FURNITURE_SLEEP:
 			case FURNITURE_SIT:
 			case FURNITURE_TABLE:
+			case FURNITURE_HOOK:
 				return true;
 			default:
 				return false;
@@ -609,15 +610,16 @@ public class Carpentry extends EnhancedCraftingSkill implements ItemCraftor
 			if((buildingI instanceof Container)
 			&&(!(buildingI instanceof Armor)))
 			{
+				final String[] allTypes=CMParms.parseAny(misctype, "|", true).toArray(new String[0]);
 				if(capacity>0)
 				{
 					((Container)buildingI).setCapacity(capacity+woodRequired);
 					((Container)buildingI).setContainTypes(canContain);
 				}
-				if(misctype.equalsIgnoreCase("LID"))
+				if(CMParms.contains(allTypes, "LID"))
 					((Container)buildingI).setDoorsNLocks(true,false,true,false,false,false);
 				else
-				if(misctype.equalsIgnoreCase("LOCK"))
+				if(CMParms.contains(allTypes, "LOCK"))
 				{
 					((Container)buildingI).setDoorsNLocks(true,false,true,true,false,true);
 					((Container)buildingI).setKeyName(Double.toString(Math.random()));

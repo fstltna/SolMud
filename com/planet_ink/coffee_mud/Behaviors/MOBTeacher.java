@@ -74,8 +74,7 @@ public class MOBTeacher extends CombatAbilities
 		&&(mob.baseCharStats().getMyClass(0).ID().equals("StdCharClass"))
 		&&(!C.ID().equals("StdCharClass")))
 		{
-			mob.baseCharStats().setMyClasses(C.ID());
-			mob.baseCharStats().setMyLevels(""+mob.phyStats().level());
+			mob.baseCharStats().setAllClassInfo(C.ID(), ""+mob.phyStats().level());
 			mob.recoverCharStats();
 			return;
 		}
@@ -213,8 +212,7 @@ public class MOBTeacher extends CombatAbilities
 
 	protected void ensureCharClass()
 	{
-		myMOB.baseCharStats().setMyClasses("StdCharClass");
-		myMOB.baseCharStats().setMyLevels(""+myMOB.phyStats().level());
+		myMOB.baseCharStats().setAllClassInfo("StdCharClass", ""+myMOB.phyStats().level());
 		myMOB.recoverCharStats();
 
 		final Map<String,Ability> myAbles=new HashMap<String,Ability>();
@@ -538,7 +536,8 @@ public class MOBTeacher extends CombatAbilities
 				}
 
 				teachA = (Ability)teachA.copyOf();
-				final int prof75=(int)Math.round(CMath.mul(CMLib.ableMapper().getMaxProficiency(student,true,teachA.ID()),0.75));
+				final double max75 =CMath.div(CMProps.getIntVar(CMProps.Int.PRACMAXPCT), 100.0);
+				final int prof75=(int)Math.round(CMath.mul(CMLib.ableMapper().getMaxProficiency(student,true,teachA.ID()),max75));
 				teachA.setProficiency(prof75/2);
 				CMLib.expertises().postTeach(monster,student,teachA);
 				monster.baseCharStats().setStat(CharStats.STAT_INTELLIGENCE,19);

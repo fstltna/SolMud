@@ -4,12 +4,7 @@ import com.planet_ink.coffee_mud.core.*;
 import com.planet_ink.coffee_mud.core.CMSecurity.DbgFlag;
 import com.planet_ink.coffee_mud.core.collections.*;
 import com.planet_ink.coffee_mud.core.collections.MultiEnumeration.MultiEnumeratorBuilder;
-import com.planet_ink.coffee_mud.core.interfaces.BoundedObject;
-import com.planet_ink.coffee_mud.core.interfaces.BoundedObject.BoundedCube;
-import com.planet_ink.coffee_mud.core.interfaces.LandTitle;
-import com.planet_ink.coffee_mud.core.interfaces.MsgListener;
-import com.planet_ink.coffee_mud.core.interfaces.PrivateProperty;
-import com.planet_ink.coffee_mud.core.interfaces.SpaceObject;
+import com.planet_ink.coffee_mud.core.interfaces.*;
 import com.planet_ink.coffee_mud.Libraries.interfaces.*;
 import com.planet_ink.coffee_mud.Abilities.interfaces.*;
 import com.planet_ink.coffee_mud.Areas.interfaces.*;
@@ -50,6 +45,7 @@ public class CityCafe extends StdLibrary implements CityMap
 
 	protected List<PostOffice>			postOfficeList			= new SVector<PostOffice>();
 	protected List<Auctioneer>			auctionHouseList		= new SVector<Auctioneer>();
+	protected List<CraftBroker>			craftBrokerList			= new SVector<CraftBroker>();
 	protected List<Banker>				bankList				= new SVector<Banker>();
 	protected List<Librarian>			libraryList				= new SVector<Librarian>();
 	protected Map<String, Set<Places>>	holyPlaces				= new SHashtable<String, Set<Places>>();
@@ -145,6 +141,56 @@ public class CityCafe extends StdLibrary implements CityMap
 		for (final Auctioneer C : auctionHouseList)
 		{
 			if((C.auctionHouse().equalsIgnoreCase(chain))
+			&&(CMLib.map().getStartArea(C)==A))
+				return C;
+		}
+
+		return null;
+	}
+
+	@Override
+	public Enumeration<CraftBroker> craftBrokers()
+	{
+		return new IteratorEnumeration<CraftBroker>(craftBrokerList.iterator());
+	}
+
+	public int numCraftBrokers()
+	{
+		return craftBrokerList.size();
+	}
+
+	@Override
+	public void addCraftBroker(final CraftBroker newOne)
+	{
+		if (!craftBrokerList.contains(newOne))
+		{
+			craftBrokerList.add(newOne);
+		}
+	}
+
+	@Override
+	public void delCraftBroker(final CraftBroker oneToDel)
+	{
+		craftBrokerList.remove(oneToDel);
+	}
+
+	@Override
+	public CraftBroker getCraftBroker(final String chain, final String areaNameOrBranch)
+	{
+		for (final CraftBroker C : craftBrokerList)
+		{
+			if((C.brokerChain().equalsIgnoreCase(chain))
+			&&(C.brokerChain().equalsIgnoreCase(areaNameOrBranch)))
+				return C;
+		}
+
+		final Area A=CMLib.map().findArea(areaNameOrBranch);
+		if(A==null)
+			return null;
+
+		for (final CraftBroker C : craftBrokerList)
+		{
+			if((C.brokerChain().equalsIgnoreCase(chain))
 			&&(CMLib.map().getStartArea(C)==A))
 				return C;
 		}

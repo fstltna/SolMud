@@ -192,6 +192,7 @@ public class SVector<T> implements Serializable, Iterable<T>, Collection<T>, CLi
 	}
 
 	@SuppressWarnings("unchecked")
+	@Override
 	public Enumeration<T> elements()
 	{
 		if(list.size()==0)
@@ -242,6 +243,7 @@ public class SVector<T> implements Serializable, Iterable<T>, Collection<T>, CLi
 			throw new IllegalArgumentException();
 	}
 
+	@Override
 	public void trimToSize()
 	{
 	}
@@ -362,6 +364,18 @@ public class SVector<T> implements Serializable, Iterable<T>, Collection<T>, CLi
 	public T get(final int index)
 	{
 		return list.get(index);
+	}
+
+	public T getSafe(final int index)
+	{
+		try
+		{
+			return list.get(index);
+		}
+		catch(Exception e)
+		{
+			return null;
+		}
 	}
 
 	@Override

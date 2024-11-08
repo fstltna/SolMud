@@ -190,9 +190,11 @@ public class Thief_Trap extends ThiefSkill implements RecipeDriven
 				return false;
 			}
 			String name;
-			if(commands.get(0).toString().equalsIgnoreCase("room")
-			||commands.get(0).toString().equalsIgnoreCase("here")
-			||((mob.location()!=null)&&(commands.get(0).toString().equalsIgnoreCase(mob.location().name()))))
+			final String what = commands.get(0).toLowerCase();
+			if(what.equalsIgnoreCase("room")
+			||what.equalsIgnoreCase("here")
+			||((mob.location()!=null)
+				&&(what.equalsIgnoreCase(CMLib.english().removeArticleLead(mob.location().name())))))
 			{
 				name=CMParms.combine(commands,1);
 				while(commands.size()>1)
@@ -395,8 +397,13 @@ public class Thief_Trap extends ThiefSkill implements RecipeDriven
 		List<List<String>> V=(List<List<String>>)Resources.getResource("PARSED_RECIPE: "+getRecipeFilename());
 		if(V==null)
 		{
-			final StringBuffer str=new CMFile(Resources.buildResourcePath("skills")+getRecipeFilename(),null,CMFile.FLAG_LOGERRORS).text();
-			V=new ReadOnlyList<List<String>>(CMLib.utensils().loadRecipeList(str.toString()));
+			V = new Vector<List<String>>();
+			for(final CMFile F : CMFile.getExistingExtendedFiles(Resources.buildResourcePath("skills")+getRecipeFilename(),null,CMFile.FLAG_LOGERRORS))
+			{
+				final StringBuffer str = F.text();
+				V.addAll(CMLib.utensils().loadRecipeList(str.toString(), true));
+			}
+			V=new ReadOnlyList<List<String>>(V);
 			if(V.size()==0)
 				Log.errOut(ID(),"Recipes not found!");
 			Resources.submitResource("PARSED_RECIPE: "+getRecipeFilename(),V);

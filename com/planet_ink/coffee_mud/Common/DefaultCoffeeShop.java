@@ -504,25 +504,23 @@ public class DefaultCoffeeShop implements CoffeeShop
 	public Environmental removeStock(final String name, final MOB mob)
 	{
 		Environmental item=getStock(name,mob);
-		if(item instanceof Ability)
-			return item;
+		for(final ShelfProduct SP : storeInventory)
+		{
+			if(SP.product==item)
+			{
+				final Environmental copyItem=(Environmental)item.copyOf();
+				if(SP.number>1)
+					SP.number--;
+				else
+				{
+					storeInventory.remove(SP);
+					item.destroy();
+				}
+				item=copyItem;
+			}
+		}
 		if(item instanceof Physical)
 		{
-			for(final ShelfProduct SP : storeInventory)
-			{
-				if(SP.product==item)
-				{
-					final Environmental copyItem=(Environmental)item.copyOf();
-					if(SP.number>1)
-						SP.number--;
-					else
-					{
-						storeInventory.remove(SP);
-						item.destroy();
-					}
-					item=copyItem;
-				}
-			}
 			((Physical)item).basePhyStats().setRejuv(PhyStats.NO_REJUV);
 			((Physical)item).phyStats().setRejuv(PhyStats.NO_REJUV);
 		}
@@ -553,20 +551,20 @@ public class DefaultCoffeeShop implements CoffeeShop
 	@Override
 	public void resubmitInventory(final List<Environmental> shopItems)
 	{
-		final DVector addBacks=new DVector(3);
+		final TriadList<Environmental,Integer,Integer> addBacks=new TriadArrayList<Environmental,Integer,Integer>();
 		for(final Environmental shopItem : shopItems)
 		{
 			final int num=numberInStock(shopItem);
 			final int price=stockPrice(shopItem);
-			addBacks.addElement(shopItem,Integer.valueOf(num),Integer.valueOf(price));
+			addBacks.add(shopItem,Integer.valueOf(num),Integer.valueOf(price));
 		}
 		emptyAllShelves();
 		for(int a=0;a<addBacks.size();a++)
 		{
 			addStoreInventory(
-					(Environmental)addBacks.elementAt(a,1),
-					((Integer)addBacks.elementAt(a,2)).intValue(),
-					((Integer)addBacks.elementAt(a,3)).intValue());
+					addBacks.get(a).first,
+					addBacks.get(a).second.intValue(),
+					addBacks.get(a).third.intValue());
 		}
 		for(final Environmental shopItem : shopItems)
 			shopItem.destroy();

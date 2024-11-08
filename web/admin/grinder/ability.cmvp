@@ -30,23 +30,6 @@
         {
             ReShow();
         }
-        function NewAbility()
-        {
-            var abilityid=window.prompt('Enter a new unique ID for your Ability (no spaces):');
-            if(abilityid==null)
-                return;
-            if(abilityid.length==0)
-                return;
-            if(abilityid.indexOf(' ')>=0)
-            {
-                if(window.alert) window.alert('No spaces are allowed in your ID!');
-                return;
-            }
-            document.RESOURCES.NEWABILITYID.value=abilityid;
-            document.RESOURCES.FUNCTION.value='REABILITY';
-            document.RESOURCES.action='/grinder/abilitydo.cmvp';
-            document.RESOURCES.submit();
-        }
         function Delete()
         {
             if(confirm('Delete this generic ability?! Confirm!'))
@@ -62,6 +45,11 @@
         function EditDone()
         {
             @if?AbilityData?ISNEWABILITY@
+                if(document.RESOURCES.NEWID.value.indexOf(' ')>=0)
+                {
+                    alert('Spaces are not allowed in Ability IDs');
+                    return;
+                }
                 if(confirm('Create this new ability?'))
             @else@
                 @if?AbilityData?ISGENERIC@
@@ -97,12 +85,6 @@
         {
             document.RESOURCES.FUNCTION.value='';
             document.RESOURCES.action='/grinder/ability.cmvp';
-            document.RESOURCES.submit();
-        }
-        function ReAbility()
-        {
-            document.RESOURCES.FUNCTION.value='REABILITY';
-            document.RESOURCES.action='/grinder/abilitydo.cmvp';
             document.RESOURCES.submit();
         }
         function Cancel()
@@ -144,7 +126,7 @@
     <TABLE WIDTH=100% BORDER=1 CELLSPACING=0 CELLPADDING=0>
         <TR>
             <TD><FONT COLOR=YELLOW>Ability ID: </FONT></TD>
-            <TD><FONT COLOR=WHITE>@RequestParameter?ABILITY@</FONT></TD>
+            <TD><INPUT TYPE=TEXT SIZE=30 MAXLENGTH=100 NAME=NEWID VALUE="@RequestParameter?ABILITY@"></TD>
         </TR>
         <TR>
             <TD><FONT COLOR=YELLOW>Name: </FONT></TD>
@@ -166,12 +148,12 @@
                 @AbilityData?WORDLISTS&NEXT@
                 <TR>
                     <TD><FONT COLOR=YELLOW>@RequestParameter?WLCOUNTER@ letter words:<BR><FONT SIZE=-1>(comma delimited)</FONT></FONT></TD>
-                    <TD><INPUT TYPE=TEXT SIZE=60 NAME=@RequestParameter?WORDLISTNUM@ VALUE="@RequestParameter?@@RequestParameter?WORDLISTNUM@@ @"></TD>
+                    <TD><INPUT TYPE=TEXT SIZE=55 NAME=@RequestParameter?WORDLISTNUM@ VALUE="@RequestParameter?@@RequestParameter?WORDLISTNUM@@ @"></TD>
                 </TR>
             @back@
             <TR>
                 <TD><FONT COLOR=YELLOW>@RequestParameter?WLCOUNTER@ letter words<BR><FONT SIZE=-1>(comma delimited)</FONT>: </FONT></TD>
-                <TD><INPUT TYPE=TEXT SIZE=60 NAME=@RequestParameter?WORDLISTNEXT@ VALUE=""></TD>
+                <TD><INPUT TYPE=TEXT SIZE=55 NAME=@RequestParameter?WORDLISTNEXT@ VALUE=""></TD>
             </TR>
             <TR>
                 <TD></TD>
@@ -406,7 +388,7 @@
                     <FONT COLOR=YELLOW>Room Mask: </FONT><BR>
                 </TD>
                 <TD>
-                    <INPUT TYPE=TEXT SIZE=60 MAXLENGTH=250 NAME=ROOMMASK VALUE="@AbilityData?ROOMMASK@">
+                    <INPUT TYPE=TEXT SIZE=55 MAXLENGTH=250 NAME=ROOMMASK VALUE="@AbilityData?ROOMMASK@">
                     <BR><A href="javascript:openUpHelp('ZAPPERMASKS');"><FONT COLOR=PINK><I>zapper-mask help</I></FONT></A>
                 </TD>
             </TR>
@@ -415,7 +397,7 @@
                     <FONT COLOR=YELLOW>Player Mask: </FONT><BR>
                 </TD>
                 <TD>
-                    <INPUT TYPE=TEXT SIZE=60 MAXLENGTH=250 NAME=PLAYMASK VALUE="@AbilityData?PLAYMASK@">
+                    <INPUT TYPE=TEXT SIZE=55 MAXLENGTH=250 NAME=PLAYMASK VALUE="@AbilityData?PLAYMASK@">
                     <BR><A href="javascript:openUpHelp('ZAPPERMASKS');"><FONT COLOR=PINK><I>zapper-mask help</I></FONT></A>
                 </TD>
             </TR>
@@ -432,7 +414,7 @@
                     <FONT COLOR=YELLOW>Start Message: </FONT><BR>
                 </TD>
                 <TD>
-                    <INPUT TYPE=TEXT SIZE=60 MAXLENGTH=180 NAME=MSGSTART VALUE="@AbilityData?MSGSTART@">
+                    <INPUT TYPE=TEXT SIZE=55 MAXLENGTH=180 NAME=MSGSTART VALUE="@AbilityData?MSGSTART@">
                 </TD>
             </TR>
             <TR>
@@ -440,7 +422,7 @@
                     <FONT COLOR=YELLOW>Found Message: </FONT><BR>
                 </TD>
                 <TD>
-                    <INPUT TYPE=TEXT SIZE=60 MAXLENGTH=180 NAME=MSGFOUND VALUE="@AbilityData?MSGFOUND@">
+                    <INPUT TYPE=TEXT SIZE=55 MAXLENGTH=180 NAME=MSGFOUND VALUE="@AbilityData?MSGFOUND@">
                 </TD>
             </TR>
             <TR>
@@ -448,7 +430,7 @@
                     <FONT COLOR=YELLOW>Not Found Msg: </FONT><BR>
                 </TD>
                 <TD>
-                    <INPUT TYPE=TEXT SIZE=60 MAXLENGTH=180 NAME=MSGNOTFOUND VALUE="@AbilityData?MSGNOTFOUND@">
+                    <INPUT TYPE=TEXT SIZE=55 MAXLENGTH=180 NAME=MSGNOTFOUND VALUE="@AbilityData?MSGNOTFOUND@">
                 </TD>
             </TR>
             <TR>
@@ -456,7 +438,7 @@
                     <FONT COLOR=YELLOW>Complete Msg: </FONT><BR>
                 </TD>
                 <TD>
-                    <INPUT TYPE=TEXT SIZE=60 MAXLENGTH=180 NAME=MSGCOMPLETE VALUE="@AbilityData?MSGCOMPLETE@">
+                    <INPUT TYPE=TEXT SIZE=55 MAXLENGTH=180 NAME=MSGCOMPLETE VALUE="@AbilityData?MSGCOMPLETE@">
                 </TD>
             </TR>
             <TR>
@@ -704,7 +686,7 @@
             <TR>
                 <TD><FONT COLOR=YELLOW>Affect String: </FONT></TD>
                 <TD>
-                    <INPUT TYPE=TEXT SIZE=60 MAXLENGTH=100 NAME=DISPLAY VALUE="@AbilityData?DISPLAY@">
+                    <INPUT TYPE=TEXT SIZE=55 MAXLENGTH=100 NAME=DISPLAY VALUE="@AbilityData?DISPLAY@">
                 </TD>
             </TR>
             <TR>
@@ -747,6 +729,12 @@
                 </TD>
             </TR>
             <TR>
+                <TD><FONT COLOR=YELLOW>Num. Args: </FONT></TD>
+                <TD>
+                    <INPUT TYPE-TEXT SIZE=5 NAME=NUMARGS VALUE="@AbilityData?NUMARGS@"/>
+                </TD>
+            </TR>
+            <TR>
                 <TD><FONT COLOR=YELLOW>Can Affect: </FONT></TD>
                 <TD>
                     <SELECT NAME=CANAFFECTMASK MULTIPLE>@AbilityData?CANAFFECTMASK@</SELECT>
@@ -778,7 +766,7 @@
                     <A HREF="javascript:OpenUp('ahelp.cmvp','PROP_HEREADJUSTER')"><FONT COLOR=WHITE><I>?</I></FONT></a>
                 </TD>
                 <TD>
-                    <INPUT TYPE=TEXT SIZE=60 MAXLENGTH=255 NAME=HERESTATS VALUE="@AbilityData?HERESTATS@">
+                    <INPUT TYPE=TEXT SIZE=55 MAXLENGTH=255 NAME=HERESTATS VALUE="@AbilityData?HERESTATS@">
                     <BR>
                     <FONT SIZE=-1 COLOR=WHITE>@x1=caster level, @x2=target level, @x3=level expertise, @x4-@x8=x1-x5 expertise, @x9=adjusted caster level</FONT>
                 </TD>
@@ -789,7 +777,7 @@
                     <A HREF="javascript:OpenUp('ahelp.cmvp','MASKS')"><FONT COLOR=WHITE><I>?</I></FONT></a>
                 </TD>
                 <TD>
-                    <INPUT TYPE=TEXT SIZE=60 MAXLENGTH=255 NAME=CASTMASK VALUE="@AbilityData?CASTMASK@">
+                    <INPUT TYPE=TEXT SIZE=55 MAXLENGTH=255 NAME=CASTMASK VALUE="@AbilityData?CASTMASK@">
                 </TD>
             </TR>
             <TR>
@@ -798,7 +786,7 @@
                     <A HREF="javascript:OpenUp('ahelp.cmvp','SCRIPTABLE')"><FONT COLOR=WHITE><I>?</I></FONT></a>
                 </TD>
                 <TD>
-                    <TEXTAREA ROWS=10 COLS=55 NAME=SCRIPT>@AbilityData?SCRIPT@</TEXTAREA>
+                    <TEXTAREA ROWS=10 COLS=50 NAME=SCRIPT>@AbilityData?SCRIPT@</TEXTAREA>
                 </TD>
             </TR>
             <TR>
@@ -807,43 +795,43 @@
                     <A HREF="javascript:OpenUp('ahelp.cmvp','MASKS')"><FONT COLOR=WHITE><I>?</I></FONT></a>
                 </TD>
                 <TD>
-                    <INPUT TYPE=TEXT SIZE=60 MAXLENGTH=255 NAME=TARGETMASK VALUE="@AbilityData?TARGETMASK@">
+                    <INPUT TYPE=TEXT SIZE=55 MAXLENGTH=255 NAME=TARGETMASK VALUE="@AbilityData?TARGETMASK@">
                 </TD>
             </TR>
             <TR>
                 <TD><FONT COLOR=YELLOW>Target Fail Msg: </FONT></TD>
                 <TD>
-                    <INPUT TYPE=TEXT SIZE=60 MAXLENGTH=255 NAME=TARGETFAILMSG VALUE="@AbilityData?TARGETFAILMSG@">
+                    <INPUT TYPE=TEXT SIZE=55 MAXLENGTH=255 NAME=TARGETFAILMSG VALUE="@AbilityData?TARGETFAILMSG@">
                 </TD>
             </TR>
             <TR>
                 <TD><FONT COLOR=YELLOW>Fizzle Message: </FONT></TD>
                 <TD>
-                    <INPUT TYPE=TEXT SIZE=60 MAXLENGTH=255 NAME=FIZZLEMSG VALUE="@AbilityData?FIZZLEMSG@">
+                    <INPUT TYPE=TEXT SIZE=55 MAXLENGTH=255 NAME=FIZZLEMSG VALUE="@AbilityData?FIZZLEMSG@">
                 </TD>
             </TR>
             <TR>
                 <TD><FONT COLOR=YELLOW>Auto-Cast Message: </FONT></TD>
                 <TD>
-                    <INPUT TYPE=TEXT SIZE=60 MAXLENGTH=255 NAME=AUTOCASTMSG VALUE="@AbilityData?AUTOCASTMSG@">
+                    <INPUT TYPE=TEXT SIZE=55 MAXLENGTH=255 NAME=AUTOCASTMSG VALUE="@AbilityData?AUTOCASTMSG@">
                 </TD>
             </TR>
             <TR>
                 <TD><FONT COLOR=YELLOW>Normal-Cast Message: </FONT></TD>
                 <TD>
-                    <INPUT TYPE=TEXT SIZE=60 MAXLENGTH=255 NAME=CASTMSG VALUE="@AbilityData?CASTMSG@">
+                    <INPUT TYPE=TEXT SIZE=55 MAXLENGTH=255 NAME=CASTMSG VALUE="@AbilityData?CASTMSG@">
                 </TD>
             </TR>
             <TR>
                 <TD><FONT COLOR=YELLOW>Post-Cast Message: </FONT></TD>
                 <TD>
-                    <INPUT TYPE=TEXT SIZE=60 MAXLENGTH=255 NAME=POSTCASTMSG VALUE="@AbilityData?POSTCASTMSG@">
+                    <INPUT TYPE=TEXT SIZE=55 MAXLENGTH=255 NAME=POSTCASTMSG VALUE="@AbilityData?POSTCASTMSG@">
                 </TD>
             </TR>
             <TR>
                 <TD><FONT COLOR=YELLOW>Uninvoke Message: </FONT></TD>
                 <TD>
-                    <INPUT TYPE=TEXT SIZE=60 MAXLENGTH=255 NAME=UNINVOKEMSG VALUE="@AbilityData?UNINVOKEMSG@">
+                    <INPUT TYPE=TEXT SIZE=55 MAXLENGTH=255 NAME=UNINVOKEMSG VALUE="@AbilityData?UNINVOKEMSG@">
                 </TD>
             </TR>
             <TR>
@@ -886,7 +874,7 @@
         @endif@
         <TR>
             <TD><FONT COLOR=YELLOW>Help Entry: </FONT></TD>
-            <TD><TEXTAREA ROWS=10 COLS=55 NAME=GENHELP>@AbilityData?GENHELP@</TEXTAREA></TD>
+            <TD><TEXTAREA ROWS=10 COLS=50 NAME=GENHELP>@AbilityData?GENHELP@</TEXTAREA></TD>
         </TR>
         
     </TABLE>

@@ -234,6 +234,13 @@ public class Qualify  extends Skills
 		return msg;
 	}
 
+	public String plural(final int amt, final String wd)
+	{
+		if(amt == 1)
+			return wd;
+		return CMLib.english().makePlural(wd);
+	}
+
 	@Override
 	public boolean execute(final MOB mob, final List<String> commands, final int metaFlags)
 		throws java.io.IOException
@@ -242,7 +249,7 @@ public class Qualify  extends Skills
 		if(commands.size()>0)
 			commands.remove(0);
 		final boolean uniqueOnly=pickUniqueFlag(commands,false);
-		final String qual=CMParms.combine(commands,1).toUpperCase();
+		final String qual=CMParms.combine(commands,0).toUpperCase();
 		final boolean shortOnly=false;
 		final boolean showAll=qual.length()==0;
 		int acode=-1;
@@ -343,20 +350,20 @@ public class Qualify  extends Skills
 		{
 			final String uqual=qual.toUpperCase();
 			final String qual2=uqual.replace(' ','_');
-			for(int i=1;i<Ability.DOMAIN_DESCS.length;i++)
+			for(int i=1;i<Ability.DOMAIN.DESCS.size();i++)
 			{
-				if (Ability.DOMAIN_DESCS[i].startsWith(uqual)
-				||Ability.DOMAIN_DESCS[i].startsWith(qual2))
+				if (Ability.DOMAIN.DESCS.get(i).startsWith(uqual)
+				||Ability.DOMAIN.DESCS.get(i).startsWith(qual2))
 				{
 					domain = i << 5;
 					break;
 				}
 				else
 				{
-					final int x=Ability.DOMAIN_DESCS[i].indexOf('/');
+					final int x=Ability.DOMAIN.DESCS.get(i).indexOf('/');
 					if ((x >= 0)
-					&& (Ability.DOMAIN_DESCS[i].substring(x + 1).startsWith(uqual)
-						||Ability.DOMAIN_DESCS[i].substring(x + 1).startsWith(qual2)))
+					&& (Ability.DOMAIN.DESCS.get(i).substring(x + 1).startsWith(uqual)
+						||Ability.DOMAIN.DESCS.get(i).substring(x + 1).startsWith(qual2)))
 					{
 						domain = i << 5;
 						break;
@@ -365,7 +372,7 @@ public class Qualify  extends Skills
 			}
 			if(domain>0)
 			{
-				domainName=CMStrings.capitalizeAllFirstLettersAndLower(Ability.DOMAIN_DESCS[domain>>5].replace('_',' '));
+				domainName=CMStrings.capitalizeAllFirstLettersAndLower(Ability.DOMAIN.DESCS.get(domain>>5).replace('_',' '));
 				msg.append(getQualifiedAbilities(mob,mob,Ability.ACODE_SPELL,domain,"\n\r^H"+domainName+" abilities:^? ",shortOnly, uniqueOnly));
 			}
 		}
@@ -382,17 +389,18 @@ public class Qualify  extends Skills
 			)
 			{
 				int col=1;
+				final Train trainC = (Train)CMClass.getCommand("Train");
+				final Map<CharClass,Integer> costs = trainC.getAvailableCharClasses(mob);
 				final StringBuffer msg2=new StringBuffer("");
-				for(final Enumeration<CharClass> c=CMClass.charClasses();c.hasMoreElements();)
+				for(final CharClass C : costs.keySet())
 				{
-					final CharClass C=c.nextElement();
+					final Integer trainCost = costs.get(C);
 					final StringBuffer thisLine=new StringBuffer("");
-					if((mob.charStats().getCurrentClass()!=C)
-					&&(CMLib.login().canChangeToThisClass(mob, C, -1)))
+					if(mob.charStats().getCurrentClass()!=C)
 					{
 						thisLine.append("^N[^H"+CMStrings.padRight(""+1,COL_LEN1)+"^?] "
-						+CMStrings.padRight("^<HELP^>"+C.name()+"^</HELP^>",COL_LEN2)+" "
-						+CMStrings.padRight(L("1 train"),COL_LEN3));
+							+CMStrings.padRight("^<HELP^>"+C.name()+"^</HELP^>",COL_LEN2)+" "
+							+CMStrings.padRight(trainCost.intValue()+" "+plural(trainCost.intValue(),"train"),COL_LEN3));
 						if((++col)>2)
 						{
 							thisLine.append("\n\r");
@@ -504,18 +512,18 @@ public class Qualify  extends Skills
 			{
 				StringBuilder list = new StringBuilder("");
 				final Set<Integer> qSet = this.getQualifiedTypes(mob);
-				for(int i=0;i<Ability.ACODE_DESCS.length;i++)
+				for(int i=0;i<Ability.ACODE.DESCS.size();i++)
 				{
 					if(qSet.contains(Integer.valueOf(i)))
 					{
-						list.append(Ability.ACODE_DESCS[i]).append(", ");
+						list.append(Ability.ACODE.DESCS.get(i)).append(", ");
 					}
 				}
-				for(int i=1;i<Ability.DOMAIN_DESCS.length;i++)
+				for(int i=1;i<Ability.DOMAIN.DESCS.size();i++)
 				{
 					if(qSet.contains(Integer.valueOf(i << 5)))
 					{
-						list.append(Ability.DOMAIN_DESCS[i]).append(", ");
+						list.append(Ability.DOMAIN.DESCS.get(i)).append(", ");
 					}
 				}
 				if(list.length()>0)

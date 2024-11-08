@@ -2,7 +2,6 @@ package com.planet_ink.coffee_mud.Areas;
 import com.planet_ink.coffee_mud.core.interfaces.*;
 import com.planet_ink.coffee_mud.core.*;
 import com.planet_ink.coffee_mud.core.collections.*;
-import com.planet_ink.coffee_mud.core.interfaces.BoundedObject.BoundedCube;
 import com.planet_ink.coffee_mud.Abilities.interfaces.*;
 import com.planet_ink.coffee_mud.Areas.interfaces.*;
 import com.planet_ink.coffee_mud.Behaviors.interfaces.*;
@@ -41,8 +40,8 @@ public class StdThinPlanet extends StdThinArea implements SpaceObject
 		return "StdThinPlanet";
 	}
 
-	protected long[]	coordinates	= new long[3];
-	protected double[]	direction	= new double[2];
+	protected Coord3D	coordinates	= new Coord3D();
+	protected Dir3D		direction	= new Dir3D();
 	protected long		radius;
 
 	public StdThinPlanet()
@@ -50,7 +49,7 @@ public class StdThinPlanet extends StdThinArea implements SpaceObject
 		super();
 
 		myClock = (TimeClock)CMClass.getCommon("DefaultTimeClock");
-		coordinates=new long[]{Math.round(Long.MAX_VALUE*Math.random()),Math.round(Long.MAX_VALUE*Math.random()),Math.round(Long.MAX_VALUE*Math.random())};
+		coordinates=new Coord3D(new long[]{Math.round(Long.MAX_VALUE*Math.random()),Math.round(Long.MAX_VALUE*Math.random()),Math.round(Long.MAX_VALUE*Math.random())});
 		final Random random=new Random(System.currentTimeMillis());
 		radius=SpaceObject.Distance.PlanetRadius.dm + (random.nextLong() % (SpaceObject.Distance.PlanetRadius.dm / 20));
 	}
@@ -86,26 +85,26 @@ public class StdThinPlanet extends StdThinArea implements SpaceObject
 	}
 
 	@Override
-	public long[] coordinates()
+	public Coord3D coordinates()
 	{
 		return coordinates;
 	}
 
 	@Override
-	public void setCoords(final long[] coords)
+	public void setCoords(final Coord3D coords)
 	{
-		if((coords!=null)&&(coords.length==3))
+		if((coords!=null)&&(coords.length()==3))
 			CMLib.space().moveSpaceObject(this,coords);
 	}
 
 	@Override
-	public double[] direction()
+	public Dir3D direction()
 	{
 		return direction;
 	}
 
 	@Override
-	public void setDirection(final double[] dir)
+	public void setDirection(final Dir3D dir)
 	{
 		direction = dir;
 	}
@@ -140,6 +139,12 @@ public class StdThinPlanet extends StdThinArea implements SpaceObject
 	public long radius()
 	{
 		return radius;
+	}
+
+	@Override
+	public Coord3D center()
+	{
+		return coordinates();
 	}
 
 	@Override
@@ -178,8 +183,14 @@ public class StdThinPlanet extends StdThinArea implements SpaceObject
 	}
 
 	@Override
-	public BoundedCube getBounds()
+	public BoundedCube getCube()
 	{
-		return new BoundedObject.BoundedCube(coordinates(),radius());
+		return new BoundedCube(coordinates(),radius());
+	}
+
+	@Override
+	public BoundedSphere getSphere()
+	{
+		return new BoundedSphere(coordinates(),radius());
 	}
 }

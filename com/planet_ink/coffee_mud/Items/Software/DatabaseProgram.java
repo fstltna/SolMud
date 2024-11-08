@@ -2,7 +2,6 @@ package com.planet_ink.coffee_mud.Items.Software;
 
 import com.planet_ink.coffee_mud.Items.Basic.StdItem;
 import com.planet_ink.coffee_mud.core.interfaces.*;
-import com.planet_ink.coffee_mud.core.interfaces.BoundedObject.BoundedCube;
 import com.planet_ink.coffee_mud.core.threads.TimeMs;
 import com.planet_ink.coffee_mud.core.*;
 import com.planet_ink.coffee_mud.core.MiniJSON.JSONObject;
@@ -25,6 +24,7 @@ import com.planet_ink.coffee_mud.Races.interfaces.*;
 
 import java.net.*;
 import java.io.*;
+import java.math.BigDecimal;
 import java.util.*;
 
 /*
@@ -73,6 +73,7 @@ public class DatabaseProgram extends GenShipProgram
 		recoverPhyStats();
 	}
 
+	@Override
 	protected void decache()
 	{
 		scr.setLength(0);
@@ -98,8 +99,8 @@ public class DatabaseProgram extends GenShipProgram
 					final JSONObject cubeData = data.getCheckedJSONObject("SPACECUBE");
 					final String coordStr=cubeData.getCheckedString("COORDS");
 					final String radiuStr=cubeData.getCheckedString("RADIUS");
-					final long[] coords = convertStringToCoords(coordStr);
-					final Long radiusL=CMLib.english().parseSpaceDistance(radiuStr);
+					final Coord3D coords = convertStringToCoords(coordStr);
+					final BigDecimal radiusL=CMLib.english().parseSpaceDistance(radiuStr);
 					if((coords!=null)
 					&&(radiusL!=null))
 						spaceCube = new BoundedCube(coords,radiusL.longValue());
@@ -158,26 +159,45 @@ public class DatabaseProgram extends GenShipProgram
 	@Override
 	public boolean isCommandString(final String word, final boolean isActive)
 	{
+		if(!isActive)
+			return false;
+		final Vector<String> parsed=CMParms.parse(word);
+		if(parsed.size()==0)
+			return false;
+		boolean actingAlone = true;
 		final ItemPossessor owner = owner();
-		if((owner != null)
-		&&(isActive))
+		if(owner instanceof Computer)
 		{
 			for(final Enumeration<Item> i = owner.items(); i.hasMoreElements();)
 			{
 				final Item I = i.nextElement();
 				if((I instanceof Software)
 				&&(I != this)
-				&&((Software)I).getParentMenu().equals(getParentMenu()))
-					return isActive && word.toLowerCase().startsWith("query ");
+				&&((Software)I).getInternalName().equals(((Computer)owner).getActiveMenu()))
+					actingAlone = false;
 			}
 		}
-		return isActive;
+		String uword=parsed.get(0).toUpperCase();
+		if(uword.equalsIgnoreCase("DATABASE")
+		|| uword.equalsIgnoreCase("DB"))
+		{
+			parsed.remove(0);
+			uword=(parsed.size()>0)?parsed.get(0).toUpperCase():"";
+			actingAlone = true;
+		}
+		if((uword.equals("ADD")&&(actingAlone))
+		|| (uword.equals("DEL")&&(actingAlone))
+		|| (uword.equals("HELP"))
+		|| uword.equals("QUERY")
+		|| (uword.startsWith("SET.")&&(actingAlone)))
+			return true;
+		return false;
 	}
 
 	@Override
 	public String getActivationMenu()
 	{
-		return "DATABASE    : Database Query Software";
+		return "^wDATABASE               ^N: Database Query Software";
 	}
 
 	protected void shutdown()
@@ -208,7 +228,10 @@ public class DatabaseProgram extends GenShipProgram
 	@Override
 	public String getCurrentScreenDisplay()
 	{
-		return scr.toString();
+		final StringBuilder str = new StringBuilder("^X");
+		str.append(CMStrings.centerPreserve(L(" -- Database System -- "),60)).append("^.^N\n\r");
+		str.append(scr.toString());
+		return str.toString();
 	}
 
 	@Override
@@ -240,17 +263,18 @@ public class DatabaseProgram extends GenShipProgram
 		scr.append(s).append("\n\r");
 	}
 
-	protected long[] convertStringToCoords(final String coordStr)
+	@Override
+	protected Coord3D convertStringToCoords(final String coordStr)
 	{
 		final List<String> coordCom = CMParms.parseCommas(coordStr,true);
 		if(coordCom.size()==3)
 		{
-			final long[] coords=new long[3];
+			final Coord3D coords=new Coord3D(new long[3]);
 			for(int i=0;(i<coordCom.size()) && (i<3);i++)
 			{
-				final Long coord=CMLib.english().parseSpaceDistance(coordCom.get(i));
+				final BigDecimal coord=CMLib.english().parseSpaceDistance(coordCom.get(i));
 				if(coord != null)
-					coords[i]=coord.longValue();
+					coords.set(i,coord);
 				else
 					return null;
 			}
@@ -259,7 +283,7 @@ public class DatabaseProgram extends GenShipProgram
 		return null;
 	}
 
-	protected long[] getCheckedCoords(final String key)
+	protected Coord3D getCheckedCoords(final String key)
 	{
 		if((key==null)
 		||(key.length()==0)
@@ -269,9 +293,9 @@ public class DatabaseProgram extends GenShipProgram
 		return convertStringToCoords(key);
 	}
 
-	protected long[] getDataCoords(final String key)
+	protected Coord3D getDataCoords(final String key)
 	{
-		final long[] coords = getCheckedCoords(key);
+		final Coord3D coords = getCheckedCoords(key);
 		if(coords != null)
 			return coords;
 		if(!data.containsKey(key))
@@ -306,7 +330,7 @@ public class DatabaseProgram extends GenShipProgram
 	protected String getDataName(String key)
 	{
 		key=key.toUpperCase().trim();
-		final long[] coords = getCheckedCoords(key);
+		final Coord3D coords = getCheckedCoords(key);
 		if(coords==null)
 		{
 			if(!data.containsKey(key.toUpperCase().trim()))
@@ -340,7 +364,7 @@ public class DatabaseProgram extends GenShipProgram
 			for(final SpaceObject o1 : objs)
 			{
 				if((isDBSpaceObject(o1)||(o instanceof String))
-				&& Arrays.equals(coords, o1.coordinates()))
+				&& (coords.equals(o1.coordinates())))
 					return o1.name();
 			}
 		}
@@ -354,7 +378,7 @@ public class DatabaseProgram extends GenShipProgram
 				for(final SpaceObject o : objs)
 				{
 					if(isDBSpaceObject(o)
-					&& Arrays.equals(coords, o.coordinates()))
+					&&(coords.equals(o.coordinates())))
 						return o.name();
 				}
 			}
@@ -362,7 +386,7 @@ public class DatabaseProgram extends GenShipProgram
 		return "";
 	}
 
-	protected List<SpaceObject> findDBSpaceObjects(final long[] coords, final long radius)
+	protected List<SpaceObject> findDBSpaceObjects(final Coord3D coords, final long radius)
 	{
 		final BoundedCube cube = new BoundedCube(coords,radius);
 		final List<SpaceObject> objs = CMLib.space().getSpaceObjectsInBound(cube);
@@ -384,7 +408,7 @@ public class DatabaseProgram extends GenShipProgram
 			return found;
 		for(final String key : data.keySet())
 		{
-			final long[] dcoords = getDataCoords(key); // looks at keys, AND values
+			final Coord3D dcoords = getDataCoords(key); // looks at keys, AND values
 			if((dcoords != null)
 			&&(cube.contains(dcoords)))
 			{
@@ -395,7 +419,7 @@ public class DatabaseProgram extends GenShipProgram
 				{
 					for(final SpaceObject so : objs)
 					{
-						if(Arrays.equals(so.coordinates(), dcoords)
+						if(so.coordinates().equals(dcoords)
 						&&(!found.contains(so)))
 							found.add(so);
 					}
@@ -417,7 +441,7 @@ public class DatabaseProgram extends GenShipProgram
 					{
 						for(final SpaceObject so : objs)
 						{
-							if(Arrays.equals(so.coordinates(), dcoords)
+							if(so.coordinates().equals(dcoords)
 							&&(!found.contains(so)))
 								found.add(so);
 						}
@@ -445,15 +469,15 @@ public class DatabaseProgram extends GenShipProgram
 		return found;
 	}
 
-	protected String getCustomNotes(final long[] coords)
+	protected String getCustomNotes(final Coord3D coords)
 	{
 		if(data.containsKey("DISABLED"))
 			return "";
 		for(final String key : data.keySet())
 		{
-			final long[] cord = getDataCoords(key);
+			final Coord3D cord = getDataCoords(key);
 			if((cord!=null)
-			&&(Arrays.equals(cord, coords)))
+			&&(cord.equals(coords)))
 			{
 				final Object o = data.get(key);
 				if(getCheckedCoords(key)!=null)
@@ -484,7 +508,7 @@ public class DatabaseProgram extends GenShipProgram
 	protected String getReportOnSpaceObject(final SpaceObject obj)
 	{
 		final StringBuilder str=new StringBuilder("");
-		str.append(CMStrings.padRight("Coord: "+CMLib.english().coordDescShort(obj.coordinates()),40));
+		str.append(CMStrings.padRight("Coord: "+CMLib.english().coordDescShort(obj.coordinates().toLongs()),40));
 		str.append(CMStrings.padRight("Name : "+obj.name(),38));
 		if(obj.getMass()>0)
 			str.append("\n\r").append(CMStrings.padRight(" Mass: "+obj.getMass(),38));
@@ -555,7 +579,7 @@ public class DatabaseProgram extends GenShipProgram
 		return cubeRes;
 	}
 
-	protected String getAllSpaceObjectDataResults(final long[] coords)
+	protected String getAllSpaceObjectDataResults(final Coord3D coords)
 	{
 		final List<SpaceObject> objs = CMLib.space().getSpaceObjectsByCenterpointWithin(coords, 0, 10);
 		if(objs.size()==0)
@@ -569,7 +593,7 @@ public class DatabaseProgram extends GenShipProgram
 		return str.toString();
 	}
 
-	protected String getSpaceObjectDataResults(final String key, final long[] ccoords, final JSONObject jo)
+	protected String getSpaceObjectDataResults(final String key, final Coord3D ccoords, final JSONObject jo)
 	{
 		if(jo.containsKey("COORDS") && jo.containsKey("SPACE"))
 			return getAllSpaceObjectDataResults(getCheckedCoords(jo.get("COORDS").toString()));
@@ -581,15 +605,15 @@ public class DatabaseProgram extends GenShipProgram
 		}
 		String coords = "N/A";
 		if(jo.containsKey("COORDS"))
-			coords=CMLib.english().coordDescShort(getCheckedCoords(jo.get("COORDS").toString()));
+			coords=CMLib.english().coordDescShort(getCheckedCoords(jo.get("COORDS").toString()).toLongs());
 		else
 		if(ccoords != null)
-			coords = CMLib.english().coordDescShort(ccoords);
+			coords = CMLib.english().coordDescShort(ccoords.toLongs());
 		else
 		{
-			final long[] c = getCheckedCoords(key);
+			final Coord3D c = getCheckedCoords(key);
 			if(c != null)
-				coords = CMLib.english().coordDescShort(c);
+				coords = CMLib.english().coordDescShort(c.toLongs());
 		}
 		String name=key;
 		if(jo.containsKey("NAME"))
@@ -621,16 +645,16 @@ public class DatabaseProgram extends GenShipProgram
 			final String s=(String)o;
 			if(s.equalsIgnoreCase("SPACE"))
 			{
-				final long[] coords = this.getCheckedCoords(key);
+				final Coord3D coords = this.getCheckedCoords(key);
 				if(coords == null)
 					return ""; // nothing else to do!
 				return getAllSpaceObjectDataResults(coords);
 			}
-			final long[] coords = this.getCheckedCoords(s);
+			final Coord3D coords = this.getCheckedCoords(s);
 			if((coords != null)
-			&&(data.containsKey(CMParms.toListString(coords))))
+			&&(data.containsKey(CMParms.toListString(coords.toLongs()))))
 			{
-				final Object oo = data.get(CMParms.toListString(coords));
+				final Object oo = data.get(CMParms.toListString(coords.toLongs()));
 				if(oo instanceof String)
 				{
 					final String ss = (String)oo;
@@ -639,7 +663,7 @@ public class DatabaseProgram extends GenShipProgram
 					// ss will never be coords, as its key was
 					// key is not coords, value is s, not space, is coords, so key must be name
 					final StringBuilder str=new StringBuilder("");
-					str.append(CMStrings.padRight("Coord: "+CMLib.english().coordDescShort(coords),40)
+					str.append(CMStrings.padRight("Coord: "+CMLib.english().coordDescShort(coords.toLongs()),40)
 						  +CMStrings.padRight("Entry : "+ss,38));
 					//str.append("\n\r").append(" Name: ").append(key); // keys might be secret
 					return str.toString();
@@ -653,7 +677,7 @@ public class DatabaseProgram extends GenShipProgram
 				else
 				{
 					final StringBuilder str=new StringBuilder("");
-					str.append(CMStrings.padRight("Coord: "+CMLib.english().coordDescShort(coords),40)
+					str.append(CMStrings.padRight("Coord: "+CMLib.english().coordDescShort(coords.toLongs()),40)
 						  +CMStrings.padRight("Entry : "+oo.toString(),38));
 					//str.append("\n\r").append(" Name: ").append(key); // keys might be secret
 					return str.toString();
@@ -664,7 +688,7 @@ public class DatabaseProgram extends GenShipProgram
 			{
 				// key is not coords, value is s, not space, is coords, so key must be name
 				// HOWEVER, those same coords not cross referenced for a note, so nothing, really
-				return CMStrings.padRight("Coord: "+CMLib.english().coordDescShort(coords),40)
+				return CMStrings.padRight("Coord: "+CMLib.english().coordDescShort(coords.toLongs()),40)
 					  +CMStrings.padRight("Name : Unknown",38); // key should be secret
 			}
 			else
@@ -718,7 +742,7 @@ public class DatabaseProgram extends GenShipProgram
 			return spaceObjs;
 		for(final String key : data.keySet())
 		{
-			final long[] coord=this.getCheckedCoords(key);
+			final Coord3D coord=this.getCheckedCoords(key);
 			if((coord!=null)
 			&&((data.get(key).toString().equals("SPACE"))
 				||(data.containsKey(data.get(key)) && data.get(data.get(key)).toString().equals("SPACE"))))
@@ -747,7 +771,7 @@ public class DatabaseProgram extends GenShipProgram
 
 	protected List<SpaceObject> dbQuerySpaceObjects(final String query, final boolean near)
 	{
-		long[] queryCoords = null;
+		Coord3D queryCoords = null;
 		// was the query done by magic word?
 		if(query.equalsIgnoreCase("here"))
 		{
@@ -823,16 +847,17 @@ public class DatabaseProgram extends GenShipProgram
 		return vals;
 	}
 
-	protected Set<String> doKeyQuery(final String query, final boolean noNotes)
+	protected Set<String> doKeyQuery(String query, final boolean noNotes)
 	{
 		final Set<String> keys = new TreeSet<String>();
 		if(data.containsKey("DISABLED"))
 			return keys;
 
+		query = query.toUpperCase().trim();
 		// at this point, query is NOT coords, and is NOT in an embedded space box
-		if(data.containsKey(query.toUpperCase().trim())) // a full name was entered
+		if(data.containsKey(query)) // a full name was entered
 		{
-			keys.add(query.toUpperCase().trim());
+			keys.add(query);
 			return keys;
 		}
 		String q=query;
@@ -842,22 +867,22 @@ public class DatabaseProgram extends GenShipProgram
 			if(query.endsWith("*") && (query.length()>1))
 			{
 				queryType=3;
-				q=query.substring(1,query.length()-1).toUpperCase().trim();
+				q=query.substring(1,query.length()-1).trim();
 			}
 			else
 			{
-				queryType=1;
-				q=query.substring(1).toUpperCase().trim();
+				queryType=2;
+				q=query.substring(1).trim();
 			}
 		}
 		else
 		if(query.endsWith("*"))
 		{
-			queryType=2;
-			q=query.substring(0,query.length()-1).toUpperCase().trim();
+			queryType=1;
+			q=query.substring(0,query.length()-1).trim();
 		}
 		else
-			q=query.toUpperCase().trim();
+			q=query;
 		for(final String key : data.keySet())
 		{
 			final List<String> vals = getValues(key,noNotes);
@@ -1040,7 +1065,7 @@ public class DatabaseProgram extends GenShipProgram
 						&&(objs.size()>0))
 						{
 							if(objs.size()==1)
-								key=CMParms.toListString(objs.iterator().next().coordinates());
+								key=CMParms.toListString(objs.iterator().next().coordinates().toLongs());
 							else
 							if(objs.size()>1)
 							{
@@ -1116,7 +1141,7 @@ public class DatabaseProgram extends GenShipProgram
 							{
 								final JSONObject obj = new JSONObject();
 								obj.put("NAME", message);
-								data.put(key, obj);
+								data.put(key.toUpperCase().trim(), obj);
 								final String resp=L("Entry '@x1' added.",message);
 								addLineToReadableScreen(resp);
 								super.addScreenMessage(resp);
@@ -1152,32 +1177,26 @@ public class DatabaseProgram extends GenShipProgram
 				}
 				return; // done, one way or another
 			}
-			if((parsed.size()==0)
-			||(message.equalsIgnoreCase("QUERY"))
-			||(message.equalsIgnoreCase("HELP")))
+			if(message.equalsIgnoreCase("HELP"))
 			{
-				final StringBuilder msg=new StringBuilder("");
-				msg.append(L("-- @x1 instructions --\n\r",name()));
-				msg.append(L("Search database:\n\r",name()));
-				msg.append(L("  Enter search coordinates, e.g. -100gm,400dm,1000km\n\r"));
-				msg.append(L("  Enter an object name, e.g. Vulcan\n\r"));
-				msg.append(L("  Search for an object, e.g. Vulc*\n\r"));
-				msg.append(L(" * Use special object names HERE, or a sector name.\n\r"));
-				msg.append(L(" * Precede coordinates/name with the word NEAR\n\r"));
-				msg.append(L(" * May need to precede search terms with 'query'\n\r"));
+				final StringBuilder str = new StringBuilder("^.");
 				if(!data.containsKey("DISABLED"))
 				{
-					msg.append(L("Setting names, notes, and fields:\n\r"));
-					msg.append(L("  ADD \"[KEY]\" name\n\r"));
-					msg.append(L("  DEL [KEY]\n\r"));
-					msg.append(L("  SET.NOTE \"[KEY]\" comment\n\r"));
-					if(svcs.containsKey(SWServices.TARGETING))
-						msg.append(L(" * [KEY] can be TARGET, coordinates, search\n\r"));
-					else
-						msg.append(L(" * [KEY] can be coordinates or search\n\r"));
+					str.append("^wADD [X] [NAME]         ^N: Add DB entry [X] w/[NAME]").append("\n\r");
+					str.append("^wDEL [X]                ^N: Delete DB entry [X]").append("\n\r");
+					str.append("^wSET.NOTE [X] [TX]      ^N: Set DB info text [TX]").append("\n\r");
 				}
-				addLineToReadableScreen(msg.toString());
-				super.addScreenMessage(msg.toString());
+				    str.append("^wQUERY [X]              ^N: Search for DB entry [X]").append("\n\r");
+				if(svcs.containsKey(SWServices.TARGETING))
+				{
+					str.append("^W[X]                    ^N: [TARGET], [COORDINATE], search term").append("\n\r");
+					str.append("^W[TARGET]               ^N: name, name*, HERE, sector name").append("\n\r");
+				}
+				else
+					str.append("^W[X]                    ^N: [COORDINATE], or search term").append("\n\r");
+				    str.append("^W[COORDINATE]           ^N: x,y,z (-10gm,40dm,1km); opt: precede w/NEAR").append("\n\r");
+				//addLineToReadableScreen(str.toString());
+				super.addScreenMessage(str.toString());
 				return;
 			}
 			if(uword.equalsIgnoreCase("QUERY"))
@@ -1223,18 +1242,18 @@ public class DatabaseProgram extends GenShipProgram
 			final String NameStr=(res.length>0)?res[0]:"";
 			final String nameStr=(res.length>1)?res[1]:"";
 			final String coordStr=(res.length>2)?res[2]:"";
-			final long[] coords = getCheckedCoords(coordStr);
+			final Coord3D coords = getCheckedCoords(coordStr);
 			final List<SpaceObject> objs = CMLib.space().getSpaceObjectsByCenterpointWithin(coords, 0, 10);
 			for(final SpaceObject o1 : objs)
 			{
 				if(isDBSpaceObject(o1) // separates planets from ships and random Things
-				&& Arrays.equals(coords, o1.coordinates()))
+				&&(coords.equals(o1.coordinates())))
 				{
 					if((this.spaceCube != null)
 					&&(this.spaceCube.contains(coords)))
-						return new Pair<String,String>(CMParms.toListString(coords), o1.name());
+						return new Pair<String,String>(CMParms.toListString(coords.toLongs()), o1.name());
 					else
-						return new Pair<String,String>(CMParms.toListString(coords), L("Object@@x1",coordStr));
+						return new Pair<String,String>(CMParms.toListString(coords.toLongs()), L("Object@@x1",coordStr));
 				}
 			}
 			if(NameStr.length()>0)
@@ -1292,13 +1311,13 @@ public class DatabaseProgram extends GenShipProgram
 		{
 			for(final String parm : parms)
 			{
-				final long[] coords = this.getDataCoords(parm);
+				final Coord3D coords = this.getDataCoords(parm);
 				if(coords != null)
 				{
 					final MOB factoryMOB = CMClass.getFactoryMOB(name(), 1, CMLib.map().roomLocation(this));
 					try
 					{
-						final String code=TechCommand.SWSVCRES.makeCommand(service,new String[] { CMParms.toListString(coords) });
+						final String code=TechCommand.SWSVCRES.makeCommand(service,new String[] { CMParms.toListString(coords.toLongs()) });
 						final CMMsg msg2=CMClass.getMsg(factoryMOB, S, this,
 								CMMsg.NO_EFFECT, null,
 								CMMsg.MSG_ACTIVATE|CMMsg.MASK_ALWAYS|CMMsg.MASK_CNTRLMSG, code,

@@ -937,7 +937,7 @@ public class StdRoom implements Room
 				&&(msg.source().soulMate()==null))
 				{
 					if(msg.source().playerStats().addRoomVisit(this))
-						CMLib.players().bumpPrideStat(msg.source(),AccountStats.PrideStat.ROOMS_EXPLORED, 1);
+						CMLib.players().bumpPrideStat(msg.source(),PrideStats.PrideStat.ROOMS_EXPLORED, 1);
 				}
 				break;
 			}
@@ -1091,7 +1091,8 @@ public class StdRoom implements Room
 			}
 		}
 
-		if(msg.amITarget(this)&&(msg.targetMinor()==CMMsg.TYP_EXPIRE))
+		if(msg.amITarget(this)
+		&&(msg.targetMinor()==CMMsg.TYP_EXPIRE))
 		{
 			synchronized(CMClass.getSync(("SYNC"+roomID())))
 			{
@@ -2138,7 +2139,7 @@ public class StdRoom implements Room
 		{
 			return inhabitants.elementAt(i);
 		}
-		catch(final java.lang.ArrayIndexOutOfBoundsException x)
+		catch(final IndexOutOfBoundsException x)
 		{
 		}
 		return null;
@@ -2403,7 +2404,7 @@ public class StdRoom implements Room
 		{
 			return contents.elementAt(i);
 		}
-		catch(final java.lang.ArrayIndexOutOfBoundsException x)
+		catch(final IndexOutOfBoundsException x)
 		{
 		}
 		return null;
@@ -2471,13 +2472,22 @@ public class StdRoom implements Room
 	}
 
 	@Override
-	public PhysicalAgent fetchFromMOBRoomItemExit(final MOB mob, final Item goodLocation, String thingName, final Filterer<Environmental> filter)
+	public PhysicalAgent fetchFromMOBRoomItemExit(MOB mob, final Item goodLocation, String thingName, final Filterer<Environmental> filter)
 	{
 		PhysicalAgent found=null;
+		if(CMStrings.startsWithIgnoreCase(thingName,"room.")
+		||CMStrings.startsWithIgnoreCase(thingName,CMLib.english().removeArticleLead(genericName())+"."))
+		{
+			thingName = thingName.substring(5);
+			mob=null;
+		}
 		String newThingName=CMLib.lang().preItemParser(thingName);
 		if(newThingName!=null)
 			thingName=newThingName;
-		final boolean mineOnly=(mob!=null)&&(thingName.toUpperCase().trim().startsWith("MY "));
+		final boolean mineOnly=(mob!=null)
+				&&(CMStrings.startsWithIgnoreCase(thingName, "my"))
+				&&(thingName.length()>3)
+				&&((thingName.charAt(2)==' ')||(thingName.charAt(2)=='.'));
 		if(mineOnly)
 			thingName=thingName.trim().substring(3).trim();
 		if((mob!=null)&&((filter!=Wearable.FILTER_WORNONLY)))
@@ -2667,13 +2677,22 @@ public class StdRoom implements Room
 		return fetchFromMOBRoom(mob,goodLocation,thingName,filter,false);
 	}
 
-	private PhysicalAgent fetchFromMOBRoom(final MOB mob, final Item goodLocation, String thingName, final Filterer<Environmental> filter, final boolean favorItems)
+	protected PhysicalAgent fetchFromMOBRoom(MOB mob, final Item goodLocation, String thingName, final Filterer<Environmental> filter, final boolean favorItems)
 	{
 		PhysicalAgent found=null;
+		if(CMStrings.startsWithIgnoreCase(thingName,"room.")
+		||CMStrings.startsWithIgnoreCase(thingName,CMLib.english().removeArticleLead(genericName())+"."))
+		{
+			thingName = thingName.substring(5);
+			mob=null;
+		}
 		String newThingName=CMLib.lang().preItemParser(thingName);
 		if(newThingName!=null)
 			thingName=newThingName;
-		final boolean mineOnly=(mob!=null)&&(thingName.toUpperCase().trim().startsWith("MY "));
+		final boolean mineOnly=(mob!=null)
+				&&(CMStrings.startsWithIgnoreCase(thingName, "my"))
+				&&(thingName.length()>3)
+				&&((thingName.charAt(2)==' ')||(thingName.charAt(2)=='.'));
 		if(mineOnly)
 			thingName=thingName.trim().substring(3).trim();
 		if((mob!=null)&&(favorItems)&&(filter!=Wearable.FILTER_WORNONLY))
@@ -2933,7 +2952,7 @@ public class StdRoom implements Room
 		{
 			return affects.elementAt(index);
 		}
-		catch(final java.lang.ArrayIndexOutOfBoundsException x)
+		catch(final IndexOutOfBoundsException x)
 		{
 		}
 		return null;
@@ -3024,7 +3043,7 @@ public class StdRoom implements Room
 		{
 			return behaviors.elementAt(index);
 		}
-		catch(final java.lang.ArrayIndexOutOfBoundsException x)
+		catch(final IndexOutOfBoundsException x)
 		{
 		}
 		return null;

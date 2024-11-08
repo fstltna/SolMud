@@ -200,6 +200,7 @@ public class Sailor extends StdCharClass
 		CMLib.ableMapper().addCharAbilityMapping(ID(),22,"Thief_RammingSpeed",true);
 
 		CMLib.ableMapper().addCharAbilityMapping(ID(),23,"Skill_InterceptShip",0,"",true,SecretFlag.PUBLIC,CMParms.parseSemicolons("Skill_SeaCharting(50)", true),"");
+		CMLib.ableMapper().addCharAbilityMapping(ID(),23,"Skill_HardToStern",false);
 
 		CMLib.ableMapper().addCharAbilityMapping(ID(),24,"MasterTrawling",true);
 
@@ -305,18 +306,18 @@ public class Sailor extends StdCharClass
 			if(mob.playerStats().addRoomVisit(R))
 			{
 				final Area A=R.getArea();
-				CMLib.players().bumpPrideStat(mob,AccountStats.PrideStat.ROOMS_EXPLORED,1);
+				CMLib.players().bumpPrideStat(mob,PrideStats.PrideStat.ROOMS_EXPLORED,1);
 				if(mob.playerStats().hasVisited(R))
 				{
 					CMLib.leveler().postExperience(mob, "CLASS:"+ID(), null, null, amt, false);
-					final double totalCountableRooms=A.getAreaIStats()[Area.Stats.COUNTABLE_ROOMS.ordinal()];
+					final double totalCountableRooms=A.getIStat(Area.Stats.COUNTABLE_ROOMS);
 					if((totalCountableRooms > 0)
-					&&(CMath.div(A.getAreaIStats()[Area.Stats.WATER_ROOMS.ordinal()], totalCountableRooms)>.80))
+					&&(CMath.div(A.getIStat(Area.Stats.WATER_ROOMS), totalCountableRooms)>.80))
 					{
 						final int pctAfter=mob.playerStats().percentVisited(mob,A);
 						if((pctBefore<50)&&(pctAfter>=50))
 						{
-							int xp=(int)Math.round(50.0*CMath.div(A.getAreaIStats()[Area.Stats.AVG_LEVEL.ordinal()],mob.phyStats().level()));
+							int xp=(int)Math.round(50.0*CMath.div(A.getIStat(Area.Stats.AVG_LEVEL),mob.phyStats().level()));
 							if(xp>125)
 								xp=125;
 							if(xp<50)
@@ -328,7 +329,7 @@ public class Sailor extends StdCharClass
 						else
 						if((pctBefore<90)&&(pctAfter>=90))
 						{
-							int xp=(int)Math.round(100.0*CMath.div(A.getAreaIStats()[Area.Stats.AVG_LEVEL.ordinal()],mob.phyStats().level()));
+							int xp=(int)Math.round(100.0*CMath.div(A.getIStat(Area.Stats.AVG_LEVEL),mob.phyStats().level()));
 							if(xp>250)
 								xp=250;
 							if(xp<125)

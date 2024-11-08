@@ -329,7 +329,7 @@ public class InstanceArea extends StdAbility
 					return true;
 				}
 				InstanceArea iA=null;
-				final MOB leaderM = (msg.source().amFollowing()!=null)?msg.source().amUltimatelyFollowing():msg.source();
+				final MOB leaderM = msg.source().getGroupLeader();
 				final Set<MOB> grp = getAppropriateGroup(leaderM);
 				synchronized(managed)
 				{
@@ -444,7 +444,7 @@ public class InstanceArea extends StdAbility
 				instArea=(Area)affected;
 				int medianLevel=instArea.getPlayerLevel();
 				if(medianLevel <= 0)
-					medianLevel=instArea.getAreaIStats()[Area.Stats.MED_LEVEL.ordinal()];
+					medianLevel=instArea.getIStat(Area.Stats.MED_LEVEL);
 				instanceLevel=medianLevel;
 			}
 			this.specFlags = null;
@@ -600,10 +600,10 @@ public class InstanceArea extends StdAbility
 							long flag=CMParms.indexOf(Ability.FLAG_DESCS, P.first);
 							if(flag >=0 )
 								flag=CMath.pow(2, flag);
-							int domain=CMParms.indexOf(Ability.DOMAIN_DESCS, P.first);
+							int domain=CMParms.indexOf(Ability.DOMAIN.DESCS, P.first);
 							if(domain > 0)
 								domain = domain << 5;
-							final int acode=CMParms.indexOf(Ability.ACODE_DESCS, P.first);
+							final int acode=CMParms.indexOf(Ability.ACODE.DESCS, P.first);
 							for(final Enumeration<Ability> a=CMClass.abilities();a.hasMoreElements();)
 							{
 								A=a.nextElement();
@@ -899,14 +899,14 @@ public class InstanceArea extends StdAbility
 				parentArea=((SubArea)instArea).getSuperArea();
 			else
 				parentArea=null;
-			final int[] stats;
+			final Area statsA;
 			if(parentArea != null)
-				stats=parentArea.getAreaIStats();
+				statsA=parentArea;
 			else
 			if(instArea != null)
-				stats=instArea.getAreaIStats();
+				statsA=instArea;
 			else
-				stats=CMLib.map().getRandomArea().getAreaIStats();
+				statsA=CMLib.map().getRandomArea();
 			room.toggleMobility(false);
 			room.clearSky();
 			room.giveASky(0);
@@ -920,7 +920,7 @@ public class InstanceArea extends StdAbility
 				else
 				{
 					final double[] vars = new double[] {instanceLevel, instanceLevel, instanceLevel,
-							stats[Area.Stats.MIN_LEVEL.ordinal()], stats[Area.Stats.MAX_LEVEL.ordinal()],
+							statsA.getIStat(Area.Stats.MIN_LEVEL), statsA.getIStat(Area.Stats.MAX_LEVEL),
 							CMProps.getIntVar(CMProps.Int.EXPRATE)+1, topPlayerFacVal} ;
 					eliteLevel=CMath.parseIntExpression(eliteStr, vars);
 				}
@@ -1058,7 +1058,7 @@ public class InstanceArea extends StdAbility
 						}
 					}
 					final double[] vars = new double[] {instanceLevel, I.phyStats().level(), instanceLevel,
-														stats[Area.Stats.MIN_LEVEL.ordinal()], stats[Area.Stats.MAX_LEVEL.ordinal()],
+														statsA.getIStat(Area.Stats.MIN_LEVEL), statsA.getIStat(Area.Stats.MAX_LEVEL),
 														CMProps.getIntVar(CMProps.Int.EXPRATE)+1, topPlayerFacVal} ;
 					final int newILevel;
 					if(this.iLevelFormula != null)
@@ -1118,7 +1118,7 @@ public class InstanceArea extends StdAbility
 					if(instVars.containsKey(InstVar.ATMOSPHERE.toString()))
 						M.baseCharStats().setBreathables(new int[]{room.getAtmosphere()});
 					final double[] vars = new double[] {instanceLevel, M.phyStats().level(), instanceLevel,
-														stats[Area.Stats.MIN_LEVEL.ordinal()], stats[Area.Stats.MAX_LEVEL.ordinal()],
+														statsA.getIStat(Area.Stats.MIN_LEVEL), statsA.getIStat(Area.Stats.MAX_LEVEL),
 														CMProps.getIntVar(CMProps.Int.EXPRATE)+1, topPlayerFacVal} ;
 					final int newLevel = (int)CMath.round(CMath.parseMathExpression(this.levelFormula, vars, 0.0));
 					final int[] eliteBump = new int[1];
@@ -1178,7 +1178,7 @@ public class InstanceArea extends StdAbility
 						if(mI!=null)
 						{
 							final double[] ivars = new double[] {instanceLevel, mI.phyStats().level(), instanceLevel,
-																 stats[Area.Stats.MIN_LEVEL.ordinal()], stats[Area.Stats.MAX_LEVEL.ordinal()],
+																 statsA.getIStat(Area.Stats.MIN_LEVEL), statsA.getIStat(Area.Stats.MAX_LEVEL),
 																 CMProps.getIntVar(CMProps.Int.EXPRATE)+1, topPlayerFacVal} ;
 							final int newILevel;
 							if(this.iLevelFormula != null)
@@ -1711,10 +1711,10 @@ public class InstanceArea extends StdAbility
 			return (mob==affected)||mobGrp.contains(affected);
 		if(affected instanceof Rideable)
 			return ((Rideable)affected).amRiding(mob)
-				||((mob.amFollowing()!=null)&&((Rideable)affected).amRiding(mob.amUltimatelyFollowing()));
+				||((mob.amFollowing()!=null)&&((Rideable)affected).amRiding(mob.getGroupLeader()));
 		if(affected instanceof Item)
 			return (((Item)affected).owner()==mob)
-					||((mob.amFollowing()!=null)&&(((Item)affected).owner()==mob.amUltimatelyFollowing()));
+					||((mob.amFollowing()!=null)&&(((Item)affected).owner()==mob.getGroupLeader()));
 		return false;
 	}
 
@@ -1799,7 +1799,7 @@ public class InstanceArea extends StdAbility
 			final Room srcStartRoom =msg.source().getStartRoom();
 			if(((srcStartRoom==null)||(srcStartRoom.getArea()!=parentA)||(msg.source().isPlayer())))
 			{
-				MOB leaderM = (msg.source().amFollowing()!=null)?msg.source().amUltimatelyFollowing():msg.source();
+				MOB leaderM = msg.source().getGroupLeader();
 				final Set<MOB> grp = getAppropriateGroup(leaderM);
 				Area instA = findExistingInstance(msg.source(), grp, parentA);
 				boolean created = false;
@@ -1938,21 +1938,27 @@ public class InstanceArea extends StdAbility
 						aChild = new AreaInstanceChild(instA, newMobList);
 						childList.add(aChild);
 					}
-					int[] statData=(int[])Resources.getResource("STATS_"+instA.Name().toUpperCase());
+					AreaIStats statData=(AreaIStats)Resources.getResource("STATS_"+instA.Name().toUpperCase());
 					if(statData == null) // and it damn well better be null
 					{
-						final int[] oldParentStats = parentA.getAreaIStats();
-						statData = Arrays.copyOf(oldParentStats, oldParentStats.length);
-						final double[] vars = new double[] {topLevel, statData[Area.Stats.MIN_LEVEL.ordinal()], topLevel,
-								statData[Area.Stats.MIN_LEVEL.ordinal()], statData[Area.Stats.MAX_LEVEL.ordinal()],
-								CMProps.getIntVar(CMProps.Int.EXPRATE)+1, topPlayerFacVal} ;
-						statData[Area.Stats.MIN_LEVEL.ordinal()] = (int)CMath.round(CMath.parseMathExpression(this.levelFormula, vars, 0.0));
-						vars[1] = statData[Area.Stats.MAX_LEVEL.ordinal()];
-						statData[Area.Stats.MAX_LEVEL.ordinal()] = (int)CMath.round(CMath.parseMathExpression(this.levelFormula, vars, 0.0));
-						vars[1] = statData[Area.Stats.MED_LEVEL.ordinal()];
-						statData[Area.Stats.MED_LEVEL.ordinal()] = (int)CMath.round(CMath.parseMathExpression(this.levelFormula, vars, 0.0));
-						vars[1] = statData[Area.Stats.AVG_LEVEL.ordinal()];
-						statData[Area.Stats.AVG_LEVEL.ordinal()] = (int)CMath.round(CMath.parseMathExpression(this.levelFormula, vars, 0.0));
+						statData = (AreaIStats) CMClass.getCommon("DefaultAreaIStats");
+						for(final Area.Stats stat : Area.Stats.values())
+							statData.setStat(stat, parentA.getIStat(stat));
+						final double[] vars = new double[] {
+							topLevel,
+							parentA.getIStat(Area.Stats.MIN_LEVEL),
+							topLevel,
+							parentA.getIStat(Area.Stats.MIN_LEVEL),
+							parentA.getIStat(Area.Stats.MAX_LEVEL),
+							CMProps.getIntVar(CMProps.Int.EXPRATE)+1, topPlayerFacVal
+						} ;
+						statData.setStat(Area.Stats.MIN_LEVEL, (int)CMath.round(CMath.parseMathExpression(this.levelFormula, vars, 0.0)));
+						vars[1] = statData.getStat(Area.Stats.MAX_LEVEL);
+						statData.setStat(Area.Stats.MAX_LEVEL, (int)CMath.round(CMath.parseMathExpression(this.levelFormula, vars, 0.0)));
+						vars[1] = statData.getStat(Area.Stats.MED_LEVEL);
+						statData.setStat(Area.Stats.MED_LEVEL, (int)CMath.round(CMath.parseMathExpression(this.levelFormula, vars, 0.0)));
+						vars[1] = statData.getStat(Area.Stats.AVG_LEVEL);
+						statData.setStat(Area.Stats.AVG_LEVEL, (int)CMath.round(CMath.parseMathExpression(this.levelFormula, vars, 0.0)));
 						Resources.submitResource("STATS_"+instA.Name().toUpperCase(), statData);
 					}
 					if(!(affected instanceof Area))
@@ -2055,14 +2061,10 @@ public class InstanceArea extends StdAbility
 		if(map == null)
 		{
 			map = new TreeMap<String,Map<String,String>[]>();
+			final CMFile[] fileList = CMFile.getExistingExtendedFiles(Resources.makeFileResourceName("skills/areainstancetypes.txt"),null,CMFile.FLAG_FORCEALLOW);
 			final List<String> lines = new ArrayList<String>();
-			for(String i="";!i.equals(".9");i=("."+(Math.round(CMath.s_double(i)*10)+1)))
-			{
-				final CMFile F=new CMFile(Resources.makeFileResourceName("skills/areainstancetypes.txt"+i), null);
-				if(!F.exists())
-					break;
+			for(final CMFile F : fileList)
 				lines.addAll(Resources.getFileLineVector(F.text()));
-			}
 			for(String line : lines)
 			{
 				line=line.trim();

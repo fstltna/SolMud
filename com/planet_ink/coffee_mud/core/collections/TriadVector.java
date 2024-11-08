@@ -136,9 +136,20 @@ public class TriadVector<T, K, L> extends Vector<Triad<T, K, L>> implements Tria
 		add(new Triad<T, K, L>(t, k, l));
 	}
 
+	@Override
+	public void add(final int x, final T t, final K k, final L l)
+	{
+		add(x, new Triad<T, K, L>(t, k, l));
+	}
+
 	public void addElement(final T t, final K k, final L l)
 	{
 		add(new Triad<T, K, L>(t, k, l));
+	}
+
+	public void addElement(final int x, final T t, final K k, final L l)
+	{
+		add(x, new Triad<T, K, L>(t, k, l));
 	}
 
 	@Override

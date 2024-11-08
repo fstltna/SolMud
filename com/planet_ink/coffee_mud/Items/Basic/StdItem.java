@@ -1,5 +1,6 @@
 package com.planet_ink.coffee_mud.Items.Basic;
 import com.planet_ink.coffee_mud.core.interfaces.*;
+import com.planet_ink.coffee_mud.core.interfaces.Readable;
 import com.planet_ink.coffee_mud.core.interfaces.EachApplicable.ApplyAffectPhyStats;
 import com.planet_ink.coffee_mud.core.*;
 import com.planet_ink.coffee_mud.core.collections.*;
@@ -630,7 +631,10 @@ public class StdItem implements Item
 				if(CMLib.flags().isInDark(affected))
 					affectableStats.setDisposition(affectableStats.disposition()-PhyStats.IS_DARK);
 			}
-			if((amWearingAt(Wearable.WORN_MOUTH))&&(affected instanceof MOB))
+			if((amWearingAt(Wearable.WORN_MOUTH))
+			&&(affected instanceof MOB)
+			&&((((MOB)affected).charStats().getBodyPart(Race.BODY_MOUTH)<2)
+				||((MOB)affected).freeWearPositions(WORN_MOUTH, (short)0,(short)0)==0))
 			{
 				if(!(this instanceof Light))
 					affectableStats.setSensesMask(affectableStats.sensesMask()|PhyStats.CAN_NOT_SPEAK);
@@ -1217,10 +1221,10 @@ public class StdItem implements Item
 			{
 				final StringBuilder str=new StringBuilder(L("You can't hold @x1.",name()));
 				if(fitsOn(Wearable.WORN_WIELD))
-					str.append(L("Try WIELDing it."));
+					str.append(L("  Try WIELDing it."));
 				else
 				if(properWornBitmap>0)
-					str.append(L("Try WEARing it."));
+					str.append(L("  Try WEARing it."));
 				mob.tell(str.toString());
 				return false;
 			}
@@ -1499,6 +1503,8 @@ public class StdItem implements Item
 			final Ability A=fetchEffect("Burning");
 			if((A!=null)&&(!CMath.bset(A.abilityCode(), 2048))) // yes, magic numbers suck
 				return true;
+			if(this instanceof LightSource)
+				return true;
 			break;
 		}
 		case CMMsg.TYP_CAUSESINK:
@@ -1551,7 +1557,7 @@ public class StdItem implements Item
 						mob.tell(L("Write what on @x1?",name()));
 					return false;
 				}
-				if(readableText().startsWith("FILE="))
+				if(readableText().startsWith(Readable.FILE_PREFIX))
 				{
 					mob.tell(L("There's no more room to write on @x1.",name()));
 					return false;
@@ -1572,7 +1578,7 @@ public class StdItem implements Item
 						mob.tell(L("Write what on @x1?",name()));
 					return false;
 				}
-				if(readableText().startsWith("FILE="))
+				if(readableText().startsWith(Readable.FILE_PREFIX))
 				{
 					mob.tell(L("There's no more room to write on @x1.",name()));
 					return false;
@@ -1954,7 +1960,7 @@ public class StdItem implements Item
 		{
 			return affects.elementAt(index);
 		}
-		catch (final java.lang.ArrayIndexOutOfBoundsException x)
+		catch (final IndexOutOfBoundsException x)
 		{
 		}
 		return null;
@@ -2044,7 +2050,7 @@ public class StdItem implements Item
 		{
 			return behaviors.elementAt(index);
 		}
-		catch(final java.lang.ArrayIndexOutOfBoundsException x)
+		catch(final IndexOutOfBoundsException x)
 		{
 		}
 		return null;
@@ -2224,9 +2230,9 @@ public class StdItem implements Item
 		case 1:
 			return "" + usesRemaining();
 		case 2:
-			return "" + basePhyStats().ability();
-		case 3:
 			return "" + basePhyStats().level();
+		case 3:
+			return "" + basePhyStats().ability();
 		case 4:
 			return text();
 		}

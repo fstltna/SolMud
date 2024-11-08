@@ -63,6 +63,12 @@ public class Spell_GreaterScry extends Spell
 	}
 
 	@Override
+	public long flags()
+	{
+		return super.flags() | Ability.FLAG_DIVINING;
+	}
+
+	@Override
 	public int classificationCode()
 	{
 		return Ability.ACODE_SPELL|Ability.DOMAIN_DIVINATION;
@@ -169,7 +175,8 @@ public class Spell_GreaterScry extends Spell
 			||(CMLib.english().containsString(localA.name(), targetName)))
 				target=localA;
 			else
-			if(targetName.equalsIgnoreCase("room"))
+			if(targetName.equalsIgnoreCase("room")
+			||targetName.equalsIgnoreCase(CMLib.english().removeArticleLead(localR.Name())))
 				target=localR;
 			else
 			if((localA instanceof Boardable)

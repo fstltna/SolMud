@@ -44,7 +44,7 @@ spiked % club	9	30	15	112	GenWeapon	BLUNT	PIERCING	8	2	1	0
 % yari	9	40	14	224	GenWeapon	POLEARM	PIERCING	14	0	2	1		
 % gladius	9	40	10	135	GenWeapon	SWORD	PIERCING	9	0	1	0		
 % wakizashi	9	80	10	93	GenWeapon	SWORD	SLASHING	7	5	1	0		
-giant % axe	10	100	50	1296	GenWeapon	AXE	SLASHING	36	0	2	0	WOODEN	
+giant % axe	10	100	50	1296	GenWeapon	AXE	SLASHING	33	0	2	0	WOODEN	
 two-handed % club	10	60	20	299	GenWeapon	BLUNT	BASHING	17	3	2	0		
 % poignard	10	40	7	15	GenWeapon	DAGGER	PIERCING	2	13	1	0		
 % gnout	10	40	12	228	GenWeapon	FLAILED	BASHING	12	-3	1	0		
@@ -133,4 +133,3 @@ three-headed % flail	30	130	18	2818	GenWeapon	FLAILED	BASHING	54	-9	2	0
 % naginata	30	230	35	3025	GenWeapon	POLEARM	SLASHING	55	-10	2	1		
 % zweihander	30	70	24	2304	GenWeapon	SWORD	SLASHING	48	0	2	0		
 % hurlbat	30	30	8	1171	GenSpear	THROWN	SLASHING	38	-15	1	1		
-% ritual knife	30	20	10	200	GenWeapon	DAGGER	SLASHING	7	33	1	0		
