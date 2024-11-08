@@ -745,3 +745,68 @@ java.lang.NullPointerException
 20241108.1818.39 info  Worker0#34     148.230.10.142 MUDLET MXP MSDP GMCP CMP ANSI, character login: Yuriko
 20241108.1820.18 info  Worker0#34     Logout: Yuriko (1m 38s)
 20241108.1820.19 info  Worker0#34     Disconnect: Yuriko: 148.230.10.142 (1m 52s)
+20241108.1820.29 info  MUD@5555       Connection from 148.230.10.142
+20241108.1820.32 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in Phantom City#220
+20241108.1820.46 info  Worker0#47     148.230.10.142 MUDLET MXP MSDP GMCP CMP ANSI, account login: Stuka
+20241108.1820.51 info  Worker0#41     148.230.10.142 MUDLET MXP MSDP GMCP CMP ANSI, character login: Yuriko
+20241108.1821.11 info  MUD@5555       Connection from 68.44.163.125
+20241108.1821.13 info  Worker0#55     Logout: Sannishika (1h 40m)
+20241108.1821.13 info  Worker0#55     Disconnect: Sannishika: 68.44.163.125 (1h 40m)
+20241108.1821.21 info  Worker0#40     68.44.163.125 MUDLET MXP MSDP GMCP CMP ANSI, account login: Mathiel
+20241108.1821.25 info  Worker0#45     68.44.163.125 MUDLET MXP MSDP GMCP CMP ANSI, character login: Sannishika
+20241108.1821.26 error Import         An error occurred on import: Room Exists: overworld#157
+Please correct the problem and try the import again.
+20241108.1822.21 info  MUD@5555       Connection from 154.213.190.234
+20241108.1822.26 info  Worker0#53     Disconnect: 154.213.190.234 (5s)
+20241108.1822.36 info  MUD@5555       Connection from 89.152.129.5
+20241108.1822.41 info  MUD@5555       Connection from 89.152.129.5
+20241108.1823.10 info  Worker0#53     Disconnect: 89.152.129.5 (34s)
+20241108.1823.16 info  Worker0#48     Disconnect: 89.152.129.5 (35s)
+20241108.1830.41 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in Phantom City#220
+20241108.1837.30 error Worker0#54     : com.mysql.jdbc.MysqlDataTruncation: Data truncation: Data too long for column 'CMPLID' at row 1
+20241108.1837.30 error Worker0#54     com.mysql.jdbc.MysqlDataTruncation: Data truncation: Data too long for column 'CMPLID' at row 1/INSERT INTO CMPDAT (CMPLID, CMSECT, CMPKEY, CMPDAT ) values ('^#330S^#331c^#331a^#332v^#332e^#333n^#333g^#334e^#334r^N ^#333T^#333e^#333c^#334h^#334n^#344i^#344c^#344i^#345a^#345n^N','SCRIPTABLEVARS','^#330S^#331C^#331A^#332V^#332E^#333N^#333G^#334E^#334R^N ^#333T^#333E^#333C^#334H^#334N^#344I^#344C^#344I^#345A^#345N^N_SCRIPTABLEVARS_PUBESTATE',?)
+20241108.1840.46 info  Scripting      Riezzor has MOVE MPGSETTED to 502
+20241108.1840.46 info  Scripting      Riezzor has MOVE MPGSETTED to 502
+20241108.1840.50 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in Phantom City#220
+20241108.1840.50 info  Scripting      Riezzor has MOVE MPGSETTED to 502
+20241108.1840.54 info  Scripting      Riezzor has MOVE MPGSETTED to 502
+20241108.1840.58 info  Scripting      Riezzor has MOVE MPGSETTED to 549
+20241108.1840.58 info  Scripting      Riezzor has MOVE MPGSETTED to 549
+20241108.1840.59 info  Scripting      Riezzor has MOVE MPGSETTED to 549
+20241108.1841.02 info  Scripting      Riezzor has MOVE MPGSETTED to 549
+20241108.1841.02 info  Scripting      Riezzor has MOVE MPGSETTED to 549
+20241108.1841.04 info  Link           Moonbeam linked overworld#27 to room No Mans Land#49.
+20241108.1841.06 info  Scripting      Riezzor has MOVE MPGSETTED to 549
+20241108.1841.07 info  Scripting      Riezzor has MOVE MPGSETTED to 549
+20241108.1841.10 info  Scripting      Riezzor has MOVE MPGSETTED to 549
+20241108.1841.10 info  Scripting      Riezzor has MOVE MPGSETTED to 549
+20241108.1841.11 info  Scripting      Riezzor was MPAFFECTED by Light Cumbloat
+20241108.1841.11 info  Scripting      Sannishika was MPUNAFFECTED by Heal Sex
+20241108.1841.11 info  Scripting      Riezzor has THIRST MPGSETTED to 5000
+20241108.1841.11 info  Scripting      Riezzor has HUNGER MPGSETTED to 5000
+20241108.1841.11 info  Scripting      Riezzor was MPUNAFFECTED by Light Cumbloat
+20241108.1841.11 info  Scripting      Riezzor was MPAFFECTED by Medium Cumbloat
+20241108.1841.18 info  Link           Moonbeam linked overworld#51 to room No Mans Land#80.
+20241108.1841.22 info  Link           Moonbeam linked overworld#50 to room No Mans Land#84.
+20241108.1843.00 info  Worker0#47     Logout: Riezzor (1h 25m)
+20241108.1843.04 info  Worker0#51     174.117.140.230 MUDLET MXP MSDP GMCP CMP ANSI, character login: Riezzor
+20241108.1844.00 debug Worker0#46     Auto-Gen Instance Outsider Dungeons expires with 49 rooms
+20241108.1845.42 info  Scripting      Riezzor was MPUNAFFECTED by Medium Cumbloat
+20241108.1845.43 info  Scripting      Riezzor was MPAFFECTED by Light Cumbloat
+20241108.1849.52 error Scripting      ^CA^cn ethereal beaco^Cn/No Mans Land#45/MPBEACON/RunTime/$%INROOM($n)% is not a room./all_greet_prog;mpbeacon `$%INROOM($n)%` $n;mpechoat $n ...Recall checkpoint set 
+20241108.1850.06 info  MUD@5555       Connection from 65.49.20.68
+20241108.1850.12 info  Worker0#51     Disconnect: 65.49.20.68 (6s)
+20241108.1850.21 error Worker0#53     Bad Zappermask key '+ALL' @ +ALL
+20241108.1850.45 info  Scripting      Riezzor was MPUNAFFECTED by Light Cumbloat
+20241108.1850.58 error Prop_Artifact  Unable to find artifact NPC: GenArmor-292055729@11045f1c0.8550620052801546 from Nyx in Phantom City#220
+20241108.1853.32 info  CreateEdit     Moonbeam modified mob A ferry gate guard (GenMob) in No Mans Land#45.
+20241108.1853.47 info  SysopUtils     Moonbeam copied 1 mob A ferry gate guard.
+20241108.1853.53 info  Mobs           Moonbeam destroyed mob A ferry gate guard.
+20241108.1854.04 info  Exits          No Mans Land#45 exits changed by Moonbeam.
+20241108.1854.09 info  Exits          No Mans Land#47 exits changed by Moonbeam.
+20241108.1854.30 info  Rooms          Moonbeam unlinked direction West from room No Mans Land#47.
+20241108.1854.45 info  Mobs           Moonbeam destroyed mob A ferry gate guard.
+20241108.1855.01 info  Mobs           Moonbeam destroyed mob A ferry gate guard.
+20241108.1857.34 error MovingRoom     Previous room links exists, Phantom City#254 Angelic Retreat#22 not linking exits.
+20241108.1857.54 error MovingRoom     Previous room links exists, Phantom City#254 Angelic Retreat#22 not unlinking exit.
+20241108.1858.03 info  Rooms          Moonbeam modified room Phantom City#254.
