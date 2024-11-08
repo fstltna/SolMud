@@ -47,3 +47,4 @@ vault door	90	125	100	METAL	DIR	DOOR	GenDoor	vault door|swing(s) open|swing(s) c
 secret stone door	90	200	250		INDOOR DIR	DOOR	GenDoor	secret door	Prop_Hidden	secret door @x1	-BASECLASS +Thief	Hidden openable exit between two indoor places.
 spiral staircase	61	75	250		DIRUPDOWN INDOOR	DOOR	GenExit	spiral staircase|a spiral staircase		staircase @x1		Open exit between two indoor rooms above or below each other.
 grand staircase	81	95	500		DIRUPDOWN INDOOR	DOOR	GenExit	grand staircase|a grand staircase		staircase @x1		Open exit between two indoor rooms above or below each other.
+Annex	15	100	200			EXCAVATE	StoneRoom			annexing		a way to create a room on the same floor

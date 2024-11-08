@@ -28,7 +28,7 @@
 
 4 Searching 
 
-15 Spell_ChangeSexSelf PROF=75 AUTOGAIN REQUIRES=Spell_ChangeSex 
+15 Spell_ChangeSexSelf PROF=75 REQUIRES=Spell_ChangeSex 
 
 [ALL]
 1 Digging 
@@ -48,13 +48,14 @@
 1 Herbology 
 1 Hunting MASK=+WIS 8 
 1 Ignan 
-1 Milkable PROF=100 AUTOGAIN MASK=-GENDER +FEMALE 
+1 Milkable PROF=100 AUTOGAIN MASK=+GENDER -NEUTER -MALE 
 1 ooc_bailooc PROF=100 AUTOGAIN 
 1 ooc_reward PROF=100 AUTOGAIN 
 1 Orcish 
-1 Property_Cyberpsychosistracker PROF=100 AUTOGAIN 
+1 Proficiency_Weapon PROF=100 AUTOGAIN 
+1 Property_Cyberpsychosistracker PROF=100 AUTOGAIN MASK=-MOB 
 1 Property_EmergencyCall PROF=100 AUTOGAIN 
-1 Prop_Permabreed PROF=100 AUTOGAIN 
+1 Prop_BGTracker PROF=100 AUTOGAIN 
 1 RP_ActingI PROF=100 AUTOGAIN MASK=-EXPERTISES +acting5 
 1 RP_ActingII PROF=100 AUTOGAIN MASK=-EXPERTISES +acting10 
 1 RP_Breedingi PROF=100 AUTOGAIN MASK=-EXPERTISES +breeder5 REQUIRES=matingpress 
@@ -79,6 +80,7 @@
 1 skill_masturbate PROF=100 AUTOGAIN 
 1 Skill_Recall PROF=100 AUTOGAIN 
 1 Skill_Revoke PROF=100 AUTOGAIN 
+1 Skill_Sexylook PROF=100 AUTOGAIN 
 1 Unbinding PROF=75 AUTOGAIN 
 1 Undercommon 
 

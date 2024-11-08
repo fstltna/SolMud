@@ -1,56 +1,56 @@
-cnclmsg_prog HUH p piss into toilet
-if var($n usingappliance != 1)
-if sex($n == M)
-mpsetvar $n usingappliance 1
+cnclmsg_prog HUH p urinate into toilet
+if hastattoo($n usingappliance)
+mpechoat $n You are a little busy at the moment.
+else
+if sex($n == M) or sex($n == O) or sex($n == U)
+mptattoo $n '2 usingappliance'
 mpaffect property:spell_Hold $n 2TICKS
 mpecho $n undoes any clothing that may be on the way and aims the 'big iron'
 mpalarm 1 mpecho $n begins to pee, trying to aim well.
 mpalarm 3 mpecho $n gets done and packs back up, standing up.
 mpalarm 3 mpunaffect $n spell_hold
-mpalarm 3 mpsetvar $n usingappliance 0
 mpalarm 2 mploadvar $i toiletstate
 mpalarm 3 mpsetvar $i toiletstate ++
 mpalarm 3 mpsavevar $i toiletstate
 if var($i toiletstate <= 3)
-mpset $i description a marble toilet, it's filled with yellow acidic water, most likely piss. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a marble toilet, it's filled with yellow acidic water, most likely urinate. %0D%0D^CCommands:%0DFap into toilet%0DUrinate into toilet%0DPoo into toilet%0DFlush toilet%0DClean toilet^N
 else
 if var($i toiletstate <= 6)
-mpset $i description a marble toilet, it's filled with yellow acidic water, most likely piss. It seems to be ^#332quite dirty^N. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a marble toilet, it's filled with yellow acidic water, most likely urinate. It seems to be ^#332quite dirty^N. %0D%0D^CCommands:%0DFap into toilet%0DUrinate into toilet%0DPoo into toilet%0DFlush toilet%0DClean toilet^N
 else
 if var($i toiletstate <= 8)
-mpset $i description a marble toilet, it's filled with yellow acidic water, most likely piss. It's ^#310very filthy^N. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a marble toilet, it's filled with yellow acidic water, most likely urinate. It's ^#310very filthy^N. %0D%0D^CCommands:%0DFap into toilet%0DUrinate into toilet%0DPoo into toilet%0DFlush toilet%0DClean toilet^N
 else
 if var($i toiletstate <= 10)
-mpset $i description a marble toilet, it's filled with yellow acidic water, most likely piss. It's ^#210it's covered in fucking grime, clean it. This is a biohazard.^N. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a marble toilet, it's filled with yellow acidic water, most likely urinate. It's ^#210it's covered in fucking grime, clean it. This is a biohazard.^N. %0D%0D^CCommands:%0DFap into toilet%0DUrinate into toilet%0DPoo into toilet%0DFlush toilet%0DClean toilet^N
 endif
 endif
 endif
 endif
 else
-if sex($n == F)
+if sex($n == F) or sex($n == A) or sex($n == H)
 mpforce $n sit "$i"
-mpsetvar $n usingappliance 1
+mptattoo $n '2 usingappliance'
 mpaffect property:spell_Hold $n 2TICKS
 mpecho $n undoes any clothing that may be on the way and sits on the toilet.
 mpalarm 1 mpecho $n begins to pee, putting a hand on cheek meanwhile.
 mpalarm 3 mpecho $n gets done and packs back up, standing up.
 mpalarm 2 mpunaffect $n spell_hold
 mpalarm 3 mpforce $n stand
-mpalarm 3 mpsetvar $n usingappliance 0
 mpalarm 2 mploadvar $i toiletstate
 mpalarm 3 mpsetvar $i toiletstate ++
 mpalarm 3 mpsavevar $i toiletstate
 if var($i toiletstate <= 3)
-mpset $i description a marble toilet, it's filled with yellow acidic water, most likely piss. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a marble toilet, it's filled with yellow acidic water, most likely urinate. %0D%0D^CCommands:%0DFap into toilet%0DUrinate into toilet%0DPoo into toilet%0DFlush toilet%0DClean toilet^N
 else
 if var($i toiletstate <= 6)
-mpset $i description a marble toilet, it's filled with yellow acidic water, most likely piss. It seems to be ^#332quite dirty^N. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a marble toilet, it's filled with yellow acidic water, most likely urinate. It seems to be ^#332quite dirty^N. %0D%0D^CCommands:%0DFap into toilet%0DUrinate into toilet%0DPoo into toilet%0DFlush toilet%0DClean toilet^N
 else
 if var($i toiletstate <= 8)
-mpset $i description a marble toilet, it's filled with yellow acidic water, most likely piss. It's ^#310very filthy^N. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a marble toilet, it's filled with yellow acidic water, most likely urinate. It's ^#310very filthy^N. %0D%0D^CCommands:%0DFap into toilet%0DUrinate into toilet%0DPoo into toilet%0DFlush toilet%0DClean toilet^N
 else
 if var($i toiletstate <= 10)
-mpset $i description a marble toilet, it's filled with yellow acidic water, most likely piss. It's ^#210it's covered in fucking grime, clean it. This is a biohazard.^N. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a marble toilet, it's filled with yellow acidic water, most likely urinate. It's ^#210it's covered in fucking grime, clean it. This is a biohazard.^N. %0D%0D^CCommands:%0DFap into toilet%0DUrinate into toilet%0DPoo into toilet%0DFlush toilet%0DClean toilet^N
 endif
 endif
 endif
@@ -62,16 +62,16 @@ mploadvar $i toiletstate
 mpsetvar $i toiletstate ++
 mpsavevar $i toiletstate
 if var($i toiletstate <= 3)
-mpset $i description a marble toilet, it's filled with yellow acidic water, most likely piss. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a marble toilet, it's filled with yellow acidic water, most likely urinate. %0D%0D^CCommands:%0DFap into toilet%0DUrinate into toilet%0DPoo into toilet%0DFlush toilet%0DClean toilet^N
 else
 if var($i toiletstate <= 6)
-mpset $i description a marble toilet, it's filled with yellow acidic water, most likely piss. It seems to be ^#332quite dirty^N. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a marble toilet, it's filled with yellow acidic water, most likely urinate. It seems to be ^#332quite dirty^N. %0D%0D^CCommands:%0DFap into toilet%0DUrinate into toilet%0DPoo into toilet%0DFlush toilet%0DClean toilet^N
 else
 if var($i toiletstate <= 8)
-mpset $i description a marble toilet, it's filled with yellow acidic water, most likely piss. It's ^#310very filthy^N. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a marble toilet, it's filled with yellow acidic water, most likely urinate. It's ^#310very filthy^N. %0D%0D^CCommands:%0DFap into toilet%0DUrinate into toilet%0DPoo into toilet%0DFlush toilet%0DClean toilet^N
 else
 if var($i toiletstate <= 10)
-mpset $i description a marble toilet, it's filled with yellow acidic water, most likely piss. It's ^#210it's covered in fucking grime, clean it. This is a biohazard.^N. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a marble toilet, it's filled with yellow acidic water, most likely urinate. It's ^#210it's covered in fucking grime, clean it. This is a biohazard.^N. %0D%0D^CCommands:%0DFap into toilet%0DUrinate into toilet%0DPoo into toilet%0DFlush toilet%0DClean toilet^N
 endif
 endif
 endif
@@ -79,8 +79,6 @@ endif
 endif
 endif
 endif
-else
-mpechoat $n You are a little busy at the moment.
 endif
 return cancel
 ~
@@ -89,16 +87,16 @@ cnclmsg_prog HUH p flush toilet
 mpecho $n reaches to wave a hand over the sensor on the toilet, it flushes...
 mpalarm 1 mpforce $n look $i
 if var($i toiletstate <= 3)
-mpset $i description a marble toilet, it's filled with clear water. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a marble toilet, it's filled with clear water. %0D%0D^CCommands:%0DFap into toilet%0DUrinate into toilet%0DPoo into toilet%0DFlush toilet%0DClean toilet^N
 else
 if var($i toiletstate <= 6)
-mpset $i description a marble toilet, it's filled with clear water, it seems to be ^#332quite dirty^N. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a marble toilet, it's filled with clear water, it seems to be ^#332quite dirty^N. %0D%0D^CCommands:%0DFap into toilet%0DUrinate into toilet%0DPoo into toilet%0DFlush toilet%0DClean toilet^N
 else
 if var($i toiletstate <= 8)
-mpset $i description a marble toilet, it's filled with clear water, it's ^#310very filthy^N. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a marble toilet, it's filled with clear water, it's ^#310very filthy^N. %0D%0D^CCommands:%0DFap into toilet%0DUrinate into toilet%0DPoo into toilet%0DFlush toilet%0DClean toilet^N
 else
 if var($i toiletstate <= 10)
-mpset $i description a marble toilet, it's filled with clear water, it's ^#210it's covered in fucking grime, clean it. This is a biohazard.^N. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a marble toilet, it's filled with clear water, it's ^#210it's covered in fucking grime, clean it. This is a biohazard.^N. %0D%0D^CCommands:%0DFap into toilet%0DUrinate into toilet%0DPoo into toilet%0DFlush toilet%0DClean toilet^N
 endif
 endif
 endif
@@ -112,7 +110,7 @@ mpaffect property:spell_Hold $n 2TICKS
 mpecho $n takes the unbearable duty of cleaning to their shoulders, getting cleaning equipment and a biohazard mask... just a surgical mask as they pour cleaning supplies and scrub the toilet until it is left squeaky clean, reminds them of their army days they most likely never had.
 mpalarm 4 mpecho $n gets done with the torture on themselves, throwing away the mask and putting away whatever remains of their cleaning supplies, finally free.
 mpalarm 4 mpunaffect $n spell_hold
-mpalarm 4 mpset $i description a marble toilet, it's filled with clear water. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpalarm 4 mpset $i description a marble toilet, it's filled with clear water. %0D%0D^CCommands:%0DFap into toilet%0DUrinate into toilet%0DPoo into toilet%0DFlush toilet%0DClean toilet^N
 mpsetvar $i toiletstate 0
 mpsavevar $i toiletstate
 else
@@ -121,11 +119,13 @@ endif
 return cancel
 ~
 
-cnclmsg_prog HUH p shit into toilet
-if var($n usingappliance != 1)
-if sex($n == M)
+cnclmsg_prog HUH p poo into toilet
+if hastattoo($n usingappliance)
+mpechoat $n You are a little busy at the moment.
+else
+if sex($n == M) or sex($n == O) or sex($n == U)
 mpforce $n sit "$i"
-mpsetvar $n usingappliance 1
+mptattoo $n '2 usingappliance'
 mpaffect property:spell_Hold $n 2TICKS
 mpecho $n undoes any clothing that may be on the way and sits $m ass down.
 mpalarm 2 mpecho $n begins to take a dump, putting a hand on cheek meanwhile.
@@ -135,29 +135,28 @@ endif
 mpalarm 5 mpecho $n gets done and packs back up, standing up.
 mpalarm 4 mpunaffect $n spell_hold
 mpalarm 5 mpforce $n stand
-mpalarm 5 mpsetvar $n usingappliance 0
 mpalarm 4 mploadvar $i toiletstate
 mpalarm 5 mpsetvar $i toiletstate ++
 mpalarm 5 mpsavevar $i toiletstate
 if var($i toiletstate <= 3)
-mpset $i description a marble toilet, it's filled stinky dump, it makes you nearly puke. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a marble toilet, it's filled stinky dump, it makes you nearly puke. %0D%0D^CCommands:%0DFap into toilet%0DUrinate into toilet%0DPoo into toilet%0DFlush toilet%0DClean toilet^N
 else
 if var($i toiletstate <= 6)
-mpset $i description a marble toilet, it's filled stinky dump, it makes you nearly puke. It seems to be ^#332quite dirty^N. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a marble toilet, it's filled stinky dump, it makes you nearly puke. It seems to be ^#332quite dirty^N. %0D%0D^CCommands:%0DFap into toilet%0DUrinate into toilet%0DPoo into toilet%0DFlush toilet%0DClean toilet^N
 else
 if var($i toiletstate <= 8)
-mpset $i description a marble toilet, it's filled stinky dump, it makes you nearly puke. It's ^#310very filthy^N. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a marble toilet, it's filled stinky dump, it makes you nearly puke. It's ^#310very filthy^N. %0D%0D^CCommands:%0DFap into toilet%0DUrinate into toilet%0DPoo into toilet%0DFlush toilet%0DClean toilet^N
 else
 if var($i toiletstate <= 10)
-mpset $i description a marble toilet, it's filled stinky dump, it makes you nearly puke. It's ^#210it's covered in fucking grime, clean it. This is a biohazard.^N. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a marble toilet, it's filled stinky dump, it makes you nearly puke. It's ^#210it's covered in fucking grime, clean it. This is a biohazard.^N. %0D%0D^CCommands:%0DFap into toilet%0DUrinate into toilet%0DPoo into toilet%0DFlush toilet%0DClean toilet^N
 endif
 endif
 endif
 endif
 else
-if sex($n == F)
+if sex($n == F) or sex($n == A) or sex($n == H)
 mpforce $n sit "$i"
-mpsetvar $n usingappliance 1
+mptattoo $n '2 usingappliance'
 mpaffect property:spell_Hold $n 2TICKS
 mpecho $n undoes any clothing that may be on the way and sits $m ass down.
 mpalarm 2 mpecho $n begins to take a dump, putting a hand on cheek meanwhile.
@@ -167,21 +166,20 @@ endif
 mpalarm 5 mpecho $n gets done and packs back up, standing up.
 mpalarm 4 mpunaffect $n spell_hold
 mpalarm 5 mpforce $n stand
-mpalarm 5 mpsetvar $n usingappliance 0
 mpalarm 4 mploadvar $i toiletstate
 mpalarm 5 mpsetvar $i toiletstate ++
 mpalarm 5 mpsavevar $i toiletstate
 if var($i toiletstate <= 3)
-mpset $i description a marble toilet, it's filled stinky dump, it makes you nearly puke. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a marble toilet, it's filled stinky dump, it makes you nearly puke. %0D%0D^CCommands:%0DFap into toilet%0DUrinate into toilet%0DPoo into toilet%0DFlush toilet%0DClean toilet^N
 else
 if var($i toiletstate <= 6)
-mpset $i description a marble toilet, it's filled stinky dump, it makes you nearly puke. It seems to be ^#332quite dirty^N. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a marble toilet, it's filled stinky dump, it makes you nearly puke. It seems to be ^#332quite dirty^N. %0D%0D^CCommands:%0DFap into toilet%0DUrinate into toilet%0DPoo into toilet%0DFlush toilet%0DClean toilet^N
 else
 if var($i toiletstate <= 8)
-mpset $i description a marble toilet, it's filled stinky dump, it makes you nearly puke. It's ^#310very filthy^N. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a marble toilet, it's filled stinky dump, it makes you nearly puke. It's ^#310very filthy^N. %0D%0D^CCommands:%0DFap into toilet%0DUrinate into toilet%0DPoo into toilet%0DFlush toilet%0DClean toilet^N
 else
 if var($i toiletstate <= 10)
-mpset $i description a marble toilet, it's filled stinky dump, it makes you nearly puke. It's ^#210it's covered in fucking grime, clean it. This is a biohazard.^N. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a marble toilet, it's filled stinky dump, it makes you nearly puke. It's ^#210it's covered in fucking grime, clean it. This is a biohazard.^N. %0D%0D^CCommands:%0DFap into toilet%0DUrinate into toilet%0DPoo into toilet%0DFlush toilet%0DClean toilet^N
 endif
 endif
 endif
@@ -193,16 +191,16 @@ mploadvar $i toiletstate
 mpsetvar $i toiletstate ++
 mpsavevar $i toiletstate
 if var($i toiletstate <= 3)
-mpset $i description a marble toilet, it's filled stinky dump, it makes you nearly puke. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a marble toilet, it's filled stinky dump, it makes you nearly puke. %0D%0D^CCommands:%0DFap into toilet%0DUrinate into toilet%0DPoo into toilet%0DFlush toilet%0DClean toilet^N
 else
 if var($i toiletstate <= 6)
-mpset $i description a marble toilet, it's filled stinky dump, it makes you nearly puke. It seems to be ^#332quite dirty^N. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a marble toilet, it's filled stinky dump, it makes you nearly puke. It seems to be ^#332quite dirty^N. %0D%0D^CCommands:%0DFap into toilet%0DUrinate into toilet%0DPoo into toilet%0DFlush toilet%0DClean toilet^N
 else
 if var($i toiletstate <= 8)
-mpset $i description a marble toilet, it's filled stinky dump, it makes you nearly puke. It's ^#310very filthy^N. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a marble toilet, it's filled stinky dump, it makes you nearly puke. It's ^#310very filthy^N. %0D%0D^CCommands:%0DFap into toilet%0DUrinate into toilet%0DPoo into toilet%0DFlush toilet%0DClean toilet^N
 else
 if var($i toiletstate <= 10)
-mpset $i description a marble toilet, it's filled stinky dump, it makes you nearly puke. It's ^#210it's covered in fucking grime, clean it. This is a biohazard.^N. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a marble toilet, it's filled stinky dump, it makes you nearly puke. It's ^#210it's covered in fucking grime, clean it. This is a biohazard.^N. %0D%0D^CCommands:%0DFap into toilet%0DUrinate into toilet%0DPoo into toilet%0DFlush toilet%0DClean toilet^N
 endif
 endif
 endif
@@ -210,65 +208,71 @@ endif
 endif
 endif
 endif
-else
-mpechoat $n You are a little busy at the moment.
 endif
 return cancel
 ~
 
 cnclmsg_prog HUH p fap into toilet
-if var($n usingappliance != 1)
-if sex($n == M)
-mpsetvar $n usingappliance 1
+if ispc($n)
+	if hastattoo($n underage)
+		mpechoat $n Huh? You aren't old enough yet.
+		return
+	endif
+endif
+if hastattoo($n usingappliance)
+mpechoat $n You are a little busy at the moment.
+else
+mploadvar $n grointext
+if sex($n == M) or sex($n == O) or sex($n == U)
+mptattoo $n '2 usingappliance'
 mpaffect property:spell_Hold $n 2TICKS
-mpecho $n undoes any clothing that may be on the way and aims the 'big iron'
+mpecho $n undoes any clothing that may be on the way and aims the $m $<$n grointext>
 mpalarm 1 mpecho $n begins to fap rapidly, trying to keep aim.
 mpalarm 3 mpecho $n plops a few fat loads into $i and packs back up, sighing out.
 mpalarm 2 mpunaffect $n spell_hold
-mpalarm 3 mpsetvar $n usingappliance 0
 mpalarm 2 mploadvar $i toiletstate
 mpalarm 3 mpsetvar $i toiletstate ++
 mpalarm 3 mpsavevar $i toiletstate
 if var($i toiletstate <= 3)
-mpset $i description a marble toilet, it's filled with a mix of water and white strange liquid. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a marble toilet, it's filled with a mix of water and white strange liquid. %0D%0D^CCommands:%0DFap into toilet%0DUrinate into toilet%0DPoo into toilet%0DFlush toilet%0DClean toilet^N
 else
 if var($i toiletstate <= 6)
-mpset $i description a marble toilet, it's filled with a mix of water and white strange liquid. It seems to be ^#332quite dirty^N. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a marble toilet, it's filled with a mix of water and white strange liquid. It seems to be ^#332quite dirty^N. %0D%0D^CCommands:%0DFap into toilet%0DUrinate into toilet%0DPoo into toilet%0DFlush toilet%0DClean toilet^N
 else
 if var($i toiletstate <= 8)
-mpset $i description a marble toilet, it's filled with a mix of water and white strange liquid. It's ^#310very filthy^N. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a marble toilet, it's filled with a mix of water and white strange liquid. It's ^#310very filthy^N. %0D%0D^CCommands:%0DFap into toilet%0DUrinate into toilet%0DPoo into toilet%0DFlush toilet%0DClean toilet^N
 else
 if var($i toiletstate <= 10)
-mpset $i description a marble toilet, it's filled with a mix of water and white strange liquid. It's ^#210it's covered in fucking grime, clean it. This is a biohazard.^N. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a marble toilet, it's filled with a mix of water and white strange liquid. It's ^#210it's covered in fucking grime, clean it. This is a biohazard.^N. %0D%0D^CCommands:%0DFap into toilet%0DUrinate into toilet%0DPoo into toilet%0DFlush toilet%0DClean toilet^N
 endif
 endif
 endif
 endif
 else
-if sex($n == F)
+if sex($n == F) or sex($n == A) or sex($n == H)
 mpforce $n sit "$i"
-mpsetvar $n usingappliance 1
+mptattoo $n '2 usingappliance'
 mpaffect property:spell_Hold $n 2TICKS
 mpecho $n undoes any clothing that may be on the way and sits on the toilet.
-mpalarm 1 mpecho $n begins to rub herself and play around with both hands.
+mpalarm 1 mpecho $n begins to rub $m $<$n grointext> and play around with both hands.
 mpalarm 3 mpecho $n shudders with release right into $i then packs back up, standing up.
 mpalarm 2 mpunaffect $n spell_hold
 mpalarm 3 mpforce $n stand
-mpalarm 3 mpsetvar $n usingappliance 0
+mpalarm 3 mptattoo $n '2 usingappliance'
 mpalarm 2 mploadvar $i toiletstate
 mpalarm 3 mpsetvar $i toiletstate ++
 mpalarm 3 mpsavevar $i toiletstate
 if var($i toiletstate <= 3)
-mpset $i description a marble toilet, it's filled with water, you catch glimpse of some clear goo here and there. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a marble toilet, it's filled with water, you catch glimpse of some clear goo here and there. %0D%0D^CCommands:%0DFap into toilet%0DUrinate into toilet%0DPoo into toilet%0DFlush toilet%0DClean toilet^N
 else
 if var($i toiletstate <= 6)
-mpset $i description a marble toilet, it's filled with water, you catch glimpse of some clear goo here and there. It seems to be ^#332quite dirty^N. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a marble toilet, it's filled with water, you catch glimpse of some clear goo here and there. It seems to be ^#332quite dirty^N. %0D%0D^CCommands:%0DFap into toilet%0DUrinate into toilet%0DPoo into toilet%0DFlush toilet%0DClean toilet^N
 else
 if var($i toiletstate <= 8)
-mpset $i description a marble toilet, it's filled with water, you catch glimpse of some clear goo here and there. It's ^#310very filthy^N. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a marble toilet, it's filled with water, you catch glimpse of some clear goo here and there. It's ^#310very filthy^N. %0D%0D^CCommands:%0DFap into toilet%0DUrinate into toilet%0DPoo into toilet%0DFlush toilet%0DClean toilet^N
 else
 if var($i toiletstate <= 10)
-mpset $i description a marble toilet, it's filled with water, you catch glimpse of some clear goo here and there. It's ^#210it's covered in fucking grime, clean it. This is a biohazard.^N. %0D%0D^CCommands:%0DFap into toilet%0DPiss into toilet%0DShit into toilet%0DFlush toilet%0DClean toilet^N
+mpset $i description a marble toilet, it's filled with water, you catch glimpse of some clear goo here and there. It's ^#210it's covered in fucking grime, clean it. This is a biohazard.^N. %0D%0D^CCommands:%0DFap into toilet%0DUrinate into toilet%0DPoo into toilet%0DFlush toilet%0DClean toilet^N
 endif
 endif
 endif
@@ -279,8 +283,6 @@ mpechoat $n you can't really do that.
 endif
 endif
 endif
-else
-mpechoat $n You are a little busy at the moment.
 endif
 return cancel
 ~

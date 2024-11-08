@@ -1,4 +1,13 @@
 once_prog
+if ispc($n)
+	if hastattoo($n underage)
+		mpechoat $n You don't know what to do with this, you are too young.
+		return
+	endif
+endif
+if isfight($n)
+mpechoat $n Get real you can't do this in a fight!
+else
 if affected($n thief_trappedcunny)
 mpechoat $n ^#111You can not shove any more caltrops into yourself!^N
 mpunaffect $n Thief_poisonpussy
@@ -7,7 +16,7 @@ if affected($n thief_poisonedcunny)
 mpechoat $n ^#111You can not shove any more caltrops into yourself!^N
 mpunaffect $n Thief_poisonpussy
 else
-mpaffect property:Spell_Hold $n
+mpaffect property:Spell_Hold $n 23TICKS
 mpechoat $n ^#111You grab a handful of special, smaller ^#444caltrops ^#111and begin to ^#100dull ^#111their edges a bit... ^w(0%)^N
 mpechoaround $n ^#111$n grabs handful of small ^#333caltrops ^#111and begin to ^#100dull ^#111their edges... ^w(0%)^N
 mpalarm 5 mpechoat $n ^#111You finish dulling the caltrops then undress your bottom and sit down on the ground and ^#203spread your legs^#111, getting some sort of ^#322oil ^#111 and ^#121poison ^#111from your bag and beginning to ^#322oil#111 and ^#121poison ^#111the ^#333caltrops. ^w(20%)^N
@@ -22,6 +31,7 @@ mpalarm 23 mpecho $n ^#111finishes trapping her pussy for any unwanted guests an
 mpalarm 23 mpunaffect $n Spell_Hold
 mpalarm 23 mpaffect Thief_poisonedcunny $n
 mpalarm 23 mpunaffect $n Thief_poisonpussy
+endif
 endif
 endif
 return cancel

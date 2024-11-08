@@ -1,469 +1,241 @@
+function_prog unchaos
+    for $0 = 1 to '$%NUMMOBSROOM(*)%'
+	mpsetvar $i temptarg $%ROOMMOB($0)%
+    if isnpc($<$i temptarg>) and isfight($<$i temptarg>) and !hastattoo('$<$i temptarg>' usingsexability)
+        mpstop '$%ROOMMOB($0)%'
+		mpecho $%ROOMMOB($0)% stops fighting for a moment due to the battlefuck.^N
+	endif
+    next
+~
+
 fight_prog 100
- if affected($t Sexual_Cumvampiresuck)
-  if isfight($t)
-   if hitprcnt($n >= 5)
-   if wornon($t legs all)
-   mpforce $t remove all.legs
-   endif
-   if wornon($t groin all)
-   mpforce $t remove all.groin
-   endif
-   if sex($n == M) or sex($n == O) or sex($n == U)
-    if sex($t == F) or sex($t == A) or sex($t == H)
-     MPCALLFUNC CUMVAMPIREMALEPC
-    else
-     if sex($t == M) or sex($t == O) or sex($t == U)
-      MPCALLFUNC CUMVAMPIREGAY
-      else
-     endif
-    endif
-   else
-   if sex($n == F) or sex($n == A) or sex($n == H)
-    if sex($t == M) or sex($t == O) or sex($t == U)
-      MPCALLFUNC CUMVAMPIREFEMALEPC
-      else
-       if sex($t == F) or sex($t == A) or sex($t == H)
-       MPCALLFUNC CUMVAMPIRELESBIAN
-       else
-       endif
-    else
-    endif
-  endif
- endif
- else
- mpunaffect $t Sexual_Cumvampiresuck
-  return
- endif
- else
- mpunaffect $t Sexual_Cumvampiresuck
-  return
- endif
-   endif
+mpnotrigger casting_prog 5
+if ispc($n)
+	if hastattoo($n underage)
+		mpecho $n is below 18 years old and could not participate in this.
+		mpunaffect $n Sexual_cumvampiresuck
+		mpunaffect $t Sexual_cumvampiresuck
+		return
+	endif
+endif
+if ispc($t)
+	if hastattoo($t underage)
+		mpecho $t is below 18 years old and could not participate in this.
+		mpunaffect $n Sexual_cumvampiresuck
+		mpunaffect $t Sexual_cumvampiresuck
+		return
+	endif
+endif
+if isname($n child)
+return
+endif
+if isname($t child)
+return
+endif
+if islike('$n' '-tattoos +usingsexability') or islike('$t' '-tattoos +usingsexability')
+else
+	mpsetvar $t grapplername '$n'
+	mpsetvar $t targetname '$t'
+	mpalarm 10 mptattoo $n -usingsexability
+	mpalarm 10 mptattoo $t -usingsexability
+	mpsetvar $t targetsave $%GSTAT($t 'SAVE VS MIND')%
+	mpsetvar $n expertiselevel $%EXPERTISE($n Sexual_cumvampiresuck LEVEL)%
+	mpsetvar $n maxsexrounds $%MATH(3 + $<$n expertiselevel>)%
+	MPSETVAR $n CurLevel $%GSTAT($n LEVEL)%
+	MPSETVAR $n CurLevelhalf $%MATH($<$n curlevel>/2)%
+	mpsetvar $n cumround $%MATH(4?10)%
+	mpsetvar $n maxhealth $%GSTAT($n MAXHITS)%
+	mpsetvar $n cumtracker $<$n cumround>
+	mpsetvar $n expertisedmgmult $%MATH($<$n expertiselevel>/4 > 1)%
+	mpsetvar $n sexrounds $%MATH($<$n maxsexrounds> + 1)% 
+	mptattoo $n '$<$n maxsexrounds> usingsexability'
+	mptattoo $t '$<$n maxsexrounds> usingsexability'
+if sex($n == M) or sex($n == O) or sex($n == U)
+	mpsetvar $n genitallist 'mouth lips tongue'
+else
+	if sex($n == F) or sex($n == A) or sex($n == H)
+		mpsetvar $n genitallist 'mouth facepussy lips face throat'
+	endif
+endif
+if sex($t == M) or sex($t == O) or sex($t == U)
+	mpsetvar $t genitallist 'cock penis dong schlong rod'
+else
+	if sex($t == F) or sex($t == A) or sex($t == H)
+		mpsetvar $t genitallist 'mouth facepussy lips face throat'
+	endif
+endif
+	mpsetvar $n soundlist '*PLAP* *PLOP* *SLAP* *SLICK* *GRIND*'
+	mpsetvar $n actionwordlist 'fucks pushes grinds thrusts slams'
+	mpsetvar $n severitywordlist 'thoroughly forcefully deeply quickly fiercely'
+	mpsetvar $t genitallist2 'ass bum butt pucker guts asshole'
+	mpsetvar $n genitallist2 'ass bum butt pucker guts asshole'
+	mpcallfunc unchaos
+	mpcallfunc MIDROUNDCHECK
+endif
 ~
 
+FUNCTION_PROG MIDROUNDCHECK
+if var($n sexrounds <= 0)
+	mpunaffect $t sexual_cumvampiresuck
+	mpunaffect $n sexual_cumvampiresuck
+	mpecho $t breaks out of $n's sucking!
+	mptattoo $n -usingsexability
+	mptattoo $t -usingsexability
+else
+	if ishere($n)
+		mpsetvar $n sexrounds -1
+		mpsetvar $n cumtracker -1
+		MPSETVAR $n HitsCalc $%GSTAT($n Hits)%
+		MPSETVAR $t HitsCalc $%GSTAT($t Hits)%
+		mpsetvar $t strengthstat $%GSTAT('$t' STRENGTH)%
+		mpsetvar $t strengthstat $%MATH($<'$t' strengthstat> + 1?6)%
+		mpsetvar $t grapplerstrengthstat $%GSTAT('$n' STRENGTH)%
+		mpsetvar $t grapplerstrengthstat $%MATH($<'$t' grapplerstrengthstat> + 1?6)%
+		if var($t strengthstat > $<$t grapplerstrengthstat>)
+			mpecho $t manages to overpower $n! reducing $s grip strength! ^RSTR:[^r$<$t strengthstat> ^wvs^r $<$t grapplerstrengthstat>^R]^N
+			mpsetvar $n sexrounds --
+			mpsetvar $n sexrounds --
+		endif
+		mpsetvar $t dexteritystat $%GSTAT('$t' DEXTERITY)%
+		mpsetvar $t dexteritystat $%MATH($<'$t' dexteritystat> + 1?6)%
+		mpsetvar $t grapplerdexteritystat $%GSTAT('$n' DEXTERITY)%
+		mpsetvar $t grapplerdexteritystat $%MATH($<'$t' grapplerdexteritystat> + 1?6)%
+		if var($t dexteritystat > $<$t grapplerdexteritystat>)
+			mpecho $t manages to slip through $n's grip! reducing $s grip strength! ^RDEX:[^r$<$t dexteritystat> ^wvs^r $<$t grapplerdexteritystat>^R]^N
+			mpsetvar $n sexrounds --
+			mpsetvar $n sexrounds --
+		endif
+		mpecho $n's sucking grip strength on $t: $<'$n' sexrounds>/$<'$n' maxsexrounds>
+		mpalarm 1 mpcallfunc INITIATESEXUAL_CUMVAMPIRESUCK
+	else
+		mpunaffect $t sexual_cumvampiresuck
+		mpunaffect $i sexual_cumvampiresuck
+		mpunaffect $n sexual_cumvampiresuck
+		mpunaffect $i sexual_cumvampiresuck
+		mptattoo $n -usingsexability
+		mptattoo $t -usingsexability
+	endif
+endif
+~
 
-FUNCTION_PROG CUMVAMPIREMALEPC
-switch $%RAND0NUM(5)%
-case 0
-mpsetvar $n randhealamt $%RANDNUM(350)%
-MPSETVAR $t CurHits $%GSTAT($t Hits)%
-mpsetvar $n randhealamt + 50
+FUNCTION_PROG INITIATESEXUAL_CUMVAMPIRESUCK
 if class($n == TacticalJoy)
-mpsetvar $n joydamage $%MATH($<$n randhealamt> / 2)%
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt> - $<$n joydamage>)%
-if sex($n == F) or sex($n == A) or sex($n == H)
-MPECHO $n licks ($<$n joydamage>) it all around!
-else
-MPECHO $n licks ($<$n joydamage>) it all around!
+	mpsetvar $n joydamage $%RANDNUM(30)%
+	mpsetvar $n joydamage $%MATH($<$n joydamage> + $<$n CurLevelhalf>)
+	if var($t targetsave < 0)
+		mpsetvar $n savedifference $%MATH($<$n randhealamt> / $<$t targetsave> * -1)%
+		mpsetvar $n joydamage $%MATH($<$n randhealamt> + $<$n savedifference>)%
+	endif
+	if var($t targetsave > 0)
+		mpsetvar $n savedifference $%MATH($<$n randhealamt> / $<$t targetsave>)%
+		mpsetvar $n joydamage $%MATH($<$n randhealamt> - $<$n savedifference>)%
+	endif
+	mpsetvar $n randhealamt $%MATH($<$n joydamage> / 2)%
+	MPSETVAR $t HitsCalc $%MATH($<$t HitsCalc> - $<$n joydamage>)%
+	MPSETVAR $n HitsCalc $%MATH($<$n HitsCalc> + $<$n randhealamt>)%
+	MPECHO $n $<$n actionwordlist>.$%RAND0NUM(5)% ($<$n joydamage>) $m $<$n genitallist>.$%RAND0NUM(3)% $<$n actionwordlist>.$%RAND0NUM(5)%!
 endif
+mpsetvar $n dmgroll $%RANDNUM(125)%
+mpsetvar $n randhealamt $%MATH($<$n dmgroll> * $<$n expertisedmgmult> + $<$n CurLevelhalf>)%
+if var($t targetsave < 0)
+	mpsetvar $n savedifference $%MATH($<$n randhealamt> / $<$t targetsave> * -1)%
+	mpsetvar $n randhealamt $%MATH($<$n randhealamt> + $<$n savedifference>)%
+endif
+if var($t targetsave > 0)
+	mpsetvar $n savedifference $%MATH($<$n randhealamt> / $<$t targetsave>)%
+	mpsetvar $n randhealamt $%MATH($<$n randhealamt> - $<$n savedifference>)%
+endif
+MPSETVAR $t HitsCalc $%MATH($<$t HitsCalc> - $<$n randhealamt>)%
+if var($n cumtracker <= 0)
+	if sex($n == M) or sex($n == O) or sex($n == U)
+		if sex($t == F) or sex($t == A) or sex($t == H)
+			mpecho ^#401*SPLURT* $n $<$n actionwordlist>.$%RAND0NUM(5)% swallows a good ($<$n randhealamt>) ^wcummy load^#401 from $t's $<$t genitallist>.$%RAND0NUM(5)%! *SPLAT*
+		else
+			mpecho ^#401*SPLURT* $n $<$n actionwordlist>.$%RAND0NUM(5)% swallows a good ($<$n randhealamt>) ^wcummy load^#401 from $t's $<$t genitallist>.$%RAND0NUM(5)%! *SPLAT*
+		endif
+	endif
+	if sex($n == F) or sex($n == A) or sex($n == H)
+		if sex($t == F) or sex($t == A) or sex($t == H)
+			mpecho ^#401*SPLURT* $n $<$n actionwordlist>.$%RAND0NUM(5)% ^Wslurps^#401 a good amount ($<$n randhealamt>) from $t's $<$t genitallist>.$%RAND0NUM(5)%! *SPLAT*
+		else
+			mpecho ^#401*SPLURT* $n $<$n actionwordlist>.$%RAND0NUM(5)% swallows a good ($<$n randhealamt>) ^wcummy load^#401 from $t's $<$t genitallist>.$%RAND0NUM(5)%! *SPLAT*
+		endif
+	endif
+	mpforce $t mate $n
+	mpsetvar $n cumround $%MATH(5?10)%
+	mpsetvar $n cumtracker $<$n cumround>
 else
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
+	mpsetvar $n dmgroll $%RANDNUM(10)%
+	mpsetvar $n randhealamt $%MATH($<$n dmgroll> * $<$n expertisedmgmult> + $<$n CurLevelhalf>)%
+	if var($t targetsave < 0)
+		mpsetvar $n savedifference $%MATH($<$n randhealamt> / $<$t targetsave> * -1)%
+		mpsetvar $n randhealamt $%MATH($<$n randhealamt> + $<$n savedifference>)%
+	endif
+	if var($t targetsave > 0)
+		mpsetvar $n savedifference $%MATH($<$n randhealamt> / $<$t targetsave>)%
+		mpsetvar $n randhealamt $%MATH($<$n randhealamt> - $<$n savedifference>)%
+	endif
+	MPSETVAR $t HitsCalc $%MATH($<$t HitsCalc> - $<$n randhealamt>)%
+	if sex($n == M) or sex($n == O) or sex($n == U)
+		if sex($t == F) or sex($t == A) or sex($t == H)
+			mpecho ^#401$<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)% $n forces $t to $<$n severitywordlist>.$%RAND0NUM(5)% $<$n actionwordlist>.$%RAND0NUM(5)% ($<$n randhealamt>) $m $<$t genitallist>.$%RAND0NUM(3)% into $s $<$n genitallist>.$%RAND0NUM(5)%! $<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)%   
+		else
+			mpecho ^#401$<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)% $n forces $t to $<$n severitywordlist>.$%RAND0NUM(5)% $<$n actionwordlist>.$%RAND0NUM(5)% ($<$n randhealamt>) $m $<$t genitallist>.$%RAND0NUM(3)% into $s $<$n genitallist2>.$%RAND0NUM(5)%! $<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)%   
+		endif
+	endif
+	if sex($n == F) or sex($n == A) or sex($n == H)
+		if sex($t == F) or sex($t == A) or sex($t == H)
+			mpecho ^#401$<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)% $n forces $t to $<$n severitywordlist>.$%RAND0NUM(5)% $<$n actionwordlist>.$%RAND0NUM(5)% ($<$n randhealamt>) $m $<$n genitallist>.$%RAND0NUM(3)% against $s $<$t genitallist>.$%RAND0NUM(5)%! $<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)%   
+		else
+			mpecho ^#401$<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)% $n forces $t to $<$n severitywordlist>.$%RAND0NUM(5)% $<$n actionwordlist>.$%RAND0NUM(5)% ($<$n randhealamt>) $m $<$n genitallist>.$%RAND0NUM(3)% against $s $<$t genitallist>.$%RAND0NUM(5)%! $<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)%   
+		endif
+	endif
+endif
+mpsetvar $n randhealamt $%MATH($<$n randhealamt>/2)%
+MPSETVAR $n HitsCalc $%MATH($<$n HitsCalc> + $<$n randhealamt>)%
 if var($t HitsCalc < 1)
-mpslay $t
-endif
-endif
-MPGSET $t HITS $%VAR($t HitsCalc)%
-mpecho ^w*SPLURT* $n slurps down ($<$n randhealamt>) clear liquid from $t's poor cunny! *SPLAT*
-mpechoat $n You gain ^g$<$n randhealamt>^N health from this!
-case 1
-mpsetvar $n randhealamt $%RANDNUM(20)%
-MPSETVAR $t CurHits $%GSTAT($t Hits)%
-mpsetvar $n randhealamt + 10
-if class($n == TacticalJoy)
-mpsetvar $n joydamage $%MATH($<$n randhealamt> / 2)%
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt> - $<$n joydamage>)%
-if sex($n == F) or sex($n == A) or sex($n == H)
-MPECHO $n licks ($<$n joydamage>) it all around!
+	mpslay $t
 else
-MPECHO $n licks ($<$n joydamage>) it all around!
+	MPGSET $t HITS $%VAR($t HitsCalc)%
 endif
+if var($n HitsCalc > $<$n maxhealth>)
+	mpgset $n HITS $<$n maxhealth>
 else
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
-if var($t HitsCalc < 1)
-mpslay $t
+	MPGSET $n HITS $%VAR($n HitsCalc)%
 endif
-endif
-MPGSET $t HITS $%VAR($t HitsCalc)%
-mpecho ^#401*SLURP* *SLOP* $n keeps licking ($<$n randhealamt>) $t quickly, holding onto $M legs! *SLURP*
-case 2
-mpsetvar $n randhealamt $%RANDNUM(20)%
-MPSETVAR $t CurHits $%GSTAT($t Hits)%
-mpsetvar $n randhealamt + 10
-if class($n == TacticalJoy)
-mpsetvar $n joydamage $%MATH($<$n randhealamt> / 2)%
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt> - $<$n joydamage>)%
-if sex($n == F) or sex($n == A) or sex($n == H)
-MPECHO $n licks ($<$n joydamage>) it all around!
-else
-MPECHO $n licks ($<$n joydamage>) it all around!
-endif
-else
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
-if var($t HitsCalc < 1)
-mpslay $t
-endif
-endif
-MPGSET $t HITS $%VAR($t HitsCalc)%
-mpecho ^#401*LICK* *SLURP* $n keeps pressing $m head ($<$n randhealamt>) into that pussy! *SLICK* *LICK*
-case 3
-mpsetvar $n randhealamt $%RANDNUM(20)%
-MPSETVAR $t CurHits $%GSTAT($t Hits)%
-mpsetvar $n randhealamt + 10
-if class($n == TacticalJoy)
-mpsetvar $n joydamage $%MATH($<$n randhealamt> / 2)%
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt> - $<$n joydamage>)%
-if sex($n == F) or sex($n == A) or sex($n == H)
-MPECHO $n licks ($<$n joydamage>) it all around!
-else
-MPECHO $n licks ($<$n joydamage>) it all around!
-endif
-else
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
-if var($t HitsCalc < 1)
-mpslay $t
-endif
-if var($t HitsCalc < 1)
-mpslay $t
-endif
-endif
-MPGSET $t HITS $%VAR($t HitsCalc)%
-mpecho ^#401*SLURP* *SLOP* $n holds $t's legs down and licks ($<$n randhealamt>) deep in! *SLURP*
-case 4
-mpsetvar $n randhealamt $%RANDNUM(20)%
-MPSETVAR $t CurHits $%GSTAT($t Hits)%
-mpsetvar $n randhealamt + 10
-if class($n == TacticalJoy)
-mpsetvar $n joydamage $%MATH($<$n randhealamt> / 2)%
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt> - $<$n joydamage>)%
-if sex($n == F) or sex($n == A) or sex($n == H)
-MPECHO $n licks ($<$n joydamage>) it all around!
-else
-MPECHO $n licks ($<$n joydamage>) it all around!
-endif
-else
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
-if var($t HitsCalc < 1)
-mpslay $t
-endif
-endif
-MPGSET $t HITS $%VAR($t HitsCalc)%
-mpecho ^#401*LIICK* *SLOP* $n licks ($<$n randhealamt>) inside $t's depths thoroughly! *SLICK* *LICK*
-endswitch
+MPCALLFUNC MIDROUNDCHECK
 ~
-FUNCTION_PROG CUMVAMPIREFEMALEPC
-switch $%RAND0NUM(5)%
-case 0
-mpsetvar $n randhealamt $%RANDNUM(350)%
-MPSETVAR $t CurHits $%GSTAT($t Hits)%
-mpsetvar $n randhealamt + 50
-if class($n == TacticalJoy)
-mpsetvar $n joydamage $%MATH($<$n randhealamt> / 2)%
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt> - $<$n joydamage>)%
-if sex($n == F) or sex($n == A) or sex($n == H)
-MPECHO $n licks ($<$n joydamage>) it all around!
-else
-MPECHO $n licks ($<$n joydamage>) it all around!
-endif
-else
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
-if var($t HitsCalc < 1)
-mpslay $t
-endif
-endif
-MPGSET $t HITS $%VAR($t HitsCalc)%
-mpecho ^w*SPLURT* $n receives a good ($<$n randhealamt>), yummy loads from $t! *SPLAT*
-mpechoat $n You gain ^g$<$n randhealamt>^N health from this!
-mpforce $t moan
-case 1
-mpsetvar $n randhealamt $%RANDNUM(20)%
-MPSETVAR $t CurHits $%GSTAT($t Hits)%
-mpsetvar $n randhealamt + 10
-if class($n == TacticalJoy)
-mpsetvar $n joydamage $%MATH($<$n randhealamt> / 2)%
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt> - $<$n joydamage>)%
-if sex($n == F) or sex($n == A) or sex($n == H)
-MPECHO $n licks ($<$n joydamage>) it all around!
-else
-MPECHO $n licks ($<$n joydamage>) it all around!
-endif
-else
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
-if var($t HitsCalc < 1)
-mpslay $t
-endif
-endif
-MPGSET $t HITS $%VAR($t HitsCalc)%
-mpecho ^#401*SLURP* *SLOP* $n keeps bouncing ($<$n randhealamt>) $m head on $t's cock roughly, holding $M legs! *SLURP* *SLURP*
-case 2
-mpsetvar $n randhealamt $%RANDNUM(20)%
-MPSETVAR $t CurHits $%GSTAT($t Hits)%
-mpsetvar $n randhealamt + 10
-if class($n == TacticalJoy)
-mpsetvar $n joydamage $%MATH($<$n randhealamt> / 2)%
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt> - $<$n joydamage>)%
-if sex($n == F) or sex($n == A) or sex($n == H)
-MPECHO $n licks ($<$n joydamage>) it all around!
-else
-MPECHO $n licks ($<$n joydamage>) it all around!
-endif
-else
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
-if var($t HitsCalc < 1)
-mpslay $t
-endif
-endif
-MPGSET $t HITS $%VAR($t HitsCalc)%
-mpecho ^#401*LICK* *SLURP* $n keeps holding $t and thrusting ($<$n randhealamt>) that head! *SLICK* *LICK*
-case 3
-mpsetvar $n randhealamt $%RANDNUM(20)%
-MPSETVAR $t CurHits $%GSTAT($t Hits)%
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
-if var($t HitsCalc < 1)
-mpslay $t
-endif
-mpsetvar $n randhealamt + 20
-if class($n == TacticalJoy)
-mpsetvar $n joydamage $%MATH($<$n randhealamt> / 2)%
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt> - $<$n joydamage>)%
-if sex($n == F) or sex($n == A) or sex($n == H)
-MPECHO $n licks ($<$n joydamage>) it all around!
-else
-MPECHO $n licks ($<$n joydamage>) it all around!
-endif
-else
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
-if var($t HitsCalc < 1)
-mpslay $t
-endif
-endif
-mpecho ^#401*SLURP* *SLOP* $n holds $t down and slams $m head in ballsdeep ($<$n randhealamt>) and with massive force!*SLURP* *SLURP*
-MPGSET $t HITS $%VAR($t HitsCalc)%
-case 4
-mpsetvar $n randhealamt $%RANDNUM(20)%
-MPSETVAR $t CurHits $%GSTAT($t Hits)%
-mpsetvar $n randhealamt + 10
-if class($n == TacticalJoy)
-mpsetvar $n joydamage $%MATH($<$n randhealamt> / 2)%
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt> - $<$n joydamage>)%
-if sex($n == F) or sex($n == A) or sex($n == H)
-MPECHO $n licks ($<$n joydamage>) it all around!
-else
-MPECHO $n licks ($<$n joydamage>) it all around!
-endif
-else
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
-if var($t HitsCalc < 1)
-mpslay $t
-endif
-endif
-mpecho ^#401*PLOP* *SLOP* $n licks ($<$n randhealamt>) $t's cock inside $m mouth thoroughly! *SLICK* *SLURP*
-MPGSET $t HITS $%VAR($t HitsCalc)%
-endswitch
+
+cnclmsg_prog huh p stop
+mpecho $n lets go of $i!
+mpunaffect $t sexual_cumvampiresuck
+mpunaffect $i sexual_cumvampiresuck
+mpunaffect $n sexual_cumvampiresuck
+mpunaffect $i sexual_cumvampiresuck
+mptattoo $n -usingsexability
+mptattoo $t -usingsexability
+mpsetvar $n sexrounds 0
+return cancel
 ~
-##must do emotes
-FUNCTION_PROG CUMVAMPIREGAY
-switch $%RAND0NUM(5)%
-case 0
-mpsetvar $n randhealamt $%RANDNUM(350)%
-MPSETVAR $t CurHits $%GSTAT($t Hits)%
-mpsetvar $n randhealamt + 50
-if class($n == TacticalJoy)
-mpsetvar $n joydamage $%MATH($<$n randhealamt> / 2)%
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt> - $<$n joydamage>)%
-if sex($n == F) or sex($n == A) or sex($n == H)
-MPECHO $n licks ($<$n joydamage>) it all around!
-else
-MPECHO $n licks ($<$n joydamage>) it all around!
-endif
-else
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
-if var($t HitsCalc < 1)
-mpslay $t
-endif
-endif
-MPGSET $t HITS $%VAR($t HitsCalc)%
-mpecho ^w*SPLURT* $n receives a good ($<$n randhealamt>), yummy loads from $t! *SPLAT*
-mpechoat $n You gain ^g$<$n randhealamt>^N health from this!
-mpforce $t moan
-case 1
-mpsetvar $n randhealamt $%RANDNUM(20)%
-MPSETVAR $t CurHits $%GSTAT($t Hits)%
-mpsetvar $n randhealamt + 10
-if class($n == TacticalJoy)
-mpsetvar $n joydamage $%MATH($<$n randhealamt> / 2)%
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt> - $<$n joydamage>)%
-if sex($n == F) or sex($n == A) or sex($n == H)
-MPECHO $n licks ($<$n joydamage>) it all around!
-else
-MPECHO $n licks ($<$n joydamage>) it all around!
-endif
-else
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
-if var($t HitsCalc < 1)
-mpslay $t
-endif
-endif
-MPGSET $t HITS $%VAR($t HitsCalc)%
-mpecho ^#401*SLURP* *SLOP* $n keeps bouncing ($<$n randhealamt>) $m head on $t's cock roughly, holding $M legs! *SLURP* *SLURP*
-case 2
-mpsetvar $n randhealamt $%RANDNUM(20)%
-MPSETVAR $t CurHits $%GSTAT($t Hits)%
-mpsetvar $n randhealamt + 10
-if class($n == TacticalJoy)
-mpsetvar $n joydamage $%MATH($<$n randhealamt> / 2)%
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt> - $<$n joydamage>)%
-if sex($n == F) or sex($n == A) or sex($n == H)
-MPECHO $n licks ($<$n joydamage>) it all around!
-else
-MPECHO $n licks ($<$n joydamage>) it all around!
-endif
-else
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
-if var($t HitsCalc < 1)
-mpslay $t
-endif
-endif
-MPGSET $t HITS $%VAR($t HitsCalc)%
-mpecho ^#401*LICK* *SLURP* $n keeps holding $t and thrusting ($<$n randhealamt>) that head! *SLICK* *LICK*
-case 3
-mpsetvar $n randhealamt $%RANDNUM(20)%
-MPSETVAR $t CurHits $%GSTAT($t Hits)%
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
-if var($t HitsCalc < 1)
-mpslay $t
-endif
-mpsetvar $n randhealamt + 20
-if sex($n == F) or sex($n == A) or sex($n == H)
-MPECHO $n licks ($<$n joydamage>) it all around!
-else
-MPECHO $n licks ($<$n joydamage>) it all around!
-endif
-mpecho ^#401*SLURP* *SLOP* $n holds $t down and slams $m head in ballsdeep ($<$n randhealamt>) and with massive force!*SLURP* *SLURP*
-MPGSET $t HITS $%VAR($t HitsCalc)%
-case 4
-mpsetvar $n randhealamt $%RANDNUM(20)%
-MPSETVAR $t CurHits $%GSTAT($t Hits)%
-mpsetvar $n randhealamt + 10
-if class($n == TacticalJoy)
-mpsetvar $n joydamage $%MATH($<$n randhealamt> / 2)%
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt> - $<$n joydamage>)%
-if sex($n == F) or sex($n == A) or sex($n == H)
-MPECHO $n licks ($<$n joydamage>) it all around!
-else
-MPECHO $n licks ($<$n joydamage>) it all around!
-endif
-else
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
-if var($t HitsCalc < 1)
-mpslay $t
-endif
-endif
-mpecho ^#401*PLOP* *SLOP* $n licks ($<$n randhealamt>) $t's cock inside $m mouth thoroughly! *SLICK* *SLURP*
-MPGSET $t HITS $%VAR($t HitsCalc)%
-endswitch
+
+death_prog
+mpunaffect $t sexual_cumvampiresuck
+mpunaffect $i sexual_cumvampiresuck
+mpunaffect $n sexual_cumvampiresuck
+mpunaffect $i sexual_cumvampiresuck
+mptattoo $n -usingsexability
+mptattoo $t -usingsexability
+mpsetvar $n sexrounds 0
 ~
-FUNCTION_PROG CUMVAMPIRELESBIAN
-switch $%RAND0NUM(5)%
-case 0
-mpsetvar $n randhealamt $%RANDNUM(350)%
-MPSETVAR $t CurHits $%GSTAT($t Hits)%
-mpsetvar $n randhealamt + 50
-if class($n == TacticalJoy)
-mpsetvar $n joydamage $%MATH($<$n randhealamt> / 2)%
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt> - $<$n joydamage>)%
-if sex($n == F) or sex($n == A) or sex($n == H)
-MPECHO $n licks ($<$n joydamage>) it all around!
-else
-MPECHO $n licks ($<$n joydamage>) it all around!
+
+exit_prog
+if !ishere($n)
+mpunaffect $t sexual_cumvampiresuck
+mpunaffect $i sexual_cumvampiresuck
+mpunaffect $n sexual_cumvampiresuck
+mpunaffect $i sexual_cumvampiresuck
+mptattoo $n -usingsexability
+mptattoo $t -usingsexability
+mpsetvar $n sexrounds 0
 endif
-else
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
-if var($t HitsCalc < 1)
-mpslay $t
-endif
-endif
-MPGSET $t HITS $%VAR($t HitsCalc)%
-mpecho ^w*SPLURT* $n slurps down ($<$n randhealamt>) clear liquid from $t's poor cunny! *SPLAT*
-mpechoat $n You gain ^g$<$n randhealamt>^N health from this!
-case 1
-mpsetvar $n randhealamt $%RANDNUM(20)%
-MPSETVAR $t CurHits $%GSTAT($t Hits)%
-mpsetvar $n randhealamt + 10
-if class($n == TacticalJoy)
-mpsetvar $n joydamage $%MATH($<$n randhealamt> / 2)%
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt> - $<$n joydamage>)%
-if sex($n == F) or sex($n == A) or sex($n == H)
-MPECHO $n licks ($<$n joydamage>) it all around!
-else
-MPECHO $n licks ($<$n joydamage>) it all around!
-endif
-else
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
-if var($t HitsCalc < 1)
-mpslay $t
-endif
-endif
-MPGSET $t HITS $%VAR($t HitsCalc)%
-mpecho ^#401*SLURP* *SLOP* $n keeps licking ($<$n randhealamt>) $t quickly, holding onto $M legs! *SLURP*
-case 2
-mpsetvar $n randhealamt $%RANDNUM(20)%
-MPSETVAR $t CurHits $%GSTAT($t Hits)%
-mpsetvar $n randhealamt + 10
-if class($n == TacticalJoy)
-mpsetvar $n joydamage $%MATH($<$n randhealamt> / 2)%
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt> - $<$n joydamage>)%
-if sex($n == F) or sex($n == A) or sex($n == H)
-MPECHO $n licks ($<$n joydamage>) it all around!
-else
-MPECHO $n licks ($<$n joydamage>) it all around!
-endif
-else
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
-if var($t HitsCalc < 1)
-mpslay $t
-endif
-endif
-MPGSET $t HITS $%VAR($t HitsCalc)%
-mpecho ^#401*LICK* *SLURP* $n keeps pressing $m head ($<$n randhealamt>) into that pussy! *SLICK* *LICK*
-case 3
-mpsetvar $n randhealamt $%RANDNUM(20)%
-MPSETVAR $t CurHits $%GSTAT($t Hits)%
-mpsetvar $n randhealamt + 10
-if class($n == TacticalJoy)
-mpsetvar $n joydamage $%MATH($<$n randhealamt> / 2)%
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt> - $<$n joydamage>)%
-if sex($n == F) or sex($n == A) or sex($n == H)
-MPECHO $n licks ($<$n joydamage>) it all around!
-else
-MPECHO $n licks ($<$n joydamage>) it all around!
-endif
-else
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
-if var($t HitsCalc < 1)
-mpslay $t
-endif
-endif
-MPGSET $t HITS $%VAR($t HitsCalc)%
-mpecho ^#401*SLURP* *SLOP* $n holds $t's legs down and licks ($<$n randhealamt>) deep in! *SLURP*
-case 4
-mpsetvar $n randhealamt $%RANDNUM(20)%
-MPSETVAR $t CurHits $%GSTAT($t Hits)%
-mpsetvar $n randhealamt + 10
-if class($n == TacticalJoy)
-mpsetvar $n joydamage $%MATH($<$n randhealamt> / 2)%
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt> - $<$n joydamage>)%
-if sex($n == F) or sex($n == A) or sex($n == H)
-MPECHO $n licks ($<$n joydamage>) it all around!
-else
-MPECHO $n licks ($<$n joydamage>) it all around!
-endif
-else
-MPSETVAR $t HitsCalc $%MATH($<$t CurHits> - $<$n randhealamt>)%
-if var($t HitsCalc < 1)
-mpslay $t
-endif
-endif
-MPGSET $t HITS $%VAR($t HitsCalc)%
-mpecho ^#401*LIICK* *SLOP* $n licks ($<$n randhealamt>) inside $t's depths thoroughly! *SLICK* *LICK*
-endswitch
 ~

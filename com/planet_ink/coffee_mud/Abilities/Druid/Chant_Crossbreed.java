@@ -105,8 +105,6 @@ public class Chant_Crossbreed extends Chant
 			&&((myChar.charStats().reproductiveCode()=='M')
 				||(myChar.charStats().reproductiveCode()=='F'))
 			&&(myChar.location()==mate.location())
-			&&(myChar.fetchWornItems(Wearable.WORN_LEGS|Wearable.WORN_WAIST,(short)-2048,(short)0).size()==0)
-			&&(mate.fetchWornItems(Wearable.WORN_LEGS|Wearable.WORN_WAIST,(short)-2048,(short)0).size()==0)
 			&&(mate.charStats().getMyRace().canBreedWith(myChar.charStats().getMyRace(),true))
 			&&(myChar.charStats().getMyRace().canBreedWith(mate.charStats().getMyRace(),true))
 			&&((mate.charStats().getStat(CharStats.STAT_AGE)==0)

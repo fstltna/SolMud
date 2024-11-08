@@ -1,10 +1,29 @@
-cnclmsg_prog huh p exchange experience
-if exp($n < 5000)
+cnclmsg_prog huh p browse
+mploadvar $n expprice
+mploadvar $n qpprice
+mpechoat $n The XP prices will increase with each purchase, starting from low and going infinitely high slowly (Except hp/mp/mv, they cap), to prevent infinite growth to insane heights but also simultaneously allow infinite growth through training.%0D^cpurchase trains^N: ^r$<$n expprice>XP^N -> ^g1 Training point^N%0D^cpurchase questpoint^N: ^r$<$n qpprice>XP^N -> ^g1 Quest point^N%0D^cexchange questpoint^N: ^r1QP^N -> ^g3 Training Point^N%0D^cpurchase hits^N: ^r$<$n hpprice>XP^N -> ^g10 Max HP^N%0D^cpurchase mana^N: ^r$<$n mpprice>XP^N -> ^g10 Max Mana^N%0D^cpurchase move^N: ^r$<$n mvprice>XP^N -> ^g10 Max Move^N%0D
+return cancel
+~
+
+
+cnclmsg_prog huh p purchase trains
+mploadvar $n highestlevel
+mpsetvar $n buyminlevel $%MATH($<$n highestlevel> - 5)%
+mpsetvar $n curlevel $%LEVEL($n)%
+if var($n buyminlevel < $<$n curlevel>)
+mploadvar $n expprice
+if exp($n < '$<$n expprice>')
 mpechoat $n insufficent experience.
 else
-mpexp $n -5000
-mpecho traded 5000XP for 1 Train
+mpexp $n -$<$n expprice>
+mpecho traded $<$n expprice>XP for 1 Train
 mptrains $n ++1
+endif
+mpsetvar $n expprice $%MATH($<$n expprice> + 500)%
+mpsavevar $n expprice
+mpechoat $n New price: $<$n expprice>XP
+else
+mpechoat $n You can not go any lower level than this. You can only use this if you are within 5 level less than $<$n highestlevel>.
 endif
 return cancel
 ~
@@ -16,6 +35,116 @@ else
 mpquestpoints $n --1
 mpecho traded 1QP for 3 Trains
 mptrains $n ++3
+endif
+return cancel
+~
+
+cnclmsg_prog huh p purchase questpoint
+mploadvar $n qpprice
+if exp($n < '$<$n qpprice>')
+mpechoat $n insufficent experience.
+else
+mpexp $n -$<$n qpprice>
+mpecho traded $<$n qpprice>XP for 1QP
+mpquestpoints $n ++1
+mpsetvar $n qpprice $%MATH($<$n qpprice> + 1500)%
+mpsavevar $n qpprice
+mpechoat $n New price: $<$n qpprice>XP
+endif
+return cancel
+~
+
+all_greet_prog 100
+mploadvar $n qpprice
+mploadvar $n expprice
+mploadvar $n hpprice
+mploadvar $n mpprice
+mploadvar $n hvprice
+if var($n qpprice == '')
+mpsetvar $n qpprice 3000
+endif
+if var($n expprice == '')
+mpsetvar $n expprice 1000
+endif
+if var($n hpprice == '')
+mpsetvar $n hpprice 500
+endif
+if var($n mpprice == '')
+mpsetvar $n mpprice 250
+endif
+if var($n mvprice == '')
+mpsetvar $n mvprice 250
+endif
+~
+
+cnclmsg_prog huh p purchase hits
+mploadvar $n highestlevel
+mpsetvar $n buyminlevel $%MATH($<$n highestlevel> - 5)%
+mpsetvar $n curlevel $%LEVEL($n)%
+if var($n buyminlevel < $<$n curlevel>)
+mploadvar $n hpprice
+if exp($n < '$<$n hpprice>')
+mpechoat $n insufficent experience.
+else
+mpexp $n -$<$n hpprice>
+mpecho traded $<$n hpprice>XP for 10 Max Hits
+mpsetvar $n maxvalset $%GSTAT($n BASEHITS)%
+mpsetvar $n maxvalset +10
+mpgset $n basehits $<$n maxvalset>
+endif
+mpsetvar $n hpprice $%MATH($<$n hpprice> + 250 < 2501)%
+mpsavevar $n hpprice
+mpechoat $n New price: $<$n hpprice>XP
+else
+mpechoat $n You can not go any lower level than this. You can only use this if you are within 5 level less than $<$n highestlevel>.
+endif
+return cancel
+~
+
+cnclmsg_prog huh p purchase mana
+mploadvar $n highestlevel
+mpsetvar $n buyminlevel $%MATH($<$n highestlevel> - 5)%
+mpsetvar $n curlevel $%LEVEL($n)%
+if var($n buyminlevel < $<$n curlevel>)
+mploadvar $n mpprice
+if exp($n < '$<$n mpprice>')
+mpechoat $n insufficent experience.
+else
+mpexp $n -$<$n mpprice>
+mpecho traded $<$n mpprice>XP for 20 Max Mana
+mpsetvar $n maxvalset $%GSTAT($n BASEMANA)%
+mpsetvar $n maxvalset +20
+mpgset $n basemana $<$n maxvalset>
+endif
+mpsetvar $n mpprice $%MATH($<$n mpprice> + 125 < 2501)%
+mpsavevar $n mpprice
+mpechoat $n New price: $<$n mpprice>XP
+else
+mpechoat $n You can not go any lower level than this. You can only use this if you are within 5 level less than $<$n highestlevel>.
+endif
+return cancel
+~
+
+cnclmsg_prog huh p purchase move
+mploadvar $n highestlevel
+mpsetvar $n buyminlevel $%MATH($<$n highestlevel> - 5)%
+mpsetvar $n curlevel $%LEVEL($n)%
+if var($n buyminlevel < $<$n curlevel>)
+mploadvar $n mpprice
+if exp($n < '$<$n mpprice>')
+mpechoat $n insufficent experience.
+else
+mpexp $n -$<$n mpprice>
+mpecho traded $<$n mpprice>XP for 20 Max Move
+mpsetvar $n maxvalset $%GSTAT($n BASEMOVE)%
+mpsetvar $n maxvalset +20
+mpgset $n basemove $<$n maxvalset>
+endif
+mpsetvar $n mvprice $%MATH($<$n mvprice> + 125 < 2501)%
+mpsavevar $n mvprice
+mpechoat $n New price: $<$n mvprice>XP
+else
+mpechoat $n You can not go any lower level than this. You can only use this if you are within 5 level less than $<$n highestlevel>.
 endif
 return cancel
 ~

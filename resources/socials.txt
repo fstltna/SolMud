@@ -51,6 +51,8 @@ mv	BEER SELF	You pop off the top and down a beer.	<S-NAME> pops the top off a bo
 ww	BEG	You beg the gods for mercy.	The gods fall down laughing at <S-NAME>'s request for mercy.					
 ww	BEG <T-NAME>	You desperately try to squeeze a few coins from <T-HIM-HER>.	<S-NAME> begs you for money. You graciously let <S-HIM-HER> peep at your fortune.	<S-NAME> begs <T-NAMESELF> for a dime or two - or twenty !	Your money-lender seems to be out for the moment.			
 ww	BEG SELF	Begging yourself for money doesn't help.	<S-NAME> tries asking <S-HIM-HERSELF> for money.					
+mo	BENDOVER	You bend over and spread your asscheeks.	<S-NAME> bends over and spreads <S-HIS-HER> asscheeks.			bounce.wav		
+ov	BENDOVER <T-NAME>	You bend over for <T-NAME> and spread your asscheeks.	<S-NAME> bends over and spreads <S-HIS-HER> asscheeks for <T-NAMESELF>.	<S-NAME> bends over and spreads <S-HIS-HER> asscheeks for you.	bend over for who?	bounce.wav		
 mo	BIRD	You flick a bird...How obscene!	<S-NAME> flicks a bird at no one in particular.					
 mo	BIRD <T-NAME>	You shoot a bird at <T-NAMESELF>.	<S-NAME> gives <T-NAMESELF> the bird.	<S-NAME> gives you the bird...What an ass!	Don't you hate to waste a good obscene gesture like that?			
 ww	BITE	You glare around, muttering "Bite me..." under your breath.	<S-NAME> glares around, muttering "Bite me..." under <S-HIS-HER> breath.					
@@ -96,9 +98,9 @@ ss	BURP	Burp.	<S-NAME> burps.	<S-NAME> burps in your general direction.		burp.wa
 ss	BURP <T-NAME>	You burp loudly to <T-HIM-HER> in response.	<S-NAME> burps loudly in response to <T-NAMESELF>'s remark.	<S-NAME> burps loudly in response to your remark.	You can't find your victim.	burp.wav		
 ss	BURP SELF	You burp at yourself.	<S-NAME> burps at <S-HIM-HERSELF>.  What a sick sight.			burp.wav		
 ov	BUTT <T-NAME>	You reach down and cup one of <T-NAME>`s buttcheeks.	<S-NAME> reaches down and cups one of <T-NAME>`s buttcheeks.	<S-NAME> reaches down and cups one of your buttcheeks.	Butt who?			
-qw	BUTTFUCK	You gonna buttfuck yourself? Get real.						
-ov	BUTTFUCK <I-NAME>	You buttfuck <T-NAME>.	<S-NAME> buttfucks <T-NAMESELF>.	<S-NAME> buttfucks you.	Buttfuck who?			
-ov	BUTTFUCK <T-NAME>	You buttfuck <T-NAME>.	<S-NAME> buttfucks <T-NAMESELF>.	<S-NAME> buttfucks you.	Buttfuck who?			TARG_CONFIRM
+qq	BUTTFUCK	You gonna buttfuck yourself? Get real.						
+ov	BUTTFUCK <I-NAME>	You buttfuck <T-NAME>.	<S-NAME> buttfucks <T-NAMESELF>.	<S-NAME> buttfucks you.	Buttfuck who?	fucking.wav		
+ov	BUTTFUCK <T-NAME>	You buttfuck <T-NAME>.	<S-NAME> buttfucks <T-NAMESELF>.	<S-NAME> buttfucks you.	Buttfuck who?	fucking.wav		
 ov	BUTTFUCK <V-NAME>	You buttfuck <T-NAME>.	<S-NAME> buttfucks <T-NAMESELF>.	<S-NAME> buttfucks you.	Buttfuck who?			
 ss	CACKLE	You cackle gleefully.	<S-NAME> throws back <S-HIS-HER> head and cackles with insane glee!			cackle.wav		
 ss	CACKLE <T-NAME>	You cackle gleefully at <T-NAMESELF>	<S-NAME> cackles gleefully at <T-NAMESELF>.	<S-NAME> cackles gleefully at you.  Better keep your distance from <S-HIM-HER>.	You can't find a friend to cackle with.	cackle.wav		
@@ -217,9 +219,9 @@ mo	EYEPOKE	You get ready to poke someone in the eye.	<S-NAME> looks around for s
 mo	EYEPOKE <T-NAME>	You poke <T-NAME> in the eye! Squishy!	<S-NAME> pokes <T-NAME> in the eye. That must`ve hurt.	<S-NAME> pokes you in the eye! OWWIE!!!	They aren`t around to poke. Sorry.			
 mo	EYEPOKE SELF	You jam your thumb into your eye. Was that fun?	<S-NAME> jabs <S-HIS-HER> thumb into <S-HIS-HER> eye and squishes it around.					
 qq	FACEFUCK	You gotta suck yourself? Get real.						
-ov	FACEFUCK <I-NAME>	You facefuck <T-NAME>.	<S-NAME> facefucks <T-NAMESELF>.	<S-NAME> facefucks you.	Facefuck who?			
-ov	FACEFUCK <T-NAME>	You facefuck <T-NAME>.	<S-NAME> facefucks <T-NAMESELF>.	<S-NAME> facefucks you.	Facefuck who?			TARG_CONFIRM
-ov	FACEFUCK <V-NAME>	You facefuck <T-NAME>.	<S-NAME> facefucks <T-NAMESELF>.	<S-NAME> facefucks you.	Facefuck who?			
+ov	FACEFUCK <I-NAME>	You facefuck <T-NAME>.	<S-NAME> facefucks <T-NAMESELF>.	<S-NAME> facefucks you.	Facefuck who?	sucking.wav		
+ov	FACEFUCK <T-NAME>	You facefuck <T-NAME>.	<S-NAME> facefucks <T-NAMESELF>.	<S-NAME> facefucks you.	Facefuck who?	sucking.wav		
+ov	FACEFUCK <V-NAME>	You facefuck <T-NAME>.	<S-NAME> facefucks <T-NAMESELF>.	<S-NAME> facefucks you.	Facefuck who?	sucking.wav		
 mv	FACEPALM	You put your hand over your face and shake your head slowly...What a dork!	<S-name> slaps <s-his-her> palm over <s-his-her> face and shakes <s-his-her> head slowly.					
 oo	FAINT	You faint.	<S-NAME> faints.					
 ot	FAINT <T-NAME>	You faint into <T-HIS-HER> arms.	<S-NAME> faints into <T-NAMESELF>'s open arms.	<S-NAME> just fainted into YOUR arms.	You fall on the floor and look stupid--really suave.			
@@ -315,7 +317,7 @@ ss	GROAN <T-NAME>	You groan at the sight of <T-HIM-HER>.	<S-NAME> groans at the 
 ss	GROAN SELF	You groan as you realize what you have done.	<S-NAME> groans as <S-HE-SHE> realizes what <S-HE-SHE> has done.			groan.wav		
 mo	GROPE	Whom do you wish to grope ??						
 ot	GROPE <T-NAME>	Well, what sort of noise do you expect here?	<S-NAME> gropes <T-NAMESELF>.	<S-NAME> gropes you.	Try someone who's here.			
-mo	GROPE SELF	You grope yourself - YUCK.	<S-NAME> gropes <S-HIM-HERSELF> - YUCK.					
+mo	GROPE SELF	You grope yourself.	<S-NAME> gropes <S-HIM-HERSELF>.					
 mv	GROUPHUG	You pull everyone into a HUGE group hug. Snuggly!	<S-NAME> pulls you into a HUGE group hug! Awwww.					
 ww	GROVEL	You grovel in the dirt.	<S-NAME> grovels in the dirt.					
 mo	GROVEL <T-NAME>	You grovel before <T-HIM-HER>	<S-NAME> grovels in the dirt before <T-NAMESELF>.	<S-NAME> grovels in the dirt before you.	Who?			
@@ -428,10 +430,10 @@ mt	MAKE <T-NAME>	You steam up the windows with <T-HIM-HER>.	<S-NAME> and <T-NAME
 mo	MASSAGE	Massage what?  Thin air?						
 mt	MASSAGE <T-NAME>	You gently massage <T-NAMESELF>'s shoulders.	<S-NAME> massages <T-NAMESELF>'s shoulders.	<S-NAME> gently massages your shoulders - Ahhhhhhhhhh...	You can only massage someone in the same room as you.			
 mo	MASSAGE SELF	You practice yoga as you try to massage yourself.	<S-NAME> gives a show on yoga-positions, trying to massage <S-HIM-HERSELF>.					
-mo	MATE	Umm, with yourself?						
-ov	MATE <I-NAME>	You fuck the shit out of <T-NAME>	<S-NAME> fucks the shit out of <T-NAMESELF>	<S-NAME> mates you.	Smash who?			
-mv	MATE <T-NAME>	You fuck the shit out of <T-HIM-HER>.	<S-NAME> fucks the shit out of <T-NAMESELF>.	<S-NAME> fucks the shit out of you.	Sorry, friend, I can't see that person here.			
-ov	MATE <V-NAME>	You fuck the shit out of <T-NAME>	<S-NAME> fucks the shit out of <T-NAMESELF>	<S-NAME> mates you.	Mate who?			
+mo	MATE	If you wanna jerk off, just type masturbate.						
+ov	MATE <I-NAME>	You fuck the shit out of <T-NAME>	<S-NAME> fucks the shit out of <T-NAMESELF>	<S-NAME> mates you.	Smash who?	fucking.wav		
+mv	MATE <T-NAME>	You fuck the shit out of <T-HIM-HER>.	<S-NAME> fucks the shit out of <T-NAMESELF>.	<S-NAME> fucks the shit out of you.	Sorry, friend, I can't see that person here.	fucking.wav		
+ov	MATE <V-NAME>	You fuck the shit out of <T-NAME>	<S-NAME> fucks the shit out of <T-NAMESELF>	<S-NAME> mates you.	Smash who?	fucking.wav		
 mo	MEDITATE	You assume a very comfortable position and begin to meditate.	<S-NAME> rests and begins to meditate... <S-HE-SHE> chants softly to <S-HIM-HERSELF>.					
 mo	MISCHIEVOUS	You give a mischievous smile at the trouble you have in mind.	<S-NAME> grins mischievously at a nasty idea.					
 mo	MISCHIEVOUS <T-NAME>	You grin mischievously at <T-HIM-HER>, thinking an evil thought.	<S-NAME> grins mischievously at <T-NAMESELF>.  <S-HIM-HER> must be thinking something evil.	<S-NAME> grins mischievously at you.  You inch toward the door.	You must be delirious.			
@@ -674,8 +676,8 @@ ss	SOB <T-NAME>	You sob quietly to yourself because <T-NAMESELF> has hurt your f
 ww	SPAM	You mutter, 'spam' quietly to yourself again and again.	<S-NAME> rests in a corner and mutters 'spam' quietly to <S-HIM-HERSELF>.					
 ww	SPAM <T-NAME>	You SPAM <T-NAMESELF> mercilessly!	<S-NAME> spams <T-NAMESELF>!	You've been SPAMMED by <S-NAME>!	Spam away -- they've left.			
 oo	SPANK	Spank whom?						
-ov	SPANK <T-NAME>	You spank <T-HIM-HER> playfully.	<S-NAME> spanks <T-NAMESELF> playfully.	<S-NAME> spanks you playfully.  OUCH!	Your hand can't find your victim!			
-ov	SPANK SELF	You spank yourself....HMMMMMMM...	<S-NAME> spanks <S-HIM-HERSELF>....HMMMMMMM...					
+ov	SPANK <T-NAME>	You spank <T-HIM-HER> playfully.	<S-NAME> spanks <T-NAMESELF> playfully.	<S-NAME> spanks you playfully.  OUCH!	Your hand can't find your victim!	spank.wav		
+ov	SPANK SELF	You spank yourself....HMMMMMMM...	<S-NAME> spanks <S-HIM-HERSELF>....HMMMMMMM...			spank.wav		
 ov	SPIN	You spin around the room until you`re dizzy.	<S-NAME> spins and twirls around the room.					
 ov	SPIN <T-NAME>	You grab <T-YOUPOSS> hands and spin around in circles.	<S-NAME> takes hold of <T-YOUPOSS> hands and begins to spin around the room.	<S-NAME> takes <T-YOUPOSS> hands and starts to spin around the room with you.	They aren`t there.			
 mo	SPIT	You spit in utter disgust.	<S-NAME> spits in utter disgust!					
@@ -720,6 +722,8 @@ mo	STROKE SELF	You are about to do something you'd rather not be caught doing.	<
 oo	STRUT	Strut your stuff.	<S-NAME> struts proudly.					
 oo	STRUT <T-NAME>	You strut to get <T-HIS-HER> attention.	<S-NAME> struts, hoping to get <T-NAMESELF>'s attention.	<S-NAME> struts, hoping to get your attention.	You don't see an audience.			
 oo	STRUT SELF	You strut to yourself, lost in your own world.	<S-NAME> struts to <S-HIM-HERSELF>, lost in <S-HIS-HER> own world.					
+ov	SUCK <T-NAME>	You suck <T-NAME> off rapidly.	<S-NAME> sucks <T-NAMESELF> off rapidly.	<S-NAME> sucks you off rapidly.	Suck who off?			
+sv	SUCK SELF	You suck yourself off with great dexterity.	<S-NAME> sucks <S-HIM-HERSELF> off with great dexterity.					
 mo	SULK	You sulk.	<S-NAME> sulks in the corner.					
 mo	SUPPORT	You fully support the plan.	<S-NAME> fully supports the plan.					
 ot	SUPPORT <T-NAME>	You hug <T-HIM-HER> supportively and smile.	<S-NAME> hugs <T-NAMESELF> supportively and smiles.	<S-NAME> hugs you supportively and smiles.	Sorry, friend, I can't see that person here.			

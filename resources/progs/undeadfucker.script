@@ -1,0 +1,86 @@
+delay_prog 15 20
+mploadvar $n necroowner
+if ishere($<$n necroowner>)
+mpcallfunc calcundeadfuck $<$n necroowner>
+endif
+~
+
+function_prog calcundeadfuck
+if !hitprcnt($g < 100)
+switch $%RANDNUM(10)%
+case 1
+mpecho ^b$n^b stays idle, clung on $g until healing is required.^N
+endswitch
+return
+endif
+mploadvar $g grointext
+mpsetvar $n zombielevel $%GSTAT($n LEVEL)%
+MPSETVAR $n fuckerheal $%MATH(15?40 + $<$n zombielevel>)%
+MPSETVAR $g MaxHits $%GSTAT($g BASEHITS)%
+IF GSTAT($g HITS < $<$g MaxHits>)
+    MPSETVAR $g CurHits $%GSTAT($g Hits)%
+    MPSETVAR $g HitsCalc $%MATH($<$g CurHits> + $<$n fuckerheal>)%
+    IF GSTAT($g BASEHITS < $<$g HitsCalc>)
+        MPSETVAR $g HitsCalc $<$g MaxHits>
+    ENDIF
+    MPGSET $g HITS $%VAR($g HitsCalc)%
+ENDIF
+switch $%RANDNUM(30)%
+case 1
+mploadvar $g cummystate
+mpsetvar $g cummystate ++
+mploadvar $g dirtystate
+mpsetvar $g dirtystate ++
+mpsavevar $g cummystate
+mpsavevar $g dirtystate
+if sex($g == F) or sex($g == A) or sex($g == H)
+    if sex($n == M) or sex($n == O) or sex($n == U)
+        mpecho $n dumps a rotten load deep into $g's $<$g grointext>. ^r(Cum: $<$g cummystate>) (Dirt: $<$g dirtystate>)^N
+        else
+        mpecho $n squirts rotten juices all over $g's $<$g grointext>. ^r(Cum: $<$g cummystate>) (Dirt: $<$g dirtystate>)^N 
+    endif
+else
+    if sex($n == M) or sex($n == O) or sex($n == U)
+        mpecho $n dumps a rotten load into $g's ass. ^r(Cum: $<$g cummystate>) (Dirt: $<$g dirtystate>)^N
+        else
+        mpecho $n squirts rotten juices all over $g's $<$g grointext>. ^r(Cum: $<$g cummystate>) (Dirt: $<$g dirtystate>)^N 
+    endif
+endif
+case 2
+mploadvar $g tearstate
+mpsetvar $g tearstate ++
+if sex($g == F) or sex($g == A) or sex($g == H)
+    if sex($n == M) or sex($n == O) or sex($n == U)
+    mpecho $n clumsily fucks $g's $<$g grointext> and tears it a bit. ^r(Tear: $<$g tearstate>)^N
+    else
+    mpecho $n clumsily rides $g's $<$g grointext> and hurts it a bit. ^r(Tear: $<$g tearstate>)^N
+    endif
+else
+    mpecho $n clumsily rides $g's $<$g grointext> and tears it a bit. ^r(Tear: $<$g tearstate>)^N
+endif
+endswitch
+if sex($g == F) or sex($g == A) or sex($g == H)
+    if sex($n == M) or sex($n == O) or sex($n == U)
+        mpecho ^b$n^b slowly thrust(s) ^c($<$n fuckerheal>)^b into $g's $<$g grointext>.^N
+        else
+        mpecho ^b$n^b slowly ride(s) ^c($<$n fuckerheal>)^b on $g.
+    endif
+else
+    if sex($n == M) or sex($n == O) or sex($n == U)
+        mpecho ^b$n^b slowly thrust(s) ^c($<$n fuckerheal>)^b into $g's ass.^N
+        else
+        mpecho ^b$n^b slowly rub(s) ^c($<$n fuckerheal>)^b against $g.^N
+    endif
+endif
+mpdamage $n 10 20 KILL
+if hitprcnt($n < 10)
+    mpechoat $g ^b$n^b's genitals squeak with movement and feel rash, rugged and beaten...^N
+endif
+if hitprcnt($n < 3)
+    mpecho $g ^rIt looks like $n's genitals are about to fall apart if left without healing.^N
+endif
+~
+
+greet_prog -NAMES "+$<$n NECROOWNER>"
+mpecho #111$g^#111 slowly clings onto $<$n necroowner>, connecting genitally. *slip*^N
+~

@@ -1,0 +1,217 @@
+set name pizza_delivery_1
+set display Pizza Delivery #1
+set author Moonbeam
+set questtype normal_delivery2
+set category 
+set instructions Go to neon dreams apartments` entrance and drop $[1 *].  Be careful!
+set wait 5 minutes
+set interval 1
+quiet
+set minplayers 1
+set playermask +tattoos -pizzacooldown
+set area "sector minus"
+set room "sector minus#62"
+set mobgroup
+set mob reselect Lui
+give stat keyplayer true
+give script LOAD=pizza_delivery_1_deliverer.script
+set area
+set room
+set mobgroup
+set mob
+set item
+import items pizza_delivery_1_item.xml
+set itemgroup loadeditems
+set item itemgroup
+give affect Property
+set area "Neon Dream Apartments"
+set room "Neon Dream Apartments#0"
+give script LOAD=pizza_delivery_1_deliveree.script
+set itemgroup
+set item reselect 
+give stat keyplayer true
+give affect Property
+set duration 2 hours
+<?xml version="1.0"?>
+<FILE><NAME>pizza_delivery_1_item.xml</NAME><DATA><ITEMS><ITEM><ICLAS>GenFood</ICLAS><IUSES>0</IUSES><ILEVL>0</ILEVL><IABLE>0</IABLE><IREJV>0</IREJV><ITEXT>&lt;NAME&gt;a box of pizza&lt;/NAME&gt;&lt;DESC&gt;A pizza to be delivered to someone.&lt;/DESC&gt;&lt;DISP&gt;a box of pizza sits here.&lt;/DISP&gt;&lt;PROP&gt;0|0|0|0|0|0|0|1.0|2|0|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES /&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;11&lt;/FLAG&gt;&lt;IDENT /&gt;&lt;VALUE&gt;5&lt;/VALUE&gt;&lt;MTRAL&gt;2049&lt;/MTRAL&gt;&lt;WORNL&gt;false&lt;/WORNL&gt;&lt;WORNB&gt;512&lt;/WORNB&gt;&lt;READ /&gt;&lt;CAPA2&gt;800&lt;/CAPA2&gt;&lt;BITE&gt;100&lt;/BITE&gt;</ITEXT></ITEM>
+</ITEMS></DATA></FILE>
+<FILE><NAME>pizza_delivery_1_deliverer.script</NAME>
+<DATA>
+ONCE_PROG 100
+MPQSET * INSTRUCTIONS $i in $a wants you to 'Go to neon dreams apartments' entrance and drop $[1 *].  Be careful!'
+if EVAL('QUESTCHAT' != '')
+QUESTCHAT I need someone to deliver $[1 *]. -- Come see me for more information.
+say Ahh... Pizza fresh out of the oven, ready for delivery.
+endif
+~
+
+# this script is for the human chosen to be the note bearer
+GREET_PROG 100
+if ISLIKE($n '') and ISPC($n) and ( EVAL('YES' != 'PREV') or QUESTWINNER($n previous) )
+if EVAL('YES' == 'YES') OR !QUESTWINNER($n *)
+if !QUESTSCRIPTED($n *)
+sayto "$n" I need someone to deliver $[1 *]..  Say '^yi accept^?' or '^yi accept Pizza Delivery #1^?', and I will give you the details.
+endif
+endif
+endif
+~
+
+FUNCTION_PROG CAN_ACCEPT
+if ISLIKE($n '') and ISPC($n) and ( EVAL('YES' != 'PREV') or QUESTWINNER($n previous) )
+if EVAL('YES' == 'YES') OR !QUESTWINNER($n *)
+if !QUESTSCRIPTED($n *)
+RETURN TRUE
+endif
+endif
+endif
+RETURN CANCEL
+~
+
+FUNCTION_PROG DO_ACCEPT
+mpscript $n INDIVIDUAL SAVABLE STATIC=LOAD=pizza_delivery_1_playertrack.script
+mpqset * STATISTICS ACCEPTED
+if !HAS($n '$[1 *]')
+mpat $n mpforce $n mpoload fromfile pizza_delivery_1_item.xml '$[1 *]'
+MPQSET * QUESTOBJ $b
+mpat $n mpechoat $n You receive $[1 *].
+endif
+~
+
+SPEECH_PROG p i accept Pizza Delivery #1
+if CALLFUNC(CAN_ACCEPT)
+mpqset * STATISTICS ACCEPTED
+if !HAS($i '$[1 *]')
+mpoload fromfile pizza_delivery_1_item.xml '$[1 *]'
+endif
+if !has($n '$[1 *]')
+give "$[1 *]" "$n"
+endif
+sayto "$n" Go to neon dreams apartments and drop $[1 *].  Be careful!
+mpscript $n INDIVIDUAL SAVABLE STATIC=LOAD=pizza_delivery_1_playertrack.script
+endif
+~
+
+SPEECH_PROG p i accept
+if CALLFUNC(CAN_ACCEPT)
+mpqset * STATISTICS ACCEPTED
+if !HAS($i '$[1 *]')
+mpoload fromfile pizza_delivery_1_item.xml '$[1 *]'
+endif
+if !has($n '$[1 *]')
+give "$[1 *]" "$n"
+endif
+sayto "$n" Go to neon dreams apartments and drop $[1 *].  Be careful!
+mpscript $n INDIVIDUAL SAVABLE STATIC=LOAD=pizza_delivery_1_playertrack.script
+endif
+~
+
+GIVE_PROG p '$[1 *]'
+if EVAL($o == '$[1 *]')
+sayto "$n" So, you refuse?  Help me find someone else then.  Ok?
+mpjunk $o
+mpendquest $n
+endif
+~
+</DATA></FILE>
+<FILE><NAME>pizza_delivery_1_deliveree.script</NAME>
+<DATA>
+
+PUT_PROG p '$[1 *]'
+if EVAL($p == '$[1 *]') AND EVAL($o == '$[2 *]') AND EVAL('$[2 *]' != '') AND EVAL('$[2 *]' != '$[1 *]')
+if ISLIKE($n '') AND EVAL('$[1 *]' != '') and ISPC($n) and QUESTSCRIPTED($n *)
+if  EVAL('YES' == 'YES') OR !QUESTWINNER($n *)
+if EVAL($p == '$[1 *]')
+if EVAL('10%' != '')
+mpexp $n 10%
+endif
+if EVAL('NO' == 'YES') AND !QUESTWINNER($n *)
+mpoloadroom QuestPoint
+mpforce $n GET "a quest point"
+endif
+if EVAL('500' != '') AND EVAL('500' > 0)
+mpoload 500
+mpforce $n GET 500
+endif
+mpquestwin $n pizza_delivery_1
+mpecho Your task is complete.
+mpquestwin $n *
+mpendquest *
+mptattoo $n '75 pizzacooldown'
+mpalarm 75 mpechoat $n I think i could take another pizza delivery job about now.
+mpqset * STATISTICS SUCCESS
+IF EVAL('YES' == 'PREV')
+mptransfer $n $n
+ENDIF
+endif
+endif
+endif
+endif
+~
+
+DROP_PROG p '$[1 *]'
+if EVAL('$[2 *]' != '') AND EVAL('$[2 *]' != '$[1 *]')
+RETURN
+ENDIF
+if ISLIKE($n '') AND EVAL('$[1 *]' != '') and ISPC($n) and QUESTSCRIPTED($n *)
+if  EVAL('YES' == 'YES') OR !QUESTWINNER($n *)
+if EVAL($o == '$[1 *]')
+if EVAL('10%' != '')
+mpexp $n 10%
+endif
+mppurge $o
+if EVAL('NO' == 'YES') AND !QUESTWINNER($n *)
+mpoloadroom QuestPoint
+mpforce $n GET "a quest point"
+endif
+if EVAL('500' != '') AND EVAL('500' > 0)
+mpoload 500
+mpforce $n GET 500
+endif
+mpquestwin $n pizza_delivery_1
+mpecho Your task is complete.
+mpquestwin $n *
+mpendquest *
+mptattoo $n '75 pizzacooldown'
+mpalarm 75 mpechoat $n I think i could take another pizza delivery job about now.
+mpqset * STATISTICS SUCCESS
+IF EVAL('YES' == 'PREV')
+mptransfer $n $n
+ENDIF
+endif
+endif
+endif
+~
+</DATA></FILE>
+<FILE><NAME>pizza_delivery_1_playertrack.script</NAME>
+<DATA>
+ONCE_PROG 100
+mpsetvar $i INSTRUCTIONS Go to neon dreams apartments' entrance and drop $[1 *].  Be careful!
+IF !isquestmobalive(1 'pizza_delivery_1')
+MPENDQUEST 'pizza_delivery_1'
+ENDIF
+~
+
+RAND_PROG 25
+IF !isquestmobalive(1 'pizza_delivery_1')
+MPENDQUEST 'pizza_delivery_1'
+else
+IF QVAR(* DURATION != '0')
+if QVAR(* REMAINING == '')
+MPENDQUEST $i
+else
+mpsetvar $i TIME_REMAINING $%QVAR(* REMAINING)%
+endif
+ENDIF
+ENDIF
+~
+
+QUEST_TIME_PROG * 1
+MPECHOAT $i The quest "Pizza Delivery #1" has 1 minute remaining.
+~
+
+QUEST_TIME_PROG * -1
+MPECHOAT $i The quest "Pizza Delivery #1" has ended.
+~
+
+
+</DATA></FILE>

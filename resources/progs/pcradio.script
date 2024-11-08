@@ -260,29 +260,18 @@ mpalarm 32 mpcallfunc talkpick
 
 function_prog song6
 mpchannel !music  Here is Tech Noir.. From Gunship. No, not an aircraft like, thats the name of the group... ^C(https://www.youtube.com/watch?v=-nC5TBv3sfU)^N
-mpalarm 2 mpchannel !music Narrator: I'm recording this, because this could be the last thing I'll ever say
-mpalarm 3 mpchannel !music ^#111(music subtly starts)
-mpalarm 4 mpchannel !music Narrator: The city I once knew as home is teetering on the edge of radioactive oblivion
-mpalarm 6 mpchannel !music Narrator: A three-hundred thousand degree baptism by nuclear fire
-mpalarm 8 mpchannel !music Narrator: I'm not sorry, we had it coming
-mpalarm 10 mpchannel !music Narrator: A surge of white-hot atonement will be our wake-up call
-mpalarm 12 mpchannel !music Narrator: Hope for our future is now a stillborn dream
-mpalarm 14 mpchannel !music Narrator: The bombs begin to fall and I'm rushing to meet my love
-mpalarm 16 mpchannel !music Narrator: Please, remember me
-mpalarm 18 mpchannel !music Narrator: There is no more
-mpalarm 19 mpchannel !music ^#111(music kicks in)
-mpalarm 22 mpchannel !music Feel the breeze, I feel alive
-mpalarm 24 mpchannel !music Will you come to away with me
-mpalarm 28 mpchannel !music (female voice) You?ll be my focus
-mpalarm 30 mpchannel !music (female voice) Could this be, could this be- could this be the highway
-mpalarm 32 mpchannel !music Before you save me
-mpalarm 34 mpchannel !music Just wait your turn, look at me now
-mpalarm 36 mpchannel !music Steady as we burn
-mpalarm 38 mpchannel !music It was all for love
-mpalarm 40 mpchannel !music Just move yourself, drop it back down
-mpalarm 42 mpchannel !music And push it out in front
-mpalarm 44 mpchannel !music Keep your heart out on the road
-mpalarm 46 mpcallfunc song6_2
+mpalarm 4 mpchannel !music Feel the breeze, I feel alive
+mpalarm 6 mpchannel !music Will you come to away with me
+mpalarm 8 mpchannel !music (female voice) You?ll be my focus
+mpalarm 10 mpchannel !music (female voice) Could this be, could this be- could this be the highway
+mpalarm 12 mpchannel !music Before you save me
+mpalarm 14 mpchannel !music Just wait your turn, look at me now
+mpalarm 16 mpchannel !music Steady as we burn
+mpalarm 18 mpchannel !music It was all for love
+mpalarm 20 mpchannel !music Just move yourself, drop it back down
+mpalarm 22 mpchannel !music And push it out in front
+mpalarm 24 mpchannel !music Keep your heart out on the road
+mpalarm 26 mpcallfunc song6_2
 ~
 
 function_prog song6_2

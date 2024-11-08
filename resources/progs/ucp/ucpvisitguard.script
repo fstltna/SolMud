@@ -1,0 +1,115 @@
+greet_prog 100
+##do not do it for people without visitation
+if hastattoo($n novisitation)
+mpforce $n north
+return
+endif
+say Alright, sit. You are done when I cum.
+##get them to fuck off if they arent sitting for 5 ticks.
+mpalarm 5 mpcallfunc shooem
+~
+
+function_prog shooem
+if position($n != SITTING) and ishere($n)
+say If you are not sitting, fuck off.
+if inroom($n == '$<$n theroom>')
+mpalarm 1 mpforce $n north
+endif
+endif
+~
+
+execmsg_prog sit sit
+##do not do it for people without visitation
+if hastattoo($n novisitation)
+mpforce $n north
+return
+endif
+##if triggerer has a cock
+mploadvar $n grointext
+mpsetvar $n extradamage
+MPSETVAR $n maxstamina $%GSTAT($n MAXMOVE)%
+MPSETVAR $n stamina $%GSTAT($n MOVE)%
+if islike(-anyclass +tacticaljoy)
+    mpechoat $n ^p[^wT.JOY^p]^w You feel you can keep $i from cumming for a longer time thanks to your expertise.^N
+endif
+if sex($n == M) or sex($n == O) or sex($n == U)
+    ## has a cock
+    emote grabs $n and flops them on the seat, the guard girl spins to flop on $m cock, starting to ride as her armor clinks constantly, her purple, pink glowy hairy pussy wraps tight on $s cock.
+else
+    ## has a pussy
+    emote grabs $n and flops them on the seat, the guard man spins behind $m to slam his cock in $m pussy, starting to thrust rapidly as his armor clinks constantly, his purple, massive cock stretches $s pussy wide.
+endif
+##try to remember our victim for later, setting it on $n so maybe this npc could do multiple people at once.
+mpsetvar $n visitvictim '$n'
+mpcallfunc thefucking
+~
+
+function_prog thefucking
+##lets emote
+##adjust victim stamina to determine when we cum
+if islike(-anyclass +tacticaljoy)
+    mpsetvar $n extradamage +5
+    mpsetvar $n MoveAmt $%MATH(10 + $<$n extradamage>)%
+else
+    mpsetvar $n extradamage +10
+    mpsetvar $n MoveAmt $%MATH(20 + $<$n extradamage>)%
+endif
+    if sex($n == M) or sex($n == O) or sex($n == U)
+        ## has a cock
+        emote keeps bouncing ^P(^w$<$n MoveAmt>^P)^p on $n's cock, emitting loud clapping and wet noises. Intentionally to drown out the sounds of conversation around here.
+    else
+        ## has a pussy
+        emote keeps fucking ^P(^w$<$n MoveAmt>^P)^p $n's pussy rapidly, emitting loud clapping and wet noises by the hitting of his groin to $m ass. Intentionally to drown out the sounds of conversation around here.
+    endif
+    MPSETVAR $n MoveCalc $%MATH($<$n stamina> - $<$n MoveAmt>)%
+    IF var($n MoveCalc < 0)
+        MPSETVAR $n MoveCalc 0
+        MPECHO $i smirks at $n under their helmet.
+    ENDIF
+    MPsetvar $n STAMINA $%VAR($n MoveCalc)%
+    mpecho ^w$n's $<$n grointext> endurance:^g $<$n stamina>^N/^G$<$n maxstamina>^N
+    ELSE
+##do we stop or do we go
+mpalarm 3 mpcallfunc endcheck
+~
+
+function_prog endcheck
+if var($n STAMINA < 50)
+    ##cum emote
+    if sex($n == M) or sex($n == O) or sex($n == U)
+        ## has a cock
+        emote starts to squirt all over the glass of visitation from her pussy, as she squeezes $n in, she smirks under her mask evilly as she pops the cock out of her pussy with an audible *pop* and takes $n's ass out of here. ^w'Visitation time is over.'^N
+    else
+        ## has a pussy
+        emote starts to cum inside $n's beat up pussy as he hilts himself ballsdeep in $s, he smirks under his mask as he pops his cock out of $s pussy with an audible *pop* and a trail of cum as he takes $n's ass out of here. ^w'Visitation time is over.'^N
+    endif
+if inroom($n == '$<$n theroom>')
+mpforce $n stand
+mpalarm 1 mpforce $n north
+endif
+mptattoo $n '300 novisitation'
+mpalarm 300 mpechoat $n I could get another visitation about now.
+else
+##see if its still going, then repeat.
+if ishere($<$n visitvictim>) and position($n == SITTING)
+mpcallfunc thefucking
+else
+mpsetvar $n theroom $%INROOM($i)% 
+if inroom($n == '$<$n theroom>')
+mpalarm 1 mpforce $n north
+endif
+mptattoo $n '300 novisitation'
+mpalarm 300 mpechoat $n I could get another visitation about now.
+endif
+endif
+~
+
+execmsg_prog stand stand
+if inroom($n == '$<$n theroom>')
+mpalarm 1 mpforce $n north
+endif
+mptattoo $n '300 novisitation'
+mpalarm 300 mpechoat $n I could get another visitation about now.
+return
+endif
+~

@@ -30,9 +30,8 @@ load mobgroup 10 any
 set mob
 give script LOAD=Capturewarrant_capturable.script
 
-set duration 120 minutes
+set duration 160 minutes
 <?xml version="1.0"?>
-<FILE><NAME>Capturewarrant_rewarditems.xml</NAME><DATA><ITEMS></ITEMS></DATA></FILE>
 <FILE><NAME>Capturewarrant_mobs.xml</NAME><DATA><MOBS><MOB><MCLAS>GenMob</MCLAS><MLEVL>25</MLEVL><MABLE>11</MABLE><MREJV>217</MREJV><MTEXT>&lt;NAME&gt;a gang member&lt;/NAME&gt;&lt;DESC /&gt;&lt;DISP&gt;^R[^rBOUNTY^R]^N A fresh-looking ganger is here.&lt;/DISP&gt;&lt;PROP&gt;11|25|25|25|0|25|217|1.0|181|75|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;Fighterness&lt;/BCLASS&gt;&lt;BPARMS /&gt;&lt;/BHAVE&gt;&lt;/BEHAVES&gt;&lt;AFFECS /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;MONEY&gt;17&lt;/MONEY&gt;&lt;VARMONEY&gt;0.0&lt;/VARMONEY&gt;&lt;GENDER&gt;M&lt;/GENDER&gt;&lt;MRACE&gt;Resurgentis&lt;/MRACE&gt;&lt;FACTIONS&gt;&lt;FCTN ID="ALIGNMENT.INI"&gt;-2999&lt;/FCTN&gt;&lt;FCTN ID="INCLINATION.INI"&gt;-2999&lt;/FCTN&gt;&lt;/FACTIONS&gt;&lt;INVEN /&gt;&lt;ABLTYS /&gt;</MTEXT></MOB>
 </MOBS></DATA></FILE>
 <FILE><NAME>Capturewarrant_announcer.script</NAME>
@@ -115,10 +114,6 @@ endif
 if EVAL('9000' != '') AND EVAL('10000' > 0)
 mpoload 10000
 give 10000 "$9"
-endif
-mpoload fromfile Capturewarrant_rewarditems.xml any
-if EVAL('$b' != '')
-give "$b" "$n"
 endif
 mpquestwin $9 *
 QUESTCHAT Capture bounty is fulfilled, reward handed out.

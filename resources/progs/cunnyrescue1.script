@@ -1,0 +1,15 @@
+social_prog shoo
+if hastattoo($n cunnyrescue1)
+mpforce $i dismount
+mpecho As $i gets to be let go with a pop of her prolapsed bloody pussy, another smaller yet still giant insect swoop in to snatch her in the air and slam her on the ground on her head with a *BANG* then beginning to pound her to hell and back... You already done this before and don't learn much, besides she is out of money since you took them before.
+mpexp $n 200
+else
+ mpforce $i dismount
+ mpecho As $i gets to be let go with a pop of her prolapsed bloody pussy, another smaller yet still giant insect swoop in to snatch her in the air and slam her on the ground on her head with a *BANG* then beginning to pound her to hell and back... You won't be able to keep this loop. But you learned now, and she spilled some gold on the way down which you got...
+ mpexp $n 5000
+ mpmoney $n +500
+ mptattoo $n cunnyrescue1
+ mpsetvar $n cunnysaves +1
+ mpsavevar $n cunnysaves
+endif
+~

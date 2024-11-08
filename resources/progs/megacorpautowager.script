@@ -1,52 +1,54 @@
-day_prog 15
+day_prog 14
+mpsetvar $i corpwage 50
+mpsetvar $i otherwage 50
 if clandata('Ninetails Corporation' SIZE >= 3)
 if clandata('Ninetails Corporation' status == Active)
-mpforce ntcwager mpoload 50 megacredit
+mpforce ntcwager mpoload $<$i corpwage> megacredit
 mpforce ntcwager deposit all bank
-mpforce ntcwager clantalk 50 Megacredits income has been paid out.
+mpforce ntcwager clantalk PROFIT REPORT: $<$i corpwage> MC has been added to the clan bank account.
 endif
 endif
 if clandata('Novamed Corporation' SIZE >= 3)
 if clandata('Novamed Corporation' status == Active)
-mpforce nmwager mpoload 50 megacredit
+mpforce nmwager mpoload $<$i corpwage> megacredit
 mpforce nmwager deposit all bank
-mpforce nmwager clantalk 50 Megacredits income has been paid out.
+mpforce nmwager clantalk PROFIT REPORT: $<$i corpwage> MC has been added to the clan bank account.
 endif
 endif
 if clandata('ArcherCorp' SIZE >= 3)
 if clandata('ArcherCorp' status == Active)
-mpforce acwager mpoload 50 megacredit
+mpforce acwager mpoload $<$i corpwage> megacredit
 mpforce acwager deposit all bank
-mpforce acwager clantalk 50 Megacredits income has been paid out.
+mpforce acwager clantalk PROFIT REPORT: $<$i corpwage> MC has been added to the clan bank account.
 endif
 endif
 if clandata('Novamed Corporation' SIZE >= 3)
 if clandata('Novamed Corporation' status == Active)
-mpforce nmwager mpoload 50 megacredit
+mpforce nmwager mpoload $<$i corpwage> megacredit
 mpforce nmwager deposit all bank
-mpforce nmwager clantalk 50 Megacredits income has been paid out.
+mpforce nmwager clantalk PROFIT REPORT: $<$i corpwage> MC has been added to the clan bank account.
 endif
 endif
 if clandata('TRANSco' SIZE >= 3)
 if clandata('TRANSco' status == Active)
-mpforce tcwager mpoload 50 megacredit
+mpforce tcwager mpoload $<$i corpwage> megacredit
 mpforce tcwager deposit all bank
-mpforce tcwager clantalk 50 Megacredits income has been paid out.
+mpforce tcwager clantalk PROFIT REPORT: $<$i corpwage> MC has been added to the clan bank account.
 endif
 endif
 if clandata('Phantom City Justice Force' SIZE >= 3)
 if clandata('Phantom City Justice Force' status == Active)
-mpforce pjfwager mpoload 50 megacredit
+mpforce pjfwager mpoload $<$i corpwage> megacredit
 mpforce pjfwager deposit all bank
-mpforce pjfwager clantalk 50 Megacredits income has been paid out.
+mpforce pjfwager clantalk PROFIT REPORT: $<$i corpwage> MC has been added to the clan bank account.
 endif
 endif
 mpchannel !corpo Megacorporation monthly incomes paid out. If megacorp clans have less than 3 members or if the clan is inactive the money will not be paid out.
 if clandata('Yakuza Syndicate' SIZE >= 3)
 if clandata('Yakuza Syndicate' status == Active)
-mpforce ykwager mpoload 50 megacredit
+mpforce ykwager mpoload $<$i otherwage> megacredit
 mpforce ykwager deposit all bank
-mpforce ykwager clantalk 50 We have made extra 50 megacredits in income out of misc businesses through the month.
+mpforce ykwager clantalk We have made extra $<$i otherwage>-Kay in income out of our partners and protection profits.
 endif
 endif
 ~
@@ -54,40 +56,40 @@ endif
 cnclmsg_prog huh p paynow
 if clandata('NineTails Corporation' SIZE >= 3)
 if clandata('NineTails Corporation' status == Active)
-mpforce ntcwager mpoload 50 megacredit
+mpforce ntcwager mpoload $<$i corpwage> megacredit
 mpforce ntcwager deposit all bank
 endif
 endif
 if clandata('Novamed Corporation' SIZE >= 3)
 if clandata('Novamed Corporation' status == Active)
-mpforce nmwager mpoload 50 megacredit
+mpforce nmwager mpoload $<$i corpwage> megacredit
 mpforce nmwager deposit all bank
 endif
 endif
 if clandata('ArcherCorp' SIZE >= 3)
 if clandata('ArcherCorp' status == Active)
-mpforce acwager mpoload 50 megacredit
+mpforce acwager mpoload $<$i corpwage> megacredit
 mpforce acwager deposit all bank
 endif
 endif
 if clandata('Novamed Corporation' SIZE >= 3)
 if clandata('Novamed Corporation' status == Active)
-mpforce nmwager mpoload 50 megacredit
+mpforce nmwager mpoload $<$i corpwage> megacredit
 mpforce nmwager deposit all bank
 endif
 endif
 if clandata('TRANSco' SIZE >= 3)
 if clandata('TRANSco' status == Active)
-mpforce tcwager mpoload 50 megacredit
+mpforce tcwager mpoload $<$i corpwage> megacredit
 mpforce tcwager deposit all bank
 endif
 endif
 if clandata('Phantom City Justice Force' SIZE >= 3)
 if clandata('Phantom City Justice Force' status == Active)
-mpforce pjfwager mpoload 50 megacredit
+mpforce pjfwager mpoload $<$i corpwage> megacredit
 mpforce pjfwager deposit all bank
 endif
 endif
-mpchannel !corpo Megacorporation monthly incomes paid out. If megacorp clans have less than 3 members or if the clan is inactive the money will not be paid out.
+mpchannel !corpo Megacorporation monthly profit incomes paid out. If megacorp clans have less than 3 members or if the clan is inactive the money will not be paid out.
 return cancel
 ~

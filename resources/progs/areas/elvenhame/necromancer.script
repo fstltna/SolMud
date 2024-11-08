@@ -1,0 +1,235 @@
+greet_prog 100
+  if ispc($n)
+    if class($n == necromancer)
+      say Welcome, necromancer.
+      say I am most proficient in the deathly arts, but know of others who can teach you in some of the more obscure forms of necromancy if you desire. Just ask me about the ^yGhoul Lord^?, ^yDemilich^?, ^yGhost Lord^?, ^yMummy Lord^? or ^yVampire Lord^? for more information, if you are interested in alternate paths of immortality.
+      mpalarm 1 say Mind you, if you do walk those paths, you will never be able to attain Lichdom.
+      mpalarm 2 say I might be able to grant you some rare Death Lore prayers, if you have sufficient expertise. If you are interested in continuing this conversation, say: ^yUnique Death Lore Prayers^?, and I will tell you what abilities you are qualified for.
+    else
+      smirk
+      say You don't look like your belong here. Perhaps you have lost your way.
+      mpalarm 1 Perhaps you are just looking to die.
+    endif
+  endif
+~
+
+speech_prog p Ghoul Lord
+  say I am still searching for the Ghoul Lord. Come back later after my spies have reported back, and I will share more details.
+~
+
+speech_prog p Demilich
+  say I am still searching for the Demilich. Come back later after my spies have reported back, and I will share more details.
+~
+
+speech_prog p Ghost Lord
+  say I am still searching for the Ghost Lord. Come back later after my spies have reported back, and I will share more details.
+~
+
+speech_prog p Mummy Lord
+  say I am still searching for the Mummy Lord. Come back later after my spies have reported back, and I will share more details.
+~
+
+speech_prog p Vampire Lord
+  say I am still searching for the Vampire Lord. Come back later after my spies have reported back, and I will share more details.
+~
+
+speech_prog p Unique Death Lore Prayers
+  mpsetvar $n VAR_QUALIFYING_ABILITIES Your Death Lore expertise allows you to qualify for the following abilities:
+  mpsetvar $n VAR_QUALIFYING_ABILITIES_QUANTITY 1
+  if EXPERTISE($n Prayer_AnimateZombie level > 7) and class($n == necromancer) and !isable($n Necromancer_UndeadWatchman)
+    mpsetvar $n VAR_QUALIFYING_ABILITIES $<$n VAR_QUALIFYING_ABILITIES> %0D^cUndead Watchman Transfiguration^?
+    mpsetvar $n VAR_QUALIFYING_ABILITIES_QUANTITY ++
+  endif
+  if EXPERTISE($n Prayer_AnimateZombie level > 6) and class($n == necromancer) and !isable($n Necromancer_UndeadWorker)
+    mpsetvar $n VAR_QUALIFYING_ABILITIES $<$n VAR_QUALIFYING_ABILITIES> %0D^cUndead Worker Transfiguration^?
+    mpsetvar $n VAR_QUALIFYING_ABILITIES_QUANTITY ++
+  endif
+  if EXPERTISE($n Prayer_AnimateZombie level > 5) and class($n == necromancer) and !isable($n Necromancer_ZombiePlaguebearer)
+    mpsetvar $n VAR_QUALIFYING_ABILITIES $<$n VAR_QUALIFYING_ABILITIES> %0D^cZombie Plaguebearer Transfiguration^?
+    mpsetvar $n VAR_QUALIFYING_ABILITIES_QUANTITY ++
+  endif
+  if EXPERTISE($n Prayer_AnimateZombie level > 4) and class($n == necromancer) and !isable($n Necromancer_UndeadSailor)
+    mpsetvar $n VAR_QUALIFYING_ABILITIES $<$n VAR_QUALIFYING_ABILITIES> %0D^cUndead Sailor Transfiguration^?
+    mpsetvar $n VAR_QUALIFYING_ABILITIES_QUANTITY ++
+  endif
+  if EXPERTISE($n Prayer_AnimateZombie level > 3) and class($n == necromancer) and !isable($n Necromancer_UndeadWanderer)
+    mpsetvar $n VAR_QUALIFYING_ABILITIES $<$n VAR_QUALIFYING_ABILITIES> %0D^cUndead Wanderer Transfiguration^?
+    mpsetvar $n VAR_QUALIFYING_ABILITIES_QUANTITY ++
+  endif
+  if EXPERTISE($n Prayer_AnimateZombie level > 2) and class($n == necromancer) and !isable($n Necromancer_ZombieBrawler)
+    mpsetvar $n VAR_QUALIFYING_ABILITIES $<$n VAR_QUALIFYING_ABILITIES> %0D^cZombie Brawler Transfiguration^?
+    mpsetvar $n VAR_QUALIFYING_ABILITIES_QUANTITY ++
+  endif
+  if EXPERTISE($n Prayer_AnimateZombie level > 2) and class($n == necromancer) and !isable($n Necromancer_ZombieBrute)
+    mpsetvar $n VAR_QUALIFYING_ABILITIES $<$n VAR_QUALIFYING_ABILITIES> %0D^cZombie Brute Transfiguration^?
+    mpsetvar $n VAR_QUALIFYING_ABILITIES_QUANTITY ++
+  endif
+  if EXPERTISE($n Prayer_AnimateZombie level > 1) and class($n == necromancer) and !isable($n Necromancer_DetonateZombie)
+    mpsetvar $n VAR_QUALIFYING_ABILITIES $<$n VAR_QUALIFYING_ABILITIES> %0D^cDetonate Zombie^?
+    mpsetvar $n VAR_QUALIFYING_ABILITIES_QUANTITY ++
+  endif
+  if EXPERTISE($n Prayer_AnimateZombie level > 0) and class($n == necromancer) and !isable($n Necromancer_ImbuedStitching)
+    mpsetvar $n VAR_QUALIFYING_ABILITIES $<$n VAR_QUALIFYING_ABILITIES> %0D^cImbued Stitching^?
+    mpsetvar $n VAR_QUALIFYING_ABILITIES_QUANTITY ++
+  endif
+  if var($n VAR_QUALIFYING_ABILITIES_QUANTITY < 2)
+    mpsetvar $n VAR_QUALIFYING_ABILITIES $<$n VAR_QUALIFYING_ABILITIES> %0DNone!
+  endif
+  if !class($n == necromancer)
+    say I can only grant necromancers these special prayers.
+  else
+    if !isable($n Prayer_AnimateZombie)
+      say You must know the ^cAnimate Zombie^? prayer for me to grant you these special prayers.
+    else
+      if EXPERTISE($n Prayer_AnimateZombie level < 1)  
+        say You must increase your ^cDeath Lore^? expertise
+      else
+        say $<$n VAR_QUALIFYING_ABILITIES>
+        if var($n VAR_QUALIFYING_ABILITIES_QUANTITY > 1)
+          say If you would like to learn one of the above prayers, say ^yGRANT ME^? and the full ability name.
+          say Each of these special prayers costs 1 TRAIN to learn.
+        else
+          if EXPERTISE($n Prayer_AnimateZombie level < 8)
+            say Come back when you have more ^cDeath Lore^? expertise and I will grant you more.
+          endif
+        endif
+      endif
+    endif
+  endif
+~
+
+speech_prog p GRANT ME Imbued Stitching
+  if EXPERTISE($n Prayer_AnimateZombie level > 0) and class($n == necromancer) and !isable($n Necromancer_ImbuedStitching)
+    if trains($n > 0)
+      mptrains $n --1
+      mpenable $n Necromancer_ImbuedStitching 25
+      mpechoat $n You have learned Imbued Stitching.
+      WIZ $n has learned Imbued Stitching
+    else
+      say You do not have enough trains available to learn Imbued Stitching.
+    endif
+  else
+    say I cannot grant you Imbued Stitching, $n.
+  endif
+~
+
+speech_prog p GRANT ME Detonate Zombie
+  if EXPERTISE($n Prayer_AnimateZombie level > 1) and class($n == necromancer) and !isable($n Necromancer_DetonateZombie)
+    if trains($n > 0)
+      mptrains $n --1
+      mpenable $n Necromancer_DetonateZombie 25
+      mpechoat $n You have learned Detonate Zombie.
+      WIZ $n has learned Detonate Zombie
+    else
+      say You do not have enough trains available to learn Detonate Zombie.
+    endif
+  else
+    say I cannot grant you Detonate Zombie, $n.
+  endif
+~
+
+speech_prog p GRANT ME Zombie Brute Transfiguration
+  if EXPERTISE($n Prayer_AnimateZombie level > 2) and class($n == necromancer) and !isable($n Necromancer_ZombieBrute)
+    if trains($n > 0)
+      mptrains $n --1
+      mpenable $n Necromancer_ZombieBrute 25
+      mpechoat $n You have learned Zombie Brute Transfiguration.
+      WIZ $n has learned Zombie Brute Transfiguration
+    else
+      say You do not have enough trains available to learn Zombie Brute Transfiguration.
+    endif
+  else
+    say I cannot grant you Zombie Brute Transfiguration, $n.
+  endif
+~
+
+speech_prog p GRANT ME Zombie Brawler Transfiguration
+  if EXPERTISE($n Prayer_AnimateZombie level > 2) and class($n == necromancer) and !isable($n Necromancer_ZombieBrawler)
+
+    if trains($n > 0)
+      mptrains $n --1
+      mpenable $n Necromancer_ZombieBrawler 25
+      mpechoat $n You have learned Zombie Brawler Transfiguration.
+      WIZ $n has learned Zombie Brawler Transfiguration
+    else
+      say You do not have enough trains available to learn Zombie Brawler Transfiguration.
+    endif
+  else
+    say I cannot grant you Zombie Brawler Transfiguration, $n.
+  endif
+~
+
+speech_prog p GRANT ME Undead Wanderer Transfiguration
+  if EXPERTISE($n Prayer_AnimateZombie level > 3) and class($n == necromancer) and !isable($n Necromancer_UndeadWanderer)
+    if trains($n > 0)
+      mptrains $n --1
+      mpenable $n Necromancer_UndeadWanderer 25
+      mpechoat $n You have learned Undead Wanderer Transfiguration.
+      WIZ $n has learned Undead Wanderer Transfiguration
+    else
+      say You do not have enough trains available to learn Undead Wanderer Transfiguration.
+    endif
+  else
+    say I cannot grant you Undead Wanderer Transfiguration, $n.
+  endif
+~
+
+speech_prog p GRANT ME Undead Sailor Transfiguration
+  if EXPERTISE($n Prayer_AnimateZombie level > 4) and class($n == necromancer) and !isable($n Necromancer_UndeadSailor)
+    if trains($n > 0)
+      mptrains $n --1
+      mpenable $n Necromancer_UndeadSailor 25
+      mpechoat $n You have learned Undead Sailor Transfiguration.
+      WIZ $n has learned Undead Sailor Transfiguration
+    else
+      say You do not have enough trains available to learn Undead Sailor Transfiguration.
+    endif
+  else
+    say I cannot grant you Undead Sailor Transfiguration, $n.
+  endif
+~
+
+speech_prog p GRANT ME Zombie Plaguebearer Transfiguration
+  if EXPERTISE($n Prayer_AnimateZombie level > 5) and class($n == necromancer) and !isable($n Necromancer_ZombiePlaguebearer)
+    if trains($n > 0)
+      mptrains $n --1
+      mpenable $n Necromancer_ZombiePlaguebearer 25
+      mpechoat $n You have learned Zombie Plaguebearer Transfiguration.
+      WIZ $n has learned Undead Plaguebearer Transfiguration
+    else
+      say You do not have enough trains available to learn Zombie Plaguebearer Transfiguration.
+    endif
+  else
+    say I cannot grant you Zombie Plaguebearer Transfiguration, $n.
+  endif
+~
+
+speech_prog p GRANT ME Undead Worker Transfiguration
+  if EXPERTISE($n Prayer_AnimateZombie level > 6) and class($n == necromancer) and !isable($n Necromancer_UndeadWorker)
+    if trains($n > 0)
+      mptrains $n --1
+      mpenable $n Necromancer_UndeadWorker 25
+      mpechoat $n You have learned Undead Worker Transfiguration.
+      WIZ $n has learned Undead Worker Transfiguration
+    else
+      say You do not have enough trains available to learn Undead Worker Transfiguration.
+    endif
+  else
+    say I cannot grant you Undead Worker Transfiguration, $n.
+  endif
+~
+
+speech_prog p GRANT ME Undead Watchman Transfiguration
+  if EXPERTISE($n Prayer_AnimateZombie level > 7) and class($n == necromancer) and !isable($n Necromancer_UndeadWatchman)
+    if trains($n > 0)
+      mptrains $n --1
+      mpenable $n Necromancer_UndeadWatchman 25
+      mpechoat $n You have learned Undead Watchman Transfiguration.
+      WIZ $n has learned Undead Watchman Transfiguration
+    else
+      say You do not have enough trains available to learn Undead Watchman Transfiguration.
+    endif
+  else
+    say I cannot grant you Undead Watchman Transfiguration, $n.
+  endif
+~

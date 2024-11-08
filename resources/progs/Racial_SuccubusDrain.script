@@ -1,0 +1,21 @@
+consume_prog cum pussyjuice
+mpcallfunc healingactive
+~
+
+function_prog healingactive
+if var($n healedtimes < 6)
+mpsetvar $n healamt $%MATH(15?25 + $<$n userLevel>)%
+MPSETVAR $n MaxHits $%GSTAT($n BASEHITS)%
+mpsetvar $n healedtimes ++
+IF GSTAT($n HITS < $<$n MaxHits>)
+    MPECHO ^g$n heals ($<$n healamt>) by succubus regeneration!
+    MPSETVAR $n CurHits $%GSTAT($n HITS)%
+    MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n healamt> < $<$n MaxHits>)%
+    IF GSTAT($n BASEHITS < $<$n HitsCalc>)
+        MPSETVAR $n HitsCalc $<$n MaxHits>
+    ENDIF
+    MPGSET $n HITS $%VAR($n HitsCalc)%
+ENDIF
+mpalarm 1 mpcallfunc healingactive
+endif
+~

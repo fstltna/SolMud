@@ -1,0 +1,16 @@
+cnclmsg_prog huh p claim_qp
+mploadvar $n lastqpmonth
+mpsetvar $n currentmonth $%ISRLMONTH()%
+if hastattoo($n donator)
+    if var($n lastqpmonth < $<$n currentmonth>)
+        mpsetvar $n lastqpmonth $%ISRLMONTH()%
+        mpsavevar $n lastqpmonth
+        mpquestpoints $n ++15
+        mpechoat $n Added 15 questpoints to you! Have a nice day and come back next month!
+    else
+        mpechoat $n Please come back next month, last claimed month is ^g$<$n lastqpmonth>^N, currentmonth is ^g$<$n currentmonth>^N.
+    endif
+endif
+return cancel
+~
+

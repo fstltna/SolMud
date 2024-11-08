@@ -1,0 +1,68 @@
+greet_prog 100
+mpechoat $n ^cINFO:^N This is a therapy room, you can be cured of depression by talking or fucking here, at a small chance each, sex has a higher chance to fix depression but at a delay.^N
+~
+
+execmsg_prog speak all
+switch $%RANDNUM(100)%
+case 1
+if affected($n Disease_Depression)
+mpecho $n seems to be cured from $s depression.
+mpunaffect $n Disease_Depression
+endif
+endswitch
+~
+
+execmsg_prog emote all
+switch $%RANDNUM(100)%
+case 1
+if affected($n Disease_Depression)
+mpecho $n seems to be cured from $s depression.
+mpunaffect $n Disease_Depression
+endif
+endswitch
+~
+
+social_prog mate
+mpnotrigger social_prog 5000
+switch $%RANDNUM(50)%
+case 1
+if affected($n Disease_Depression)
+mpecho $n seems to be cured from $s depression.
+mpunaffect $n Disease_Depression
+endif
+if affected($t Disease_Depression)
+mpecho $t seems to be cured from $ts depression.
+mpunaffect $t Disease_Depression
+endif
+endswitch
+~
+
+social_prog buttfuck
+mpnotrigger social_prog 5000
+switch $%RANDNUM(50)%
+case 1
+if affected($n Disease_Depression)
+mpecho $n seems to be cured from $s depression.
+mpunaffect $n Disease_Depression
+endif
+if affected($t Disease_Depression)
+mpecho $t seems to be cured from $ts depression.
+mpunaffect $t Disease_Depression
+endif
+endswitch
+~
+
+social_prog facefuck
+mpnotrigger social_prog 5000
+switch $%RANDNUM(50)%
+case 1
+if affected($n Disease_Depression)
+mpecho $n seems to be cured from $s depression.
+mpunaffect $n Disease_Depression
+endif
+if affected($t Disease_Depression)
+mpecho $t seems to be cured from $ts depression.
+mpunaffect $t Disease_Depression
+endif
+endswitch
+~

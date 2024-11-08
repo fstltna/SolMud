@@ -30,7 +30,6 @@ IF GSTAT($n HITS < $<$n MaxHits>)
     MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n healamt> < $<$n MaxHits>)%
     IF GSTAT($n BASEHITS < $<$n HitsCalc>)
         MPSETVAR $n HitsCalc $<$n MaxHits>
-        MPECHO ^g$n heals ($<$n healamt>) by the stimulant!
     ENDIF
     MPGSET $n HITS $%VAR($n HitsCalc)%
     ELSE
@@ -44,9 +43,3 @@ mpechoat $n the stimulant wears off.
 mpjunk '$i'
 endif
 ~
-
-# cnclmsg_prog huh p debugresetstim
-# mpsetvar $n healedtimes 0
-# mpsetvar $n affectedbystim 0
-# return cancel
-# ~

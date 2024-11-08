@@ -1,10 +1,26 @@
 cnclmsg_prog huh p fuck
+mpsetvar $n ownage $%GSTAT($n age)%
+mpsetvar $n ownrace $%GSTAT($n race)%
+if var($n ownage < 18)
+  mpchannel !wizinfo $n was less than 18 years old as a $%RACE($n)% when they used a brothel job. Investigate.
+  return
+endif
+if ispc($n)
+	if hastattoo($n underage)
+		mpecho $n is below 18 years old and could not participate in this.
+    say Aren't you too young for this?
+		return
+	endif
+endif
 if islike($n '-tattoos +corporate')
 mpechoat $n They don't trust the corpo.
 else
 mploadvar $n brothelworktimes
 mpsetvar $n brothelworktimes ++
 mpsavevar $n brothelworktimes
+mploadvar $n dirtystate
+mpsetvar $n dirtystate ++
+mpsavevar $n dirtystate
 ## randomizer
 switch $%RANDNUM(4)%
 case 1

@@ -3,17 +3,28 @@ mploadvar $n deathcountsmoonbeam
 mploadvar $n deathcounts
 mploadvar $n Deathcountsdeathgod
 mploadvar $n Deathcountswanderer
+mpsetvar $n deathcounts ++
+mpsavevar $n deathcounts
+mpforce $n follow self
+mpforce $n nofollow all
+//shitty checks to make sure non real gods tie up to godless and not keep people in the fucking shadow realm
+if deity($n == Lady Moonbeam) or deity($n == The Last Death God) or deity($n == The Wanderer) or deity($n == Tenebrase)
+    mpexp $n 300
+    mpechoat $n ^cYour deity protects your soul and returns some of your experience back to you.^N
+else
+    mpcallfunc godless
+endif
 if deity($n == Lady Moonbeam)
-mpcallfunc moonbeam
+    mpcallfunc moonbeam
 endif
 if deity($n == The Last Death God)
-mpcallfunc deathgod
+    mpcallfunc deathgod
 endif
 if deity($n == The Wanderer)
-mpcallfunc wanderer
+    mpcallfunc wanderer
 endif
-if deity($n == '')
-mpcallfunc godless
+if deity($n == Tenebrase)
+    mpcallfunc tenebrase
 endif
 ~
 
@@ -25,7 +36,7 @@ mpsavevar $n deathcountsmoonbeam
 if var($n Deathcountsmoonbeam <= 1)
 mpechoat $n ^#222You feel an oppressive, greater presence in your mind. Numbing your feelings, you feel almost like in a dream... A nightmare perhaps considering your situation. Moonlight shines upon you in the endless void, lightening your soul and burdens as you feel like you are being watched...^N
 mpalarm 3 mpechoat $n ^bA calming feminine voice echoes in your mind... ^w'I was a mortal once upon a time, too.'^N
-mpalarm 4 mpechoat $n ^bA calming feminine voice echoes in your mind... ^w'You were not born yet, I was living in a poor little town, a 'gifted' human chil with psionic potency... About when i became 15 years old a typhoon came and destroyed out our home.'^N
+mpalarm 4 mpechoat $n ^bA calming feminine voice echoes in your mind... ^w'You were not born yet, I was living in a poor little town, a 'gifted' human child with psionic gift... About when i became 15 years old a typhoon came and destroyed our home.'^N
 mpalarm 5 mpechoat $n ^bA calming feminine voice echoes in your mind... ^w'I did not feel any empathy for all the evil-hearted children that bullied me through my childhood years as i was not as sociable and outgoing as they were... Much like now how i feel not an ounce of empathy for those who chose to not turn to the light.'^N
 mpalarm 6 mpechoat $n ^bA calming feminine voice echoes in your mind... ^w'Me and my mother made it through, even though our house was destroyed, we stood together and managed to survive in the streets without becoming a... harlot.'^N
 mpalarm 7 mpechoat $n ^bA calming feminine voice echoes in your mind... ^w'Death did not let me go, however. Maybe my fate was set this way, perhaps just misfortune.'^N
@@ -45,12 +56,12 @@ else
 if var($n Deathcountsmoonbeam <= 2)
 mpechoat $n ^#222You feel an oppressive, greater presence in your mind. Numbing your feelings, you feel almost like in a dream... A nightmare perhaps considering your situation. Moonlight shines upon you in the endless void, lightening your soul and burdens as you feel like you are being watched...^N
 mpalarm 2 mpechoat $n ^ba calming feminine voice echoes in your mind... ^w'Why did you return so soon? Why are you risking your life, throwing it away? Do my words mean ^rNOTHING.^w to you?'^N
-mpalarm 4 mpechoat $n ^bA quietness enter your mind... ^w'...'
-mpalarm 6 mpechoat $n ^ba calming feminine voice echoes in your mind... ^w'Hear my warning, dismiss your foolish mortal affairs and protect your life... You can go now.'^N
+mpalarm 4 mpechoat $n ^ba quietness enter your mind... ^w'...'
+mpalarm 6 mpechoat $n ^ba calming feminine voice echoes in your mind... ^w'Hear my warning, dismiss your foolish mortal conflicts and protect your life... You can go now.'^N
 mpalarm 7 mptransfer $n afterlife#4
 mpalarm 7 mpechoat $n ^#111You feel yourself moving forward in great speed... Finding yourself out of there.
 else
-if var($n Deathcountsmoonbeam <= 5)
+if var($n Deathcountsmoonbeam <= 3)
 mpechoat $n ^#222You feel an oppressive, greater presence in your mind. Numbing your feelings, you feel almost like in a dream... A nightmare perhaps considering your situation. Moonlight shines upon you in the endless void, lightening your soul and burdens as you feel like you are being watched...^N
 mpalarm 2 mpechoat $n ^ba feminine voice echoes in your mind... ^w'You returned again, You been through this place $<$n Deathcounts> times, $<$n Deathcountsmoonbeam> while serving me.'^N
 mpalarm 4 mpechoat $n ^ba frightening feminine voice echoes in your mind... ^w'Do you dismiss my words, ^rdo you think you are above me to dismiss my words?'^N
@@ -59,7 +70,7 @@ mpalarm 8 mpechoat $n ^bA calming feminine voice echoes in your mind... ^w'Do no
 mpalarm 9 mptransfer $n afterlife#4
 mpalarm 9 mpechoat $n ^#111You feel yourself moving forward in great speed... Finding yourself out of there.
 else
-if var($n Deathcountsmoonbeam <= 8)
+if var($n Deathcountsmoonbeam <= 4)
 mpechoat $n ^#222You feel an oppressive, greater presence in your mind. Numbing your feelings, you feel almost like in a dream... A nightmare perhaps considering your situation. Moonlight shines upon you in the endless void, lightening your soul and burdens as you feel like you are being watched...^N
 mpalarm 2 mpechoat $n ^ba calming feminine voice echoes in your mind... ^w'I was not given the chances you were given, i had one life and a bunch of dead gods above us. Do you enjoy being killed? Do you get off on this?'
 mpalarm 4 mpechoat $n ^ba calming feminine voice echoes in your mind... ^w'I accept most fetishes but i ^rdo not^w approve of this strange fetish of yours, cease that immediately.'
@@ -68,14 +79,14 @@ mpalarm 7 mpechoat $n ^ba sigh is heard in your mind...^w 'You can go now.'^N
 mpalarm 8 mptransfer $n afterlife#4
 mpalarm 8 mpechoat $n ^#111You feel yourself moving forward in great speed... Finding yourself out of there.
 else
-if var($n Deathcountsmoonbeam <= 11)
+if var($n Deathcountsmoonbeam <= 5)
 mpechoat $n ^#222You feel an oppressive, greater presence in your mind. Numbing your feelings, you feel almost like in a dream... A nightmare perhaps considering your situation. Moonlight shines upon you in the endless void, lightening your soul and burdens as you feel like you are being watched...^N
-mpalarm 2 mpechoat $n ^ba calming feminine voice echoes in your mind... ^w'I hope you died this many times serving my word on material plane, otherwise i do not know what to say to you.'
+mpalarm 2 mpechoat $n ^ba calming feminine voice echoes in your mind... ^w'I hope you died this many times following my word on the material plane, otherwise i do not know what to say to you.'
 mpalarm 4 mpechoat $n ^ba calming feminine voice echoes in your mind... ^w'Testing my patience, Do you not understand i could just send you to where you belong in the afterlife and not deal with you anymore?'
 mpalarm 5 mptransfer $n afterlife#4
 mpalarm 5 mpechoat $n ^#111You feel yourself moving forward in great speed... Finding yourself out of there.
 else
-if var($n Deathcountsmoonbeam <= 14)
+if var($n Deathcountsmoonbeam <= 6)
 mpechoat $n ^#222You feel an oppressive, greater presence in your mind. Numbing your feelings, you feel almost like in a dream... A nightmare perhaps considering your situation. Moonlight shines upon you in the endless void, lightening your soul and burdens as you feel like you are being watched...^N
 mpalarm 2 mpechoat $n ^ba calming feminine voice echoes in your mind... ^w'You are becoming a regular out here, do you just like my voice or can you just not get over your fetish of death or something?'
 mpalarm 4 mpechoat $n ^ba calming feminine voice echoes in your mind... ^w'Would you rather stay here? then why do you keep returning?'
@@ -83,14 +94,12 @@ mpalarm 6 mpechoat $n ^ba calming feminine voice echoes in your mind... ^w'^rOr 
 mpalarm 7 mptransfer $n afterlife#4
 mpalarm 7 mpechoat $n ^#111You feel yourself moving forward in great speed... Finding yourself out of there.
 else
-if var($n Deathcountsmoonbeam > 17)
+if var($n Deathcountsmoonbeam > 7)
 mpechoat $n ^#222You feel an oppressive, greater presence in your mind. Numbing your feelings, you feel almost like in a dream... A nightmare perhaps considering your situation. Moonlight shines upon you in the endless void, lightening your soul and burdens as you feel like you are being watched...^N
 mpalarm 2 mpechoat $n ^ba sad, disappointed feminine voice echoes in your mind... ^w'You returned, you passed through this place $<$n deathcounts> times now, $<$n deathcountsmoonbeam> you came before me.'^N
 mpalarm 4 mpechoat $n ^ba disappointed feminine voice echoes in your mind... ^w'I tried to help you, but you can only fix yourself. When will this madness end?'^N
 mpalarm 6 mpechoat $n ^ba disappointed feminine voice echoes in your mind... ^w'But, I believe you are trying your best anyway... Go now...'^N
 mpalarm 7 mptransfer $n afterlife#4
-mpalarm 7 mpechoat $n ^#111You feel yourself moving forward in great speed... Finding yourself out of there.
-else
 endif
 endif
 endif
@@ -98,7 +107,6 @@ endif
 endif
 endif
 endif
-else
 endif
 ~
 
@@ -108,65 +116,62 @@ if islike($n '-DEITY "+The Last Death God"')
 mpsetvar $n deathcountsdeathgod +1
 mpsavevar $n deathcountsdeathgod
 if var($n Deathcountsdeathgod <= 1)
-mpechoat $n ^#222You feel a tugging on your soul, then a shiver of cold within you. You feel a powerful presence watching over you, giving you a heavy feeling of dread.^N
-mpalarm 2 mpechoat $n ^#111A soul-chilling masculine voice echoes in the void. ^w'Look who we have here... $n, I was expecting you.'^N
+mpechoat $n ^#222You feel a tugging on your soul, then a shiver of cold surges within you. You feel a powerful presence watching over you, giving you a heavy feeling of dread.^N
+mpalarm 2 mpechoat $n ^#111A soul-chilling masculine voice echoes in the void. ^w'Look who we have here... $n.'^N
 mpalarm 4 mpechoat $n ^#111A soul-chilling masculine voice echoes in the void. ^w'I suppose you understand weakness is unacceptable, it is beyond kill or be killed. You kill to be stronger, distance yourself from your weaknesses and feelings, sacrifice what's necessary to reach the desired greater purpose..'
-mpalarm 6 mpechoat $n ^#111A soul-chilling masculine voice echoes in the void. ^w'I killed all of the ^rANCIENT GODS^w. Their ^roverinflated fucking ego doomed everything my and every other gods' ancestors had.^w'^N
+mpalarm 6 mpechoat $n ^#111A soul-chilling masculine voice echoes in the void. ^w'I killed all of the ^rANCIENT GODS^w. Their ^roverinflated ego^w doomed everything my and every other gods' ancestors had.'^N
 mpalarm 8 mpechoat $n ^#111A soul-chilling masculine voice echoes in the void. ^w'But then again, you see. There is many shoes i can not ever fill. I could only destroy, never build.^N
 mpalarm 10 mpechoat $n ^#111A soul-chilling masculine voice echoes in the void. ^w'But all you mortals are different, I know some of you figured ways of creating new life, or even bringing back the dead... ^rplaying little gods...^N
-mpalarm 12 mpechoat $n ^#111A soul-chilling masculine voice echoes in the void. ^w'Though, do not take my words as a way of saying 'mass murder the weak', No. You kill those who ^rdeserve^N it.^N
-mpalarm 14 mpechoat $n ^#111A soul-chilling masculine voice echoes in the void. ^w'I allow you to go back, for now. You may be more useful to me out there than here. Now, go and wait until one of your 'friend's get you back in the stage.'^N
+mpalarm 12 mpechoat $n ^#111A soul-chilling masculine voice echoes in the void. ^w'Though, do not take my words as a way of saying 'mass murder the weak', No. You kill those who ^rdeserve^w it. Petty laws of the living does not matter, who deserve it is up to your conscience in the end.^N
+mpalarm 14 mpechoat $n ^#111A soul-chilling masculine voice echoes in the void. ^w'I allow you to go back, for now. You may be more useful to me out there than fuel as a soul. Now, go and wait until one of your 'friend's get you back in the stage.'^N
 mpalarm 15 mptransfer $n afterlife#4
 mpalarm 15 mpechoat $n ^#111You feel yourself moving forward in great speed... Finding yourself out of there.
 else
-if var($n Deathcountsdeathgod <= 3)
-##ass
-mpechoat $n ^#222You feel a tugging on your soul, then a shiver of cold within you. You feel a powerful presence watching over you, giving you a heavy feeling of dread.^N
+if var($n Deathcountsdeathgod <= 2)
+mpechoat $n ^#222You feel a tugging on your soul, then a shiver of cold surges within you. You feel a powerful presence watching over you, giving you a heavy feeling of dread.^N
 mpalarm 2 mpechoat $n ^#111A soul-chilling masculine voice echoes in the void. ^w'Remind yourself you are not immortal. Don't think you will keep coming back forever.'^N
 mpalarm 4 mpechoat $n ^#111A soul-chilling masculine voice echoes in the void. ^w'Learn from your mistakes, adapt swiftly.'^N
 mpalarm 6 mpechoat $n ^#111A soul-chilling masculine voice echoes in the void. ^w'You have not outlived your usefulness yet... You can go.'^N
 mpalarm 7 mptransfer $n afterlife#4
 mpalarm 7 mpechoat $n ^#111You feel yourself moving forward in great speed... Finding yourself out of there.
 else
-if var($n Deathcountsdeathgod <= 5)
-mpechoat $n ^#222You feel a tugging on your soul, then a shiver of cold within you. You feel a powerful presence watching over you, giving you a heavy feeling of dread.^N
-mpalarm 2 mpechoat $n ^#111A soul-chilling masculine voice echoes in the void. ^w'I seen you here $<$n Deathcountsdeathgod> times now, you passed those halls $<$n deathcounts> times generally.'^N
-mpalarm 4 mpechoat $n ^#111A soul-chilling masculine voice echoes in the void. ^w'Are you not worth it?'^N
-mpalarm 6 mpechoat $n ^#111A soul-chilling masculine voice echoes in the void. ^w'You were supposed to be dead long ago, but I felt generous. Don't abuse this.^N
-mpalarm 7 mptransfer $n afterlife#4
-mpalarm 7 mpechoat $n ^#111You feel yourself moving forward in great speed... Finding yourself out of there.
+if var($n Deathcountsdeathgod <= 3)
+mpechoat $n ^#222You feel a tugging on your soul, then a shiver of cold surges within you. You feel a powerful presence watching over you, giving you a heavy feeling of dread.^N
+mpalarm 2 mpechoat $n ^#111A soul-chilling masculine voice echoes in the void. ^w'I seen you here $<$n Deathcountsdeathgod> times now, you passed those halls $<$n deathcounts> times.'^N
+mpalarm 4 mpechoat $n ^#111A soul-chilling masculine voice echoes in the void. ^w'You were supposed to be dead long ago, but I felt generous. Don't abuse this.^N
+mpalarm 6 mptransfer $n afterlife#4
+mpalarm 6 mpechoat $n ^#111You feel yourself moving forward in great speed... Finding yourself out of there.
 else
-if var($n Deathcountsdeathgod <= 8)
-mpechoat $n ^#222You feel a tugging on your soul, then a shiver of cold within you. You feel a powerful presence watching over you, giving you a heavy feeling of dread.^N
+if var($n Deathcountsdeathgod <= 4)
+mpechoat $n ^#222You feel a tugging on your soul, then a shiver of cold surges within you. You feel a powerful presence watching over you, giving you a heavy feeling of dread.^N
 mpalarm 2 mpechoat $n ^#111A soul-chilling masculine voice echoes in the void. ^w'I am growing sick of seeing you here, wasting my time with you.'^N
 mpalarm 4 mpechoat $n ^#111A soul-chilling masculine voice echoes in the void. ^w'It is true, the world is more dangerous than it used to be.'^N
 mpalarm 6 mpechoat $n ^#111A soul-chilling masculine voice echoes in the void. ^w'^rBut making excuses is for the weak, be better.^w'^N
 mpalarm 7 mptransfer $n afterlife#4
 mpalarm 7 mpechoat $n ^#111You feel yourself moving forward in great speed... Finding yourself out of there.
 else
-if var($n Deathcountsdeathgod <= 11)
-mpechoat $n ^#222You feel a tugging on your soul, then a shiver of cold within you. You feel a powerful presence watching over you, giving you a heavy feeling of dread.^N
+if var($n Deathcountsdeathgod <= 5)
+mpechoat $n ^#222You feel a tugging on your soul, then a shiver of cold surges within you. You feel a powerful presence watching over you, giving you a heavy feeling of dread.^N
 mpalarm 2 mpechoat $n ^#111A soul-chilling masculine voice echoes in the void. ^w'^rAre you weak, $n?'^N
-mpalarm 4 mpechoat $n ^#111A soul-chilling masculine voice echoes in the void. ^w'Perhaps you need a softer god to bow to, one to pat your back when you fail and be pathetic like you are a little child.'^N
-mpalarm 6 mpechoat $n ^#111A soul-chilling masculine voice echoes in the void. ^w'^rThey can not and will not save you from the eldritch horrors that await. ^rOnly the strong survives, only the strong comes on top.^w'^N
+mpalarm 4 mpechoat $n ^#111A soul-chilling masculine voice echoes in the void. ^w'Perhaps you need a softer god to bow to, one to pat your back when you fail and be pathetic, like you are a little child.'^N
+mpalarm 6 mpechoat $n ^#111A soul-chilling masculine voice echoes in the void. ^w'^rThey can not and will not save you from the horrors that await. ^rOnly the strong survives.^w'^N
 mpalarm 7 mptransfer $n afterlife#4
 mpalarm 7 mpechoat $n ^#111You feel yourself moving forward in great speed... Finding yourself out of there.
 else
-if var($n Deathcountsdeathgod <= 14)
-mpechoat $n ^#222You feel a tugging on your soul, then a shiver of cold within you. You feel a powerful presence watching over you, giving you a heavy feeling of dread.^N
+if var($n Deathcountsdeathgod <= 6)
+mpechoat $n ^#222You feel a tugging on your soul, then a shiver of cold surges within you. You feel a powerful presence watching over you, giving you a heavy feeling of dread.^N
 mpalarm 2 mpechoat $n ^#111A soul-chilling masculine voice echoes in the void. ^w'Perhaps you are not worthy of this gift of returning to servitude.'
 mpalarm 4 mpechoat $n ^#111A soul-chilling masculine voice echoes in the void. ^w'Maybe.'
 mpalarm 6 mpechoat $n ^#111A soul-chilling masculine voice echoes in the void. ^w'You been through here $<$n Deathcounts> times and annoyed me $<$n deathcountsdeathgod> times while other mortals were not even given a second chance.'^N
 mpalarm 7 mptransfer $n afterlife#4
 mpalarm 7 mpechoat $n ^#111You feel yourself moving forward in great speed... Finding yourself out of there.
 else
-if var($n Deathcountsdeathgod > 17)
-mpechoat $n ^#222You feel a tugging on your soul, then a shiver of cold within you. You feel a powerful presence watching over you, giving you a heavy feeling of dread.^N
+if var($n Deathcountsdeathgod > 7)
+mpechoat $n ^#222You feel a tugging on your soul, then a shiver of cold surges within you. You feel a powerful presence watching over you, giving you a heavy feeling of dread.^N
 mpalarm 2 mpechoat $n ^#111A soul-chilling masculine voice echoes in the void. ^w'You passed through this place $<$n deathcounts> times now and bothered me $<$n deathcountsdeathgod> times.'^N
 mpalarm 4 mpechoat $n ^#111A soul-chilling masculine voice echoes in the void. ^w'You know what you must do, You know your purpose and destination.'^N
 mpalarm 5 mptransfer $n afterlife#4
 mpalarm 5 mpechoat $n ^#111You feel yourself moving forward in great speed... Finding yourself out of there.
-else
 endif
 endif
 endif
@@ -174,21 +179,18 @@ endif
 endif
 endif
 endif
-else
 endif
-##godless
 ~
 
 function_prog godless
-if deity($n == '')
-mpechoat $n ^#222^N
-mpalarm 2 mpechoat $n ^ba chilling feminine whisper echoes in the void... ^w'You passed through this place $<$n deathcounts> times now.'^N
+if var($n deathcounts == 1)
+mpalarm 2 mpechoat $n ^ba chilling feminine whisper echoes in the void... ^w'I am ^#015A^#025z^#035r^#045a^#035e^#025l^w, archangel of the last god of death. You are at Limbo, you will be judged by your god here before moving to wherever your soul is destined to.'^N
+endif
+mpalarm 2 mpechoat $n ^ba chilling feminine whisper echoes in the void... ^w'$n, You passed through this place $<$n deathcounts> times now.'^N
 mpalarm 3 mpechoat $n ^ba chilling feminine whisper echoes in the void... ^w'Without a god, your soul will not be protected from your impending doom.'^N
 mpalarm 4 mpechoat $n ^ba chilling feminine whisper echoes in the void... ^w'However your time has not come yet...'^N
 mpalarm 5 mptransfer $n afterlife#4
 mpalarm 5 mpechoat $n ^#111You feel yourself moving forward in great speed... Finding yourself out of there.
-else
-endif
 ~
 
 
@@ -214,7 +216,7 @@ mpalarm 1 mpechoat $n ^y The storm rages once more, but you find refuge in a Anc
 mpalarm 3 mptransfer $n afterlife#4
 else
 if var($n Deathcountswanderer <= 4)
-mpalarm 1 mpechoat $n ^y The refuge is gone, the storm tears at your soul, the beacon calls, the shadows are watching, YOU MUST MOVE.  THE BEACON CALLS. THE BEACON CALLS.^N
+mpalarm 1 mpechoat $n ^y The refuge is gone, the storm tears at your soul, the beacon calls, the shadows are watching, YOU MUST MOVE. THE BEACON CALLS. THE BEACON CALLS.^N
 mpalarm 3 mptransfer $n afterlife#4
 else
 if var($n Deathcountswanderer <= 5)
@@ -229,14 +231,38 @@ else
 if var($n Deathcountswanderer > 7)
 mpalarm 1 mpechoat $n ^y The white fire still burns, the traveler smiles at you again as if you had never left.  He shakes his head and the white fire rises again-
 mpalarm 3 mptransfer $n afterlife#4
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+~
+
+function_prog tenebrase
+## Tenebrase
+if islike($n '-DEITY "+Tenebrase"')
+mpsetvar $n deathcountstenebrase +1
+mpsavevar $n deathcountstenebrase
+if var($n deathcountstenebrase <= 1)
+mpechoat $n ^#222You feel a tugging on your soul, then nothing, intense loneliness takes you, like you are floating in the void.^N
+mpalarm 2 mpechoat $n ^#111A soul-piercing feminine voice claws your mind. ^w'Bit the dust at last, have we? Amusing.'^N
+mpalarm 4 mpechoat $n ^#111A soul-piercing feminine voice claws your mind. ^w'You don't deserve new chances at life, you are weak.'^N
+mpalarm 6 mpechoat $n ^#111A soul-piercing feminine voice claws your mind. ^w'But you are destined to serve, perhaps...'^N
+mpalarm 8 mptransfer $n afterlife#4
+mpalarm 8 mpechoat $n ^#111You feel yourself moving forward in great speed... Finding yourself out of there.
+else
+if var($n deathcountstenebrase <= 2)
+mpechoat $n ^#222You feel a tugging on your soul, then nothing, intense loneliness takes you, like you are floating in the void.^N
+mpalarm 2 mpechoat $n ^#111A soul-piercing feminine voice claws your mind. ^w'You don't fail to disappoint.'^N
+mpalarm 4 mpechoat $n ^rYou feel a great pain straight in your very spectral existence, every bit of your body quivering in agony..!^N
+mpalarm 6 mpechoat $n ^#111A soul-piercing feminine voice claws your mind. ^w'Go back to your little hole again, for now.'^N
+mpalarm 8 mptransfer $n afterlife#4
+mpalarm 8 mpechoat $n ^#111You feel yourself moving forward in great speed... Finding yourself out of there.
 else
 endif
 endif
-endif
-endif
-endif
-endif
-endif
-else
 endif
 ~

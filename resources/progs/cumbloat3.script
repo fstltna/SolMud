@@ -1,0 +1,66 @@
+delay_prog 10 20
+mpoloadroom fromfile wankitems.cmare cum
+mpechoat $n Cum leaks between your legs, creating $b.
+~
+
+entry_prog 75
+if islike($n +DISPOSITION "-ISHIDDEN" "-ISINVISIBLE")
+mpechoaround $n $n has a slightly bloated belly that sloshes a bit as they move...
+endif
+~
+
+delay_prog 4 4
+mpsetvar $n absorbheal $%RANDNUM(75)%
+MPSETVAR $n MaxHits $%GSTAT($n BASEHITS)%
+IF GSTAT($n HITS < $<$n MaxHits>)
+    mpechoat $n ^gYou heal ($<$n absorbheal>) from the cum absorbed in your body!
+    MPSETVAR $n CurHits $%GSTAT($n Hits)%
+    MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n absorbheal>)%
+    IF GSTAT($n BASEHITS < $<$n HitsCalc>)
+        MPSETVAR $n HitsCalc $<$n MaxHits>
+    ENDIF
+    MPGSET $n HITS $%VAR($n HitsCalc)%
+ENDIF
+mpsetvar $n absorbmana $%RANDNUM(75)%
+MPSETVAR $n MaxMANA $%GSTAT($n BASEMANA)%
+IF GSTAT($n MANA < $<$n MaxMANA>)
+    MPECHOAT $n ^CYou recover ($<$n absorbmana>) mana from the cum absorbed in your body!
+    MPSETVAR $n CurMANA $%GSTAT($n MANA)%
+    MPSETVAR $n MANACalc $%MATH($<$n CurMANA> + $<$n absorbmana> < $<$n MaxMANA>)%
+    IF GSTAT($n BASEMANA < $<$n MANACalc>)
+        MPSETVAR $n MANACalc $<$n MaxMANA>
+    ENDIF
+    MPGSET $n MANA $%VAR($n MANACalc)%
+ENDIF
+~
+
+delay_prog 50 60
+mpunaffect $n Sexual_Cumbloat3
+mpaffect property:Sexual_Cumbloat2 $n
+mpechoat $n You feel your bustling belly shrink a little to more comfortable sizes as cum splurts out of it or as it is absorbed by your body.
+~
+
+cnclmsg_prog huh p deflate
+if var($n deflating != 1)
+mpsetvar $n deflating 1
+mpaffect property:spell_hold $n 8TICKS
+mpecho $n sits down, spreads their legs wide and pushes on their near-bursting belly with both hands, cum *SPLURT* out with massive force out of their hole.
+mpalarm 1 mpoloadroom fromfile wankitems.cmare cum
+mpalarm 2 mpoloadroom fromfile wankitems.cmare cum
+mpalarm 3 mpoloadroom fromfile wankitems.cmare cum
+mpalarm 4 mpoloadroom fromfile wankitems.cmare cum
+mpalarm 4 mpecho $n keeps deflating their belly as cum pools and pools under them...
+mpalarm 4 mpoloadroom fromfile wankitems.cmare cum
+mpalarm 5 mpoloadroom fromfile wankitems.cmare cum
+mpalarm 6 mpoloadroom fromfile wankitems.cmare cum
+mpalarm 7 mpoloadroom fromfile wankitems.cmare cum
+mpalarm 8 mpecho $n finishes deflating their belly to a lighter bloated-ness.
+mpalarm 8 mpunaffect $n spell_hold
+mpalarm 8 mpoloadroom fromfile wankitems.cmare cum
+mpalarm 8 mpoloadroom fromfile wankitems.cmare cum
+mpalarm 8 mpsetvar $n deflating 0
+mpalarm 8 property:mpaffect Sexual_Cumbloat2 $n
+mpalarm 8 mpunaffect $n Sexual_Cumbloat3
+endif
+return cancel
+~

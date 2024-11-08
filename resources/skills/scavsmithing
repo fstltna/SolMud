@@ -1,1 +1,12 @@
 forged barrel	1	20	3	25	GenItem						
+A % Scrapnikov Scrap rifle 	30	150	(inventory:consumed:1:FORGED BARREL:)&&(inventory:consumed:10:WOODEN:)&&(inventory:consumed:15:METAL:)	700	GenGun	RANGED	2	40	-10	*Prop_ItemSlot;NUM=8 REMOVABLE=TRUE TYPE="RIFLEATTACHMENT" ; <ITEMS></ITEMS>	
+scrap sheet	5	20	2	50	GenItem						
+a makeshift flashlight	7	45	(inventory:consumed:1:A SALVAGED CIRCUIT BOARD:)&&(inventory:consumed:1:A HANDMADE WIRE:)&&(inventory:consumed:1:GLASS:)&&(inventory:consumed:2:METAL:)	85	GenLantern		400				
+a salvaged circuit board	6	50	(inventory:consumed:2:SYNTHETIC:)	50	GenItem						
+a handmade wire	3	20	1	20	GenItem						
+a makeshift magnifier scope	13	75	(inventory:consumed:3:GLASS:)||(inventory:consumed:1:PRECIOUS:)	150	GenItem					*Prop_ItemSlotFiller;num=1 type="RIFLEATTACHMENT" REMOVABLE=TRUE ADDS="Prop_Adjuster(attacks+7),Prop_Wearenabler(Fighter_Farshot)"	
+a % recycled brushed mirror	2	20	(inventory:consumed:5:GLASS:)||(inventory:consumed:1:GEM:)	125	GenMirror						
+a scrap % shield	15	100	15	250	GenShield	HELD	0	14	0		
+a scrap % cage	12	100	20	300	GenCage	LOCK	200		576		
+a makeshift % stove	14	20	20	200	GenStove		100		0		
+a salvaged % battery	30	100	(inventory:consumed:2:COPPER:)&&(inventory:consumed:1:ZINC:)&&(inventory:consumed:1:METAL:)	40	GenLiquidResource		400		1		LAMP OIL

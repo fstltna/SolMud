@@ -47,16 +47,15 @@ if var($i claimer == '$n')
 if var($i landed == 1)
 if var($i powerswitch == 1)
 mpecho ^p$n taps a button on the console and the thrusters begin to hum to life...^N
-mpalarm 1 ^pthe ship's thrusters roar to life as the pilot AI begins to undock and lift off...^N
-mpalarm 3 ^pthe ship lifts off as the gravity feels heavier on the feet as it goes up for a while.^N
-mpalarm 4 ^pthe ship
-mpsetvar $i landed 0
+mpalarm 1 mpecho ^pthe ship's thrusters roar to life as the pilot AI begins to undock and lift off...^N
+mpalarm 3 mpecho ^pthe ship lifts off as the gravity feels heavier on the feet as it goes up for a while.^N
+mpalarm 4 mpecho ^pthe ship reaches sufficent position to maneuver.^N
+mpalarm 4 mpsetvar $i landed 0
 mpsetvar $n shipparkedloc 0
 mpsavevar $i landed
 mpsavevar $n shipparkedloc
 mpsetvar $i shipparkedloc 0
 mpsavevar $i shipparkedloc
-mpecho $n takes the ship off
 else
 mpechoat $n $i is not turned on.
 endif
@@ -138,16 +137,16 @@ if var($i powerswitch == 1)
 if var($i landed != 1)
 if var($i claimer == '$n')
 mpecho ^p$n taps a button on the console and the thrusters begin to hum to life...^N
-mpalarm 1 ^pthe ship's thrusters roar to life as the pilot AI begins to move the ship...^N
-mpalarm 3 ^pthe ship begins to turn and move in some directions, slightly swaying everything unbolted to the opposite directions as it aligns itself to the destination.^N
-mpalarm 3 ^pa synthetic voice is heard in the ship ^w'Preparing for jump to the destination, please secure yourself to the ship.'^N
-mpalarm 5 ^pthe ship recoils for a moment then a sudden force pushes everything not bound towards the back of the ship with massive force, then it settles down as the ship travels faster than light.^N
-mpalarm 8 ^pa synthetic voice is heard in the ship ^w'Exiting Jump momentarily, please make sure you are secured.'^N
-mpalarm 10 ^pEverything unbolted in the ship recoils forward as the ship stops in an instant, at orbit above the destination.^N
-mpalarm 11 ^pThe ship begins to descend rapidly but controlledly, lowering itself to the landing zone.^N
-mpalarm 13 ^pThe ship's thrusters power up further as the gravity kicks in more and more as it approaches the ground, slowing down as it begins to land... And with a soft touch down it is landed.^N
-mpalarm 14 ^pThe door of the ship opens slowly, providing a ramp to leave and enter the ship, in it's place a hardlight shield activates, maintaining atmosphere in the ship.
-mpalarm 15 ^pa synthetic voice is heard in the ship ^w'Landing complete.'^N
+mpalarm 1 mpecho ^pthe ship's thrusters roar to life as the pilot AI begins to move the ship...^N
+mpalarm 3 mpecho ^pthe ship begins to turn and move in some directions, slightly swaying everything unbolted to the opposite directions as it aligns itself to the destination.^N
+mpalarm 3 mpecho ^pa synthetic voice is heard in the ship ^w'Preparing for jump to the destination, please secure yourself to the ship.'^N
+mpalarm 5 mpecho ^pthe ship recoils for a moment then a sudden force pushes everything not bound towards the back of the ship with massive force, then it settles down as the ship travels faster than light.^N
+mpalarm 8 mpecho ^pa synthetic voice is heard in the ship ^w'Exiting Jump momentarily, please make sure you are secured.'^N
+mpalarm 10 mpecho ^pEverything unbolted in the ship recoils forward as the ship stops in an instant, at orbit above the destination.^N
+mpalarm 11 mpecho ^pThe ship begins to descend rapidly but controlledly, lowering itself to the landing zone.^N
+mpalarm 13 mpecho ^pThe ship's thrusters power up further as the gravity kicks in more and more as it approaches the ground, slowing down as it begins to land... And with a soft touch down it is landed.^N
+mpalarm 14 mpecho ^pThe door of the ship opens slowly, providing a ramp to leave and enter the ship, in it's place a hardlight shield activates, maintaining atmosphere in the ship.
+mpalarm 15 mpecho ^pa synthetic voice is heard in the ship ^w'Landing complete.'^N
 mpalarm 15 mpsetvar $i landed 1
 mpalarm 15 mpsavevar $i landed
 mpalarm 15 mpsetvar $n shipparkedloc 'Phantom City#156'
@@ -173,16 +172,16 @@ if var($i powerswitch == 1)
 if var($i landed != 1)
 if var($i claimer == '$n')
 mpecho ^p$n taps a button on the console and the thrusters begin to hum to life...^N
-mpalarm 1 ^pthe ship's thrusters roar to life as the pilot AI begins to move the ship...^N
-mpalarm 3 ^pthe ship begins to turn and move in some directions, slightly swaying everything unbolted to the opposite directions as it aligns itself to the destination.^N
-mpalarm 3 ^pa synthetic voice is heard in the ship ^w'Preparing for jump to the destination, please secure yourself to the ship.'^N
-mpalarm 5 ^pthe ship recoils for a moment then a sudden force pushes everything not bound towards the back of the ship with massive force, then it settles down as the ship travels faster than light.^N
-mpalarm 8 ^pa synthetic voice is heard in the ship ^w'Exiting Jump momentarily, please make sure you are secured.'^N
-mpalarm 10 ^pEverything unbolted in the ship recoils forward as the ship stops in an instant, at orbit above the destination.^N
-mpalarm 11 ^pThe ship begins to descend rapidly but controlledly, lowering itself to the landing zone.^N
-mpalarm 13 ^pThe ship's thrusters power up further as the gravity kicks in more and more as it approaches the ground, slowing down as it begins to land... And with a soft touch down it is landed.^N
-mpalarm 14 ^pThe door of the ship opens slowly, providing a ramp to leave and enter the ship, in it's place a hardlight shield activates, maintaining atmosphere in the ship.
-mpalarm 15 ^pa synthetic voice is heard in the ship ^w'Landing complete.'^N
+mpalarm 1 mpecho ^pthe ship's thrusters roar to life as the pilot AI begins to move the ship...^N
+mpalarm 3 mpecho ^pthe ship begins to turn and move in some directions, slightly swaying everything unbolted to the opposite directions as it aligns itself to the destination.^N
+mpalarm 3 mpecho ^pa synthetic voice is heard in the ship ^w'Preparing for jump to the destination, please secure yourself to the ship.'^N
+mpalarm 5 mpecho ^pthe ship recoils for a moment then a sudden force pushes everything not bound towards the back of the ship with massive force, then it settles down as the ship travels faster than light.^N
+mpalarm 8 mpecho ^pa synthetic voice is heard in the ship ^w'Exiting Jump momentarily, please make sure you are secured.'^N
+mpalarm 10 mpecho ^pEverything unbolted in the ship recoils forward as the ship stops in an instant, at orbit above the destination.^N
+mpalarm 11 mpecho ^pThe ship begins to descend rapidly but controlledly, lowering itself to the landing zone.^N
+mpalarm 13 mpecho ^pThe ship's thrusters power up further as the gravity kicks in more and more as it approaches the ground, slowing down as it begins to land... And with a soft touch down it is landed.^N
+mpalarm 14 mpecho ^pThe door of the ship opens slowly, providing a ramp to leave and enter the ship, in it's place a hardlight shield activates, maintaining atmosphere in the ship.
+mpalarm 15 mpecho ^pa synthetic voice is heard in the ship ^w'Landing complete.'^N
 mpalarm 15 mpsetvar $i landed 1
 mpalarm 15 mpsavevar $i landed
 mpalarm 15 mpsetvar $n shipparkedloc 'moon#0'
@@ -208,16 +207,16 @@ if var($i powerswitch == 1)
 if var($i landed != 1)
 if var($i claimer == '$n')
 mpecho ^p$n taps a button on the console and the thrusters begin to hum to life...^N
-mpalarm 1 ^pthe ship's thrusters roar to life as the pilot AI begins to move the ship...^N
-mpalarm 3 ^pthe ship begins to turn and move in some directions, slightly swaying everything unbolted to the opposite directions as it aligns itself to the destination.^N
-mpalarm 3 ^pa synthetic voice is heard in the ship ^w'Preparing for jump to the destination, please secure yourself to the ship.'^N
-mpalarm 5 ^pthe ship recoils for a moment then a sudden force pushes everything not bound towards the back of the ship with massive force, then it settles down as the ship travels faster than light.^N
-mpalarm 8 ^pa synthetic voice is heard in the ship ^w'Exiting Jump momentarily, please make sure you are secured.'^N
-mpalarm 10 ^pEverything unbolted in the ship recoils forward as the ship stops in an instant, at orbit above the destination.^N
-mpalarm 11 ^pThe ship begins to descend rapidly but controlledly, lowering itself to the landing zone.^N
-mpalarm 13 ^pThe ship's thrusters power up further as the gravity kicks in more and more as it approaches the ground, slowing down as it begins to land... And with a soft touch down it is landed.^N
-mpalarm 14 ^pThe door of the ship opens slowly, providing a ramp to leave and enter the ship, in it's place a hardlight shield activates, maintaining atmosphere in the ship.
-mpalarm 15 ^pa synthetic voice is heard in the ship ^w'Landing complete.'^N
+mpalarm 1 mpecho ^pthe ship's thrusters roar to life as the pilot AI begins to move the ship...^N
+mpalarm 3 mpecho ^pthe ship begins to turn and move in some directions, slightly swaying everything unbolted to the opposite directions as it aligns itself to the destination.^N
+mpalarm 3 mpecho ^pa synthetic voice is heard in the ship ^w'Preparing for jump to the destination, please secure yourself to the ship.'^N
+mpalarm 5 mpecho ^pthe ship recoils for a moment then a sudden force pushes everything not bound towards the back of the ship with massive force, then it settles down as the ship travels faster than light.^N
+mpalarm 8 mpecho ^pa synthetic voice is heard in the ship ^w'Exiting Jump momentarily, please make sure you are secured.'^N
+mpalarm 10 mpecho ^pEverything unbolted in the ship recoils forward as the ship stops in an instant, at orbit above the destination.^N
+mpalarm 11 mpecho ^pThe ship begins to descend rapidly but controlledly, lowering itself to the landing zone.^N
+mpalarm 13 mpecho ^pThe ship's thrusters power up further as the gravity kicks in more and more as it approaches the ground, slowing down as it begins to land... And with a soft touch down it is landed.^N
+mpalarm 14 mpecho ^pThe door of the ship opens slowly, providing a ramp to leave and enter the ship, in it's place a hardlight shield activates, maintaining atmosphere in the ship.
+mpalarm 15 mpecho ^pa synthetic voice is heard in the ship ^w'Landing complete.'^N
 mpalarm 15 mpsetvar $i landed 1
 mpalarm 15 mpsavevar $i landed
 mpalarm 15 mpsetvar $n shipparkedloc 'Wayshore#317'
@@ -244,16 +243,16 @@ if var($i landed != 1)
 if var($i claimer == '$n')
 mpchannel !emergency A ship is aproaching to land at Novamed Landing pad.
 mpecho ^p$n taps a button on the console and the thrusters begin to hum to life...^N
-mpalarm 1 ^pthe ship's thrusters roar to life as the pilot AI begins to move the ship...^N
-mpalarm 3 ^pthe ship begins to turn and move in some directions, slightly swaying everything unbolted to the opposite directions as it aligns itself to the destination.^N
-mpalarm 3 ^pa synthetic voice is heard in the ship ^w'Preparing for jump to the destination, please secure yourself to the ship.'^N
-mpalarm 5 ^pthe ship recoils for a moment then a sudden force pushes everything not bound towards the back of the ship with massive force, then it settles down as the ship travels faster than light.^N
-mpalarm 8 ^pa synthetic voice is heard in the ship ^w'Exiting Jump momentarily, please make sure you are secured.'^N
-mpalarm 10 ^pEverything unbolted in the ship recoils forward as the ship stops in an instant, at orbit above the destination.^N
-mpalarm 11 ^pThe ship begins to descend rapidly but controlledly, lowering itself to the landing zone.^N
-mpalarm 13 ^pThe ship's thrusters power up further as the gravity kicks in more and more as it approaches the ground, slowing down as it begins to land... And with a soft touch down it is landed.^N
-mpalarm 14 ^pThe door of the ship opens slowly, providing a ramp to leave and enter the ship, in it's place a hardlight shield activates, maintaining atmosphere in the ship.
-mpalarm 15 ^pa synthetic voice is heard in the ship ^w'Landing complete.'^N
+mpalarm 1 mpecho ^pthe ship's thrusters roar to life as the pilot AI begins to move the ship...^N
+mpalarm 3 mpecho ^pthe ship begins to turn and move in some directions, slightly swaying everything unbolted to the opposite directions as it aligns itself to the destination.^N
+mpalarm 3 mpecho ^pa synthetic voice is heard in the ship ^w'Preparing for jump to the destination, please secure yourself to the ship.'^N
+mpalarm 5 mpecho ^pthe ship recoils for a moment then a sudden force pushes everything not bound towards the back of the ship with massive force, then it settles down as the ship travels faster than light.^N
+mpalarm 8 mpecho ^pa synthetic voice is heard in the ship ^w'Exiting Jump momentarily, please make sure you are secured.'^N
+mpalarm 10 mpecho ^pEverything unbolted in the ship recoils forward as the ship stops in an instant, at orbit above the destination.^N
+mpalarm 11 mpecho ^pThe ship begins to descend rapidly but controlledly, lowering itself to the landing zone.^N
+mpalarm 13 mpecho ^pThe ship's thrusters power up further as the gravity kicks in more and more as it approaches the ground, slowing down as it begins to land... And with a soft touch down it is landed.^N
+mpalarm 14 mpecho ^pThe door of the ship opens slowly, providing a ramp to leave and enter the ship, in it's place a hardlight shield activates, maintaining atmosphere in the ship.
+mpalarm 15 mpecho ^pa synthetic voice is heard in the ship ^w'Landing complete.'^N
 mpalarm 15 mpsetvar $i landed 1
 mpalarm 15 mpsavevar $i landed
 mpalarm 15 mpsetvar $n shipparkedloc 'Novamed Hospital#15'
@@ -279,16 +278,16 @@ if var($i powerswitch == 1)
 if var($i landed != 1)
 if var($i claimer == '$n')
 mpecho ^p$n taps a button on the console and the thrusters begin to hum to life...^N
-mpalarm 1 ^pthe ship's thrusters roar to life as the pilot AI begins to move the ship...^N
-mpalarm 3 ^pthe ship begins to turn and move in some directions, slightly swaying everything unbolted to the opposite directions as it aligns itself to the destination.^N
-mpalarm 3 ^pa synthetic voice is heard in the ship ^w'Preparing for jump to the destination, please secure yourself to the ship.'^N
-mpalarm 5 ^pthe ship recoils for a moment then a sudden force pushes everything not bound towards the back of the ship with massive force, then it settles down as the ship travels faster than light.^N
-mpalarm 8 ^pa synthetic voice is heard in the ship ^w'Exiting Jump momentarily, please make sure you are secured.'^N
-mpalarm 10 ^pEverything unbolted in the ship recoils forward as the ship stops in an instant, at orbit above the destination.^N
-mpalarm 11 ^pThe ship begins to descend rapidly but controlledly, lowering itself to the landing zone.^N
-mpalarm 13 ^pThe ship's thrusters power up further as the gravity kicks in more and more as it approaches the ground, slowing down as it begins to land... And with a soft touch down it is landed.^N
-mpalarm 14 ^pThe door of the ship opens slowly, providing a ramp to leave and enter the ship, in it's place a hardlight shield activates, maintaining atmosphere in the ship.
-mpalarm 15 ^pa synthetic voice is heard in the ship ^w'Landing complete.'^N
+mpalarm 1 mpecho ^pthe ship's thrusters roar to life as the pilot AI begins to move the ship...^N
+mpalarm 3 mpecho ^pthe ship begins to turn and move in some directions, slightly swaying everything unbolted to the opposite directions as it aligns itself to the destination.^N
+mpalarm 3 mpecho ^pa synthetic voice is heard in the ship ^w'Preparing for jump to the destination, please secure yourself to the ship.'^N
+mpalarm 5 mpecho ^pthe ship recoils for a moment then a sudden force pushes everything not bound towards the back of the ship with massive force, then it settles down as the ship travels faster than light.^N
+mpalarm 8 mpecho ^pa synthetic voice is heard in the ship ^w'Exiting Jump momentarily, please make sure you are secured.'^N
+mpalarm 10 mpecho ^pEverything unbolted in the ship recoils forward as the ship stops in an instant, at orbit above the destination.^N
+mpalarm 11 mpecho ^pThe ship begins to descend rapidly but controlledly, lowering itself to the landing zone.^N
+mpalarm 13 mpecho ^pThe ship's thrusters power up further as the gravity kicks in more and more as it approaches the ground, slowing down as it begins to land... And with a soft touch down it is landed.^N
+mpalarm 14 mpecho ^pThe door of the ship opens slowly, providing a ramp to leave and enter the ship, in it's place a hardlight shield activates, maintaining atmosphere in the ship.
+mpalarm 15 mpecho ^pa synthetic voice is heard in the ship ^w'Landing complete.'^N
 mpalarm 15 mpsetvar $i landed 1
 mpalarm 15 mpsavevar $i landed
 mpalarm 15 mpsetvar $n shipparkedloc 'Stellarhaven#156'
@@ -314,16 +313,16 @@ if var($i powerswitch == 1)
 if var($i landed != 1)
 if var($i claimer == '$n')
 mpecho ^p$n taps a button on the console and the thrusters begin to hum to life...^N
-mpalarm 1 ^pthe ship's thrusters roar to life as the pilot AI begins to move the ship...^N
-mpalarm 3 ^pthe ship begins to turn and move in some directions, slightly swaying everything unbolted to the opposite directions as it aligns itself to the destination.^N
-mpalarm 3 ^pa synthetic voice is heard in the ship ^w'Preparing for jump to the destination, please secure yourself to the ship.'^N
-mpalarm 5 ^pthe ship recoils for a moment then a sudden force pushes everything not bound towards the back of the ship with massive force, then it settles down as the ship travels faster than light.^N
-mpalarm 8 ^pa synthetic voice is heard in the ship ^w'Exiting Jump momentarily, please make sure you are secured.'^N
-mpalarm 10 ^pEverything unbolted in the ship recoils forward as the ship stops in an instant, at orbit above the destination.^N
-mpalarm 11 ^pThe ship begins to descend rapidly but controlledly, lowering itself to the landing zone.^N
-mpalarm 13 ^pThe ship's thrusters power up further as the gravity kicks in more and more as it approaches the ground, slowing down as it begins to land... And with a soft touch down it is landed.^N
-mpalarm 14 ^pThe door of the ship opens slowly, providing a ramp to leave and enter the ship, in it's place a hardlight shield activates, maintaining atmosphere in the ship.
-mpalarm 15 ^pa synthetic voice is heard in the ship ^w'Landing complete.'^N
+mpalarm 1 mpecho ^pthe ship's thrusters roar to life as the pilot AI begins to move the ship...^N
+mpalarm 3 mpecho ^pthe ship begins to turn and move in some directions, slightly swaying everything unbolted to the opposite directions as it aligns itself to the destination.^N
+mpalarm 3 mpecho ^pa synthetic voice is heard in the ship ^w'Preparing for jump to the destination, please secure yourself to the ship.'^N
+mpalarm 5 mpecho ^pthe ship recoils for a moment then a sudden force pushes everything not bound towards the back of the ship with massive force, then it settles down as the ship travels faster than light.^N
+mpalarm 8 mpecho ^pa synthetic voice is heard in the ship ^w'Exiting Jump momentarily, please make sure you are secured.'^N
+mpalarm 10 mpecho ^pEverything unbolted in the ship recoils forward as the ship stops in an instant, at orbit above the destination.^N
+mpalarm 11 mpecho ^pThe ship begins to descend rapidly but controlledly, lowering itself to the landing zone.^N
+mpalarm 13 mpecho ^pThe ship's thrusters power up further as the gravity kicks in more and more as it approaches the ground, slowing down as it begins to land... And with a soft touch down it is landed.^N
+mpalarm 14 mpecho ^pThe door of the ship opens slowly, providing a ramp to leave and enter the ship, in it's place a hardlight shield activates, maintaining atmosphere in the ship.
+mpalarm 15 mpecho ^pa synthetic voice is heard in the ship ^w'Landing complete.'^N
 mpalarm 15 mpsetvar $i landed 1
 mpalarm 15 mpsavevar $i landed
 mpalarm 15 mpsetvar $n shipparkedloc 'Glimmerfall#63'
@@ -350,16 +349,16 @@ if var($i powerswitch == 1)
 if var($i landed != 1)
 if var($i claimer == '$n')
 mpecho ^p$n taps a button on the console and the thrusters begin to hum to life...^N
-mpalarm 1 ^pthe ship's thrusters roar to life as the pilot AI begins to move the ship...^N
-mpalarm 3 ^pthe ship begins to turn and move in some directions, slightly swaying everything unbolted to the opposite directions as it aligns itself to the destination.^N
-mpalarm 3 ^pa synthetic voice is heard in the ship ^w'Preparing for jump to the destination, please secure yourself to the ship.'^N
-mpalarm 5 ^pthe ship recoils for a moment then a sudden force pushes everything not bound towards the back of the ship with massive force, then it settles down as the ship travels faster than light.^N
-mpalarm 8 ^pa synthetic voice is heard in the ship ^w'Exiting Jump momentarily, please make sure you are secured.'^N
-mpalarm 10 ^pEverything unbolted in the ship recoils forward as the ship stops in an instant, at orbit above the destination.^N
-mpalarm 11 ^pThe ship begins to descend rapidly but controlledly, lowering itself to the landing zone.^N
-mpalarm 13 ^pThe ship's thrusters power up further as the gravity kicks in more and more as it approaches the ground, slowing down as it begins to land... And with a soft touch down it is landed.^N
-mpalarm 14 ^pThe door of the ship opens slowly, providing a ramp to leave and enter the ship, in it's place a hardlight shield activates, maintaining atmosphere in the ship.
-mpalarm 15 ^pa synthetic voice is heard in the ship ^w'Landing complete.'^N
+mpalarm 1 mpecho ^pthe ship's thrusters roar to life as the pilot AI begins to move the ship...^N
+mpalarm 3 mpecho ^pthe ship begins to turn and move in some directions, slightly swaying everything unbolted to the opposite directions as it aligns itself to the destination.^N
+mpalarm 3 mpecho ^pa synthetic voice is heard in the ship ^w'Preparing for jump to the destination, please secure yourself to the ship.'^N
+mpalarm 5 mpecho ^pthe ship recoils for a moment then a sudden force pushes everything not bound towards the back of the ship with massive force, then it settles down as the ship travels faster than light.^N
+mpalarm 8 mpecho ^pa synthetic voice is heard in the ship ^w'Exiting Jump momentarily, please make sure you are secured.'^N
+mpalarm 10 mpecho ^pEverything unbolted in the ship recoils forward as the ship stops in an instant, at orbit above the destination.^N
+mpalarm 11 mpecho ^pThe ship begins to descend rapidly but controlledly, lowering itself to the landing zone.^N
+mpalarm 13 mpecho ^pThe ship's thrusters power up further as the gravity kicks in more and more as it approaches the ground, slowing down as it begins to land... And with a soft touch down it is landed.^N
+mpalarm 14 mpecho ^pThe door of the ship opens slowly, providing a ramp to leave and enter the ship, in it's place a hardlight shield activates, maintaining atmosphere in the ship.
+mpalarm 15 mpecho ^pa synthetic voice is heard in the ship ^w'Landing complete.'^N
 mpalarm 15 mpsetvar $i landed 1
 mpalarm 15 mpsavevar $i landed
 mpalarm 15 mpsetvar $n shipparkedloc 'ArcherCorp SS Epsilon#88'
@@ -388,16 +387,16 @@ if var($i powerswitch == 1)
 if var($i landed != 1)
 if var($i claimer == '$n')
 mpecho ^p$n taps a button on the console and the thrusters begin to hum to life...^N
-mpalarm 1 ^pthe ship's thrusters roar to life as the pilot AI begins to move the ship...^N
-mpalarm 3 ^pthe ship begins to turn and move in some directions, slightly swaying everything unbolted to the opposite directions as it aligns itself to the destination.^N
-mpalarm 3 ^pa synthetic voice is heard in the ship ^w'Preparing for jump to the destination, please secure yourself to the ship.'^N
-mpalarm 5 ^pthe ship recoils for a moment then a sudden force pushes everything not bound towards the back of the ship with massive force, then it settles down as the ship travels faster than light.^N
-mpalarm 8 ^pa synthetic voice is heard in the ship ^w'Exiting Jump momentarily, please make sure you are secured.'^N
-mpalarm 10 ^pEverything unbolted in the ship recoils forward as the ship stops in an instant, at orbit above the destination.^N
-mpalarm 11 ^pThe ship begins to descend rapidly but controlledly, lowering itself to the landing zone.^N
-mpalarm 13 ^pThe ship's thrusters power up further as the gravity kicks in more and more as it approaches the ground, slowing down as it begins to land... And with a soft touch down it is landed.^N
-mpalarm 14 ^pThe door of the ship opens slowly, providing a ramp to leave and enter the ship, in it's place a hardlight shield activates, maintaining atmosphere in the ship.
-mpalarm 15 ^pa synthetic voice is heard in the ship ^w'Landing complete.'^N
+mpalarm 1 mpecho ^pthe ship's thrusters roar to life as the pilot AI begins to move the ship...^N
+mpalarm 3 mpecho ^pthe ship begins to turn and move in some directions, slightly swaying everything unbolted to the opposite directions as it aligns itself to the destination.^N
+mpalarm 3 mpecho ^pa synthetic voice is heard in the ship ^w'Preparing for jump to the destination, please secure yourself to the ship.'^N
+mpalarm 5 mpecho ^pthe ship recoils for a moment then a sudden force pushes everything not bound towards the back of the ship with massive force, then it settles down as the ship travels faster than light.^N
+mpalarm 8 mpecho ^pa synthetic voice is heard in the ship ^w'Exiting Jump momentarily, please make sure you are secured.'^N
+mpalarm 10 mpecho ^pEverything unbolted in the ship recoils forward as the ship stops in an instant, at orbit above the destination.^N
+mpalarm 11 mpecho ^pThe ship begins to descend rapidly but controlledly, lowering itself to the landing zone.^N
+mpalarm 13 mpecho ^pThe ship's thrusters power up further as the gravity kicks in more and more as it approaches the ground, slowing down as it begins to land... And with a soft touch down it is landed.^N
+mpalarm 14 mpecho ^pThe door of the ship opens slowly, providing a ramp to leave and enter the ship, in it's place a hardlight shield activates, maintaining atmosphere in the ship.
+mpalarm 15 mpecho ^pa synthetic voice is heard in the ship ^w'Landing complete.'^N
 mpalarm 15 mpsetvar $i landed 1
 mpalarm 15 mpsavevar $i landed
 mpalarm 15 mpsetvar $n shipparkedloc 'Nuclear Facility#49'
@@ -423,16 +422,16 @@ if var($i powerswitch == 1)
 if var($i landed != 1)
 if var($i claimer == '$n')
 mpecho ^p$n taps a button on the console and the thrusters begin to hum to life...^N
-mpalarm 1 ^pthe ship's thrusters roar to life as the pilot AI begins to move the ship...^N
-mpalarm 3 ^pthe ship begins to turn and move in some directions, slightly swaying everything unbolted to the opposite directions as it aligns itself to the destination.^N
-mpalarm 3 ^pa synthetic voice is heard in the ship ^w'Preparing for jump to the destination, please secure yourself to the ship.'^N
-mpalarm 5 ^pthe ship recoils for a moment then a sudden force pushes everything not bound towards the back of the ship with massive force, then it settles down as the ship travels faster than light.^N
-mpalarm 8 ^pa synthetic voice is heard in the ship ^w'Exiting Jump momentarily, please make sure you are secured.'^N
-mpalarm 10 ^pEverything unbolted in the ship recoils forward as the ship stops in an instant, at orbit above the destination.^N
-mpalarm 11 ^pThe ship begins to descend rapidly but controlledly, lowering itself to the landing zone.^N
-mpalarm 13 ^pThe ship's thrusters power up further as the gravity kicks in more and more as it approaches the ground, slowing down as it begins to land... And with a soft touch down it is landed.^N
-mpalarm 14 ^pThe door of the ship opens slowly, providing a ramp to leave and enter the ship, in it's place a hardlight shield activates, maintaining atmosphere in the ship.
-mpalarm 15 ^pa synthetic voice is heard in the ship ^w'Landing complete.'^N
+mpalarm 1 mpecho ^pthe ship's thrusters roar to life as the pilot AI begins to move the ship...^N
+mpalarm 3 mpecho ^pthe ship begins to turn and move in some directions, slightly swaying everything unbolted to the opposite directions as it aligns itself to the destination.^N
+mpalarm 3 mpecho ^pa synthetic voice is heard in the ship ^w'Preparing for jump to the destination, please secure yourself to the ship.'^N
+mpalarm 5 mpecho ^pthe ship recoils for a moment then a sudden force pushes everything not bound towards the back of the ship with massive force, then it settles down as the ship travels faster than light.^N
+mpalarm 8 mpecho ^pa synthetic voice is heard in the ship ^w'Exiting Jump momentarily, please make sure you are secured.'^N
+mpalarm 10 mpecho ^pEverything unbolted in the ship recoils forward as the ship stops in an instant, at orbit above the destination.^N
+mpalarm 11 mpecho ^pThe ship begins to descend rapidly but controlledly, lowering itself to the landing zone.^N
+mpalarm 13 mpecho ^pThe ship's thrusters power up further as the gravity kicks in more and more as it approaches the ground, slowing down as it begins to land... And with a soft touch down it is landed.^N
+mpalarm 14 mpecho ^pThe door of the ship opens slowly, providing a ramp to leave and enter the ship, in it's place a hardlight shield activates, maintaining atmosphere in the ship.
+mpalarm 15 mpecho ^pa synthetic voice is heard in the ship ^w'Landing complete.'^N
 mpalarm 15 mpsetvar $i landed 1
 mpalarm 15 mpsavevar $i landed
 mpalarm 15 mpsetvar $n shipparkedloc 'Angelic Retreat#5'

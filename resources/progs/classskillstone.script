@@ -1,0 +1,17 @@
+social_prog touch
+if isname($i $t)
+mpsetvar $i secrets '$%GSTAT($i SECRET)%'
+mpsetvar $i needclass $<$i secrets>.0
+IF EVAL ('$%class($n)%' != '$<$i needclass>')
+    mpechoat $n You don't feel anything special, maybe if you were a $<$i needclass>...
+    return
+endif
+if isfight($n)
+    mpechoat $n During a fight!? Get real!
+    return
+endif
+    mpecho $n touches $s hand on $t, and the runes glow brightly, $n is paralyzed for a moment as $e is filled with new information at once.
+    mpenable $n '$<$i secrets>.1'
+    mpecho $n learns $<$i secrets>.1.
+endif
+~

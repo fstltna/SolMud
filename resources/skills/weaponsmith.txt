@@ -133,3 +133,4 @@ three-headed % flail	30	130	18	2818	GenWeapon	FLAILED	BASHING	54	-9	2	0
 % naginata	30	230	35	3025	GenWeapon	POLEARM	SLASHING	55	-10	2	1		
 % zweihander	30	70	24	2304	GenWeapon	SWORD	SLASHING	48	0	2	0		
 % hurlbat	30	30	8	1171	GenSpear	THROWN	SLASHING	38	-15	1	1		
+% ritual knife	30	20	10	200	GenWeapon	DAGGER	SLASHING	7	33	1	0		

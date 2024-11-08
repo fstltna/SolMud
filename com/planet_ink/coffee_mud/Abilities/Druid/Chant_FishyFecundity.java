@@ -106,8 +106,6 @@ public class Chant_FishyFecundity extends Chant
 				||(myChar.charStats().reproductiveCode()==('F')))
 			&&(myChar.location()==mate.location())
 			&&(CMParms.contains(mate.charStats().getMyRace().getBreathables(),new int[] {RawMaterial.RESOURCE_FRESHWATER,RawMaterial.RESOURCE_SALTWATER}))
-			&&(myChar.fetchWornItems(Wearable.WORN_LEGS|Wearable.WORN_WAIST,(short)-2048,(short)0).size()==0)
-			&&(mate.fetchWornItems(Wearable.WORN_LEGS|Wearable.WORN_WAIST,(short)-2048,(short)0).size()==0)
 			&&(mate.charStats().getMyRace().canBreedWith(myChar.charStats().getMyRace(),true))
 			&&(myChar.charStats().getMyRace().canBreedWith(mate.charStats().getMyRace(),true))
 			&&((mate.charStats().getStat(CharStats.STAT_AGE)==0)

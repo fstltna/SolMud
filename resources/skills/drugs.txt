@@ -3,7 +3,7 @@ poppy milk	DRINK	Poison_Anesthesia	1	POPPY	1	MILK	1
 theriac	FOOD	Prayer_CureLight	1	POPPY	1	LIQUOR	1										
 mandragora	FOOD	Poison_Hallucinogen	1	POPPY	1	CLOVES	1										
 hazia	FOOD	Poison_Hazia	1	LAMP OIL	1	COAL	1										
-dried cum dust cigar	GenCigar	*Prayer_Invigorate;	1	CUM													
+cum dust blunt	GenCigar	*Prayer_Invigorate;	1	CUM		PIPEWEED		PAPER									
 marijuana blunt	GenCigar	*Spell_Friends;	1	Marijuana baggie	1	PAPER	1										
 marijuana baggie	FOOD	*Spell_Friends;	1	PIPEWEED	3												
 cocaine baggie	FOOD	*Prayer_Invigorate;	1	VINE	3	poppy											

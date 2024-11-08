@@ -106,9 +106,7 @@ public class Chant_Fertility extends Chant
 			   ||(myChar.charStats().reproductiveCode()==('F')))
 			&&(mate.charStats().getMyRace().canBreedWith(myChar.charStats().getMyRace(),false))
 			&&(myChar.charStats().getMyRace().canBreedWith(mate.charStats().getMyRace(),false))
-			&&(myChar.location()==mate.location())
-			&&(myChar.fetchWornItems(Wearable.WORN_LEGS|Wearable.WORN_WAIST,(short)-2048,(short)0).size()==0)
-			&&(mate.fetchWornItems(Wearable.WORN_LEGS|Wearable.WORN_WAIST,(short)-2048,(short)0).size()==0))
+			&&(myChar.location()==mate.location()))
 			{
 				MOB female=myChar;
 				MOB male=mate;

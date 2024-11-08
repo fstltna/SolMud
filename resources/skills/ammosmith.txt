@@ -1,0 +1,211 @@
+magazine of 30 .45 ACP rounds	1	7	1	10	GenAmmunition	.45 ACP 30			
+magazine of 30 .45 ACP blank rounds	2	7	1	10	GenAmmunition	.45 ACP	30				Prop_NoDamage;Prop_FightSpellCast;50% Spell_ColorSpray	
+magazine of 30 .45 ACP snakeshot rounds	3	7	1	10	GenAmmunition	.45 ACP	30				Prop_WearAdjuster;attacks+20;Prop_AddDamage;15% BASHING	
+magazine of 60 .45 ACP rounds	5	14	2	20	GenAmmunition	.45 ACP	60					
+magazine of 60 .45 ACP blank rounds	6	14	2	20	GenAmmunition	.45 ACP	60				Prop_NoDamage;Prop_FightSpellCast;50% Spell_ColorSpray	
+magazine of 30 .45 ACP hollowpoint rounds	8	7	1	10	GenAmmunition	.45 ACP	30				Prop_AddDamage;15% SLASHING;Prop_FightSpellCast;30% BLEEDING	
+magazine of 60 .45 ACP snakeshot rounds	9	14	2	20	GenAmmunition	.45 ACP	60				Prop_WearAdjuster;attacks+20;Prop_AddDamage;15% BASHING	
+magazine of 30 .45 ACP jacketed rounds	11	7	(onground:consumed:1:BRASS:)	10	GenAmmunition	.45 ACP	30				*Prop_AddDamage;30% PIERCING	
+magazine of 60 .45 ACP hollowpoint rounds	13	14	2	20	GenAmmunition	.45 ACP	60				Prop_AddDamage;15% SLASHING;Prop_FightSpellCast;30% BLEEDING	
+drum of 120 .45 ACP rounds	14	28	4	40	GenAmmunition	.45 ACP	120					
+drum of 120 .45 ACP blank rounds	15	28	4	40	GenAmmunition	.45 ACP	120				Prop_NoDamage;Prop_FightSpellCast;50% Spell_ColorSpray	
+magazine of 60 .45 ACP jacketed rounds	16	14	(onground:consumed:2:BRASS:)	20	GenAmmunition	.45 ACP	60				*Prop_AddDamage;30% PIERCING	
+drum of 120 .45 ACP snakeshot rounds	18	28	4	40	GenAmmunition	.45 ACP	120				Prop_WearAdjuster;attacks+20;Prop_AddDamage;15% BASHING	
+drum of 120 .45 ACP hollowpoint rounds	19	28	4	40	GenAmmunition	.45 ACP	120				Prop_AddDamage;15% SLASHING;Prop_FightSpellCast;30% BLEEDING	
+drum of 120 .45 ACP jacketed rounds	21	28	(onground:consumed:4:BRASS:)	40	GenAmmunition	.45 ACP	120				*Prop_AddDamage;30% PIERCING	
+drum of 240 .45 ACP rounds	23	56	8	80	GenAmmunition	.45 ACP	240					
+drum of 240 .45 ACP blank rounds	25	56	8	80	GenAmmunition	.45 ACP	240				Prop_NoDamage;Prop_FightSpellCast;50% Spell_ColorSpray				
+drum of 240 .45 ACP snakeshot rounds	27	56	8	80	GenAmmunition	.45 ACP	240				Prop_WearAdjuster;attacks+20;Prop_AddDamage;15% BASHING	
+drum of 240 .45 ACP hollowpoint rounds	29	56	8	80	GenAmmunition	.45 ACP	240				Prop_AddDamage;15% SLASHING;Prop_FightSpellCast;30% BLEEDING	
+box of 500 .45 ACP rounds	30	112	16	160	GenAmmunition	.45 ACP	500					
+drum of 240 .45 ACP jacketed rounds	31	56	(onground:consumed:8:BRASS:)	80	GenAmmunition	.45 ACP	240				*Prop_AddDamage;30% PIERCING	
+box of 500 .45 ACP blank rounds	31	112	16	160	GenAmmunition	.45 ACP	500				Prop_NoDamage;Prop_FightSpellCast;50% Spell_ColorSpray	
+box of 500 .45 ACP jacketed rounds	41	112	(onground:consumed:16:BRASS:)	160	GenAmmunition	.45 ACP	500				*Prop_AddDamage;30% PIERCING	
+magazine of 30 9x19mm Parabellum rounds	1	7	1	10	GenAmmunition	9x19mm Parabellum	30			
+magazine of 30 9x19mm Parabellum blank rounds	2	7	1	10	GenAmmunition	9x19mm Parabellum	30				Prop_NoDamage;Prop_FightSpellCast;50% Spell_ColorSpray	
+magazine of 30 9x19mm Parabellum snakeshot rounds	3	7	1	10	GenAmmunition	9x19mm Parabellum	30				Prop_WearAdjuster;attacks+20;Prop_AddDamage;15% BASHING	
+magazine of 60 9x19mm Parabellum rounds	5	14	2	20	GenAmmunition	9x19mm Parabellum	60					
+magazine of 60 9x19mm Parabellum blank rounds	6	14	2	20	GenAmmunition	9x19mm Parabellum	60				Prop_NoDamage;Prop_FightSpellCast;50% Spell_ColorSpray	
+magazine of 30 9x19mm Parabellum hollowpoint rounds	8	7	1	10	GenAmmunition	9x19mm Parabellum	30				Prop_AddDamage;15% SLASHING;Prop_FightSpellCast;30% BLEEDING	
+magazine of 60 9x19mm Parabellum snakeshot rounds	9	14	2	20	GenAmmunition	9x19mm Parabellum	60				Prop_WearAdjuster;attacks+20;Prop_AddDamage;15% BASHING	
+magazine of 30 9x19mm Parabellum jacketed rounds	11	7	(onground:consumed:1:BRASS:)	10	GenAmmunition	9x19mm Parabellum	30				*Prop_AddDamage;30% PIERCING	
+magazine of 60 9x19mm Parabellum hollowpoint rounds	13	14	2	20	GenAmmunition	9x19mm Parabellum	60				Prop_AddDamage;15% SLASHING;Prop_FightSpellCast;30% BLEEDING	
+drum of 120 9x19mm Parabellum rounds	14	28	4	40	GenAmmunition	9x19mm Parabellum	120					
+drum of 120 9x19mm Parabellum blank rounds	15	28	4	40	GenAmmunition	9x19mm Parabellum	120				Prop_NoDamage;Prop_FightSpellCast;50% Spell_ColorSpray	
+magazine of 60 9x19mm Parabellum jacketed rounds	16	14	(onground:consumed:2:BRASS:)	20	GenAmmunition	9x19mm Parabellum	60				*Prop_AddDamage;30% PIERCING	
+drum of 120 9x19mm Parabellum snakeshot rounds	18	28	4	40	GenAmmunition	9x19mm Parabellum	120				Prop_WearAdjuster;attacks+20;Prop_AddDamage;15% BASHING	
+drum of 120 9x19mm Parabellum hollowpoint rounds	19	28	4	40	GenAmmunition	9x19mm Parabellum	120				Prop_AddDamage;15% SLASHING;Prop_FightSpellCast;30% BLEEDING	
+drum of 120 9x19mm Parabellum jacketed rounds	21	28	(onground:consumed:4:BRASS:)	40	GenAmmunition	9x19mm Parabellum	120				*Prop_AddDamage;30% PIERCING	
+drum of 240 9x19mm Parabellum rounds	23	56	8	80	GenAmmunition	9x19mm Parabellum	240					
+drum of 240 9x19mm Parabellum blank rounds	25	56	8	80	GenAmmunition	9x19mm Parabellum	240				Prop_NoDamage;Prop_FightSpellCast;50% Spell_ColorSpray				
+drum of 240 9x19mm Parabellum snakeshot rounds	27	56	8	80	GenAmmunition	9x19mm Parabellum	240				Prop_WearAdjuster;attacks+20;Prop_AddDamage;15% BASHING	
+drum of 240 9x19mm Parabellum hollowpoint rounds	29	56	8	80	GenAmmunition	9x19mm Parabellum	240				Prop_AddDamage;15% SLASHING;Prop_FightSpellCast;30% BLEEDING	
+box of 500 9x19mm Parabellum rounds	30	112	16	160	GenAmmunition	9x19mm Parabellum	500					
+drum of 240 9x19mm Parabellum jacketed rounds	31	56	(onground:consumed:8:BRASS:)	80	GenAmmunition	9x19mm Parabellum	240				*Prop_AddDamage;30% PIERCING	
+box of 500 9x19mm Parabellum blank rounds	31	112	16	160	GenAmmunition	9x19mm Parabellum	500				Prop_NoDamage;Prop_FightSpellCast;50% Spell_ColorSpray	
+box of 500 9x19mm Parabellum jacketed rounds	41	112	(onground:consumed:16:BRASS:)	160	GenAmmunition	9x19mm Parabellum	500				*Prop_AddDamage;30% PIERCING	
+magazine of 30 5.7x28mm rounds	1	7	1	10	GenAmmunition	5.7x28mm	30			
+magazine of 30 5.7x28mm blank rounds	2	7	1	10	GenAmmunition	5.7x28mm	30				Prop_NoDamage;Prop_FightSpellCast;50% Spell_ColorSpray	
+magazine of 30 5.7x28mm snakeshot rounds	3	7	1	10	GenAmmunition	5.7x28mm	30				Prop_WearAdjuster;attacks+20;Prop_AddDamage;15% BASHING	
+magazine of 60 5.7x28mm rounds	5	14	2	20	GenAmmunition	5.7x28mm	60					
+magazine of 60 5.7x28mm blank rounds	6	14	2	20	GenAmmunition	5.7x28mm	60				Prop_NoDamage;Prop_FightSpellCast;50% Spell_ColorSpray	
+magazine of 30 5.7x28mm hollowpoint rounds	8	7	1	10	GenAmmunition	5.7x28mm	30				Prop_AddDamage;15% SLASHING;Prop_FightSpellCast;30% BLEEDING	
+magazine of 60 5.7x28mm snakeshot rounds	9	14	2	20	GenAmmunition	5.7x28mm	60				Prop_WearAdjuster;attacks+20;Prop_AddDamage;15% BASHING	
+magazine of 30 5.7x28mm jacketed rounds	11	7	(onground:consumed:1:BRASS:)	10	GenAmmunition	5.7x28mm	30				*Prop_AddDamage;30% PIERCING	
+magazine of 60 5.7x28mm hollowpoint rounds	13	14	2	20	GenAmmunition	5.7x28mm	60				Prop_AddDamage;15% SLASHING;Prop_FightSpellCast;30% BLEEDING	
+drum of 120 5.7x28mm rounds	14	28	4	40	GenAmmunition	5.7x28mm	120					
+drum of 120 5.7x28mm blank rounds	15	28	4	40	GenAmmunition	5.7x28mm	120				Prop_NoDamage;Prop_FightSpellCast;50% Spell_ColorSpray	
+magazine of 60 5.7x28mm jacketed rounds	16	14	(onground:consumed:2:BRASS:)	20	GenAmmunition	5.7x28mm	60				*Prop_AddDamage;30% PIERCING	
+drum of 120 5.7x28mm snakeshot rounds	18	28	4	40	GenAmmunition	5.7x28mm	120				Prop_WearAdjuster;attacks+20;Prop_AddDamage;15% BASHING	
+drum of 120 5.7x28mm hollowpoint rounds	19	28	4	40	GenAmmunition	5.7x28mm	120				Prop_AddDamage;15% SLASHING;Prop_FightSpellCast;30% BLEEDING	
+drum of 120 5.7x28mm jacketed rounds	21	28	(onground:consumed:4:BRASS:)	40	GenAmmunition	5.7x28mm	120				*Prop_AddDamage;30% PIERCING	
+drum of 240 5.7x28mm rounds	23	56	8	80	GenAmmunition	5.7x28mm	240					
+drum of 240 5.7x28mm blank rounds	25	56	8	80	GenAmmunition	5.7x28mm	240				Prop_NoDamage;Prop_FightSpellCast;50% Spell_ColorSpray				
+drum of 240 5.7x28mm snakeshot rounds	27	56	8	80	GenAmmunition	5.7x28mm	240				Prop_WearAdjuster;attacks+20;Prop_AddDamage;15% BASHING	
+drum of 240 5.7x28mm hollowpoint rounds	29	56	8	80	GenAmmunition	5.7x28mm	240				Prop_AddDamage;15% SLASHING;Prop_FightSpellCast;30% BLEEDING	
+box of 500 5.7x28mm rounds	30	112	16	160	GenAmmunition	5.7x28mm	500					
+drum of 240 5.7x28mm jacketed rounds	31	56	(onground:consumed:8:BRASS:)	80	GenAmmunition	5.7x28mm	240				*Prop_AddDamage;30% PIERCING	
+box of 500 5.7x28mm blank rounds	31	112	16	160	GenAmmunition	5.7x28mm	500				Prop_NoDamage;Prop_FightSpellCast;50% Spell_ColorSpray	
+box of 500 5.7x28mm jacketed rounds	41	112	(onground:consumed:16:BRASS:)	160	GenAmmunition	5.7x28mm	500				*Prop_AddDamage;30% PIERCING	
+magazine of 10 5.56x45mm rounds	16	5	1	5	GenAmmunition	5.56x45mm	10			
+magazine of 20 5.56x45mm rounds	26	10	1	10	GenAmmunition	5.56x45mm	20		
+magazine of 20 5.56x45mm debilitating rounds	30	10	1	10	GenAmmunition	5.56x45mm	20				Prop_AddDamage;10% PIERCING;Prop_FightSpellCast;MAXTICKS=10;40% Spell_Frailty
+magazine of 20 5.56x45mm dazzler rounds	32	10	1	10	GenAmmunition	5.56x45mm	20				Prop_AddDamage;20% PIERCING;Prop_FightSpellCast;MAXTICKS=30;75% Spell_LightSensitivity;20% Spell_ColorSpray	
+magazine of 40 5.56x45mm debilitating rounds	44	20	2	20	GenAmmunition	5.56x45mm	40				Prop_AddDamage;10% PIERCING;Prop_FightSpellCast;MAXTICKS=10;40% Spell_Frailty	
+magazine of 40 5.56x45mm dazzler rounds	46	20	2	20	GenAmmunition	5.56x45mm	40				Prop_AddDamage;20% PIERCING;Prop_FightSpellCast;MAXTICKS=30;75% Spell_LightSensitivity;20% Spell_ColorSpray	
+magazine of 20 5.56x45mm jacketed rounds	47	10	(onground:consumed:10:BRASS:)	20	GenAmmunition	5.56x45mm	20				*Prop_AddDamage;45% PIERCING	
+drum of 80 5.56x45mm rounds	48	40	4	40	GenAmmunition	5.56x45mm	80					
+magazine of 40 5.56x45mm softpoint rounds	52	20	(onground:consumed:2:LEAD:)	30	GenAmmunition	5.56x45mm	40				Prop_AddDamage;30% SLASHING;Prop_FightSpellCast;50% BLEEDING	
+drum of 80 5.56x45mm debilitating rounds	57	40	4	40	GenAmmunition	5.56x45mm	80				Prop_AddDamage;10% PIERCING;Prop_FightSpellCast;MAXTICKS=10;40% Spell_Frailty	
+magazine of 40 5.56x45mm jacketed rounds	58	20	(onground:consumed:20:BRASS:)	40	GenAmmunition	5.56x45mm	40				*Prop_AddDamage;45% PIERCING	
+drum of 80 5.56x45mm dazzler rounds	59	40	4	40	GenAmmunition	5.56x45mm	80				Prop_AddDamage;20% PIERCING;Prop_FightSpellCast;MAXTICKS=30;75% Spell_LightSensitivity;20% Spell_ColorSpray	
+drum of 160 5.56x45mm rounds	60	80	8	80	GenAmmunition	5.56x45mm	160					
+drum of 25 5.56x45mm ultrasolid rounds	63	10	(onground:consumed:8:MITHRIL:)	100	GenAmmunition	5.56x45mm	20				*Prop_AddDamage;20% SLASHING	
+drum of 80 5.56x45mm softpoint rounds	68	40	(onground:consumed:4:LEAD:)	60	GenAmmunition	5.56x45mm	80				Prop_AddDamage;30% SLASHING;Prop_FightSpellCast;50% BLEEDING	
+drum of 160 5.56x45mm debilitating rounds	68	80	8	80	GenAmmunition	5.56x45mm	160				Prop_AddDamage;10% PIERCING;Prop_FightSpellCast;MAXTICKS=10;40% Spell_Frailty	
+drum of 160 5.56x45mm dazzler rounds	70	80	8	80	GenAmmunition	5.56x45mm	160				Prop_AddDamage;20% PIERCING;Prop_FightSpellCast;MAXTICKS=30;75% Spell_LightSensitivity;20% Spell_ColorSpray	
+drum of 80 5.56x45mm jacketed rounds	71	40	(onground:consumed:4:BRASS:)	80	GenAmmunition	5.56x45mm	80				*Prop_AddDamage;45% PIERCING	
+drum of 160 5.56x45mm softpoint rounds	73	80	(onground:consumed:8:LEAD:)	120	GenAmmunition	5.56x45mm	160				Prop_AddDamage;30% SLASHING;Prop_FightSpellCast;50% BLEEDING	
+box of 300 5.56x45mm rounds	77	150	15	150	GenAmmunition	5.56x45mm	300					
+magazine of 50 5.56x45mm ultrasolid rounds	78	20	(onground:consumed:4:MITHRIL:)	200	GenAmmunition	5.56x45mm	40				Prop_AddDamage;60% PIERCING;20% SLASHING	
+box of 300 5.56x45mm debilitating rounds	80	150	15	150	GenAmmunition	5.56x45mm	300				Prop_AddDamage;10% PIERCING;Prop_FightSpellCast;MAXTICKS=10;40% Spell_Frailty	
+drum of 160 5.56x45mm jacketed rounds	83	80	(onground:consumed:8:BRASS:)	160	GenAmmunition	5.56x45mm	160				*Prop_AddDamage;45% PIERCING	
+box of 300 5.56x45mm dazzler rounds	83	150	15	150	GenAmmunition	5.56x45mm	300				Prop_AddDamage;20% PIERCING;Prop_FightSpellCast;MAXTICKS=30;75% Spell_LightSensitivity;20% Spell_ColorSpray	
+drum of 100 5.56x45mm ultrasolid rounds	84	40	(onground:consumed:8:MITHRIL:)	400	GenAmmunition	5.56x45mm	80				Prop_AddDamage;60% PIERCING;20% SLASHING	
+box of 300 5.56x45mm softpoint rounds	85	150	(onground:consumed:15:LEAD:)	240	GenAmmunition	5.56x45mm	300				Prop_AddDamage;30% SLASHING;Prop_FightSpellCast;50% BLEEDING
+box of 300 5.56x45mm jacketed rounds	88	150	(onground:consumed:15:BRASS:)	320	GenAmmunition	5.56x45mm	300				*Prop_AddDamage;45% PIERCING	
+magazine of 10 5.45x39mm rounds	16	5	1	5	GenAmmunition	5.45x39mm	10			
+magazine of 20 5.45x39mm rounds	26	10	1	10	GenAmmunition	5.45x39mm	20		
+magazine of 20 5.45x39mm debilitating rounds	30	10	1	10	GenAmmunition	5.45x39mm	20				Prop_AddDamage;10% PIERCING;Prop_FightSpellCast;MAXTICKS=10;40% Spell_Frailty
+magazine of 20 5.45x39mm dazzler rounds	32	10	1	10	GenAmmunition	5.45x39mm	20				Prop_AddDamage;20% PIERCING;Prop_FightSpellCast;MAXTICKS=30;75% Spell_LightSensitivity;20% Spell_ColorSpray	
+magazine of 40 5.45x39mm debilitating rounds	44	20	2	20	GenAmmunition	5.45x39mm	40				Prop_AddDamage;10% PIERCING;Prop_FightSpellCast;MAXTICKS=10;40% Spell_Frailty	
+magazine of 40 5.45x39mm dazzler rounds	46	20	2	20	GenAmmunition	5.45x39mm	40				Prop_AddDamage;20% PIERCING;Prop_FightSpellCast;MAXTICKS=30;75% Spell_LightSensitivity;20% Spell_ColorSpray	
+magazine of 20 5.45x39mm jacketed rounds	47	10	(onground:consumed:10:BRASS:)	20	GenAmmunition	5.45x39mm	20				*Prop_AddDamage;45% PIERCING	
+drum of 80 5.45x39mm rounds	48	40	4	40	GenAmmunition	5.45x39mm	80					
+magazine of 40 5.45x39mm softpoint rounds	52	20	(onground:consumed:2:LEAD:)	30	GenAmmunition	5.45x39mm	40				Prop_AddDamage;30% SLASHING;Prop_FightSpellCast;50% BLEEDING	
+drum of 80 5.45x39mm debilitating rounds	57	40	4	40	GenAmmunition	5.45x39mm	80				Prop_AddDamage;10% PIERCING;Prop_FightSpellCast;MAXTICKS=10;40% Spell_Frailty	
+magazine of 40 5.45x39mm jacketed rounds	58	20	(onground:consumed:20:BRASS:)	40	GenAmmunition	5.45x39mm	40				*Prop_AddDamage;45% PIERCING	
+drum of 80 5.45x39mm dazzler rounds	59	40	4	40	GenAmmunition	5.45x39mm	80				Prop_AddDamage;20% PIERCING;Prop_FightSpellCast;MAXTICKS=30;75% Spell_LightSensitivity;20% Spell_ColorSpray	
+drum of 160 5.45x39mm rounds	60	80	8	80	GenAmmunition	5.45x39mm	160					
+drum of 25 5.45x39mm ultrasolid rounds	63	10	(onground:consumed:8:MITHRIL:)	100	GenAmmunition	5.45x39mm	20				*Prop_AddDamage;20% SLASHING	
+drum of 80 5.45x39mm softpoint rounds	68	40	(onground:consumed:4:LEAD:)	60	GenAmmunition	5.45x39mm	80				Prop_AddDamage;30% SLASHING;Prop_FightSpellCast;50% BLEEDING	
+drum of 160 5.45x39mm debilitating rounds	68	80	8	80	GenAmmunition	5.45x39mm	160				Prop_AddDamage;10% PIERCING;Prop_FightSpellCast;MAXTICKS=10;40% Spell_Frailty	
+drum of 160 5.45x39mm dazzler rounds	70	80	8	80	GenAmmunition	5.45x39mm	160				Prop_AddDamage;20% PIERCING;Prop_FightSpellCast;MAXTICKS=30;75% Spell_LightSensitivity;20% Spell_ColorSpray	
+drum of 80 5.45x39mm jacketed rounds	71	40	(onground:consumed:4:BRASS:)	80	GenAmmunition	5.45x39mm	80				*Prop_AddDamage;45% PIERCING	
+drum of 160 5.45x39mm softpoint rounds	73	80	(onground:consumed:8:LEAD:)	120	GenAmmunition	5.45x39mm	160				Prop_AddDamage;30% SLASHING;Prop_FightSpellCast;50% BLEEDING	
+box of 300 5.45x39mm rounds	77	150	15	150	GenAmmunition	5.45x39mm	300					
+magazine of 50 5.45x39mm ultrasolid rounds	78	20	(onground:consumed:4:MITHRIL:)	200	GenAmmunition	5.45x39mm	40				Prop_AddDamage;60% PIERCING;20% SLASHING	
+box of 300 5.45x39mm debilitating rounds	80	150	15	150	GenAmmunition	5.45x39mm	300				Prop_AddDamage;10% PIERCING;Prop_FightSpellCast;MAXTICKS=10;40% Spell_Frailty	
+drum of 160 5.45x39mm jacketed rounds	83	80	(onground:consumed:8:BRASS:)	160	GenAmmunition	5.45x39mm	160				*Prop_AddDamage;45% PIERCING	
+box of 300 5.45x39mm dazzler rounds	83	150	15	150	GenAmmunition	5.45x39mm	300				Prop_AddDamage;20% PIERCING;Prop_FightSpellCast;MAXTICKS=30;75% Spell_LightSensitivity;20% Spell_ColorSpray	
+drum of 100 5.45x39mm ultrasolid rounds	84	40	(onground:consumed:8:MITHRIL:)	400	GenAmmunition	5.45x39mm	80				Prop_AddDamage;60% PIERCING;20% SLASHING	
+box of 300 5.45x39mm softpoint rounds	85	150	(onground:consumed:15:LEAD:)	240	GenAmmunition	5.45x39mm	300				Prop_AddDamage;30% SLASHING;Prop_FightSpellCast;50% BLEEDING
+box of 300 5.45x39mm jacketed rounds	88	150	(onground:consumed:15:BRASS:)	320	GenAmmunition	5.45x39mm	300				*Prop_AddDamage;45% PIERCING	
+magazine of 10 7.62x39mm rounds	16	5	1	5	GenAmmunition	7.62x39mm	10			
+magazine of 20 7.62x39mm rounds	26	10	1	10	GenAmmunition	7.62x39mm	20		
+magazine of 20 7.62x39mm debilitating rounds	30	10	1	10	GenAmmunition	7.62x39mm	20				Prop_AddDamage;10% PIERCING;Prop_FightSpellCast;MAXTICKS=10;40% Spell_Frailty
+magazine of 20 7.62x39mm dazzler rounds	32	10	1	10	GenAmmunition	7.62x39mm	20				Prop_AddDamage;20% PIERCING;Prop_FightSpellCast;MAXTICKS=30;75% Spell_LightSensitivity;20% Spell_ColorSpray	
+magazine of 40 7.62x39mm debilitating rounds	44	20	2	20	GenAmmunition	7.62x39mm	40				Prop_AddDamage;10% PIERCING;Prop_FightSpellCast;MAXTICKS=10;40% Spell_Frailty	
+magazine of 40 7.62x39mm dazzler rounds	46	20	2	20	GenAmmunition	7.62x39mm	40				Prop_AddDamage;20% PIERCING;Prop_FightSpellCast;MAXTICKS=30;75% Spell_LightSensitivity;20% Spell_ColorSpray	
+magazine of 20 7.62x39mm jacketed rounds	47	10	(onground:consumed:10:BRASS:)	20	GenAmmunition	7.62x39mm	20				*Prop_AddDamage;45% PIERCING	
+drum of 80 7.62x39mm rounds	48	40	4	40	GenAmmunition	7.62x39mm	80					
+magazine of 40 7.62x39mm softpoint rounds	52	20	(onground:consumed:2:LEAD:)	30	GenAmmunition	7.62x39mm	40				Prop_AddDamage;30% SLASHING;Prop_FightSpellCast;50% BLEEDING	
+drum of 80 7.62x39mm debilitating rounds	57	40	4	40	GenAmmunition	7.62x39mm	80				Prop_AddDamage;10% PIERCING;Prop_FightSpellCast;MAXTICKS=10;40% Spell_Frailty	
+magazine of 40 7.62x39mm jacketed rounds	58	20	(onground:consumed:20:BRASS:)	40	GenAmmunition	7.62x39mm	40				*Prop_AddDamage;45% PIERCING	
+drum of 80 7.62x39mm dazzler rounds	59	40	4	40	GenAmmunition	7.62x39mm	80				Prop_AddDamage;20% PIERCING;Prop_FightSpellCast;MAXTICKS=30;75% Spell_LightSensitivity;20% Spell_ColorSpray	
+drum of 160 7.62x39mm rounds	60	80	8	80	GenAmmunition	7.62x39mm	160					
+drum of 25 7.62x39mm ultrasolid rounds	63	10	(onground:consumed:8:MITHRIL:)	100	GenAmmunition	7.62x39mm	20				*Prop_AddDamage;20% SLASHING	
+drum of 80 7.62x39mm softpoint rounds	68	40	(onground:consumed:4:LEAD:)	60	GenAmmunition	7.62x39mm	80				Prop_AddDamage;30% SLASHING;Prop_FightSpellCast;50% BLEEDING	
+drum of 160 7.62x39mm debilitating rounds	68	80	8	80	GenAmmunition	7.62x39mm	160				Prop_AddDamage;10% PIERCING;Prop_FightSpellCast;MAXTICKS=10;40% Spell_Frailty	
+drum of 160 7.62x39mm dazzler rounds	70	80	8	80	GenAmmunition	7.62x39mm	160				Prop_AddDamage;20% PIERCING;Prop_FightSpellCast;MAXTICKS=30;75% Spell_LightSensitivity;20% Spell_ColorSpray	
+drum of 80 7.62x39mm jacketed rounds	71	40	(onground:consumed:4:BRASS:)	80	GenAmmunition	7.62x39mm	80				*Prop_AddDamage;45% PIERCING	
+drum of 160 7.62x39mm softpoint rounds	73	80	(onground:consumed:8:LEAD:)	120	GenAmmunition	7.62x39mm	160				Prop_AddDamage;30% SLASHING;Prop_FightSpellCast;50% BLEEDING	
+box of 300 7.62x39mm rounds	77	150	15	150	GenAmmunition	7.62x39mm	300					
+magazine of 50 7.62x39mm ultrasolid rounds	78	20	(onground:consumed:4:MITHRIL:)	200	GenAmmunition	7.62x39mm	40				Prop_AddDamage;60% PIERCING;20% SLASHING	
+box of 300 7.62x39mm debilitating rounds	80	150	15	150	GenAmmunition	7.62x39mm	300				Prop_AddDamage;10% PIERCING;Prop_FightSpellCast;MAXTICKS=10;40% Spell_Frailty	
+drum of 160 7.62x39mm jacketed rounds	83	80	(onground:consumed:8:BRASS:)	160	GenAmmunition	7.62x39mm	160				*Prop_AddDamage;45% PIERCING	
+box of 300 7.62x39mm dazzler rounds	83	150	15	150	GenAmmunition	7.62x39mm	300				Prop_AddDamage;20% PIERCING;Prop_FightSpellCast;MAXTICKS=30;75% Spell_LightSensitivity;20% Spell_ColorSpray	
+drum of 100 7.62x39mm ultrasolid rounds	84	40	(onground:consumed:8:MITHRIL:)	400	GenAmmunition	7.62x39mm	80				Prop_AddDamage;60% PIERCING;20% SLASHING	
+box of 300 7.62x39mm softpoint rounds	85	150	(onground:consumed:15:LEAD:)	240	GenAmmunition	7.62x39mm	300				Prop_AddDamage;30% SLASHING;Prop_FightSpellCast;50% BLEEDING
+box of 300 7.62x39mm jacketed rounds	88	150	(onground:consumed:15:BRASS:)	320	GenAmmunition	7.62x39mm	300				*Prop_AddDamage;45% PIERCING	
+magazine of 10 7.62x51mm rounds	16	5	1	5	GenAmmunition	7.62x51mm	10			
+magazine of 20 7.62x51mm rounds	26	10	1	10	GenAmmunition	7.62x51mm	20		
+magazine of 20 7.62x51mm debilitating rounds	30	10	1	10	GenAmmunition	7.62x51mm	20				Prop_AddDamage;10% PIERCING;Prop_FightSpellCast;MAXTICKS=10;40% Spell_Frailty
+magazine of 20 7.62x51mm dazzler rounds	32	10	1	10	GenAmmunition	7.62x51mm	20				Prop_AddDamage;20% PIERCING;Prop_FightSpellCast;MAXTICKS=30;75% Spell_LightSensitivity;20% Spell_ColorSpray	
+magazine of 40 7.62x51mm debilitating rounds	44	20	2	20	GenAmmunition	7.62x51mm	40				Prop_AddDamage;10% PIERCING;Prop_FightSpellCast;MAXTICKS=10;40% Spell_Frailty	
+magazine of 40 7.62x51mm dazzler rounds	46	20	2	20	GenAmmunition	7.62x51mm	40				Prop_AddDamage;20% PIERCING;Prop_FightSpellCast;MAXTICKS=30;75% Spell_LightSensitivity;20% Spell_ColorSpray	
+magazine of 20 7.62x51mm jacketed rounds	47	10	(onground:consumed:10:BRASS:)	20	GenAmmunition	7.62x51mm	20				*Prop_AddDamage;45% PIERCING	
+drum of 80 7.62x51mm rounds	48	40	4	40	GenAmmunition	7.62x51mm	80					
+magazine of 40 7.62x51mm softpoint rounds	52	20	(onground:consumed:2:LEAD:)	30	GenAmmunition	7.62x51mm	40				Prop_AddDamage;30% SLASHING;Prop_FightSpellCast;50% BLEEDING	
+drum of 80 7.62x51mm debilitating rounds	57	40	4	40	GenAmmunition	7.62x51mm	80				Prop_AddDamage;10% PIERCING;Prop_FightSpellCast;MAXTICKS=10;40% Spell_Frailty	
+magazine of 40 7.62x51mm jacketed rounds	58	20	(onground:consumed:20:BRASS:)	40	GenAmmunition	7.62x51mm	40				*Prop_AddDamage;45% PIERCING	
+drum of 80 7.62x51mm dazzler rounds	59	40	4	40	GenAmmunition	7.62x51mm	80				Prop_AddDamage;20% PIERCING;Prop_FightSpellCast;MAXTICKS=30;75% Spell_LightSensitivity;20% Spell_ColorSpray	
+drum of 160 7.62x51mm rounds	60	80	8	80	GenAmmunition	7.62x51mm	160					
+drum of 25 7.62x51mm ultrasolid rounds	63	10	(onground:consumed:8:MITHRIL:)	100	GenAmmunition	7.62x51mm	20				*Prop_AddDamage;20% SLASHING	
+drum of 80 7.62x51mm softpoint rounds	68	40	(onground:consumed:4:LEAD:)	60	GenAmmunition	7.62x51mm	80				Prop_AddDamage;30% SLASHING;Prop_FightSpellCast;50% BLEEDING	
+drum of 160 7.62x51mm debilitating rounds	68	80	8	80	GenAmmunition	7.62x51mm	160				Prop_AddDamage;10% PIERCING;Prop_FightSpellCast;MAXTICKS=10;40% Spell_Frailty	
+drum of 160 7.62x51mm dazzler rounds	70	80	8	80	GenAmmunition	7.62x51mm	160				Prop_AddDamage;20% PIERCING;Prop_FightSpellCast;MAXTICKS=30;75% Spell_LightSensitivity;20% Spell_ColorSpray	
+drum of 80 7.62x51mm jacketed rounds	71	40	(onground:consumed:4:BRASS:)	80	GenAmmunition	7.62x51mm	80				*Prop_AddDamage;45% PIERCING	
+drum of 160 7.62x51mm softpoint rounds	73	80	(onground:consumed:8:LEAD:)	120	GenAmmunition	7.62x51mm	160				Prop_AddDamage;30% SLASHING;Prop_FightSpellCast;50% BLEEDING	
+box of 300 7.62x51mm rounds	77	150	15	150	GenAmmunition	7.62x51mm	300					
+magazine of 50 7.62x51mm ultrasolid rounds	78	20	(onground:consumed:4:MITHRIL:)	200	GenAmmunition	7.62x51mm	40				Prop_AddDamage;60% PIERCING;20% SLASHING	
+box of 300 7.62x51mm debilitating rounds	80	150	15	150	GenAmmunition	7.62x51mm	300				Prop_AddDamage;10% PIERCING;Prop_FightSpellCast;MAXTICKS=10;40% Spell_Frailty	
+drum of 160 7.62x51mm jacketed rounds	83	80	(onground:consumed:8:BRASS:)	160	GenAmmunition	7.62x51mm	160				*Prop_AddDamage;45% PIERCING	
+box of 300 7.62x51mm dazzler rounds	83	150	15	150	GenAmmunition	7.62x51mm	300				Prop_AddDamage;20% PIERCING;Prop_FightSpellCast;MAXTICKS=30;75% Spell_LightSensitivity;20% Spell_ColorSpray	
+drum of 100 7.62x51mm ultrasolid rounds	84	40	(onground:consumed:8:MITHRIL:)	400	GenAmmunition	7.62x51mm	80				Prop_AddDamage;60% PIERCING;20% SLASHING	
+box of 300 7.62x51mm softpoint rounds	85	150	(onground:consumed:15:LEAD:)	240	GenAmmunition	7.62x51mm	300				Prop_AddDamage;30% SLASHING;Prop_FightSpellCast;50% BLEEDING
+box of 300 7.62x51mm jacketed rounds	88	150	(onground:consumed:15:BRASS:)	320	GenAmmunition	7.62x51mm	300				*Prop_AddDamage;45% PIERCING	
+magazine of 2 .44 Magnum rounds	11	7	1	3	GenAmmunition	.44 Magnum	2						
+magazine of 5 .44 Magnum rounds	31	30	1	5	GenAmmunition	.44 Magnum	5					
+magazine of 10 .44 Magnum rounds	61	10	1	10	GenAmmunition	.44 Magnum	10					
+magazine of 20 .44 Magnum rounds	67	20	2	20	GenAmmunition	.44 Magnum	20					
+magazine of 10 .44 Magnum ripper rounds	70	10	(onground:kept:1:LEAD:)	50	GenAmmunition	.44 Magnum	10				Prop_AddDamage;50% SLASHING;Prop_FightSpellCast;70% BLEEDING	
+magazine of 40 .44 Magnum rounds	73	40	4	40	GenAmmunition	.44 Magnum	40					
+magazine of 10 .44 Magnum jacketed rounds	74	10	(onground:consumed:1:BRASS:)	70	GenAmmunition	.44 Magnum	10				*Prop_AddDamage;75% PIERCING	
+magazine of 20 .44 Magnum ripper rounds	75	20	(onground:consumed:2:LEAD:)	100	GenAmmunition	.44 Magnum	20				Prop_AddDamage;50% SLASHING;Prop_FightSpellCast;70% BLEEDING
+box of 80 .44 Magnum rounds	79	80	8	80	GenAmmunition	.44 Magnum	80					
+magazine of 20 .44 Magnum jacketed rounds	80	20	(onground:consumed:2:BRASS:)	140	GenAmmunition	.44 Magnum	20				*Prop_AddDamage;75% PIERCING	
+magazine of 40 .44 Magnum ripper rounds	81	40	(onground:consumed:4:LEAD:)	200	GenAmmunition	.44 Magnum	40				Prop_AddDamage;50% SLASHING;Prop_FightSpellCast;70% BLEEDING	
+magazine of 10 .44 Magnum ultrasolid rounds	86	10	(onground:consumed:2:MITHRIL:)	200	GenAmmunition	.44 Magnum	10				Prop_AddDamage;80% PIERCING;20% SLASHING	
+box of 100 .44 Magnum rounds	87	100	10	100	GenAmmunition	.44 Magnum	100					
+magazine of 40 .44 Magnum jacketed rounds	88	40	(onground:consumed:4:BRASS:)	280	GenAmmunition	.44 Magnum	40				*Prop_AddDamage;75% PIERCING	
+magazine of 20 .44 Magnum ultrasolid rounds	88	20	(onground:consumed:4:MITHRIL:)	400	GenAmmunition	.44 Magnum	20				Prop_AddDamage;80% PIERCING;20% SLASHING	
+box of 80 .44 Magnum ripper rounds	89	80	(onground:consumed:8:LEAD:)	400	GenAmmunition	.44 Magnum	80				Prop_AddDamage;50% SLASHING;Prop_FightSpellCast;70% BLEEDING	
+magazine of 10 .44 Magnum hyperdrill rounds	90	10	(onground:consumed:2:ADAMANTITE:)	500	GenAmmunition	.44 Magnum	10				*Prop_AddDamage;30% SLASHING	
+magazine of 2 .308 Win rounds	11	7	1	3	GenAmmunition	.308 Win	2						
+magazine of 5 .308 Win rounds	31	30	1	5	GenAmmunition	.308 Win	5					
+magazine of 10 .308 Win rounds	61	10	1	10	GenAmmunition	.308 Win	10					
+magazine of 20 .308 Win rounds	67	20	2	20	GenAmmunition	.308 Win	20					
+magazine of 10 .308 Win ripper rounds	70	10	(onground:kept:1:LEAD:)	50	GenAmmunition	.308 Win	10				Prop_AddDamage;50% SLASHING;Prop_FightSpellCast;70% BLEEDING	
+magazine of 40 .308 Win rounds	73	40	4	40	GenAmmunition	.308 Win	40					
+magazine of 10 .308 Win jacketed rounds	74	10	(onground:consumed:1:BRASS:)	70	GenAmmunition	.308 Win	10				*Prop_AddDamage;75% PIERCING	
+magazine of 20 .308 Win ripper rounds	75	20	(onground:consumed:2:LEAD:)	100	GenAmmunition	.308 Win	20				Prop_AddDamage;50% SLASHING;Prop_FightSpellCast;70% BLEEDING
+box of 80 .308 Win rounds	79	80	8	80	GenAmmunition	.308 Win	80					
+magazine of 20 .308 Win jacketed rounds	80	20	(onground:consumed:2:BRASS:)	140	GenAmmunition	.308 Win	20				*Prop_AddDamage;75% PIERCING	
+magazine of 40 .308 Win ripper rounds	81	40	(onground:consumed:4:LEAD:)	200	GenAmmunition	.308 Win	40				Prop_AddDamage;50% SLASHING;Prop_FightSpellCast;70% BLEEDING	
+magazine of 10 .308 Win ultrasolid rounds	86	10	(onground:consumed:2:MITHRIL:)	200	GenAmmunition	.308 Win	10				Prop_AddDamage;80% PIERCING;20% SLASHING	
+box of 100 .308 Win rounds	87	100	10	100	GenAmmunition	.308 Win	100					
+magazine of 40 .308 Win jacketed rounds	88	40	(onground:consumed:4:BRASS:)	280	GenAmmunition	.308 Win	40				*Prop_AddDamage;75% PIERCING	
+magazine of 20 .308 Win ultrasolid rounds	88	20	(onground:consumed:4:MITHRIL:)	400	GenAmmunition	.308 Win	20				Prop_AddDamage;80% PIERCING;20% SLASHING	
+box of 80 .308 Win ripper rounds	89	80	(onground:consumed:8:LEAD:)	400	GenAmmunition	.308 Win	80				Prop_AddDamage;50% SLASHING;Prop_FightSpellCast;70% BLEEDING	
+magazine of 10 .308 Win hyperdrill rounds	90	10	(onground:consumed:2:ADAMANTITE:)	500	GenAmmunition	.308 Win	10				*Prop_AddDamage;30% SLASHING	

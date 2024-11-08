@@ -1,0 +1,16 @@
+put_prog ^wa ^gbi^Goma^gss ^wre^Wcyc^wlin^Wg c^whu^wte^N
+mpsetvar $i corpsename $%ISCONTENT($i.1)%
+mpforce $<$i corpsename> drop all
+mpsetvar $i corpselevel $%GSTAT('$<$i corpsename>' LEVEL)%
+mpsetvar $i amounttopay $%MATH($<$i corpselevel>*4)%
+if var($i amounttopay > 0)
+mpoloadroom '$<$i amounttopay> credits'
+mpforce $n get all.credit
+mpecho $<$i corpsename>is processed.
+mpjunk '$<$i corpsename>'
+mpecho $i pays $n ^g$<$i amounttopay>^N credits.
+else
+mpecho ^rBEEP!^N Something wrong happened, make sure the corpse's pockets are empty and the chute has no more than one body at once!
+mpforce $n get all from "$i"
+endif
+~

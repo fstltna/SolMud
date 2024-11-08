@@ -1,0 +1,26 @@
+#Geniheal
+cnclmsg_prog huh p inject geniheal
+if isname($i 'a NM GeniHeal stimulant injector')
+if has($n 'a NM GeniHeal stimulant injector')
+mpecho ^r$n injects $mself with $i ^ras it hisses out pressure while releasing the liquid into $m bloodstream.^N
+mpalarm 1 mpaffect Disease_Nausea $n 3TICKS
+mploadvar $i tearstate
+mpsetvar $i tearstate --
+mpsetvar $i tearstate --
+mpsetvar $i tearstate --
+mpsetvar $i tearstate --
+mpsetvar $i tearstate --
+mpsetvar $i tearstate --
+mpsetvar $i tearstate --
+mpsetvar $i tearstate --
+mpsetvar $i tearstate --
+mpsetvar $i tearstate --
+if var($i tearstate < 0)
+mpsetvar $i tearstate 0
+endif
+mpsavevar $i tearstate
+mpalarm 3 mpjunk '$i'
+endif
+endif
+return cancel
+~

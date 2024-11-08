@@ -1,0 +1,7 @@
+##bounty officer stuffs.
+
+give_prog p 'a Desolation raider necklace'
+mpexp $n 1000
+mpmoney $n +3500 credit
+mpechoat $n You get ^g3500c^? and ^c1000XP^?.;mpecho $t finishes processing and filing the bounty, then pays $n, ready for the next one.
+~

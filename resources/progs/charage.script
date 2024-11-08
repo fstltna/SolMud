@@ -1,0 +1,8 @@
+ONCE_PROG
+    MPPROMPT $i NEWAGE %0D%0DPlease type your characters age, you are ^rnot^N allowed to engage in sexual activites if your character is below 18 years old.
+    if var($i NEWAGE > 0)
+    mpalarm 5 MPGSET $i AGE'$<$i NEWAGE>'
+    else
+    mpechoat $i Invalid age, Age set to ^c18^N
+    endif
+~

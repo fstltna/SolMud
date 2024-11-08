@@ -67,3 +67,4 @@ deauditorium	31	30	0		INDOOR	DELEFFECT			Prop_RoomWatch()	releveled floor	-BASEC
 ladder	41	65	120		DIRUPDOWN INDOOR	DOOR	GenExit	ladder|a ladder		ladder @x1		Open exit between two indoor rooms above or below each other.
 spiral staircase	61	75	250		DIRUPDOWN INDOOR	DOOR	GenExit	spiral staircase|a spiral staircase		staircase @x1		Open exit between two indoor rooms above or below each other.
 grand staircase	81	95	500		DIRUPDOWN INDOOR	DOOR	GenExit	grand staircase|a grand staircase		staircase @x1		Open exit between two indoor rooms above or below each other.
+Annex	25	100	200			EXCAVATE	WoodRoom			annexing		a way to create a room on the same floor

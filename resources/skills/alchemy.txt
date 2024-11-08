@@ -126,3 +126,4 @@ Prayer_Heal	WATER	POTION
 Prayer_Harm	BLOOD	POTION
 Prayer_Invigorate	WATER	POTION
 Prayer_MajorInfusion	SALT WATER	POTION
+Prayer_Infidelity	COAL	POTION

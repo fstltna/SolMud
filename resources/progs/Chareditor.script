@@ -16,7 +16,7 @@ return cancel
 
 ##Height
 cnclmsg_prog HUH p charedit height
-mpprompt $n HEIGHTSET ^#111a bodyless feminine voice asks "^#135How tall are you?^#111"^w
+mpprompt $n HEIGHTSET ^#111a bodyless feminine voice asks "^#135How tall are you?^#111"^w (inches)
 if var($n HEIGHTSET > 10)
 if var($n HEIGHTSET < 100)
 mpset $n HEIGHT $<$n HEIGHTSET>
@@ -32,7 +32,7 @@ return cancel
 
 ##Weight
 cnclmsg_prog HUH p charedit weight
-mpprompt $n WEIGHTSET ^#111a bodiless feminine voice asks "^#135How much do you weight?^#111"^w
+mpprompt $n WEIGHTSET ^#111a bodiless feminine voice asks "^#135How much do you weight?^#111"^w (pounds)
 if var($n WEIGHTSET > 10)
 if var($n WEIGHTSET < 530)
 mpset $n WEIGHT $<$n WEIGHTSET>

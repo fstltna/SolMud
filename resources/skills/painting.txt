@@ -14,7 +14,7 @@ pastel-painting	37	49	42	coloring	GenItem	0
 outline	40	52	45	sketching	GenItem	0		
 cartoon	43	55	48	drawing	GenItem	0		
 fresco	47	60	52	painting	GenItem	0		
-shaded-panting	50	63	55	coloring	GenItem	0		
+shaded-painting	50	63	55	coloring	GenItem	0		
 caricature	53	66	58	sketching	GenItem	0		
 illustration	56	69	61	drawing	GenItem	0		
 mural	59	72	64	painting	GenItem	0		

@@ -1,5 +1,10 @@
-casting_prog p skill_masturbate
-mpnotrigger casting_prog 1
+once_prog
+if ispc($n)
+	if hastattoo($n underage)
+		mpechoat $n That's for peeing, What else? You are not old enough.
+		return
+	endif
+endif
 if sex($n == F) or sex($n == A) or sex($n == H)
 mpoloadroom fromfile wankitems.cmare pussyjuice
 mpecho $n rubs one off, creating $b.
@@ -13,4 +18,5 @@ mpechoat $n what are you going to wank!? You got NOTHING.
 endif
 endif
 endif
+mpunaffect $n skill_masturbate
 ~

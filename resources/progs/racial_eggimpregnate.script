@@ -1,5 +1,27 @@
 ## race and if checker
 casting_prog p racial_eggimpregnate
+if ispc($n)
+	if hastattoo($n underage)
+		mpecho $n is below 18 years old and could not participate in this.
+		mpunaffect $n racial_eggimpregnate
+		mpunaffect $t racial_eggimpregnate
+		return
+	endif
+endif
+if ispc($t)
+	if hastattoo($t underage)
+		mpecho $t is below 18 years old and could not participate in this.
+		mpunaffect $n racial_eggimpregnate
+		mpunaffect $t racial_eggimpregnate
+		return
+	endif
+endif
+if isname($n child)
+return
+endif
+if isname($t child)
+return
+endif
 mpalarm 6 mpunaffect '$t' racial_eggimpregnate
 ##xenomorph
 if var('$n' eggimper == 1)
@@ -48,8 +70,8 @@ endif
 endif
 endif
 ##giantinsect
-if race('$n' == giantinsect)
-if race('$t' == giantinsect)
+if racecat('$n' == insect)
+if racecat('$t' == insect)
 mpechoat '$n'  ^GI can't breed another insect like that^N
 mpunaffect '$t' racial_eggimpregnate
 else
@@ -67,21 +89,8 @@ endif
 endif
 endif
 ~
-~
 
 function_prog plantpersonpollinate
-if wornon($n legs all)
-mpforce $n remove all.legs
-endif
-if wornon($n groin all)
-mpforce $n remove all.groin
-endif
-if wornon($t legs all)
-mpforce $t remove all.legs
-endif
-if wornon($t groin all)
-mpforce $t remove all.groin
-endif
 if sex($n == M) or sex($n == O) or sex($n == U)
 mpecho ^p$n shoves $m rough plant cock in $t's cunt and humps into it rapidly!^N *plap* *plop*
 mpalarm 1 mpecho ^p*plop* *clop* $n doesn't stop thrusting as $m balls begin to empty sticky honeylike substance into $t's womb, filling it up. *splurt* *splat*
@@ -137,18 +146,6 @@ endif
 ~
 
 function_prog larvaevagtime
-if wornon($n legs all)
-mpforce $n remove all.legs
-endif
-if wornon($n groin all)
-mpforce $n remove all.groin
-endif
-if wornon($t legs all)
-mpforce $t remove all.legs
-endif
-if wornon($t groin all)
-mpforce $t remove all.groin
-endif
 if sex('$t' == f)
 if affected('$t' prop_xenolarvaevag)
 mpecho ^r$n leaps onto $t's face and latches onto $S with it's tail coiling around $S neck tightly, something like a cock thrusting into $M mouth!^N
@@ -202,18 +199,6 @@ endif
 ~
 
 function_prog insectimpregg
-if wornon($n legs all)
-mpforce $n remove all.legs
-endif
-if wornon($n groin all)
-mpforce $n remove all.groin
-endif
-if wornon($t legs all)
-mpforce $t remove all.legs
-endif
-if wornon($t groin all)
-mpforce $t remove all.groin
-endif
 if sex($n == M) or sex($n == O) or sex($n == U)
 mpecho ^p$n shoves $m rough insect genital in $t's cunt and humps into it rapidly!^N *plap* *plop*
 mpalarm 1 mpecho ^p*plop* *clop* $n doesn't stop thrusting as $m balls begin to empty sticky green substance into $t's womb, filling it up. *splurt* *splat*

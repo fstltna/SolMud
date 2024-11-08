@@ -1,5 +1,6 @@
 % Barette	1	10	1	5	GenArmor	MS-3:HEAD		0		
 % Wedding Band	1	20	1	250	GenArmor	S0:LEFT FINGER||RIGHT FINGER		0		*Prop_WearSpellCast;Prayer_Fidelity
+Black % Wedding Band	1	20	1	250	GenArmor	S0:LEFT FINGER||RIGHT FINGER		0		*Prop_WearSpellCast;Prayer_Infidelity
 % chain	2	20	2	10	GenArmor	MS-2:NECK		0		
 % barbell	2	25	1	20	GenEarring	MS-10:HEAD||EYES||TORSO||EARS||MOUTH		0		
 % Band	3	20	1	60	GenArmor	MS0:LEFT FINGER||RIGHT FINGER		0		
@@ -65,6 +66,7 @@ sunglasses	30	60	2	50	GenArmor	4:EYES		0	GLASS
 medium cushion cut %	30	100	0	55	GenItem			0	PRECIOUS	Prop_ItemSlotFiller;num=1 type=gemsetting removable=true
 long % chain necklace	31	30	3	100	GenArmor	S4:NECK		0		
 jewelled % wedding band	31	50	1	350	GenArmor	MS0:LEFT FINGER||RIGHT FINGER		0	PRECIOUS	*Prop_WearSpellCast;Prayer_Fidelity
+jewelled black % wedding band	31	50	1	350	GenArmor	MS0:LEFT FINGER||RIGHT FINGER		0	PRECIOUS	*Prop_WearSpellCast;Prayer_Infidelity
 % dangle earring	32	40	1	30	GenEarring	MS-2:EARS		0	PRECIOUS	
 small baguette cut %	32	110	0	60	GenItem			0	PRECIOUS	Prop_ItemSlotFiller;num=1 type=gemsetting removable=true
 % Medal	33	80	1	100	GenArmor	MS0:TORSO		0		

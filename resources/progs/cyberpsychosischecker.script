@@ -1,255 +1,236 @@
 delay_prog 250 300
-if affected('$n' property_neurallink)
-mploadvar '$n' cyberpsychosisattacks
-if gstat('$n' CHARISMA < 5)
-switch $%RANDNUM(4)%
-case 1
-if var('$n' cyberpsychosisattacks < 1)
-mpsetvar '$n' cyberpsychosisattacks 1
-mpsavevar '$n' cyberpsychosisattacks
-else
-mpsetvar '$n' cyberpsychosisattacks ++
-mpsavevar '$n' cyberpsychosisattacks
-endif
-endswitch
-switch $%RANDNUM(5)%
-case 1
-mpecho $n seems to stare blank for a while...
-case 2
-mpecho $n has a thousand yard stare...
-case 3
-mpecho $n has shaky hands...
-case 4
-mpecho $n seem to have involuntary twitching in one eye.
-case 5
-mpecho $n seem to lose balance for a second.
-endswitch
-if var($n cyberpsychosisattacks > 3)
-switch $%RANDNUM(14)%
-case 1
-switch $%RANDNUM(3)%
-case 1
-mpechoat '$n' ^R[N-UI] ^r...It's only been a week, but it feels like a year...
-case 2
-mpechoat '$n' Someone whispers to you '...It's only been a week, but it feels like a year...'
-case 3
-mpechoaround $n ^p$n mumbles ^w'...It's only been a week, but it feels like a year...'^N
-endswitch
-case 2
-switch $%RANDNUM(3)%
-case 1
-mpechoat '$n' ^R[N-UI] ^rThis is my normal, my nature.
-case 2
-mpechoat '$n' Someone whispers to you 'This is my normal, my nature.'
-case 3
-mpechoaround $n ^p$n mumbles ^w'This is my normal, my nature.'^N
-endswitch
-case 3
-switch $%RANDNUM(3)%
-case 1
-mpechoat '$n' ^R[N-UI] ^rI see it everyday. it's not PTSD, it's the drug.
-case 2
-mpechoat '$n' Someone whispers to you 'I see it everyday. it's not PTSD, it's the drug.'
-case 3
-mpechoaround $n ^p$n mumbles ^w'I see it everyday. it's not PTSD, it's the drug.'^N
-endswitch
-case 4
-switch $%RANDNUM(3)%
-case 1
-mpechoat '$n' ^R[N-UI] ^rIt's grains of sand in a shrinking hour glass.
-case 2
-mpechoat '$n' Someone whispers to you 'It's grains of sand in a shrinking hour glass.'
-case 3
-mpechoaround $n ^p$n mumbles ^w'It's grains of sand in a shrinking hour glass.'^N
-endswitch
-case 5
-switch $%RANDNUM(3)%
-case 1
-mpechoat '$n' ^R[N-UI] ^rThe right man in the wrong place can make all the difference in the world.
-case 2
-mpechoat '$n' Someone whispers to you 'The right man in the wrong place can make all the difference in the world.'
-case 3
-mpechoaround $n ^p$n mumbles ^w'The right man in the wrong place can make all the difference in the world.'^N
-endswitch
-case 6
-switch $%RANDNUM(3)%
-case 1
-mpechoat '$n' ^R[N-UI] ^rThe drink is all this man ever was. And when it's gone, what remains is the bottle.
-case 2
-mpechoat '$n' Someone whispers to you 'The drink is all this man ever was. And when it's gone, what remains is the bottle.'
-case 3
-mpechoaround $n ^p$n mumbles ^w'The drink is all this man ever was. And when it's gone, what remains is the bottle.'^N
-endswitch
-case 7
-switch $%RANDNUM(3)%
-case 1
-mpechoat '$n' ^R[N-UI] ^rAmong the rusted spires, the neon cityscape blurs as my mind conjures flickering visions?vivid holograms, fleeting shadows?reality and mirage entwined.
-case 2
-mpechoat '$n' Someone whispers to you 'Among the rusted spires, the neon cityscape blurs as my mind conjures flickering visions?vivid holograms, fleeting shadows?reality and mirage entwined.'
-case 3
-mpechoaround $n ^p$n mumbles ^w'Among the rusted spires, the neon cityscape blurs as my mind conjures flickering visions?vivid holograms, fleeting shadows?reality and mirage entwined.'^N
-endswitch
-case 8
-switch $%RANDNUM(3)%
-case 1
-mpechoat '$n' ^R[N-UI] ^rMy eyes betray me, projecting phantom images of a long-lost skyline against the ashen sky, memories and delusions overlapping in a fractured dance.
-case 2
-mpechoat '$n' Someone whispers to you 'My eyes betray me, projecting phantom images of a long-lost skyline against the ashen sky, memories and delusions overlapping in a fractured dance.'
-case 3
-mpechoaround $n ^p$n mumbles ^w'My eyes betray me, projecting phantom images of a long-lost skyline against the ashen sky, memories and delusions overlapping in a fractured dance.'^N
-endswitch
-case 9
-switch $%RANDNUM(3)%
-case 1
-mpechoat '$n' ^R[N-UI] ^rAmid the data-scarred streets, digital whispers course through my neural interface, merging with the clatter of decay and the silent screams of a forsaken world.
-case 2
-mpechoat '$n' Someone whispers to you 'Amid the data-scarred streets, digital whispers course through my neural interface, merging with the clatter of decay and the silent screams of a forsaken world.'
-case 3
-mpechoaround $n ^p$n mumbles ^w'Amid the data-scarred streets, digital whispers course through my neural interface, merging with the clatter of decay and the silent screams of a forsaken world.'^N
-endswitch
-case 10
-switch $%RANDNUM(3)%
-case 1
-mpechoat '$n' ^R[N-UI] ^rThe toxic haze twists reality, morphing broken machinery into mechanical monstrosities, each hiss and hum triggering surreal visions?post-apocalyptic dreams laced with neon.
-case 2
-mpechoat '$n' Someone whispers to you 'The toxic haze twists reality, morphing broken machinery into mechanical monstrosities, each hiss and hum triggering surreal visions?post-apocalyptic dreams laced with neon.'
-case 3
-mpechoaround $n ^p$n mumbles ^w'The toxic haze twists reality, morphing broken machinery into mechanical monstrosities, each hiss and hum triggering surreal visions?post-apocalyptic dreams laced with neon.'^N
-endswitch
-case 11
-switch $%RANDNUM(3)%
-case 1
-mpechoat '$n' ^R[N-UI] ^rIn the heart of the wasteland, my augmented mind convulses, projecting a parade of phantoms?whispers, flickers?inscrutable remnants of a world both hauntingly familiar and forever lost.
-case 2
-mpechoat '$n' Someone whispers to you 'In the heart of the wasteland, my augmented mind convulses, projecting a parade of phantoms?whispers, flickers?inscrutable remnants of a world both hauntingly familiar and forever lost.'
-case 3
-mpechoaround $n ^p$n mumbles ^w'In the heart of the wasteland, my augmented mind convulses, projecting a parade of phantoms?whispers, flickers?inscrutable remnants of a world both hauntingly familiar and forever lost.'^N
-endswitch
-case 12
-switch $%RANDNUM(3)%
-case 1
-mpechoat '$n' ^R[N-UI] ^rThe walls around me twist and bend, only to snap back in an instant.
-case 2
-mpechoat '$n' Someone whispers to you 'The walls around me twist and bend, only to snap back in an instant.'
-case 3
-mpechoaround $n ^p$n mumbles ^w'The walls around me twist and bend, only to snap back in an instant.'^N
-endswitch
-case 13
-if sex($n == F)
-switch $%RANDNUM(3)%
-case 1
-mpechoat '$n' ^R[N-UI] ^rWoman in the mirror nods $m head.
-case 2
-mpechoat '$n' Someone whispers to you 'Woman in the mirror nods $m head.'
-case 3
-mpechoaround $n ^p$n mumbles ^w'Woman in the mirror nods $m head.'^N
-endswitch
-else
-switch $%RANDNUM(3)%
-case 1
-mpechoat '$n' ^R[N-UI] ^rMan in the mirror nods $m head.
-case 2
-mpechoat '$n' Someone whispers to you 'Man in the mirror nods $m head.'
-case 3
-mpechoaround $n ^p$n mumbles ^w'Man in the mirror nods $m head.'^N
-endswitch
-endif
-case 14
-endswitch
-endif
-else
-switch $%RANDNUM(5)%
-case 1
-if var('$n' cyberpsychosisattacks > 1)
-mpsetvar '$n' cyberpsychosisattacks --
-mpsavevar '$n' cyberpsychosisattacks
-switch $%RANDNUM(4)%
-case 1
-mpecho $n seems to have less-glassy eyes.
-case 2
-mpecho $n seems to be more present in the time.
-case 3
-mpecho $n seems to have less shaky hands.
-case 4
-mpecho $n seem to have gotten over $m twitchy eyes.
-endswitch
-switch $%RANDNUM(4)%
-case 1
-mpechoat '$n' ^G[CYBERPSYCHOSIS] Life is precious afterall..?^N
-case 2
-mpechoat '$n' ^G[CYBERPSYCHOSIS] Best not overdo the chrome, it'll scramble my brain.^N
-case 3
-mpechoat '$n' ^G[CYBERPSYCHOSIS] Wonder if the ware on me will drive me over the edge eventually... Should get checked.^N
-case 4
-mpechoat '$n' ^G[CYBERPSYCHOSIS] I don't need so many hardware to be better...^N
-endswitch
-endif
-endswitch
-endif
-if var('$n' cyberpsychosisattacks >= 6)
-switch $%RANDNUM(13)%
-case 1
-mpechoat '$n' ^R[CYBERPSYCHOSIS] THE ONLY THING THAT MATTER.^N
-case 2
-mpechoat '$n' ^R[CYBERPSYCHOSIS] SOUL AND FLESH IS A MYTH, FUTURE LIES IN THE METAL.^N
-case 3
-mpechoat '$n' ^R[CYBERPSYCHOSIS] STRIKE FIRST. THEY ARE WAITING.
-mpaffect Disease_Cyberpsychosis '$n'
-case 4
-mpechoat '$n' ^R[CYBERPSYCHOSIS] I SEE IT EVERYDAY... AGAIN... AGAIN...
-mpaffect Disease_Cyberpsychosis '$n'
-case 5
-mpechoat '$n' ^R[CYBERPSYCHOSIS] THERE WILL BE BLOOD...
-mpaffect Disease_Cyberpsychosis '$n'
-case 6
-mpechoat '$n' ^R[CYBERPSYCHOSIS] IT IS THE ONLY THING I'VE EVER KNOWN.
-case 7
-mpechoat '$n' ^R[CYBERPSYCHOSIS] MEMORIES BROKEN, TRUTH GOES UNSPOKEN.
-case 8
-mpechoat '$n' ^R[CYBERPSYCHOSIS] ...TO FIND THE TRUTH IN FRONT OF ME...
-case 9
-mpechoat '$n' ^R[CYBERPSYCHOSIS] THE FIRES OF GREED WILL BURN THE WEAK.
-case 10
-mpechoat '$n' ^R[CYBERPSYCHOSIS] RIP OUT THE SPINE, TASTE METAL.
-case 11
-mpechoat '$n' ^R[CYBERPSYCHOSIS] NO NEED FOR A CURE.
-case 12
-mpechoat '$n' ^R[CYBERPSYCHOSIS] TO THE SHADOWS - OUT OF SIGHT.
-case 13
-endswitch
-endif
-else
-switch $%RANDNUM(5)%
-case 1
-if var('$n' cyberpsychosisattacks > 1)
-mpsetvar '$n' cyberpsychosisattacks --
-mpsavevar '$n' cyberpsychosisattacks
-switch $%RANDNUM(4)%
-case 1
-mpecho $n seems to have less-glassy eyes.
-case 2
-mpecho $n seems to be more present in the time.
-case 3
-mpecho $n seems to have less shaky hands.
-case 4
-mpecho $n seem to have gotten over $m twitchy eyes.
-endswitch
-endif
-endswitch
-if var('$n' cyberpsychosisattacks == 0)
-mploadvar '$n' cyberpsychosisattacks
-mpsetvar '$n' cyberpsychosisattacks 0
-mpsavevar '$n' cyberpsychosisattacks
-mpunaffect '$n' Disease_Cyberpsychosis
-mpunbehave mobhunter '$n'
-endif
+if ispc($i)
+	mploadvar '$i' psychometer
+	if gstat('$i' CHARISMA < 5)
+		switch $%RANDNUM(4)%
+			case 1
+			if var('$i' psychometer < 1)
+				mpsetvar '$i' psychometer 1
+				mpsavevar '$i' psychometer
+				else
+				mpsetvar '$i' psychometer ++
+				mpsavevar '$i' psychometer
+			endif
+			endswitch
+		switch $%RANDNUM(5)%
+			case 1
+			mpecho $i seems to stare blank for a while...
+			case 2
+			mpecho $i has a thousand yard stare...
+			case 3
+			mpecho $i has shaky hands...
+			case 4
+			mpecho $i seem to have involuntary twitching in one eye.
+			case 5
+			mpecho $i seem to lose balance for a second.
+		endswitch
+			if var($i psychometer > 3)
+				switch $%RANDNUM(14)%
+					case 1
+					switch $%RANDNUM(3)%
+						case 1
+						mpechoat '$i' ^R[N-UI] ^r...The escape and the chase is now one...
+						case 2
+						mpechoat '$i' Someone whispers to you '...The escape and the chase is now one...'
+						case 3
+						mpechoaround $i ^p$i mumbles ^w'...The escape and the chase is now one...'^N
+					endswitch
+					case 2
+					switch $%RANDNUM(3)%
+						case 1
+						mpechoat '$i' ^R[N-UI] ^rThis is my normal, my nature.
+						case 2
+						mpechoat '$i' Someone whispers to you 'This is my normal, my nature.'
+						case 3
+						mpechoaround $i ^p$i mumbles ^w'This is my normal, my nature.'^N
+					endswitch
+					case 3
+					switch $%RANDNUM(3)%
+						case 1
+						mpechoat '$i' ^R[N-UI] ^rI see it everyday.
+						case 2
+						mpechoat '$i' Someone whispers to you 'I see it everyday.'
+						case 3
+						mpechoaround $i ^p$i mumbles ^w'I see it everyday.'^N
+					endswitch
+					case 4
+					switch $%RANDNUM(3)%
+						case 1
+						mpechoat '$i' ^R[N-UI] ^rGrains of sand in a shrinking hour glass.
+						case 2
+						mpechoat '$i' Someone whispers to you 'Grains of sand in a shrinking hour glass.'
+						case 3
+						mpechoaround $i ^p$i mumbles ^w'Grains of sand in a shrinking hour glass.'^N
+					endswitch
+					case 5
+					switch $%RANDNUM(3)%
+						case 1
+						mpechoat '$i' ^R[N-UI] ^rThe right man in the wrong place.
+						case 2
+						mpechoat '$i' Someone whispers to you 'The right man in the wrong place.'
+						case 3
+						mpechoaround $i ^p$i mumbles ^w'The right man in the wrong place.'^N
+					endswitch
+					case 6
+					switch $%RANDNUM(3)%
+						case 1
+						mpechoat '$i' ^R[N-UI] ^rWhy don't you finish what you've started?
+						case 2
+						mpechoat '$i' Someone whispers to you 'Why don't you finish what you've started?'
+						case 3
+						mpechoaround $i ^p$i mumbles ^w'Why don't you finish what you've started?'^N
+					endswitch
+					case 7
+					switch $%RANDNUM(3)%
+						case 1
+						mpechoat '$i' ^R[N-UI] ^rAmong the rusted spires, the neon cityscape blurs as my mind conjures flickering visions?vivid holograms, fleeting shadows?reality and mirage entwined.
+						case 2
+						mpechoat '$i' Someone whispers to you 'Among the rusted spires, the neon cityscape blurs as my mind conjures flickering visions?vivid holograms, fleeting shadows?reality and mirage entwined.'
+						case 3
+						mpechoaround $i ^p$i mumbles ^w'Among the rusted spires, the neon cityscape blurs as my mind conjures flickering visions?vivid holograms, fleeting shadows?reality and mirage entwined.'^N
+					endswitch
+					case 8
+						switch $%RANDNUM(3)%
+						case 1
+						mpechoat '$i' ^R[N-UI] ^rMy eyes betray me, projecting phantom images of a long-lost skyline against the ashen sky, memories and delusions overlapping in a fractured dance.
+						case 2
+						mpechoat '$i' Someone whispers to you 'My eyes betray me, projecting phantom images of a long-lost skyline against the ashen sky, memories and delusions overlapping in a fractured dance.'
+						case 3
+						mpechoaround $i ^p$i mumbles ^w'My eyes betray me, projecting phantom images of a long-lost skyline against the ashen sky, memories and delusions overlapping in a fractured dance.'^N
+					endswitch
+					case 9
+					switch $%RANDNUM(3)%
+						case 1
+						mpechoat '$i' ^R[N-UI] ^rAmid the data-scarred streets, digital whispers course through my neural interface, merging with the clatter of decay and the silent screams of a forsaken world.
+						case 2
+						mpechoat '$i' Someone whispers to you 'Amid the data-scarred streets, digital whispers course through my neural interface, merging with the clatter of decay and the silent screams of a forsaken world.'
+						case 3
+						mpechoaround $i ^p$i mumbles ^w'Amid the data-scarred streets, digital whispers course through my neural interface, merging with the clatter of decay and the silent screams of a forsaken world.'^N
+					endswitch
+					case 10
+					switch $%RANDNUM(3)%
+						case 1
+						mpechoat '$i' ^R[N-UI] ^rThe toxic haze twists reality, morphing broken machinery into mechanical monstrosities, each hiss and hum triggering surreal visions?post-apocalyptic dreams laced with neon.
+						case 2
+						mpechoat '$i' Someone whispers to you 'The toxic haze twists reality, morphing broken machinery into mechanical monstrosities, each hiss and hum triggering surreal visions?post-apocalyptic dreams laced with neon.'
+						case 3
+						mpechoaround $i ^p$i mumbles ^w'The toxic haze twists reality, morphing broken machinery into mechanical monstrosities, each hiss and hum triggering surreal visions?post-apocalyptic dreams laced with neon.'^N
+					endswitch
+					case 11
+					switch $%RANDNUM(3)%
+					case 1
+						mpechoat '$i' ^R[N-UI] ^rMy augmented mind convulses, projecting a parade of phantoms?whispers, flickers?inscrutable remnants of a world both hauntingly familiar and forever lost.
+						case 2
+						mpechoat '$i' Someone whispers to you 'My augmented mind convulses, projecting a parade of phantoms?whispers, flickers?inscrutable remnants of a world both hauntingly familiar and forever lost.'
+						case 3
+						mpechoaround $i ^p$i mumbles ^w'My augmented mind convulses, projecting a parade of phantoms?whispers, flickers?inscrutable remnants of a world both hauntingly familiar and forever lost.'^N
+					endswitch
+					case 12
+					switch $%RANDNUM(3)%
+						case 1
+						mpechoat '$i' ^R[N-UI] ^rThe walls around me twist and bend, only to snap back in an instant.
+						case 2
+						mpechoat '$i' Someone whispers to you 'The walls around me twist and bend, only to snap back in an instant.'
+						case 3
+						mpechoaround $i ^p$i mumbles ^w'The walls around me twist and bend, only to snap back in an instant.'^N
+					endswitch
+					case 13
+					if sex($i == F)
+						switch $%RANDNUM(3)%
+						case 1
+						mpechoat '$i' ^R[N-UI] ^rWoman in the mirror nods $m head.
+						case 2
+						mpechoat '$i' Someone whispers to you 'Woman in the mirror nods $m head.'
+						case 3
+						mpechoaround $i ^p$i mumbles ^w'Woman in the mirror nods $m head.'^N
+					endswitch
+					else
+					switch $%RANDNUM(3)%
+						case 1
+						mpechoat '$i' ^R[N-UI] ^rMan in the mirror nods $m head.
+						case 2
+						mpechoat '$i' Someone whispers to you 'Man in the mirror nods $m head.'
+						case 3
+						mpechoaround $i ^p$i mumbles ^w'Man in the mirror nods $m head.'^N
+					endswitch
+					endif
+				endswitch
+			endif
+		else
+			switch $%RANDNUM(5)%
+			case 1
+			if var('$i' psychometer > 1)
+				mpsetvar '$i' psychometer --
+				mpsavevar '$i' psychometer
+				switch $%RANDNUM(4)%
+					case 1
+					mpecho $i seems to have less-glassy eyes.
+					case 2
+					mpecho $i seems to be more present in the time.
+					case 3
+					mpecho $i seems to have less shaky hands.
+					case 4
+					mpecho $i seem to have gotten over $m twitchy eyes.
+				endswitch
+				switch $%RANDNUM(4)%
+					case 1
+					mpechoat '$i' ^G[CYBERPSYCHOSIS] Maybe i borged out too much.^N
+					case 2
+					mpechoat '$i' ^G[CYBERPSYCHOSIS] Best not overdo the chrome, it'll scramble my brain.^N
+					case 3
+					mpechoat '$i' ^G[CYBERPSYCHOSIS] Wonder if the ware on me will drive me over the edge eventually... Should get checked.^N
+					case 4
+					mpechoat '$i' ^G[CYBERPSYCHOSIS] I don't need so many hardware to be better...^N
+				endswitch
+			endif
+			endswitch
+		endif
+		if var('$i' psychometer >= 6)
+			switch $%RANDNUM(13)%
+				case 1
+				mpechoat '$i' ^R[CYBERPSYCHOSIS] THE ONLY THING THAT MATTER.^N
+				case 2
+				mpechoat '$i' ^R[CYBERPSYCHOSIS] SOUL AND FLESH IS A MYTH, FUTURE LIES IN THE METAL.^N
+				case 3
+				mpechoat '$i' ^R[CYBERPSYCHOSIS] STRIKE FIRST. THEY ARE WAITING.
+				mpaffect Disease_Cyberpsychosis '$i'
+				case 4
+				mpechoat '$i' ^R[CYBERPSYCHOSIS] I SEE IT EVERYDAY... AGAIN... AGAIN...
+				mpaffect Disease_Cyberpsychosis '$i'
+				case 5
+				mpechoat '$i' ^R[CYBERPSYCHOSIS] THERE WILL BE BLOOD...
+				mpaffect Disease_Cyberpsychosis '$i'
+				case 6
+				mpechoat '$i' ^R[CYBERPSYCHOSIS] IT IS THE ONLY THING I EVER KNOWN.
+				case 7
+				mpechoat '$i' ^R[CYBERPSYCHOSIS] MEMORIES BROKEN, TRUTH GOES UNSPOKEN.
+				case 8
+				mpechoat '$i' ^R[CYBERPSYCHOSIS] ...TO FIND THE TRUTH IN FRONT OF ME...
+				case 9
+				mpechoat '$i' ^R[CYBERPSYCHOSIS] THE FIRES WILL BURN THE WEAK.
+				case 10
+				mpechoat '$i' ^R[CYBERPSYCHOSIS] RIP OUT THE SPINE, TASTE METAL.
+				case 11
+				mpechoat '$i' ^R[CYBERPSYCHOSIS] NO NEED FOR A CURE.
+				case 12
+				mpechoat '$i' ^R[CYBERPSYCHOSIS] TO THE SHADOWS - OUT OF SIGHT.
+				case 13
+			endswitch
+		endif
+		if var('$i' psychometer <= 0)
+			mploadvar '$i' psychometer
+			mpsetvar '$i' psychometer 0
+			mpsavevar '$i' psychometer
+			mpunaffect '$i' Disease_Cyberpsychosis
+			mpunbehave mobhunter '$i'
+		endif
 endif
 ~
 
 death_prog
-mploadvar '$n' cyberpsychosisattacks
-mpsetvar '$n' cyberpsychosisattacks 0
-mpsavevar '$n' cyberpsychosisattacks
-mpunaffect '$n' Disease_Cyberpsychosis
-mpunbehave mobhunter '$n'
+	mploadvar '$i' psychometer
+	mpsetvar '$i' psychometer 0
+	mpsavevar '$i' psychometer
+	mpunaffect '$i' Disease_Cyberpsychosis
+	mpunbehave mobhunter '$i'
 ~

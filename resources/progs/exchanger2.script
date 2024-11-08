@@ -1,0 +1,22 @@
+cnclmsg_prog huh p options
+mpechoat $n ^cexchange questpoint^N: ^r1QP^N -> ^g3 Training Points^N%0D^cGive coin^N: ^r1 Time Shard Coin^N -> ^g3 Training Points^N
+return cancel
+~
+
+cnclmsg_prog huh p exchange questpoint
+if questpoints($n < 1)
+mpechoat $n insufficent questpoints.
+else
+mpquestpoints $n --1
+mpecho traded 1QP for 3 Trains
+mptrains $n ++3
+endif
+return cancel
+~
+
+give_prog p ^Na ^#404g^#314li^#224tc^#134hy ^#015t^#025i^#035m^#045e ^#055s^#045h^#035ar^#025d ^#550c^#440o^#330i^#220n^N
+mpjunk '^Na ^#404g^#314li^#224tc^#134hy ^#015t^#025i^#035m^#045e ^#055s^#045h^#035ar^#025d ^#550c^#440o^#330i^#220n^N'
+mptrains $n ++3
+mpechoat $n You feel a great, unbearable weight on your chest as you collapse to your knees as pain and sadness overtakes you. You have been empowered slightly, but at what cost?%0DYou gain ^c3 Trains^w.^N
+mpaffect disease_depression $n 15TICKS
+~

@@ -1,0 +1,96 @@
+fight_prog 100
+mpnotrigger cast_prog 5
+if affected($i Thief_TrappedCunny)
+if affected($i matingpress) or affected($i skill_fullnelson)
+switch $%RANDNUM(4)%
+case 1
+mpunaffect $i matingpress
+mpunaffect $i skill_fullnelson
+mpsetvar $i counterdamage $%RANDNUM(150)%
+MPSETVAR $n CurHits $%GSTAT($n Hits)%
+MPSETVAR $n HitsCalc $%MATH($<$n CurHits> - 50 - $<$i counterdamage>)%
+MPGSET $n HITS $%VAR($n HitsCalc)%
+mpunaffect $i Thief_TrappedCunny
+mpaffect bleeding $n 10
+mpecho ^#500OUCH! The sharp objects inside $i hurts ($<$i counterdamage>) $n TERRIBLY! And they start bleeding. Causing $n to back off.^N
+case 2
+mpunaffect $i matingpress
+mpunaffect $i skill_fullnelson
+mpsetvar $i counterdamage $%RANDNUM(100)%
+MPSETVAR $n CurHits $%GSTAT($n Hits)%
+MPSETVAR $n HitsCalc $%MATH($<$n CurHits> - 50 - $<$i counterdamage>)%
+MPGSET $n HITS $%VAR($n HitsCalc)%
+mpunaffect $i Thief_TrappedCunny
+mpecho ^#500OUCH! $n was hurt ($<$i counterdamage>) by the sharp objects inside $i's cunny! Causing $n to back off.^N
+case 3
+mpunaffect $i matingpress
+mpunaffect $i skill_fullnelson
+mpsetvar $i counterdamage $%RANDNUM(50)%
+MPSETVAR $n CurHits $%GSTAT($n Hits)%
+MPSETVAR $n HitsCalc $%MATH($<$n CurHits> - 25 - $<$i counterdamage>)%
+MPGSET $n HITS $%VAR($n HitsCalc)%
+mpunaffect $i Thief_TrappedCunny
+mpecho ^#500Ouch! $n was stung ($<$i counterdamage>) by the sharp objects inside $i's cunny! Causing $n to back off.^N
+case 4
+mpechoat $i ^R$n unknowingly avoids your trap this time by inserting into your other hole causing the caltrops to spill out!^N
+mpoloadroom fromfile itemstuff.cmare some iron caltrops
+mpunaffect $i Thief_TrappedCunny
+endswitch
+endif
+endif
+
+##Thief caltrops sex ability denial ability poison version
+if affected($i Thief_poisonedcunny)
+if affected($i matingpress) or affected($i skill_fullnelson)
+switch $%RANDNUM(4)%
+case 1
+mpunaffect $i matingpress
+mpunaffect $i skill_fullnelson
+mpsetvar $i counterdamage $%RANDNUM(150)%
+MPSETVAR $n CurHits $%GSTAT($n Hits)%
+MPSETVAR $n HitsCalc $%MATH($<$n CurHits> - 150 - $<$i counterdamage>)%
+MPGSET $n HITS $%VAR($n HitsCalc)%
+mpunaffect $i Thief_poisonedcunny
+mpaffect bleeding $n 10
+mpecho ^#500OUCH! The sharp objects inside $i hurts ($<$i counterdamage>) $n TERRIBLY! And they start bleeding. Causing $n to back off looking sickened!^N
+mpaffect Poison $n
+case 2
+mpunaffect $i matingpress
+mpunaffect $i skill_fullnelson
+mpsetvar $i counterdamage $%RANDNUM(100)%
+MPSETVAR $n CurHits $%GSTAT($n Hits)%
+MPSETVAR $n HitsCalc $%MATH($<$n CurHits> - 50 - $<$i counterdamage>)%
+MPGSET $n HITS $%VAR($n HitsCalc)%
+mpunaffect $i Thief_poisonedcunny
+mpecho ^#500Ouch! $n was stung ($<$i counterdamage>) by the sharp objects inside $i's cunny! Causing $n to back off looking sickened!^N
+mpaffect Poison $n
+case 3
+mpunaffect $i matingpress
+mpunaffect $i skill_fullnelson
+mpsetvar $i counterdamage $%RANDNUM(50)%
+MPSETVAR $n CurHits $%GSTAT($n Hits)%
+MPSETVAR $n HitsCalc $%MATH($<$n CurHits> - 50 - $<$i counterdamage>)%
+MPGSET $n HITS $%VAR($n HitsCalc)%
+mpunaffect $i Thief_poisonedcunny
+mpecho ^#500Ouch! $n was slightly stung by the sharp objects inside $i's cunny! Causing $n to back off looking sickened!^N
+mpaffect Poison $n
+case 4
+mpechoat $i ^R$n unknowingly avoids your trap this time by inserting into your other hole causing the caltrops to spill out!^N
+mpoloadroom fromfile itemstuff.cmare some iron caltrops
+mpunaffect $i Thief_poisonedcunny
+endswitch
+endif
+endif
+~
+
+cnclmsg_prog huh p untrappussy
+mpnotrigger cnclmsg_prog 4
+mpechoat $n ^#111You spread your legs and lower lips to allow the ^#444caltrops^#111 fall free.^N
+mpechoaround $n ^#111$n spreads her legs and lower lips to allow the ^#444caltrops ^#111fall free.^N
+mpunaffect $n Thief_roguepussy
+mpunaffect $n Thief_trappedcunny
+mpunaffect $n Thief_poisonpussy
+mpunaffect $n Thief_PoisonedCunny
+mpoloadroom fromfile itemstuff.cmare some iron caltrops
+return cancel
+~

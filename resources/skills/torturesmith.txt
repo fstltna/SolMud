@@ -9,5 +9,13 @@
 % Brank Helmet	22	150	200	500	GenArmor	HEAD	0	0	METAL	*Prop_WearSpellCast;Spell_Blademouth
 % Armbreaker Table	23	200	200	1000	GenTable	TABLE	1		WOOD	*Prop_RideSpellCast;Thief_Bind;Spell_Torture;BrokenLimbs(ARM)
 % Legbreaker Table	23	200	200	1000	GenTable	TABLE	1		WOOD	*Prop_RideSpellCast;Thief_Bind;Spell_Torture;BrokenLimbs(LEG)
-% Maiden	24	200	200	1000	GenTent	LID	1		METAL	*Prop_RideSpellCast;ONCLOSED;Spell_Torture;Bleeding
 The Machine	25	250	5000	2000	GenBed	BED	1		WOOD	*Prop_RideSpellCast;Spell_Torture(/<S-NAME> let(s) out a scream of ultimate suffering!)
+% Maiden	24	200	200	1000	GenTent	ENTER	1		METAL	*Prop_RideSpellCast;Spell_Torture;Bleeding
+% T1 milking machine	5	200	200	500	GenChair	CHAIR	1		METAL	*Prop_RideSpellCast;automilklevel1
+% T2 milking machine	15	200	200	1000	GenChair	CHAIR	1		METAL	*Prop_RideSpellCast;automilklevel2
+% T3 milking machine	30	200	200	1500	GenChair	CHAIR	1		METAL	*Prop_RideSpellCast;automilklevel3
+A % genital electrocution chair	25	200	200	1000	GenChair	CHAIR	1		METAL	*Prop_RideSpellCast;Thief_Bind;Spell_Torture(/HITONLY);Torture_Genitalshock;LEVEL=100
+A % spitroast machine	20	250	250	1500	GenBed	BED	1		METAL	*Prop_RideSpellCast;Thief_Bind;Spell_Choke;Spell_Torture
+% wooden horse	5	100	200	500	GenChair	CHAIR	1		WOOD	*Prop_RideSpellCast;Thief_Bind;Spell_Torture(/HITONLY)
+% ballstretcher chair	10	100	100	500	GenChair	CHAIR	1		METAL	*Prop_RideSpellCast;Thief_Bind;Spell_Torture
+a % iinflation execution machine	25	200	250	1000	GenTent	ENTER	5		METAL	*Prop_RideSpellCast;Torture_Cumexplosion;Thief_Bind;Spell_Choke;Spell_Torture

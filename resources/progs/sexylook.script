@@ -1,0 +1,799 @@
+## by Vide Noir aka Eagle of Phantoms. 2024
+## Made for Secret of Life MUD.
+
+casting_prog Skill_Sexylook
+mpnotrigger casting_prog 5
+if ispc($n)
+	if hastattoo($n underage)
+		mpechoat $n You can't look there. You are not 18 years old yet.
+		return
+	endif
+endif
+if ispc($t)
+	if hastattoo($t underage)
+		mpechoat $n $t is below 18 years old, you can't.
+		return
+	endif
+endif
+if islike($t -JAVACLASS +STDMOB +GENMOB +GENRIDEABLE +STDRIDEABLE +GENUNDEAD +GENRIDEABLEUNDEAD)
+else
+return
+endif
+#first init for sexylook system
+mploadvar $t sexylookinited
+mploadvar $t clothesstate
+if var($t sexylookinited != 1)
+  mpechoat $t You can set up your own sizes, try ^cSEXYSETUP^N.
+  mploadvar $t asssize
+  if var($t asssize == '')
+    mpsetvar $t asssize $%RANDNUM(5)%
+    mpsavevar $t asssize
+  endif
+  mploadvar $t breastsize
+    if sex($t == F) or sex($t == A) or sex($t == H) or sex($t == O) or sex($t == U)
+      if var($t breastsize == '')
+        mpsetvar $t breastsize $%RANDNUM(5)%
+        mpsavevar $t breastsize
+      endif
+      else
+        mpsetvar $t breastsize 1
+        mpsavevar $t breastsize
+    endif
+      if racecat($t == Undead)
+       mpsetvar $t tearstate $%RANDNUM(30)%
+       mpsetvar $t dirtystate $%RANDNUM(30)%
+       mpsavevar $t tearstate
+       mpsavevar $t dirtystate
+      endif
+  mpsetvar $t sexylookinited 1
+  mpsavevar $t sexylookinited
+endif
+# vars to load
+mploadvar $t breastsize
+mploadvar $t asssize
+mploadvar $n sexyasciitoggle
+# genital integrity
+mploadvar $t tearstate
+mploadvar $t cummystate
+mploadvar $t pubestate
+mploadvar $t dirtystate
+if var($n genitalthirst == 1)
+if gstat($t THIRST < 1000)
+mpsetvar $t wetstate It's dry as the desert.
+else
+if gstat($t THIRST < 2500)
+mpsetvar $t wetstate It's somewhat dry.
+else
+if gstat($t THIRST < 4000)
+mpsetvar $t wetstate It's relatively moist.
+else
+if gstat($t THIRST > 4000)
+if sex($t == F) or sex($t == A) or sex($t == H)
+  mpsetvar $t wetstate It's as wet as a waterfall.
+  else
+  mpsetvar $t wetstate It's hydrated and well.
+endif
+endif
+endif
+endif
+endif
+endif
+if var($n genitalthirst == 1)
+if gstat($t HUNGER < 1000)
+mpsetvar $t fatstate It's skinny and malnutritioned.
+else
+if gstat($t HUNGER < 2500)
+mpsetvar $t fatstate It looks average.
+else
+if gstat($t HUNGER < 4000)
+mpsetvar $t fatstate It's thick and fat.
+else
+if gstat($t HUNGER > 4000)
+if sex($t == F) or sex($t == A) or sex($t == H)
+  mpsetvar $t fatstate It's fat-lipped, thick and healthy.
+  else
+  mpsetvar $t fatstate It's fat, thick and healthy.
+endif
+endif
+endif
+endif
+endif
+endif
+# pubestates
+if var($t pubestate < 10)
+  mpsetvar $t pubestext ^wIt is smooth and hairless, the genitals are in clear daylight.
+else
+if var($t pubestate < 15)
+  mpsetvar $t pubestext It has a small amount of hair as pubes.
+else
+if var($t pubestate < 20)
+  mpsetvar $t pubestext It has a short, nicely trimmed pube, covering nothing but seems quite soft.
+else
+if var($t pubestate < 25)
+  mpsetvar $t pubestext It has a soft bush of pubes around that covers the groin, it looks soft and nice.
+else
+if var($t pubestate < 30)
+  if sex($t == F) or sex($t == A) or sex($t == H)
+  mpsetvar $t pubestext It's pussylips are covered in soft sheepy bush of pubes that seem soft as a pillow.
+  else
+  mpsetvar $t pubestext It's base is surrounded in soft sheepy bush of pubes that seem soft as a pillow.
+  endif
+else
+if var($t pubestate >= 30)
+  if sex($t == F) or sex($t == A) or sex($t == H)
+  mpsetvar $t pubestext It's pussylips and all around it is completely covered in an amazon forest of fluff that is so soft you could sleep on it.
+  else
+  mpsetvar $t pubestext It's completely covered in a forest of fluff that is so soft you could sleep on it.
+  endif
+endif
+endif
+endif
+endif
+endif
+endif
+if wornon($t torso all) and var($t clothesstate != 1)
+  if sex($t == F) or sex($t == A) or sex($t == H) or sex($t == O) or sex($t == U)
+    if var($t breastsize > 3)
+      mpechoat $n $t's breasts are covered but they are large.
+      else
+      if var($t breastsize == 3)
+      mpechoat $n $t's breasts are covered but they are average.
+      endif
+      if var($t breastsize < 3)
+      mpechoat $n $t's breasts are covered but they are small.
+      endif
+    endif
+  endif
+  else
+    mpechoat $n ^r%0D$t's breasts:
+    if sex($t == F) or sex($t == A) or sex($t == H) or sex($t == O) or sex($t == U)
+      if var($n sexyasciitoggle != 1)
+        if var($t breastsize == 5)
+          mpechoat $n %0D ........,........................................%0D.......,.,...........................,....,,.....%0D..........,,,,.......................,..,,.......%0D..........,.,,,,,,,,..............,,.............%0D............,.@@@@@@@@@@##%@@@@@@@&..,...........%0D.........%&&&&@@@@@@@@@@@@@@@@@@@@@@@@@@%........%0D,.....#&&&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&.....%0D%,../&&&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&..(%0D...&@&&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&..%0D,.&&&&&@@@@@@@@@@@@@@@@&@@@@@@@@@@@@@@@@@@@@&@@&.%0D,,&&&@&@&&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&@@&@&(%0D,&&@&&@&&&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&@&@&&%0D,%&&&&&&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&&&&@&&%0D.(&&%%%%&&&&&&@@@@@&@@@@@@@@@@@@@@@@@&&@@&&%%%&&%%0D.,(#%%%%%&%%&&&@@@@@@@@&(%&@@@@@@@@@&&&&&&%%%%%%(%0D..,*##%%%%%%%%&&&&&&&&&#.,%&@&@@@&&&&%%%%%%%%#(*,%0D....**%###%%%%&&&&&&%#*..,./#%&&&&&%%%%%##%#/*,..%0D.....,.,**//(#%###(*,,,,...,,,/(###%#((/***......%0D.........#..........,,,,,,,,,,,..,...,,..........%0D......................,.,..,,..................,*
+        endif
+        if var($t breastsize == 4)
+          mpechoat $n %0D .................................................%0D.........,.......................................%0D..........,,,,.,,....................,...........%0D........,,,,,,,,,,*,..............,..............%0D...,...,,,..,,@@@@@&@&@@####@@@@@@/,.,.......,...%0D...,,..,..,,&&@&@@@&@@@@@@@@@@@@@@@@@@@@@..,.....%0D...*,,.../&&&&&&&&&&&&@@@@@@@@@@@@@@@@@@@&@&,....%0D......,..#&&&&@&@&@&@@@@@@@@@@@@@@@@@@@@@@&&%...*%0D.......&&@@&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&....%0D.....&&@@@@@@@@@@@@@@@@&@@@@@@@@@@@@@@@@@@@@@@%(/%0D...#&&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&,%0D.,,%&@@@&&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&&&@@@&,%0D..,&&&&&&&@@@@@@@@@@@@@@@@@@@@@@@@@@@@&&&&&&&&@&(%0D...(&%%%&%&&&&@@@@@@@@@@@&@@@@@@@@@@&&&&&%%%%%&&*%0D....##(##%%%&&&@@@@@@@&&#(&&@@@@@@@@&&&&&%%###%%*%0D.....,(((((##%&&&&&&&%%#//*#&&&&&&&&%%###((%##/,,%0D...,,,/,(#####%%%%%##(,../,.,##%##%#####(((#...,.%0D.....,,*,*,...,,,/,,,,,,...,,,,,,((((((*.......,.%0D.....,*,,,,.....,,,,,,,,,,,,,,,,,,,,.............%0D.......,,.......,.,,,,,,,,,,,,,,,................
+        endif
+        if var($t breastsize == 3)
+          mpechoat $n %0D ....................................,,,..........%0D.........,..........................,............%0D.........,,,,,.,/..............,,,.,,,..,........%0D......,.,,,,,,*******,,.,,.,....,,*,,.,..........%0D....,,,,.,..,,,*&@@@@@@@%@@@@@@@@@@,,,.,,.,..,..,%0D...,,,.,..,.(&&&&&@@@@@@@@@@@@@@@@@@@&@&.......,,%0D...,,,,..,#&&&&@@@@&&@@@@@@@@@@@@@@@@@@@&#,..,,.,%0D,,,..,,,,&&&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@..,..,*%0D.......%&@@&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&,,,,.%0D,,,..,%&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@,,,,%0D,,...%&@&&&&&@@@@@@@@@@@@@@@@@@@@@@@@&&&&&@@@/...%0D.*,.*&@&%%&&&&&@@@@@@@@@@@@@@@@@@@@&&&@&&&&&@&,..%0D.....%&&%#%&&&&&@@@@@@@@@@@@@@@@@@@&&&&%#%%&&%,..%0D......#%%%%%&&&@@@@@@@@@&%&&@@&@@@@&&&%%%%&&%,...%0D,.....,(#%%&&&&&@&&&&&&#((/%&&&&&@@&&&&&&%%,,....%0D.....,,../%(##%%%%%##(...,..*#%%%%%%%##((...*.,..%0D......,...............**,,,,.....................%0D....................,**,..,*,....................%0D......,............,*****/,*,,...................%0D...............,,,,,,,,,..,,,,,,,,.......*,....,,
+          endif
+        if var($t breastsize == 2)
+          mpechoat $n %0D ...............,....................,............%0D.........,....,,,...................,,...........%0D...........,,,,.,/.,,,,,.....,,,..,..,*...,......%0D.......,,,,,,,,,,,,,,,,,.,.,,..,,,,,.............%0D......,,,,.,,,,..#&&@@@@&@@@@&@@@@@.,,.,.....,...%0D...,,,,,,,,.,,#&&&&&&&&&@@@@@@@&&&&&&&&#.......,,%0D..,,,,,,,,,,*&&&&&&&&&&&&@@@@&&&@@@@@@@@&.,.,,,..%0D..,,,,,,,*.%&&&&&&@@@@@@@@@@@@@@@@@@@@@@@@..,,,,,%0D.......,,.&&&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@..,,,.%0D.......*.&&@@@@@@@@@@@@&@@@@@@@@@@@@@@@@@@@&..,.,%0D...,.,..&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@,,...%0D.,.,,,,.&&@&&&&&@@@@@@@@@@@@@@@@@@@@&@&&&&@@&.,..%0D...,.,,,&@&&%&&&&@@@@@@@@@@&&@@@@@@&&&&&%%%&&,,,.%0D.........&&%%%&&&&@@@@@@@&@&&&&&@@@&&&%%%%&&,,,,,%0D........../#&&&&&&&&&&%(%@&@%/%&&&&&&&&&&%#.,,...%0D.....,,,........,,%...,*,,..***....,........,.,..%0D...,,,,............,,*****..,***,,.............,.%0D................,,,,,,,,*,,.,,,,,,,,,..........,.%0D...............,,,,,,,,,,,,,,,,,,,,,,............%0D............,,.,,,,,,,,,,,,,,,,,,,,,....,........
+        endif
+      endif
+      if var($t breastsize == 5)
+        if gstat($t CHARISMA <= 6)
+          mpsetvar $t breastcha pair of large and udderly looking empty trash-bag like breasts, wobbly and shapeless with huge wrinkled nipples.
+          else
+            if gstat($t CHARISMA <= 14)
+              mpsetvar $t breastcha pair of massive milkers that jiggle around with every movement.
+            else
+              if gstat($t CHARISMA <= 19)
+                mpsetvar $t breastcha pair of firm and full round globes creating one hell of a cleavage.
+              else
+                if gstat($t CHARISMA >= 20)
+                  mpsetvar $t breastcha pair of firm and supple, perfectly shaped breasts with beautiful erect nipples, did you want milk with your cookies?
+                endif
+              endif
+            endif
+          endif
+      endif
+      if var($t breastsize == 4)
+        if gstat($t CHARISMA <= 6)
+          mpsetvar $t breastcha pair of large flabby breasts sagging down to $s navel.
+          else
+            if gstat($t CHARISMA <= 14)
+              mpsetvar $t breastcha pair of massive milkers that jiggle around with every movement.
+            else
+              if gstat($t CHARISMA <= 19)
+                mpsetvar $t breastcha pair of large, full and prominent looking round breasts.
+              else
+                if gstat($t CHARISMA >= 20)
+                  mpsetvar $t breastcha pair of large, full and yet impossibly perky breasts, motorboat perfection!
+                endif
+              endif
+            endif
+          endif
+      endif
+      if var($t breastsize == 3)
+        if gstat($t CHARISMA <= 6)
+          mpsetvar $t breastcha pair of average sized, saggy, flabby, deflated, sad.
+          else
+            if gstat($t CHARISMA <= 14)
+              mpsetvar $t breastcha pair of average yet grabbable breasts
+            else
+              if gstat($t CHARISMA <= 19)
+                mpsetvar $t breastcha pair of round, full and perky breasts, nice cleavage too!
+              else
+                if gstat($t CHARISMA >= 20)
+                  mpsetvar $t breastcha pair of perfectly shaped, round, full and perky breasts with cute little erect nipples just begging for your attention.
+                endif
+              endif
+            endif
+          endif
+      endif
+      if var($t breastsize == 2)
+        if gstat($t CHARISMA <= 6)
+          mpsetvar $t breastcha pair of small, flat breasts, almost requiring an apology
+          else
+            if gstat($t CHARISMA <= 14)
+              mpsetvar $t breastcha pair of pair of small breasts
+            else
+              if gstat($t CHARISMA <= 19)
+                mpsetvar $t breastcha pair of small yet full and perky breasts!
+              else
+                if gstat($t CHARISMA >= 20)
+                  mpsetvar $t breastcha pair of beautiful and sensual looking pair of perfect teardrop shaped small breasts grace $s
+                endif
+              endif
+            endif
+          endif
+      endif
+      if var($t breastsize == 1)
+        if gstat($t CHARISMA <= 6)
+          mpsetvar $t breastcha flat board chest.
+          else
+            if gstat($t CHARISMA <= 14)
+              mpsetvar $t breastcha flat chest
+            else
+              if gstat($t CHARISMA <= 19)
+                mpsetvar $t breastcha pair of very compact yet naughtily cute breasts.
+              else
+                if gstat($t CHARISMA >= 20)
+                  mpsetvar $t breastcha pair of very small, firm and perky, puffy little nipples, minimalist beauty.
+                endif
+              endif
+            endif
+          endif
+      endif
+      mpechoat $n You see:%0D^p(CHA) a $<$t breastcha>^N
+    endif
+endif
+  if wornon($t groin all) and var($t clothesstate != 1)
+    if var($t asssize > 3)
+      mpechoat $n $t's ass is covered but it is large.
+      else
+      if var($t asssize == 3)
+      mpechoat $n $t's ass is covered but it is average.
+      endif
+      if var($t asssize < 3)
+      mpechoat $n $t's ass is covered but it is small.
+      endif
+    endif
+    else
+    mpechoat $n ^r%0D$t's ass:^N
+    if var($n sexyasciitoggle != 1)
+      if var($t asssize == 5)
+        mpechoat $n %0D ...............................,.................%0D......................**,........................%0D............,***********//*.**/******............%0D............,,**/////////////*/*****,,...........%0D............,**/////////(/////////*.,,,..........%0D............,,*///(%&&@@&&@@&&&%%/**,,...........%0D...,.,......&&&@@@@@@&&@&@@&@@@@@@@@@@#..........%0D........*&@@@@@@@@@@@@@@@&@@@@@@@@@@@@@@@@.......%0D......&&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.....%0D....%&&&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@,,,%0D...&&&&@@@@@@@@@@@@@@@@@&&@@@@@@@@@@@@@@@@@@@@@,,%0D..&&&&@@@@@@@@@@@@@@@@@&(%&@@@@@@@@@@@@@@@@@@@@@.%0D.&&&&&@@@@@@@@@@@@@@@@@%@&%&@@@@@@@@@@@@@@@@@@@@@%0D.&&&&&@@@@@@@@@@@@@@&&%@@@&%&&@@@@@@@@@@@@@@@@@@@%0D*&&&@@@@@@@@@@@@&&&%#.%&&&&##%%&&@@@@@@@@@@@@@@@@%0D,&&&@@@&&&&&&%%%%%%&&%%,,,,%&@@@%%%%&&&&&&&&@@@&&%0D./&&@@@@@@@@@@@@@@@@@@@&,/&@@@@@@@@@@@@@@@@@@@&&,%0D..%&&&@@@@@@@@@@@@@@@@@@&&@@@@@@@@@@@@@@@&@&&&&,.%0D,,.*&&&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&&&&#...%0D,....&&&&&@@@@@@@@@@@@@@@/@@@@@@@@@@@@@&&&&%.....
+      endif 
+      if var($t asssize == 4)
+        mpechoat $n %0D ..........******..................,******........%0D...........*****..................,*****.........%0D...........,***,%.................,***,..........%0D...........,,*****..............,,,,,,...........%0D..,.......,*,,@@@@@@@@@@@@&@@@@@@@@*,,,..........%0D........,,&&@@@@@@@@@@@@@@@@@@@@@@@@@@@..........%0D...**,.,&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@,.....,%0D..,*//&&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#,..,,%0D....,&&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.,,,%0D....&&&@@@@@@@@@@@@@@@@&&%@@@@@@@@@@@@@@@@@@@@,*,%0D...&&&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@(,.%0D..,&&&@@@@@@@@@@@@@@@@@@%@@@@@@@@@@@@@@@@@@@@&@,.%0D../&&&@@@@@@@@@@@@@@%&@&(&&#&@@@@@@@@@@@@@@@@&@,,%0D...&&&&&@@@@@@@&&&%%%#%%%%%%%%&@@@@@@@@@@@@&&&(,,%0D....&&&&&&&&&&&&&&&&&@%..(&&&&&&&&&&&&&@@@&&&&...%0D.....%&&&&&&&&&&&&@&@&&&/&&&@@@&&&&&&&&&&&&&#....%0D......(%%&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&%%%%......%0D...,////,%%%%%&&&&&&&&&&&&&&&&&&&%%%%%%%%........%0D*//((((((((/%%%%%%&&&&&&&&&&&&%%%%%%%#,..........%0D..........,,,,,#%%%%%%%%%%%%%%%%#/...............
+      endif
+      if var($t asssize == 3)
+        mpechoat $n %0D .......,,,,,,,.,................*******,.........%0D.......,,,****,*,................******..........%0D........,***/*//(...............//////*..........%0D........,*////(/(.............../((///,,.........%0D........,,//((((,......,.........((,,,,..........%0D...,.....,((####%*&&&&&@@@&&&&&&/##***...........%0D...*,/*.,(#(#@@@@@@@@@@@@@@@@@@@@@@@(/***,..*....%0D...**//,/#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@(.,*,,...,%0D........&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&(**,,,,.%0D.......&&&@@@@@@@@@@@@@&%&@@@@@@@@@@@@@@@@%#*/,**%0D.,....&&&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%(/,,..%0D.....,&@@@@@@@@@@@@@@@@@%@@@@@@@@@@@@@@@@@@**....%0D.....*&@@@@@@@@@@@@@%&&&(&&#&@@@@@@@@@@@@@&,,....%0D......%&&@@@@@@@@&&@@@,,*,%@@&@@@@@@@@@@@&&,,....%0D.......&&&&@@@@@@@@@@@@(,@@@@@@@@@@@@@@@@&,......%0D....*/(/(&&&&&@@@@@&@&@@,&&&@@@@@&&&&&&&#........%0D....**/...(%&&&&&&&&&&&&&&&&&&&&&&&&%%%..........%0D........,....(%%%%%&&&&&(&&&&%%%%%%%..........,,.%0D..,,,,,,,**...../###%%%%(%%%#####/,,,............%0D................./#####(..######/........*,......
+        endif
+      if var($t asssize == 2)
+        mpechoat $n %0D .......,,,,,,,,**,.............////////*.........%0D.......,,,,,,,,,,...............*******..........%0D........,,,******..............********..........%0D........,,******(..............,*****,,,.........%0D........,*****//...............*/***,,,..........%0D.......,,*****(....,*,,*,%(**,,.*/****,..........%0D..,*,,,,***///(,,(%&&&%&%@@&&&/.(///****,........%0D...,,*/,**////&&@&@&@@@@@@@@@@@@@%(///**.,.......%0D........**/&@@@@@@@@@@@@@@@@@@@@@@@@(/**,,.......%0D,......**#@@@@@@@@@@@@@@@@@@@@@@@@@@@@*,,,....(*/%0D,,..,..,#&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@,.,.,,,,..%0D,,.,,..,&&@@@@@@@@@@@@@%&@@@@@@@@@@@@@@&,...,,...%0D.......,&@@@@@@@@@@@@@&&&&&@@@@@@@@@@@@@*,..,,...%0D........&&@@@@@@@@@&&&&%&&&&@@@@@@@@@@@%,....,...%0D.......*,#&&@@@&&&&&%&/**%%&&&@@@@@@&&/.,........%0D....,,,,.*,%&&&&&&&&&&%**&&&&&&&&&&&#............%0D....,,,...,**#&&&&&&&%(/*#&&&&&&&%/**,...........%0D........,,,,,,,**///////*//((((/*,,,,,...........%0D.,,,..,.........,,,*******,***,,,,,,,............%0D.............,.,,,******,,*****,,,,......,.......
+      endif
+    endif
+    if var($t asssize == 5)
+     if gstat($t CHARISMA <= 6)
+       mpsetvar $t asscha morbidly obese, cellulitis ridden, massive pile of lard.
+       else
+         if gstat($t CHARISMA <= 14)
+           mpsetvar $t asscha massive fat ass with somewhat spankable cheeks, wobbling with any movement.
+         else
+           if gstat($t CHARISMA <= 19)
+             mpsetvar $t asscha ghetto arse galore!
+           else
+             if gstat($t CHARISMA >= 20)
+               mpsetvar $t asscha gorgeously large, spankable bouncy ass to die for, the perfect cushion for the pushin!!!
+             endif
+           endif
+         endif
+       endif
+    endif 
+    if var($t asssize == 4)
+     if gstat($t CHARISMA <= 6)
+       mpsetvar $t asscha big, flabby, drooping ass...
+       else
+         if gstat($t CHARISMA <= 14)
+           mpsetvar $t asscha large, grabby and quite slappable ass.
+         else
+           if gstat($t CHARISMA <= 19)
+             mpsetvar $t asscha large upside-down heart swaying sensually and just begging for a spank and a squeeze.
+           else
+             if gstat($t CHARISMA >= 20)
+               mpsetvar $t asscha extremely sensual large upside-down heart to die for, a perfect balance of firmness, bounciness and fullness.
+             endif
+           endif
+         endif
+       endif
+    endif
+    if var($t asssize == 3)
+     if gstat($t CHARISMA <= 6)
+       mpsetvar $t asscha average sized, flat, wobbly, square ass
+       else
+         if gstat($t CHARISMA <= 14)
+           mpsetvar $t asscha average size ass with a jiggle.
+         else
+           if gstat($t CHARISMA <= 19)
+             mpsetvar $t asscha firm looking upside-down heart shaped ass with a beautiful sway.
+           else
+             if gstat($t CHARISMA >= 20)
+               mpsetvar $t asscha perfect upside-down heart shaped ass, sensually swaying and begging to be spanked, squeezed and pounced at.
+             endif
+           endif
+         endif
+       endif
+      endif
+    if var($t asssize == 2)
+      if gstat($t CHARISMA <= 6)
+        mpsetvar $t asscha small ass, square, flat and wobbling.
+        else
+          if gstat($t CHARISMA <= 14)
+            mpsetvar $t asscha small, firm ass.
+          else
+            if gstat($t CHARISMA <= 19)
+              mpsetvar $t asscha small, firm, nicely round and quite youthful looking ass.
+            else
+              if gstat($t CHARISMA >= 20)
+                mpsetvar $t asscha athletic, firm, beautifully round ass...!
+              endif
+            endif
+          endif
+        endif
+    endif
+    if var($t asssize == 1)
+      if gstat($t CHARISMA <= 6)
+        mpsetvar $t asscha ass... what ass? it's skin and bones.
+        else
+          if gstat($t CHARISMA <= 14)
+            mpsetvar $t asscha flat, barely noticeable ass.
+          else
+            if gstat($t CHARISMA <= 19)
+              mpsetvar $t asscha tiny, firm as with minor presence.
+            else
+              if gstat($t CHARISMA >= 20)
+                mpsetvar $t asscha compact, round and very firm ass, doesn't put a distance or obscure your view of what's beyond...
+              endif
+            endif
+          endif
+        endif
+    endif
+    mpechoat $n You see:%0D^p(CHA) a $<$t asscha>^N
+  endif
+#dirtystates
+if var($t dirtystate < 0)
+  mpsetvar $t dirtystatetext ^yIt looks to be shined to be beyond possible cleanliness, it's the pinnacle of genital care.
+  else
+  if var($t dirtystate < 10)
+  mpsetvar $t dirtystatetext It looks to be squeaky clean.
+  else
+    if var($t dirtystate < 15)
+    mpsetvar $t dirtystatetext It seems relatively clean.
+    else
+      if var($t dirtystate < 20)
+      mpsetvar $t dirtystatetext It's somewhat dirty.
+      else
+        if var($t dirtystate < 25)
+        mpsetvar $t dirtystatetext It's musky and sorta dirty.
+        else
+          if var($t dirtystate < 30)
+            if sex($t == F) or sex($t == A) or sex($t == H)
+            mpsetvar $t dirtystatetext It's dirty and has an unmistakable smell, some stray hairs of various colors are stuck on it.
+            else
+            mpsetvar $t dirtystatetext It is covered in dirtiness and musk, a real danger.
+            endif
+          else
+            if var($t dirtystate > 30)
+              if sex($t == F) or sex($t == A) or sex($t == H)
+              mpsetvar $t dirtystatetext It's covered in grime, musk and a handful of bugs which take shelter in those depths... It's covered in stray hairs and other sorts of things... Is that a centipede in there?
+              else
+              mpsetvar $t dirtystatetext It's basically covered in a layer of dirt and it smells so strong it might make someone pass out.
+              endif
+            endif
+          endif
+        endif
+      endif
+    endif
+  endif
+endif
+#cummystates
+if var($t cummystate < 5)
+  mpsetvar $t cummystatetext It looks to be clean in terms of cum.
+  else
+  if var($t cummystate < 10)
+  mpsetvar $t cummystatetext It has a some dried of cum on it.
+  else
+  if var($t cummystate < 15)
+  mpsetvar $t cummystatetext It's covered in strands of fresh and old cum.
+  else
+  if var($t cummystate < 20)
+  mpsetvar $t cummystatetext It's quite bathed in cum, dried and fresh all mixed together on it.
+  else
+  if var($t cummystate < 25)
+  if sex($t == F) or sex($t == A) or sex($t == H)
+  mpsetvar $t cummystatetext It gushes cum out and it's completely covered in it.
+  else
+  mpsetvar $t cummystatetext It is covered in cum.
+  endif
+  else
+  if var($t cummystate > 25)
+  if sex($t == F) or sex($t == A) or sex($t == H)
+  mpsetvar $t cummystatetext It's full of cum and gushing it out like a waterfall, entirety of it is hidden beneath layers and layers of cum.
+  else
+  mpsetvar $t cummystatetext It's basically painted white with cum.
+  endif
+  endif
+endif
+  endif
+  endif
+  endif
+endif
+# tearstates
+if var($t tearstate < 5)
+  mpsetvar $t tearstatetext It looks healthy.
+  else
+  if var($t tearstate < 10)
+  mpsetvar $t tearstatetext It has some reddened skin.
+  else
+  if var($t tearstate < 15)
+    mpsetvar $t tearstatetext It's pretty beat up and bruised.
+  else
+  if var($t tearstate < 20)
+    mpsetvar $t tearstatetext It's bruised and beat up pretty bad.
+  else
+  if var($t tearstate < 25)
+    if sex($t == F) or sex($t == A) or sex($t == H)
+    mpsetvar $t tearstatetext It's very torn up and gaped.
+    else
+    mpsetvar $t tearstatetext It better not fall off...
+    endif
+  else
+  if var($t tearstate > 25)
+    if sex($t == F) or sex($t == A) or sex($t == H)
+    mpsetvar $t tearstatetext It's loose, gaping and unusable, also covered in blood. It can't get worse.
+    else
+    mpsetvar $t tearstatetext It's soft, blood covered and ruined, it can't get worse.
+    endif
+  endif
+endif
+  endif
+  endif
+  endif
+endif
+##Lust resistance
+#lustresist
+if gstat($t 'Save vs Mind' < 5)
+  mpsetvar $t lustsavetext It looks like it could orgasm by a touch.
+  else
+  if gstat($t 'Save vs Mind' < 20)
+  mpsetvar $t lustsavetext It looks like it could withstand as much pleasure as any.
+  else
+  if gstat($t 'Save vs Mind' < 45)
+  mpsetvar $t lustsavetext It looks like it could last an assault.
+  else
+  if gstat($t 'Save vs Mind' < 65)
+  mpsetvar $t lustsavetext It looks like it's seen battle and can last well.
+  else
+  if gstat($t 'Save vs Mind' < 85)
+  mpsetvar $t lustsavetext It seems well trained and strong, surely a warrior and will last.
+  else
+  if gstat($t 'Save vs Mind' < 100)
+  mpsetvar $t lustsavetext It looks like it's built for fucking and will take alot of beating to make it orgasm.
+  else
+  if gstat($t 'Save vs Mind' < 150)
+    mpsetvar $t lustsavetext It looks like it is built of steel, it would need an army to make it orgasm.
+  else
+    if gstat($t 'Save vs Mind' >= 150)
+    mpsetvar $t lustsavetext It would need a god to fuck it personally to make it cum.
+    endif
+  endif
+  endif
+endif
+  endif
+  endif
+  endif
+endif
+  if wornon($t groin all) and var($t clothesstate != 1)
+    mpechoat $n $t's genitals are covered.
+    else
+    mploadvar $t grointext
+    if var($t grointext == '')
+      if sex($t == F) or sex($t == A) or sex($t == H)
+        mpsetvar $t grointext plump fat-lipped pussy.
+        else
+        mpsetvar $t grointext nice cock.
+      endif
+    endif
+      mpechoat $n ^r%0D$t's genitals:^N
+    mpechoat $n You see:%0Da $<$t grointext>%0D$<$t pubestext>%0D^w%0D^#245$<$t wetstate>%0D^#530$<$t fatstate>%0D^w$<$t cummystatetext>%0D^#220$<$t dirtystatetext>%0D^R$<$t tearstatetext>%0D^P$<$t lustsavetext>^N
+    if isname('$n' '$t')
+      mpechoat $n ^P[^pLust Resistance^P] Your mind save is ^p$%GSTAT('$t' 'Save vs Mind')%^N
+    endif
+  endif
+~
+
+cnclmsg_prog huh p sexysetup
+if ispc($n)
+	if gstat($n age < 18)
+		mpechoat $n r%0D[N-UI] Booting up cosmetic adjustment protocols...%0D^rERR: Insufficent age.%0D^N
+		return
+	endif
+endif
+mploadvar $n grointext
+mpechoat $n Groin: Your genital status: a $<$n grointext> %0D$<$n pubestext>%0D^w$<$n cummystatetext>%0D$<$n dirtystatetext>%0D^r$<$n tearstatetext>%0D
+if ispc($n)
+  mpechoat $n ^r%0D[N-UI] Booting up cosmetic adjustment protocols...%0D^cNovaMed^r is not responsible for any harm or death caused by using this Neu-BIOS software.%0D^N
+  mpchoose $n setupchoice 1234567 Welcome to NovaMed BIOS body adjustment commander software! This will focus your body's natural fat building systems to increase size of a specific location only until desired size is achieved. This is almost instantenous and it might cause intense pain briefly, not recommended during pregnancy. Please select an option with the numbers provided:%0D^c1^N to set breast size.%0D^c2^N to set ass size.%0D^c3^N to change appearance of your genitals.%0D^c4^N to toggle discomfort messages.%0D^c5^N to stop seeing silly thirst/hunger related sexylooks.%0D^c6^N to toggle seeing ascii that represent sizes.%0D^c7^N to cancel.
+  if var($n setupchoice == 1)
+    mpchoose $n breastsize 12345 Choose your breast size 1 to 5.
+    mpsavevar $n breastsize
+    mpforce $n sexylook $n
+  endif
+  if var($n setupchoice == 2)
+    mpchoose $n asssize 12345 Choose your ass size 1 to 5.
+    mpsavevar $n asssize
+    mpforce $n sexylook $n
+  endif
+  if var($n setupchoice == 3)
+    mpprompt $n grointext describe your genitals! ex: 'plump, fat lipped pussy.' or 'impressive cock.' or 'impressive cock and a pussy beneath.'
+    if var($n grointext != '')
+      mpsavevar $n grointext
+      mpechoat $n Canceled.
+    endif
+  endif
+  if var($n setupchoice == 4)
+    if var($n genitalalerts == 1)
+      mpechoat $n Set messages off.
+      mpsetvar $n genitalalerts 0
+      mpsavevar $n genitalalerts
+    else
+      mpechoat $n Set messages on.
+      mpsetvar $n genitalalerts 1
+      mpsavevar $n genitalalerts
+    endif
+  endif
+  if var($n setupchoice == 5)
+    mploadvar $n genitalthirst
+    if var($n genitalthirst == 1)
+      mpechoat $n Set thirst/hunger messages off.
+      mpsetvar $n genitalthirst 0
+      mpsavevar $n genitalthirst
+    else
+      mpechoat $n Set thirst/hunger messages on.
+      mpsetvar $n genitalthirst 1
+      mpsavevar $n genitalthirst
+    endif
+  endif
+  if var($n setupchoice == 6)
+    mploadvar $n sexyasciitoggle
+    if var($n sexyasciitoggle != 1)
+      mpechoat $n Set ascii off
+      mpsetvar $n sexyasciitoggle 1
+      mpsavevar $n sexyasciitoggle
+    else
+      mpechoat $n Set ascii on
+      mpsetvar $n sexyasciitoggle 0
+      mpsavevar $n sexyasciitoggle
+    endif
+  endif
+  if var($n setupchoice == 7)
+  endif
+endif
+return cancel
+~
+
+delay_prog 8000
+if ispc($n)
+	if gstat($n age < 18)
+		return
+	endif
+endif
+mploadvar $n grointext
+mploadvar $n genitalalerts
+mploadvar $n tearstate
+mploadvar $n dirtystate
+mploadvar $n cummystate
+mploadvar $n pubestate
+if var($n genitaltext == '')
+  mpsetvar $n genitaltext groin
+endif
+  if racecat($n != Undead)
+      if var($n tearstate > 15)
+          mpsetvar $n tearstate --
+          mpsavevar $n tearstate
+        if var($n genitalalerts == 1)
+            mpechoat $n Your hurt genitals feel a bit better. You may want to find medication. ^r(Tear: $<$n tearstate>)^N
+        endif
+      endif
+  endif
+  if ispc($n)
+    if racecat($n != Undead)
+      if baseclass($n == Druid)
+        if sex($n == F) or sex($n == A) or sex($n == H)
+          if var($n dirtystate > 25)
+              mpsetvar $t tearstate --
+              mpsetvar $t tearstate --
+              mpsetvar $n cummystate --
+              mpsetvar $n cummystate --
+              mpechoat $n ^g[^GDruidic^g]^N You feel the insects living in and on your $<$n grointext> consume cum and tend to it. ^r(Tear: $<$n tearstate>) (Cum: $<$n cummystate>) (Dirt: $<$n dirtystate>)^N
+          endif
+        endif
+      else
+        if var($n dirtystate > 25)
+            switch %$RANDNUM(10)%
+              case 10
+                mpechoat $n You feel itching on your grime covered genitals! Better get some medication and a shower.
+                mpaffect disease_rabies $n
+              endswitch
+        endif
+      endif
+    endif
+  endif
+  if var($n cummystate > 10)
+    if sex($n == F) or sex($n == A) or sex($n == H)
+    else
+      mpsetvar $n cummystate --
+      mpsetvar $n cummystate --
+    endif
+    mpsetvar $n cummystate --
+    mpsavevar $n cummystate
+    if var($n genitalalerts == 1)
+      mpechoat $n You and your $<$n grointext> feel a bit lighter as some of the cum finally dries off or leaks off. ^r(Cum: $<$n cummystate>)^N
+    endif
+  endif
+  if wornon($n groin all) and var($t clothesstate != 1)
+  else
+    if var($n dirtystate < 20)
+      if sex($n == F) or sex($n == A) or sex($n == H)
+        mpsetvar $n dirtystate ++
+      endif
+      mpsetvar $n dirtystate ++
+      if racecat($n == Undead)
+        mpsetvar $n dirtystate +2
+      endif
+      mpsavevar $n cummystate
+      if var($n genitalalerts == 1)
+        if racecat($n == Undead)
+          mpechoat $n ^#111[^#333Undead^#111] ^#111You and your lifeless $<$n grointext> attract all sorts of insects and rot...
+        endif
+        mpechoat $n You and your $<$n grointext> feels a bit dirtier than before as time passes. ^r(Dirt: $<$n dirtystate>)^N
+      endif
+    endif
+  endif
+  if hastattoo($n nopubes)
+  else
+    if racecat($n != Undead)
+        if var($n pubestate < 25)
+            if sex($n == F) or sex($n == A) or sex($n == H)
+              mpsetvar $n pubestate ++
+            endif
+            if racecat($n == Animal) or racecat($n == Canine) or racecat($n == Feline)
+              mpsetvar $n pubestate ++
+            endif
+            mpsetvar $n pubestate ++
+            mpsavevar $n pubestate
+            if var($n genitalalerts == 1)
+                mpechoat $n Your groin feels stuffier, pubes have grown a bit. ^r(Pubes: $<$n pubesstate>)^N
+            endif
+        endif
+    endif
+  endif
+  if hastattoo($n tactclean)
+    if var($n dirtystate > 0) or var($n cummystate > 0) or var($n tearstate > 0)
+      mpsetvar $n dirtystate -10
+      mpsetvar $n cummystate -10
+      mpsetvar $n tearstate -10
+      if islike($n +DISPOSITION "-ISHIDDEN" "-ISINVISIBLE")
+        switch $%RANDNUM(3)%
+        case 1
+        mpechoat $n ^p[T.Joy]^P $n whips out... something like a toothbrush, spinning it in $s fingers professionally before using it to maintain $s $<$n grointext>.^N
+        case 2
+        mpechoat $n ^p[T.Joy]^P $n whips out a medicinal cream, rubbing it on $s $<$n grointext>.^N
+        case 3
+        mpechoat $n ^p[T.Joy]^P $n looks down and takes care of $s $<$n grointext> carefully.^N
+        endswitch
+      endif
+      mpechoat $n ^r(Pubes: $<$n pubesstate>)%0D(Dirt: $<$n dirtystate>) (Cum: $<$n cummystate>)^N
+    endif
+  endif
+  if var($n genitaltext == groin)
+  mpsetvar $n genitaltext ''
+endif
+~
+
+cnclmsg_prog huh p sexyscore
+if ispc($n)
+	if gstat($n age < 18)
+		mpechoat $n r%0D[N-UI] Requesting score...%0D^rERR: Insufficent age.%0D^N
+		return
+	endif
+endif
+mploadvar $n lastpartner
+mploadvar $n matetimes
+mploadvar $n matedtimes
+mploadvar $n facefucktimes
+mploadvar $n facefuckedtimes
+mploadvar $n buttfucktimes
+mploadvar $n buttfuckedtimes
+mploadvar $n sucktimes
+mploadvar $n suckedtimes
+mpechoat $n ^r%0D[N-UI] Requesting score...%0D%0DLast Partner:$<$n lastpartner>%0DTimes fucked other: $<$n matetimes>%0DTimes fucked by other: $<$n matedtimes>%0DTimes facefucked other: $<$n facefucktimes>%0DTimes facefucked by other: $<$n facefuckedtimes>%0DTimes buttfucked other: $<$n buttfucktimes>%0DTimes buttfucked by other: $<$n buttfuckedtimes>%0DTimes sucked other: $<$n sucktimes>%0DTimes sucked off by other: $<$n suckedtimes>%0D%0DAll score information shared with ^cNM Corp^r as agreed in terms of installation.^N
+return cancel
+~
+
+cnclmsg_prog huh p sexycheck
+if !clan($n == Novamed Corporation)
+mpechoat $n ^r[N-UI] Insufficent Clearance^N
+return cancel
+endif
+mpprompt $n patientname ^r[N-UI] Enter name of patient.^N
+mploadvar $<$n patientname> lastpartner
+mploadvar $<$n patientname> matetimes
+mploadvar $<$n patientname> matedtimes
+mploadvar $<$n patientname> facefucktimes
+mploadvar $<$n patientname> facefuckedtimes
+mploadvar $<$n patientname> buttfucktimes
+mploadvar $<$n patientname> buttfuckedtimes
+mploadvar $<$n patientname> sucktimes
+mploadvar $<$n patientname> suckedtimes
+mpechoat $<$n patientname> ^r%0D[N-UI] Requesting score...%0D%0DLast Partner:$<$<$n patientname> lastpartner>%0DTimes fucked other: $<$<$n patientname> matetimes>%0DTimes fucked by other: $<$<$n patientname> matedtimes>%0DTimes facefucked other: $<$<$n patientname> facefucktimes>%0DTimes facefucked by other: $<$<$n patientname> facefuckedtimes>%0DTimes buttfucked other: $<$<$n patientname> buttfucktimes>%0DTimes buttfucked by other: $<$<$n patientname> buttfuckedtimes>%0DTimes sucked other: $<$<$n patientname> sucktimes>%0DTimes sucked off by other: $<$<$n patientname> suckedtimes>%0D%0DAll score information shared with ^cNM Corp^r as agreed in terms of installation.^N
+return cancel
+~
+
+cnclmsg_prog huh p undo clothes
+mploadvar $n clothesstate
+if var($n clothesstate != 1)
+  if islike($n +DISPOSITION "-ISHIDDEN" "-ISINVISIBLE")
+    mpecho $n moves $s clothes to a revealing position.
+  endif
+  mpsetvar $n clothesstate 1
+  mpsavevar $n clothesstate
+else
+  mpechoat $n Your clothes are already undone.
+endif
+return cancel
+~
+
+cnclmsg_prog huh p redo clothes
+mploadvar $n clothesstate
+if var($n clothesstate == 1)
+  if islike($n +DISPOSITION "-ISHIDDEN" "-ISINVISIBLE")
+    mpecho $n fixes $s clothes.
+  endif
+  mpsetvar $n clothesstate 0
+  mpsavevar $n clothesstate
+else
+  mpechoat $n Your clothes are already in place.
+endif
+return cancel
+~
+
+#tacticaljoy things
+cnclmsg_prog huh p tactpube
+if class($n == TacticalJoy)
+  if !hastattoo($n nopubes)
+  mptattoo $n nopubes
+  mpechoat $n You will now maintain your pube length periodically, making sure it does not grow.
+  else
+  mptattoo $n -nopubes
+  mpechoat $n You will now no longer maintain your pube length, letting it grow.
+  endif
+return cancel
+endif
+~
+
+cnclmsg_prog huh p tactclean
+if class($n == TacticalJoy)
+  if !hastattoo($n tactclean)
+  mptattoo $n tactclean
+  mpechoat $n You will now clean your genitals periodically.
+  else
+  mptattoo $n -tactclean
+  mpechoat $n You will now no longer clean your genitals periodically.
+  endif
+return cancel
+endif
+~

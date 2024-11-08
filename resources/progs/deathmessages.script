@@ -1,4 +1,23 @@
 kill_prog
+##child check to hopefully prevent the script
+if ispc($n)
+	if hastattoo($n underage)
+		mpecho $n is below 18 years old and could not participate in this.
+		return
+	endif
+endif
+if ispc($t)
+	if hastattoo($t underage)
+		mpecho $t is below 18 years old and could not participate in this.
+		return
+	endif
+endif
+if isname($n child)
+return
+endif
+if isname($t child)
+return
+endif
 ## npc to pc
 if isnpc($n)
 mpsetvar $n snufftoggle 1
@@ -80,9 +99,9 @@ if sex($n == M) or sex($n == O) or sex($n == U)
 if sex($t == M) or sex($t == O) or sex($t == U)
 switch $%RANDNUM(4)%
 case 1
-mpecho ^r$t ^rfalls on the ground too wounded to fight. $n^r jumps on $M to immediately fill $M mouth full of cock right down to the throat and begin to hump rapidly ballsdeep, smacking his balls straight on $M eyes over and over as $n^r pumps load after load into the throat of the bleeding out and choking $n^r which is now passed out and still being throat fucked, soon $t stops breathing and $n^r eventually drains his balls fully into the throat and pops out.^N
+mpecho ^r$t ^rfalls on the ground too wounded to fight. $n^r jumps on $M to immediately fill $M mouth full of cock right down to the throat and begin to hump rapidly ballsdeep, smacking his balls straight on $M eyes over and over as $n^r pumps load after load into the throat of the bleeding out and choking $t^r which is now passed out and still being throat fucked, soon $t stops breathing and $n^r eventually drains his balls fully into the throat and pops out.^N
 case 2
-mpecho ^r$n ^rleaps and clings on $t from behind as he inserts his massive cock in $S ass and rapidly pumps, $t tries to hurrily sway away $n^r but ends up slumping down due to blood loss to $M wounds, laying on $S side as $E gets buttfucked rapidly by the large cock ^p*PAP* *PLAP* *PLOP*^r. Finally after about three nuts into the ass $t drained his balls in the now-motionless $n^r and slips his cock out with a loud pop and cum gush.^N
+mpecho ^r$n ^rleaps and clings on $t from behind as he inserts his massive cock in $S ass and rapidly pumps, $t tries to hurrily sway away $n^r but ends up slumping down due to blood loss to $M wounds, laying on $M side as $E gets buttfucked rapidly by the large cock ^p*PAP* *PLAP* *PLOP*^r. Finally after about three nuts into the ass $n drained his balls in the now-motionless $n^r and slips his cock out with a loud pop and cum gush.^N
 case 3
 mpecho ^r$t ^rslumps on the ground too wounded to fight, $n^r leaps on $t's face, inserting it's large cock into $E eye which causes $t to scream loudly while $n^r begins to pump into the bloody hole as $t squirms and screams, which is soon stopped as $t falls limp, $n^r keeps pumping his fresh new hole for a while before busting a nut into it and pulling out, still dripping cum from the tip, moving to the other one... Once done busting a second load to the other 'hole' it hops off.^N
 case 4
@@ -92,9 +111,9 @@ else
 if sex($t == F) or sex($t == A) or sex($t == H)
 switch $%RANDNUM(5)%
 case 1
-mpecho ^r$t ^rfalls on the ground too wounded to fight. $n^r jumps on $M to immediately fill $M mouth full of cock right down to the throat and begin to hump rapidly ballsdeep, smacking his balls straight on $E eyes over and over as $n^r pumps load after load into the throat of the bleeding out and choking $n^r which is now passed out and still being throat fucked, soon $t stops breathing and $n^r eventually drains his balls fully into the throat and pops out.^N
+mpecho ^r$t ^rfalls on the ground too wounded to fight. $n^r jumps on $M to immediately fill $M mouth full of cock right down to the throat and begin to hump rapidly ballsdeep, smacking his balls straight on $M eyes over and over as $n^r pumps load after load into the throat of the bleeding out and choking $t^r which is now passed out and still being throat fucked, soon $t stops breathing and $n^r eventually drains his balls fully into the throat and pops out.^N
 case 2
-mpecho ^r$n ^rleaps and clings on $t from behind as he inserts his massive cock in $S ass and rapidly pumps, $t tries to hurrily sway away $n^r but ends up slumping down due to blood loss to $M wounds, laying on $S side as $E gets buttfucked rapidly by the large cock ^p*PAP* *PLAP* *PLOP*^r. Finally after about three nuts into the ass $t drained his balls in the now-motionless $n^r and slips his cock out with a loud pop and cum gush.^N
+mpecho ^r$n ^rleaps and clings on $t from behind as he inserts his massive cock in $S ass and rapidly pumps, $t tries to hurrily sway away $n^r but ends up slumping down due to blood loss to $M wounds, laying on $M side as $E gets buttfucked rapidly by the large cock ^p*PAP* *PLAP* *PLOP*^r. Finally after about three nuts into the ass $n drained his balls in the now-motionless $n^r and slips his cock out with a loud pop and cum gush.^N
 case 3
 mpecho ^r$n ^rleaps on $t and clings on $S groin as $t fall too weak to fight and bleeding out. $n^r rapidly pumps $t's pussy with it's large cock while $t slowly passes out. Soon after $n^r blows it's first fat load into $t's pussy but with no stop, keeps going, balls slapping on $t rapidly as $E slowly loses blood, $n^r makes sure to keep blowing load after load, once $t is drained empty, $n^r is motionless.^N
 case 4
@@ -122,7 +141,7 @@ endif
 endif
 endif
 ## desert nomad cannibals
-if isname($n '^#111a nak^#211ed h^#111um^#211an ^#111mal^#211e no^#111mad^N') or isname($n '^#111a nak^#211ed h^#111um^#211an ^#111mal^#211e no^#111mad^N') or isname($n '^#105a nak^#205ed resu^#105rgent^#205is male no^#105mad^N') or isname($n '^#105a nak^#205ed resu^#105rgent^#205is female no^#105mad^N') or isname($n '^#105a nak^#205ed ^wbon^We-armo^wred^N ^#205resu^#105rgent^#205is male no^#105mad^N')
+if isname($n cannibal)
 if sex($n == M) or sex($n == O) or sex($n == U)
 if sex($t == M) or sex($t == O) or sex($t == U)
 switch $%RANDNUM(2)%
@@ -199,8 +218,8 @@ endif
 endif
 endif
 endif
-## insect cave mobs
-if isname($n 'A filthy giant insect') or isname($n 'a Giant Insect') or isname($n 'a larger giant insect') or isname($n a giant insect queen)
+## giant insects
+if race($t == GiantInsect)
 if sex($n == M) or sex($n == O) or sex($n == U)
 if sex($t == M) or sex($t == O) or sex($t == U)
 switch $%RANDNUM(4)%
@@ -248,6 +267,7 @@ endif
 endif
 endif
 endif
+
 ## cannibal boss Daakh
 if isname($n 'Daakh')
 	if sex($t == F) or sex($t == A) or sex($t == H)
@@ -270,6 +290,7 @@ if isname($n 'Daakh')
 		endif
 	endif
 endif
+
 ## heal on fuckkill
 MPSETVAR $n sexhealLevel $%Level($t)%
 mpsetvar $n sexheallevelmobkill $%MATH(1?20 + $<$n sexheallevel>*2)%
@@ -285,6 +306,7 @@ ENDIF
 mpecho ^r*FWOP* *PLAP* *PLOP* $n ^rheals $sself on $t ^rfor ^g($<$n sexheallevelmobkill>)^r! *PLOP* *PLAP* *FAP*^N
 
 ## Area checks for capture ends
+##world tree roots
 if inarea($t == 'World Tree Roots')
 mptransfer $t 'World Tree Roots#20'
 mpalarm 1 mpgset $t NAME 'A cache of $t s items.'
@@ -300,9 +322,20 @@ endif
 ~
 
 kill_prog
-##i fucking hate myself for not making this tabbed properly long ago, as seen above.
 ##if you must do a more specific deathmessage, insert it above all of the others and copy the heal part, then add a RETURN to the end to prevent doubling.
 ##player sus deathmessages against enemies
+if ispc($n)
+	if hastattoo($n underage)
+		mpecho $n is below 18 years old and could not participate in this.
+		return
+	endif
+endif
+if ispc($t)
+	if hastattoo($t underage)
+		mpecho $t is below 18 years old and could not participate in this.
+		return
+	endif
+endif
 if ispc($n)
 	mploadvar $n snufftoggle
 	if var($n snufftoggle == 1)
@@ -375,7 +408,7 @@ if ispc($n)
 							endswitch
 						endif
 						## if the player is an baseclass bard
-						if baseclass($n == bard)
+						if baseclass($n == Bard)
 							switch $%RANDNUM(2)%
 								case 1
 									mpecho ''
@@ -453,7 +486,7 @@ if ispc($n)
 								endswitch
 							endif
 							## if the player is an baseclass bard
-							if baseclass($n == bard)
+							if baseclass($n == Bard)
 								switch $%RANDNUM(2)%
 									case 1
 										mpecho ''
@@ -534,7 +567,7 @@ if ispc($n)
 								endswitch
 							endif
 							## if the player is an baseclass bard
-							if baseclass($n == bard)
+							if baseclass($n == Bard)
 								switch $%RANDNUM(2)%
 									case 1
 										mpecho ''
@@ -612,7 +645,7 @@ if ispc($n)
 									endswitch
 								endif
 								## if the player is an baseclass bard
-								if baseclass($n == bard)
+								if baseclass($n == Bard)
 									switch $%RANDNUM(2)%
 										case 1
 											mpecho ''
@@ -636,11 +669,17 @@ if ispc($n)
 		endif
 ## heal on fuckkill
 MPSETVAR $n sexhealLevel $%Level($t)%
+mpsetvar $n soundlist '*PLAP* *PLOP* *SLAP* *SLICK* *GRIND*'
 if class($n 'Tacticaljoy')
 mpsetvar $n sexheallevelmobkill $%MATH(1?20 + $<$n sexheallevel>*2)%
 mpecho ^p$n gets double juice out of this one for being a specialist!^N
 else
 mpsetvar $n sexheallevelmobkill $%MATH(1?20 + $<$n sexheallevel>)%
+endif
+if isable($n 'skill_soulstealing')
+mpsetvar $n necrodamage $%MATH(1?20 + $<$n sexheallevel>)%
+mpecho ^b$n siphons ^r($<$n necrodamage>)^b lifeforce from $t!^N
+mpsetvar sexheallevelmobkill $%MATH($<$n necrodamage> + $<$n sexheallevelmobkill>)%
 endif
 MPSETVAR $n MaxHits $%GSTAT($n BASEHITS)%
 IF GSTAT($n HITS < $<$n MaxHits>)
@@ -651,7 +690,7 @@ IF GSTAT($n HITS < $<$n MaxHits>)
     ENDIF
     MPGSET $n HITS $%VAR($n HitsCalc)%
 ENDIF
-mpecho ^r*FWOP* *PLAP* *PLOP* $n ^rheals $sself on $t ^rfor ^g($<$n sexheallevelmobkill>)^r! *PLOP* *PLAP* *FAP*^N
+mpecho ^r<$n soundlist>.$%RAND0NUM(5)% <$n soundlist>.$%RAND0NUM(5)% <$n soundlist>.$%RAND0NUM(5)% $n ^rheals $sself on $t ^rfor ^g($<$n sexheallevelmobkill>)^r! <$n soundlist>.$%RAND0NUM(5)% <$n soundlist>.$%RAND0NUM(5)% <$n soundlist>.$%RAND0NUM(5)%^N
 else
 endif
 ~

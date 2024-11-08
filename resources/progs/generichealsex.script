@@ -1,4 +1,36 @@
 casting_prog p skill_healsex
+if ispc($n)
+	if hastattoo($n underage)
+		mpecho $n is below 18 years old and could not participate in this.
+		mpunaffect $n skill_healsex
+		mpunaffect $t skill_healsex
+		return
+	endif
+endif
+if ispc($t)
+	if hastattoo($t underage)
+		mpecho $t is below 18 years old and could not participate in this.
+		mpunaffect $n skill_healsex
+		mpunaffect $t skill_healsex
+		return
+	endif
+endif
+if isname($n child)
+return
+endif
+if isname($t child)
+return
+endif
+mpsetvar $n soundlist '*PLAP* *PLOP* *SLAP* *SLICK* *GRIND*'
+if sex($n == M) or sex($n == O) or sex($n == U)
+	mpsetvar $n genitallist 'cock penis dong schlong rod'
+else
+	if sex($n == F) or sex($n == A) or sex($n == H)
+		mpsetvar $n genitallist 'pussy cunt vagina kitty box'
+	endif
+endif
+mpsetvar $n actionwordlist 'fucks pushes grinds thrusts slams'
+mpsetvar $n severitywordlist 'thoroughly roughly deeply quickly hastily'
 if var($n havingsex != 1)
 mpsetvar $n havingsex 1
 mpalarm 11 mpsetvar $n havingsex 0
@@ -6,20 +38,9 @@ if islike($t -names "+$n")
 mpechoat $n You realize you can't actually fuck yourself.
 mpcallfunc ending
 else
-if wornon($n legs all)
-mpforce $n remove all.legs
-endif
-if wornon($n groin all)
-mpforce $n remove all.groin
-endif
-if wornon($t legs all)
-mpforce $t remove all.legs
-endif
-if wornon($t groin all)
-mpforce $t remove all.groin
-endif
 mpsetvar $n fuckrounds 0
-MPSETVAR $n sexhealLevel $%Level($n)%
+MPSETVAR $n playerLevel $%Level($n)%
+MPSETVAR $n sexheallevel $%MATH(5?25 + (25?$<$n playerlevel>) < 1)%
 mpsetvar $n sexheallevelplus $%MATH(5?50 + $<$n sexheallevel>)%
 mpsetvar $n sexheallevelhalf $%MATH(1?20 + $<$n sexheallevel>/4)%
 if isable($n Skill_Sexhealing)
@@ -42,21 +63,16 @@ return
 function_prog midroundcheck
 if ishere($t)
 if var($n fuckrounds < 10)
-if wornon($n legs all)
-mpforce $n remove all.legs
-endif
-if wornon($n groin all)
-mpforce $n remove all.groin
-endif
-if wornon($t legs all)
-mpforce $t remove all.legs
-endif
-if wornon($t groin all)
-mpforce $t remove all.groin
-endif
+mploadvar $n dirtystate
+mpsetvar $n dirtystate ++
+mpsavevar $n dirtystate
+mploadvar $t dirtystate
+mpsetvar $t dirtystate ++
+mpsavevar $t dirtystate
 mpsetvar $n fuckrounds +1
 mpecho $<$n fuckrounds>/10 to orgasm.
-MPSETVAR $n sexhealLevel $%Level($n)%
+MPSETVAR $n playerLevel $%Level($n)%
+MPSETVAR $n sexheallevel $%MATH(5?25 + (25?$<$n playerlevel>) < 1)%
 mpsetvar $n sexheallevelplus $%MATH(5?50 + $<$n sexheallevel>)%
 mpsetvar $n sexheallevelhalf $%MATH(1?20 + $<$n sexheallevel>/4)%
 if isable($n Skill_Sexhealing)
@@ -66,6 +82,12 @@ mpalarm 1 mpcallfunc nonsexhealer
 endif
 else
 mpecho ^w$n and $t ^pcums!^N
+mploadvar $t cummystate
+mpsetvar $t cummystate ++
+mpsavevar $t cummystate
+mploadvar $n cummystate
+mpsetvar $n cummystate ++
+mpsavevar $n cummystate
 if sex($n == M) or sex($n == O) or sex($n == U)
  if sex($t == F) or sex($t == A) or sex($t == H)
  if CLASS($n == TacticalJoy)
@@ -140,6 +162,13 @@ endif
 ~
 
 function_prog sexhealer
+if isable($n 'Skill_undeadhealsex') or isable($t 'Skill_undeadhealsex')
+if racecat($t == UNDEAD) or racecat($n == UNDEAD)
+mpsetvar $n necrodamage $%MATH(1?20 + $<$n sexheallevelhalf>)%
+mpecho ^b$n's unholy $<$n actionwordlist>.$%RAND0NUM(5)% against $t mends ^c($<$n necrodamage>)^b their form.^N
+mpsetvar sexheallevel $%MATH($<$n necrodamage> + $<$n sexheallevel>)%
+endif
+endif
 MPSETVAR $t MaxHits $%GSTAT($t BASEHITS)%
 IF GSTAT($t HITS < $<$t MaxHits>)
     MPSETVAR $t CurHits $%GSTAT($t HITS)%
@@ -168,11 +197,18 @@ IF GSTAT($n MOVE <= 50)
             MPCALLFUNC ending
         ENDIF
 ENDIF
-mpecho ^p*FWOP* *PLAP* *PLOP* $n smacks $m hips against $t, healing $S for ^g($<$n sexheallevelplus>)^p during the sexual healing! *PLOP* *PLAP* *FAP*^N
+mpecho ^p$<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)% $n $<$n severitywordlist>.$%RAND0NUM(5)% $<$n actionwordlist>.$%RAND0NUM(5)% $s $<$n genitallist>.$%RAND0NUM(5)% against $t, healing $S for ^g($<$n sexheallevelplus>)^p during the sexual healing! $<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)%^N
 mpcallfunc midroundcheck
 ~
 
 function_prog nonsexhealer
+if isable($n 'Skill_undeadhealsex') or isable($t 'Skill_undeadhealsex')
+if racecat($t == UNDEAD) or racecat($n == UNDEAD)
+mpsetvar $n necrodamage $%MATH(1?20 + $<$n sexheallevelhalf>)%
+mpecho ^b$n's unholy $<$n actionwordlist>.$%RAND0NUM(5)% against $t mends ^c($<$n necrodamage>)^b their form.^N
+mpsetvar sexheallevel $%MATH($<$n necrodamage> + $<$n sexheallevel>)%
+endif
+endif
 MPSETVAR $t MaxHits $%GSTAT($t BASEHITS)%
 IF GSTAT($t HITS < $<$t MaxHits>)
     MPSETVAR $t CurHits $%GSTAT($t Hits)%
@@ -200,7 +236,7 @@ IF GSTAT($n MOVE <= 50)
             MPCALLFUNC ending
         ENDIF
 ENDIF
-mpecho ^p*FWOP* *PLAP* *PLOP* $n smacks $m hips against $t, healing $S for ^g($<$n sexheallevelhalf>)^p during the sexual healing! *PLOP* *PLAP* *FAP*^N
+mpecho ^p$<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)% $n $<$n severitywordlist>.$%RAND0NUM(5)% $<$n actionwordlist>.$%RAND0NUM(5)% $s $<$n genitallist>.$%RAND0NUM(5)% against $t, healing $S for ^g($<$n sexheallevel>)^p during the sexual healing! $<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)%^N
 mpcallfunc midroundcheck
 ~
 
@@ -214,6 +250,11 @@ mpsetvar $n havingsex 0
 exit_prog 100
 if ishere($t)
 else
-function_prog ending
+mpcallfunc ending
 endif
+~
+
+cnclmsg_prog huh p stop
+mpcallfunc ending
+return cancel
 ~

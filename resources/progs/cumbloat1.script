@@ -1,0 +1,45 @@
+delay_prog 30 40
+mpoloadroom fromfile wankitems.cmare cum
+mpechoat $n Cum leaks between your legs, creating $b.
+~
+
+entry_prog 25
+if islike($n +DISPOSITION "-ISHIDDEN" "-ISINVISIBLE")
+mpechoaround $n $n has a slightly bloated belly that sloshes a bit as they move...
+endif
+~
+
+delay_prog 4 4
+mpsetvar $n absorbheal $%RANDNUM(25)%
+MPSETVAR $n MaxHits $%GSTAT($n MAXHITS)%
+IF GSTAT($n HITS < $<$n MaxHits>)
+    mpechoat $n ^gYou heal ($<$n absorbheal>) from the cum absorbed in your body!
+    MPSETVAR $n CurHits $%GSTAT($n Hits)%
+    MPSETVAR $n HitsCalc $%MATH($<$n CurHits> + $<$n absorbheal> < $<$n MaxHits>)%
+    IF GSTAT($n BASEHITS < $<$n HitsCalc>)
+        MPSETVAR $n HitsCalc $<$n MaxHits>
+    ENDIF
+    MPGSET $n HITS $%VAR($n HitsCalc)%
+ENDIF
+mpsetvar $n absorbmana $%RANDNUM(25)%
+MPSETVAR $n MaxMANA $%GSTAT($n MAXMANA)%
+IF GSTAT($n MANA < $<$n MaxMANA>)
+    MPECHOAT $n ^CYou recover ($<$n absorbmana>) mana from the cum absorbed in your body!
+    MPSETVAR $n CurMANA $%GSTAT($n MANA)%
+    MPSETVAR $n MANACalc $%MATH($<$n CurMANA> + $<$n absorbmana> < $<$n MaxMANA>)%
+    IF GSTAT($n BASEMANA < $<$n MANACalc>)
+        MPSETVAR $n MANACalc $<$n MaxMANA>
+    ENDIF
+    MPGSET $n MANA $%VAR($n MANACalc)%
+ENDIF
+~
+
+delay_prog 70 80
+mpunaffect $n Sexual_Cumbloat1
+mpechoat $n You feel your belly shrinking down as cum leaves it or it is absorbed, returning to it`s empty state, what a relief!
+~
+
+cnclmsg_prog huh p deflate
+mpechoat $n There is nothing you can do for this less cum, you'll have to let it leak.
+return cancel
+~

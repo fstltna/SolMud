@@ -1,4 +1,13 @@
 cnclmsg_prog MOUNT mount
+if ispc($n)
+	if hastattoo($n underage)
+        mpchannel !wizinfo $n was less than 18 years old when they tried to enter a healing station. Investigate.
+		mpecho $n is below 18 years old and could not participate in this.
+        say What the fuck? Get off. You are too young!
+        mpforce $n stand
+		return
+	endif
+endif
 mpaffect property:Prop_RideEnabler $i healstationriding
 ##mount and initiation
 if sex($n == M) or sex($n == O) or sex($n == U)
@@ -13,18 +22,15 @@ else
 endif
 mpsetvar $i fucks 0
 if hitprcnt($i >= 5)
-if wornon($n legs all)
-mpforce $n remove all.legs
-endif
-if wornon($n groin all)
-mpforce $n remove all.groin
-endif
-if wornon($t legs all)
-mpforce $t remove all.legs
-endif
-if wornon($t groin all)
-mpforce $t remove all.groin
-endif
+mploadvar $n tearstate
+mploadvar $n dirtystate
+mploadvar $n cummystate
+mpsetvar $n tearstate ++
+mpsetvar $n dirtystate ++
+mpsetvar $n cummystate ++
+mpsavevar $n tearstate
+mpsavevar $n dirtystate
+mpsavevar $n cummystate
 mpalarm 1 MPCALLFUNC SEXING
 else
 if isable($n Skill_SloppySeconds)
@@ -249,6 +255,15 @@ if sex($n == F) or sex($n == A) or sex($n == H)
     endif
    else
    ##end by cumming
+  mploadvar $n tearstate
+  mploadvar $n dirtystate
+  mploadvar $n cummystate
+  mpsetvar $n tearstate ++
+  mpsetvar $n dirtystate ++
+  mpsetvar $n cummystate ++
+  mpsavevar $n tearstate
+  mpsavevar $n dirtystate
+  mpsavevar $n cummystate
    mpalarm 1 mpforce $i mate $n
    mpalarm 1 mpecho ^#401$i begins to cum together with $n, getting pumped good and full of cum before $n wipe $i's tip around $m cunny and that general area before letting go of the junk, a job well done.
 if sex($n == M) or sex($n == O) or sex($n == U)
@@ -327,6 +342,15 @@ if sex($n == M) or sex($n == O) or sex($n == U)
     endif
    else
    ##end by cumming
+  mploadvar $n tearstate
+  mploadvar $n dirtystate
+  mploadvar $n cummystate
+  mpsetvar $n tearstate ++
+  mpsetvar $n dirtystate ++
+  mpsetvar $n cummystate ++
+  mpsavevar $n tearstate
+  mpsavevar $n dirtystate
+  mpsavevar $n cummystate
    mpalarm 1 mpecho ^#401$n begins to cum into $i, pumping it good and full of cum before wiping $m tip around the hole and that general area before packing the junk, a job well done.
    mpalarm 1 mpecho $n ^#555gain ^#04520 ^#555XP for cumming!
    mpalarm 1 mpforce $n dismount

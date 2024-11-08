@@ -14,7 +14,7 @@ cnclmsg_prog RECALL all
 mpechoat $n ^R[CYBERPSYCHOSIS] NO.^N
 return cancel
 ~
-cnclmsg_prog SIT all
+cnclmsg_prog QUIT all
 mpechoat $n ^R[CYBERPSYCHOSIS] NO.^N
 return cancel
 ~
@@ -27,6 +27,18 @@ return cancel
 ~
 
 once_prog
-mpbehave mobhunter $n min=1 max=1 chance=100 -LEVEL +>30
-mpbehave aggressive $n mobkill misbehave -LEVEL +>30
+mpbehave mobhunter $n min=600 max=1200 chance=100 +ALL -PLAYER 
+~
+
+delay_prog 250 500
+mpechoat '$n' ^R[CYBERPSYCHOSIS] YOU STRUGGLE, TRYING TO MAKE SENSE OF EVERYTHING.^N
+switch $%RANDNUM(10)%
+case 1
+mpechoat '$n' ^G[CYBERPSYCHOSIS] Your proper consciousness and self control returns for a brief moment, better do something about yourself fast.^N
+mploadvar '$n' psychometer
+mpsetvar '$n' psychometer 6
+mpsavevar '$n' psychometer
+mpunaffect '$n' Disease_Cyberpsychosis
+mpunbehave mobhunter '$n'
+endswitch
 ~

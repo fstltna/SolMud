@@ -7,9 +7,9 @@ cnclmsg_prog huh p SPEED_BIRTH
 if affected($n pregnancy)
 mpecho $n lays into a machine which whirrs up to life, machine's door closes and a green glow is emitted by the belly area, which.. begins to rapidly grow and grow!
     if value($n 'CREDIT' > 5000)
-        mpmoney -5000 credit
+        mpmoney -5000 credits
         for $0 = 1 to 10
-            mpalarm 1 mpaffect speed_birth $n
+            mpalarm 1 mpaffect chant_speedbirth $n
         next
     else
     mpechoat $n You don't have enough money for this service.
@@ -24,7 +24,10 @@ cnclmsg_prog huh p STORE_EMBRYO
 mploadvar $n storedembryos
 if affected($n pregnancy)
 mpecho $n lays into a machine which whirrs up to life, machine's door closes and the glass door dims as the surgery performs automatically...
-mpprompt $n fathername ^ga console at the wall^N: Enter the name of the father, please. (Since scripting is limited, do not exploit this and be honest about the father.)
+mpprompt $n fathername ^ga console at the wall^N: Enter the name of the father, please. (Leave blank if not here.)
+    if var($n fathername == '')
+        mpsetvar $n fathername $n
+    endif
     if ishere($<$n fathername>)
         mpsetvar $n fatherrace $%race($<$n fathername>)%
         mpsetvar $n motherrace $%race($n)%
@@ -39,14 +42,8 @@ mpprompt $n embryoname ^ga console at the wall^N: Name this embryo.
         return cancel
         return
     endif
-    if var($n fathername != $n)
-    else
-        mpechoat $n You can't be the mother AND the father.
-        return cancel
-        return
-    endif
     if value($n 'CREDIT' > 1500)
-        mpmoney -1500 credit
+        mpmoney -1500 credits
         mpunaffect $n pregnancy
         mpsetvar $n storedembryos ++
         mpsavevar $n storedembryos
@@ -101,12 +98,6 @@ mpprompt $n embryoname2 ^ga console at the wall^N: Enter the name of the embryo.
         return cancel
         return
     endif
-    if var($n embryofather != $n)
-    else
-        mpechoat $n You can't be the mother AND the father. How the fuck did you manage this?
-        return cancel
-        return
-    endif
     if var($n embryofather != '')
         mpecho ^ga console at the wall^N: $<$n embryoname>, $n, $<$n embryofather>. A $<$n embryorace>.
     else
@@ -115,8 +106,8 @@ mpprompt $n embryoname2 ^ga console at the wall^N: Enter the name of the embryo.
         return
     endif
     if value($n 'CREDIT' > 8000)
-        mpmoney -8000 credit
-        mpaffect pregnancy $n 1/1/$<$n $<$n embryofather>/$<$n embryorace>
+        mpmoney -8000 credits
+        mpaffect pregnancy $n 1/1/$<$n embryofather>/$<$n embryorace>
         mpsetvar $n $<$n embryoname> ''
         mpsetvar $n $<$n embryofather> ''
         mpsetvar $n $<$n embryorace> ''

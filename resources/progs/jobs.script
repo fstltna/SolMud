@@ -7,7 +7,7 @@ mpsetvar $i profjobmoney 150
 mpsetvar $i profjobexp 150
 // actual script below
 if isname('$i' 'a lost citizen')
-if clan('$n' in 'Phantom City Justice Force')
+if clan('$n' == 'Phantom City Justice Force')
 mpecho $n swiftly kills the insect and saves the poor breeder, reporting the incident to PJF in <S-H?S-HER> implant. ^P[^pProfession Bonus^P]^N ^C[^cSuccess^C]^N
 mpmoney $n +$<'$i' profjobmoney> credit
 mpechoat $n You earned ^g$<'$i' profjobmoney>c^N.
@@ -23,14 +23,14 @@ endif
 return cancel
 ~
 
-//ntc crime scene job
 cnclmsg_prog HUH p investigate
-mpsetvar $i jobmoney 250
-mpsetvar $i jobexp 150
+//ntc crime scene job
+mpsetvar $i jobmoney 500
+mpsetvar $i jobexp 200
 if isname('$i' 'a crime scene')
-if clan('$n' in 'NineTails Corporation')
+if clan('$n' == 'NineTails Corporation')
 mpecho $n approaches the crime scene and passes through the holo-tape covering the scene. $n begins to investigate the crime scene and take photos and notes of everything and goes around requesting camera footages from nearby establishments, eventually getting done and leaving. ^C[^cSuccess^C]^N
-mpechoat $n You earned ^g$<$i jobmoney>c^N.
+mpechoat $n You earned ^g$<$i jobmoney>c^N and ^c$<$i jobexp>XP^N.
 mpmoney $n +$<$i jobmoney> credit
 mpexp $n $<'$i jobexp>
 mpjunk $i
@@ -39,4 +39,58 @@ mpechoat $n That is not your job to do.
 endif
 endif
 return cancel
+~
+
+cnclmsg_prog HUH p repair
+//sewer job
+mpsetvar $i jobmoney 250
+mpsetvar $i jobexp 150
+if isname('$i' 'a broken pump')
+mpecho $n $n approaches the pump and starts to figure out what is wrong with it, pulling out some tools and after quite some time they are finished repairing, the city transfers some funds to their account for this. ^C[^cSuccess^C]^N
+mpechoat $n You earned ^g$<$i jobmoney>c^N and ^c$<$i jobexp>XP^N.
+mpmoney $n +$<$i jobmoney> credit
+mpexp $n $<'$i jobexp>
+mpjunk $i
+endif
+return cancel
+~
+
+cnclmsg_prog HUH p service
+mpsetvar $i jobmoney 300
+mpsetvar $i jobexp 100
+if isname('$i' 'a hungry customer')
+mpecho $n goes to $i and takes their order before relaying the order to the kitchen, after a little while $n brings the ordered items and sets them down for $i. ^C[^cSuccess^C]^N
+mpechoat $n You earned ^g$<$i jobmoney>c^N and ^c$<$i jobexp>XP^N.
+mpmoney $n +$<$i jobmoney> credit
+mpexp $n $<'$i jobexp>
+mpjunk $i
+endif
+return cancel
+~
+
+cnclmsg_prog HUH p poledance
+    mpsetvar $i jobmoney 400
+    mpsetvar $i jobexp 150
+    if isname('$i' 'a crowd') and gstat('$i' secret == poledance)
+        if islike($n +WORNON -TORSO -BODY -GROIN)
+            mpsetvar $i jobmoney 800
+            mpsetvar $i jobexp 300
+            mpecho $n gets on the stage and grabs the pole, the crowd cheers as $n starts their dance while ^pnaked^?, the crowd tosses credsticks once in a while. After the dance is done #n collects the money on the ground and leaves the stage. ^C[^cSuccess^C]^N
+            mpechoat $n You earned ^g$<$i jobmoney>c^N and ^c$<$i jobexp>XP^N.
+            mpmoney $n +$<$i jobmoney> credit
+            mpexp $n $<'$i jobexp>
+            mpjunk $i
+        else
+            mpecho $n gets on the stage and grabs the pole, the crowd cheers as $n starts their dance while the crowd tosses credsticks once in a while. After the dance is done #n collects the money on the ground and leaves the stage. ^C[^cSuccess^C]^N
+            mpechoat $n You earned ^g$<$i jobmoney>c^N and ^c$<$i jobexp>XP^N.
+            mpmoney $n +$<$i jobmoney> credit
+            mpexp $n $<'$i jobexp>
+            mpjunk $i
+        endif
+    endif
+    return cancel
+~
+
+once_prog
+mpecho looks like there is work to be done here again.
 ~

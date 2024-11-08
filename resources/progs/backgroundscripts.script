@@ -1,0 +1,755 @@
+once_prog
+if ispc($i)
+if gstat($i age < 18) and !hastattoo($n underage)
+mpechoat $i If your character underage remember to do '^ctoggle underage^N' to protect them from things that are inappropriate for their age, or use it to toggle it off if you are no longer underage. This is not fully automatic due problems with polymorph or similiar shapeshifs. ^rKeep in mind this can not protect your character from everything, use your common sense and admin help if needed.^N
+endif
+else
+mptattoo $i -underage
+endif
+~
+
+social_prog mate
+if hastattoo($n mating) or hastattoo($t mating)
+else
+mptattoo $t '1 mating'
+mptattoo $n '1 mating'
+if sex($n == M) or sex($n == O) or sex($n == U) or sex($n == H)
+if affected($n chant_strikebarren)
+return
+endif
+  if islike($n -TATTOO +JUSTCAME)
+    mpechoat $n You fuck $t but you need more time to generate a belly-filling load again.
+    mpechoaround $n $n's balls don't look like they can unload another belly-expanding load right now.
+  else
+    mptattoo $n '5 Justcame'
+    mpalarm 5 mpechoat $n You feel like your balls have enough cum to fill someone up again.
+    mpcallfunc cumtime
+    mploadvar $t cummystate
+    mpsetvar $t cummystate ++
+    mpsavevar $t cummystate
+    mploadvar $t tearstate
+    mpsetvar $t tearstate ++
+    mpsavevar $t tearstate
+    mploadvar $t dirtystate
+    mpsetvar $t dirtystate ++
+    mpsavevar $t dirtystate
+    mploadvar $t matedtimes
+    mpsetvar $t matedtimes ++
+    mpsavevar $t matedtimes
+    mploadvar $n matetimes
+    mpsetvar $n matetimes ++
+    mpsavevar $n matetimes
+  endif
+endif
+if sex($t == M) or sex($t == O) or sex($t == U)
+if affected($t chant_strikebarren)
+return
+endif
+  if islike($t -TATTOO +JUSTCAME)
+    mpechoat $t You fuck $n but you need more time to generate a belly-filling load again.
+    mpechoaround $t $t's balls don't look like they can unload another belly-expanding load right now.
+  else
+    mptattoo $t '5 Justcame'
+    mpalarm 5 mpechoat $t You feel like your balls have enough cum to fill someone up again.
+    mpcallfunc cumtime
+    mploadvar $n cummystate
+    mpsetvar $n cummystate ++
+    mpsavevar $n cummystate
+    mploadvar $n tearstate
+    mpsetvar $n tearstate ++
+    mpsavevar $n tearstate
+    mploadvar $n dirtystate
+    mpsetvar $n dirtystate ++
+    mpsavevar $n dirtystate
+    mploadvar $n matedtimes
+    mpsetvar $n matedtimes ++
+    mpsavevar $n matedtimes
+    mploadvar $t matetimes
+    mpsetvar $t matetimes ++
+    mpsavevar $t matetimes
+  endif
+endif
+endif
+~
+
+social_prog buttfuck
+if hastattoo($n mating) or hastattoo($t mating)
+else
+mptattoo $t '1 mating'
+mptattoo $n '1 mating'
+if sex($n == M) or sex($n == O) or sex($n == U) or sex($n == H)
+if affected($n chant_strikebarren)
+return
+endif
+  if islike($n -TATTOO +JUSTCAME)
+    mpechoat $n You fuck $t but you need more time to generate a belly-filling load again.
+    mpechoaround $n $n's balls don't look like they can unload another belly-expanding load right now.
+  else
+    mptattoo $n '5 Justcame'
+    mpalarm 5 mpechoat $n You feel like your balls have enough cum to fill someone up again.
+    mpcallfunc cumtime
+    mploadvar $t cummystate
+    mpsetvar $t cummystate ++
+    mpsavevar $t cummystate
+    mploadvar $t tearstate
+    mpsetvar $t tearstate ++
+    mpsavevar $t tearstate
+    mploadvar $t dirtystate
+    mpsetvar $t dirtystate ++
+    mpsavevar $t dirtystate
+    mploadvar $t buttfuckedtimes
+    mpsetvar $t buttfuckedtimes ++
+    mpsavevar $t buttfuckedtimes
+    mploadvar $n buttfucktimes
+    mpsetvar $n buttfucktimes ++
+    mpsavevar $n buttfucktimes
+  endif
+endif
+if sex($t == M) or sex($t == O) or sex($t == U)
+if affected($t chant_strikebarren)
+return
+endif
+  if islike($t -TATTOO +JUSTCAME)
+    mpechoat $t You fuck $n but you need more time to generate a belly-filling load again.
+    mpechoaround $t $t's balls don't look like they can unload another belly-expanding load right now.
+  else
+    mptattoo $t '5 Justcame'
+    mpalarm 5 mpechoat $t You feel like your balls have enough cum to fill someone up again.
+    mpcallfunc cumtime
+    mploadvar $n cummystate
+    mpsetvar $n cummystate ++
+    mpsavevar $n cummystate
+    mploadvar $n tearstate
+    mpsetvar $n tearstate ++
+    mpsavevar $n tearstate
+    mploadvar $n dirtystate
+    mpsetvar $n dirtystate ++
+    mpsavevar $n dirtystate
+    mploadvar $n buttfuckedtimes
+    mpsetvar $n buttfuckedtimes ++
+    mpsavevar $n buttfuckedtimes
+    mploadvar $t buttfucktimes
+    mpsetvar $t buttfucktimes ++
+    mpsavevar $t buttfucktimes
+  endif
+endif
+endif
+~
+
+social_prog facefuck
+if hastattoo($n mating) or hastattoo($t mating)
+else
+mptattoo $t '1 mating'
+mptattoo $n '1 mating'
+if sex($n == M) or sex($n == O) or sex($n == U) or sex($n == H)
+if affected($n chant_strikebarren)
+return
+endif
+  if islike($n -TATTOO +JUSTCAME)
+    mpechoat $n You fuck $t but you need more time to generate a belly-filling load again.
+    mpechoaround $n $n's balls don't look like they can unload another belly-expanding load right now.
+  else
+    mptattoo $n '5 Justcame'
+    mpalarm 5 mpechoat $n You feel like your balls have enough cum to fill someone up again.
+    mpcallfunc cumtime
+    mploadvar $t dirtystate
+    mpsetvar $t dirtystate ++
+    mpsavevar $t dirtystate
+    mploadvar $t facefuckedtimes
+    mpsetvar $t facefuckedtimes ++
+    mpsavevar $t facefuckedtimes
+    mploadvar $n facefucktimes
+    mpsetvar $n facefucktimes ++
+    mpsavevar $n facefucktimes
+  endif
+endif
+if sex($t == M) or sex($t == O) or sex($t == U)
+if affected($t chant_strikebarren)
+return
+endif
+  if islike($t -TATTOO +JUSTCAME)
+    mpechoat $t You fuck $n but you need more time to generate a belly-filling load again.
+    mpechoaround $t $t's balls don't look like they can unload another belly-expanding load right now.
+  else
+    mptattoo $t '5 Justcame'
+    mpalarm 5 mpechoat $t You feel like your balls have enough cum to fill someone up again.
+    mpcallfunc cumtime
+    mploadvar $n dirtystate
+    mpsetvar $n dirtystate ++
+    mpsavevar $n dirtystate
+    mploadvar $n facefuckedtimes
+    mpsetvar $n facefuckedtimes ++
+    mpsavevar $n facefuckedtimes
+    mploadvar $t facefucktimes
+    mpsetvar $t facefucktimes ++
+    mpsavevar $t facefucktimes
+  endif
+endif
+endif
+~
+
+social_prog suck
+if hastattoo($n mating) or hastattoo($t mating)
+else
+mptattoo $t '1 mating'
+mptattoo $n '1 mating'
+if sex($t == M) or sex($t == O) or sex($t == U) or sex($t == H)
+  if islike($t -TATTOO +JUSTCAME)
+    mpechoat $t You get sucked by $n but you need more time to generate a belly-filling load again.
+    mpechoaround $n $t's balls don't look like they can unload another belly-expanding load right now.
+  else
+    mptattoo $t '5 Justcame'
+    mpalarm 5 mpechoat $t You feel like your balls have enough cum to fill someone up again.
+    mpcallfunc revcum
+    mploadvar $t dirtystate
+    mpsetvar $t dirtystate ++
+    mpsavevar $t dirtystate
+    mploadvar $n suckedtimes
+    mpsetvar $n suckedtimes ++
+    mpsavevar $n suckedtimes
+    mploadvar $t sucktimes
+    mpsetvar $t sucktimes ++
+    mpsavevar $t sucktimes
+  endif
+endif
+endif
+~
+
+function_prog revcum
+if islike($n -JAVACLASS +STDMOB +GENMOB +GENRIDEABLE +STDRIDEABLE +GENUNDEAD +GENRIDEABLEUNDEAD)
+if sex($t == M) or sex($t == O) or sex($t == U) or sex($t == H)
+    mpgset $n THIRST 5000
+    mpgset $n HUNGER 5000
+    mploadvar $n cummystate
+    mpsetvar $n cummystate ++
+    mpsavevar $n cummystate
+    if affected($n sexual_cumbloat3)
+    mpecho $n's belly can't get inflated any more but it is filled with fresh cum over again...
+    mpunaffect $n sexual_cumbloat3
+    mpaffect property:sexual_cumbloat3 $n
+    else
+      if affected($n sexual_cumbloat2)
+      mpecho $n's belly inflate even more with the large amount of cum splurted into it!
+      mpunaffect $n sexual_cumbloat2
+      mpaffect property:sexual_cumbloat3 $n
+      else
+        if affected($n sexual_cumbloat1)
+        mpecho $n's belly inflate more with the large amount of cum splurted into it!
+        mpunaffect $n sexual_cumbloat1
+        mpaffect property:sexual_cumbloat2 $n
+        else
+        mpecho $n's belly inflate with the large amount of cum splurted into it!
+        mpaffect property:Sexual_Cumbloat1 $n
+        endif
+      endif
+    endif
+  else
+    if sex($n == M) or sex($n == O) or sex($n == U)
+      mpgset $t THIRST 5000
+      mpgset $t HUNGER 5000
+      mploadvar $t cummystate
+      mpsetvar $t cummystate ++
+      mpsavevar $t cummystate
+      if affected($t sexual_cumbloat3)
+      mpecho $t's belly can't get inflated any more but it is filled with fresh cum over again...
+      mpunaffect $t sexual_cumbloat3
+      mpaffect property:sexual_cumbloat3 $t
+      else
+        if affected($t sexual_cumbloat2)
+        mpecho $t's belly inflate even more with the large amount of cum splurted into it!
+        mpunaffect $t sexual_cumbloat2
+        mpaffect property:sexual_cumbloat3 $t
+        else
+          if affected($t sexual_cumbloat1)
+          mpecho $t's belly inflate more with the large amount of cum splurted into it!
+          mpunaffect $t sexual_cumbloat1
+          mpaffect property:sexual_cumbloat2 $t
+          else
+          mpecho $t's belly inflate with the large amount of cum splurted into it!
+          mpaffect property:Sexual_Cumbloat1 $t
+          endif
+        endif
+      endif
+    endif
+  endif
+  if affected($t Disease_Cuntitching)
+    switch $%RANDNUM(5)%
+    case 5
+    mpechoat $t You feel your cunt itch is cleared by cum at last.
+    mpunaffect $t Disease_Cuntitching
+    endswitch
+    if affected($n Disease_Cuntitching)
+      switch $%RANDNUM(5)%
+      case 5
+      mpechoat $n You feel your cunt itch is cleared by cum at last.
+      mpunaffect $n Disease_Cuntitching
+      endswitch
+    endif
+  endif
+endif
+~
+
+function_prog cumtime
+mpsetvar $t lastpartner $n
+mpsavevar $t lastpartner
+mpsetvar $n lastpartner $t
+mpsavevar $n lastpartner
+if islike($t -JAVACLASS +STDMOB +GENMOB +GENRIDEABLE +STDRIDEABLE +GENUNDEAD +GENRIDEABLEUNDEAD)
+mpcallfunc eggracecheck
+if sex($n == M) or sex($n == O) or sex($n == U) or sex($n == H)
+    mpgset $t THIRST 5000
+    mpgset $t HUNGER 5000
+    mploadvar $t cummystate
+    mpsetvar $t cummystate ++
+    mpsavevar $t cummystate
+    if affected($t sexual_cumbloat3)
+    mpecho $t's belly can't get inflated any more but it is filled with fresh cum over again...
+    mpunaffect $t sexual_cumbloat3
+    mpaffect property:sexual_cumbloat3 $t
+    else
+      if affected($t sexual_cumbloat2)
+      mpecho $t's belly inflate even more with the large amount of cum splurted into it!
+      mpunaffect $t sexual_cumbloat2
+      mpaffect property:sexual_cumbloat3 $t
+      else
+        if affected($t sexual_cumbloat1)
+        mpecho $t's belly inflate more with the large amount of cum splurted into it!
+        mpunaffect $t sexual_cumbloat1
+        mpaffect property:sexual_cumbloat2 $t
+        else
+        mpecho $t's belly inflate with the large amount of cum splurted into it!
+        mpaffect property:Sexual_Cumbloat1 $t
+        endif
+      endif
+    endif
+  else
+    if sex($t == M) or sex($t == O) or sex($t == U)
+      mpgset $n THIRST 5000
+      mpgset $n HUNGER 5000
+      mploadvar $n cummystate
+      mpsetvar $n cummystate ++
+      mpsavevar $n cummystate
+      if affected($n sexual_cumbloat3)
+      mpecho $n's belly can't get inflated any more but it is filled with fresh cum over again...
+      mpunaffect $n sexual_cumbloat3
+      mpaffect property:sexual_cumbloat3 $n
+      else
+        if affected($n sexual_cumbloat2)
+        mpecho $n's belly inflate even more with the large amount of cum splurted into it!
+        mpunaffect $n sexual_cumbloat2
+        mpaffect property:sexual_cumbloat3 $n
+        else
+          if affected($n sexual_cumbloat1)
+          mpecho $n's belly inflate more with the large amount of cum splurted into it!
+          mpunaffect $n sexual_cumbloat1
+          mpaffect property:sexual_cumbloat2 $n
+          else
+          mpecho $n's belly inflate with the large amount of cum splurted into it!
+          mpaffect property:Sexual_Cumbloat1 $n
+          endif
+        endif
+      endif
+    endif
+  endif
+  if affected($n Disease_Cuntitching)
+    switch $%RANDNUM(5)%
+    case 5
+    mpechoat $n You feel your cunt itch is cleared by cum at last.
+    mpunaffect $n Disease_Cuntitching
+    endswitch
+    if affected($t Disease_Cuntitching)
+      switch $%RANDNUM(5)%
+      case 5
+      mpechoat $t You feel your cunt itch is cleared by cum at last.
+      mpunaffect $t Disease_Cuntitching
+      endswitch
+    endif
+  endif
+endif
+~
+
+delay_prog 1300
+if affected($i chant_strikebarren)
+    if affected($i Prop_Permabreed)
+      mpunaffect $i Prop_Permabreed
+      mpunaffect $i chant_fertility
+      mpunaffect $i chant_crossbreed
+    endif
+  else
+    if affected($i Prop_Permabreed)
+      else
+        mpechoat $i You feel like your fertility is high again.
+        mpaffect Prop_Permabreed $i
+      endif
+endif
+~
+
+#removes permabreed etc when infertile
+cast_prog p chant_strikebarren
+mpunaffect $i Prop_Permabreed
+mpunaffect $i chant_fertility
+mpunaffect $i chant_crossbreed
+~
+
+#To manually fix protection
+cnclmsg_prog huh p toggle underage
+if hastattoo($i underage)
+if gstat($i age > 18)
+mpechoat $i You are no longer set underage.
+else
+mpechoat $i You can't, you are under 18.
+endif
+else
+if gstat($i age < 18)
+mpechoat $i You are now set underage.
+else
+mpechoat $i You can't, you are not under 18, face the world.
+endif
+endif
+return cancel
+~
+
+#egg things
+function_prog eggracecheck
+if race($n != Xeno) and race($n != Plantperson) and racecat($n != Insect) and racecat($n != Slimeperson)
+return
+endif
+mpalarm 6 mpunaffect '$t' racial_eggimpregnate
+##xenomorph
+if var('$n' eggimper == 1)
+else
+mpsetvar '$n' eggimper 1
+mpalarm 2 mpsetvar '$n' eggimper 0
+if affected('$t' prop_xenolarvae)
+mpechoat '$n' ^PThey are already a host.^N
+mpunaffect '$t' racial_eggimpregnate
+else
+if race('$n' == Xeno)
+if race('$t' == Xeno)
+mpechoat '$n' ^PWe can not make hosts of our own kind.^N
+mpunaffect '$t' racial_eggimpregnate
+else
+if islike('$n' '-names "+^#400a fa^#410ceh^#420ugg^#430er ^#420xe^#410no^N"')
+mpcallfunc larvaevagtime
+else
+mpcallfunc xenoplaptime
+endif
+endif
+endif
+endif
+endif
+##Plantperson
+if race('$n' == Plantperson)
+if race('$t' == Plantperson)
+mpechoat '$n'  ^GI can't breed other plant. Find fleshy things.^N
+mpunaffect '$t' racial_eggimpregnate
+else
+if affected('$n' Prop_Plantseeded)
+mpechoat '$n' ^GI can't have more fleshy thing pollen in me yet.'
+mpunaffect '$n' racial_eggimpregnate
+else
+if affected('$t' Prop_Plantseeded)
+mpechoat '$n' ^Gfleshy thing already have pollen inside.'
+mpunaffect '$t' racial_eggimpregnate
+else
+if sex('$n' != $%sex($t)%)
+mpcallfunc Plantpersonpollinate
+else
+mpechoat '$t' ^Gthey don't have correct thing to fit ours^N
+endif
+endif
+endif
+endif
+endif
+##insect
+if racecat('$n' == Insect)
+if racecat('$t' == Insect)
+mpechoat '$n'  ^GI can't breed another insect like that^N
+mpunaffect '$t' racial_eggimpregnate
+else
+if affected('$n' Prop_insecteggimpreg)
+mpechoat '$n' ^GI can't have more cum in me yet.'
+mpunaffect '$n' racial_eggimpregnate
+else
+if affected('$t' Prop_insecteggimpreg)
+mpechoat '$n' ^GIt already has eggs inside it.'
+mpunaffect '$t' racial_eggimpregnate
+else
+mpcallfunc insectimpregg
+endif
+endif
+endif
+endif
+##slime
+if race('$n' == Slimeperson)
+if race('$t' == Slimeperson)
+mpechoat '$n'  ^bI can't breed other slime. Find another things.^N
+mpunaffect '$t' racial_eggimpregnate
+else
+if affected('$n' Prop_slimeseeded)
+mpechoat '$n' ^bMy slime core is still producing another...'
+mpunaffect '$n' racial_eggimpregnate
+else
+if affected('$t' Prop_slimeseeded)
+mpechoat '$n' ^^bThing already have slime gestating inside.'
+mpunaffect '$t' racial_eggimpregnate
+else
+if sex('$n' != $%sex($t)%)
+mpcallfunc Slimeimpreg
+else
+mpechoat '$t' ^bthey don't have correct thing to fit ours^N
+endif
+endif
+endif
+endif
+endif
+~
+
+function_prog slimeimpreg
+if sex($n == M) or sex($n == O) or sex($n == U)
+mpecho ^p$n shoves $m wiggly slime cock in $t's cunt and humps into it rapidly!^N *plap* *plop*
+mpalarm 1 mpecho ^p*plop* *clop* $n doesn't stop thrusting as $m balls begin to empty stickier than usual slimey substance into $t's womb, filling it up. *splurt* *splat*
+mpalarm 2 mpecho ^p*slip* $n pulls $m cock out of $t with a wet sticky noise.
+mpalarm 2 mpaffect Prop_slimeseeded $t
+mpsetvar $t slimefather $n
+endif
+if sex($n == F) or sex($n == A) or sex($n == H)
+mpecho ^p$n slams $m jelly like slime pussy on $t's cock in one move and begins to move rapidly!^N *plap* *plop*
+mpalarm 1 mpecho ^p*plop* *clop* $n doesn't stop moving $m hips as $t's balls begin to empty into $n's slime core, filling it up! *splurt* *splat*
+mpalarm 2 mpecho ^p*slip* $n pulls $t's cock out of $m with a wet sticky noise.
+mpalarm 2 mpaffect Prop_slimeseeded $n
+mpsetvar $n slimefather $t
+endif
+~
+
+function_prog Plantpersonpollinate
+if sex($n == M) or sex($n == O) or sex($n == U)
+mpecho ^p$n shoves $m rough plant cock in $t's cunt and humps into it rapidly!^N *plap* *plop*
+mpalarm 1 mpecho ^p*plop* *clop* $n doesn't stop thrusting as $m balls begin to empty sticky honeylike substance into $t's womb, filling it up. *splurt* *splat*
+mpalarm 2 mpecho ^p*slip* $n pulls $m cock out of $t with a wet sticky noise.
+mpalarm 2 mpaffect Prop_Plantseeded $t
+mpsetvar $t plantfather $n
+endif
+if sex($n == F) or sex($n == A) or sex($n == H)
+mpecho ^p$n slams $m plant pussy on $t's cock in one move and begins to move rapidly!^N *plap* *plop*
+mpalarm 1 mpecho ^p*plop* *clop* $n doesn't stop moving $m hips as $t's balls begin to empty into $n's womb, filling it up! *splurt* *splat*
+mpalarm 2 mpecho ^p*slip* $n pulls $t's cock out of $m with a wet sticky noise.
+mpalarm 2 mpaffect Prop_Plantseeded $n
+mpsetvar $n plantfather $t
+endif
+~
+
+function_prog larvaevagtime
+if sex('$t' == F) or sex('$t' == A) or sex('$t' == H)
+if affected('$t' prop_xenolarvaevag)
+mpecho ^r$n leaps onto $t's face and latches onto $S with it's tail coiling around $S neck tightly, something like a cock thrusting into $M mouth!^N
+mpalarm 1 mpecho ^p$n keeps plapping $t in the face rapidly!^p
+mpalarm 2 mpaffect prop_xenolarvae '$t'
+mpalarm 2 mpgset '$n' hits 1
+mpalarm 2 mpecho ^r$n injects something through $t's throat along with weird, resin-like cum, latching off, falling off motionless.^N
+mpalarm 2 mpdamage '$n' 100 100 kill
+else
+if wornon($t legs all)
+mpforce $t remove all.legs
+endif
+mpecho ^r$n leaps onto $t's pussy and latches onto $S with it's tail coiling around $S legs tightly, something like a cock thrusting into $M cunt!^N
+mpalarm 1 mpecho ^p$n keeps plapping $t in the cunt rapidly!^p
+mpalarm 2 mpgset '$n' hits 1
+mpalarm 2 mpecho ^r$n injects something inside $t's womb along with weird, resin-like cum, latching off, falling off motionless.^N
+mpalarm 2 mpdamage '$n' 100 100 kill
+mpalarm 2 mpaffect prop_xenolarvaevag '$t'
+endif
+else
+mpecho ^r$n leaps onto $t's face and latches onto $S with it's tail coiling around $S neck tightly, something like a cock thrusting into $M mouth!^N
+mpalarm 1 mpecho ^p$n keeps plapping $t in the face rapidly!^N
+mpalarm 2 mpaffect prop_xenolarvae '$t'
+mpalarm 2 mpgset '$n' hits 1
+mpalarm 2 mpecho ^r$n injects something through $t's throat along with weird, resin-like cum, latching off, falling off motionless.^N
+mpalarm 2 mpdamage '$n' 100 100 kill
+endif
+~
+
+function_prog insectimpregg
+if sex($n == M) or sex($n == O) or sex($n == U)
+mpecho ^p$n shoves $m rough insect genital in $t's cunt and humps into it rapidly!^N *plap* *plop*
+mpalarm 1 mpecho ^p*plop* *clop* $n doesn't stop thrusting as $m balls begin to empty sticky green substance into $t's womb, filling it up. *splurt* *splat*
+mpalarm 2 mpecho ^p*slip* $n pulls $m genital out of $t with a wet sticky noise.
+mpalarm 2 mpaffect Prop_insecteggimpreg $t
+endif
+if sex($n == F) or sex($n == A) or sex($n == H)
+mpecho ^p$n slams $m ovipositor on $t's cock in one move and begins to move rapidly!^N *plap* *plop*
+mpalarm 1 mpecho ^p*plop* *clop* $n doesn't stop moving $m hips as $t's balls begin to empty into $n, filling them up! *splurt* *splat*
+mpalarm 2 mpecho ^p*slip* $n pulls $t's cock out of $m with a wet sticky noise.
+mpalarm 2 mpaffect Prop_insecteggimpreg $n
+endif
+~
+
+function_prog xenoplaptime
+if sex('$t' == F) or sex('$t' == A) or sex('$t' == H)
+if affected('$t' prop_xenolarvaevag)
+mpecho ^r$n grabs $t's head and starts to thrust $s cock into $M mouth!^N
+mpalarm 1 mpecho ^p$n keeps plapping $t in the face rapidly!^p
+mpalarm 2 mpaffect prop_xenolarvae '$t'
+mpalarm 2 mpecho ^r$n cums some slightly-acidic cum down $t's throat!^N
+mpdamage '$t' 100 200 KILL ME ACID
+else
+if wornon($t legs all)
+mpforce $t remove all.legs
+endif
+mpecho ^r$n grabs $t's head and starts to thrust $s cock into $M cunt!^N
+mpalarm 1 mpecho ^p$n keeps plapping $t in the cunt rapidly!^p
+mpalarm 2 mpecho ^r$n cums some slightly-acidic cum into $t's womb!^N
+mpalarm 2 mpaffect prop_xenolarvaevag '$t'
+mpdamage '$t' 100 200 KILL ME ACID
+endif
+else
+mpecho ^r$n grabs $t's head and starts to thrust $s cock into $M mouth!^N
+mpalarm 1 mpecho ^p$n keeps plapping $t in the face rapidly!^p
+mpalarm 2 mpaffect prop_xenolarvae '$t'
+mpalarm 2 mpecho ^r$n cums some slightly-acidic cum down $t's throat!^N
+mpdamage '$t' 100 200 KILL ME ACID
+endif
+~
+
+#room ownership crap
+cnclmsg_prog huh p transferroom
+if islike($n -LOCATION +OWNED)
+mpprompt $n transname Who to transfer this room to? They will have ownership of this room. They will have 2k rent for this room and can not claim another this way. Do not use this for temporary stays, removal proper needs immortal help. (Blank to cancel, If you mistype it you are fucked.)
+if var($n transname != '') and var($n transname != $n) and ishere($<$n transname>)
+mpunaffect room prop_roomsforsale
+mpunaffect room prop_roomplusforsale
+mpunaffect room prop_roomforsale
+if hastattoo('$<$n transname>' 'roomrent:$%INROOM($n)%')
+mpechoat $n This person already has a room claimed.
+else
+mptattoo '$<$n transname>' 'roomrent:$%INROOM($n)%'
+mpchannel !WIZINFO $n made $<$n transname> claim $%INROOM($n)%.
+mpaffect prop_roomsforsale room $<$n transname>/RENTAL GRID 2000
+endif
+else
+mpechoat $n You don't see them here.
+endif
+else
+mpechoat $n You don't own this room.
+endif
+return cancel
+~
+
+cnclmsg_prog huh p unclaimroom
+if islike($n -LOCATION +OWNED)
+if hastattoo($n 'roomrent:$%INROOM($n)%')
+mptattoo '$<$n transname>' '-roomrent:$%INROOM($n)%'
+mpunaffect room prop_roomsforsale
+mpchannel !WIZINFO $n unclaimed $%INROOM($n)%, go fix it.
+mpechoat $n Call an immortal when there is one available to fix this room now.
+endif
+else
+mpechoat $n You don't own this room.
+endif
+return cancel
+~
+
+#animalbonding flavor
+casting_prog p animalbonding
+mpecho $t mounts $n for bonding.
+mpforce $t mate $n
+~
+
+#shuts mobs
+cnclmsg_prog huh p shushmobs
+    for $0 = 1 to '$%NUMMOBSROOM(*)%'
+    if islike('$%ROOMMOB($0)%' -PLAYER +MOB) and isbehave('$%ROOMMOB($0)%' MudChat)
+      mpecho $n shushes $%ROOMMOB($0)%!
+      mpunbehave MudChat '$%ROOMMOB($0)%'
+    endif
+    next
+return cancel
+~
+
+#genital cleaning things
+execmsg_prog MOVE bathe
+if isname('$i' '$n')
+mpnotrigger execmsg_prog 1000
+if islike($n '-LOCATION +ROOMSTR(water) +ROOMSTR(ocean) +ROOMSTR(river) +ROOMSTR(sea) +ROOMSTR(docks) +ROOMSTR(beach) +ROOMSTR(bathroom) +ROOMSTR(bath) +ROOMSTR(bathhouse)')
+  mploadvar $n dirtystate
+  mploadvar $n cummystate
+  mpsetvar $n dirtystate -5
+  mpsetvar $n cummystate -5
+  if var($n dirtystate < 0)
+  mpsetvar $n dirtystate 0
+  mpechoat $n Your $<$n grointext> can't get cleaner than this.
+  endif
+  if var($n cummystate < 0)
+  mpsetvar $n cummystate 0
+  mpechoat $n Your $<$n grointext> can't get any less cummier.
+  endif
+  mpechoat $n You wash ^w(5)^N yourself and your $<$n grointext>, it would be easier in a shower but it works.%0D^r(Dirt: $<$n dirtystate>)^N%0D^r(Cum: $<$n cummystate>)^N
+  mpsavevar $n dirtystate
+  mpsavevar $n cummystate
+endif
+endif
+~
+
+casting_prog Swim
+if var($n cumystate > 0) or var($n dirtystate > 0)
+  if islike($n '-LOCATION +ROOMSTR(water) +ROOMSTR(ocean) +ROOMSTR(river) +ROOMSTR(sea) +ROOMSTR(docks) +ROOMSTR(beach) +ROOMSTR(bathroom) +ROOMSTR(bath) +ROOMSTR(bathhouse)')
+    mploadvar $n dirtystate
+    mploadvar $n cummystate
+    mpsetvar $n dirtystate -1
+    mpsetvar $n cummystate -1
+    if var($n dirtystate < 0)
+    mpsetvar $n dirtystate 0
+    endif
+    if var($n cummystate < 0)
+    mpsetvar $n cummystate 0
+    endif
+    mpsavevar $n dirtystate
+    mpsavevar $n cummystate
+  endif
+endif
+~
+
+casting_prog p Prayer_heal
+mpnotrigger casting_prog 1000
+if racecat($t != Undead)
+mploadvar $t tearstate
+mpsetvar $t tearstate -15
+if var($t tearstate < 0)
+mpsetvar $t tearstate 0
+endif
+mpechoat $t Strong healing magic heals ^g(15)^N your genitals. %0D^r(Tear: $<$n tearstate>)^N
+mpsavevar $t tearstate
+endif
+~
+
+casting_prog p Prayer_harm
+mpnotrigger casting_prog 1000
+if racecat($t == Undead)
+mploadvar $t tearstate
+mpsetvar $t tearstate -15
+if var($t tearstate < 0)
+mpsetvar $t tearstate 0
+endif
+mpechoat $t Strong negative energy heals ^g(15)^N your genitals. %0D^r(Tear: $<$n tearstate>)^N
+mpsavevar $t tearstate
+endif
+~
+
+#futa genital toggle
+cnclmsg_prog huh p toggle genitals
+if sex($n == U) or sex($n == H)
+if sex($n == H)
+  mpgset $n GENDER U
+  mpecho $n cock(s) $s penis, ready to slam!
+else
+if sex($n == U)
+  mpgset $n GENDER H
+  mpecho $n spread(s) $s pussylips, ready to bounce!
+endif
+endif
+else
+mpechoat $n What? You don't have two 'weapon's!
+endif
+return cancel
+endif
+~

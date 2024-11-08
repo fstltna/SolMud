@@ -1,0 +1,48 @@
+once_prog
+if affected($i pregnancy)
+mpaffect spell_hold $i 5 TICKS
+emote slits $k arms with the ritual knife and spills the blood on the floor in a circular shape, then drags $k finger through it to draw a star inside the circle, forming the ritual circle, kneeling before it.
+mpalarm 3 emote raises the ritual knife then stabs $k belly, reciting the words while trying to resist the pain as the blood leaks down to the ritual circle...
+mpdamage $i 500 1000
+mpunaffect $i pregnancy
+mpalarm 5 mpcallfunc ritualtime
+else
+mpechoat $i You are not pregnant.
+mpunaffect $i ritual_sacrificeunborn
+endif
+~
+
+function_prog ritualtime
+switch $%RANDNUM(6)%
+case 1
+mpecho $i screams as $j is disintegrated!!!
+mpforce $i remove all
+mpforce $i drop all
+mpaffect spell_disintegrate $i
+case 2
+mpecho $i screams as $j begins to convulse in pain as $k child disintegrates with nothing in return!!!
+case 3
+if deity($i != '')
+mpprompt $i thewish ^#111An eldritch being beyond your comprehension grants you a wish for your sacrifice, word your request and it might be fulfilled if they desire.^N
+else
+mpprompt $i thewish ^#111Your god $%DEITY($i)% grants you a wish for your sacrifice, word your request and it might be fulfilled if they desire.^N
+endif
+if var($i thewish != '')
+emote glows with the bestowed wish, $j yell out $k wish: ^w'$<$i thewish>!'^N
+mpcastext Spell_Wish '$i' $<$i thewish>
+mpexp $i -5000
+else
+mpecho $i wastes their chance at a wish. Nothing happens.
+endif
+case 4
+mpecho The ritual goes wrong, $i is cursed in return. The child is lost.
+mpaffect prayer_greatcurse $i
+case 5
+mpecho The ritual goes unanswered. The child is lost.
+case 6
+mpecho The ritual goes unanswered. The child is lost.
+endswitch
+mpexp $i -5000
+mpaffect chant_strikebarren 68000TICKS
+mpunaffect $i ritual_sacrificeunborn
+~

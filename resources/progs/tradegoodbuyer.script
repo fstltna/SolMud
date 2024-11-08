@@ -1,90 +1,251 @@
+cnclmsg_prog huh p tradeboard
+mpechoat $n .___________________________._______._____________.
+mpechoat $n |         Resource          | Base  |    Demand   |
+mpechoat $n |---------------------------*-------*-------------|
+mpechoat $n |                           |  MC   |  PC S- NML  |
+mpechoat $n | nuclear fissile material  | 8/12  |   4  2  2   |
+mpechoat $n | refined oil               | 4/8   |   2  1  2   |
+mpechoat $n | crude oil                 | 2/3   |   1  -  0   |
+mpechoat $n | sex toys                  | 2/4   |   1  3  2   |
+mpechoat $n | textiles                  | 2/3   |   0  0  2   |
+mpechoat $n | bundled drugs             | 2/4   |   2  3  1   |
+mpechoat $n | medical supplies          | 3/6   |   -  2  3   |
+mpechoat $n | weapon parts              | 2/4   |   0  2  3   |
+mpechoat $n | synthetic meats           | 1/2   |   -  -  2   |
+mpechoat $n | meats                     | 2/4   |   3  3  0   |
+mpechoat $n | raw materials and metals  | 2/4   |   2  0  0   |
+mpechoat $n | construction materials    | 4/6   |   0  0  2   |
+mpechoat $n | cum                       | 1/2   |   -  3  0   |
+mpechoat $n | fish                      | 1/2   |   -  -  0   |
+mpechoat $n | luxury goods              | 7/10  |   -  0  4   |
+mpechoat $n | birth control             | 2/3   |   -  -  2   |
+mpechoat $n | condoms                   | 1/2   |   -  -  2   |
+mpechoat $n |---------------------------*-------*-------------|
+mpechoat $n |            Use ^cTradeinfo^N alone for help.        |
+mpechoat $n |                                                 |
+mpechoat $n |                                                 |
+mpechoat $n |               Use ^cTradeinfo <tag>^N               |
+mpechoat $n |       to learn about production and needs.      |
+mpechoat $n *-------------------------------------------------*
+return cancel
+~
+
+cnclmsg_prog huh p tradeinfo
+mpechoat $n ._________________________________________________.
+mpechoat $n | The two numbers you see in base price are       |
+mpechoat $n | to show what a normal person would earn and     |
+mpechoat $n | what a sailor/pirate/artisan would earn on sales|
+mpechoat $n | those three classes earn more as shown and only |
+mpechoat $n | they may benefit from the demand bonuses.       |
+mpechoat $n |                                                 |
+mpechoat $n | Other classes may still find tradegoods in      |
+mpechoat $n | dungeons or other places to sell to make a      |
+mpechoat $n | profit even if there is no way to buy and sell  |
+mpechoat $n | for a profit without bonuses, for them.         |
+mpechoat $n |                                                 |
+mpechoat $n | The - on bonuses mean that place does not buy   |
+mpechoat $n | the resource in question -at all-.              |
+mpechoat $n |                                                 |
+mpechoat $n | Some, likely illegal resources may not be       |
+mpechoat $n | listed and they will get your in trouble if     |
+mpechoat $n | you don't consider who are you selling them to. |
+mpechoat $n |                                                 |
+mpechoat $n | Upd. Wednesday, the 4th day of July, year 2524  |
+mpechoat $n *-------------------------------------------------*
+return cancel
+~
+
+
+cnclmsg_prog huh p tradeinfo PC
+mpechoat $n ._________________________________________________.
+mpechoat $n |                 ^PPhantom City^N                    |
+mpechoat $n |-------------------------------------------------|
+mpechoat $n | Phantom city is the most crowded city to stand  |
+mpechoat $n | in the new world.                               |
+mpechoat $n |                                                 |
+mpechoat $n | PC produces luxury goods, synthetic meats,      |
+mpechoat $n | condoms, Birth control, sperm, medical supplies,|
+mpechoat $n | refined construction materials and weapon parts.|
+mpechoat $n |                                                 |
+mpechoat $n | PC needs raw materials, real meats, drugs,      |
+mpechoat $n | refined oil, nuclear materials.                 |
+mpechoat $n |                                                 |
+mpechoat $n | Upd. Wednesday, the 4th day of July, year 2524  |
+mpechoat $n *-------------------------------------------------*
+return cancel
+~
+
+cnclmsg_prog huh p tradeinfo S-
+mpechoat $n ._________________________________________________.
+mpechoat $n |                 ^#111Sector ^rMinus^N                    |
+mpechoat $n |-------------------------------------------------|
+mpechoat $n | Sector Minus is 'downside' Phantom City, still  |
+mpechoat $n | a part of it however in a strange state of      |
+mpechoat $n | anarchy and rebel. They mostly consume is all.  |
+mpechoat $n |                                                 |
+mpechoat $n | S- produces nothing except sperm which is       |
+mpechoat $n | not sold in a way of export due lack of control.|
+mpechoat $n |                                                 |
+mpechoat $n | S- needs real meats, sperm, drugs, medical      |
+mpechoat $n | supplies, sex toys, nuclear material...?        |
+mpechoat $n |                                                 |
+mpechoat $n | Upd. Wednesday, the 4th day of July, year 2524  |
+mpechoat $n *-------------------------------------------------*
+return cancel
+~
+
+cnclmsg_prog huh p tradeinfo NML
+mpechoat $n ._________________________________________________.
+mpechoat $n |                 ^yNo man's Land^N                   |
+mpechoat $n |-------------------------------------------------|
+mpechoat $n | No man's land is the general continent at the   |
+mpechoat $n | west of the new world map but usually only means|
+mpechoat $n | the desert area of it, while other areas have   |
+mpechoat $n | other names, independent trades gather and sell |
+mpechoat $n | goods across ports and trading spots of towns.  |
+mpechoat $n |                                                 |
+mpechoat $n | NML produces real meats, fish, crude oil,       |
+mpechoat $n | raw materials, sperm.                           |
+mpechoat $n |                                                 |
+mpechoat $n | NML needs luxury goods, construction materials, |
+mpechoat $n | Weapon parts, medical supplies and overall      |
+mpechoat $n | manufactured goods.                             |
+mpechoat $n |                                                 |
+mpechoat $n | Upd. Wednesday, the 4th day of July, year 2524  |
+mpechoat $n *-------------------------------------------------*
+return cancel
+~
+
 give_prog p A cargo shipment of birth control pills
+if inarea($i == Phantom City) or inarea($i == sector minus)
+say Uh, Nah, don't need that.
+mpforce $t drop "A cargo shipment of birth control pills"
+else
 mpjunk A cargo shipment of birth control pills
 if islike($n -anyclass +sailor +pirate +artisan)
-mpoload 400
+mpoload 3 megacredit
 mpforce $t give "$b" $n
-if inarea($t == 'sector minus')
-mpforce $t say We always need more of those sort of supply here, so here is a bonus.
-mpoload 100
+mpforce $t drop "$b"
+if inarea($i == no mans land)
+say We always need more of those sort of supply here, so here is a bonus.
+mpoload 2 megacredit
 mpforce $t give "$b" $n
-endif
-if inarea($t == 'no mans land')
-mpforce $t say We always need more of those sort of supply here, so here is a bonus.
-mpoload 300
-mpforce $t give "$b" $n
+mpforce $t drop "$b"
 endif
 else
-mpoload 200
+mpoload 2 megacredit
 mpforce $t give "$b" $n
+mpforce $t drop "$b"
+endif
+endif
+~
+
+give_prog p A cargo shipment of condoms
+if inarea($i == Phantom City) or inarea($i == sector minus)
+say Uh, Nah, don't need that.
+mpforce $t drop "A cargo shipment of condoms"
+else
+mpjunk A cargo shipment of condoms
+if islike($n -anyclass +sailor +pirate +artisan)
+mpoload 2 megacredit
+mpforce $t give "$b" $n
+mpforce $t drop "$b"
+if inarea($i == no mans land)
+say We always need more of those sort of supply here, so here is a bonus.
+mpoload 2 megacredit
+mpforce $t give "$b" $n
+mpforce $t drop "$b"
+endif
+else
+mpoload 1 megacredit
+mpforce $t give "$b" $n
+mpforce $t drop "$b"
+endif
 endif
 ~
 
 give_prog p A secure metal crate of luxury goods
+if inarea($i == Phantom City) or inarea($i == sector minus)
+say Uh, Nah, don't need that.
+mpforce $t drop "A secure metal crate of luxury goods"
+else
 mpjunk A secure metal crate of luxury goods
 if islike($n -anyclass +sailor +pirate +artisan)
-mpoload 8 megacredit
+mpoload 10 megacredit
 mpforce $t give "$b" $n
-if inarea($t == 'Phantom City')
-mpforce $t say We always need more of those sort of supply here, so here is a bonus.
-mpoload 2 megacredit
-mpforce $t give "$b" $n
-endif
-else
+mpforce $t drop "$b"
+if inarea($i == no mans land)
+say We always need more of those sort of supply here, so here is a bonus.
 mpoload 4 megacredit
 mpforce $t give "$b" $n
+mpforce $t drop "$b"
+endif
+else
+mpoload 7 megacredit
+mpforce $t give "$b" $n
+mpforce $t drop "$b"
+endif
 endif
 ~
 
 give_prog p A massive refrigated crate of fish
-if inarea($t == 'sector minus')
-mpforce $t say Resurgentis don't like fish, not great for business.
-mpforce $t give "A massive refrigated crate of fish" $n
-else
-if inarea($t == 'Phantom City')
-mpforce $t say Resurgentis don't like fish, not great for business.
-mpforce $t give "A massive refrigated crate of fish" $n
+if inarea($i == sector minus) or inarea($i == Phantom City)
+say Resurgentis don't like fish, not great for business.
+mpforce $t drop "A massive refrigated crate of fish"
 else
 mpjunk A massive refrigated crate of fish
 if islike($n -anyclass +sailor +pirate +artisan)
 mpoload 2 megacredit
 mpforce $t give "$b" $n
+mpforce $t drop "$b"
 else
 mpoload 1 megacredit
 mpforce $t give "$b" $n
-endif
+mpforce $t drop "$b"
 endif
 endif
 ~
 
 give_prog p A barrel of cum
+if inarea($i == Phantom City)
+say Uh, Nah, don't need that.
+mpforce $t drop "A barrel of cum"
+else
 mpjunk A barrel of cum
-if inarea($t == 'sector minus')
-mpforce $t say Uh, Nah, we got alot of those...
-mpforce $t give "A barrel of cum" $n
-else
-if inarea($t == 'Phantom City')
-mpforce $t say Uh, Nah, we got alot of those...
-mpforce $t give "A barrel of cum" $n
-else
+if inarea($i == sector minus)
+say I know someone will love this.
+mpoload 3 megacredit
+mpforce $t give "$b" $n
+mpforce $t drop "$b"
+endif
 if islike($n -anyclass +sailor +pirate +artisan)
 mpoload 2 megacredit
 mpforce $t give "$b" $n
+mpforce $t drop "$b"
 else
 mpoload 1 megacredit
 mpforce $t give "$b" $n
-endif
+mpforce $t drop "$b"
 endif
 endif
 ~
 
 give_prog p A massive crate of construction materials
 mpjunk A massive crate of construction materials
+if inarea($i == no mans land)
+say We always need more of those sort of supply here, so here is a bonus.
+mpoload 2 megacredit
+mpforce $t give "$b" $n
+mpforce $t drop "$b"
+endif
 if islike($n -anyclass +sailor +pirate +artisan)
 mpoload 6 megacredit
 mpforce $t give "$b" $n
+mpforce $t drop "$b"
 else
 mpoload 3 megacredit
 mpforce $t give "$b" $n
+mpforce $t drop "$b"
 endif
 ~
 
@@ -93,46 +254,67 @@ mpjunk A massive steel crate of raw materials and metals
 if islike($n -anyclass +sailor +pirate +artisan)
 mpoload 4 megacredit
 mpforce $t give "$b" $n
+mpforce $t drop "$b"
+if inarea($i == Phantom City)
+say We always need more of those sort of supply here, so here is a bonus.
+mpoload 2 megacredit
+mpforce $t give "$b" $n
+mpforce $t drop "$b"
+endif
 else
 mpoload 2 megacredit
 mpforce $t give "$b" $n
+mpforce $t drop "$b"
 endif
 ~
 
 give_prog p A large refrigated crate of various meats
 mpjunk A large refrigated crate of various meats
 if islike($n -anyclass +sailor +pirate +artisan)
-mpoload 6 megacredit
-mpforce $t give "$b" $n
-if inarea($t == 'Phantom City')
-mpforce $t say We always need more of those sort of supply here, so here is a bonus.
-mpoload 2 megacredit
-mpforce $t give "$b" $n
-endif
-if inarea($t == 'sector minus')
-mpforce $t say We always need more of those sort of supply here, so here is a bonus.
-mpoload 2 megacredit
-mpforce $t give "$b" $n
-endif
-else
 mpoload 3 megacredit
 mpforce $t give "$b" $n
+mpforce $t drop "$b"
+if inarea($i == Phantom City)
+say We always need more of those sort of supply here, so here is a bonus.
+mpoload 3 megacredit
+mpforce $t give "$b" $n
+mpforce $t drop "$b"
+endif
+if inarea($i == sector minus)
+say We always need more of those sort of supply here, so here is a bonus.
+mpoload 3 megacredit
+mpforce $t give "$b" $n
+mpforce $t drop "$b"
+endif
+else
+mpoload 2 megacredit
+mpforce $t give "$b" $n
+mpforce $t drop "$b"
 endif
 ~
 
 give_prog p A large refrigated crate of various synthetic meats
 mpjunk A large refrigated crate of various synthetic meats
+if inarea($i == Phantom City) or inarea($i == sector minus)
+say Uh, Nah, don't need that.
+mpforce $t drop "A large refrigated crate of various synthetic meats"
+else
+mpjunk A large refrigated crate of various synthetic meats
 if islike($n -anyclass +sailor +pirate +artisan)
-mpoload 3 megacredit
+mpoload 2 megacredit
 mpforce $t give "$b" $n
-if inarea($t == 'sector minus')
-mpforce $t say We always need more of those sort of supply here, so here is a bonus.
-mpoload 1 megacredit
+mpforce $t drop "$b"
+if inarea($i == no mans land)
+say Guess we could use some cheaper meat.
+mpoload 2 megacredit
 mpforce $t give "$b" $n
+mpforce $t drop "$b"
 endif
 else
 mpoload 1 megacredit
 mpforce $t give "$b" $n
+mpforce $t drop "$b"
+endif
 endif
 ~
 
@@ -141,30 +323,53 @@ mpjunk A massive wooden crate of weapon parts
 if islike($n -anyclass +sailor +pirate +artisan)
 mpoload 4 megacredit
 mpforce $t give "$b" $n
-if inarea($t == 'sector minus')
-mpforce $t say We always need more of those sort of supply here, so here is a bonus.
+mpforce $t drop "$b"
+if inarea($i == sector minus)
+say We always need more of those sort of supply here, so here is a bonus.
 mpoload 2 megacredit
 mpforce $t give "$b" $n
+mpforce $t drop "$b"
+endif
+if inarea($i == no mans land)
+say We always need more of those sort of supply here, so here is a bonus.
+mpoload 3 megacredit
+mpforce $t give "$b" $n
+mpforce $t drop "$b"
 endif
 else
 mpoload 2 megacredit
 mpforce $t give "$b" $n
+mpforce $t drop "$b"
 endif
 ~
 
 give_prog p A large white crate of medical supplies
+if inarea($i == Phantom City)
+say Uh, Nah, don't need that.
+mpforce $t drop "A large white crate of medical supplies"
+else
 mpjunk A large white crate of medical supplies
 if islike($n -anyclass +sailor +pirate +artisan)
 mpoload 6 megacredit
 mpforce $t give "$b" $n
-if inarea($t == 'sector minus')
-mpforce $t say We always need more of those sort of supply here, so here is a bonus.
+mpforce $t drop "$b"
+if inarea($i == sector minus)
+say We always need more of those sort of supply here, so here is a bonus.
 mpoload 2 megacredit
 mpforce $t give "$b" $n
+mpforce $t drop "$b"
 endif
-else
+if inarea($i == no mans land)
+say We always need more of those sort of supply here, so here is a bonus.
 mpoload 3 megacredit
 mpforce $t give "$b" $n
+mpforce $t drop "$b"
+endif
+else
+mpoload 4 megacredit
+mpforce $t give "$b" $n
+mpforce $t drop "$b"
+endif
 endif
 ~
 
@@ -173,67 +378,85 @@ mpjunk A large wooden crate of various textiles
 if islike($n -anyclass +sailor +pirate +artisan)
 mpoload 3 megacredit
 mpforce $t give "$b" $n
-else
-mpoload 1 megacredit
+mpforce $t drop "$b"
+if inarea($i == no mans land)
+say We always need more of those sort of supply here, so here is a bonus.
+mpoload 2 megacredit
 mpforce $t give "$b" $n
+mpforce $t drop "$b"
+endif
+else
+mpoload 2 megacredit
+mpforce $t give "$b" $n
+mpforce $t drop "$b"
 endif
 ~
 
 give_prog p A large package of bundled drugs
 mpjunk A large package of bundled drugs
 if islike($n -anyclass +sailor +pirate +artisan)
+mpoload 4 megacredit
+mpforce $t give "$b" $n
+mpforce $t drop "$b"
+if inarea($i == Phantom City)
+say We always need more of those sort of supply here, so here is a bonus.
 mpoload 2 megacredit
 mpforce $t give "$b" $n
-if inarea($t == 'Phantom City')
-mpforce $t say We always need more of those sort of supply here, so here is a bonus.
+mpforce $t drop "$b"
+endif
+if inarea($i == sector minus)
+say We always need more of those sort of supply here, so here is a bonus.
+mpoload 3 megacredit
+mpforce $t give "$b" $n
+mpforce $t drop "$b"
+endif
+if inarea($i == no mans land)
+say We always need more of those sort of supply here, so here is a bonus.
 mpoload 1 megacredit
 mpforce $t give "$b" $n
-endif
-if inarea($t == 'sector minus')
-mpforce $t say We always need more of those sort of supply here, so here is a bonus.
-mpoload 1 megacredit
-mpforce $t give "$b" $n
-endif
-if inarea($t == 'no mans land')
-mpforce $t say We always need more of those sort of supply here, so here is a bonus.
-mpoload 2 megacredit
-mpforce $t give "$b" $n
+mpforce $t drop "$b"
 endif
 else
-mpoload 1 megacredit
+mpoload 2 megacredit
 mpforce $t give "$b" $n
+mpforce $t drop "$b"
 endif
 ~
 
-give_prog p A rusty steel, ice-filled crate of suspicious organs
-if inarea($t == 'Phantom City')
-mpforce $t say Uh, Nah.
+give_prog p ^#222a rusty ste^#111el, ^cice-filled ^#222crat^#444e of ^Rsuspicious organs^N
+if inarea($i == Phantom City)
+say Uh, Nah.
 mpcastext archon_accuse $t $n Cannibalism 5
 mpforce $t give "A rusty steel, ice-filled crate of suspicious meats" $n
 else
-mpjunk A rusty steel, ice-filled crate of suspicious organs
+mpjunk A rusty steel, ice-filled crate of suspicious meats
 if islike($n -anyclass +sailor +pirate +artisan)
+mpoload 6 megacredit
+mpforce $t give "$b" $n
+mpforce $t drop "$b"
+if inarea($i == no mans land)
+say Tell nobody and bring more if you can later.
 mpoload 5 megacredit
 mpforce $t give "$b" $n
-if inarea($t == 'no mans land')
-mpforce $t say Tell nobody and bring more if you can later.
-mpoload 4 megacredit
-mpforce $t give "$b" $n
+mpforce $t drop "$b"
 endif
-if inarea($t == 'sector minus')
-mpforce $t say Tell nobody and bring more if you can later.
-mpoload 2 megacredit
+if inarea($i == sector minus)
+say Tell nobody and bring more if you can later.
+mpoload 3 megacredit
 mpforce $t give "$b" $n
+mpforce $t drop "$b"
 endif
 else
-mpoload 2 megacredit
+mpoload 3 megacredit
 mpforce $t give "$b" $n
+mpforce $t drop "$b"
+endif
 endif
 ~
 
-give_prog p A rusty steel, ice-filled crate of suspicious meats
-if inarea($t == 'Phantom City')
-mpforce $t say Uh, Nah.
+give_prog p ^#222a rusty ste^#111el, ^cice-filled ^#222crat^#444e of ^Rsuspicious meats^N
+if inarea($i == Phantom City)
+say Uh, Nah.
 mpcastext archon_accuse $t $n Cannibalism 5
 mpforce $t give "A rusty steel, ice-filled crate of suspicious meats" $n
 else
@@ -241,19 +464,23 @@ mpjunk A rusty steel, ice-filled crate of suspicious meats
 if islike($n -anyclass +sailor +pirate +artisan)
 mpoload 4 megacredit
 mpforce $t give "$b" $n
-if inarea($t == 'no mans land')
-mpforce $t say Tell nobody and bring more if you can later.
+mpforce $t drop "$b"
+if inarea($i == no mans land)
+say Tell nobody and bring more if you can later.
 mpoload 2 megacredit
 mpforce $t give "$b" $n
+mpforce $t drop "$b"
 endif
-if inarea($t == 'sector minus')
-mpforce $t say Tell nobody and bring more if you can later.
+if inarea($i == sector minus)
+say Tell nobody and bring more if you can later.
 mpoload 2 megacredit
 mpforce $t give "$b" $n
+mpforce $t drop "$b"
 endif
 else
 mpoload 2 megacredit
 mpforce $t give "$b" $n
+mpforce $t drop "$b"
 endif
 endif
 ~
@@ -263,24 +490,29 @@ mpjunk A sterile crate of various sex toys
 if islike($n -anyclass +sailor +pirate +artisan)
 mpoload 4 megacredit
 mpforce $t give "$b" $n
-if inarea($t == 'Phantom City')
-mpforce $t say We always need more of those sort of supply here, so here is a bonus.
+mpforce $t drop "$b"
+if inarea($i == Phantom City)
+say We always need more of those sort of supply here, so here is a bonus.
 mpoload 1 megacredit
 mpforce $t give "$b" $n
+mpforce $t drop "$b"
 endif
-if inarea($t == 'sector minus')
-mpforce $t say We always need more of those sort of supply here, so here is a bonus.
-mpoload 1 megacredit
+if inarea($i == sector minus)
+say We always need more of those sort of supply here, so here is a bonus.
+mpoload 3 megacredit
 mpforce $t give "$b" $n
+mpforce $t drop "$b"
 endif
-if inarea($t == 'no mans land')
-mpforce $t say We always need more of those sort of supply here, so here is a bonus.
+if inarea($i == no mans land)
+say We always need more of those sort of supply here, so here is a bonus.
 mpoload 2 megacredit
 mpforce $t give "$b" $n
+mpforce $t drop "$b"
 endif
 else
 mpoload 2 megacredit
 mpforce $t give "$b" $n
+mpforce $t drop "$b"
 endif
 ~
 
@@ -289,24 +521,29 @@ mpjunk A barrel of refined oil
 if islike($n -anyclass +sailor +pirate +artisan)
 mpoload 8 megacredit
 mpforce $t give "$b" $n
-if inarea($t == 'Phantom City')
-mpforce $t say We always need more of those sort of supply here, so here is a bonus.
+mpforce $t drop "$b"
+if inarea($i == Phantom City)
+say We always need more of those sort of supply here, so here is a bonus.
 mpoload 2 megacredit
 mpforce $t give "$b" $n
+mpforce $t drop "$b"
 endif
-if inarea($t == 'sector minus')
-mpforce $t say We always need more of those sort of supply here, so here is a bonus.
+if inarea($i == sector minus)
+say We always need more of those sort of supply here, so here is a bonus.
 mpoload 1 megacredit
 mpforce $t give "$b" $n
+mpforce $t drop "$b"
 endif
-if inarea($t == 'no mans land')
-mpforce $t say We always need more of those sort of supply here, so here is a bonus.
+if inarea($i == no mans land)
+say We always need more of those sort of supply here, so here is a bonus.
 mpoload 2 megacredit
 mpforce $t give "$b" $n
+mpforce $t drop "$b"
 endif
 else
 mpoload 4 megacredit
 mpforce $t give "$b" $n
+mpforce $t drop "$b"
 endif
 ~
 
@@ -316,23 +553,52 @@ mpjunk a barrel of nuclear fissile material
 if islike($n -anyclass +sailor +pirate +artisan)
 mpoload 12 megacredit
 mpforce $t give "$b" $n
-if inarea($t == 'Phantom City')
-mpforce $t say What in the....... Uh, We always need more of those sort of supply here, so here is a bonus.
+mpforce $t drop "$b"
+if inarea($i == Phantom City)
+say What in the....... Uh, We always need more of those sort of supply here, so here is a bonus.
 mpoload 4 megacredit
 mpforce $t give "$b" $n
+mpforce $t drop "$b"
 endif
-if inarea($t == 'sector minus')
-mpforce $t say Holy shit, where'd you get this? Well, We always need more of those sort of supply here, so here is a bonus.
+if inarea($i == sector minus)
+say Holy shit, where'd you get this? Well, We always need more of those sort of supply here, so here is a bonus.
 mpoload 2 megacredit
 mpforce $t give "$b" $n
+mpforce $t drop "$b"
 endif
-if inarea($t == 'no mans land')
-mpforce $t say What the hell? Well, We always need more of those sort of supply here, so here is a bonus.
+if inarea($i == no mans land)
+say What the hell? Well, I guess someone will need this.
 mpoload 2 megacredit
 mpforce $t give "$b" $n
+mpforce $t drop "$b"
 endif
 else
 mpoload 8 megacredit
 mpforce $t give "$b" $n
+mpforce $t drop "$b"
+endif
+~
+
+give_prog p A barrel of crude oil
+if inarea($i == sector minus)
+say What am I supposed to do with this?
+mpforce $t drop "A barrel of crude oil"
+else
+mpjunk A barrel of crude oil
+if islike($n -anyclass +sailor +pirate +artisan)
+mpoload 3 megacredit
+mpforce $t give "$b" $n
+mpforce $t drop "$b"
+if inarea($i == Phantom City)
+say We always need more of those sort of supply here, so here is a bonus.
+mpoload 1 megacredit
+mpforce $t give "$b" $n
+mpforce $t drop "$b"
+endif
+else
+mpoload 2 megacredit
+mpforce $t give "$b" $n
+mpforce $t drop "$b"
+endif
 endif
 ~

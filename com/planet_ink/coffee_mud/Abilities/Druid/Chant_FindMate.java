@@ -210,7 +210,6 @@ public class Chant_FindMate extends Chant
 		if(((mate.charStats().getMyRace().ID().equals("Human"))
 		   ||(mate.charStats().getMyRace().ID().equals("Human"))
 		   ||(mate.charStats().getMyRace().canBreedWith(mate.charStats().getMyRace(),false)))
-		&&(mate.fetchWornItems(Wearable.WORN_LEGS|Wearable.WORN_WAIST,(short)-2048,(short)0).size()==0)
 		&&(CMLib.flags().canBeSeenBy(mate,forMe)))
 			return true;
 		return false;

@@ -22,7 +22,7 @@ haderoth	27	100	(onground:consumed:1:MITHRIL:)&&(onground:consumed:1:BRONZE:)	13
 inconel	28	150	(onground:consumed:6:NICKEL:)&&(onground:consumed:1:CHROMIUM:)	25	GenResource	BRONZE	INCONEL	Prop_Adjuster;SAVEACID+100
 adamantite	30	250	(onground:consumed:1:MITHRIL:)&&(onground:consumed:1:STEEL:)	175	GenResource	ADAMANTITE		
 incoloy	31	175	(onground:consumed:3:IRON:)&&(onground:consumed:3:NICKEL:)&&(onground:consumed:2:CHROMIUM:)	30	GenResource	BRASS	INCOLOY	Prop_Adjuster;SAVEFIRE+50 SAVEACID+50
-darksteel	33	90	(onground:consumed:2:IRON:)&&(onground:consumed:2:COAL:)&&(onground:consumed:1:HEPATIZON:)	90	GenResource	STEEL	DARKSTEEL	Prop_Adjuster;disposition+ISHIDDEN
+darkiron	33	90	(onground:consumed:2:IRON:)&&(onground:consumed:2:COAL:)&&(onground:consumed:1:HEPATIZON:)	90	GenResource	IRON	DARKIRON	*Prop_Adjuster;disposition+ISHIDDEN
 tungstabidium	35	180	(onground:consumed:2:MITHRIL:)&&(onground:consumed:1:BRASS:)	80	GenResource	STEEL	TUNGSTABIDIUM	
 invar	36	80	(onground:consumed:2:IRON:)&&(onground:consumed:1:NICKEL:)	35	GenResource	BRASS	INVAR	Prop_Adjuster;SAVEFIRE+100
 blacksteel	37	120	(onground:consumed:3:IRON:)&&(onground:consumed:2:COAL:)&&(onground:consumed:1:MOLYBDOCHALKOS:)	90	GenResource	STEEL	BLACKSTEEL	*Prop_Adjuster;DAM+2 disposition+ISEVIL
@@ -46,3 +46,4 @@ yautjavian	78	440	(onground:consumed:2:ADAMANTITE:)&&(onground:consumed:1:BRONZE
 ithildin	80	400	(onground:consumed:2:ADAMANTITE:)&&(onground:consumed:1:DRAGONSCALES:)&&(onground:kept:1:PLATINUM:)	300	GenResource	MITHRIL	ITHILDIN	*Prop_Adjuster;disposition+ISINVISIBLE
 quicksilver	85	400	(onground:consumed:4:SILVER:)&&(onground:consumed:2:IRON:)&&(onground:consumed:1:MITHRIL:)&&(onground:consumed:1:COAL:)	320	GenResource	MITHRIL	QUICKSILVER	*Prop_Adjuster;attack+200 MULTIPLYPH=TRUE
 uru	90	2500	(onground:consumed:7:COPPER:)&&(onground:consumed:7:MITHRIL:)&&(onground:consumed:6:STEEL:)&&(onground:consumed:3:PLATINUM:)&&(onground:consumed:1:PALLADIUM:)	500	GenResource	ADAMANTITE	URU	*Prop_Adjuster;ABILITY+2 disposition+ISGLOWING
+darksteel	100	450	(onground:consumed:2:STEEL:)&&(onground:consumed:30:OBSIDIAN:)&&(onground:consumed:4:DARKIRON:)&&(onground:consumed:1:MITHRIL:)&&(onground:consumed:1:^NA ^#404G^#314LI^#224TC^#134HY ^#015T^#025I^#035M^#045E ^#055S^#045H^#035AR^#025D ^#550C^#440O^#330I^#220N^N:)	700	GenResource	STEEL	DARKSTEEL	*Prop_Adjuster;DAM+130 ARM+130 MULTIPLYPH=TRUE

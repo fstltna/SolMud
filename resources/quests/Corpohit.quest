@@ -30,7 +30,7 @@ load mobgroup 1 any
 set mob
 give script LOAD=Corpohit_killable.script
 
-set duration 120 minutes
+set duration 60 minutes
 <?xml version="1.0"?>
 <FILE><NAME>Corpohit_rewarditems.xml</NAME><DATA><ITEMS><ITEM><ICLAS>GenItem</ICLAS><IUSES>2147483647</IUSES><ILEVL>1</ILEVL><IABLE>0</IABLE><IREJV>2147483647</IREJV><ITEXT>&lt;NAME&gt;^#231a hig^#232h-explo^#231sive ha^#232nd gre^#232nade^N&lt;/NAME&gt;&lt;DESC /&gt;&lt;DISP&gt;^#231a hig^#232h-explo^#231sive ha^#232nd gre^#232nade^N sits here.&lt;/DISP&gt;&lt;PROP&gt;0|0|0|0|0|1|2147483647|1.0|6|0|0|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES /&gt;&lt;AFFECS&gt;&lt;AFF&gt;&lt;ACLASS&gt;Bomb_Explosive&lt;/ACLASS&gt;&lt;ATEXT&gt;:10/0:3&lt;/ATEXT&gt;&lt;/AFF&gt;&lt;/AFFECS&gt;&lt;FLAG&gt;11&lt;/FLAG&gt;&lt;IDENT /&gt;&lt;VALUE&gt;200&lt;/VALUE&gt;&lt;MTRAL&gt;3684&lt;/MTRAL&gt;&lt;WORNL&gt;false&lt;/WORNL&gt;&lt;WORNB&gt;512&lt;/WORNB&gt;&lt;READ /&gt;</ITEXT></ITEM>
 </ITEMS></DATA></FILE>

@@ -1,0 +1,15 @@
+cnclmsg_prog huh p browse
+mpechoat $n ^cexchange questpoint^N: ^r1QP^N -> ^g3 Training Points^N
+return cancel
+~
+
+cnclmsg_prog huh p exchange questpoint
+if questpoints($n < 1)
+mpechoat $n insufficent questpoints.
+else
+mpquestpoints $n --1
+mpecho traded 1QP for 3 Trains
+mptrains $n ++3
+endif
+return cancel
+~

@@ -1,0 +1,902 @@
+<MOBS><MOB><MCLAS>GenMob</MCLAS><MLEVL>30</MLEVL><MABLE>307</MABLE><MREJV>255</MREJV><MTEXT>&lt;NAME&gt;the Necromancy Guildmaster&lt;/NAME&gt;&lt;DESC&gt;G`hirjil D`Umordin regards you, reading your soul. At his side is his most prized weapon, a scythe of  great power, and his hands are ready to grab it in  a flash. He wears a long dark robe, and daring to  look closely at him, you see that he is a lichdrow.&lt;/DESC&gt;&lt;DISP&gt;Your Guildmaster stands here, patiently waiting to teach you.&lt;/DISP&gt;&lt;PROP&gt;307|10|30|30|0|30|255|2.0|101|64|422|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;Clericness&lt;/BCLASS&gt;&lt;BPARMS&gt;necromancer&lt;/BPARMS&gt;&lt;/BHAVE&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;MOBTeacher&lt;/BCLASS&gt;&lt;BPARMS&gt;necromancer nocommon&lt;/BPARMS&gt;&lt;/BHAVE&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;Scriptable&lt;/BCLASS&gt;&lt;BPARMS&gt;LOAD=resources/progs/areas/elvenhame/necromancer.script&lt;/BPARMS&gt;&lt;/BHAVE&gt;&lt;/BEHAVES&gt;&lt;AFFECS&gt;&lt;AFF&gt;&lt;ACLASS&gt;Prayer_Sanctuary&lt;/ACLASS&gt;&lt;ATEXT /&gt;&lt;/AFF&gt;&lt;AFF&gt;&lt;ACLASS&gt;Prop_Resistance&lt;/ACLASS&gt;&lt;ATEXT&gt;teleport mind magic weapons 40%&lt;/ATEXT&gt;&lt;/AFF&gt;&lt;AFF&gt;&lt;ACLASS&gt;Prop_NoOrdering&lt;/ACLASS&gt;&lt;ATEXT /&gt;&lt;/AFF&gt;&lt;AFF&gt;&lt;ACLASS&gt;Prop_SafePet&lt;/ACLASS&gt;&lt;ATEXT /&gt;&lt;/AFF&gt;&lt;AFF&gt;&lt;ACLASS&gt;Prop_StatTrainer&lt;/ACLASS&gt;&lt;ATEXT&gt;dex=50&lt;/ATEXT&gt;&lt;/AFF&gt;&lt;/AFFECS&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;MONEY&gt;0&lt;/MONEY&gt;&lt;VARMONEY&gt;0.0&lt;/VARMONEY&gt;&lt;GENDER&gt;M&lt;/GENDER&gt;&lt;MRACE&gt;Lich&lt;/MRACE&gt;&lt;FACTIONS&gt;&lt;FCTN ID="ALIGNMENT.INI"&gt;-10000&lt;/FCTN&gt;&lt;FCTN ID="ELDRITCH_RACE.INI"&gt;5001&lt;/FCTN&gt;&lt;FCTN ID="INCLINATION.INI"&gt;0&lt;/FCTN&gt;&lt;FCTN ID="AREA_ELVENHAME.INI"&gt;5000&lt;/FCTN&gt;&lt;/FACTIONS&gt;&lt;INVEN /&gt;&lt;ABLTYS&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Common&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Elvish&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Necromancer_DetonateZombie&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Detonate Zombie&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Exploding)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Necromancer_ImbuedStitching&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Imbued Stitching&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Imbued Stitching)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Necromancer_UndeadSailor&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Undead Sailor Transfiguration&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Soul Sucking)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Necromancer_UndeadWanderer&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Undead Wanderer Transfiguration&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Undead Wanderer)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Necromancer_UndeadWatchman&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Undead Watchman Transfiguration&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Watching Property)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Necromancer_UndeadWorker&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Undead Worker Transfiguration&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Soul Sucking)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Necromancer_ZombieBrawler&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Zombie Brawler Transfiguration&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Zombie Brawler)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Necromancer_ZombieBrute&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Zombie Brute Transfiguration&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Zombie Brute)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Necromancer_ZombiePlaguebearer&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Zombie Plaguebearer Transfiguration&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Becoming Infectious)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;/ABLTYS&gt;&lt;EDUS&gt;ANATOMY4;BONELORE3;CALIGRAPHY1;COMMUNE1;CURSING1;DEATHLORE2;EDGEDSTRIKE1;EVANGELIST2;EXTENDEDABJURATION2;EXTENDEDCONJURATION2;FITNESS1;FLUIDITY9;GHOULLORE3;NATURELORE2;NEUTRALIZING1;POWERABJURATION2;POWERCONJURATION2;QUICKCRAFT10;QUICKWORK10;RANGEDABJURATION2;RANGEDCONJURATION2;REDUCEDABJURATION9;REDUCEDCONJURATION9;SUMMON3;WANDUSE2;&lt;/EDUS&gt;</MTEXT></MOB>
+</MOBS><CUSTOM><ABILITY ID="Necromancer_DetonateZombie" TYPE="GenAbility"><CLASS>Necromancer_DetonateZombie</CLASS><NAME>Detonate Zombie</NAME><DISPLAY>(Exploding)</DISPLAY><TRIGSTR>PRAY, PR, P</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>UNHOLY</FLAGS><CLASSIFICATION>PRAYER,DEATH_LORE</CLASSIFICATION><OVERRIDEMANA>50</OVERRIDEMANA><USAGEMASK>MANA</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>BENEFICIAL_OTHERS</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT>imask_prog p Necromancer_DetonateZombie 
+  if !ispc ($t)
+    if strin('$%GSTAT($t race)%' '*zombie*')
+      mpargset $6 $%isfollow('$t')%
+      if eval($6 == $n) 
+        mpargset $7 $%GSTAT($t Level)%
+        mpargset $9 $%GSTAT($t Hits)%
+        for $5 = 1 to '$%NUMMOBSROOM(*)%'
+          mpargset $4 $%ROOMMOB($5)%
+          mpargset $8 $%isfollow('$4')%
+          if eval($8 == $n) or eval($4 == $n)
+          else
+            if isfight($4)
+              mpdamage $4 $7 $9 KILL ME FIRE
+            endif
+          endif
+        next
+        mpecho $t suddenly explodes in a fiery mass of burning bones and smoldering flesh!
+        mppurge $t
+      else
+        mpechoat $n You may only detonate your own zombies.
+      endif
+    else
+      mpechoat $n Only zombies may be affected by this prayer.
+    endif
+  else
+    mpechoat $n Only certain forms of undead may be affected by this prayer!
+  endif
+~</SCRIPT><TARGETMASK>-JAVACLASS +GenUndead +GenRideableUndead</TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempt(s) to ignite &lt;T-NAME&gt; and fail(s).</FIZZLEMSG><AUTOCASTMSG>&lt;T-NAME&gt; expand(s) as internal gasses ignite.</AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; pray(s) to detonate  &lt;T-NAME&gt;.</CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;The necromancer sacrifices one zombie follower in an explosion of flesh and bones that will damage any enemy combatants. Using this ability in a room where there is no fighting going on will result in the destruction of the zombie, but no damage to others. </HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>1</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG></UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG>Only certain forms of undead may be affected by this prayer.</TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Necromancer_ZombieBrute" TYPE="GenAbility"><CLASS>Necromancer_ZombieBrute</CLASS><NAME>Zombie Brute Transfiguration</NAME><DISPLAY>(Zombie Brute)</DISPLAY><TRIGSTR>PRAY, PR, P</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>UNHOLY</FLAGS><CLASSIFICATION>PRAYER,DEATH_LORE</CLASSIFICATION><OVERRIDEMANA>2147483647</OVERRIDEMANA><USAGEMASK>MANA</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>BENEFICIAL_OTHERS</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT>imask_prog p Necromancer_ZombieBrute 
+  if !ispc ($t)
+    if !hastattoo ($t UNDEADJOB)
+      if strin('$%GSTAT($t race)%' '*zombie*')
+        if isbehave ($t CombatAbilities) or isbehave ($t Mageness) or isbehave ($t Clericness) or isbehave ($t Bardness) or isbehave ($t Fighterness) or isbehave ($t Thiefness) or isbehave ($t Thiefness)
+        else
+          mpbehave CombatAbilities $t MINTICKs=4
+        endif
+        mpcallfunc AssignZombieBruteAbilities
+      else
+        mpechoat $n Only zombies may be affected by this prayer.
+      endif
+    else
+      mpechoat $n $t already has an assigned role.
+    endif
+  else
+    mpechoat $n Only certain forms of undead may be affected by this prayer!
+  endif
+~
+
+function_prog AssignZombieBruteAbilities
+  mpenable $t fighter_rescue 100
+  mpsetvar $t VAR_MYRACE $%GSTAT($t race)%
+  mpcallfunc DisplayWordSwitch "$&lt;$t VAR_MYRACE&gt;" "$&lt;$t VAR_MYRACE&gt; brute"
+  mpcallfunc NameWordSwitch "zombie" "zombie brute"
+  switch $%RANDNUM(3)%
+    case 1
+      mpenable $t Specialization_Shield 90
+      mpenable $t Fighter_ShieldBlock 90
+    case 2
+      mpenable $t Fighter_Toughness 90
+    case 3
+      mpenable $t Fighter_Roll 90
+  endswitch
+  switch $%RANDNUM(2)%
+    case 1
+      mpenable $t Undead_BruteEndurance 100
+    case 2
+      mpenable $t Undead_BruteStrength 100
+  endswitch
+  mpgset $t description $%GSTAT($t description)% This zombie will defend its master.
+  mptattoo $t UNDEADJOB
+  mpecho $t salute(s) $n and flex(s).
+  return
+~
+
+function_prog DisplayWordSwitch
+
+  mpsetvar $t VAR_DISPLAY_NEW
+  mpsetvar $t VAR_DISPLAY_OLD_LENGTH $%GSTAT($t display)%.LENGTH#
+  mpsetvar $t VAR_DISPLAY_OLD_LENGTH --
+  #the above must subtract 1 from length due to 0 start in loop below
+  #mpecho length of display is: $&lt;$t VAR_DISPLAY_OLD_LENGTH&gt;
+  #mpecho $g.0 and $g.1
+ for $0 = 0 to '$&lt;$t VAR_DISPLAY_OLD_LENGTH&gt;'
+    #mpecho $0 and $%GSTAT($t display)%.$0
+    if eval($0 == '$&lt;$t VAR_DISPLAY_OLD_LENGTH&gt;')
+      #the above if checks for the last word in the mobs display
+      #this is the only one that will be checked using the strcontains since it ignores punctuation
+      #and normally the last word has a period at the end.
+      if strcontains('$%GSTAT($t display)%.$0' $g.0)
+        mpsetvar $t VAR_DISPLAY_NEW $&lt;$t VAR_DISPLAY_NEW&gt; $g.1
+      else
+        mpsetvar $t VAR_DISPLAY_NEW $&lt;$t VAR_DISPLAY_NEW&gt; $%GSTAT($t display)%.$0
+      endif
+    else
+      if eval('$%GSTAT($t display)%.$0' == $g.0)
+        mpsetvar $t VAR_DISPLAY_NEW $&lt;$t VAR_DISPLAY_NEW&gt; $g.1
+      else
+        if eval('$%GSTAT($t display)%.$0' == 'a')
+          mpsetvar $t VAR_DISPLAY_NEW $&lt;$t VAR_DISPLAY_NEW&gt; a(n)
+        else
+          mpsetvar $t VAR_DISPLAY_NEW $&lt;$t VAR_DISPLAY_NEW&gt; $%GSTAT($t display)%.$0
+        endif
+      endif
+    endif 
+  next
+  mpgset $t display $&lt;$t VAR_DISPLAY_NEW&gt;
+
+~
+
+function_prog NameWordSwitch
+
+  mpsetvar $t VAR_NAME_NEW
+  mpsetvar $t VAR_NAME_OLD_LENGTH $%GSTAT($t name)%.LENGTH#
+  mpsetvar $t VAR_NAME_OLD_LENGTH --
+  #the above must subtract 1 from length due to 0 start in loop below
+  #mpecho length of name is: $&lt;$t VAR_NAME_OLD_LENGTH&gt;
+ for $0 = 0 to '$&lt;$t VAR_NAME_OLD_LENGTH&gt;'
+    #mpecho $0 and $%GSTAT($t name)%.$0
+    if eval($0 == '$&lt;$t VAR_NAME_OLD_LENGTH&gt;')
+      #the above if checks for the last word in the mobs name
+      #this is the only one that will be checked using the strcontains since it ignores punctuation
+      #and normally the last word has a period at the end.
+      if strcontains('$%GSTAT($t name)%.$0' $g.0)
+        mpsetvar $t VAR_NAME_NEW $&lt;$t VAR_NAME_NEW&gt; $g.1
+      else
+        mpsetvar $t VAR_NAME_NEW $&lt;$t VAR_NAME_NEW&gt; $%GSTAT($t name)%.$0
+      endif
+    else
+      if eval('$%GSTAT($t name)%.$0' == $g.0)
+        mpsetvar $t VAR_NAME_NEW $&lt;$t VAR_NAME_NEW&gt; $g.1
+      else
+        if eval('$%GSTAT($t name)%.$0' == 'a')
+          mpsetvar $t VAR_NAME_NEW $&lt;$t VAR_NAME_NEW&gt; a(n)
+        else
+          mpsetvar $t VAR_NAME_NEW $&lt;$t VAR_NAME_NEW&gt; $%GSTAT($t name)%.$0
+        endif
+      endif
+    endif 
+  next
+  mpgset $t name $&lt;$t VAR_NAME_NEW&gt;
+
+~
+</SCRIPT><TARGETMASK>-JAVACLASS +GenUndead +GenRideableUndead</TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempt(s) to assign &lt;T-NAME&gt; a task, and fail(s).</FIZZLEMSG><AUTOCASTMSG>&lt;T-NAME&gt; flex(s) and moan(s).</AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; pray(s) to evolve &lt;T-NAME&gt;.</CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;The necromancer empowers a zombie with a drive to protect the necromancer`s party from attack. The targeted zombie will gain the rescue skill and one or two other defensive abilities, as well as an increased constitution. The zombie can then be ordered to use their rescue skill to take threat from a target. This ability counts as an undead transfiguration. An undead may only undergo one undead transfiguration.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>1</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG></UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG>Only certain forms of undead may be affected by this prayer.</TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Necromancer_UndeadWatchman" TYPE="GenAbility"><CLASS>Necromancer_UndeadWatchman</CLASS><NAME>Undead Watchman Transfiguration</NAME><DISPLAY>(Watching Property)</DISPLAY><TRIGSTR>PRAY, PR, P</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>UNHOLY</FLAGS><CLASSIFICATION>PRAYER,DEATH_LORE</CLASSIFICATION><OVERRIDEMANA>2147483647</OVERRIDEMANA><USAGEMASK>MANA</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>BENEFICIAL_OTHERS</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT>imask_prog p Necromancer_UndeadWatchman 
+  if !ispc ($t)
+    if !hastattoo ($t UNDEADJOB)
+      if hastattoo ($t SYSTEM_SUMMONED)
+        mpcallfunc AssignNannyAbilities
+        mpcallfunc RemoveMobility
+        mpcallfunc RemoveAggression
+        mptattoo $t UNDEADJOB
+        follow self
+        nofollow
+        mpecho ... and succeeds! %t salute(s) $n and begin(s) to consume a soul.
+      else
+        mpechoat $n ...but cannot learn any new trades.
+      endif
+    else
+      mpechoat $n ?but can`t learn any new trades.
+    endif
+  else
+    mpechoat $n ...and fails. Only certain forms of undead may be affected by this prayer!
+  endif
+~
+
+function_prog AssignNannyAbilities
+      mpbehave Nanny $t rate=1 name=?UndeadWatcher for '$n'?
+      mpbehave NoCombatAssist
+      mpaffect Prop_NoCharm $t parameters
+      mpaffect Prop_NoOrdering $t
+      mpaffect WanderHomeLater $t
+      mpaffect Spell_Anchor $t
+      mpaffect Prop_Retainable $t PERSIST=TRUE
+      beacon $t
+      mpgset $t name $%GSTAT($t name)%, the Watcher
+      mpgset $t description $%GSTAT($t description)% This undead is resolute in guarding the possessions of others for a nominal fee.
+  return
+~
+
+function_prog RemoveMobility
+  mpunbehave Mobile $t
+  mpunbehave MobileAggressive $t
+  mpunbehave MobileGoodGuardian $t
+  mpunbehave MOBHunter $t
+  mpunbehave Patroller $t
+~
+
+function_prog RemoveAggression
+  mpunbehave Wimpy $t
+  mpunbehave WimpyAggressive $t
+  mpunbehave Aggressive $t
+  mpunbehave VeryAggressive $t
+~
+</SCRIPT><TARGETMASK>-JAVACLASS +GenUndead +GenRideableUndead</TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempt(s) to infuse &lt;T-NAME&gt; with the soul of a guardian, and fail(s).</FIZZLEMSG><AUTOCASTMSG>&lt;T-NAME&gt; begin(s) to embody a soul.</AUTOCASTMSG><CASTMSG>&lt;T-NAME&gt; attempt(s) to embody a soul?</CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;The necromancer empowers a newly created undead to watch over their property for a small price. Only freshly animated undead may provide this ability, and once cast the undead will cease to assist in combat, follow orders or even remain in a party, but will protect items left in its care, such as wagons, boats or mounts. The undead will eventually decay unless left on private or clan property. This ability counts as an undead transfiguration. An undead may only undergo one undead transfiguration.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>1</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG></UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG>Only certain forms of undead may be affected by this prayer.</TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Necromancer_ZombieBrawler" TYPE="GenAbility"><CLASS>Necromancer_ZombieBrawler</CLASS><NAME>Zombie Brawler Transfiguration</NAME><DISPLAY>(Zombie Brawler)</DISPLAY><TRIGSTR>PRAY, PR, P</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>UNHOLY</FLAGS><CLASSIFICATION>PRAYER,DEATH_LORE</CLASSIFICATION><OVERRIDEMANA>2147483647</OVERRIDEMANA><USAGEMASK>MANA</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>BENEFICIAL_OTHERS</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT>imask_prog p Necromancer_ZombieBrawler 
+  if !ispc ($t)
+    if !hastattoo ($t UNDEADJOB)
+      if strin('$%GSTAT($t race)%' '*zombie*')
+        if isbehave ($t CombatAbilities) or isbehave ($t Mageness) or isbehave ($t Clericness) or isbehave ($t Bardness) or isbehave ($t Fighterness) or isbehave ($t Thiefness) or isbehave ($t Thiefness)
+        else
+          mpbehave CombatAbilities $t MINTICKs=4
+        endif
+        mpcallfunc AssignZombieBrawlerAbilities
+      else
+        mpechoat $n Only zombies may be affected by this prayer.
+      endif
+    else
+      mpechoat $n $t already has an assigned role.
+    endif
+  else
+    mpechoat $n Only certain forms of undead may be affected by this prayer!
+  endif
+~
+
+function_prog AssignZombieBrawlerAbilities
+  mpenable $t fighter_Pin 90
+  mpcallfunc DisplayWordSwitch "zombie" "zombie brawler"
+  mpcallfunc NameWordSwitch "zombie" "zombie brawler"
+  switch $%RANDNUM(6)%
+    case 1
+      mpenable $t Fighter_LegHold 90
+      mpenable $t Fighter_AnkleLock 90
+    case 2
+      mpenable $t Fighter_SleeperHold 90
+      mpenable $t Fighter_Headlock 90
+    case 3
+      mpenable $t Fighter_ArmHold 90
+      mpenable $t Fighter_WristLock 90
+    case 4
+      mpenable $t Fighter_BearHug 90
+      mpenable $t Fighter_ChokeHold 90
+    case 5
+      mpenable $t Fighter_BodyFlip 90
+      mpenable $t Fighter_Earbox 90
+    case 6
+      mpenable $t Fighter_ClinchHold 90
+      mpenable $t Fighter_SleeperHold 90
+  endswitch
+  mpgset STRENGTH++4
+  mpgset DEXTERITY++5
+  mpgset $t description $%GSTAT($t description)% This zombie will grapple with his enemies.
+  mptattoo $t UNDEADJOB
+  return
+~
+function_prog DisplayWordSwitch
+
+  mpsetvar $t VAR_DISPLAY_NEW
+  mpsetvar $t VAR_DISPLAY_OLD_LENGTH $%GSTAT($t display)%.LENGTH#
+  mpsetvar $t VAR_DISPLAY_OLD_LENGTH --
+  #the above must subtract 1 from length due to 0 start in loop below
+  #mpecho length of display is: $&lt;$t VAR_DISPLAY_OLD_LENGTH&gt;
+ for $0 = 0 to '$&lt;$t VAR_DISPLAY_OLD_LENGTH&gt;'
+    #mpecho $0 and $%GSTAT($t display)%.$0
+    if eval($0 == '$&lt;$t VAR_DISPLAY_OLD_LENGTH&gt;')
+      #the above if checks for the last word in the mobs display
+      #this is the only one that will be checked using the strcontains since it ignores punctuation
+      #and normally the last word has a period at the end.
+      if strcontains('$%GSTAT($t display)%.$0' $g.0)
+        mpsetvar $t VAR_DISPLAY_NEW $&lt;$t VAR_DISPLAY_NEW&gt; $g.1
+      else
+        mpsetvar $t VAR_DISPLAY_NEW $&lt;$t VAR_DISPLAY_NEW&gt; $%GSTAT($t display)%.$0
+      endif
+    else
+      if eval('$%GSTAT($t display)%.$0' == $g.0)
+        mpsetvar $t VAR_DISPLAY_NEW $&lt;$t VAR_DISPLAY_NEW&gt; $g.1
+      else
+        if eval('$%GSTAT($t display)%.$0' == 'a')
+          mpsetvar $t VAR_DISPLAY_NEW $&lt;$t VAR_DISPLAY_NEW&gt; a(n)
+        else
+          mpsetvar $t VAR_DISPLAY_NEW $&lt;$t VAR_DISPLAY_NEW&gt; $%GSTAT($t display)%.$0
+        endif
+      endif
+    endif 
+  next
+  mpgset $t display $&lt;$t VAR_DISPLAY_NEW&gt;
+
+~
+
+function_prog NameWordSwitch
+
+  mpsetvar $t VAR_NAME_NEW
+  mpsetvar $t VAR_NAME_OLD_LENGTH $%GSTAT($t name)%.LENGTH#
+  mpsetvar $t VAR_NAME_OLD_LENGTH --
+  #the above must subtract 1 from length due to 0 start in loop below
+  #mpecho length of name is: $&lt;$t VAR_NAME_OLD_LENGTH&gt;
+ for $0 = 0 to '$&lt;$t VAR_NAME_OLD_LENGTH&gt;'
+    #mpecho $0 and $%GSTAT($t name)%.$0
+    if eval($0 == '$&lt;$t VAR_NAME_OLD_LENGTH&gt;')
+      #the above if checks for the last word in the mobs name
+      #this is the only one that will be checked using the strcontains since it ignores punctuation
+      #and normally the last word has a period at the end.
+      if strcontains('$%GSTAT($t name)%.$0' $g.0)
+        mpsetvar $t VAR_NAME_NEW $&lt;$t VAR_NAME_NEW&gt; $g.1
+      else
+        mpsetvar $t VAR_NAME_NEW $&lt;$t VAR_NAME_NEW&gt; $%GSTAT($t name)%.$0
+      endif
+    else
+      if eval('$%GSTAT($t name)%.$0' == $g.0)
+        mpsetvar $t VAR_NAME_NEW $&lt;$t VAR_NAME_NEW&gt; $g.1
+      else
+        if eval('$%GSTAT($t name)%.$0' == 'a')
+          mpsetvar $t VAR_NAME_NEW $&lt;$t VAR_NAME_NEW&gt; a(n)
+        else
+          mpsetvar $t VAR_NAME_NEW $&lt;$t VAR_NAME_NEW&gt; $%GSTAT($t name)%.$0
+        endif
+      endif
+    endif 
+  next
+  mpgset $t name $&lt;$t VAR_NAME_NEW&gt;
+
+~
+</SCRIPT><TARGETMASK>-JAVACLASS +GenUndead +GenRideableUndead</TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempt(s) to assign &lt;T-NAME&gt; a task, and fail(s).</FIZZLEMSG><AUTOCASTMSG>&lt;T-NAME&gt; flex(s) and grunt(s).</AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; pray(s) to enhance &lt;T-NAME&gt;.</CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;The necromancer empowers a zombie with a drive to grab their enemies and drag them down. The targeted zombie will gain the grappling skills, as well as increased strength and dexterity. This ability counts as an undead transfiguration. An undead may only undergo one undead transfiguration.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>1</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG></UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG>Only certain forms of undead may be affected by this prayer.</TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Necromancer_ImbuedStitching" TYPE="GenAbility"><CLASS>Necromancer_ImbuedStitching</CLASS><NAME>Imbued Stitching</NAME><DISPLAY>(Imbued Stitching)</DISPLAY><TRIGSTR>PRAY, PR, P</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>UNHOLY</FLAGS><CLASSIFICATION>PRAYER,DEATH_LORE</CLASSIFICATION><OVERRIDEMANA>2147483647</OVERRIDEMANA><USAGEMASK>MANA</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>BENEFICIAL_OTHERS</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT>imask_prog p Necromancer_ImbuedStitching  
+  if !ispc ($t)
+    if !hastattoo ($t NECRO_IMBUEDSTITCHING)
+      # mpecho $%GSTAT($t race)%
+      if strin('$%GSTAT($t race)%' '*undead*') or strin('$%GSTAT($t race)%' '*zombie*')
+        if hastattoo ($t SYSTEM_SUMMONED)
+          if isname($t zombie)
+            # mpunaffect $t Prop_StatTrainer
+            # mpaffect Prop_StatTrainer $t NOTEACH STR=20 INT=10 WIS=10 CON=14 DEX=3 CHA=2
+            # mpechoat $n my armor is $%GSTAT($t armor)%
+            mpsetvar $n ZombieArmorAdjustment $%expertise($n prayer_AnimateZombie LEVEL)%*20+2*$%GSTAT($t level)%
+            # mpechoat $n My adjustment value is $%VAR($n ZombieArmorAdjustment)%
+            mpgset $t ARMOR  --$%VAR($n ZombieArmorAdjustment)%
+            mpgset $t CONSTITUTION ++4
+            # mpechoat $n My new armor value is $%GSTAT($t armor)%
+            mptattoo $t NECRO_IMBUEDSTITCHING
+            mpecho $t gain(s) imbued stitching.
+          else
+            mpechoat $n That target does not appear to be a zombie.
+          endif
+        else
+          mpechoat $n $t is not freshly animated.
+        endif
+      else
+        mpechoat $n Only certain types of undead may be affected by this prayer.
+      endif
+    else
+      mpechoat $n $t already has imbued stitching.
+    endif
+  else
+    mpechoat $n Only certain forms of undead may be affected by this prayer!
+  endif
+~</SCRIPT><TARGETMASK>-JAVACLASS +GenUndead +GenRideableUndead</TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempt(s) to imbue &lt;T-YOUPOSS&gt; body with magical stitching, and fail(s).</FIZZLEMSG><AUTOCASTMSG>&lt;T-YOUPOSS&gt; skin stiffens.</AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; pray(s) for imbued stitching on &lt;T-NAME&gt;.</CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;The necromancer weaves dark magic into the binding threads of a freshly animated zombie`s decaying flesh, reinforcing the hide from mortal combat.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>1</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG></UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG>Only certain forms of undead may be affected by this prayer.</TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Necromancer_UndeadWorker" TYPE="GenAbility"><CLASS>Necromancer_UndeadWorker</CLASS><NAME>Undead Worker Transfiguration</NAME><DISPLAY>(Soul Sucking)</DISPLAY><TRIGSTR>PRAY, PR, P</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>UNHOLY</FLAGS><CLASSIFICATION>PRAYER,DEATH_LORE</CLASSIFICATION><OVERRIDEMANA>2147483647</OVERRIDEMANA><USAGEMASK>MANA</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>BENEFICIAL_OTHERS</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT>imask_prog p Necromancer_UndeadWorker 
+  if !ispc ($t)
+    if !hastattoo ($t UNDEADJOB)
+      mpcallfunc AssignWorkerAbilities
+      mptattoo $t UNDEADJOB
+      mpecho ... and succeeds! %t salute(s) $n and begin(s) to consume a soul.
+    else
+      mpechoat $n ...but cannot learn any new trades.
+    endif
+  else
+    mpechoat $n ...and fails. Only certain forms of undead may be affected by this prayer!
+  endif
+~
+
+
+function_prog AssignWorkerAbilities
+  switch $%RANDNUM(5)%
+    case 1
+      # Forager
+      mpenable $t foraging 90
+      mpenable $t shrooming 90
+      mpgset $t description $%GSTAT($t description)% This undead is skilled in foraging and shrooming.
+    case 2
+      # Digger
+      mpenable $t digging 90
+      mpgset $t description $%GSTAT($t description)% This undead is skilled in digging for precious gems.
+    case 3
+      # Miner 
+      mpenable $t mining 90
+      mpgset $t description $%GSTAT($t description)% This undead is skilled in mining ores.
+    case 4
+      # Fisher
+      mpenable $t fishing 90
+      mpenable $t trawling 90
+      mpgset $t description $%GSTAT($t description)% This undead is skilled in catching fish by line or net.
+    case 5
+      # Lumberjack
+      mpenable $t chopping 90
+      mpgset $t description $%GSTAT($t description)% This undead is skilled in chopping down trees for lumber.
+  endswitch
+  return
+~</SCRIPT><TARGETMASK>-JAVACLASS +GenUndead +GenRideableUndead</TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempt(s) to infuse &lt;T-NAME&gt; with the soul of a worker, and fail(s).</FIZZLEMSG><AUTOCASTMSG>&lt;T-NAME&gt; begin(s) to consume a soul.</AUTOCASTMSG><CASTMSG>&lt;T-NAME&gt; attempt(s) to consume a soul?</CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;The necromancer draws out a lost worker`s soul to feed the targeted undead, enabling them to perform a gathering task. The necromancer has no control over the skill gained. This ability counts as an undead transfiguration. An undead may only undergo one undead transfiguration.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>1</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG></UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG>Only certain forms of undead may be affected by this prayer.</TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Necromancer_UndeadWanderer" TYPE="GenAbility"><CLASS>Necromancer_UndeadWanderer</CLASS><NAME>Undead Wanderer Transfiguration</NAME><DISPLAY>(Undead Wanderer)</DISPLAY><TRIGSTR>PRAY, PR, P</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>UNHOLY</FLAGS><CLASSIFICATION>PRAYER,DEATH_LORE</CLASSIFICATION><OVERRIDEMANA>100</OVERRIDEMANA><USAGEMASK>MANA</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>BENEFICIAL_OTHERS</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT>imask_prog p Necromancer_UndeadWanderer  
+  if !ispc ($t)
+    if hastattoo ($t SYSTEM_SUMMONED)
+      if eval('$%ISFOLLOW($t)%' == $n)
+        mpcallfunc RemoveMobility
+        mpcallfunc RemoveAggression
+        mpbehave Aggressive $t MOBKILL CHECKLEVEL +NAMES -$n +RACECAT -UNDEAD
+        if strin('$%GSTAT($t race)%' '*skeleton*')
+          mpbehave Mobile $t min=5 max=15 chance=80 wander
+        else
+          if strin('$%GSTAT($t race)%' '*spirit*') or strin('$%GSTAT($t race)%' '*spectre*') or strin('$%GSTAT($t race)%' '*ghost*')
+            mpbehave Mobile $t min=4 max=12 chance=90 wander
+         else
+            if strin('$%GSTAT($t race)%' '*vampire*')
+              mpbehave Mobile $t min=3 max=8 chance=95 wander opendoors
+            endif
+            if strin('$%GSTAT($t race)%' '*mummy*')
+              mpbehave Mobile $t min=4 max=10 chance=95 wander opendoors
+            endif
+            if strin('$%GSTAT($t race)%' '*ghast*')
+              mpbehave Mobile $t min=5 max=15 chance=85 wander opendoors
+            endif
+            if strin('$%GSTAT($t race)%' '*ghoul*')
+              mpbehave Mobile $t min=5 max=15 chance=85 wander opendoors
+            endif
+            if strin('$%GSTAT($t race)%' '*zombie*')
+              mpbehave Mobile $t min=10 max=20 chance=75 wander
+            endif
+            mpbehave Mobile $t min=2 max=6 chance=95 wander
+          endif
+        endif
+        mpgset $t description $%GSTAT($t description)% This undead has been cursed to wander the world for the remainder of its existence.
+        mpecho $t is filled with necrotic energy.
+      else
+        mpechoat $n $t must be your follower to be affected by this prayer.
+      endif
+      mpforce $t Follow self
+    else
+      mpechoat $n Only freshly animated undead may be affected by this prayer.
+    endif
+  else
+    mpechoat $n Only certain forms of undead may be affected by this prayer!
+  endif
+~
+
+
+function_prog RemoveMobility
+  mpunbehave Mobile $t
+  mpunbehave MobileAggressive $t
+  mpunbehave MobileGoodGuardian $t
+  mpunbehave MOBHunter $t
+  mpunbehave Patroller $t
+~
+
+function_prog RemoveAggression
+  mpunbehave Wimpy $t
+  mpunbehave WimpyAggressive $t
+  mpunbehave Aggressive $t
+  mpunbehave VeryAggressive $t
+~</SCRIPT><TARGETMASK>-Player -JAVACLASS +GenUndead +GenRideableUndead</TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempt(s) to instill &lt;T-NAME&gt; with free will, and fail(s).</FIZZLEMSG><AUTOCASTMSG>&lt;T-YOUPOSS&gt; desire to roam increases.</AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; command(s) &lt;T-NAME&gt; to roam.</CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;The necromancer empowers an undead follower with a drive to wander the world killing any living creatures it encounters. It will continue to wander the world for a considerable amount of time, or until it is destroyed. This ability counts as an undead transfiguration. An undead may only undergo one undead transfiguration.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>1</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG></UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG>Only certain forms of undead may be affected by this prayer.</TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Necromancer_ZombiePlaguebearer" TYPE="GenAbility"><CLASS>Necromancer_ZombiePlaguebearer</CLASS><NAME>Zombie Plaguebearer Transfiguration</NAME><DISPLAY>(Becoming Infectious)</DISPLAY><TRIGSTR>PRAY, PR, P</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>UNHOLY</FLAGS><CLASSIFICATION>PRAYER,DEATH_LORE</CLASSIFICATION><OVERRIDEMANA>2147483647</OVERRIDEMANA><USAGEMASK>MANA</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>BENEFICIAL_OTHERS</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT>imask_prog p Necromancer_ZombiePlaguebearer 
+  if !ispc ($t)
+    if !hastattoo ($t UNDEADJOB)
+      if strin('$%GSTAT($t race)%' '*zombie*')
+        if isbehave ($t CombatAbilities) or isbehave ($t Mageness) or isbehave ($t Clericness) or isbehave ($t Bardness) or isbehave ($t Fighterness) or isbehave ($t Thiefness) or isbehave ($t Thiefness)
+        else
+          mpbehave NastyAbilities $t Min=5 Max=25 chance=50 CHECKLEVEL
+        endif
+        mpcallfunc AssignZombiePlaguebearerAbilities
+        mpcallfunc RemoveMobility
+        mpcallfunc RemoveAggression
+        mpbehave Aggressive $t MOBKILL CHECKLEVEL +NAMES -$n +RACECAT -UNDEAD
+        mpbehave Mobile $t min=10 max=20 chance=75 wander
+        mpechoat $n $t somehow looks sicker!
+      else
+        mpechoat $n Only zombies may be affected by this prayer.
+      endif
+    else
+      mpechoat $n $t already has an assigned role.
+    endif
+  else
+    mpechoat $n Only certain forms of undead may be affected by this prayer!
+  endif
+~
+
+function_prog AssignZombiePlaguebearerAbilities
+  mpenable $t prayer_plague 90
+  mpcallfunc DisplayWordSwitch "zombie" "zombie plaguebearer"
+  mpcallfunc NameWordSwitch "zombie" "zombie plaguebearer "
+  switch $%RANDNUM(50)%
+    case 1
+      mpenable $t Disease_Aids 90
+    case 2
+      mpenable $t Disease_Alzheimers 90
+    case 3
+      mpenable $t Disease_Anemia 90
+    case 4
+      mpenable $t Disease_Anosmia 90
+    case 5
+      mpenable $t Disease_Anthrax 90
+    case 6
+      mpenable $t Disease_Arthritis 90
+    case 7
+      mpenable $t Disease_Asthma 90
+    case 8
+      mpenable $t Disease_Cancer 90
+    case 9
+      mpenable $t Disease_Chlamydia 90
+    case 10
+      mpenable $t Disease_Diarrhea 90
+    case 11
+      mpenable $t Disease_FilthFever 90
+    case 12
+      mpenable $t Disease_Gangrene 90
+    case 13
+      mpenable $t Disease_Gonorrhea 90
+    case 14
+      mpenable $t Disease_Lepresy 90
+    case 15
+      mpenable $t Disease_Lockjaw 90
+    case 16
+      mpenable $t Disease_Magepox 90
+    case 17
+      mpenable $t Disease_Malaria 90
+    case 18
+      mpenable $t Disease_Cancer 90
+    case 19
+      mpenable $t Disease_Chlamydia 90
+    case 20
+      mpenable $t Disease_Diarrhea 90
+    case 21
+      mpenable $t Disease_Nausea 90
+    case 22
+      mpenable $t Disease_Plague 90
+    case 23
+      mpenable $t Disease_SARS 90
+    case 24
+      mpenable $t Disease_Scabies 90
+    case 25
+      mpenable $t Disease_Scurvy 90
+    case 26
+      mpenable $t Disease_Syphilis 90
+    case 27
+      mpenable $t Disease_Zika 90
+    case 28
+      mpenable $t Disease_Tourettes 90
+    case 29
+      mpenable $t Disease_Vertigo 90
+    default
+      mpenable $t Prayer_Plague 90
+  endswitch
+  mpgset STRENGTH++4
+  mpgset CONSTITUTION++5
+  mpgset $t description $%GSTAT($t description)% This zombie will infect his enemies.
+  mptattoo $t UNDEADJOB
+  return
+~
+
+function_prog RemoveMobility
+  mpunbehave Mobile $t
+  mpunbehave MobileAggressive $t
+  mpunbehave MobileGoodGuardian $t
+  mpunbehave MOBHunter $t
+  mpunbehave Patroller $t
+~
+
+function_prog RemoveAggression
+  mpunbehave Wimpy $t
+  mpunbehave WimpyAggressive $t
+  mpunbehave Aggressive $t
+  mpunbehave VeryAggressive $t
+~
+
+function_prog DisplayWordSwitch
+
+  mpsetvar $t VAR_DISPLAY_NEW
+  mpsetvar $t VAR_DISPLAY_OLD_LENGTH $%GSTAT($t display)%.LENGTH#
+  mpsetvar $t VAR_DISPLAY_OLD_LENGTH --
+  #the above must subtract 1 from length due to 0 start in loop below
+  #mpecho length of display is: $&lt;$t VAR_DISPLAY_OLD_LENGTH&gt;
+ for $0 = 0 to '$&lt;$t VAR_DISPLAY_OLD_LENGTH&gt;'
+    #mpecho $0 and $%GSTAT($t display)%.$0
+    if eval($0 == '$&lt;$t VAR_DISPLAY_OLD_LENGTH&gt;')
+      #the above if checks for the last word in the mobs display
+      #this is the only one that will be checked using the strcontains since it ignores punctuation
+      #and normally the last word has a period at the end.
+      if strcontains('$%GSTAT($t display)%.$0' $g.0)
+        mpsetvar $t VAR_DISPLAY_NEW $&lt;$t VAR_DISPLAY_NEW&gt; $g.1
+      else
+        mpsetvar $t VAR_DISPLAY_NEW $&lt;$t VAR_DISPLAY_NEW&gt; $%GSTAT($t display)%.$0
+      endif
+    else
+      if eval('$%GSTAT($t display)%.$0' == $g.0)
+        mpsetvar $t VAR_DISPLAY_NEW $&lt;$t VAR_DISPLAY_NEW&gt; $g.1
+      else
+        if eval('$%GSTAT($t display)%.$0' == 'a')
+          mpsetvar $t VAR_DISPLAY_NEW $&lt;$t VAR_DISPLAY_NEW&gt; a(n)
+        else
+          mpsetvar $t VAR_DISPLAY_NEW $&lt;$t VAR_DISPLAY_NEW&gt; $%GSTAT($t display)%.$0
+        endif
+      endif
+    endif 
+  next
+  mpgset $t display $&lt;$t VAR_DISPLAY_NEW&gt;
+
+~
+
+function_prog NameWordSwitch
+
+  mpsetvar $t VAR_NAME_NEW
+  mpsetvar $t VAR_NAME_OLD_LENGTH $%GSTAT($t name)%.LENGTH#
+  mpsetvar $t VAR_NAME_OLD_LENGTH --
+  #the above must subtract 1 from length due to 0 start in loop below
+  #mpecho length of name is: $&lt;$t VAR_NAME_OLD_LENGTH&gt;
+ for $0 = 0 to '$&lt;$t VAR_NAME_OLD_LENGTH&gt;'
+    #mpecho $0 and $%GSTAT($t name)%.$0
+    if eval($0 == '$&lt;$t VAR_NAME_OLD_LENGTH&gt;')
+      #the above if checks for the last word in the mobs name
+      #this is the only one that will be checked using the strcontains since it ignores punctuation
+      #and normally the last word has a period at the end.
+      if strcontains('$%GSTAT($t name)%.$0' $g.0)
+        mpsetvar $t VAR_NAME_NEW $&lt;$t VAR_NAME_NEW&gt; $g.1
+      else
+        mpsetvar $t VAR_NAME_NEW $&lt;$t VAR_NAME_NEW&gt; $%GSTAT($t name)%.$0
+      endif
+    else
+      if eval('$%GSTAT($t name)%.$0' == $g.0)
+        mpsetvar $t VAR_NAME_NEW $&lt;$t VAR_NAME_NEW&gt; $g.1
+      else
+        if eval('$%GSTAT($t name)%.$0' == 'a')
+          mpsetvar $t VAR_NAME_NEW $&lt;$t VAR_NAME_NEW&gt; a(n)
+        else
+          mpsetvar $t VAR_NAME_NEW $&lt;$t VAR_NAME_NEW&gt; $%GSTAT($t name)%.$0
+        endif
+      endif
+    endif 
+  next
+  mpgset $t name $&lt;$t VAR_NAME_NEW&gt;
+
+~
+</SCRIPT><TARGETMASK>-JAVACLASS +GenUndead +GenRideableUndead</TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempt(s) to assign &lt;T-NAME&gt; a task, and fail(s).</FIZZLEMSG><AUTOCASTMSG>&lt;T-NAME&gt; hack(s) and cough(s).</AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; pray(s) to infect &lt;T-NAME&gt;.</CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;The necromancer infects a zombie with a virulent plague and the ability to wander. The necromancer has no control over the disease gained. This ability counts as an undead transfiguration. An undead may only undergo one undead transfiguration.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>1</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG></UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG>Only certain forms of undead may be affected by this prayer.</TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Necromancer_UndeadSailor" TYPE="GenAbility"><CLASS>Necromancer_UndeadSailor</CLASS><NAME>Undead Sailor Transfiguration</NAME><DISPLAY>(Soul Sucking)</DISPLAY><TRIGSTR>PRAY, PR, P</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>UNHOLY</FLAGS><CLASSIFICATION>PRAYER,DEATH_LORE</CLASSIFICATION><OVERRIDEMANA>2147483647</OVERRIDEMANA><USAGEMASK>MANA</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>BENEFICIAL_OTHERS</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT>imask_prog p Necromancer_UndeadSailor 
+  if !ispc ($t)
+    if !hastattoo ($t UNDEADJOB)
+      mpcallfunc AssignSailorAbilities
+      mptattoo $t UNDEADJOB
+      mpecho ... and succeeds! %t salute(s) $n and begin(s) absorbing the soul of a long-dead sailor.
+    else
+      mpechoat $n ...but cannot learn any new trades.
+    endif
+  else
+    mpechoat $n ...and fails. Only certain forms of undead may be affected by this prayer!
+  endif
+~
+
+
+function_prog AssignSailorAbilities
+  switch $%RANDNUM(6)%
+    case 1
+      # Navigator (navigates the ship at random during peace)
+      mpbehave sailor $t PEACEMOVER=TRUE AREAONLY=FALSE WIMPY=FALSE FIGHTMOVER=FALSE FIGHTTECH=FALSE AGGRO=TRUE AGGROMOBS=TRUE AGGROLEVELCHECK=TRUE DEFENDER=FALSE BOARDER=FALSE
+      mpgset $t description $%GSTAT($t description)% This undead is skilled in navigating naval ships on long journeys. It will avoid entering into onboard ship combat.
+    case 2
+      # Tactician (navigates the ship during combat)
+      mpbehave sailor $t PEACEMOVER=FALSE AREAONLY=TRUE WIMPY=FALSE FIGHTMOVER=FALSE FIGHTTECH=FALSE AGGRO=TRUE AGGROMOBS=TRUE AGGROLEVELCHECK=TRUE DEFENDER=FALSE BOARDER=FALSE
+      mpgset $t description $%GSTAT($t description)% This undead is skilled in piloting naval ships in ship-to-ship combat.
+    case 3
+      # Repairer (fixes battle damage)
+      mpbehave sailor $t PEACEMOVER=FALSE AREAONLY=FALSE WIMPY=FALSE FIGHTMOVER=FALSE FIGHTTECH=FALSE AGGRO=FALSE AGGROMOBS=FALSE AGGROLEVELCHECK=FALSE DEFENDER=FALSE BOARDER=FALSE
+      mpenable $t shipwright 90
+      mpgset $t description $%GSTAT($t description)% This undead is skilled in the repair of naval ships.
+    case 4
+      # Defender (defends the ship when boarded)
+      mpbehave sailor $t PEACEMOVER=FALSE AREAONLY=FALSE WIMPY=FALSE FIGHTMOVER=FALSE FIGHTTECH=FALSE AGGRO=TRUE AGGROMOBS=TRUE AGGROLEVELCHECK=TRUE DEFENDER=TRUE BOARDER=FALSE
+      mpgset $t description $%GSTAT($t description)% This undead is skilled in the defense of castles, caravans and naval ships.
+    case 5
+      # Siege Weapon Operator (loads and fires weapons)
+      mpbehave sailor $t PEACEMOVER=FALSE AREAONLY=FALSE WIMPY=FALSE FIGHTMOVER=FALSE FIGHTTECH=TRUE AGGRO=TRUE AGGROMOBS=TRUE AGGROLEVELCHECK=TRUE DEFENDER=FALSE BOARDER=FALSE
+      mpgset $t description $%GSTAT($t description)% This undead is skilled in loading and firing siege weapons.
+    case 6
+      # Boarder (moves onto enemy ships that are grappled)
+      mpbehave sailor $t PEACEMOVER=FALSE AREAONLY=FALSE WIMPY=FALSE FIGHTMOVER=FALSE FIGHTTECH=FALSE AGGRO=TRUE AGGROMOBS=TRUE AGGROLEVELCHECK=TRUE DEFENDER=FALSE BOARDER=TRUE
+      mpgset $t description $%GSTAT($t description)% This undead is skilled in boarding enemy ships grappled in ship-to-ship combat.
+  endswitch
+  return
+~
+</SCRIPT><TARGETMASK>-JAVACLASS +GenUndead +GenRideableUndead</TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempt(s) to infuse &lt;T-NAME&gt; with the soul of a sailor, and fail(s).</FIZZLEMSG><AUTOCASTMSG>&lt;T-NAME&gt; begin(s) to absorb a soul.</AUTOCASTMSG><CASTMSG>&lt;T-NAME&gt; attempt(s) to absorb a soul?</CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;This prayer instills the ability for an undead to serve as a crewmember for a ship, caravan, or other combat vehicle. The necromancer has no control over the skill gained. This ability counts as an undead transfiguration. An undead may only undergo one undead transfiguration.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>1</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG></UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG>Only certain forms of undead may be affected by this prayer.</TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY></CUSTOM><FILES><FILE NAME="resources/progs/areas/elvenhame/necromancer.script">greet_prog 100
+  if ispc($n)
+    if class($n == necromancer)
+      say Welcome, necromancer.
+      say I am most proficient in the deathly arts, but know of others who can teach you in some of the more obscure forms of necromancy if you desire. Just ask me about the ^yGhoul Lord^?, ^yDemilich^?, ^yGhost Lord^?, ^yMummy Lord^? or ^yVampire Lord^? for more information, if you are interested in alternate paths of immortality.
+      mpalarm 1 say Mind you, if you do walk those paths, you will never be able to attain Lichdom.
+      mpalarm 2 say I might be able to grant you some rare Death Lore prayers, if you have sufficient expertise. If you are interested in continuing this conversation, say: ^yUnique Death Lore Prayers^?, and I will tell you what abilities you are qualified for.
+    else
+      smirk
+      say You don't look like your belong here. Perhaps you have lost your way.
+      mpalarm 1 Perhaps you are just looking to die.
+    endif
+  endif
+~
+
+speech_prog p Ghoul Lord
+  say I am still searching for the Ghoul Lord. Come back later after my spies have reported back, and I will share more details.
+~
+
+speech_prog p Demilich
+  say I am still searching for the Demilich. Come back later after my spies have reported back, and I will share more details.
+~
+
+speech_prog p Ghost Lord
+  say I am still searching for the Ghost Lord. Come back later after my spies have reported back, and I will share more details.
+~
+
+speech_prog p Mummy Lord
+  say I am still searching for the Mummy Lord. Come back later after my spies have reported back, and I will share more details.
+~
+
+speech_prog p Vampire Lord
+  say I am still searching for the Vampire Lord. Come back later after my spies have reported back, and I will share more details.
+~
+
+speech_prog p Unique Death Lore Prayers
+  mpsetvar $n VAR_QUALIFYING_ABILITIES Your Death Lore expertise allows you to qualify for the following abilities:
+  mpsetvar $n VAR_QUALIFYING_ABILITIES_QUANTITY 1
+  if EXPERTISE($n Prayer_AnimateZombie level > 7) and class($n == necromancer) and !isable($n Necromancer_UndeadWatchman)
+    mpsetvar $n VAR_QUALIFYING_ABILITIES $<$n VAR_QUALIFYING_ABILITIES> %0D^cUndead Watchman Transfiguration^?
+    mpsetvar $n VAR_QUALIFYING_ABILITIES_QUANTITY ++
+  endif
+  if EXPERTISE($n Prayer_AnimateZombie level > 6) and class($n == necromancer) and !isable($n Necromancer_Worker)
+    mpsetvar $n VAR_QUALIFYING_ABILITIES $<$n VAR_QUALIFYING_ABILITIES> %0D^cUndead Worker Transfiguration^?
+    mpsetvar $n VAR_QUALIFYING_ABILITIES_QUANTITY ++
+  endif
+  if EXPERTISE($n Prayer_AnimateZombie level > 5) and class($n == necromancer) and !isable($n Necromancer_ZombiePlaguebearer)
+    mpsetvar $n VAR_QUALIFYING_ABILITIES $<$n VAR_QUALIFYING_ABILITIES> %0D^cZombie Plaguebearer Transfiguration^?
+    mpsetvar $n VAR_QUALIFYING_ABILITIES_QUANTITY ++
+  endif
+  if EXPERTISE($n Prayer_AnimateZombie level > 4) and class($n == necromancer) and !isable($n Necromancer_UndeadSailor)
+    mpsetvar $n VAR_QUALIFYING_ABILITIES $<$n VAR_QUALIFYING_ABILITIES> %0D^cUndead Sailor Transfiguration^?
+    mpsetvar $n VAR_QUALIFYING_ABILITIES_QUANTITY ++
+  endif
+  if EXPERTISE($n Prayer_AnimateZombie level > 3) and class($n == necromancer) and !isable($n Necromancer_UndeadWanderer)
+    mpsetvar $n VAR_QUALIFYING_ABILITIES $<$n VAR_QUALIFYING_ABILITIES> %0D^cUndead Wanderer Transfiguration^?
+    mpsetvar $n VAR_QUALIFYING_ABILITIES_QUANTITY ++
+  endif
+  if EXPERTISE($n Prayer_AnimateZombie level > 2) and class($n == necromancer) and !isable($n Necromancer_ZombieBrawler)
+    mpsetvar $n VAR_QUALIFYING_ABILITIES $<$n VAR_QUALIFYING_ABILITIES> %0D^cZombie Brawler Transfiguration^?
+    mpsetvar $n VAR_QUALIFYING_ABILITIES_QUANTITY ++
+  endif
+  if EXPERTISE($n Prayer_AnimateZombie level > 2) and class($n == necromancer) and !isable($n Necromancer_ZombieBrute)
+    mpsetvar $n VAR_QUALIFYING_ABILITIES $<$n VAR_QUALIFYING_ABILITIES> %0D^cZombie Brute Transfiguration^?
+    mpsetvar $n VAR_QUALIFYING_ABILITIES_QUANTITY ++
+  endif
+  if EXPERTISE($n Prayer_AnimateZombie level > 1) and class($n == necromancer) and !isable($n Necromancer_DetonateZombie)
+    mpsetvar $n VAR_QUALIFYING_ABILITIES $<$n VAR_QUALIFYING_ABILITIES> %0D^cDetonate Zombie^?
+    mpsetvar $n VAR_QUALIFYING_ABILITIES_QUANTITY ++
+  endif
+  if EXPERTISE($n Prayer_AnimateZombie level > 0) and class($n == necromancer) and !isable($n Necromancer_ImbuedStitching)
+    mpsetvar $n VAR_QUALIFYING_ABILITIES $<$n VAR_QUALIFYING_ABILITIES> %0D^cImbued Stitching^?
+    mpsetvar $n VAR_QUALIFYING_ABILITIES_QUANTITY ++
+  endif
+  if var($n VAR_QUALIFYING_ABILITIES_QUANTITY < 2)
+    mpsetvar $n VAR_QUALIFYING_ABILITIES $<$n VAR_QUALIFYING_ABILITIES> %0DNone!
+  endif
+  if !class($n == necromancer)
+    say I can only grant necromancers these special prayers.
+  else
+    if !isable($n Prayer_AnimateZombie)
+      say You must know the ^cAnimate Zombie^? prayer for me to grant you these special prayers.
+    else
+      if EXPERTISE($n Prayer_AnimateZombie level < 1)  
+        say You must increase your ^cDeath Lore^? expertise
+      else
+        say $<$n VAR_QUALIFYING_ABILITIES>
+        if var($n VAR_QUALIFYING_ABILITIES_QUANTITY > 1)
+          say If you would like to learn one of the above prayers, say ^yGRANT ME^? and the full ability name.
+          say Each of these special prayers costs 1 TRAIN to learn.
+        else
+          if EXPERTISE($n Prayer_AnimateZombie level < 8)
+            say Come back when you have more ^cDeath Lore^? expertise and I will grant you more.
+          endif
+        endif
+      endif
+    endif
+  endif
+~
+
+speech_prog p GRANT ME Imbued Stitching
+  if EXPERTISE($n Prayer_AnimateZombie level > 0) and class($n == necromancer) and !isable($n Necromancer_ImbuedStitching)
+    if trains($n > 0)
+      mptrains $n --1
+      mpenable $n Necromancer_ImbuedStitching 25
+      mpechoat $n You have learned Imbued Stitching.
+      WIZ $n has learned Imbued Stitching
+    else
+      say You do not have enough trains available to learn Imbued Stitching.
+    endif
+  else
+    say I cannot grant you Imbued Stitching, $n.
+  endif
+~
+
+speech_prog p GRANT ME Detonate Zombie
+  if EXPERTISE($n Prayer_AnimateZombie level > 1) and class($n == necromancer) and !isable($n Necromancer_DetonateZombie)
+    if trains($n > 0)
+      mptrains $n --1
+      mpenable $n Necromancer_DetonateZombie 25
+      mpechoat $n You have learned Detonate Zombie.
+      WIZ $n has learned Detonate Zombie
+    else
+      say You do not have enough trains available to learn Detonate Zombie.
+    endif
+  else
+    say I cannot grant you Detonate Zombie, $n.
+  endif
+~
+
+speech_prog p GRANT ME Zombie Brute Transfiguration
+  if EXPERTISE($n Prayer_AnimateZombie level > 2) and class($n == necromancer) and !isable($n Necromancer_ZombieBrute)
+    if trains($n > 0)
+      mptrains $n --1
+      mpenable $n Necromancer_ZombieBrute 25
+      mpechoat $n You have learned Zombie Brute Transfiguration.
+      WIZ $n has learned Zombie Brute Transfiguration
+    else
+      say You do not have enough trains available to learn Zombie Brute Transfiguration.
+    endif
+  else
+    say I cannot grant you Zombie Brute Transfiguration, $n.
+  endif
+~
+
+speech_prog p GRANT ME Zombie Brawler Transfiguration
+  if EXPERTISE($n Prayer_AnimateZombie level > 2) and class($n == necromancer) and !isable($n Necromancer_ZombieBrawler)
+
+    if trains($n > 0)
+      mptrains $n --1
+      mpenable $n Necromancer_ZombieBrawler 25
+      mpechoat $n You have learned Zombie Brawler Transfiguration.
+      WIZ $n has learned Zombie Brawler Transfiguration
+    else
+      say You do not have enough trains available to learn Zombie Brawler Transfiguration.
+    endif
+  else
+    say I cannot grant you Zombie Brawler Transfiguration, $n.
+  endif
+~
+
+speech_prog p GRANT ME Undead Wanderer Transfiguration
+  if EXPERTISE($n Prayer_AnimateZombie level > 3) and class($n == necromancer) and !isable($n Necromancer_UndeadWanderer)
+    if trains($n > 0)
+      mptrains $n --1
+      mpenable $n Necromancer_UndeadWanderer 25
+      mpechoat $n You have learned Undead Wanderer Transfiguration.
+      WIZ $n has learned Undead Wanderer Transfiguration
+    else
+      say You do not have enough trains available to learn Undead Wanderer Transfiguration.
+    endif
+  else
+    say I cannot grant you Undead Wanderer Transfiguration, $n.
+  endif
+~
+
+speech_prog p GRANT ME Undead Sailor Transfiguration
+  if EXPERTISE($n Prayer_AnimateZombie level > 4) and class($n == necromancer) and !isable($n Necromancer_UndeadSailor)
+    if trains($n > 0)
+      mptrains $n --1
+      mpenable $n Necromancer_UndeadSailor 25
+      mpechoat $n You have learned Undead Sailor Transfiguration.
+      WIZ $n has learned Undead Sailor Transfiguration
+    else
+      say You do not have enough trains available to learn Undead Sailor Transfiguration.
+    endif
+  else
+    say I cannot grant you Undead Sailor Transfiguration, $n.
+  endif
+~
+
+speech_prog p GRANT ME Zombie Plaguebearer Transfiguration
+  if EXPERTISE($n Prayer_AnimateZombie level > 5) and class($n == necromancer) and !isable($n Necromancer_ZombiePlaguebearer)
+    if trains($n > 0)
+      mptrains $n --1
+      mpenable $n Necromancer_ZombiePlaguebearer 25
+      mpechoat $n You have learned Zombie Plaguebearer Transfiguration.
+      WIZ $n has learned Undead Plaguebearer Transfiguration
+    else
+      say You do not have enough trains available to learn Zombie Plaguebearer Transfiguration.
+    endif
+  else
+    say I cannot grant you Zombie Plaguebearer Transfiguration, $n.
+  endif
+~
+
+speech_prog p GRANT ME Undead Worker Transfiguration
+  if EXPERTISE($n Prayer_AnimateZombie level > 6) and class($n == necromancer) and !isable($n Necromancer_Worker)
+    if trains($n > 0)
+      mptrains $n --1
+      mpenable $n Necromancer_Worker 25
+      mpechoat $n You have learned Undead Worker Transfiguration.
+      WIZ $n has learned Undead Worker Transfiguration
+    else
+      say You do not have enough trains available to learn Undead Worker Transfiguration.
+    endif
+  else
+    say I cannot grant you Undead Worker Transfiguration, $n.
+  endif
+~
+
+speech_prog p GRANT ME Undead Watchman Transfiguration
+  if EXPERTISE($n Prayer_AnimateZombie level > 7) and class($n == necromancer) and !isable($n Necromancer_UndeadWatchman)
+    if trains($n > 0)
+      mptrains $n --1
+      mpenable $n Necromancer_UndeadWatchman 25
+      mpechoat $n You have learned Undead Watchman Transfiguration.
+      WIZ $n has learned Undead Watchman Transfiguration
+    else
+      say You do not have enough trains available to learn Undead Watchman Transfiguration.
+    endif
+  else
+    say I cannot grant you Undead Watchman Transfiguration, $n.
+  endif
+~</FILE></FILES>

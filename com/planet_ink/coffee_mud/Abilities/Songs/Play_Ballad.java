@@ -84,8 +84,6 @@ public class Play_Ballad extends Play
 			   ||(myChar.charStats().reproductiveCode()==('F')))
 			&&(myChar.charStats().getMyRace().canBreedWith(mate.charStats().getMyRace(),false))
 			&&(myChar.location()==mate.location())
-			&&(myChar.fetchWornItems(Wearable.WORN_LEGS|Wearable.WORN_WAIST,(short)-2048,(short)0).size()==0)
-			&&(mate.fetchWornItems(Wearable.WORN_LEGS|Wearable.WORN_WAIST,(short)-2048,(short)0).size()==0)
 			&&((mate.charStats().getStat(CharStats.STAT_AGE)==0)
 					||((mate.charStats().ageCategory()>Race.AGE_CHILD)
 							&&(mate.charStats().ageCategory()<Race.AGE_OLD)))

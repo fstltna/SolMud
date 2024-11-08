@@ -4,7 +4,7 @@ mpforce $i say Greetings child, if you wish to change your beliefs please tell m
 ~
 
 speech_prog p Blissrose
-mpforce $i say Not really a god, mother of the forest and the new world. Re-greener of the world and the savior, we all exist today thanks to her. Though she might have used non-ethical ways at times. Are you certain this is your choice?
+mpforce $i say Not really a god, mother of the forest and the new world. Re-greener of the world and the savior, we all exist today thanks to her. Though she might have used non-ethical ways at times. Are you certain this is your choice? She is known for Nature.
 mpchoose $n choice YN N choice Is this your deity? (Y/N)
 if var($n choice == Y)
 mpgset $n deity Blissrose
@@ -13,7 +13,7 @@ endif
 ~
 
 speech_prog p Lady Moonbeam
-mpforce $i say Young goddess of all good and wet dreams, queen of the astral plane. asks hedonism and endless sex from all her followers, because "life is short and precious.".
+mpforce $i say Young goddess of all good and wet dreams, queen of the astral plane. asks hedonism and endless sex from all her followers, because "life is short and precious". Se is known for Dreams, Illusion, Moonlight and Pleasure.
 mpchoose $n choice YN N choice Is this your deity? (Y/N)
 if var($n choice == Y)
 mpgset $n deity 'Lady Moonbeam'
@@ -22,7 +22,7 @@ endif
 ~
 
 speech_prog p Lamashtu
-mpforce $i say Mother of Monsters and demon-goddess of family. A demonic gnoll, she is primarily worshipped by evil creatures, though any being who plans on starting a family can follow her.
+mpforce $i say Mother of Monsters and demon-goddess of family. A demonic gnoll, she is primarily worshipped by evil creatures, though any being who plans on starting a family can follow her. She is known for Monsters, Family and Breeding
 mpchoose $n choice YN N choice Is this your deity? (Y/N)
 if var($n choice == Y)
 mpgset $n deity Lamashtu
@@ -31,7 +31,7 @@ endif
 ~
 
 speech_prog p Last Death God
-mpforce $i say Oldest new god, initially corrupted by a demonic being and the only new god to be born from an actual god's coupling. He views life and everyday events as pointless, life is the short journey but death is the destination. He is not exactly an evil god despite how it sounds.
+mpforce $i say Oldest new god, initially corrupted by an ancient demonic being and the only new god to be born from an actual god's coupling. He views life and everyday events as pointless, life is the short journey but death is the destination. He is not exactly an evil god despite how it sounds. He is known for Death, Necromancy and Souls
 mpchoose $n choice YN N choice Is this your deity? (Y/N)
 if var($n choice == Y)
 mpgset $n deity 'Last Death God'
@@ -40,7 +40,7 @@ endif
 ~
 
 speech_prog p The Wanderer
-mpforce $i say The Wanderer is the God of the Desert, the Nomad king of the tribes. He once ruled it as a mortal guiding the lost souls that called the desert home to his walls and away from the monsters that roam its sands.
+mpforce $i say The Wanderer is the God of the Desert, the Nomad king of the tribes. He once ruled it as a mortal guiding the lost souls that called the desert home to his walls and away from the monsters that roam its sands. He is known for travel and deserts.
 mpchoose $n choice YN N choice Is this your deity? (Y/N)
 if var($n choice == Y)
 mpgset $n deity 'The Wanderer'
@@ -49,10 +49,19 @@ endif
 ~
 
 speech_prog p Ultraporn
-mpforce $i say Goddess of everything sexual, even beyond. Her appearance appears normal at first, but it is almost eldritch.. Bizarre... viewing her image is too much for mortal, untrained minds with low wills. Proceed with care.
+mpforce $i say Goddess of everything sexual, even beyond. Her appearance appears normal at first, but it is almost eldritch.. Bizarre... viewing her image is too much for mortal, untrained minds with low wills. Proceed with care. It is known for Madness and Pornography
 mpchoose $n choice YN N choice Is this your deity? (Y/N)
 if var($n choice == Y)
 mpgset $n deity Ultraporn
+else
+endif
+~
+
+speech_prog p Tenebrase
+mpforce $i say The evil primordial goddess of darkness, tyrant empress of the underdark and the drows. She is known for Evil, Chaos, Darkness and Undeath.
+mpchoose $n choice YN N choice Is this your deity? (Y/N)
+if var($n choice == Y)
+mpgset $n deity Tenebrase
 else
 endif
 ~

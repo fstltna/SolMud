@@ -511,8 +511,7 @@ public class StdRace implements Race
 			if(msg.tool().Name().endsWith("SELF"))
 			{
 				if((msg.source()==myChar)
-				&&(fertile())
-				&&(msg.source().fetchWornItems(Wearable.WORN_LEGS|Wearable.WORN_WAIST,(short)-2048,(short)0).size()==0))
+				&&(fertile()))
 				{
 					if(!CMSecurity.isDisabled(DisFlag.FATIGUE))
 					{
@@ -538,8 +537,6 @@ public class StdRace implements Race
 						||(myChar.curState().getFatigue()>=CharState.FATIGUED_MILLIS));
 				if((myChar.charStats().reproductiveCode()==('F'))
 				&&(msg.source().charStats().reproductiveCode()==('M'))
-				&&(myChar.fetchWornItems(Wearable.WORN_LEGS|Wearable.WORN_WAIST,(short)-2048,(short)0).size()==0)
-				&&(msg.source().fetchWornItems(Wearable.WORN_LEGS|Wearable.WORN_WAIST,(short)-2048,(short)0).size()==0)
 				&&(msg.source().charStats().getMyRace().canBreedWith(this,false))
 				&&(this.canBreedWith(msg.source().charStats().getMyRace(),false))
 				&&((msg.source().charStats().getStat(CharStats.STAT_AGE)==0)
