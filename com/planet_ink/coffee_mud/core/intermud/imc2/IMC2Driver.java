@@ -161,7 +161,7 @@ public final class IMC2Driver extends Thread
 			final String name=e.nextElement();
 			final String mask=chan_mask.get(name);
 			final String imc2Name=chan_conf.get(name);
-			final CMChannel chan=CMLib.channels().createNewChannel(name, "", imc2Name, mask, new HashSet<ChannelFlag>(),"","");
+			final CMChannel chan=CMLib.channels().createNewChannel(name, "", imc2Name, mask, new HashSet<ChannelFlag>(),"","","");
 			map.add(chan);
 		}
 		return map;
@@ -1210,7 +1210,14 @@ public final class IMC2Driver extends Thread
 
 		msg=CMClass.getMsg(mob,null,null,CMMsg.NO_EFFECT,null,CMMsg.NO_EFFECT,null,CMMsg.MASK_CHANNEL|(CMMsg.TYP_CHANNEL+channelInt),str);
 
-		channels.channelQueUp(channelInt,(CMMsg)msg.copyOf(), 0);
+		try
+		{
+			channels.channelQueUp(channelInt,(CMMsg)msg.copyOf(), 0);
+		}
+		catch(final Exception e)
+		{
+			Log.errOut(e);
+		}
 		for(final Session S : CMLib.sessions().localOnlineIterable())
 		{
 			final ChannelsLibrary myChanLib=CMLib.get(S)._channels();

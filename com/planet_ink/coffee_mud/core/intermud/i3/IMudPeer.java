@@ -2,6 +2,9 @@ package com.planet_ink.coffee_mud.core.intermud.i3;
 import com.planet_ink.coffee_mud.core.intermud.i3.packets.*;
 import com.planet_ink.coffee_mud.core.intermud.i3.persist.*;
 import com.planet_ink.coffee_mud.core.intermud.i3.server.*;
+import com.planet_ink.coffee_mud.core.intermud.i3.entities.ChannelList;
+import com.planet_ink.coffee_mud.core.intermud.i3.entities.MudList;
+import com.planet_ink.coffee_mud.core.intermud.i3.entities.NameServer;
 import com.planet_ink.coffee_mud.core.intermud.i3.net.*;
 import com.planet_ink.coffee_mud.core.intermud.*;
 import com.planet_ink.coffee_mud.core.interfaces.*;
@@ -60,7 +63,7 @@ public class IMudPeer implements PersistentPeer
 	public void restore() throws PersistenceException
 	{
 		isRestoring=true;
-		if(myobj instanceof Intermud)
+		if(myobj instanceof I3Client)
 		{
 			try
 			{
@@ -69,26 +72,49 @@ public class IMudPeer implements PersistentPeer
 					return;
 
 				final ObjectInputStream in=new ObjectInputStream(new ByteArrayInputStream(F.raw()));
+				Integer passI = null;
+				Hashtable<String,String> banned = null;
+				ChannelList chanL = null;
+				MudList mudL = null;
 				Object newobj;
 				newobj=in.readObject();
 				if(newobj instanceof Integer)
-					((Intermud)myobj).password=((Integer)newobj).intValue();
+					passI=(Integer)newobj;
 				newobj=in.readObject();
 				if(newobj instanceof Hashtable)
-					((Intermud)myobj).banned=(Hashtable<String,String>)newobj;
+					banned=(Hashtable<String,String>)newobj;
 				newobj=in.readObject();
 				if(newobj instanceof ChannelList)
-					((Intermud)myobj).channels=(ChannelList)newobj;
+					chanL=(ChannelList)newobj;
 				newobj=in.readObject();
 				if(newobj instanceof MudList)
-					((Intermud)myobj).muds=(MudList)newobj;
+					mudL=(MudList)newobj;
 				newobj=in.readObject();
 				if(newobj instanceof List)
-				((Intermud)myobj).name_servers=(List<NameServer>)newobj;
+				{
+					final List<NameServer> nlist = (List<NameServer>)newobj;
+					final List<NameServer> olist = ((I3Client)myobj).name_servers;
+					if(olist.size() != nlist.size())
+						return;
+					for(final NameServer o : olist)
+						if(!nlist.contains(o))
+							return;
+					for(final NameServer o : nlist)
+						if(!olist.contains(o))
+							return;
+				}
+				if(passI != null)
+					((I3Client)myobj).password = passI.intValue();
+				if(banned != null)
+					((I3Client)myobj).banned = banned;
+				if(chanL != null)
+					((I3Client)myobj).channels = chanL;
+				if(mudL != null)
+					((I3Client)myobj).muds = mudL;
 			}
 			catch(final Exception e)
 			{
-				Log.errOut("IMudPeer","Unable to read /resources/ppeer."+myID);
+				Log.errOut("IMudPeer","Error reading /resources/ppeer."+myID+": "+e.getMessage());
 			}
 		}
 		isRestoring=false;
@@ -103,17 +129,17 @@ public class IMudPeer implements PersistentPeer
 	@Override
 	public void save() throws PersistenceException
 	{
-		if(myobj instanceof Intermud)
+		if(myobj instanceof I3Client)
 		{
 			try
 			{
 				final ByteArrayOutputStream bout=new ByteArrayOutputStream();
 				final ObjectOutputStream out=new ObjectOutputStream(bout);
-				out.writeObject(Integer.valueOf(((Intermud)myobj).password));
-				out.writeObject(((Intermud)myobj).banned);
-				out.writeObject(((Intermud)myobj).channels);
-				out.writeObject(((Intermud)myobj).muds);
-				out.writeObject(((Intermud)myobj).name_servers);
+				out.writeObject(Integer.valueOf(((I3Client)myobj).password));
+				out.writeObject(((I3Client)myobj).banned);
+				out.writeObject(((I3Client)myobj).channels);
+				out.writeObject(((I3Client)myobj).muds);
+				out.writeObject(((I3Client)myobj).name_servers);
 				out.flush();
 				bout.flush();
 				new CMFile("::resources/ppeer."+myID,null).saveRaw(bout.toByteArray());

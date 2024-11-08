@@ -50,7 +50,6 @@ public class CMath
 	private static final int[]			INTEGER_BITMASKS= new int[31];
 	private static final long[]			LONG_BITMASKS	= new long[63];
 	private static Random 				rand			= new Random(System.currentTimeMillis());
-	public  static BigDecimal			BIG_PI			= BigDecimal.valueOf(Math.PI);
 
 	static
 	{
@@ -337,6 +336,31 @@ public class CMath
 	}
 
 	/**
+	 * Returns the matching enum using startsWith.  Case insensitive!
+	 * @param c the enum class to look in
+	 * @param s the string to look
+	 * @return the enum or null
+	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public final static Enum<? extends Enum> s_valueOfStartsWith(final Class<? extends Enum> c, final String s)
+	{
+		if((c==null)||(s==null))
+			return null;
+		final Enum<? extends Enum> fe = s_valueOf(c, s);
+		if(fe != null)
+			return fe;
+		final String us = s.toUpperCase().trim();
+		for(final Enum e : c.getEnumConstants())
+		{
+			if(e.name().toUpperCase().startsWith(us))
+				return e;
+		}
+		return null;
+	}
+
+
+
+	/**
 	 * Returns true if the string is a number (float or int)
 	 * @param s the string to test
 	 * @return true if a number, false otherwise
@@ -465,6 +489,57 @@ public class CMath
 	public final static double mul(final double a, final long b)
 	{
 		return a*(b);
+	}
+
+	/**
+	 * Returns the smaller or larger or existing of the numbers
+	 * greater than or equal to 0.
+	 * @param a the min number
+	 * @param b the middle number
+	 * @param c the max number
+	 * @return the min or max or middle
+	 */
+	public final static long minMax(final long a, final long b, final long c)
+	{
+		if(b<a)
+			return a;
+		if(b>c)
+			return c;
+		return b;
+	}
+
+	/**
+	 * Returns the smaller or larger or existing of the numbers
+	 * greater than or equal to 0.
+	 * @param a the min number
+	 * @param b the middle number
+	 * @param c the max number
+	 * @return the min or max or middle
+	 */
+	public final static int minMax(final int a, final int b, final int c)
+	{
+		if(b<a)
+			return a;
+		if(b>c)
+			return c;
+		return b;
+	}
+
+	/**
+	 * Returns the smaller or larger or existing of the numbers
+	 * greater than or equal to 0.
+	 * @param a the min number
+	 * @param b the middle number
+	 * @param c the max number
+	 * @return the min or max or middle
+	 */
+	public final static double minMax(final double a, final double b, final double c)
+	{
+		if(b<a)
+			return a;
+		if(b>c)
+			return c;
+		return b;
 	}
 
 	/**

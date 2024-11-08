@@ -62,7 +62,8 @@ public class GrinderMobs
 		LIBMAXDAYS,LIBMAXBORROW,ISLIBRARIAN,LIBCMASK,
 		STATESTR,STATESUBJSTR,RIDERSTR,MOUNTSTR,DISMOUNTSTR,
 		ISDRINK, LIQUIDHELD, QUENCHED, LIQUIDTYPES, SIVIEWTYPES,
-		CURRENCIES, CURRENCY,CATARATE,CATALIVE,CATAMASK,CATACAP
+		CURRENCIES, CURRENCY,CATARATE,CATALIVE,CATAMASK,CATACAP,
+		ISBROKER, BROCHAIN, MAXLISTINGS, COMMISSIONPCT
 		;
 
 		public boolean isGenField;
@@ -215,7 +216,12 @@ public class GrinderMobs
 					if(B==null)
 						return "Unknown Blessing '"+aff+"'.";
 					else
+					{
+						final String atext=httpReq.getUrlParameter("BLESSTEXT"+num);
+						if((atext!=null)&&(atext.length()>0))
+							B.setMiscText(atext);
 						E.addBlessing(B,clericOnly);
+					}
 				}
 				num++;
 				aff=httpReq.getUrlParameter("BLESS"+num);
@@ -274,7 +280,12 @@ public class GrinderMobs
 					if(B==null)
 						return "Unknown Curse '"+aff+"'.";
 					else
+					{
+						final String atext=httpReq.getUrlParameter("CURSETEXT"+num);
+						if((atext!=null)&&(atext.length()>0))
+							B.setMiscText(atext);
 						E.addCurse(B,clericOnly);
+					}
 				}
 				num++;
 				aff=httpReq.getUrlParameter("CURSE"+num);
@@ -390,7 +401,12 @@ public class GrinderMobs
 					if(B==null)
 						return "Unknown Power '"+aff+"'.";
 					else
+					{
+						final String atext=httpReq.getUrlParameter("POWERTEXT"+num);
+						if((atext!=null)&&(atext.length()>0))
+							B.setMiscText(atext);
 						E.addPower(B);
+					}
 				}
 				num++;
 				aff=httpReq.getUrlParameter("POWER"+num);
@@ -802,6 +818,14 @@ public class GrinderMobs
 					if(M instanceof Librarian)
 						((Librarian)M).setMaxOverdueDays(CMath.s_int(old));
 					break;
+				case MAXLISTINGS: // max listings
+					if(M instanceof CraftBroker)
+						((CraftBroker)M).setMaxListings(CMath.s_int(old));
+					break;
+				case COMMISSIONPCT:
+					if(M instanceof CraftBroker)
+						((CraftBroker)M).setCommissionPct(CMath.s_pct(old));
+					break;
 				case LIBMAXBORROW: // library max borrowed
 					if(M instanceof Librarian)
 						((Librarian)M).setMaxBorrowed(CMath.s_int(old));
@@ -825,6 +849,10 @@ public class GrinderMobs
 				case AUCCHAIN: // auction house
 					if(M instanceof Auctioneer)
 						((Auctioneer)M).setAuctionHouse(old);
+					break;
+				case BROCHAIN: // auction house
+					if(M instanceof CraftBroker)
+						((CraftBroker)M).setBrokerChain(old);
 					break;
 				case LIVELIST: // live list
 					//if(M instanceof Auctioneer)
@@ -875,6 +903,14 @@ public class GrinderMobs
 						else
 							((Auctioneer)M).setMaxTimedAuctionDays(CMath.s_int(old));
 					}
+					else
+					if(M instanceof CraftBroker)
+					{
+						if(old.length()==0)
+							((CraftBroker)M).setMaxTimedListingDays(-1);
+						else
+							((CraftBroker)M).setMaxTimedListingDays(CMath.s_int(old));
+					}
 					break;
 				case MINDAYS: // min days
 					if(M instanceof Auctioneer)
@@ -886,6 +922,8 @@ public class GrinderMobs
 					}
 					break;
 				case ISAUCTION: // is auction
+					break;
+				case ISBROKER: // is broker
 					break;
 				case DEITYID: // deity
 					/*
@@ -955,9 +993,6 @@ public class GrinderMobs
 				error=GrinderMobs.senses(M,httpReq,parms);
 				if(error.length()>0)
 					return error;
-				error=GrinderAreas.doAffects(M,httpReq,parms);
-				if(error.length()>0)
-					return error;
 				error=GrinderAreas.doBehavs(M,httpReq,parms);
 				if(error.length()>0)
 					return error;
@@ -965,6 +1000,9 @@ public class GrinderMobs
 				if(error.length()>0)
 					return error;
 				error=GrinderMobs.abilities(M,httpReq,parms);
+				if(error.length()>0)
+					return error;
+				error=GrinderAreas.doAffects(M,httpReq,parms); // after abilities because of auto-invoking crap
 				if(error.length()>0)
 					return error;
 				error=GrinderMobs.clans(M,httpReq,parms);

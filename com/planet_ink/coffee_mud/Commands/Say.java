@@ -69,22 +69,44 @@ public class Say extends StdCommand
 
 	protected void gmcpSaySend(final String sayName, final MOB mob, final Environmental target, final CMMsg msg)
 	{
-		if((mob.session()!=null)&&(mob.session().getClientTelnetMode(Session.TELNET_GMCP)))
+		final String player=CMStrings.removeAllButLettersAndDigits(CMStrings.removeColors(mob.name()));
+		if((mob.session()!=null)
+		&&(mob.session().getClientTelnetMode(Session.TELNET_GMCP)))
 		{
 			mob.session().sendGMCPEvent("comm.channel", "{\"chan\":\""+sayName+"\",\"msg\":\""+
-					MiniJSON.toJSONString(CMLib.coffeeFilter().fullOutFilter(null, mob, mob, target, null, CMStrings.removeColors(msg.sourceMessage()), false))
-					+"\",\"player\":\""+mob.name()+"\"}");
+					MiniJSON.toJSONString(CMStrings.unWWrap(CMLib.coffeeFilter().fullOutFilter(null, mob, mob, target, null,
+							CMStrings.removeColors(msg.sourceMessage()), false)).trim())
+					+"\",\"player\":\""+player+"\"}");
 		}
 		final Room R=mob.location();
-		if(R!=null)
-		for(int i=0;i<R.numInhabitants();i++)
+		if((R!=null)
+		&&(msg.othersMessage()!=null))
 		{
-			final MOB M=R.fetchInhabitant(i);
-			if((M!=null)&&(M!=msg.source())&&(M.session()!=null)&&(M.session().getClientTelnetMode(Session.TELNET_GMCP)))
+			for(int i=0;i<R.numInhabitants();i++)
 			{
-				M.session().sendGMCPEvent("comm.channel", "{\"chan\":\""+sayName+"\",\"msg\":\""+
-						MiniJSON.toJSONString(CMLib.coffeeFilter().fullOutFilter(null, M, mob, target, null, CMStrings.removeColors(msg.othersMessage()), false))
-						+"\",\"player\":\""+mob.name()+"\"}");
+				final MOB M=R.fetchInhabitant(i);
+				if((M!=null)
+				&&(M!=msg.source())
+				&&(M.session()!=null)
+				&&(M.session().getClientTelnetMode(Session.TELNET_GMCP)))
+				{
+					if((M == target)
+					&&(msg.targetMessage()!=null))
+					{
+						M.session().sendGMCPEvent("comm.channel", "{\"chan\":\""+sayName+"\",\"msg\":\""+
+								MiniJSON.toJSONString(CMStrings.unWWrap(CMLib.coffeeFilter().fullOutFilter(null, M, mob, target, null,
+										CMStrings.removeColors(msg.targetMessage()), false)).trim())
+								+"\",\"player\":\""+player+"\"}");
+					}
+					else
+					if(msg.othersMessage()!=null)
+					{
+						M.session().sendGMCPEvent("comm.channel", "{\"chan\":\""+sayName+"\",\"msg\":\""+
+								MiniJSON.toJSONString(CMStrings.unWWrap(CMLib.coffeeFilter().fullOutFilter(null, M, mob, target, null,
+										CMStrings.removeColors(msg.othersMessage()), false)).trim())
+								+"\",\"player\":\""+player+"\"}");
+					}
+				}
 			}
 		}
 	}
@@ -102,6 +124,18 @@ public class Say extends StdCommand
 		else
 		if(theCommand.equals("YELL"))
 			theWord="Yell";
+		else
+		if(theCommand.equals("YELLTO"))
+		{
+			theWord="Yell";
+			toFlag=true;
+		}
+		else
+		if(theCommand.equals("YELLAT"))
+		{
+			theWord="Yell";
+			toFlag=true;
+		}
 		else
 		if(theCommand.equals("SAYTO")
 		||theCommand.equals("SAYT"))

@@ -148,7 +148,7 @@ public class Mood extends StdAbility
 		"smelly dork",
 		"geek",
 		"illegitimate offspring",
-		"gluteous maximus cavity",
+		"gluteus maximus cavity",
 		"uncle copulator",
 		"ugly yokle",
 		"brainless goop",
@@ -213,6 +213,12 @@ public class Mood extends StdAbility
 				}
 			}
 			else
+			if(newText.equalsIgnoreCase("random"))
+			{
+				mood = MoodType.values()[CMLib.dice().roll(1, MoodType.values().length, -1)];
+				newText=mood.name();
+			}
+			else
 			{
 				mood=(MoodType)CMath.s_valueOf(MoodType.class, newText);
 				if(mood == null)
@@ -224,6 +230,8 @@ public class Mood extends StdAbility
 					}
 					if(mood == null)
 						newText="";
+					else
+						newText=mood.name();
 				}
 			}
 		}

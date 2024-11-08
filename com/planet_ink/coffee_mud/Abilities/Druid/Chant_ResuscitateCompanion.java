@@ -114,7 +114,7 @@ public class Chant_ResuscitateCompanion extends Chant implements MendingSkill
 		return (item instanceof DeadBody)
 				&&(((DeadBody)item).getSavedMOB()!=null)
 				&&(!((DeadBody)item).isPlayerCorpse())
-				&&(CMLib.flags().isAnimalIntelligence(((DeadBody)item).getSavedMOB()));
+				&&(CMLib.flags().isAnAnimal(((DeadBody)item).getSavedMOB()));
 	}
 
 	@Override
@@ -127,7 +127,7 @@ public class Chant_ResuscitateCompanion extends Chant implements MendingSkill
 			final MOB myChar=(MOB)affected;
 			if((msg.sourceMinor()==CMMsg.TYP_DEATH)
 			&&(msg.source().isMonster())
-			&&(CMLib.flags().isAnimalIntelligence(msg.source()))
+			&&(CMLib.flags().isAnAnimal(msg.source()))
 			&&(msg.source().amFollowing()==myChar))
 			{
 				final Chant_ResuscitateCompanion A=(Chant_ResuscitateCompanion)myChar.fetchAbility(ID());
@@ -254,6 +254,8 @@ public class Chant_ResuscitateCompanion extends Chant implements MendingSkill
 					CMLib.threads().scheduleRunnable(new Runnable()
 					{
 						final MOB M=rejuvedMOB;
+
+						@Override
 						public void run()
 						{
 							if((M==null)

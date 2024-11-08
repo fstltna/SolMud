@@ -1,4 +1,5 @@
 package com.planet_ink.coffee_mud.core;
+import java.lang.reflect.Array;
 import java.nio.ByteBuffer;
 import java.util.*;
 import java.util.regex.Pattern;
@@ -100,70 +101,91 @@ public class CMParms
 	}
 
 	/**
-	 * Combine two string arrays into a single one.
-	 * @param strs1 the first array
-	 * @param strs2 the second array
-	 * @return the combined array
-	 */
-	public final static String[] combine(final String[] strs1, final String[] strs2)
-	{
-		final int strs1Len = strs1.length;
-		final int strs2Len = strs2.length;
-		final String[] array= new String[strs1Len+strs2Len];
-		System.arraycopy(strs1, 0, array, 0, strs1Len);
-		System.arraycopy(strs2, 0, array, strs1Len, strs2Len);
-		return array;
-	}
-
-	/**
 	 * Combine object arrays into a single one.
 	 * @param objs the arrays
 	 * @return the combined array
 	 */
-	public final static Object[] combine(final Object[]... objs)
+	@SuppressWarnings("unchecked")
+	public final static <T> T[] combine(final T[]... objs)
 	{
+		if(objs.length == 0)
+			return (T[])new Object[0];
 		int len=0;
-		for(final Object[] obj : objs)
+		for(final T[] obj : objs)
 			len+=obj.length;
-		final Object[] array= new Object[len];
-		int x=0;
-		for(final Object[] obj : objs)
+		final T[] array = Arrays.copyOf(objs[0],len);
+		int x=objs[0].length;
+		for(int y=1;y<objs.length;y++)
 		{
-			System.arraycopy(obj, 0, array, x, obj.length);
-			x+=obj.length;
+			System.arraycopy(objs[y], 0, array, x, objs[y].length);
+			x+=objs[y].length;
 		}
 		return array;
 	}
 
 	/**
-	 * Combine two int arrays into a single one.
-	 * @param strs1 the first array
-	 * @param strs2 the second array
+	 * Combine multiple int arrays into a single one.
+	 * @param ints the arrays
 	 * @return the combined array
 	 */
-	public final static int[] combine(final int[] strs1, final int[] strs2)
+	public final static int[] combine(final int[]... ints)
 	{
-		final int strs1Len = strs1.length;
-		final int strs2Len = strs2.length;
-		final int[] array= new int[strs1Len+strs2Len];
-		System.arraycopy(strs1, 0, array, 0, strs1Len);
-		System.arraycopy(strs2, 0, array, strs1Len, strs2Len);
+		if(ints.length==0)
+			return new int[0];
+		int len=0;
+		for(final int[] obj : ints)
+			len+=obj.length;
+		final int[] array= Arrays.copyOf(ints[0], len);
+		int x=ints[0].length;
+		for(int y=1;y<ints.length;y++)
+		{
+			System.arraycopy(ints[y], 0, array, x, ints[y].length);
+			x+=ints[y].length;
+		}
 		return array;
 	}
 
 	/**
-	 * Combine two boolean arrays into a single one.
-	 * @param strs1 the first array
-	 * @param strs2 the second array
+	 * Combine multiple long arrays into a single one.
+	 * @param longs the arrays
 	 * @return the combined array
 	 */
-	public final static boolean[] combine(final boolean[] strs1, final boolean[] strs2)
+	public final static long[] combine(final long[]... longs)
 	{
-		final int strs1Len = strs1.length;
-		final int strs2Len = strs2.length;
-		final boolean[] array= new boolean[strs1Len+strs2Len];
-		System.arraycopy(strs1, 0, array, 0, strs1Len);
-		System.arraycopy(strs2, 0, array, strs1Len, strs2Len);
+		if(longs.length==0)
+			return new long[0];
+		int len=0;
+		for(final long[] obj : longs)
+			len+=obj.length;
+		final long[] array= Arrays.copyOf(longs[0], len);
+		int x=longs[0].length;
+		for(int y=1;y<longs.length;y++)
+		{
+			System.arraycopy(longs[y], 0, array, x, longs[y].length);
+			x+=longs[y].length;
+		}
+		return array;
+	}
+
+	/**
+	 * Combine multiple boolean arrays into a single one.
+	 * @param booleans the arrays
+	 * @return the combined array
+	 */
+	public final static boolean[] combine(final boolean[]... booleans)
+	{
+		if(booleans.length==0)
+			return new boolean[0];
+		int len=0;
+		for(final boolean[] obj : booleans)
+			len+=obj.length;
+		final boolean[] array= Arrays.copyOf(booleans[0], len);
+		int x=booleans[0].length;
+		for(int y=1;y<booleans.length;y++)
+		{
+			System.arraycopy(booleans[y], 0, array, x, booleans[y].length);
+			x+=booleans[y].length;
+		}
 		return array;
 	}
 
@@ -329,6 +351,41 @@ public class CMParms
 	}
 
 	/**
+	 * Returns a string containing the given Strings, and now space delimited.
+	 * @param args the Strings to combine into a single string
+	 * @param startAt the index in the list to start at.
+	 * @param endAt the index in the list to end with
+	 * @return the single string
+	 */
+	public final static String combine(final String[] args, final int startAt, final int endAt)
+	{
+		final StringBuilder combined=new StringBuilder("");
+		if(args!=null)
+		{
+			for(int commandIndex=startAt;commandIndex<endAt;commandIndex++)
+				combined.append(args[commandIndex].toString()+" ");
+		}
+		return combined.toString().trim();
+	}
+
+	/**
+	 * Returns a string containing the given Strings, and now space delimited.
+	 * @param args the Strings to combine into a single string
+	 * @param startAt the index in the list to start at.
+	 * @return the single string
+	 */
+	public final static String combine(final String[] args, final int startAt)
+	{
+		final StringBuilder combined=new StringBuilder("");
+		if(args!=null)
+		{
+			for(int commandIndex=startAt;commandIndex<args.length;commandIndex++)
+				combined.append(args[commandIndex].toString()+" ");
+		}
+		return combined.toString().trim();
+	}
+
+	/**
 	 * Returns a string containing the given objects, with toString()
 	 * called, and now delimited by the character given.
 	 * @param commands the objects to combine into a single string
@@ -359,13 +416,10 @@ public class CMParms
 	public final static String combineWith(final List<?> commands, final char withChar)
 	{
 		final StringBuilder combined=new StringBuilder("");
-		if(commands!=null)
-		{
-			for(final Object o : commands)
-				combined.append(withChar).append(o.toString());
-		}
-		if(combined.length()==0)
+		if((commands==null)||(commands.size()==0))
 			return "";
+		for(final Object o : commands)
+			combined.append(withChar).append(o.toString());
 		return combined.substring(1);
 	}
 
@@ -615,6 +669,96 @@ public class CMParms
 	}
 
 	/**
+	 * Does a cleanParamatersList-like parse to generate a parm=val string, which
+	 * is then parsed into a map.  Multiple values for each key are
+	 * allowed.  Remaining chars and strings are put into an empty-key
+	 * value.
+	 * @param args the unparsed args
+	 * @return the map of args
+	 */
+	public static Map<String,String[]> parseCommandLineArgs(final String[] args)
+	{
+		final Map<String,String[]> parms = new Hashtable<String,String[]>();
+		final List<String> vargs = new XArrayList<String>(args);
+		for(int v=0;v<vargs.size();v++)
+		{
+			final String a = vargs.get(v);
+			if(a.startsWith("=")&&(a.length()>1)&&(v>0))
+			{
+				final String parm=vargs.get(v-1).trim().toUpperCase();
+				final String value = a.substring(1);
+				if(parm.length()>0)
+				{
+					String[] vals = new String[1];
+					if(parms.containsKey(parm))
+						vals = Arrays.copyOf(parms.get(parm), parms.get(parm).length+1);
+					vals[vals.length-1] = value;
+					parms.put(parm, vals);
+				}
+				vargs.remove(v);
+				v--;
+				vargs.remove(v);
+				v--;
+				continue;
+			}
+			if(a.endsWith("=")&&(a.length()>1)&&(v<(vargs.size()-1)))
+			{
+				final String parm=a.substring(0,a.length()-1).trim().toUpperCase();
+				final String value=vargs.get(v+1);
+				if(parm.length()>0)
+				{
+					String[] vals = new String[1];
+					if(parms.containsKey(parm))
+						vals = Arrays.copyOf(parms.get(parm), parms.get(parm).length+1);
+					vals[vals.length-1] = value;
+					parms.put(parm, vals);
+				}
+				vargs.remove(v);
+				vargs.remove(v);
+				v--;
+				continue;
+			}
+			if(a.equals("=")&&((v>0)&&(v<(vargs.size()-1))))
+			{
+				final String parm=vargs.get(v-1).toUpperCase().trim();
+				final String value=vargs.get(v+1);
+				if(parm.length()>0)
+				{
+					String[] vals = new String[1];
+					if(parms.containsKey(parm))
+						vals = Arrays.copyOf(parms.get(parm), parms.get(parm).length+1);
+					vals[vals.length-1] = value;
+					parms.put(parm, vals);
+				}
+				vargs.remove(v-1);
+				vargs.remove(v-1);
+				vargs.remove(v-1);
+				v-=2;
+				continue;
+			}
+			final int x = a.indexOf('=');
+			if(x>0)
+			{
+				final String parm = a.substring(0,x).trim().toUpperCase();
+				if(parm.length()>0)
+				{
+					String[] vals = new String[1];
+					if(parms.containsKey(parm))
+						vals = Arrays.copyOf(parms.get(parm), parms.get(parm).length+1);
+					vals[vals.length-1] = a.substring(x+1);
+					parms.put(parm, vals);
+					vargs.remove(v);
+					v--;
+				}
+			}
+		}
+		final String xtra=CMParms.combine(vargs,0);
+		if(xtra.length()>0)
+			parms.put("", new String[] { xtra.toString()});
+		return parms;
+	}
+
+	/**
 	 * Parses the given string space-delimited, with respect for quoted
 	 * strings.
 	 * @param str the string to parse
@@ -838,19 +982,19 @@ public class CMParms
 			c=str.charAt(i);
 			if(c==delimiter)
 			{
-				sub=str.substring(last,i).trim();
-				last=i+1;
-				if(!ignoreNulls||(sub.length()>0))
+				if(safe&&(i>0)&&(str.charAt(i-1)=='\\'))
 				{
-					if(!safe)
-						V.add(sub.replace("\\",""));
-					else
+					str.deleteCharAt(i-1);
+					i--;
+				}
+				else
+				{
+					sub=str.substring(last,i).trim();
+					last=i+1;
+					if(!ignoreNulls||(sub.length()>0))
 						V.add(sub);
 				}
 			}
-			else
-			if(safe &&(c=='\\'))
-				str.deleteCharAt(i);
 		}
 		sub = (last>=str.length())?"":str.substring(last,str.length()).trim();
 		if(!ignoreNulls||(sub.length()>0))
@@ -982,7 +1126,7 @@ public class CMParms
 			}
 		}
 		sub = (last>=s.length())?"":s.substring(last,s.length()).trim();
-		if(sub.isEmpty())
+		if(!sub.isEmpty())
 			V.add(sub);
 		return V;
 	}
@@ -1953,7 +2097,7 @@ public class CMParms
 				}
 				else
 				if(errors != null)
-					errors.add("Illegal parameter starts at: "+str.substring(x));
+					errors.add("Illegal parameter starts at: "+str.substring(startParm));
 			}
 		}
 		if((lastParm!=null)&&(lastEQ>0))
@@ -2090,6 +2234,27 @@ public class CMParms
 			break;
 		}
 		return h;
+	}
+
+	/**
+	 * Given a String array, and another array to insert into the first, and where to insert it,
+	 * this will insert the second array into the first at the where.
+	 *
+	 * @param oldS the array to insert into
+	 * @param inS the array to insert into oldS
+	 * @param where where to insert inS into oldS
+	 * @return the combined array
+	 */
+	public static final  String[] insertStringArray(final String[] oldS, final String[] inS, final int where)
+	{
+		final String[] newLine=new String[oldS.length+inS.length-1];
+		for(int i=0;i<where;i++)
+			newLine[i]=oldS[i];
+		for(int i=0;i<inS.length;i++)
+			newLine[where+i]=inS[i];
+		for(int i=where+1;i<oldS.length;i++)
+			newLine[inS.length+i-1]=oldS[i];
+		return newLine;
 	}
 
 	/**
@@ -2247,6 +2412,11 @@ public class CMParms
 						parmName=str.substring(start,x).toUpperCase().trim();
 					else
 						parmName=str.substring(start,x).trim();
+					if(c == '\n')
+					{
+						if(parmName.length()>0)
+							h.add(parmName, "");
+					}
 					state=5;
 					start=x;
 				}
@@ -4018,6 +4188,22 @@ public class CMParms
 	 * The search is case sensitive.
 	 * @param stringList the string array
 	 * @param str the string to search for
+	 * @return the index of the string in the list, or -1 if not found
+	 */
+	public final static int indexOf(final List<String> stringList, final String str)
+	{
+		if(stringList==null)
+			return -1;
+		if(str==null)
+			return -1;
+		return stringList.indexOf(str);
+	}
+
+	/**
+	 * Returns the index of the given string in the given string array.
+	 * The search is case sensitive.
+	 * @param stringList the string array
+	 * @param str the string to search for
 	 * @param startIndex the index to start from
 	 * @return the index of the string in the list, or -1 if not found
 	 */
@@ -4076,6 +4262,27 @@ public class CMParms
 	}
 
 	/**
+	 * Returns the index of the string in the given string list that starts
+	 * with the given one. The search is case sensitive.
+	 * @param stringList the string list
+	 * @param str the string to search for a starter of
+	 * @return the index of the string in the list that starts, or -1 if not found
+	 */
+	public final static int indexOfStartsWith(final List<String> stringList, final String str)
+	{
+		if(stringList==null)
+			return -1;
+		if(str==null)
+			return -1;
+		for(int i=0;i<stringList.size();i++)
+		{
+			if(stringList.get(i).startsWith(str))
+				return i;
+		}
+		return -1;
+	}
+
+	/**
 	 * Returns the index of the string in the given string array that the given string
 	 * starts with. The search is case sensitive.
 	 * @param stringList the string array
@@ -4091,6 +4298,27 @@ public class CMParms
 		for(int i=0;i<stringList.length;i++)
 		{
 			if(str.startsWith(stringList[i]))
+				return i;
+		}
+		return -1;
+	}
+
+	/**
+	 * Returns the index of the string in the given string list that the given string
+	 * starts with. The search is case sensitive.
+	 * @param stringList the string list
+	 * @param str the string to find a starter for
+	 * @return the index of the string in the list that str starts with, or -1 if not found
+	 */
+	public final static int indexOfStartsWith2(final List<String> stringList, final String str)
+	{
+		if(stringList==null)
+			return -1;
+		if(str==null)
+			return -1;
+		for(int i=0;i<stringList.size();i++)
+		{
+			if(str.startsWith(stringList.get(i)))
 				return i;
 		}
 		return -1;
@@ -4691,6 +4919,18 @@ public class CMParms
 	public final static boolean contains(final String[] theList, final String str)
 	{
 		return indexOf(theList,str)>=0;
+	}
+
+	/**
+	 * Returns whether the given string appears in the given list.
+	 * It is case sensitive.
+	 * @param theList the list
+	 * @param str the string to search for
+	 * @return true if the string is in the list, false otherwise
+	 */
+	public final static boolean contains(final List<String> theList, final String str)
+	{
+		return theList.contains(str);
 	}
 
 	/**

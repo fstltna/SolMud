@@ -287,7 +287,7 @@ public class CommonSkill extends StdAbility
 	// so we can override it on a skill-by-skill basis
 	protected List<List<String>> loadList(final StringBuffer str)
 	{
-		return CMLib.utensils().loadRecipeList(str.toString());
+		return CMLib.utensils().loadRecipeList(str.toString(), true);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -296,8 +296,13 @@ public class CommonSkill extends StdAbility
 		List<List<String>> V=(List<List<String>>)Resources.getResource("PARSED_RECIPE: "+filename);
 		if(V==null)
 		{
-			final StringBuffer str=new CMFile(Resources.buildResourcePath("skills")+filename,null,CMFile.FLAG_LOGERRORS).text();
-			V=new ReadOnlyList<List<String>>(loadList(str));
+			final List<List<String>> frecipes = new ArrayList<List<String>>();
+			for(final CMFile F : CMFile.getExistingExtendedFiles(Resources.buildResourcePath("skills")+filename,null,CMFile.FLAG_LOGERRORS))
+			{
+				final StringBuffer str = F.text();
+				frecipes.addAll(loadList(str));
+			}
+			V=new ReadOnlyList<List<String>>(frecipes);
 			if((V.size()==0)
 			&&(!ID().equals("GenCraftSkill"))
 			&&(!ID().endsWith("Costuming")))
@@ -373,13 +378,13 @@ public class CommonSkill extends StdAbility
 			final Ability A=buildingI.fetchEffect("Copyright");
 			if((A!=null)&&(A.text().length()>0))
 				return A.text();
-			final int x=buildingI.secretIdentity().indexOf(ItemCraftor.CRAFTING_BRAND_STR_PREFIX);
+			final int x=buildingI.rawSecretIdentity().indexOf(ItemCraftor.CRAFTING_BRAND_STR_PREFIX);
 			if(x>=0)
 			{
-				final int y=buildingI.secretIdentity().indexOf('.',x+ItemCraftor.CRAFTING_BRAND_STR_PREFIX.length());
+				final int y=buildingI.rawSecretIdentity().indexOf('.',x+ItemCraftor.CRAFTING_BRAND_STR_PREFIX.length());
 				if(y>=0)
 				{
-					return buildingI.secretIdentity().substring(x,y);
+					return buildingI.rawSecretIdentity().substring(x,y);
 				}
 			}
 		}

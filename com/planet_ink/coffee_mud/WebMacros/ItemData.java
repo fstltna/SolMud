@@ -20,6 +20,7 @@ import com.planet_ink.coffee_mud.Items.interfaces.MusicalInstrument.InstrumentTy
 import com.planet_ink.coffee_mud.Locales.interfaces.*;
 import com.planet_ink.coffee_mud.MOBS.interfaces.*;
 import com.planet_ink.coffee_mud.Races.interfaces.*;
+import com.planet_ink.coffee_mud.WebMacros.grinder.GrinderItems;
 import com.planet_ink.coffee_mud.WebMacros.grinder.GrinderItems.ItemDataField;
 
 import java.util.*;
@@ -263,14 +264,7 @@ public class ItemData extends StdWebMacro
 			{
 				final int wclass=CMath.s_int(httpReq.getUrlParameter("WEAPONCLASS"));
 				final int reach=CMath.s_int(httpReq.getUrlParameter("MINRANGE"));
-
-				vals=CMLib.itemBuilder().timsItemAdjustments(I,
-															 level,
-															 material,
-															 hands,
-															 wclass,
-															 reach,
-															 0);
+				vals=CMLib.itemBuilder().timsItemAdjustments(I, level, material, hands, wclass, reach, 0);
 			}
 			else
 			{
@@ -286,13 +280,7 @@ public class ItemData extends StdWebMacro
 							break;
 					}
 				}
-				vals=CMLib.itemBuilder().timsItemAdjustments(I,
-															 level,
-															 material,
-															 hands,
-															 0,
-															 0,
-															 worndata);
+				vals=CMLib.itemBuilder().timsItemAdjustments(I, level, material, hands, 0, 0, worndata);
 			}
 			for(final String key : vals.keySet())
 			{
@@ -412,10 +400,10 @@ public class ItemData extends StdWebMacro
 						{
 							if(firstTime)
 							{
-								if((((Wand)I).getEnchantType()<0)||(((Wand)I).getEnchantType()>=Ability.ACODE_DESCS_.length))
+								if((((Wand)I).getEnchantType()<0)||(((Wand)I).getEnchantType()>=Ability.ACODE.DESCS_.size()))
 									old="ANY";
 								else
-									old=Ability.ACODE_DESCS_[((Wand)I).getEnchantType()];
+									old=Ability.ACODE.DESCS_.get(((Wand)I).getEnchantType());
 							}
 							for(final String[] option : Wand.WandUsage.WAND_OPTIONS)
 							{
@@ -476,8 +464,27 @@ public class ItemData extends StdWebMacro
 							return "true";
 						return "false";
 					case POWLEVEL: // show power level
-						str.append(CMLib.itemBuilder().timsLevelCalculator(I));
+					{
+						Item newItem = null;
+						final boolean destroyItem = httpReq.isUrlParameter("materials");
+						try
+						{
+							if(destroyItem)
+							{
+								newItem = CMClass.getItem(I.ID());
+								GrinderItems.editItem(httpReq, newItem, oldI, newClassID, itemCode, null);
+							}
+							else
+								newItem = I;
+							str.append(CMLib.itemBuilder().timsLevelCalculator(newItem));
+						}
+						finally
+						{
+							if(destroyItem && (newItem != null))
+								newItem.destroy();
+						}
 						break;
+					}
 					case QUENCHED: // quenched
 						if((firstTime)&&(I instanceof Drink))
 							old=""+((Drink)I).thirstQuenched();
@@ -747,7 +754,7 @@ public class ItemData extends StdWebMacro
 							{
 								final String ench = httpReq.getUrlParameter("ENCHTYPE");
 								if((ench != null) && (ench.length()>0))
-									ofType=CMParms.indexOf(Ability.ACODE_DESCS_, ench.toUpperCase().trim());
+									ofType=CMParms.indexOf(Ability.ACODE.DESCS_, ench.toUpperCase().trim());
 							}
 						}
 						for(final Enumeration<Ability> a=CMClass.abilities();a.hasMoreElements();)

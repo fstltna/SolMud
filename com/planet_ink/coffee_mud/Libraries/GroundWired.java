@@ -1,6 +1,5 @@
 package com.planet_ink.coffee_mud.Libraries;
 import com.planet_ink.coffee_mud.core.interfaces.*;
-import com.planet_ink.coffee_mud.core.interfaces.BoundedObject.BoundedCube;
 import com.planet_ink.coffee_mud.core.*;
 import com.planet_ink.coffee_mud.core.CMSecurity.DbgFlag;
 import com.planet_ink.coffee_mud.core.collections.*;
@@ -503,6 +502,8 @@ public class GroundWired extends StdLibrary implements TechLibrary
 	@Override
 	public boolean activate()
 	{
+		if(!super.activate())
+			return false;
 		if(serviceClient==null)
 		{
 			name="THWired"+Thread.currentThread().getThreadGroup().getName().charAt(0);
@@ -1044,7 +1045,7 @@ public class GroundWired extends StdLibrary implements TechLibrary
 		for(final Manufacturer man : manufacturers.values())
 		{
 			if(man != defaultManufacturer)
-				xmlStr.append("<MANUFACTURER>").append(man.getXml()).append("</MANUFACTURER>");
+				xmlStr.append("<MANUFACTURER>").append(man.getXML()).append("</MANUFACTURER>");
 		}
 		xmlStr.append("</MANUFACTURERS>");
 		xmlFile.saveText(xmlStr.toString());
@@ -1072,7 +1073,7 @@ public class GroundWired extends StdLibrary implements TechLibrary
 			for(final XMLTag x : xMans)
 			{
 				final Manufacturer man =(Manufacturer)CMClass.getCommon("DefaultManufacturer");
-				man.setXml(x.value());
+				man.setXML(x.value());
 				addManufacturer(man);
 			}
 		}

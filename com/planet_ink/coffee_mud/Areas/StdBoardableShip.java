@@ -64,6 +64,7 @@ public class StdBoardableShip implements Area, Boardable, PrivateProperty
 	protected Area 			me			 	= this;
 	protected Boardable		shipItem		= null;
 
+	protected final AreaIStats 			istats 			= (AreaIStats)CMClass.getCommon("DefaultAreaIStats");
 	protected SVector<Ability>			affects			= new SVector<Ability>(1);
 	protected SVector<Behavior> 		behaviors		= new SVector<Behavior>(1);
 	protected SVector<ScriptingEngine>	scripts			= new SVector<ScriptingEngine>(1);
@@ -240,6 +241,7 @@ public class StdBoardableShip implements Area, Boardable, PrivateProperty
 	public void destroy()
 	{
 		CMLib.map().registerWorldObjectDestroyed(this,null,this);
+		CMLib.threads().deleteTick(this, -1);
 		phyStats=(PhyStats)CMClass.getCommon("DefaultPhyStats");
 		basePhyStats=phyStats;
 		miscText=null;
@@ -1139,7 +1141,7 @@ public class StdBoardableShip implements Area, Boardable, PrivateProperty
 		{
 			return affects.elementAt(index);
 		}
-		catch (final java.lang.ArrayIndexOutOfBoundsException x)
+		catch (final IndexOutOfBoundsException x)
 		{
 		}
 		return null;
@@ -1415,9 +1417,22 @@ public class StdBoardableShip implements Area, Boardable, PrivateProperty
 	}
 
 	@Override
-	public int[] getAreaIStats()
+	public int getIStat(final Area.Stats stat)
 	{
-		return new int[Area.Stats.values().length];
+		return getAreaIStats().getStat(stat);
+	}
+
+	@Override
+	public boolean isAreaStatsLoaded()
+	{
+		return getAreaIStats().isFinished();
+	}
+
+	protected AreaIStats getAreaIStats()
+	{
+		if(!this.istats.isFinished())
+			istats.build(this);
+		return istats;
 	}
 
 	@Override
@@ -1444,7 +1459,7 @@ public class StdBoardableShip implements Area, Boardable, PrivateProperty
 		{
 			return behaviors.elementAt(index);
 		}
-		catch(final java.lang.ArrayIndexOutOfBoundsException x)
+		catch(final IndexOutOfBoundsException x)
 		{
 		}
 		return null;
@@ -1658,7 +1673,7 @@ public class StdBoardableShip implements Area, Boardable, PrivateProperty
 					else
 						start=mid+1;
 				}
-				catch(final java.lang.IndexOutOfBoundsException e)
+				catch(final IndexOutOfBoundsException e)
 				{
 					start=0;
 					end=myRooms.size()-1;
@@ -2255,6 +2270,15 @@ public class StdBoardableShip implements Area, Boardable, PrivateProperty
 	public int getPiety(final String deityName)
 	{
 		return 0;
+	}
+
+	@Override
+	public Race getAreaRace()
+	{
+		final AreaIStats stats = this.getAreaIStats();
+		if(stats.isFinished())
+			return stats.getCommonRace();
+		return null;
 	}
 
 	@Override

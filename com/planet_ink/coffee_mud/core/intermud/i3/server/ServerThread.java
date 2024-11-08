@@ -3,6 +3,8 @@ import com.planet_ink.coffee_mud.core.intermud.imc2.*;
 import com.planet_ink.coffee_mud.core.intermud.i3.packets.*;
 import com.planet_ink.coffee_mud.core.intermud.i3.persist.*;
 import com.planet_ink.coffee_mud.core.intermud.i3.server.*;
+import com.planet_ink.coffee_mud.core.intermud.i3.ImudServices;
+import com.planet_ink.coffee_mud.core.intermud.i3.I3Client;
 import com.planet_ink.coffee_mud.core.intermud.i3.net.*;
 import com.planet_ink.coffee_mud.core.intermud.*;
 import com.planet_ink.coffee_mud.core.interfaces.*;
@@ -50,14 +52,23 @@ public class ServerThread implements Tickable
 	private volatile int				tickStatus		= Tickable.STATUS_NOT;
 	private Map<String, ServerObject>	objects;
 	private Map<String, ServerUser>		interactives;
+	private final String				adminEmail;
+	private final String[]				routersList;
+	private final int					smtpPort;
 
 	protected ServerThread(final String mname,
 						   final int mport,
-						   final ImudServices imud)
-						   {
-		mud_name = mname;
-		port = mport;
-		intermuds=imud;
+						   final ImudServices imud,
+						   final String[] routersList,
+						   final String adminEmail,
+						   final int smtpPort)
+	{
+		this.mud_name = mname;
+		this.port = mport;
+		this.intermuds=imud;
+		this.routersList = routersList;
+		this.adminEmail = adminEmail;
+		this.smtpPort = smtpPort;
 	}
 
 	@Override
@@ -195,8 +206,9 @@ public class ServerThread implements Tickable
 
 		try
 		{
-			Intermud.setup(intermuds,
-						   (PersistentPeer)Class.forName("com.planet_ink.coffee_mud.core.intermud.i3.IMudPeer").getDeclaredConstructor().newInstance());
+			I3Client.setup(routersList, adminEmail, intermuds,
+						   (PersistentPeer)Class.forName("com.planet_ink.coffee_mud.core.intermud.i3.IMudPeer").getDeclaredConstructor().newInstance(),
+						   smtpPort);
 		}
 		catch( final Exception e )
 		{
@@ -241,6 +253,7 @@ public class ServerThread implements Tickable
 
 				if( interactive.getDestructed() )
 				{
+					this.interactives.remove(interactive.getObjectId());
 					continue;
 				}
 				try
@@ -271,6 +284,8 @@ public class ServerThread implements Tickable
 						Log.errOut("IMServerThread",e);
 					}
 				}
+				else
+					objects.remove(thing.getObjectId());
 			}
 		}
 		{// Get new connections
@@ -291,7 +306,7 @@ public class ServerThread implements Tickable
 				}
 				try
 				{
-					new_user = (ServerUser)copyObject("com.planet_ink.coffee_mud.core.intermud.i3.IMudUser");
+					new_user = (ServerUser)copyObject("com.planet_ink.coffee_mud.core.intermud.i3.IMudOOB");
 				}
 				catch( final ObjectLoadException e )
 				{
@@ -302,7 +317,7 @@ public class ServerThread implements Tickable
 					new_user.setSocket(s);
 					synchronized( this )
 					{
-						interactives.put(new_user.getObjectId(), new_user);
+						objects.put(new_user.getObjectId(), new_user);
 						new_user.connect();
 					}
 				}
@@ -346,7 +361,7 @@ public class ServerThread implements Tickable
 	public void shutdown()
 	{
 		running=false;
-		Intermud.shutdown();
+		I3Client.shutdown();
 		if(listen_thread!=null)
 		{
 			listen_thread.close();

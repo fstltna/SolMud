@@ -704,7 +704,7 @@ public class MUDHelp extends StdLibrary implements HelpLibrary
 				{
 					prepend.append(L("\n\rDomain   : "));
 					final int school=(A.classificationCode()&Ability.ALL_DOMAINS)>>5;
-					prepend.append(CMStrings.capitalizeAndLower(Ability.DOMAIN_DESCS[school].replace('_',' ')));
+					prepend.append(CMStrings.capitalizeAndLower(Ability.DOMAIN.DESCS.get(school).replace('_',' ')));
 				}
 				final PairList<String,Integer> avail=CMLib.ableMapper().getAvailabilityList(A, 2);
 				for(int c=0;c<avail.size();c++)
@@ -824,6 +824,29 @@ public class MUDHelp extends StdLibrary implements HelpLibrary
 		if(p == null)
 			return null;
 		return p.second;
+	}
+
+	protected String replacePercent(final String thisStr, final String withThis)
+	{
+		if(withThis.length()==0)
+		{
+			int x=thisStr.indexOf("% ");
+			if(x>=0)
+				return new StringBuffer(thisStr).replace(x,x+2,withThis).toString();
+			x=thisStr.indexOf(" %");
+			if(x>=0)
+				return new StringBuffer(thisStr).replace(x,x+2,withThis).toString();
+			x=thisStr.indexOf('%');
+			if(x>=0)
+				return new StringBuffer(thisStr).replace(x,x+1,withThis).toString();
+		}
+		else
+		{
+			final int x=thisStr.indexOf('%');
+			if(x>=0)
+				return new StringBuffer(thisStr).replace(x,x+1,withThis).toString();
+		}
+		return thisStr;
 	}
 
 	protected Pair<String,String> getHelpText(String helpKey, final Properties rHelpFile, final MOB forM, final boolean noFix, final int[] skip)
@@ -1098,6 +1121,29 @@ public class MUDHelp extends StdLibrary implements HelpLibrary
 			}
 		}
 
+		if(helpText==null)
+		{
+			final List<String> skills = new ArrayList<String>(2);
+			for(final Enumeration<ItemCraftor> e=CMClass.craftorAbilities();e.hasMoreElements();)
+			{
+				final ItemCraftor cA = e.nextElement();
+				final List<String> matches = cA.matchingRecipeNames(helpKeyWSpaces, false);
+				if(matches.size()>0)
+				{
+					helpKey = CMStrings.capitalizeAndLower(replacePercent(matches.get(0),"")).toUpperCase().trim();
+					skills.add(cA.name());
+				}
+			}
+			if(skills.size()>0)
+			{
+				final String recipeHelp = L("@x1 is an item that is craftable by @x2.",helpKey,
+						CMLib.english().toEnglishStringList(skills));
+				helpText=normalizeHelpText(recipeHelp,skip);
+				if(helpText != null)
+					return new Pair<String,String>(helpKey, helpText);
+			}
+		}
+
 		// INEXACT searches start here
 		if(helpText==null)
 		{
@@ -1293,6 +1339,23 @@ public class MUDHelp extends StdLibrary implements HelpLibrary
 				{
 					helpKey=helpKey.substring(0,helpKey.length()-suf.length());
 					return new Pair<String,String>(helpKey, getHelpText(helpKey,rHelpFile,forM,noFix));
+				}
+			}
+		}
+
+		if(helpText==null)
+		{
+			for(final Enumeration<ItemCraftor> e=CMClass.craftorAbilities();e.hasMoreElements();)
+			{
+				final ItemCraftor cA = e.nextElement();
+				final List<String> matches = cA.matchingRecipeNames(helpKeyWSpaces, true);
+				if(matches.size()>0)
+				{
+					final String recipeName = CMStrings.capitalizeAndLower(replacePercent(matches.get(0),""));
+					final String recipeHelp = L("@x1 is an item that is craftable by @x2.",recipeName,cA.name());
+					helpText=normalizeHelpText(recipeHelp,skip);
+					if(helpText != null)
+						return new Pair<String,String>(recipeName.toUpperCase().trim(), helpText);
 				}
 			}
 		}

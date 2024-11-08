@@ -1,4 +1,6 @@
 package com.planet_ink.coffee_mud.core.intermud.i3.packets;
+import com.planet_ink.coffee_mud.core.intermud.i3.I3Client;
+import com.planet_ink.coffee_mud.core.intermud.i3.entities.NameServer;
 import com.planet_ink.coffee_mud.core.intermud.i3.server.I3Server;
 import com.planet_ink.coffee_mud.core.interfaces.*;
 import com.planet_ink.coffee_mud.core.*;
@@ -33,26 +35,25 @@ import java.util.Vector;
  * limitations under the License.
  *
  */
-public class PingPacket extends Packet
+public class PingPacket extends MudPacket
 {
 	public PingPacket()
 	{
 		super();
-		type = Packet.PING_PACKET;
-		target_mud=Intermud.getNameServer().name;
+		type = Packet.PacketType.PING_REQ;
 	}
 
 	public PingPacket(final Vector<?> v)
 	{
 		super(v);
-		type = Packet.PING_PACKET;
+		type = Packet.PacketType.PING_REQ;
 		target_mud=v.elementAt(4).toString();
 	}
 
 	public PingPacket(final String mud)
 	{
 		super();
-		type = Packet.PING_PACKET;
+		type = Packet.PacketType.PING_REQ;
 		target_mud=mud;
 	}
 
@@ -65,6 +66,6 @@ public class PingPacket extends Packet
 	@Override
 	public String toString()
 	{
-		return "({\"ping-req\",5,\""+I3Server.getMudName()+"\",0,\""+target_mud+"\",0,0,})";
+		return "({\"ping-req\",5,\""+sender_mud+"\",0,\""+target_mud+"\",0,0,})";
 	}
 }

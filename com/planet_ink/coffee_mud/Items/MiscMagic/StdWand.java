@@ -181,8 +181,23 @@ public class StdWand extends StdItem implements Wand
 		}
 		else
 			uses="unlimited";
+		final String plus = ((phyStats().ability()>0)&&(phyStats.ability()<10))?("+"+phyStats.ability()):"";
 		if(A!=null)
-			id="'A wand of "+A.name()+"' Charges: "+uses+"\n\r"+id;
+		{
+			switch(A.classificationCode()&Ability.ALL_ACODES)
+			{
+			case Ability.ACODE_PRAYER:
+				id="'A relic of "+A.name()+plus+" Charges: "+uses+"\n\r"+id;
+				break;
+			case Ability.ACODE_CHANT:
+				id="'A shard of "+A.name()+plus+" Charges: "+uses+"\n\r"+id;
+				break;
+			case Ability.ACODE_SPELL:
+			default:
+				id="'A wand of "+A.name()+plus+" Charges: "+uses+"\n\r"+id;
+				break;
+			}
+		}
 		return id+"\n\rSay the magic word :`"+secretWord+"` to the target.";
 	}
 
@@ -238,7 +253,7 @@ public class StdWand extends StdItem implements Wand
 						&&(((WandUsage)A).getEnchantType()>0)
 						&&(((WandUsage)A).getEnchantType()<WandUsage.WAND_OPTIONS.length))
 						{
-							if(WandUsage.WAND_OPTIONS[((WandUsage)A).getEnchantType()][0].equals(Ability.ACODE_DESCS_[spellA.classificationCode()&Ability.ALL_ACODES]))
+							if(WandUsage.WAND_OPTIONS[((WandUsage)A).getEnchantType()][0].equals(Ability.ACODE.DESCS_.get(spellA.classificationCode()&Ability.ALL_ACODES)))
 								break;
 						}
 					}
@@ -265,6 +280,7 @@ public class StdWand extends StdItem implements Wand
 							mob.location().show(mob,null,CMMsg.MSG_OK_VISUAL,CMLib.lang().L("@x1 glows brightly.",me.name()));
 							me.setUsesRemaining(me.usesRemaining()-1);
 							int level=me.phyStats().level()
+									+ Math.min(me.phyStats().ability(),10)
 									+ CMLib.expertises().getExpertiseLevelCached(mob, wandUse.ID(), ExpertiseLibrary.XType.LEVEL);
 							final int lowest=CMLib.ableMapper().lowestQualifyingLevel(spellA.ID());
 							if(level<lowest)
@@ -345,9 +361,9 @@ public class StdWand extends StdItem implements Wand
 		case 0:
 			return ID();
 		case 1:
-			return "" + basePhyStats().ability();
-		case 2:
 			return "" + basePhyStats().level();
+		case 2:
+			return "" + basePhyStats().ability();
 		case 3:
 			return text();
 		}

@@ -1,6 +1,7 @@
 package com.planet_ink.coffee_mud.WebMacros;
 import com.planet_ink.coffee_mud.core.interfaces.*;
 import com.planet_ink.coffee_mud.core.*;
+import com.planet_ink.coffee_mud.core.CMClass.CMObjectType;
 import com.planet_ink.coffee_mud.core.collections.*;
 import com.planet_ink.coffee_mud.Abilities.interfaces.*;
 import com.planet_ink.coffee_mud.Abilities.interfaces.ItemCraftor.CraftorType;
@@ -41,6 +42,15 @@ public class AbilityData extends StdWebMacro
 	{
 		return "AbilityData";
 	}
+
+	static final String[][] newMatches = new String[][] {
+		new String[] { "NEWABILITY", "GenAbility" },
+		new String[] { "NEWLANGUAGE", "GenLanguage" },
+		new String[] { "NEWCRAFTSKILL", "GenCraftSkill" },
+		new String[] { "NEWWRIGHTSKILL", "GenWrightSkill" },
+		new String[] { "NEWGATHERINGSKILL", "GenGatheringSkill" },
+		new String[] { "NEWTRAP", "GenTrap" },
+	};
 
 	private String itemList(final List<Item> itemList, Item oldItem, final String oldValue)
 	{
@@ -164,79 +174,61 @@ public class AbilityData extends StdWebMacro
 		String last=httpReq.getUrlParameter("ABILITY");
 		if(last==null)
 			return " @break@";
-		Ability A=null;
-		final String newAbilityID=httpReq.getUrlParameter("NEWABILITY");
-		final String newLanguageID=httpReq.getUrlParameter("NEWLANGUAGE");
-		final String newCraftSkillID=httpReq.getUrlParameter("NEWCRAFTSKILL");
-		final String newWrightSkillID=httpReq.getUrlParameter("NEWWRIGHTSKILL");
-		final String newGatheringSkillID=httpReq.getUrlParameter("NEWGATHERINGSKILL");
-		final String newTrapID=httpReq.getUrlParameter("NEWTRAP");
-		A=(Ability)httpReq.getRequestObjects().get("ABILITY-"+last);
-		if((A==null)
-		&&(newAbilityID!=null)
-		&&(newAbilityID.length()>0)
-		&&(CMClass.getAbility(newAbilityID)==null))
+		Ability A=(Ability)httpReq.getRequestObjects().get("ABILITY-"+last);
+		boolean isGeneric = (A==null)?false:A.isGeneric();
+		for(final String[] newMatch : newMatches)
 		{
-			A=(Ability)CMClass.getAbility("GenAbility").copyOf();
-			A.setStat("CLASS9",newAbilityID);
-			last=newAbilityID;
-			httpReq.addFakeUrlParameter("ABILITY",newAbilityID);
-		}
-		if((A==null)
-		&&(newLanguageID!=null)
-		&&(newLanguageID.length()>0)
-		&&(CMClass.getAbility(newLanguageID)==null))
-		{
-			A=(Ability)CMClass.getAbility("GenLanguage").copyOf();
-			A.setStat("CLASS9",newLanguageID);
-			last=newLanguageID;
-			httpReq.addFakeUrlParameter("ABILITY",newLanguageID);
-		}
-		if((A==null)
-		&&(newTrapID!=null)
-		&&(newTrapID.length()>0)
-		&&(CMClass.getAbility(newTrapID)==null))
-		{
-			A=(Ability)CMClass.getAbility("GenTrap").copyOf();
-			A.setStat("LEVEL","1");
-			A.setStat("CLASS9",newTrapID);
-			last=newTrapID;
-			httpReq.addFakeUrlParameter("ABILITY",newTrapID);
-		}
-		if((A==null)
-		&&(newCraftSkillID!=null)
-		&&(newCraftSkillID.length()>0)
-		&&(CMClass.getAbility(newCraftSkillID)==null))
-		{
-			A=(Ability)CMClass.getAbility("GenCraftSkill").copyOf();
-			A.setStat("CLASS9",newCraftSkillID);
-			last=newCraftSkillID;
-			httpReq.addFakeUrlParameter("ABILITY",newCraftSkillID);
-		}
-		if((A==null)
-		&&(newWrightSkillID!=null)
-		&&(newWrightSkillID.length()>0)
-		&&(CMClass.getAbility(newWrightSkillID)==null))
-		{
-			A=(Ability)CMClass.getAbility("GenWrightSkill").copyOf();
-			A.setStat("CLASS9",newWrightSkillID);
-			last=newWrightSkillID;
-			httpReq.addFakeUrlParameter("ABILITY",newWrightSkillID);
-		}
-		if((A==null)
-		&&(newGatheringSkillID!=null)
-		&&(newGatheringSkillID.length()>0)
-		&&(CMClass.getAbility(newGatheringSkillID)==null))
-		{
-			A=(Ability)CMClass.getAbility("GenGatheringSkill").copyOf();
-			A.setStat("CLASS9",newGatheringSkillID);
-			last=newGatheringSkillID;
-			httpReq.addFakeUrlParameter("ABILITY",newGatheringSkillID);
+			String newAbilityID=httpReq.getUrlParameter(newMatch[0]);
+			final String newClass=newMatch[1];
+			if((A==null)
+			&&(newAbilityID!=null)
+			&&(newAbilityID.length()>0))
+			{
+				newAbilityID = CMStrings.replaceAll(newAbilityID, " ", "");
+				A=CMClass.getAbility(newAbilityID);
+				if(A == null)
+					A=(Ability)CMClass.getAbility(newClass).copyOf();
+				else
+				{
+					final Ability CR;
+					if(A.isGeneric())
+					{
+						newAbilityID=newAbilityID+"_Copy";
+						httpReq.addFakeUrlParameter(newMatch[0],newAbilityID);
+						CR = CMClass.getAbility(A.getStat("JAVACLASS"));
+						CR.setStat("CLASS9", newAbilityID);
+						CR.setStat("LEVEL","1");
+						CR.setStat("NAME", newAbilityID);
+						for(int i=1;i<A.getStatCodes().length;i++)
+							CR.setStat(A.getStatCodes()[i], A.getStat(A.getStatCodes()[i]));
+					}
+					else
+					{
+						CR=CMLib.ableParms().convertAbilityToGeneric(A);
+						CR.setStat("CLASS9", newAbilityID);
+						CR.setStat("NAME", A.Name());
+						CMClass.addClass(CMObjectType.ABILITY, A);
+					}
+					A=CR;
+				}
+				if(newClass.endsWith("Trap"))
+					A.setStat("LEVEL","1");
+				A.setStat("CLASS9",newAbilityID);
+				last=newAbilityID;
+				httpReq.addFakeUrlParameter("ABILITY",newAbilityID);
+				httpReq.getRequestObjects().put("ABILITY-"+newAbilityID,A);
+				isGeneric=true;
+				break;
+			}
 		}
 		if(last.length()>0)
 		{
 			if(A==null)
+			{
 				A=CMClass.getAbility(last);
+				if(A!=null)
+					isGeneric = A.isGeneric();
+			}
 			if(parms.containsKey("ISNEWABILITY"))
 				return ""+(CMClass.getAbility(last)==null);
 			if(A!=null)
@@ -244,8 +236,7 @@ public class AbilityData extends StdWebMacro
 				final StringBuffer str=new StringBuffer("");
 				if(parms.containsKey("ISGENERIC"))
 				{
-					final Ability A2=CMClass.getAbility(A.ID());
-					return ""+((A2!=null)&&(A2.isGeneric()));
+					return ""+isGeneric;
 				}
 				if(parms.containsKey("ISLANGUAGE"))
 				{
@@ -581,27 +572,27 @@ public class AbilityData extends StdWebMacro
 					String old=httpReq.getUrlParameter("CLASSIFICATION_ACODE");
 					if(old==null)
 						old=""+(A.classificationCode()&Ability.ALL_ACODES);
-					for(int i=0;i<Ability.ACODE_DESCS.length;i++)
+					for(int i=0;i<Ability.ACODE.DESCS.size();i++)
 					{
 						if(A instanceof ItemCraftor)
 						{
 							if(i==Ability.ACODE_COMMON_SKILL)
-								str.append("<OPTION VALUE=\""+i+"\""+((CMath.s_int(old)==i)?" SELECTED":"")+">"+CMStrings.capitalizeAndLower(Ability.ACODE_DESCS[i]));
+								str.append("<OPTION VALUE=\""+i+"\""+((CMath.s_int(old)==i)?" SELECTED":"")+">"+CMStrings.capitalizeAndLower(Ability.ACODE.DESCS.get(i)));
 						}
 						else
 						if(A instanceof ItemCollection)
 						{
 							if(i==Ability.ACODE_COMMON_SKILL)
-								str.append("<OPTION VALUE=\""+i+"\""+((CMath.s_int(old)==i)?" SELECTED":"")+">"+CMStrings.capitalizeAndLower(Ability.ACODE_DESCS[i]));
+								str.append("<OPTION VALUE=\""+i+"\""+((CMath.s_int(old)==i)?" SELECTED":"")+">"+CMStrings.capitalizeAndLower(Ability.ACODE.DESCS.get(i)));
 						}
 						else
 						if(A instanceof Language)
 						{
 							if(i==Ability.ACODE_LANGUAGE)
-								str.append("<OPTION VALUE=\""+i+"\""+((CMath.s_int(old)==i)?" SELECTED":"")+">"+CMStrings.capitalizeAndLower(Ability.ACODE_DESCS[i]));
+								str.append("<OPTION VALUE=\""+i+"\""+((CMath.s_int(old)==i)?" SELECTED":"")+">"+CMStrings.capitalizeAndLower(Ability.ACODE.DESCS.get(i)));
 						}
 						else
-							str.append("<OPTION VALUE=\""+i+"\""+((CMath.s_int(old)==i)?" SELECTED":"")+">"+CMStrings.capitalizeAndLower(Ability.ACODE_DESCS[i]));
+							str.append("<OPTION VALUE=\""+i+"\""+((CMath.s_int(old)==i)?" SELECTED":"")+">"+CMStrings.capitalizeAndLower(Ability.ACODE.DESCS.get(i)));
 					}
 					str.append(", ");
 				}
@@ -610,8 +601,8 @@ public class AbilityData extends StdWebMacro
 					String old=httpReq.getUrlParameter("CLASSIFICATION_DOMAIN");
 					if(old==null)
 						old=""+((A.classificationCode()&Ability.ALL_DOMAINS)>>5);
-					for(int i=0;i<Ability.DOMAIN_DESCS.length;i++)
-						str.append("<OPTION VALUE=\""+i+"\""+((CMath.s_int(old)==i)?" SELECTED":"")+">"+CMStrings.capitalizeAndLower(Ability.DOMAIN_DESCS[i]));
+					for(int i=0;i<Ability.DOMAIN.DESCS.size();i++)
+						str.append("<OPTION VALUE=\""+i+"\""+((CMath.s_int(old)==i)?" SELECTED":"")+">"+CMStrings.capitalizeAndLower(Ability.DOMAIN.DESCS.get(i)));
 					str.append(", ");
 				}
 				// here ends CLASSIFICATION
@@ -821,6 +812,13 @@ public class AbilityData extends StdWebMacro
 					String old=httpReq.getUrlParameter("CASTMASK");
 					if(old==null)
 						old=A.getStat("CASTMASK");
+					str.append(old+", ");
+				}
+				if(parms.containsKey("NUMARGS"))
+				{
+					String old=httpReq.getUrlParameter("NUMARGS");
+					if(old==null)
+						old=A.getStat("NUMARGS");
 					str.append(old+", ");
 				}
 				if(parms.containsKey("TARGETMASK"))
@@ -1082,7 +1080,7 @@ public class AbilityData extends StdWebMacro
 						&&(!CMSecurity.isASysOp(mob)))
 							continue;
 						final String AID=A2.ID();
-						final String ANAME=A2.name();
+						final String ANAME=CMStrings.ellipse(A2.ID()+" ("+A2.name()+")",40);
 						str.append("<OPTION VALUE=\""+AID+"\""+(list.contains(AID.toUpperCase())?" SELECTED":"")+">"+ANAME);
 					}
 					str.append(", ");
@@ -1125,7 +1123,7 @@ public class AbilityData extends StdWebMacro
 						if(((A.classificationCode()&Ability.ALL_DOMAINS)==Ability.DOMAIN_ARCHON)&&(!CMSecurity.isASysOp(mob)))
 							continue;
 						final String AID=A2.ID();
-						final String ANAME=A2.name();
+						final String ANAME=CMStrings.ellipse(A2.ID()+" ("+A2.name()+")",40);
 						str.append("<OPTION VALUE=\""+AID+"\""+(list.contains(AID.toUpperCase())?" SELECTED":"")+">"+ANAME);
 					}
 					str.append(", ");
@@ -1270,10 +1268,10 @@ public class AbilityData extends StdWebMacro
 						{
 							int domain=A.classificationCode()&Ability.ALL_DOMAINS;
 							domain=domain>>5;
-							thang.append(Ability.DOMAIN_DESCS[domain].toLowerCase().replace('_',' '));
+							thang.append(Ability.DOMAIN.DESCS.get(domain).toLowerCase().replace('_',' '));
 						}
 						else
-							thang.append(Ability.ACODE_DESCS[A.classificationCode()&Ability.ALL_ACODES].toLowerCase());
+							thang.append(Ability.ACODE.DESCS.get(A.classificationCode()&Ability.ALL_ACODES).toLowerCase());
 						if(thang.length()>0)
 						{
 							thang.setCharAt(0,Character.toUpperCase(thang.charAt(0)));
@@ -1288,12 +1286,12 @@ public class AbilityData extends StdWebMacro
 				if(parms.containsKey("TYPENDOMAIN"))
 				{
 					final StringBuffer thang=new StringBuffer("");
-					thang.append(CMStrings.capitalizeAndLower(Ability.ACODE_DESCS[A.classificationCode()&Ability.ALL_ACODES]));
+					thang.append(CMStrings.capitalizeAndLower(Ability.ACODE.DESCS.get(A.classificationCode()&Ability.ALL_ACODES)));
 					if((A.classificationCode()&Ability.ALL_DOMAINS)!=0)
 					{
 						int domain=A.classificationCode()&Ability.ALL_DOMAINS;
 						domain=domain>>5;
-						thang.append(": "+CMStrings.capitalizeAndLower(Ability.DOMAIN_DESCS[domain]).replace('_',' '));
+						thang.append(": "+CMStrings.capitalizeAndLower(Ability.DOMAIN.DESCS.get(domain)).replace('_',' '));
 					}
 
 					if(thang.length()>0)

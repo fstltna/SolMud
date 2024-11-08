@@ -33,14 +33,14 @@ import java.util.Vector;
  * limitations under the License.
  *
  */
-public class ChannelDelete extends Packet
+public class ChannelDelete extends MudPacket
 {
 	public String channel = null;
 
 	public ChannelDelete()
 	{
 		super();
-		type = Packet.CHAN_REMOVE;
+		type = Packet.PacketType.CHANNEL_REMOVE;
 	}
 
 	public ChannelDelete(final Vector<?> v) throws InvalidPacketException
@@ -48,9 +48,8 @@ public class ChannelDelete extends Packet
 		super(v);
 		try
 		{
-			type = Packet.CHAN_REMOVE;
+			type = Packet.PacketType.CHANNEL_REMOVE;
 			channel = (String)v.elementAt(6);
-			channel = Intermud.getLocalChannel(channel);
 		}
 		catch( final ClassCastException e )
 		{
@@ -58,10 +57,10 @@ public class ChannelDelete extends Packet
 		}
 	}
 
-	public ChannelDelete(final int t, final String chan, final String who)
+	public ChannelDelete(final String chan, final String who)
 	{
 		super();
-		type = t;
+		type = Packet.PacketType.CHANNEL_REMOVE;
 		channel = chan;
 		sender_name = who;
 	}
@@ -73,17 +72,15 @@ public class ChannelDelete extends Packet
 		{
 			throw new InvalidPacketException();
 		}
-		channel = Intermud.getRemoteChannel(channel);
 		super.send();
 	}
 
 	@Override
 	public String toString()
 	{
-		final NameServer n = Intermud.getNameServer();
 		final String cmd=
-			 "({\"channel-remove\",5,\"" + I3Server.getMudName() + "\",\"" +
-			   sender_name + "\",\""+n.name+"\",0,\"" + channel + "\",})";
+			 "({\"channel-remove\",5,\"" + sender_mud + "\",\"" +
+			   sender_name + "\",\""+target_mud+"\",0,\"" + channel + "\",})";
 		return cmd;
 	}
 }

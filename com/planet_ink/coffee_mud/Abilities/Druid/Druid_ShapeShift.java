@@ -81,10 +81,19 @@ public class Druid_ShapeShift extends StdAbility
 		return 0;
 	}
 
+	@Override
+	public long flags()
+	{
+		return super.flags() | Ability.FLAG_POLYMORPHING;
+	}
+
 	public int		myRaceCode	= -1;
 	public int		myRaceLevel	= -1;
 	public Race		newRace		= null;
 	public String	raceName	= "";
+
+	private String					uniqueFormFilename	= null;
+	private List<ShiftShapeForm>	uniqueForm			= null;
 
 	protected static class ShiftShapeForm
 	{
@@ -114,14 +123,111 @@ public class Druid_ShapeShift extends StdAbility
 		RACES
 	}
 
-	@SuppressWarnings("unchecked")
-	private static final List<ShiftShapeForm> getShapeData()
+	private static final String buildShapeString(final ShiftShapeForm f)
 	{
-		List<ShiftShapeForm> shapeData = (List<ShiftShapeForm>)Resources.getResource("DRUID_SHAPESHIFT_DATA");
+		final StringBuilder str = new StringBuilder(f.ID+";");
+		for(final ShiftShapeField i : ShiftShapeField.values())
+		{
+			str.append(i.name()+"=");
+			switch(i)
+			{
+			case NAME:
+				str.append(f.form);
+				break;
+			case ATTADJ:
+				str.append(f.attackAdj);
+				break;
+			case DMGADJ:
+				str.append(f.dmgAdj);
+				break;
+			case ARMADJ:
+				str.append(f.armorAdj);
+				break;
+			case SPEEDADJ:
+				str.append(f.speedAdj);
+				break;
+			case SHAPES:
+				str.append(CMParms.toListString(f.shapes));
+				break;
+			case RACES:
+				str.append(CMParms.toListString(f.raceIDs));
+				break;
+			}
+			str.append(";");
+		}
+		return str.toString();
+	}
+
+	private final String buildUniqueShapeStrings()
+	{
+		if(this.uniqueFormFilename!=null)
+			return "[FILE="+this.uniqueFormFilename+"]";
+		if(this.uniqueForm == null)
+			return "";
+		final StringBuilder str = new StringBuilder("");
+		for(final ShiftShapeForm f : uniqueForm)
+			str.append(buildShapeString(f));
+		return str.toString();
+
+	}
+
+	private static final void fillShapeField(final ShiftShapeForm f, final String s)
+	{
+		if(f!=null)
+		{
+			final int x=s.indexOf('=');
+			if(x>0)
+			{
+				final String fieldName = s.substring(0,x).toUpperCase().trim();
+				final String fieldValue = s.substring(x+1).trim();
+				final ShiftShapeField field = (ShiftShapeField)CMath.s_valueOf(ShiftShapeField.class, fieldName);
+				if(field == null)
+					Log.errOut("Druid_ShapeShift","Unknown field '"+fieldName+"' in shapeshift.txt");
+				else
+				{
+					switch(field)
+					{
+					case ARMADJ:
+						f.armorAdj=CMath.s_double(fieldValue);
+						break;
+					case ATTADJ:
+						f.attackAdj=CMath.s_double(fieldValue);
+						break;
+					case DMGADJ:
+						f.dmgAdj=CMath.s_double(fieldValue);
+						break;
+					case NAME:
+						f.form=fieldValue;
+						break;
+					case RACES:
+						f.raceIDs=CMParms.toStringArray(CMParms.parseCommas(fieldValue,true));
+						break;
+					case SHAPES:
+						f.shapes=CMParms.toStringArray(CMParms.parseCommas(fieldValue,true));
+						break;
+					case SPEEDADJ:
+						f.speedAdj=CMath.s_double(fieldValue);
+						break;
+					}
+				}
+			}
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	private final List<ShiftShapeForm> getShapeData()
+	{
+		if(uniqueForm != null)
+			return uniqueForm;
+		final String fileName = (this.uniqueFormFilename!=null)?this.uniqueFormFilename:"skills/shapeshift.txt";
+		List<ShiftShapeForm> shapeData = (List<ShiftShapeForm>)Resources.getResource("DRUID_SHAPESHIFT_DATA: "+fileName);
 		if(shapeData == null)
 		{
 			shapeData = new Vector<ShiftShapeForm>();
-			final List<String> lines=Resources.getFileLineVector(Resources.getFileResource(Resources.makeFileResourceName("skills/shapeshift.txt"), true));
+			final CMFile[] fileList = CMFile.getExistingExtendedFiles(Resources.makeFileResourceName(fileName),null,CMFile.FLAG_FORCEALLOW);
+			final List<String> lines = new ArrayList<String>();
+			for(final CMFile F : fileList)
+				lines.addAll(Resources.getFileLineVector(Resources.getFileResource(F.getAbsolutePath(), true)));
 			ShiftShapeForm f=null;
 			for(String s : lines)
 			{
@@ -134,48 +240,10 @@ public class Druid_ShapeShift extends StdAbility
 						shapeData.add(f);
 					}
 					else
-					if(f!=null)
-					{
-						final int x=s.indexOf('=');
-						if(x>0)
-						{
-							final String fieldName = s.substring(0,x).toUpperCase().trim();
-							final String fieldValue = s.substring(x+1).trim();
-							final ShiftShapeField field = (ShiftShapeField)CMath.s_valueOf(ShiftShapeField.class, fieldName);
-							if(field == null)
-								Log.errOut("Druid_ShapeShift","Unknown field '"+fieldName+"' in shapeshift.txt");
-							else
-							{
-								switch(field)
-								{
-								case ARMADJ:
-									f.armorAdj=CMath.s_double(fieldValue);
-									break;
-								case ATTADJ:
-									f.attackAdj=CMath.s_double(fieldValue);
-									break;
-								case DMGADJ:
-									f.dmgAdj=CMath.s_double(fieldValue);
-									break;
-								case NAME:
-									f.form=fieldValue;
-									break;
-								case RACES:
-									f.raceIDs=CMParms.toStringArray(CMParms.parseCommas(fieldValue,true));
-									break;
-								case SHAPES:
-									f.shapes=CMParms.toStringArray(CMParms.parseCommas(fieldValue,true));
-									break;
-								case SPEEDADJ:
-									f.speedAdj=CMath.s_double(fieldValue);
-									break;
-								}
-							}
-						}
-					}
+						fillShapeField(f,s);
 				}
 			}
-			Resources.submitResource("DRUID_SHAPESHIFT_DATA",shapeData);
+			Resources.submitResource("DRUID_SHAPESHIFT_DATA: "+fileName,shapeData);
 		}
 		return shapeData;
 	}
@@ -192,7 +260,47 @@ public class Druid_ShapeShift extends StdAbility
 	public void setMiscText(final String newText)
 	{
 		if(newText.length()>0)
-			myRaceCode=CMath.s_int(newText);
+		{
+			myRaceCode = -1;
+			final String parm = newText.trim();
+			if(parm.startsWith("["))
+			{
+				if(parm.startsWith("[FILE="))
+				{
+					final int x=parm.indexOf(']');
+					this.uniqueFormFilename=parm.substring(6,x);
+					if(CMath.isInteger(parm.substring(x+1)))
+						myRaceCode=CMath.s_int(parm.substring(x+1));
+					super.setMiscText(newText);
+					return;
+				}
+				ShiftShapeForm f = null;
+				final List<ShiftShapeForm> shapeData = new Vector<ShiftShapeForm>();
+				for(final String line : CMParms.parseAny(parm,';',true))
+				{
+					if(line.startsWith("["))
+					{
+						f=new ShiftShapeForm(line);
+						shapeData.add(f);
+					}
+					else
+					if(CMath.isInteger(line))
+						myRaceCode = CMath.s_int(line);
+					else
+						fillShapeField(f,line);
+				}
+				if(shapeData.size()>0)
+				{
+					this.uniqueForm = shapeData;
+					if((shapeData.size()==1)
+					&&(myRaceCode<0))
+						myRaceCode = 0;
+				}
+			}
+			else
+			if(CMath.isInteger(parm))
+				myRaceCode=CMath.s_int(parm);
+		}
 		super.setMiscText(newText);
 	}
 
@@ -212,7 +320,7 @@ public class Druid_ShapeShift extends StdAbility
 			newRace.setHeightWeight(stats,((MOB)affected).charStats().reproductiveCode());
 			if(oldAdd>0)
 				stats.setWeight(stats.weight()+oldAdd);
-			final ShiftShapeForm form=Druid_ShapeShift.getShapeData().get(raceCode);
+			final ShiftShapeForm form=getShapeData().get(raceCode);
 			stats.setAttackAdjustment(stats.attackAdjustment()+(int)Math.round(CMath.mul(adjustedLevel,form.attackAdj)/2.0));
 			stats.setArmor(stats.armor()-(int)Math.round(CMath.mul(adjustedLevel,form.armorAdj)/2.0));
 			stats.setDamage(stats.damage()+(int)Math.round(CMath.mul(adjustedLevel,form.dmgAdj)/2.0));
@@ -327,13 +435,13 @@ public class Druid_ShapeShift extends StdAbility
 
 	public Race getRace(final int classLevel, final int raceCode)
 	{
-		final List<ShiftShapeForm> forms = Druid_ShapeShift.getShapeData();
+		final List<ShiftShapeForm> forms = getShapeData();
 		return CMClass.getRace(forms.get(myRaceCode).raceIDs[getRaceLevel(classLevel)]);
 	}
 
 	public String getRaceName(final int classLevel, final int raceCode)
 	{
-		final List<ShiftShapeForm> forms = Druid_ShapeShift.getShapeData();
+		final List<ShiftShapeForm> forms = getShapeData();
 		return forms.get(myRaceCode).shapes[getRaceLevel(classLevel)];
 	}
 
@@ -394,7 +502,7 @@ public class Druid_ShapeShift extends StdAbility
 		}
 
 		this.myRaceLevel=-1;
-		final List<ShiftShapeForm> forms = Druid_ShapeShift.getShapeData();
+		final List<ShiftShapeForm> forms = getShapeData();
 		final int[] racesTaken=new int[forms.size()];
 		final Druid_ShapeShift[] racesHandlerA=new Druid_ShapeShift[forms.size()];
 		Vector<Druid_ShapeShift> allShapeshifts=new Vector<Druid_ShapeShift>();
@@ -533,7 +641,7 @@ public class Druid_ShapeShift extends StdAbility
 				}
 			}
 		}
-		setMiscText(""+myRaceCode);
+		setMiscText(buildUniqueShapeStrings()+myRaceCode);
 		setRaceName(mob);
 
 		// now check for alternate shapeshifts

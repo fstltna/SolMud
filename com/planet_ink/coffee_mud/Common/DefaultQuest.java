@@ -11,6 +11,7 @@ import com.planet_ink.coffee_mud.Behaviors.interfaces.*;
 import com.planet_ink.coffee_mud.CharClasses.interfaces.*;
 import com.planet_ink.coffee_mud.Commands.interfaces.*;
 import com.planet_ink.coffee_mud.Common.interfaces.*;
+import com.planet_ink.coffee_mud.Common.interfaces.ScriptingEngine.MPContext;
 import com.planet_ink.coffee_mud.Exits.interfaces.*;
 import com.planet_ink.coffee_mud.Items.interfaces.*;
 import com.planet_ink.coffee_mud.Libraries.interfaces.*;
@@ -72,9 +73,9 @@ public class DefaultQuest implements Quest, Tickable, CMObject
 	protected int		spawn				= Quest.Spawn.NO.ordinal();
 	private QuestState	questState			= new QuestState();
 	private boolean		copy				= false;
-	public DVector		internalFiles		= null;
 	private int[]		resetData			= null;
 
+	public PairList<String,StringBuffer>internalFiles		= null;
 	private final AtomicBoolean			suspended			= new AtomicBoolean(false);
 	protected final Map<String,Long>	stepEllapsedTimes	= Collections.synchronizedMap(new HashMap<String,Long>());
 	protected final Map<String,Long>	winners				= new CaselessTreeMap<Long>();
@@ -217,7 +218,8 @@ public class DefaultQuest implements Quest, Tickable, CMObject
 				return true;
 			final PhysicalAgent P=(B instanceof PhysicalAgent)?(PhysicalAgent)B:mob;
 			final MOB M=(B instanceof MOB)?(MOB)B:mob;
-			String eval = acceptEngine.callFunc("CAN_ACCEPT", mob.Name(), P, mob, (Environmental) B, M, null, null, mob.Name(), objs);
+			final MPContext ctx = new MPContext(P, M, mob, (Environmental) B, null, null, mob.Name(), objs);
+			String eval = acceptEngine.callFunc("CAN_ACCEPT", mob.Name(), ctx);
 			if(eval == null)
 				return false;
 			eval=eval.toLowerCase();
@@ -241,7 +243,8 @@ public class DefaultQuest implements Quest, Tickable, CMObject
 				return;
 			final PhysicalAgent P=(B instanceof PhysicalAgent)?(PhysicalAgent)B:mob;
 			final MOB M=(B instanceof MOB)?(MOB)B:mob;
-			acceptEng.callFunc("DO_ACCEPT", mob.Name(), P, mob, (Environmental) B, M, null, null, mob.Name(), objs);
+			final MPContext ctx = new MPContext(P, M, mob, (Environmental) B, null, null, mob.Name(), objs);
+			acceptEng.callFunc("DO_ACCEPT", mob.Name(), ctx);
 		}
 	}
 
@@ -347,7 +350,7 @@ public class DefaultQuest implements Quest, Tickable, CMObject
 		{
 			for(int i=0;i<internalFiles.size();i++)
 			{
-				final String filename=((String)internalFiles.get(i,1)).toUpperCase();
+				final String filename=internalFiles.get(i).first.toUpperCase();
 				final List<String> delThese=new ArrayList<String>();
 				boolean foundKey=false;
 				for(final Iterator<String> k=Resources.findResourceKeys(filename);k.hasNext();)
@@ -547,9 +550,9 @@ public class DefaultQuest implements Quest, Tickable, CMObject
 		int index=-1;
 		if(internalFiles!=null)
 		{
-			index=internalFiles.indexOf(named.toUpperCase().trim());
+			index=internalFiles.indexOfFirst(named.toUpperCase().trim());
 			if(index>=0)
-				return (StringBuffer)internalFiles.get(index,2);
+				return internalFiles.get(index).second;
 		}
 		final StringBuffer buf=new CMFile(Resources.makeFileResourceName(named),null,showErrors?CMFile.FLAG_LOGERRORS:0).text();
 		return buf;
@@ -1207,8 +1210,8 @@ public class DefaultQuest implements Quest, Tickable, CMObject
 											{
 												final MOB M2=R2.fetchInhabitant(i);
 												if((M2!=null)
-												&&(M2.isMonster())
-												&&((M2.amUltimatelyFollowing()==null)||(M2.amUltimatelyFollowing().isMonster())))
+												&&(!M2.isPlayer())
+												&&(!M2.getGroupLeader().isPlayer()))
 												{
 													if(mobType.equalsIgnoreCase("any"))
 														choices.add(M2);
@@ -1233,8 +1236,8 @@ public class DefaultQuest implements Quest, Tickable, CMObject
 										for(final MOB M2 : q.mobGroup)
 										{
 											if((M2!=null)
-											&&(M2.isMonster())
-											&&((M2.amUltimatelyFollowing()==null)||(M2.amUltimatelyFollowing().isMonster())))
+											&&(!M2.isPlayer())
+											&&(!M2.getGroupLeader().isPlayer()))
 											{
 												if(mobType.equalsIgnoreCase("any"))
 													choices.add(M2);
@@ -1263,8 +1266,8 @@ public class DefaultQuest implements Quest, Tickable, CMObject
 								{
 									final MOB M2=choices.get(i);
 									if((M2!=null)
-									&&(M2.isMonster())
-									&&((M2.amUltimatelyFollowing()==null)||(M2.amUltimatelyFollowing().isMonster())))
+									&&(!M2.isPlayer())
+									&&(!M2.getGroupLeader().isPlayer()))
 									{
 										if((CMClass.classID(M2).toUpperCase().indexOf(mobType)>=0)
 										||(M2.charStats().getMyRace().racialCategory().toUpperCase().indexOf(mobType)>=0)
@@ -1346,8 +1349,8 @@ public class DefaultQuest implements Quest, Tickable, CMObject
 									{
 										final MOB M2=R2.fetchInhabitant(i);
 										if((M2!=null)
-										&&(M2.isMonster())
-										&&((M2.amUltimatelyFollowing()==null)||(M2.amUltimatelyFollowing().isMonster())))
+										&&(!M2.isPlayer())
+										&&(!M2.getGroupLeader().isPlayer()))
 										{
 											if(CMLib.masking().maskCheck(mask,M2,true))
 											{
@@ -2055,8 +2058,8 @@ public class DefaultQuest implements Quest, Tickable, CMObject
 								for(final MOB M2 : q.mobGroup)
 								{
 									if((M2!=null)
-									&&(M2.isMonster())
-									&&((M2.amUltimatelyFollowing()==null)||(M2.amUltimatelyFollowing().isMonster())))
+									&&(!M2.isPlayer())
+									&&(!M2.getGroupLeader().isPlayer()))
 									{
 										if(!CMLib.masking().maskCheck(mask,M2,true))
 											continue;
@@ -2077,8 +2080,8 @@ public class DefaultQuest implements Quest, Tickable, CMObject
 											{
 												final MOB M2=R2.fetchInhabitant(i);
 												if((M2!=null)
-												&&(M2.isMonster())
-												&&((M2.amUltimatelyFollowing()==null)||(M2.amUltimatelyFollowing().isMonster())))
+												&&(!M2.isPlayer())
+												&&(!M2.getGroupLeader().isPlayer()))
 												{
 													if(!CMLib.masking().maskCheck(mask,M2,true))
 														continue;
@@ -3968,7 +3971,7 @@ public class DefaultQuest implements Quest, Tickable, CMObject
 							errorOccurred(q,isQuiet,"Quest '"+name()+"', cannot give script, script not given.");
 							break;
 						}
-						final String val=CMParms.rest(s,2);
+						final String val=CMParms.combine(p,2);
 						List<Environmental> toSet=new ArrayList<Environmental>();
 						if(q.envObject instanceof List)
 							toSet=(List<Environmental>)q.envObject;
@@ -3994,13 +3997,14 @@ public class DefaultQuest implements Quest, Tickable, CMObject
 								&&(S.isFunc("CAN_ACCEPT")))
 								{
 									final MOB M2=(MOB)E2;
-									String eval = S.callFunc("CAN_ACCEPT", M2.Name(), M2, M2, M2, M2, null, null, M2.Name(), objs);
+									final MPContext ctx = new MPContext(M2, M2, M2, M2, null, null, M2.Name(), objs);
+									String eval = S.callFunc("CAN_ACCEPT", M2.Name(), ctx);
 									if(eval == null)
 										continue; // failed, so don't do it
 									eval=eval.toLowerCase();
 									if(eval.equals("cancel") || (eval.length()==0))
 										continue; // failed, so don't do it
-									S.callFunc("DO_ACCEPT", M2.Name(), M2, M2, M2, M2, null, null, M2.Name(), objs);
+									S.callFunc("DO_ACCEPT", M2.Name(), ctx);
 								}
 								else
 								{
@@ -5952,8 +5956,8 @@ public class DefaultQuest implements Quest, Tickable, CMObject
 						if(debug)
 							Log.debugOut(prefix+"Found file "+name+" of "+data.length()+" lines");
 						if(internalFiles==null)
-							internalFiles=new DVector(2);
-						internalFiles.addElement(name.toUpperCase().trim(),new StringBuffer(data));
+							internalFiles=new PairVector<String,StringBuffer>();
+						internalFiles.add(name.toUpperCase().trim(),new StringBuffer(data));
 					}
 
 				}
@@ -6209,10 +6213,24 @@ public class DefaultQuest implements Quest, Tickable, CMObject
 			setName(val);
 			break;
 		case 2:
-			setDuration(CMLib.time().parseTickExpression(val));
+			try
+			{
+				setDuration(CMLib.time().parseTickExpression(val));
+			}
+			catch(final CMException e)
+			{
+				Log.errOut(name(),e.getMessage());
+			}
 			break;
 		case 3:
-			setMinWait(CMLib.time().parseTickExpression(val));
+			try
+			{
+				setMinWait(CMLib.time().parseTickExpression(val));
+			}
+			catch(final CMException e)
+			{
+				Log.errOut(name(),e.getMessage());
+			}
 			break;
 		case 4:
 			setMinPlayers(CMath.s_parseIntExpression(val));
@@ -6230,7 +6248,14 @@ public class DefaultQuest implements Quest, Tickable, CMObject
 			setStartMudDate(val);
 			break;
 		case 9:
-			setWaitInterval(CMLib.time().parseTickExpression(val));
+			try
+			{
+				setWaitInterval(CMLib.time().parseTickExpression(val));
+			}
+			catch(final CMException e)
+			{
+				Log.errOut(name(),e.getMessage());
+			}
 			break;
 		case 10:
 		{
@@ -6253,13 +6278,20 @@ public class DefaultQuest implements Quest, Tickable, CMObject
 			break;
 		case 15:
 			{
-				final int ticks=CMLib.time().parseTickExpression(val);
-				if(ticks == 0)
-					this.setCopy(false);
-				else
+				try
 				{
-					this.setDuration(ticks);
-					this.setCopy(true);
+					final int ticks=CMLib.time().parseTickExpression(val);
+					if(ticks == 0)
+						this.setCopy(false);
+					else
+					{
+						this.setDuration(ticks);
+						this.setCopy(true);
+					}
+				}
+				catch(final CMException e)
+				{
+					Log.errOut(name(),e.getMessage());
 				}
 			}
 			break;
@@ -6270,10 +6302,17 @@ public class DefaultQuest implements Quest, Tickable, CMObject
 			this.category = val;
 			break;
 		default:
-			if((code.toUpperCase().trim().equalsIgnoreCase("REMAINING"))&&(running()))
-				ticksRemaining=CMLib.time().parseTickExpression(val);
-			else
-				questState.vars.put(code.toUpperCase().trim(), val);
+			try
+			{
+				if((code.toUpperCase().trim().equalsIgnoreCase("REMAINING"))&&(running()))
+					ticksRemaining=CMLib.time().parseTickExpression(val);
+				else
+					questState.vars.put(code.toUpperCase().trim(), val);
+			}
+			catch(final CMException e)
+			{
+				Log.errOut(name(),e.getMessage());
+			}
 			break;
 		}
 	}

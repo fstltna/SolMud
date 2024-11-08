@@ -1,6 +1,7 @@
 package com.planet_ink.coffee_mud.Items.Software;
 import com.planet_ink.coffee_mud.Items.Basic.StdItem;
 import com.planet_ink.coffee_mud.Items.BasicTech.GenElecItem;
+import com.planet_ink.coffee_mud.Items.Software.ShipSensorProgram.DistanceSorter;
 import com.planet_ink.coffee_mud.core.interfaces.*;
 import com.planet_ink.coffee_mud.core.*;
 import com.planet_ink.coffee_mud.core.collections.*;
@@ -50,6 +51,9 @@ public class ShipSensorProgram extends GenShipProgram
 	{
 		return "ShipSensorProgram";
 	}
+
+	protected final static BigVector emptyCoords = new BigVector(new long[] {0,0,0});
+	protected final static Dir3D  emptyDirection = new Dir3D();
 
 	protected final Map<Technical, Set<SpaceObject>>	sensorReps	= new SHashtable<Technical, Set<SpaceObject>>();
 	protected final Set<TechComponent>					activated	= Collections.synchronizedSet(new HashSet<TechComponent>());
@@ -148,11 +152,11 @@ public class ShipSensorProgram extends GenShipProgram
 		return localSensorReport;
 	}
 
-	protected boolean containsSameCoordinates(final List<SpaceObject> objs, final long[] coordinates)
+	protected boolean containsSameCoordinates(final List<SpaceObject> objs, final BigVector coordinates)
 	{
 		for(final SpaceObject o : objs)
 		{
-			if(Arrays.equals(o.coordinates(), coordinates))
+			if(o.coordinates().equals(coordinates))
 				return true;
 		}
 		return false;
@@ -275,7 +279,7 @@ public class ShipSensorProgram extends GenShipProgram
 								if((!spaceObj.Name().equals(spaceObj.name()))
 								&&(svcs.containsKey(SWServices.IDENTIFICATION)))
 								{
-									final String coords = CMParms.toListString(spaceObj.coordinates());
+									final String coords = CMParms.toListString(spaceObj.coordinates().toLongs());
 									final String realName=spaceObj.Name();
 									final String notName = spaceObj.name();
 									final String name = getDataName(realName, coords, notName);
@@ -323,10 +327,47 @@ public class ShipSensorProgram extends GenShipProgram
 			}
 			if(parsed.size()==1)
 			{
-				addScreenMessage(L("Error: No direction given."));
+				addScreenMessage(L("Error: No direction or target given."));
 				return false;
 			}
 			E=sensor;
+			final String combined = CMParms.combine(parsed,1).toLowerCase().trim();
+			final Set<SpaceObject> sensorReport=getLocalSensorReport(sensor);
+			SpaceObject targetObj = (SpaceObject)CMLib.english().fetchEnvironmental(sensorReport, combined, false);
+			if(targetObj == null)
+				targetObj = (SpaceObject)CMLib.english().fetchEnvironmental(sensorReport, combined, true);
+			if(targetObj != null)
+			{
+				final SpaceObject spaceObject=CMLib.space().getSpaceObject(sensor,true);
+				final SpaceShip ship=(spaceObject instanceof SpaceShip)?(SpaceShip)spaceObject:null;
+				if(ship != null)
+				{
+					final PairList<String,String> entries = new PairArrayList<String,String>();
+					final long distance = CMLib.space().getDistanceFrom(ship.coordinates(), targetObj.coordinates()) - ship.radius() - targetObj.radius();
+					final Dir3D direction = CMLib.space().getDirection(ship, targetObj);
+					entries.add("Identifier",targetObj.name());
+					if(!targetObj.coordinates().equals(emptyCoords))
+						entries.add("Direction",CMLib.english().directionDescShortest(direction.toDoubles()));
+					if(!targetObj.coordinates().equals(emptyCoords))
+						entries.add("Distance",CMLib.english().distanceDescShort(distance));
+					if(!targetObj.direction().equals(emptyDirection))
+						entries.add("Moving",CMLib.english().directionDescShortest(targetObj.direction().toDoubles()));
+					if(targetObj.speed()>0)
+						entries.add("Speed",CMath.abbreviateLong((long)targetObj.speed()));
+					if(targetObj.radius()>0)
+						entries.add("Size",CMLib.english().distanceDescShort(targetObj.radius()));
+					if(targetObj.getMass()>0)
+						entries.add("Mass",CMath.abbreviateLong(targetObj.getMass()));
+
+					final StringBuilder str = new StringBuilder("");
+					for(final Pair<String,String> p : entries)
+						str.append("^H").append(CMStrings.padRight(L(p.first),12)).append(": ^N").append(p.second).append("\n\r");
+					addScreenMessage(str.toString());
+				}
+				else
+					addScreenMessage(L("Error: Error communicating with @x1.",sensor.name()));
+				return false;
+			}
 			final List<ShipDir> dirs = new ArrayList<ShipDir>();
 			parsed.remove(0);
 			for(final String dirStr : parsed)
@@ -334,7 +375,7 @@ public class ShipSensorProgram extends GenShipProgram
 				final ShipDir dir=(ShipDir)CMath.s_valueOf(ShipDir.class, dirStr.toUpperCase().trim());
 				if(dir==null)
 				{
-					addScreenMessage(L("Error: Invalid direction given."));
+					addScreenMessage(L("Error: Invalid direction or target given."));
 					return false;
 				}
 				dirs.add(dir);
@@ -372,13 +413,13 @@ public class ShipSensorProgram extends GenShipProgram
 				SpaceObject targetObj = (SpaceObject)CMLib.english().fetchEnvironmental(allObjects, parm, false);
 				if(targetObj == null)
 					targetObj = (SpaceObject)CMLib.english().fetchEnvironmental(allObjects, parm, true);
-				final long[] coords=(targetObj!=null) ? targetObj.coordinates() : null;
+				final BigVector coords=(targetObj!=null) ? targetObj.coordinates() : null;
 				if(coords != null)
 				{
 					final MOB factoryMOB = CMClass.getFactoryMOB(name(), 1, CMLib.map().roomLocation(this));
 					try
 					{
-						final String code=TechCommand.SWSVCRES.makeCommand(service,new String[] { CMParms.toListString(coords) });
+						final String code=TechCommand.SWSVCRES.makeCommand(service,new String[] { CMParms.toListString(coords.toLongs()) });
 						final CMMsg msg2=CMClass.getMsg(factoryMOB, S, this,
 								CMMsg.NO_EFFECT, null,
 								CMMsg.MSG_ACTIVATE|CMMsg.MASK_ALWAYS|CMMsg.MASK_CNTRLMSG, code,

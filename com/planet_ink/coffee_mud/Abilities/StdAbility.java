@@ -405,8 +405,8 @@ public class StdAbility implements Ability
 			final CharStats charStats=mob.charStats(); // circumstantial bonuses
 			final String codeStr="X"+code.name()+"+";
 			xlevel += charStats.getAbilityAdjustment(codeStr+ID().toUpperCase());
-			xlevel += charStats.getAbilityAdjustment(codeStr+Ability.ACODE_DESCS[classificationCode()&Ability.ALL_ACODES]);
-			xlevel += charStats.getAbilityAdjustment(codeStr+Ability.DOMAIN_DESCS[(classificationCode()&Ability.ALL_DOMAINS)>> 5]);
+			xlevel += charStats.getAbilityAdjustment(codeStr+Ability.ACODE.DESCS.get(classificationCode()&Ability.ALL_ACODES));
+			xlevel += charStats.getAbilityAdjustment(codeStr+Ability.DOMAIN.DESCS.get((classificationCode()&Ability.ALL_DOMAINS)>> 5));
 			xlevel += charStats.getAbilityAdjustment(codeStr+"*");
 			return xlevel;
 		}
@@ -686,6 +686,8 @@ public class StdAbility implements Ability
 					}
 				}
 			}
+			if(mob.isPlayer())
+				CMLib.achievements().possiblyBumpAchievement(mob, AchievementLibrary.Event.EFFECTSHAD, 1, this);
 			try
 			{
 				room.recoverRoomStats();
@@ -784,8 +786,8 @@ public class StdAbility implements Ability
 	{
 		final CharStats charStats = caster.charStats();
 		return  charStats.getAbilityAdjustment("LEVEL+"+ID().toUpperCase())
-			+ charStats.getAbilityAdjustment("LEVEL+"+Ability.ACODE_DESCS[classificationCode()&Ability.ALL_ACODES])
-			+ charStats.getAbilityAdjustment("LEVEL+"+Ability.DOMAIN_DESCS[(classificationCode()&Ability.ALL_DOMAINS)>> 5])
+			+ charStats.getAbilityAdjustment("LEVEL+"+Ability.ACODE.DESCS.get(classificationCode()&Ability.ALL_ACODES))
+			+ charStats.getAbilityAdjustment("LEVEL+"+Ability.DOMAIN.DESCS.get((classificationCode()&Ability.ALL_DOMAINS)>> 5))
 			+ charStats.getAbilityAdjustment("LEVEL+*");
 	}
 
@@ -927,7 +929,7 @@ public class StdAbility implements Ability
 
 	protected MOB getTarget(final MOB mob, final List<String> commands, final Environmental givenTarget, final boolean quiet, final boolean alreadyAffOk)
 	{
-		String targetName=CMParms.combine(commands,0);
+		final String targetName=CMParms.combine(commands,0);
 		MOB target=null;
 		if((givenTarget!=null)
 		&&(givenTarget instanceof MOB))
@@ -976,9 +978,6 @@ public class StdAbility implements Ability
 			}
 		}
 
-		if(target!=null)
-			targetName=target.name();
-
 		if((target==null)
 		||((givenTarget==null)
 			&&(!CMLib.flags().canBeSeenBy(target,mob))
@@ -986,7 +985,7 @@ public class StdAbility implements Ability
 		{
 			if(!quiet)
 			{
-				if(targetName.trim().length()==0)
+				if(targetName.length()==0)
 					failureTell(mob,mob,false,L("You don't see them here."));
 				else
 					failureTell(mob,mob,false,L("You don't see anyone called '@x1' here.",targetName));
@@ -1053,7 +1052,7 @@ public class StdAbility implements Ability
 			final boolean quiet)
 	{
 		final Room R=mob.location();
-		String targetName=CMParms.combine(commands,0);
+		final String targetName=CMParms.combine(commands,0);
 		Physical target=null;
 		if(givenTarget != null)
 			target=givenTarget;
@@ -1096,13 +1095,10 @@ public class StdAbility implements Ability
 				}
 			}
 		}
-		if(target!=null)
-			targetName=target.name();
-
 		if((target==null)
 		||((givenTarget==null)
 		   &&(!CMLib.flags().canBeSeenBy(target,mob))
-		   &&((!CMLib.flags().canBeHeardMovingBy(target,mob))
+		   &&((!CMLib.flags().canBeHeardMovingBy(target,mob)) // do you REALLY can't detect them
 				||((target instanceof MOB)&&(!((MOB)target).isInCombat())))))
 		{
 			if(!quiet)
@@ -1356,8 +1352,8 @@ public class StdAbility implements Ability
 				return true;
 			final CharStats charStats = mob.charStats();
 			pctChance += charStats.getAbilityAdjustment("PROF+"+ID().toUpperCase());
-			pctChance += charStats.getAbilityAdjustment("PROF+"+Ability.ACODE_DESCS[classificationCode()&Ability.ALL_ACODES]);
-			pctChance += charStats.getAbilityAdjustment("PROF+"+Ability.DOMAIN_DESCS[(classificationCode()&Ability.ALL_DOMAINS)>> 5]);
+			pctChance += charStats.getAbilityAdjustment("PROF+"+Ability.ACODE.DESCS.get(classificationCode()&Ability.ALL_ACODES));
+			pctChance += charStats.getAbilityAdjustment("PROF+"+Ability.DOMAIN.DESCS.get((classificationCode()&Ability.ALL_DOMAINS)>> 5));
 			pctChance += charStats.getAbilityAdjustment("PROF+*");
 		}
 
@@ -1688,24 +1684,8 @@ public class StdAbility implements Ability
 			final int currentProficiency=A.proficiency()+adjustment;
 			if(((int)Math.round(Math.sqrt((mob.charStats().getStat(CharStats.STAT_INTELLIGENCE)))*34.0*Math.random()))>=currentProficiency)
 			{
-				final int qualLevel=CMLib.ableMapper().qualifyingLevel(mob,A);
-				final double adjustedChance;
-				if(qualLevel<0)
-					adjustedChance=100.1;
-				else
-				if(qualLevel>30)
-				{
-					final float fatigueFactor=(mob.curState().getFatigue() > CharState.FATIGUED_MILLIS ? 50.0f : 100.0f);
-					final int maxLevel=CMProps.get(mob.session()).getInt(CMProps.Int.LASTPLAYERLEVEL);
-					adjustedChance=fatigueFactor * CMath.div((maxLevel+1-qualLevel),((2*maxLevel)+(10*qualLevel)));
-				}
-				else
-				{
-					final float fatigueFactor=(mob.curState().getFatigue() > CharState.FATIGUED_MILLIS ? 50.0f : 100.0f);
-					final int maxLevel=CMProps.get(mob.session()).getInt(CMProps.Int.LASTPLAYERLEVEL);
-					adjustedChance=fatigueFactor * CMath.div((maxLevel+1-qualLevel),((2*maxLevel)+(10*qualLevel)));
-				}
-				if(CMLib.dice().rollPercentage()<Math.round(adjustedChance))
+				final int adjustedChance=CMLib.ableMapper().getProfGainChance(mob, A);
+				if(CMLib.dice().rollPercentage()<adjustedChance)
 				{
 					// very important, since these can be autoinvoked affects (copies)!
 					A.setProficiency(A.proficiency()+1);
@@ -1772,7 +1752,8 @@ public class StdAbility implements Ability
 		return invoke(mob,V,target,auto,asLevel);
 	}
 
-	protected boolean testUsageCost(final MOB mob, final boolean auto, final int[] consumed, final boolean quiet)
+	// needs to be public because StdAbility is not local to any of the skills
+	public boolean testUsageCost(final MOB mob, final boolean auto, final int[] consumed, final boolean quiet)
 	{
 		if(mob.curState().getMana()<consumed[Ability.USAGEINDEX_MANA])
 		{
@@ -1948,7 +1929,7 @@ public class StdAbility implements Ability
 				if(components==null)
 				{
 					failureTell(mob,mob,false,L("The requirements to use this @x1 are: @x2.",
-							Ability.ACODE_DESCS[classificationCode()&Ability.ALL_ACODES].toLowerCase(),
+							Ability.ACODE.DESCS.get(classificationCode()&Ability.ALL_ACODES).toLowerCase(),
 							CMLib.ableComponents().getAbilityComponentDesc(mob,ID())));
 					if(!mob.isPlayer())
 						CMLib.ableComponents().startAbilityComponentTrigger(mob, this);
@@ -2142,8 +2123,8 @@ public class StdAbility implements Ability
 			return false;
 		if(casterM instanceof Deity)
 			return false;
-		final MOB folM=casterM.amUltimatelyFollowing();
-		if((folM!=null)&&(folM.isPlayer()))
+		final MOB folM=casterM.getGroupLeader();
+		if(folM.isPlayer())
 			return true;
 		/* too much
 		for(final Enumeration<MOB> m=R.inhabitants();m.hasMoreElements();)
@@ -2178,6 +2159,14 @@ public class StdAbility implements Ability
 			return tickTime;
 		else
 			return (int)Math.round(CMath.mul(CMath.div(-tickAdjustmentFromStandard, 100.0) , (double)tickTime));
+	}
+
+	public int getTickdownTime(final MOB mob, final Physical target, final int asLevel, final int tickAdjustmentFromStandard)
+	{
+		if(abstractQuality()==Ability.QUALITY_MALICIOUS)
+			return getMaliciousTickdownTime(mob, target, tickAdjustmentFromStandard, asLevel);
+		else
+			return getBeneficialTickdownTime(mob, target, tickAdjustmentFromStandard, asLevel);
 	}
 
 	public Ability beneficialAffect(final MOB mob, final Physical target, final int asLevel, int tickAdjustmentFromStandard)
@@ -2556,11 +2545,12 @@ public class StdAbility implements Ability
 		}
 		else
 		{
-			final int prof75=(int)Math.round(CMath.mul(CMLib.ableMapper().getMaxProficiency(student,true,yourAbility.ID()), .75));
+			final double max75 =CMath.div(CMProps.getIntVar(CMProps.Int.PRACMAXPCT), 100.0);
+			final int prof75=(int)Math.round(CMath.mul(CMLib.ableMapper().getMaxProficiency(student,true,yourAbility.ID()), max75));
 			if(yourAbility.proficiency()>prof75-1)
 			{
 				teacher.tell(L("You can't teach @x1 any more about '@x2'.",student.charStats().himher(),name()));
-				student.tell(L("You can't learn any more about '@x1' except through dilligence.",name()));
+				student.tell(L("You can't learn any more about '@x1' except through diligence.",name()));
 				return false;
 			}
 		}
@@ -2598,7 +2588,8 @@ public class StdAbility implements Ability
 				return;
 			cost.doSpend(student);
 			final Ability newAbility=(Ability)newInstance();
-			final int prof75=(int)Math.round(CMath.mul(CMLib.ableMapper().getMaxProficiency(student,true,newAbility.ID()), .75));
+			final double max75 =CMath.div(CMProps.getIntVar(CMProps.Int.PRACMAXPCT), 100.0);
+			final int prof75=(int)Math.round(CMath.mul(CMLib.ableMapper().getMaxProficiency(student,true,newAbility.ID()), max75));
 			newAbility.setProficiency((int)Math.round(CMath.mul(proficiency(),((CMath.div(teacher.charStats().getStat(CharStats.STAT_WISDOM)+student.charStats().getStat(CharStats.STAT_INTELLIGENCE),100.0))))));
 			if(newAbility.proficiency()>prof75)
 				newAbility.setProficiency(prof75);
@@ -2641,7 +2632,8 @@ public class StdAbility implements Ability
 		if(yourAbility!=null)
 		{
 			final Ability teachAbility=teacher.fetchAbility(ID());
-			final int prof75=(int)Math.round(CMath.mul(CMLib.ableMapper().getMaxProficiency(student,true,yourAbility.ID()), .75));
+			final double max75 =CMath.div(CMProps.getIntVar(CMProps.Int.PRACMAXPCT), 100.0);
+			final int prof75=(int)Math.round(CMath.mul(CMLib.ableMapper().getMaxProficiency(student,true,yourAbility.ID()), max75));
 			if(yourAbility.proficiency()<prof75)
 			{
 				student.setPractices(student.getPractices()-practicesToPractice(student));
@@ -2705,6 +2697,13 @@ public class StdAbility implements Ability
 	{
 		if(mob == null)
 			return true;
+		return getInappropriateFaction(mob) == null;
+	}
+
+	protected Faction getInappropriateFaction(final MOB mob)
+	{
+		if(mob == null)
+			return null;
 		for(final Enumeration<String> e=mob.factions();e.hasMoreElements();)
 		{
 			final String factionID=e.nextElement();
@@ -2712,9 +2711,9 @@ public class StdAbility implements Ability
 			if((F!=null)
 			&&(F.hasUsage(this))
 			&&(!F.canUse(mob,this)))
-				return false;
+				return F;
 		}
-		return true;
+		return null;
 	}
 
 	@Override

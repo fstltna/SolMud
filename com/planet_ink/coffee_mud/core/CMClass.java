@@ -16,6 +16,7 @@ import com.planet_ink.coffee_mud.Items.interfaces.*;
 import com.planet_ink.coffee_mud.Locales.interfaces.*;
 import com.planet_ink.coffee_mud.MOBS.interfaces.*;
 import com.planet_ink.coffee_mud.Races.interfaces.*;
+import com.planet_ink.coffee_mud.Tests.interfaces.CMTest;
 
 import java.util.*;
 import java.io.File;
@@ -151,7 +152,10 @@ public class CMClass extends ClassLoader
 	/** stat constant for common type objects */
 	COMMON("com.planet_ink.coffee_mud.Common.interfaces.CMCommon"),
 	/** stat constant for library type objects */
-	LIBRARY("com.planet_ink.coffee_mud.Libraries.interfaces.CMLibrary");
+	LIBRARY("com.planet_ink.coffee_mud.Libraries.interfaces.CMLibrary"),
+	/** stat constant for test type objects */
+	TEST("com.planet_ink.coffee_mud.Tests.interfaces.CMTest")
+	;
 
 		public final String ancestorName; // in meters
 		CMObjectType(final String ancestorName)
@@ -190,6 +194,7 @@ public class CMClass extends ClassLoader
 	protected XVector<Armor>				armor			= new XVector<Armor>();
 	protected XVector<MiscMagic>			miscMagic		= new XVector<MiscMagic>();
 	protected XVector<Technical>			tech			= new XVector<Technical>();
+	protected XVector<CMTest>				tests			= new XVector<CMTest>();
 	protected XVector<ClanItem>				clanItems		= new XVector<ClanItem>();
 	protected XVector<Area>					areaTypes		= new XVector<Area>();
 	protected XVector<Command>				commands		= new XVector<Command>();
@@ -334,6 +339,8 @@ public class CMClass extends ClassLoader
 				return O instanceof Software;
 			case COMPTECH:
 				return O instanceof TechComponent;
+			case TEST:
+				return O instanceof CMTest;
 		}
 		return false;
 	}
@@ -391,6 +398,8 @@ public class CMClass extends ClassLoader
 				return CMClass.getTech(ID);
 			case SOFTWARE:
 				return CMClass.getTech(ID);
+			case TEST:
+				return CMClass.getTest(ID);
 		}
 		return null;
 	}
@@ -445,6 +454,8 @@ public class CMClass extends ClassLoader
 			return CMObjectType.COMPTECH;
 		if(O instanceof Electronics)
 			return CMObjectType.TECH;
+		if(O instanceof CMTest)
+			return CMObjectType.TEST;
 		return null;
 	}
 
@@ -541,6 +552,8 @@ public class CMClass extends ClassLoader
 			return c().tech;
 		case SOFTWARE:
 			return c().tech;
+		case TEST:
+			return c().tests;
 		}
 		return null;
 	}
@@ -753,6 +766,18 @@ public class CMClass extends ClassLoader
 	public static final Enumeration<Technical> tech()
 	{
 		return c().tech.elements();
+	}
+
+	/**
+	 * An enumeration of all the stored Tests in this classloader for this
+	 * thread
+	 *
+	 * @return an enumeration of all the stored Tests in this classloader
+	 *  	   for this thread
+	 */
+	public static final Enumeration<CMTest> tests()
+	{
+		return c().tests.elements();
 	}
 
 	/**
@@ -1029,6 +1054,18 @@ public class CMClass extends ClassLoader
 	public static final Item getTech(final String calledThis)
 	{
 		return (Item) getNewGlobal(c().tech, calledThis);
+	}
+
+	/**
+	 * Returns a new instance of a test object of the given ID from your
+	 * classloader
+	 *
+	 * @param calledThis the ID() of the object to return
+	 * @return a new instance of a test object of the given ID
+	 */
+	public static final CMTest getTest(final String calledThis)
+	{
+		return (CMTest) getNewGlobal(c().tests, calledThis);
 	}
 
 	/**
@@ -1438,9 +1475,15 @@ public class CMClass extends ClassLoader
 			((HashSet<CMObject>)set).remove(O);
 		else
 			return false;
+
 		if(set==c().commands)
 			reloadCommandWords();
-		ableFinder.clear();
+		else
+		if(set==c().abilities)
+		{
+			Resources.removeResource("SYSTEM_FILTERED_ITEM_CRAFTORS");
+			ableFinder.clear();
+		}
 		//if(set==libraries) CMLib.registerLibraries(libraries.elements());
 		return true;
 	}
@@ -1472,11 +1515,18 @@ public class CMClass extends ClassLoader
 			((HashSet<CMObject>)set).add(O);
 		else
 			return false;
+
 		if(set==c().commands)
 			reloadCommandWords();
+		else
 		if(set==c().libraries)
 			CMLib.registerLibraries(c().libraries.elements());
-		ableFinder.clear();
+		else
+		if(set==c().abilities)
+		{
+			Resources.removeResource("SYSTEM_FILTERED_ITEM_CRAFTORS");
+			ableFinder.clear();
+		}
 		return true;
 	}
 
@@ -1661,8 +1711,15 @@ public class CMClass extends ClassLoader
 		{
 		}
 		final Vector<Object> V=new Vector<Object>(1);
-		if(!loadListToObj(V,makeFilePath(path),classType.ancestorName,true))
+		try
+		{
+			if(!loadListToObj(V,makeFilePath(path),classType.ancestorName,true))
+				return false;
+		}
+		catch(final Throwable t) // a mal-formed class name
+		{
 			return false;
+		}
 		if(V.size()==0)
 			return false;
 		return true;
@@ -1872,7 +1929,7 @@ public class CMClass extends ClassLoader
 				else
 					start=mid+1;
 			}
-			catch(final java.lang.ArrayIndexOutOfBoundsException e)
+			catch(final IndexOutOfBoundsException e)
 			{
 				start=0;
 				end=list.size()-1;
@@ -2082,6 +2139,28 @@ public class CMClass extends ClassLoader
 		if(A!=null)
 			A=(Ability)A.newInstance();
 		return A;
+	}
+
+	/**
+	 * Returns the registered abilities that extend the ItemCraftor interface
+	 * @return the registered abilities that extend the ItemCraftor interface
+	 */
+	public static Enumeration<ItemCraftor> craftorAbilities()
+	{
+		@SuppressWarnings("unchecked")
+		List<ItemCraftor> craftorPrototypes = (List<ItemCraftor>)Resources.getResource("SYSTEM_FILTERED_ITEM_CRAFTORS");
+		if(craftorPrototypes == null)
+		{
+			craftorPrototypes=new Vector<ItemCraftor>();
+			for(final Enumeration<Ability> e=abilities();e.hasMoreElements();)
+			{
+				final Ability A=e.nextElement();
+				if(A instanceof ItemCraftor)
+					craftorPrototypes.add((ItemCraftor)A);
+			}
+			Resources.submitResource("SYSTEM_FILTERED_ITEM_CRAFTORS", craftorPrototypes);
+		}
+		return new IteratorEnumeration<ItemCraftor>(craftorPrototypes.iterator());
 	}
 
 	/**
@@ -2499,7 +2578,17 @@ public class CMClass extends ClassLoader
 							Log.sysOut("CMClass","WARNING: class failed ancestral check: "+packageName);
 					}
 					else
-						O=C.getDeclaredConstructor().newInstance();
+					{
+						try
+						{
+							O=C.getDeclaredConstructor().newInstance();
+						}
+						catch(final Throwable t)
+						{
+							Log.errOut(t);
+							O=null;
+						}
+					}
 				}
 				if(O==null)
 				{
@@ -3294,6 +3383,15 @@ public class CMClass extends ClassLoader
 			}
 			if(c.commands.size()==0)
 				return false;
+
+			if((tCode!=MudHost.MAIN_HOST)&&(!CMProps.isPrivateToMe(CMClass.CMObjectType.TEST.name())))
+				c.tests=baseC.tests;
+			else
+			{
+				c.tests=loadVectorListToObj(prefix+"Tests/",page.getStr("CMTESTS"),CMObjectType.TEST.ancestorName);
+				Log.sysOut(Thread.currentThread().getName(),"Tests loaded      : "+c.tests.size());
+			}
+
 		}
 		catch(final Exception t)
 		{

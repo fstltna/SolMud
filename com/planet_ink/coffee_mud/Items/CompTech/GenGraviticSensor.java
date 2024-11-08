@@ -1,6 +1,5 @@
 package com.planet_ink.coffee_mud.Items.CompTech;
 import com.planet_ink.coffee_mud.core.interfaces.*;
-import com.planet_ink.coffee_mud.core.interfaces.BoundedObject.BoundedCube;
 import com.planet_ink.coffee_mud.core.*;
 import com.planet_ink.coffee_mud.core.collections.*;
 import com.planet_ink.coffee_mud.Abilities.interfaces.*;
@@ -351,24 +350,32 @@ public class GenGraviticSensor extends GenElecCompSensor
 				}
 
 				@Override
-				public BoundedCube getBounds()
+				public BoundedCube getCube()
 				{
 					if(obj instanceof SpaceObject)
-						return ((SpaceObject)obj).getBounds();
+						return ((SpaceObject)obj).getCube();
 					return smallCube;
 				}
 
 				@Override
-				public long[] coordinates()
+				public BoundedSphere getSphere()
+				{
+					if(obj instanceof SpaceObject)
+						return ((SpaceObject)obj).getSphere();
+					return smallSphere;
+				}
+
+				@Override
+				public Coord3D coordinates()
 				{
 					final SpaceObject sobj =CMLib.space().getSpaceObject(obj, false);
 					if(sobj!=null)
-						return Arrays.copyOf(sobj.coordinates(), sobj.coordinates().length);
+						return sobj.coordinates().copyOf();
 					return emptyCoords;
 				}
 
 				@Override
-				public void setCoords(final long[] coords)
+				public void setCoords(final Coord3D coords)
 				{
 				}
 
@@ -382,18 +389,24 @@ public class GenGraviticSensor extends GenElecCompSensor
 				}
 
 				@Override
+				public Coord3D center()
+				{
+					return coordinates();
+				}
+
+				@Override
 				public void setRadius(final long radius)
 				{
 				}
 
 				@Override
-				public double[] direction()
+				public Dir3D direction()
 				{
-					return new double[]{0,0};
+					return new Dir3D();
 				}
 
 				@Override
-				public void setDirection(final double[] dir)
+				public void setDirection(final Dir3D dir)
 				{
 				}
 
@@ -488,9 +501,9 @@ public class GenGraviticSensor extends GenElecCompSensor
 	protected boolean isHiddenFromSensors(final GalacticMap space, final LinkedList<Environmental> revList,
 										  final SpaceObject O, final SpaceObject hO)
 	{
-		final double[] hDirTo = space.getDirection(O, hO);
+		final Dir3D hDirTo = space.getDirection(O, hO);
 		final long hDistance = space.getDistanceFrom(O, hO);
-		final BoundedCube hCube=O.getBounds().expand(hDirTo,hDistance);
+		final BoundedTube hTube=O.getSphere().expand(hDirTo,hDistance);
 		for(final Iterator<Environmental> rb=revList.descendingIterator();rb.hasNext();)
 		{
 			final Environmental bE=rb.next();
@@ -503,7 +516,7 @@ public class GenGraviticSensor extends GenElecCompSensor
 				final long bL=bO.getMass();
 				if(hL < bL) // if moon is lighter than then planet, proceed with hide check
 				{
-					if(hCube.intersects(bO.getBounds()))
+					if(hTube.intersects(bO.getSphere()))
 					{
 						// the projection from the ship to prospect hidden object, which we know
 						// appears lighter than the tested bO object, is also blocked BY
@@ -581,14 +594,14 @@ public class GenGraviticSensor extends GenElecCompSensor
 		final Filterer<Environmental> filter = this.getSensedObjectFilter();
 		if(!filter.passesFilter(hO))
 			return false;
-		final double[] hDirTo = space.getDirection(O, hO);
-		final BoundedCube hCube=O.getBounds().expand(hDirTo,hDistance);
-		final List<SpaceObject> objs = space.getSpaceObjectsInBound(hCube);
+		final Dir3D hDirTo = space.getDirection(O, hO);
+		final BoundedTube hTube=O.getSphere().expand(hDirTo,hDistance);
+		final List<SpaceObject> objs = space.getSpaceObjectsInBound(hTube.getCube());
 		for(final SpaceObject cO : objs)
 		{
 			if((cO != O)
 			&& (cO != hO)
-			&&(hCube.intersects(cO.getBounds())))
+			&&(hTube.intersects(cO.getSphere())))
 			{
 				if(cO.getMass() >= hO.getMass()) // an object is hiding the target object
 					return false;

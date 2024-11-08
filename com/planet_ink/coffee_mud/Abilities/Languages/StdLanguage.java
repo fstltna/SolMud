@@ -590,14 +590,51 @@ public class StdLanguage extends StdAbility implements Language
 						if((heardL==null)
 						||((CMLib.dice().rollPercentage()*2)>(spokenL.getProficiency(spokenL.ID())+heardL.getProficiency(heardL.ID()))))
 						{
+							String reply=null;
+							if(heardL==null)
+							{
+								if(msg.targetMinor()==CMMsg.TYP_ORDER)
+								{
+									final Object[][] cmds = CMProps.getListFileStringChoices(CMProps.ListFile.ANIMAL_ORDER_LIST);
+									final String order = CMStrings.getSayFromMessage(msg.targetMessage());
+									if((order != null) && (order.length()>0) && (cmds.length>0))
+									{
+										final String word = CMStrings.getFirstWord(order.trim()).toUpperCase();
+										Object[] found=null;
+										for(final Object[] cmd : cmds)
+										{
+											final String cmdStr = (String)cmd[0];
+											if((CMStrings.getFirstWord(cmdStr).toUpperCase().startsWith(word)))
+											{
+												final int switchDex = cmdStr.indexOf('(');
+												final String cmdMatch = (switchDex<0)?cmdStr:cmdStr.substring(0,switchDex);
+												if(cmdMatch.endsWith("*") || (order.indexOf(' ')<0))
+												{
+													found=cmd;
+													break;
+												}
+											}
+										}
+										if(found != null)
+										{
+											final int switchDex = found[0].toString().indexOf('(');
+											if((switchDex >= 0)
+											&&(found[0].toString().endsWith(")")))
+											{
+												msg.setTargetMessage(CMStrings.replaceSayInMessage(msg.targetMessage(),
+														found[0].toString().substring(switchDex+1,found[0].toString().length()-1)));
+											}
+											break;
+										}
+									}
+								}
+								reply="<S-NAME> do(es) not speak "+spokenL.name()+" and would not understand <T-HIM-HER>.";
+							}
+							else
+								reply="<T-NAME> <T-IS-ARE> having trouble understanding <T-YOUPOSS> pronunciation.";
 							msg.setTargetCode(CMMsg.TYP_SPEAK);
 							msg.setSourceCode(CMMsg.TYP_SPEAK);
 							msg.setOthersCode(CMMsg.TYP_SPEAK);
-							String reply=null;
-							if(heardL==null)
-								reply="<S-NAME> do(es) not speak "+spokenL.name()+" and would not understand <T-HIM-HER>.";
-							else
-								reply="<T-NAME> <T-IS-ARE> having trouble understanding <T-YOUPOSS> pronunciation.";
 							msg.addTrailerMsg(CMClass.getMsg((MOB)msg.target(),msg.source(),null,CMMsg.MSG_OK_VISUAL,reply));
 						}
 					}
@@ -749,11 +786,15 @@ public class StdLanguage extends StdAbility implements Language
 
 	protected boolean translateChannelMessage(final CMMsg msg, final String sourceWords)
 	{
-		if(CMath.bset(msg.sourceMajor(),CMMsg.MASK_CHANNEL))
+		if(CMath.bset(msg.sourceMajor(),CMMsg.MASK_CHANNEL)&&(msg.othersMessage()!=null))
 		{
-			msg.addTrailerMsg(CMClass.getMsg(msg.source(),null,null,CMMsg.NO_EFFECT,CMMsg.NO_EFFECT,msg.othersCode(),
-					L("@x1 (translated from @x2)",CMStrings.substituteSayInMessage(msg.othersMessage(),sourceWords),name())));
-			return true;
+			final ChannelsLibrary.CMChannel C = CMLib.channels().getChannelFromMsg(msg);
+			if((C==null)||(!C.flags().contains(ChannelsLibrary.ChannelFlag.NOLANGUAGE)))
+			{
+				msg.addTrailerMsg(CMClass.getMsg(msg.source(),null,null,CMMsg.NO_EFFECT,CMMsg.NO_EFFECT,msg.othersCode(),
+						L("@x1 (translated from @x2)",CMStrings.substituteSayInMessage(msg.othersMessage(),sourceWords),name())));
+				return true;
+			}
 		}
 		return false;
 	}

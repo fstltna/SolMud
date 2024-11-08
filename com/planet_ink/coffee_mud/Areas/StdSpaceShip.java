@@ -3,7 +3,6 @@ import com.planet_ink.coffee_mud.core.interfaces.*;
 import com.planet_ink.coffee_mud.core.*;
 import com.planet_ink.coffee_mud.core.CMSecurity.DbgFlag;
 import com.planet_ink.coffee_mud.core.collections.*;
-import com.planet_ink.coffee_mud.core.interfaces.BoundedObject.BoundedCube;
 import com.planet_ink.coffee_mud.Abilities.interfaces.*;
 import com.planet_ink.coffee_mud.Areas.interfaces.*;
 import com.planet_ink.coffee_mud.Behaviors.interfaces.*;
@@ -143,6 +142,12 @@ public class StdSpaceShip extends StdBoardableShip implements SpaceShip
 	}
 
 	@Override
+	public Coord3D center()
+	{
+		return coordinates();
+	}
+
+	@Override
 	public void setRadius(final long radius)
 	{
 		this.radius = radius;
@@ -167,22 +172,22 @@ public class StdSpaceShip extends StdBoardableShip implements SpaceShip
 	}
 
 	@Override
-	public long[] coordinates()
+	public Coord3D coordinates()
 	{
-		return (shipItem instanceof SpaceShip) ? ((SpaceShip) shipItem).coordinates() : new long[3];
+		return (shipItem instanceof SpaceShip) ? ((SpaceShip) shipItem).coordinates() : new Coord3D();
 	}
 
 	@Override
-	public void setCoords(final long[] coords)
+	public void setCoords(final Coord3D coords)
 	{
 		if (shipItem instanceof SpaceShip)
 			((SpaceShip) shipItem).setCoords(coords);
 	}
 
 	@Override
-	public double[] direction()
+	public Dir3D direction()
 	{
-		return (shipItem instanceof SpaceShip) ? ((SpaceShip) shipItem).direction() : new double[2];
+		return (shipItem instanceof SpaceShip) ? ((SpaceShip) shipItem).direction() : new Dir3D();
 	}
 
 	@Override
@@ -199,20 +204,20 @@ public class StdSpaceShip extends StdBoardableShip implements SpaceShip
 	}
 
 	@Override
-	public void setDirection(final double[] dir)
+	public void setDirection(final Dir3D dir)
 	{
 		if (shipItem instanceof SpaceShip)
 			((SpaceShip) shipItem).setDirection(dir);
 	}
 
 	@Override
-	public double[] facing()
+	public Dir3D facing()
 	{
-		return (shipItem instanceof SpaceShip) ? ((SpaceShip) shipItem).facing() : new double[2];
+		return (shipItem instanceof SpaceShip) ? ((SpaceShip) shipItem).facing() : new Dir3D();
 	}
 
 	@Override
-	public void setFacing(final double[] dir)
+	public void setFacing(final Dir3D dir)
 	{
 		if (shipItem instanceof SpaceShip)
 			((SpaceShip) shipItem).setFacing(dir);
@@ -265,9 +270,15 @@ public class StdSpaceShip extends StdBoardableShip implements SpaceShip
 	}
 
 	@Override
-	public BoundedCube getBounds()
+	public BoundedCube getCube()
 	{
-		return new BoundedObject.BoundedCube(coordinates(),radius());
+		return new BoundedCube(coordinates(),radius());
+	}
+
+	@Override
+	public BoundedSphere getSphere()
+	{
+		return new BoundedSphere(coordinates(),radius());
 	}
 
 	@Override

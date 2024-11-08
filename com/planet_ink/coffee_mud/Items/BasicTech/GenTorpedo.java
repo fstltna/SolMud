@@ -109,11 +109,11 @@ public class GenTorpedo extends StdTorpedo
 		case 0:
 			return "" + techLevel();
 		case 1:
-			return CMParms.toListString(coordinates());
+			return CMParms.toListString(coordinates().toLongs());
 		case 2:
 			return "" + radius();
 		case 3:
-			return CMParms.toListString(direction());
+			return CMParms.toListString(direction().toDoubles());
 		case 4:
 			return "" + speed();
 		case 5:
@@ -121,9 +121,9 @@ public class GenTorpedo extends StdTorpedo
 		case 6:
 			return "" + maxRange();
 		case 7:
-			return "" + weaponDamageType();
+			return CMStrings.s_indexStr(Weapon.TYPE_DESCS,weaponDamageType(),"");
 		case 8:
-			return "" + weaponClassification();
+			return CMStrings.s_indexStr(Weapon.CLASS_DESCS,weaponClassification(),"");
 		case 9:
 			return "" + getManufacturerName();
 		case 10:
@@ -145,16 +145,16 @@ public class GenTorpedo extends StdTorpedo
 			setTechLevel(CMath.s_parseIntExpression(val));
 			break;
 		case 1:
-			setCoords(CMParms.toLongArray(CMParms.parseCommas(val, true)));
-			coordinates[0] = coordinates[0] % SpaceObject.Distance.GalaxyRadius.dm;
-			coordinates[1] = coordinates[1] % SpaceObject.Distance.GalaxyRadius.dm;
-			coordinates[2] = coordinates[2] % SpaceObject.Distance.GalaxyRadius.dm;
+			setCoords(new Coord3D(CMParms.toLongArray(CMParms.parseCommas(val, true))));
+			coordinates.x(coordinates.x().longValue() % SpaceObject.Distance.GalaxyRadius.dm);
+			coordinates.y(coordinates.y().longValue() % SpaceObject.Distance.GalaxyRadius.dm);
+			coordinates.z(coordinates.z().longValue() % SpaceObject.Distance.GalaxyRadius.dm);
 			break;
 		case 2:
 			setRadius(CMath.s_long(val));
 			break;
 		case 3:
-			setDirection(CMParms.toDoubleArray(CMParms.parseCommas(val, true)));
+			setDirection(new Dir3D(CMParms.toDoubleArray(CMParms.parseCommas(val, true))));
 			break;
 		case 4:
 			setSpeed(CMath.s_double(val));

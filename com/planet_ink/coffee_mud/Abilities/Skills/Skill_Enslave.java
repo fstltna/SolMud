@@ -561,6 +561,11 @@ public class Skill_Enslave extends StdSkill implements PrivateProperty
 			mob.tell(L("@x1 would be too stupid to understand your instructions!",target.name(mob)));
 			return false;
 		}
+		if(CMLib.flags().isUndead(target))
+		{
+			mob.tell(L("@x1 would not follow your instructions!",target.name(mob)));
+			return false;
+		}
 
 		if((!CMLib.flags().isBoundOrHeld(target))
 		&&(target.fetchEffect(ID())==null)
@@ -623,6 +628,7 @@ public class Skill_Enslave extends StdSkill implements PrivateProperty
 		return CODES;
 	}
 
+	@Override
 	protected int getInternalCodeNum(final String code)
 	{
 		for(int i=0;i<INTERNAL_CODES.length;i++)

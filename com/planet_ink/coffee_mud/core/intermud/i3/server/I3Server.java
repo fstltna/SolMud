@@ -1,5 +1,6 @@
 package com.planet_ink.coffee_mud.core.intermud.i3.server;
 import com.planet_ink.coffee_mud.core.intermud.i3.server.*;
+import com.planet_ink.coffee_mud.core.intermud.i3.ImudServices;
 import com.planet_ink.coffee_mud.core.intermud.i3.net.*;
 import com.planet_ink.coffee_mud.core.intermud.*;
 import com.planet_ink.coffee_mud.core.intermud.i3.packets.*;
@@ -56,10 +57,16 @@ public class I3Server
 	 * @param mud the name of the mud being started
 	 * @param port the port of the server
 	 * @param imud a library for interaction with base system
+	 * @param routersList[] client list of host:port:service
+	 * @param adminEmail email address of mud admin
+	 * @param smtpPort the servers smtp port
 	 */
 	static public void start(final String mud,
 							 final int port,
-							 final ImudServices imud) throws ServerSecurityException
+							 final ImudServices imud,
+							 final String[] routersList,
+							 final String adminEmail,
+							 final int smtpPort) throws ServerSecurityException
 	{
 		try
 		{
@@ -68,7 +75,7 @@ public class I3Server
 				throw new ServerSecurityException("Illegal attempt to start Server.");
 			}
 			started = true;
-			serverClient = new ServerThread(mud, port, imud);
+			serverClient = new ServerThread(mud, port, imud, routersList, adminEmail, smtpPort);
 			Log.sysOut("I3Server", "InterMud3 Core (c)1996 George Reese");
 			serverClient.start();
 		}
@@ -106,7 +113,9 @@ public class I3Server
 
 	static public String getMudName()
 	{
-		return serverClient.getMudName();
+		if(serverClient != null)
+			return serverClient.getMudName();
+		return "";
 	}
 
 	static public int getPort()
@@ -126,8 +135,8 @@ public class I3Server
 			catch(final Exception e)
 			{
 			}
-		serverClient.shutdown();
-		started=false;
+			serverClient.shutdown();
+			started=false;
 		}
 		catch(final Exception e)
 		{

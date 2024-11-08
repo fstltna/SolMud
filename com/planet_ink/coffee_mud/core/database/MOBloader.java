@@ -14,13 +14,16 @@ import com.planet_ink.coffee_mud.Behaviors.interfaces.*;
 import com.planet_ink.coffee_mud.CharClasses.interfaces.*;
 import com.planet_ink.coffee_mud.Commands.interfaces.*;
 import com.planet_ink.coffee_mud.Common.interfaces.*;
+import com.planet_ink.coffee_mud.Common.interfaces.PrideStats.PrideStat;
 import com.planet_ink.coffee_mud.Common.interfaces.Clan.MemberRecord;
 import com.planet_ink.coffee_mud.Common.interfaces.PlayerAccount.AccountFlag;
 import com.planet_ink.coffee_mud.Common.interfaces.PlayerStats.PlayerFlag;
 import com.planet_ink.coffee_mud.Exits.interfaces.*;
 import com.planet_ink.coffee_mud.Items.interfaces.*;
 import com.planet_ink.coffee_mud.Libraries.interfaces.*;
+import com.planet_ink.coffee_mud.Libraries.interfaces.DatabaseEngine.PlayerData;
 import com.planet_ink.coffee_mud.Libraries.interfaces.PlayerLibrary.PlayerCode;
+import com.planet_ink.coffee_mud.Libraries.interfaces.PlayerLibrary.PrideCat;
 import com.planet_ink.coffee_mud.Libraries.interfaces.PlayerLibrary.ThinPlayer;
 import com.planet_ink.coffee_mud.Libraries.interfaces.PlayerLibrary.ThinnerPlayer;
 import com.planet_ink.coffee_mud.Locales.interfaces.*;
@@ -138,7 +141,7 @@ public class MOBloader
 				final String password=DBConnections.getRes(R,"CMPASS");
 				mob.setName(username);
 				pstats.setPassword(password);
-				stats.setMyClasses(DBConnections.getRes(R,"CMCLAS"));
+				stats.setAllClassInfo(DBConnections.getRes(R,"CMCLAS"), DBConnections.getRes(R,"CMLEVL"));
 				stats.setStat(CharStats.STAT_STRENGTH,CMath.s_int(DBConnections.getRes(R,"CMSTRE")));
 				final Race raceR=CMClass.getRace(DBConnections.getRes(R,"CMRACE"));
 				dbE.registerRaceUsed(raceR);
@@ -150,7 +153,6 @@ public class MOBloader
 				stats.setStat(CharStats.STAT_INTELLIGENCE,CMath.s_int(DBConnections.getRes(R,"CMINTE")));
 				stats.setStat(CharStats.STAT_CHARISMA,CMath.s_int(DBConnections.getRes(R,"CMCHAR")));
 				state.setHitPoints(CMath.s_int(DBConnections.getRes(R,"CMHITP")));
-				stats.setMyLevels(DBConnections.getRes(R,"CMLEVL"));
 				int level=0;
 				for(int i=0;i<mob.baseCharStats().numClasses();i++)
 					level+=stats.getClassLevel(mob.baseCharStats().getMyClass(i));
@@ -186,7 +188,7 @@ public class MOBloader
 				mob.basePhyStats().setAttackAdjustment(CMath.s_int(DBConnections.getRes(R,"CMATTA")));
 				mob.basePhyStats().setArmor(CMath.s_int(DBConnections.getRes(R,"CMAMOR")));
 				mob.basePhyStats().setDamage(CMath.s_int(DBConnections.getRes(R,"CMDAMG")));
-				mob.setAttributesBitmap(CMath.s_int(DBConnections.getRes(R,"CMBTMP")));
+				mob.setAttributesBitmap((DBConnections.getLongRes(R,"CMBTMP")));
 				mob.setLiegeID(DBConnections.getRes(R,"CMLEIG"));
 				mob.basePhyStats().setHeight((int)DBConnections.getLongRes(R,"CMHEIT"));
 				mob.basePhyStats().setWeight((int)DBConnections.getLongRes(R,"CMWEIT"));
@@ -456,7 +458,7 @@ public class MOBloader
 		case CHARCLASS:
 		{
 			final CharStats stats = (CharStats)CMClass.getCommon("DefaultCharStats");
-			stats.setMyClasses(queryCMCHARStr(name, "CMCLAS"));
+			stats.setAllClassInfo(queryCMCHARStr(name, "CMCLAS"),"");
 			return stats.getCurrentClass();
 		}
 		case DAMAGE:
@@ -478,8 +480,7 @@ public class MOBloader
 		case LEVEL:
 		{
 			final CharStats stats = (CharStats)CMClass.getCommon("DefaultCharStats");
-			stats.setMyClasses(queryCMCHARStr(name, "CMCLAS"));
-			stats.setMyLevels(queryCMCHARStr(name, "CMLEVL"));
+			stats.setAllClassInfo(queryCMCHARStr(name, "CMCLAS"), queryCMCHARStr(name, "CMLEVL"));
 			int level=0;
 			for(int i=0;i<stats.numClasses();i++)
 				level+=stats.getClassLevel(stats.getMyClass(i));
@@ -589,7 +590,7 @@ public class MOBloader
 		case MANA:
 			return Integer.valueOf((queryCMCHARLong(name, "CMMANA")).intValue());
 		case MATTRIB:
-			return Integer.valueOf((queryCMCHARLong(name, "CMBTMP")).intValue());
+			return Long.valueOf((queryCMCHARLong(name, "CMBTMP")).longValue());
 		case MOVES:
 			return Integer.valueOf((queryCMCHARLong(name, "CMMOVE")).intValue());
 		case PASSWORD:
@@ -760,10 +761,9 @@ public class MOBloader
 		case CHARCLASS:
 		{
 			final CharStats stats = (CharStats)CMClass.getCommon("DefaultCharStats");
-			stats.setMyClasses(queryCMCHARStr(name,"CMCLAS"));
-			stats.setMyLevels(queryCMCHARStr(name,"CMLEVL"));
+			stats.setAllClassInfo(queryCMCHARStr(name,"CMCLAS"), queryCMCHARStr(name,"CMLEVL"));
 			stats.setCurrentClass((CharClass)value);
-			updateCMCHARString(name, "CMCLAS", stats.getMyClassesStr());
+			updateCMCHARString(name, "CMCLAS", stats.getAllClassInfo().first);
 			break;
 		}
 		case DAMAGE:
@@ -846,10 +846,9 @@ public class MOBloader
 		case LEVEL:
 		{
 			final CharStats stats = (CharStats)CMClass.getCommon("DefaultCharStats");
-			stats.setMyClasses(queryCMCHARStr(name,"CMCLAS"));
-			stats.setMyLevels(queryCMCHARStr(name,"CMLEVL"));
+			stats.setAllClassInfo(queryCMCHARStr(name,"CMCLAS"), queryCMCHARStr(name,"CMLEVL"));
 			stats.setClassLevel(stats.getCurrentClass(), CMath.s_int(value.toString()) - stats.combinedSubLevels());
-			updateCMCHARString(name, "CMLEVL", stats.getMyLevelsStr());
+			updateCMCHARString(name, "CMLEVL", stats.getAllClassInfo().second);
 			break;
 		}
 		case MONEY:
@@ -1250,7 +1249,8 @@ public class MOBloader
 							final long expirationDate=CMath.s_long(xml.get(0).parms().get("EXPIRE"));
 							if(roomID.startsWith("SPACE.") && (newItem instanceof SpaceObject))
 							{
-								CMLib.space().addObjectToSpace((SpaceObject)newItem,CMParms.toLongArray(CMParms.parseCommas(roomID.substring(6), true)));
+								CMLib.space().addObjectToSpace((SpaceObject)newItem,
+										new Coord3D(CMParms.toLongArray(CMParms.parseCommas(roomID.substring(6), true))));
 								addToMOB=false;
 							}
 							else
@@ -1550,9 +1550,10 @@ public class MOBloader
 			final int expLvl=CMath.s_int(DBConnections.getRes(R,"CMEXLV"));
 			final String leigeID=DBConnections.getRes(R,"CMLEIG");
 			final String worshipID=DBConnections.getRes(R,"CMWORS");
+			final char gendChar=DBConnections.getRes(R, "CMGEND").charAt(0);
 			return new PlayerLibrary.ThinPlayer()
 			{
-
+				XVector<String> clans = null;
 				@Override
 				public String name()
 				{
@@ -1623,6 +1624,21 @@ public class MOBloader
 				public String worship()
 				{
 					return worshipID;
+				}
+
+				@Override
+				public String gender()
+				{
+					final String[] set = CMProps.getGenderDef(gendChar);
+					return set[1]; // GEND_NOUN
+				}
+
+				@Override
+				public Enumeration<String> clans()
+				{
+					if(clans==null)
+						clans = new XVector<String>(CMLib.database().DBReadMemberClans(name));
+					return clans.elements();
 				}
 			};
 		}
@@ -1905,6 +1921,32 @@ public class MOBloader
 		return members;
 	}
 
+
+	public List<String> DBMemberClans(String userID)
+	{
+		final List<String> clans = new Vector<String>(1);
+		DBConnection D=null;
+		try
+		{
+			D=DB.DBFetch();
+			userID=DB.injectionClean(userID);
+			final ResultSet R=D.query("SELECT CMCLAN FROM CMCHCL where CMUSERID='"+userID+"'");
+			if(R!=null) while(R.next())
+			{
+				clans.add(DB.getRes(R, "CMCLAN"));
+			}
+		}
+		catch(final Exception sqle)
+		{
+			Log.errOut("MOB",sqle);
+		}
+		finally
+		{
+			DB.DBDone(D);
+		}
+		return clans;
+	}
+
 	public Clan.MemberRecord DBClanMember(String clan, String memberName)
 	{
 		Clan.MemberRecord member = null;
@@ -2145,10 +2187,11 @@ public class MOBloader
 
 		final String playerStatsXML=getPlayerStatsXML(mob);
 		final String factionDataXML=CMLib.coffeeMaker().getFactionXML(mob, null).toString();
+		final Pair<String, String> classInfo = mob.baseCharStats().getAllClassInfo();
 		DB.updateWithClobs(
 				 "UPDATE CMCHAR SET  CMPASS='"+pstats.getPasswordStr()+"'"
 				+", CMCHID='"+mob.ID()+"'"
-				+", CMCLAS='"+mob.baseCharStats().getMyClassesStr()+"'"
+				+", CMCLAS=?"
 				+", CMSTRE="+mob.baseCharStats().getStat(CharStats.STAT_STRENGTH)
 				+", CMRACE='"+mob.baseCharStats().getMyRace().ID()+"'"
 				+", CMDEXT="+mob.baseCharStats().getStat(CharStats.STAT_DEXTERITY)
@@ -2158,7 +2201,7 @@ public class MOBloader
 				+", CMINTE="+mob.baseCharStats().getStat(CharStats.STAT_INTELLIGENCE)
 				+", CMCHAR="+mob.baseCharStats().getStat(CharStats.STAT_CHARISMA)
 				+", CMHITP="+mob.baseState().getHitPoints()
-				+", CMLEVL='"+mob.baseCharStats().getMyLevelsStr()+"'"
+				+", CMLEVL=?"
 				+", CMMANA="+mob.baseState().getMana()
 				+", CMMOVE="+mob.baseState().getMovement()
 				+", CMALIG=-1"
@@ -2191,6 +2234,8 @@ public class MOBloader
 				+", CMDESC=?"
 				+"  WHERE CMUSERID='"+mob.Name()+"'"
 				,new String[][]{{
+					classInfo.first,
+					classInfo.second,
 					pstats.getPrompt(),
 					pstats.getColorStr(),
 					pstats.getEmail(),
@@ -2389,14 +2434,14 @@ public class MOBloader
 					if((cont.owner()==null)
 					&&(thisItem instanceof SpaceObject)
 					&&(CMLib.space().isObjectInSpace((SpaceObject)thisItem)))
-						roomID="SPACE."+CMParms.toListString(((SpaceObject)thisItem).coordinates());
+						roomID="SPACE."+CMParms.toListString(((SpaceObject)thisItem).coordinates().toLongs());
 					else
 					if(cont.owner() instanceof Room)
 						roomID=CMLib.map().getApproximateExtendedRoomID((Room)cont.owner());
 					else
 					if((thisItem instanceof SpaceObject)
 					&&(CMLib.space().isObjectInSpace((SpaceObject)thisItem)))
-						roomID="SPACE."+CMParms.toListString(((SpaceObject)thisItem).coordinates());
+						roomID="SPACE."+CMParms.toListString(((SpaceObject)thisItem).coordinates().toLongs());
 					else
 						roomID="";
 					String insert="";
@@ -2413,7 +2458,7 @@ public class MOBloader
 							{
 								final MOB rideM=(MOB)leadR;
 								if((rideM.isMonster())
-								&&((rideM.amUltimatelyFollowing()==null)||(!rideM.amUltimatelyFollowing().isPlayer()))
+								&&((rideM.amFollowing()==null)||(!rideM.getGroupLeader().isPlayer()))
 								&&(rideM.location()==R))
 									fakeR.addInhabitant(rideM); // will not affect location
 								leadR=rideM.riding();
@@ -2465,42 +2510,223 @@ public class MOBloader
 		DB.updateWithClobs(statements);
 	}
 
-	protected List<Pair<String,Integer>>[][] DBFindPrideWinners(final int topThisMany, final short scanCPUPercent, final boolean players)
+	public void DBScanPridePlayerWinners(final CMCallback<Pair<ThinPlayer,Pair<Long,int[]>[]>> callBack, final short scanCPUPercent)
 	{
-		@SuppressWarnings("unchecked")
-		final List<Pair<String,Integer>>[][] top=new Vector[TimeClock.TimePeriod.values().length][AccountStats.PrideStat.values().length];
-		for(int x=0;x<top.length;x++)
+		DBConnection D=null;
+		final long msWait=Math.round(1000.0 * CMath.div(scanCPUPercent, 100));
+		final long sleepAmount=1000 - msWait;
+		long nextWaitAfter=System.currentTimeMillis() + msWait;
+		try
 		{
-			for(int y=0;y<top[x].length;y++)
-				top[x][y]=new Vector<Pair<String,Integer>>(topThisMany+1);
+			D=DB.DBFetch();
+			final ResultSet R=D.query("SELECT * FROM CMCHAR");
+			while((R!=null)&&(R.next()))
+			{
+				final String userID=DB.getRes(R, "CMUSERID");
+				final String pxml;
+				final ThinPlayer whom;
+				final MOB M=CMLib.players().getPlayer(userID);
+				if((M!=null)&&(M.playerStats()!=null))
+				{
+					pxml=M.playerStats().getXML();
+					whom=CMLib.players().getThinPlayer(userID);
+				}
+				else
+				{
+					pxml=DB.getRes(R, "CMPFIL");
+					whom=this.parseThinUser(R);
+				}
+				final String[] pridePeriods=CMLib.xml().returnXMLValue(pxml, "NEXTPRIDEPERIODS").split(",");
+				final String[] prideStats=CMLib.xml().returnXMLValue(pxml, "PRIDESTATS").split(";");
+				final String[] prideExceptions=CMLib.xml().returnXMLValue(pxml, "FLAGS").split(",");
+				if(CMParms.contains(prideExceptions, PlayerFlag.NOSTATS.toString())
+					||CMParms.contains(prideExceptions, PlayerFlag.NOTOP.toString()))
+					continue;
+				final Pair<Long,int[]>[] allData = CMLib.players().parsePrideStats(pridePeriods, prideStats);
+				callBack.callback(new Pair<ThinPlayer,Pair<Long,int[]>[]>(whom,allData));
+				if((sleepAmount>0)&&(System.currentTimeMillis() > nextWaitAfter))
+				{
+					CMLib.s_sleep(sleepAmount);
+					nextWaitAfter=System.currentTimeMillis() + msWait;
+				}
+			}
+			if(R!=null)
+				R.close();
 		}
+		catch(final Exception sqle)
+		{
+			Log.errOut("MOB",sqle);
+		}
+		finally
+		{
+			DB.DBDone(D);
+		}
+		final List<PlayerData> pdV = CMLib.database().DBReadPlayerSectionData("SYSTEM_PRIDE_PARCHIVE");
+		final XMLLibrary xLib = CMLib.xml();
+		final Long now = Long.valueOf(System.currentTimeMillis());
+		for(final PlayerData pd : pdV)
+		{
+			final String fakeName = pd.who();
+			final List<XMLLibrary.XMLTag> pieces = xLib.parseAllXML(pd.xml());
+			final PrideCat cat = PrideCat.valueOf(xLib.getValFromPieces(pieces,"PCAT"));
+			final String unit = xLib.getValFromPieces(pieces, "PUNIT");
+			final PrideStat stat = PrideStat.valueOf(xLib.getValFromPieces(pieces, "PSTAT"));
+			final int pval = xLib.getIntFromPieces(pieces, "PVALUE");
+			@SuppressWarnings("unchecked")
+			final Pair<Long,int[]>[] allData = new Pair[TimeClock.TimePeriod.values().length];
+			final int[] data = new int[PrideStat.values().length];
+			allData[TimeClock.TimePeriod.ALLTIME.ordinal()] = new Pair<Long,int[]>(now,data);
+			data[stat.ordinal()] = pval;
+			final ThinPlayer whom = new ThinPlayer()
+			{
+				@Override
+				public String name()
+				{
+					return fakeName;
+				}
+
+				@Override
+				public String charClass()
+				{
+					if(cat == PrideCat.CLASS)
+						return unit;
+					else
+					if(cat == PrideCat.BASECLASS)
+					{
+						CharClass C = CMClass.getCharClass(unit);
+						if((C!=null)&&(C.baseClass().equalsIgnoreCase(unit)))
+							return C.ID();
+						for(final Enumeration<CharClass> c = CMClass.charClasses();c.hasMoreElements();)
+						{
+							C = c.nextElement();
+							if(C.baseClass().equalsIgnoreCase(unit))
+								return C.ID();
+						}
+					}
+					return null;
+				}
+
+				@Override
+				public String race()
+				{
+					if(cat == PrideCat.RACE)
+						return unit;
+					else
+					if(cat == PrideCat.RACECAT)
+					{
+						Race R = CMClass.getRace(unit);
+						if((R!=null)&&(R.racialCategory().equalsIgnoreCase(unit)))
+							return R.ID();
+						for(final Enumeration<Race> r = CMClass.races();r.hasMoreElements();)
+						{
+							R = r.nextElement();
+							if(R.racialCategory().equalsIgnoreCase(unit))
+								return R.ID();
+						}
+					}
+					return null;
+				}
+
+				@Override
+				public int level()
+				{
+					if(cat == PrideCat.LEVEL)
+						return CMath.s_int(unit);
+					else
+						return -1;
+				}
+
+				@Override
+				public int age()
+				{
+					return 0;
+				}
+
+				@Override
+				public long last()
+				{
+					return 0;
+				}
+
+				@Override
+				public String email()
+				{
+					return null;
+				}
+
+				@Override
+				public String ip()
+				{
+					return null;
+				}
+
+				@Override
+				public int exp()
+				{
+					return 0;
+				}
+
+				@Override
+				public int expLvl()
+				{
+					return 0;
+				}
+
+				@Override
+				public String liege()
+				{
+					return null;
+				}
+
+				@Override
+				public String worship()
+				{
+					return null;
+				}
+
+				@Override
+				public String gender()
+				{
+					if(cat == PrideCat.GENDER)
+						return unit;
+					return null;
+				}
+
+				@Override
+				public Enumeration<String> clans()
+				{
+					if(cat == PrideCat.CLAN)
+						return new XVector<String>(unit).elements();
+					return new EmptyEnumeration<String>();
+				}
+			};
+			final Pair<ThinPlayer,Pair<Long,int[]>[]> cbData = new Pair<ThinPlayer,Pair<Long,int[]>[]>(whom,allData);
+			callBack.callback(cbData);
+			if((sleepAmount>0)&&(System.currentTimeMillis() > nextWaitAfter))
+			{
+				CMLib.s_sleep(sleepAmount);
+				nextWaitAfter=System.currentTimeMillis() + msWait;
+			}
+		}
+	}
+
+	public void DBScanPrideAccountWinners(final CMCallback<Pair<String,Pair<Long,int[]>[]>> callBack, final short scanCPUPercent)
+	{
 		DBConnection D=null;
 		final long msWait=Math.round(1000.0 * CMath.div(scanCPUPercent, 100));
 		final long sleepAmount=1000 - msWait;
 		try
 		{
 			long nextWaitAfter=System.currentTimeMillis() + msWait;
-			final long now=System.currentTimeMillis();
-
 			D=DB.DBFetch();
-			ResultSet R;
-			if(players)
-				R=D.query("SELECT CMUSERID,CMPFIL FROM CMCHAR");
-			else
-				R=D.query("SELECT CMANAM,CMAXML FROM CMACCT");
+			final ResultSet R=D.query("SELECT CMANAM,CMAXML FROM CMACCT");
 			while((R!=null)&&(R.next()))
 			{
-				final String userID=DB.getRes(R, players?"CMUSERID":"CMANAM");
-				String pxml;
-				final MOB M=CMLib.players().getPlayer(userID);
-				if((M!=null)&&(M.playerStats()!=null)&&(players))
-					pxml=M.playerStats().getXML();
-				else
-				if((M!=null)&&(M.playerStats()!=null)&&(!players)&&(M.playerStats().getAccount()!=null))
-					pxml=M.playerStats().getAccount().getXML();
-				else
-				if(players)
-					pxml=DB.getRes(R, "CMPFIL");
+				final String userID=DB.getRes(R, "CMANAM");
+				final PlayerAccount A = CMLib.players().getAccount(userID);
+				final String pxml;
+				if(A!=null)
+					pxml=A.getXML();
 				else
 					pxml=DB.getRes(R, "CMAXML");
 				final String[] pridePeriods=CMLib.xml().returnXMLValue(pxml, "NEXTPRIDEPERIODS").split(",");
@@ -2510,38 +2736,7 @@ public class MOBloader
 					||CMParms.contains(prideExceptions, PlayerFlag.NOTOP.toString()))
 					continue;
 				final Pair<Long,int[]>[] allData = CMLib.players().parsePrideStats(pridePeriods, prideStats);
-				for(final TimeClock.TimePeriod period : TimeClock.TimePeriod.values())
-				{
-					if(allData.length > period.ordinal())
-					{
-						final Pair<Long,int[]> p=allData[period.ordinal()];
-						final List<Pair<String,Integer>>[] topPeriods=top[period.ordinal()];
-						if((period==TimeClock.TimePeriod.ALLTIME)||(now < p.first.longValue()))
-						{
-							for(final AccountStats.PrideStat pride : AccountStats.PrideStat.values())
-							{
-								if((p.second.length>pride.ordinal())&&(p.second[pride.ordinal()]>0))
-								{
-									final int val=p.second[pride.ordinal()];
-									final List<Pair<String,Integer>> topPrides=topPeriods[pride.ordinal()];
-									final int oldSize=topPrides.size();
-									for(int i=0;i<topPrides.size();i++)
-									{
-										if(val >= topPrides.get(i).second.intValue())
-										{
-											topPrides.add(i, new Pair<String,Integer>(userID,Integer.valueOf(val)));
-											while(topPrides.size()>topThisMany)
-												topPrides.remove(topPrides.size()-1);
-											break;
-										}
-									}
-									if((oldSize==topPrides.size())&&(topPrides.size()<topThisMany))
-										topPrides.add(new Pair<String,Integer>(userID,Integer.valueOf(val)));
-								}
-							}
-						}
-					}
-				}
+				callBack.callback(new Pair<String,Pair<Long,int[]>[]>(userID,allData));
 				if((sleepAmount>0)&&(System.currentTimeMillis() > nextWaitAfter))
 				{
 					CMLib.s_sleep(sleepAmount);
@@ -2557,18 +2752,8 @@ public class MOBloader
 		{
 			DB.DBDone(D);
 		}
-		return top;
 	}
 
-	public List<Pair<String,Integer>>[][] DBScanPridePlayerWinners(final int topThisMany, final short scanCPUPercent)
-	{
-		return DBFindPrideWinners(topThisMany,scanCPUPercent,true);
-	}
-
-	public List<Pair<String,Integer>>[][] DBScanPrideAccountWinners(final int topThisMany, final short scanCPUPercent)
-	{
-		return DBFindPrideWinners(topThisMany,scanCPUPercent,false);
-	}
 
 	// this method is unused, but is a good idea of how to collect riders, followers, carts, etc.
 	protected void addFollowerDependent(final PhysicalAgent P, final PairList<PhysicalAgent,String> list, final String parent)
@@ -2668,10 +2853,16 @@ public class MOBloader
 				newFol.text();
 				followM.killMeDead(false);
 				mob.addFollower(newFol, order.intValue());
+				if(newFol.amFollowing()!=mob)
+					newFol.setFollowing(mob);
 				if(CMLib.flags().isInTheGame(mob, true)
 				&&(!CMLib.flags().isInTheGame(newFol, true))
 				&&(R!=null))
 					newFol.bringToLife(R, false);
+				if(!mob.isFollowedBy(newFol))
+					mob.addFollower(newFol, order.intValue());
+				if(newFol.amFollowing()!=mob)
+					newFol.setFollowing(mob);
 				followM=newFol;
 			}
 
@@ -2738,23 +2929,30 @@ public class MOBloader
 			final Ability thisAbility=mob.fetchAbility(a);
 			if((thisAbility!=null)&&(thisAbility.isSavable()))
 			{
-				int proficiency=thisAbility.proficiency();
-				final Ability effectA=mob.fetchEffect(thisAbility.ID());
-				if(effectA!=null)
+				try
 				{
-					if((effectA.isSavable())&&(!effectA.canBeUninvoked())&&(!effectA.isAutoInvoked()))
-						proficiency=proficiency-200;
+					int proficiency=thisAbility.proficiency();
+					final Ability effectA=mob.fetchEffect(thisAbility.ID());
+					if(effectA!=null)
+					{
+						if((effectA.isSavable())&&(!effectA.canBeUninvoked())&&(!effectA.isAutoInvoked()))
+							proficiency=proficiency-200;
+					}
+					H.add(thisAbility.ID());
+					final String sql="INSERT INTO CMCHAB (CMUSERID, CMABID, CMABPF,CMABTX"
+					+") values ('"+mob.Name()+"','"+thisAbility.ID()+"',"+proficiency+",?)";
+					if(!useBulkInserts)
+						statements.add(new DBPreparedBatchEntry(sql,thisAbility.text()));
+					else
+					{
+						final DBPreparedBatchEntry entry = doBulkInsert(bulkSQL,bulkClobs,sql,thisAbility.text());
+						if(entry != null)
+							statements.add(entry);
+					}
 				}
-				H.add(thisAbility.ID());
-				final String sql="INSERT INTO CMCHAB (CMUSERID, CMABID, CMABPF,CMABTX"
-				+") values ('"+mob.Name()+"','"+thisAbility.ID()+"',"+proficiency+",?)";
-				if(!useBulkInserts)
-					statements.add(new DBPreparedBatchEntry(sql,thisAbility.text()));
-				else
+				catch(final Exception e)
 				{
-					final DBPreparedBatchEntry entry = doBulkInsert(bulkSQL,bulkClobs,sql,thisAbility.text());
-					if(entry != null)
-						statements.add(entry);
+					Log.errOut(e);
 				}
 			}
 		}
@@ -2763,15 +2961,22 @@ public class MOBloader
 			final Ability A=a.nextElement();
 			if((A!=null)&&(!H.contains(A.ID()))&&(A.isSavable())&&(!A.canBeUninvoked()))
 			{
-				final String sql="INSERT INTO CMCHAB (CMUSERID, CMABID, CMABPF,CMABTX"
-				+") values ('"+mob.Name()+"','"+A.ID()+"',"+Integer.MAX_VALUE+",?)";
-				if(!useBulkInserts)
-					statements.add(new DBPreparedBatchEntry(sql,A.text()));
-				else
+				try
 				{
-					final DBPreparedBatchEntry entry = doBulkInsert(bulkSQL,bulkClobs,sql,A.text());
-					if(entry != null)
-						statements.add(entry);
+					final String sql="INSERT INTO CMCHAB (CMUSERID, CMABID, CMABPF,CMABTX"
+					+") values ('"+mob.Name()+"','"+A.ID()+"',"+Integer.MAX_VALUE+",?)";
+					if(!useBulkInserts)
+						statements.add(new DBPreparedBatchEntry(sql,A.text()));
+					else
+					{
+						final DBPreparedBatchEntry entry = doBulkInsert(bulkSQL,bulkClobs,sql,A.text());
+						if(entry != null)
+							statements.add(entry);
+					}
+				}
+				catch(final Exception e)
+				{
+					Log.errOut(e);
 				}
 			}
 		}
@@ -2780,33 +2985,47 @@ public class MOBloader
 			final Behavior B=e.nextElement();
 			if((B!=null)&&(B.isSavable()))
 			{
+				try
+				{
+					final String sql="INSERT INTO CMCHAB (CMUSERID, CMABID, CMABPF,CMABTX"
+					+") values ('"+mob.Name()+"','"+B.ID()+"',"+(Integer.MIN_VALUE+1)+",?"
+					+")";
+					if(!useBulkInserts)
+						statements.add(new DBPreparedBatchEntry(sql,B.getParms()));
+					else
+					{
+						final DBPreparedBatchEntry entry = doBulkInsert(bulkSQL,bulkClobs,sql,B.getParms());
+						if(entry != null)
+							statements.add(entry);
+					}
+				}
+				catch(final Exception er)
+				{
+					Log.errOut(er);
+				}
+			}
+		}
+		try
+		{
+			final String scriptStuff = CMLib.coffeeMaker().getGenScriptsXML(mob,true);
+			if(scriptStuff.length()>0)
+			{
 				final String sql="INSERT INTO CMCHAB (CMUSERID, CMABID, CMABPF,CMABTX"
-				+") values ('"+mob.Name()+"','"+B.ID()+"',"+(Integer.MIN_VALUE+1)+",?"
+				+") values ('"+mob.Name()+"','ScriptingEngine',"+(Integer.MIN_VALUE+1)+",?"
 				+")";
 				if(!useBulkInserts)
-					statements.add(new DBPreparedBatchEntry(sql,B.getParms()));
+					statements.add(new DBPreparedBatchEntry(sql,scriptStuff));
 				else
 				{
-					final DBPreparedBatchEntry entry = doBulkInsert(bulkSQL,bulkClobs,sql,B.getParms());
+					final DBPreparedBatchEntry entry = doBulkInsert(bulkSQL,bulkClobs,sql,scriptStuff);
 					if(entry != null)
 						statements.add(entry);
 				}
 			}
 		}
-		final String scriptStuff = CMLib.coffeeMaker().getGenScriptsXML(mob,true);
-		if(scriptStuff.length()>0)
+		catch(final Exception e)
 		{
-			final String sql="INSERT INTO CMCHAB (CMUSERID, CMABID, CMABPF,CMABTX"
-			+") values ('"+mob.Name()+"','ScriptingEngine',"+(Integer.MIN_VALUE+1)+",?"
-			+")";
-			if(!useBulkInserts)
-				statements.add(new DBPreparedBatchEntry(sql,scriptStuff));
-			else
-			{
-				final DBPreparedBatchEntry entry = doBulkInsert(bulkSQL,bulkClobs,sql,scriptStuff);
-				if(entry != null)
-					statements.add(entry);
-			}
+			Log.errOut(e);
 		}
 		if((bulkSQL.length()>0) && useBulkInserts)
 			statements.add(new DBPreparedBatchEntry(bulkSQL.toString(),bulkClobs.toArray(new String[0])));
@@ -2820,8 +3039,9 @@ public class MOBloader
 		final PlayerStats pstats=mob.playerStats();
 		if(pstats==null)
 			return;
+		final Pair<String, String> classInfo = mob.baseCharStats().getAllClassInfo();
 		DB.update("INSERT INTO CMCHAR (CMCHID, CMUSERID, CMPASS, CMCLAS, CMRACE, CMGEND "
-				+") VALUES ('"+mob.ID()+"','"+mob.Name()+"','"+pstats.getPasswordStr()+"','"+mob.baseCharStats().getMyClassesStr()
+				+") VALUES ('"+mob.ID()+"','"+mob.Name()+"','"+pstats.getPasswordStr()+"','"+classInfo.first
 				+"','"+mob.baseCharStats().getMyRace().ID()+"','"+((char)mob.baseCharStats().getStat(CharStats.STAT_GENDER))
 				+"')");
 		final PlayerAccount account = pstats.getAccount();

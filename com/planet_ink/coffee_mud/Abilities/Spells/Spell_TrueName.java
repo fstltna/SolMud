@@ -73,15 +73,15 @@ public class Spell_TrueName extends Spell
 	}
 
 	@Override
-	public int classificationCode()
+	public long flags()
 	{
-		return Ability.ACODE_SPELL|Ability.DOMAIN_DIVINATION;
+		return super.flags() | Ability.FLAG_DIVINING;
 	}
 
 	@Override
-	public long flags()
+	public int classificationCode()
 	{
-		return 0;
+		return Ability.ACODE_SPELL|Ability.DOMAIN_DIVINATION;
 	}
 
 	protected volatile MOB monster=null;
@@ -188,6 +188,7 @@ public class Spell_TrueName extends Spell
 								monster.phyStats().setRejuv(PhyStats.NO_REJUV);
 								monster.addNonUninvokableEffect(CMClass.getAbility("Prop_ModExperience","0"));
 								monster.addTattoo("SYSTEM_SUMMONED");
+								monster.addTattoo("SUMMONED_BY:"+caster.name());
 								monster.text();
 								monster.bringToLife(R,true);
 								CMLib.threads().scheduleRunnable(periodicCheckToGoHome, 4000);

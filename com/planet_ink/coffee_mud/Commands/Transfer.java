@@ -21,6 +21,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.Reader;
+import java.math.BigDecimal;
 import java.util.*;
 
 /*
@@ -66,7 +67,9 @@ public class Transfer extends At
 		return s;
 	}
 
-	protected long[] fixSpaceCoords(final List<Physical> xferObjV, final long distanceDm, long[] targetSpace)
+	protected Coord3D fixSpaceCoords(final List<Physical> xferObjV,
+									 final long distanceDm,
+									 Coord3D targetSpace)
 	{
 		long baseDist = 1;
 		for(final Environmental e : xferObjV)
@@ -87,7 +90,7 @@ public class Transfer extends At
 				{
 					final long distanceDiff = minDistance - CMLib.space().getDistanceFrom(sO.coordinates(), targetSpace);
 					somethingDone=true;
-					final double[] randomDir = new double[] { rand.nextDouble() * Math.PI * 2.0, rand.nextDouble() * Math.PI };
+					final Dir3D randomDir = new Dir3D(new double[] { rand.nextDouble() * Math.PI * 2.0, rand.nextDouble() * Math.PI });
 					targetSpace = CMLib.space().moveSpaceObject(targetSpace, randomDir, distanceDiff);
 				}
 			}
@@ -100,7 +103,7 @@ public class Transfer extends At
 		throws java.io.IOException
 	{
 		Room targetRoom=null;
-		long[] targetSpace=null;
+		Coord3D targetSpace=null;
 		long distanceDm = 1000;
 		if(commands.size()<3)
 		{
@@ -176,7 +179,7 @@ public class Transfer extends At
 			}
 			if(xferObjV.size()==0)
 			{
-				for(final Enumeration<Room> r=mob.location().getArea().getProperMap();r.hasMoreElements();)
+				for(final Enumeration<Room> r=curRoom.getArea().getProperMap();r.hasMoreElements();)
 				{
 					final Room R=r.nextElement();
 					Item I=null;
@@ -231,13 +234,13 @@ public class Transfer extends At
 			}
 			if(xferObjV.size()==0)
 			{
-				final MOB M=mob.location().fetchInhabitant(searchName);
+				final MOB M=curRoom.fetchInhabitant(searchName);
 				if(M!=null)
 					xferObjV.add(M);
 			}
 			if(xferObjV.size()==0)
 			{
-				for(final Enumeration<Room> r=mob.location().getArea().getProperMap();r.hasMoreElements();)
+				for(final Enumeration<Room> r=curRoom.getArea().getProperMap();r.hasMoreElements();)
 				{
 					final Room R=r.nextElement();
 					MOB M=null;
@@ -393,12 +396,12 @@ public class Transfer extends At
 		boolean inventoryFlag=false;
 		if(cmd.toString().equalsIgnoreCase("inventory"))
 		{
-			targetRoom=mob.location();
+			targetRoom=curRoom;
 			inventoryFlag=true;
 		}
 		else
 		if(cmd.toString().equalsIgnoreCase("here")||cmd.toString().equalsIgnoreCase("."))
-			targetRoom=mob.location();
+			targetRoom=curRoom;
 		else
 		if(cmd.toString().indexOf('@')>0)
 		{
@@ -514,36 +517,62 @@ public class Transfer extends At
 			if(rV.size()>1)
 			{
 				final String last=rV.remove(rV.size()-1);
-				final Long distl = CMLib.english().parseSpaceDistance(last);
+				final BigDecimal distl = CMLib.english().parseSpaceDistance(last);
 				if(distl != null)
 				{
 					distanceDm = distl.longValue();
 					rest = CMParms.combine(rV);
 				}
 			}
-			if((rest.length()>0)&&(Character.isDigit(rest.charAt(0))))
+			final int restx=rest.indexOf("->");
+			if(rest.length()>0)
 			{
-				final List<String> bits=CMParms.parseAny(rest,',',true);
-				if(bits.size()==3)
-					targetSpace=new long[] { CMath.s_long(bits.get(0)), CMath.s_long(bits.get(1)), CMath.s_long(bits.get(2))};
-			}
-			else
-			{
-				SpaceObject o = CMLib.space().findSpaceObject(rest, true);
-				if(o == null)
-					o = CMLib.space().findSpaceObject(rest, false);
-				if(o != null)
-					targetSpace=Arrays.copyOf(o.coordinates(),o.coordinates().length);
+				if(restx>0)
+				{
+					final String o1s = rest.substring(0,restx);
+					final String o2s = rest.substring(restx+2);
+					SpaceObject o1 = CMLib.space().findSpaceObject(o1s, true);
+					if(o1 == null)
+						o1 = CMLib.space().findSpaceObject(o1s, false);
+					SpaceObject o2 = CMLib.space().findSpaceObject(o2s, true);
+					if(o2 == null)
+						o2 = CMLib.space().findSpaceObject(o2s, false);
+					if((o1 != null)&&(o2 != null))
+					{
+						final Dir3D dir = CMLib.space().getDirection(o1.coordinates(), o2.coordinates());
+						final Dir3D opDir = CMLib.space().getOppositeDir(dir);
+						final Coord3D o1coords = o1.coordinates().copyOf();
+						targetSpace = CMLib.space().moveSpaceObject(o1coords, opDir, o1.radius()+distanceDm).copyOf();
+					}
+				}
+				else
+				if(Character.isDigit(rest.charAt(0)))
+				{
+					final List<String> bits=CMParms.parseAny(rest,',',true);
+					if(bits.size()==3)
+						targetSpace=new Coord3D(new long[] { CMath.s_long(bits.get(0)), CMath.s_long(bits.get(1)), CMath.s_long(bits.get(2))});
+				}
+				else
+				{
+					SpaceObject o = CMLib.space().findSpaceObject(rest, true);
+					if(o == null)
+						o = CMLib.space().findSpaceObject(rest, false);
+					if(o != null)
+						targetSpace=o.coordinates().copyOf();
+				}
 			}
 			if(targetSpace != null)
 				targetSpace=fixSpaceCoords(xferObjV, distanceDm, targetSpace);
 		}
 		else
+		if(CMLib.sessions().findCharacterOnline(cmd.toString(), true) != null)
+			targetRoom=CMLib.sessions().findCharacterOnline(cmd.toString(), true).location();
+		else
 		if(CMLib.map().getRoom(cmd.toString())!=null)
 			targetRoom=CMLib.map().getRoom(cmd.toString());
 		else
 		if(CMLib.directions().getDirectionCode(cmd.toString())>=0)
-			targetRoom=mob.location().getRoomInDir(CMLib.directions().getDirectionCode(cmd.toString()));
+			targetRoom=curRoom.getRoomInDir(CMLib.directions().getDirectionCode(cmd.toString()));
 		else
 			targetRoom=CMLib.hunt().findWorldRoomLiberally(mob,cmd.toString(),"RIPME",100,120000);
 
@@ -610,11 +639,11 @@ public class Transfer extends At
 						M.setLocation(targetRoom);
 					else
 					{
-						if((mob.playerStats().getTranPoofOut().length()>0)&&(mob.location()!=null))
+						if((mob.playerStats().getTranPoofOut().length()>0)&&(M.location()!=null))
 							M.location().show(M,M.location(),CMMsg.MSG_LEAVE|CMMsg.MASK_ALWAYS,mob.playerStats().getTranPoofOut());
 						targetRoom.bringMobHere(M,true);
 					}
-					if(mob.playerStats().getTranPoofIn().length()>0)
+					if((mob.playerStats().getTranPoofIn().length()>0)&&(M.location()!=null))
 						M.location().show(M,M.location(),CMMsg.MSG_ENTER|CMMsg.MASK_ALWAYS,mob.playerStats().getTranPoofIn());
 					if(!M.isMonster() && (targetRoom.isInhabitant(M)))
 						CMLib.commands().postLook(M,true);

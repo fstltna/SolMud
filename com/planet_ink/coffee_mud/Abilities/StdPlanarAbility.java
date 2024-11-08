@@ -100,6 +100,9 @@ public class StdPlanarAbility extends StdAbility implements PlanarAbility
 	protected int						hardBumpLevel	= 0;
 	protected CompiledFormula			levelFormula	= null;
 	protected final Map<String,long[]>	recentVisits	= new TreeMap<String,long[]>();
+	protected String					overrideCastMsg	= null;
+	protected String					overrideFotMsg	= null;
+	protected String					overrideFinMsg	= null;
 
 	protected final static long			hardBumpTimeout	= (60L * 60L * 1000L);
 
@@ -352,17 +355,10 @@ public class StdPlanarAbility extends StdAbility implements PlanarAbility
 				return "ERROR: Unknown planar var: "+key;
 		}
 		planeParms.put(PlanarVar.ID.toString(), planeName);
+		final CMFile[] fileList = CMFile.getExistingExtendedFiles(Resources.makeFileResourceName("skills/planesofexistence.txt"), null, CMFile.FLAG_FORCEALLOW);
 		if(!map.containsKey(planeName.trim().toUpperCase()))
 		{
-			String previ="";
-			for(String i="";!i.equals(".9");i=("."+(Math.round(CMath.s_double(i)*10)+1)))
-			{
-				final CMFile F=new CMFile(Resources.makeFileResourceName("skills/planesofexistence.txt"+i), null);
-				if(!F.exists())
-					break;
-				previ=i;
-			}
-			final CMFile F=new CMFile(Resources.makeFileResourceName("skills/planesofexistence.txt"+previ), null);
+			final CMFile F=fileList[fileList.length-1]; // last one is always correct!
 			final StringBuffer old=F.text();
 			if((!old.toString().endsWith("\n"))
 			&&(!old.toString().endsWith("\r")))
@@ -398,9 +394,9 @@ public class StdPlanarAbility extends StdAbility implements PlanarAbility
 			}
 			if(changes.length()==0)
 				return "";
-			for(String i="";!i.equals(".9");i=("."+(Math.round(CMath.s_double(i)*10)+1)))
+			for(final CMFile F : fileList)
 			{
-				if(alterPlaneLine(planeName, Resources.makeFileResourceName("skills/planesofexistence.txt"+i), rule))
+				if(alterPlaneLine(planeName, F.getAbsolutePath(), rule))
 				{
 					map.put(planeName.toUpperCase().trim(), planeParms);
 					return changes.toString();
@@ -451,9 +447,9 @@ public class StdPlanarAbility extends StdAbility implements PlanarAbility
 		final Map<String,Map<String,String>> map = getAllPlanesMap();
 		if(!map.containsKey(planeName.trim().toUpperCase()))
 			return false;
-		for(String i="";!i.equals(".9");i=("."+(Math.round(CMath.s_double(i)*10)+1)))
+		for(final CMFile F : CMFile.getExistingExtendedFiles(Resources.makeFileResourceName("skills/planesofexistence.txt"), null, CMFile.FLAG_FORCEALLOW))
 		{
-			if(alterPlaneLine(planeName, Resources.makeFileResourceName("skills/planesofexistence.txt"+i), null))
+			if(alterPlaneLine(planeName, F.getAbsolutePath(), null))
 			{
 				map.remove(planeName.trim().toUpperCase());
 				return true;
@@ -463,12 +459,18 @@ public class StdPlanarAbility extends StdAbility implements PlanarAbility
 	}
 
 	@Override
-	public void setMiscText(final String newText)
+	public void setMiscText(String newText)
 	{
 		super.setMiscText(newText);
 		clearVars();
 		if(newText.length()>0)
 		{
+			if(newText.equalsIgnoreCase("any"))
+			{
+				final List<String> allPlaneKeys = getAllPlaneKeys();
+				newText = allPlaneKeys.get(CMLib.dice().roll(1, allPlaneKeys.size(), -1));
+				super.setMiscText(newText);
+			}
 			this.planarName=newText;
 			this.planeVars=getPlanarVars(newText);
 			if(this.planeVars==null)
@@ -509,7 +511,7 @@ public class StdPlanarAbility extends StdAbility implements PlanarAbility
 				planeArea=(Area)affected;
 				int medianLevel=planeArea.getPlayerLevel();
 				if(medianLevel <= 0)
-					medianLevel=planeArea.getAreaIStats()[Area.Stats.MED_LEVEL.ordinal()];
+					medianLevel=planeArea.getIStat(Area.Stats.MED_LEVEL);
 				planarLevel=medianLevel;
 			}
 			this.specFlags = null;
@@ -608,10 +610,10 @@ public class StdPlanarAbility extends StdAbility implements PlanarAbility
 							long flag=CMParms.indexOf(Ability.FLAG_DESCS, P.first);
 							if(flag >=0 )
 								flag=CMath.pow(2, flag);
-							int domain=CMParms.indexOf(Ability.DOMAIN_DESCS, P.first);
+							int domain=CMParms.indexOf(Ability.DOMAIN.DESCS, P.first);
 							if(domain > 0)
 								domain = domain << 5;
-							final int acode=CMParms.indexOf(Ability.ACODE_DESCS, P.first);
+							final int acode=CMParms.indexOf(Ability.ACODE.DESCS, P.first);
 							for(final Enumeration<Ability> a=CMClass.abilities();a.hasMoreElements();)
 							{
 								A=a.nextElement();
@@ -731,21 +733,28 @@ public class StdPlanarAbility extends StdAbility implements PlanarAbility
 					parentArea = CMLib.map().getArea(Name().substring(x+1));
 				if(parentArea != null)
 				{
-					int[] statData=(int[])Resources.getResource("STATS_"+planeArea.Name().toUpperCase());
+					AreaIStats statData=(AreaIStats)Resources.getResource("STATS_"+planeArea.Name().toUpperCase());
 					if(statData == null) // and it damn well better be null
 					{
-						final int[] oldParentStats = parentArea.getAreaIStats();
-						statData = Arrays.copyOf(oldParentStats, oldParentStats.length);
-						final double[] vars = new double[] {planarLevel, statData[Area.Stats.MIN_LEVEL.ordinal()], invoker().phyStats().level(),
-								statData[Area.Stats.MIN_LEVEL.ordinal()], statData[Area.Stats.MAX_LEVEL.ordinal()],
-								CMProps.getIntVar(CMProps.Int.EXPRATE)+1, 0} ;
-						statData[Area.Stats.MIN_LEVEL.ordinal()] = (int)CMath.round(CMath.parseMathExpression(this.levelFormula, vars, 0.0));
-						vars[1] = statData[Area.Stats.MAX_LEVEL.ordinal()];
-						statData[Area.Stats.MAX_LEVEL.ordinal()] = (int)CMath.round(CMath.parseMathExpression(this.levelFormula, vars, 0.0));
-						vars[1] = statData[Area.Stats.MED_LEVEL.ordinal()];
-						statData[Area.Stats.MED_LEVEL.ordinal()] = (int)CMath.round(CMath.parseMathExpression(this.levelFormula, vars, 0.0));
-						vars[1] = statData[Area.Stats.AVG_LEVEL.ordinal()];
-						statData[Area.Stats.AVG_LEVEL.ordinal()] = (int)CMath.round(CMath.parseMathExpression(this.levelFormula, vars, 0.0));
+						statData = (AreaIStats) CMClass.getCommon("DefaultAreaIStats");
+						for(final Area.Stats stat : Area.Stats.values())
+							statData.setStat(stat, parentArea.getIStat(stat));
+						final double[] vars = new double[] {
+							planarLevel,
+							statData.getStat(Area.Stats.MIN_LEVEL),
+							invoker().phyStats().level(),
+							statData.getStat(Area.Stats.MIN_LEVEL),
+							statData.getStat(Area.Stats.MAX_LEVEL),
+							CMProps.getIntVar(CMProps.Int.EXPRATE)+1,
+							0
+						} ;
+						statData.setStat(Area.Stats.MIN_LEVEL, (int)CMath.round(CMath.parseMathExpression(this.levelFormula, vars, 0.0)));
+						vars[1] = statData.getStat(Area.Stats.MAX_LEVEL);
+						statData.setStat(Area.Stats.MAX_LEVEL, (int)CMath.round(CMath.parseMathExpression(this.levelFormula, vars, 0.0)));
+						vars[1] = statData.getStat(Area.Stats.MED_LEVEL);
+						statData.setStat(Area.Stats.MED_LEVEL, (int)CMath.round(CMath.parseMathExpression(this.levelFormula, vars, 0.0)));
+						vars[1] = statData.getStat(Area.Stats.AVG_LEVEL);
+						statData.setStat(Area.Stats.AVG_LEVEL, (int)CMath.round(CMath.parseMathExpression(this.levelFormula, vars, 0.0)));
 						Resources.submitResource("STATS_"+planeArea.Name().toUpperCase(), statData);
 					}
 				}
@@ -1323,6 +1332,11 @@ public class StdPlanarAbility extends StdAbility implements PlanarAbility
 	public void affectCharStats(final MOB affected, final CharStats affectableStats)
 	{
 		super.affectCharStats(affected, affectableStats);
+		if(affected instanceof Exit)
+		{
+
+		}
+		else
 		if(this.specFlags!=null)
 		{
 			if(this.specFlags.contains(PlanarSpecFlag.ALLBREATHE))
@@ -1421,6 +1435,11 @@ public class StdPlanarAbility extends StdAbility implements PlanarAbility
 	@Override
 	public void executeMsg(final Environmental myHost, final CMMsg msg)
 	{
+		if(affected instanceof Exit)
+		{
+
+		}
+		else
 		if(msg.targetMinor()==CMMsg.TYP_NEWROOM)
 		{
 			if((msg.target() instanceof Room)
@@ -1439,6 +1458,24 @@ public class StdPlanarAbility extends StdAbility implements PlanarAbility
 	{
 		if(!super.okMessage(myHost, msg))
 			return false;
+		if(affected instanceof Exit)
+		{
+			if(((msg.targetMinor()==CMMsg.TYP_ENTER)
+				&&((msg.tool()==affected)||(msg.target()==affected)))
+			||((msg.targetMinor()==CMMsg.TYP_SIT)&&(msg.target()==affected)))
+			{
+				final StdPlanarAbility spellA = (StdPlanarAbility)CMClass.getAbility("Spell_Planeshift");
+				final List<String> cmds = new XVector<String>(planarName);
+				if(spellA != null)
+				{
+					spellA.overrideCastMsg="";
+					spellA.overrideFotMsg=L("<S-NAME> disappear(s) into @x1.",affected.name(msg.source()));
+					spellA.invoke(msg.source(), cmds, msg.source(), true, msg.source().phyStats().level());
+					return false;
+				}
+			}
+		}
+		else
 		switch(msg.targetMinor())
 		{
 		case CMMsg.TYP_WEAPONATTACK:
@@ -1524,14 +1561,10 @@ public class StdPlanarAbility extends StdAbility implements PlanarAbility
 		if(map == null)
 		{
 			map = new TreeMap<String,Map<String,String>>();
+			final CMFile[] fileList = CMFile.getExistingExtendedFiles(Resources.makeFileResourceName("skills/planesofexistence.txt"), null, CMFile.FLAG_FORCEALLOW);
 			final List<String> lines = new ArrayList<String>();
-			for(String i="";!i.equals(".9");i=("."+(Math.round(CMath.s_double(i)*10)+1)))
-			{
-				final CMFile F=new CMFile(Resources.makeFileResourceName("skills/planesofexistence.txt"+i), null);
-				if(!F.exists())
-					break;
+			for(final CMFile F : fileList)
 				lines.addAll(Resources.getFileLineVector(F.text()));
-			}
 			for(String line : lines)
 			{
 				line=line.trim();
@@ -1899,7 +1932,8 @@ public class StdPlanarAbility extends StdAbility implements PlanarAbility
 			final boolean success=proficiencyCheck(mob,0,auto);
 			if(success)
 			{
-				final CMMsg msg=CMClass.getMsg(travelM,null,this,CMMsg.MASK_MOVE|verbalCastCode(travelM,null,auto),castingMessage(travelM, auto));
+				final String msgStr = (overrideCastMsg!=null)?overrideCastMsg:castingMessage(travelM, auto);
+				final CMMsg msg=CMClass.getMsg(travelM,null,this,CMMsg.MASK_MOVE|verbalCastCode(travelM,null,auto),msgStr);
 				if(travelM.location().okMessage(travelM,msg))
 				{
 					travelM.location().send(travelM,msg);
@@ -2161,10 +2195,11 @@ public class StdPlanarAbility extends StdAbility implements PlanarAbility
 			for (final MOB follower : h)
 			{
 				final boolean invisible = !CMLib.flags().isSeeable(follower);
+				final String foutMsgStr = this.overrideFotMsg != null ? this.overrideFotMsg : (invisible?"":L("<S-NAME> fade(s) away."));
+				final String finMsgStr = this.overrideFinMsg != null ? this.overrideFinMsg : (invisible?"":L("<S-NAME> fade(s) into view."));
 				final CMMsg enterMsg=CMClass.getMsg(follower,target,this,CMMsg.MSG_ENTER,null,CMMsg.MSG_ENTER,null,CMMsg.MSG_ENTER,
-						invisible?"":("<S-NAME> fade(s) into view.")+CMLib.protocol().msp("appear.wav",10));
-				final CMMsg leaveMsg=CMClass.getMsg(follower,thisRoom,this,CMMsg.MSG_LEAVE|CMMsg.MASK_MAGIC,
-						invisible?"":L("<S-NAME> fade(s) away."));
+						finMsgStr+CMLib.protocol().msp("appear.wav",10));
+				final CMMsg leaveMsg=CMClass.getMsg(follower,thisRoom,this,CMMsg.MSG_LEAVE|CMMsg.MASK_MAGIC, foutMsgStr);
 				if(thisRoom.okMessage(follower,leaveMsg)
 				&&(follower.okMessage(follower, enterMsg))
 				&&target.okMessage(follower,enterMsg))

@@ -114,7 +114,7 @@ public class CalendarCmd extends StdCommand
 		final List<JournalEntry> calendar = new Vector<JournalEntry>();
 		for(final JournalEntry holiday : CMLib.quests().getHolidayEntries(true))
 		{
-			if((fromTm>=holiday.date())&&(holiday.expiration()<=toTm))
+			if((holiday.date()<=toTm) && (holiday.expiration()>=fromTm))
 				calendar.add(holiday);
 		}
 		calendar.addAll(CMLib.database().DBReadJournalMsgsByTimeStamps("SYSTEM_CALENDAR", "SYSTEM", fromTm, toTm));
@@ -565,6 +565,7 @@ public class CalendarCmd extends StdCommand
 				final Session S = session;
 				final MOB M = mob;
 
+				@Override
 				public void run()
 				{
 					final List<String> voteCommands = new XVector<String>(finalV);
@@ -901,10 +902,10 @@ public class CalendarCmd extends StdCommand
 								showError(S,startDateCallback[0],"^XBad day of the month (@x1)!^N",""+d);
 								return;
 							}
-							if((h<0)||(h>C.getHoursInDay())
+							if((h<0)||(h>=C.getHoursInDay())
 							||((m==C.getMonth())&&(y==C.getYear())&&(d==C.getDayOfMonth())&&(h<=C.getHourOfDay())))
 							{
-								showError(S,startDateCallback[0],"^XBad hour (@x1)! (0-@x2 only)^N",""+h,""+C.getHoursInDay());
+								showError(S,startDateCallback[0],"^XBad hour (@x1)! (0-@x2 only)^N",""+h,""+(C.getHoursInDay()-1));
 								return;
 							}
 							finalV.add("START:"+y+"/"+m+"/"+d+"/"+h);

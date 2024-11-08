@@ -154,7 +154,7 @@ public class Thief_PirateFamiliar extends ThiefSkill
 				if(M.amFollowing()!=null)
 					invoker=M.amFollowing();
 			}
-			final MOB invoker=this.invoker;
+			final MOB invoker=this.invoker();
 			if(invoker!=null)
 			{
 				if(affectableStats.level() < invoker.phyStats().level()-3)
@@ -315,6 +315,7 @@ public class Thief_PirateFamiliar extends ThiefSkill
 		newMOB.baseCharStats().getMyRace().startRacing(newMOB,false);
 		newMOB.addNonUninvokableEffect(CMClass.getAbility("Prop_ModExperience","0"));
 		newMOB.addTattoo("SYSTEM_SUMMONED");
+		newMOB.addTattoo("SUMMONED_BY:"+caster.name());
 		CMLib.factions().setAlignment(newMOB,Faction.Align.GOOD);
 		newMOB.setStartRoom(null);
 		newMOB.recoverCharStats();

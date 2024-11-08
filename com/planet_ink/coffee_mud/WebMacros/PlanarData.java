@@ -324,7 +324,7 @@ public class PlanarData extends StdWebMacro
 							options = new ArrayList<String>();
 							options.add("number");
 							final List<String> flags = new ConvertingList<String,String>(Arrays.asList(Ability.FLAG_DESCS),Converter.toLowerCase);
-							options.addAll(new ConvertingList<String,String>(Arrays.asList(Ability.DOMAIN_DESCS),Converter.toLowerCase));
+							options.addAll(new ConvertingList<String,String>(Ability.DOMAIN.DESCS,Converter.toLowerCase));
 							options.addAll(flags);
 							options.addAll(new XVector<String>(
 									new ConvertingEnumeration<Ability,String>(
@@ -468,7 +468,8 @@ public class PlanarData extends StdWebMacro
 						for(final Enumeration<Race> r=CMClass.races();r.hasMoreElements();)
 						{
 							final Race R=r.nextElement();
-							str.append("<OPTION VALUE=\""+R.ID()+"\" "+(R.ID().equalsIgnoreCase(httpVal)?"SELECTED":"")+">").append(R.name());
+							str.append("<OPTION VALUE=\""+R.ID()+"\" "+(R.ID().equalsIgnoreCase(httpVal)?"SELECTED":"")+">").
+								append(CMStrings.ellipse(R.name(),20));
 						}
 						str.append(", ");
 						break;

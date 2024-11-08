@@ -1,6 +1,5 @@
 package com.planet_ink.coffee_mud.Items.CompTech;
 import com.planet_ink.coffee_mud.core.interfaces.*;
-import com.planet_ink.coffee_mud.core.interfaces.BoundedObject.BoundedCube;
 import com.planet_ink.coffee_mud.core.*;
 import com.planet_ink.coffee_mud.core.collections.*;
 import com.planet_ink.coffee_mud.Abilities.interfaces.*;
@@ -329,25 +328,39 @@ public class GenShipOpticalSensor extends GenElecCompSensor
 				}
 
 				@Override
-				public BoundedCube getBounds()
+				public BoundedCube getCube()
 				{
 					final SpaceObject sobj=CMLib.space().getSpaceObject(obj, false);
 					if(sobj!=null)
-						return sobj.getBounds();
+						return sobj.getCube();
 					return smallCube;
 				}
 
 				@Override
-				public long[] coordinates()
+				public BoundedSphere getSphere()
 				{
-					final SpaceObject sobj=CMLib.space().getSpaceObject(obj, false);
-					if(sobj!=null)
-						return sobj.coordinates().clone();
-					return emptyCoords.clone();
+					if(obj instanceof SpaceObject)
+						return ((SpaceObject)obj).getSphere();
+					return smallSphere;
 				}
 
 				@Override
-				public void setCoords(final long[] coords)
+				public Coord3D coordinates()
+				{
+					final SpaceObject sobj=CMLib.space().getSpaceObject(obj, false);
+					if(sobj!=null)
+						return sobj.coordinates().copyOf();
+					return emptyCoords.copyOf();
+				}
+
+				@Override
+				public Coord3D center()
+				{
+					return coordinates();
+				}
+
+				@Override
+				public void setCoords(final Coord3D coords)
 				{
 				}
 
@@ -366,16 +379,16 @@ public class GenShipOpticalSensor extends GenElecCompSensor
 				}
 
 				@Override
-				public double[] direction()
+				public Dir3D direction()
 				{
 					final SpaceObject sobj=CMLib.space().getSpaceObject(obj, false);
 					if(sobj!=null)
-						return sobj.direction().clone();
-					return emptyDirection.clone();
+						return sobj.direction().copyOf();
+					return emptyDirection.copyOf();
 				}
 
 				@Override
-				public void setDirection(final double[] dir)
+				public void setDirection(final Dir3D dir)
 				{
 				}
 
@@ -440,9 +453,9 @@ public class GenShipOpticalSensor extends GenElecCompSensor
 										  final SpaceObject O, final SpaceObject hO,
 										  final Map<Environmental, Double> visualRadiuses)
 	{
-		final double[] hDirTo = space.getDirection(O, hO);
+		final Dir3D hDirTo = space.getDirection(O, hO);
 		final long hDistance = space.getDistanceFrom(O, hO);
-		final BoundedCube hCube=O.getBounds().expand(hDirTo,hDistance);
+		final BoundedTube hTube=O.getSphere().expand(hDirTo,hDistance);
 		for(final Iterator<Environmental> rb=revList.descendingIterator();rb.hasNext();)
 		{
 			final Environmental bE=rb.next();
@@ -456,7 +469,7 @@ public class GenShipOpticalSensor extends GenElecCompSensor
 				if(hL.doubleValue() < bL.doubleValue()) // if moon is smaller than planet, proceed with hide check
 				{
 					final SpaceObject bO=(SpaceObject)bE;
-					if(hCube.intersects(bO.getBounds()))
+					if(hTube.intersects(bO.getSphere()))
 						return true;
 				}
 			}
@@ -573,15 +586,15 @@ public class GenShipOpticalSensor extends GenElecCompSensor
 		final Filterer<Environmental> filter = this.getSensedObjectFilter();
 		if(!filter.passesFilter(hO))
 			return false;
-		final double[] hDirTo = space.getDirection(O, hO);
-		final BoundedCube hCube=O.getBounds().expand(hDirTo,hDistance);
-		final List<SpaceObject> objs = space.getSpaceObjectsInBound(hCube);
+		final Dir3D hDirTo = space.getDirection(O, hO);
+		final BoundedTube hTube=O.getSphere().expand(hDirTo,hDistance);
+		final List<SpaceObject> objs = space.getSpaceObjectsInBound(hTube.getCube());
 		final double vO = Math.atan(hO.radius()/hDistance);
 		for(final SpaceObject cO : objs)
 		{
 			if((cO != O)
 			&& (cO != hO)
-			&&(hCube.intersects(cO.getBounds())))
+			&&(hTube.intersects(cO.getSphere())))
 			{
 				final long cDistance = space.getDistanceFrom(O, cO);
 				final double vC = Math.atan(cO.radius()/cDistance);

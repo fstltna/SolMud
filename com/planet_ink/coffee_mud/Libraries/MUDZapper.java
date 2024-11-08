@@ -12,6 +12,8 @@ import com.planet_ink.coffee_mud.Commands.interfaces.*;
 import com.planet_ink.coffee_mud.Common.interfaces.*;
 import com.planet_ink.coffee_mud.Common.interfaces.Clan.Authority;
 import com.planet_ink.coffee_mud.Common.interfaces.Faction.Align;
+import com.planet_ink.coffee_mud.Common.interfaces.ScriptingEngine.MPContext;
+import com.planet_ink.coffee_mud.Common.interfaces.TimeClock.TimePeriod;
 import com.planet_ink.coffee_mud.Exits.interfaces.*;
 import com.planet_ink.coffee_mud.Items.interfaces.*;
 import com.planet_ink.coffee_mud.Libraries.interfaces.*;
@@ -165,8 +167,10 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 			if(parms.length != me.parms.length)
 				return false;
 			for(int i=0;i<parms.length;i++)
+			{
 				if(!parms[i].equals(me.parms[i]))
 					return false;
+			}
 			return true;
 		}
 	}
@@ -314,7 +318,7 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 		return maskHelp;
 	}
 
-	public synchronized void buildSavedClasses()
+	protected void buildSavedClasses()
 	{
 		if(savedClassUpdateTime==CMClass.getLastClassUpdatedTime())
 			return;
@@ -412,33 +416,45 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 		savedClassUpdateTime=CMClass.getLastClassUpdatedTime();
 	}
 
-	public final TreeMap<String,CompiledZapperMaskEntryImpl> getLooseCodes()
+	protected final TreeMap<String,CompiledZapperMaskEntryImpl> getLooseCodes()
 	{
-		final TreeMap<String,CompiledZapperMaskEntryImpl> looseCodes = looseCodesCache;
-		if(savedClassUpdateTime!=CMClass.getLastClassUpdatedTime())
-			buildSavedClasses();
-		return looseCodes;
+		synchronized(compiledCache)
+		{
+			final TreeMap<String,CompiledZapperMaskEntryImpl> looseCodes = looseCodesCache;
+			if(savedClassUpdateTime!=CMClass.getLastClassUpdatedTime())
+				buildSavedClasses();
+			return looseCodes;
+		}
 	}
 
-	public final List<SavedClass> charClasses()
+	protected final List<SavedClass> charClasses()
 	{
-		if(savedClassUpdateTime!=CMClass.getLastClassUpdatedTime())
-			buildSavedClasses();
-		return savedCharClasses;
+		synchronized(compiledCache)
+		{
+			if(savedClassUpdateTime!=CMClass.getLastClassUpdatedTime())
+				buildSavedClasses();
+			return savedCharClasses;
+		}
 	}
 
-	public final List<SavedRace> races()
+	protected final List<SavedRace> races()
 	{
-		if(savedClassUpdateTime!=CMClass.getLastClassUpdatedTime())
-			buildSavedClasses();
-		return savedRaces;
+		synchronized(compiledCache)
+		{
+			if(savedClassUpdateTime!=CMClass.getLastClassUpdatedTime())
+				buildSavedClasses();
+			return savedRaces;
+		}
 	}
 
-	public final TreeMap<String,Object> getCompiledCache(final ZapperKey key)
+	protected final TreeMap<String,Object> getCompiledCache(final ZapperKey key)
 	{
-		if(savedClassUpdateTime!=CMClass.getLastClassUpdatedTime())
-			buildSavedClasses();
-		return compiledCache.get(key);
+		synchronized(compiledCache)
+		{
+			if(savedClassUpdateTime!=CMClass.getLastClassUpdatedTime())
+				buildSavedClasses();
+			return compiledCache.get(key);
+		}
 	}
 
 	@Override
@@ -555,9 +571,9 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 		}
 		if(o==null)
 		{
-			for(int d=0;d<Ability.ACODE_DESCS.length;d++)
+			for(int d=0;d<Ability.ACODE.DESCS.size();d++)
 			{
-				if(Ability.ACODE_DESCS[d].equals(str))
+				if(Ability.ACODE.DESCS.get(d).equals(str))
 				{
 					o=Integer.valueOf(d);
 					break;
@@ -566,9 +582,9 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 		}
 		if(o==null)
 		{
-			for(int d=0;d<Ability.DOMAIN_DESCS.length;d++)
+			for(int d=0;d<Ability.DOMAIN.DESCS.size();d++)
 			{
-				if(Ability.DOMAIN_DESCS[d].equals(str))
+				if(Ability.DOMAIN.DESCS.get(d).equals(str))
 				{
 					o=Integer.valueOf(d<<5);
 					break;
@@ -599,9 +615,9 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 		}
 		if(o==null)
 		{
-			for(int d=0;d<Ability.DOMAIN_DESCS.length;d++)
+			for(int d=0;d<Ability.DOMAIN.DESCS.size();d++)
 			{
-				if(Ability.DOMAIN_DESCS[d].startsWith(str)||Ability.DOMAIN_DESCS[d].endsWith(str))
+				if(Ability.DOMAIN.DESCS.get(d).startsWith(str)||Ability.DOMAIN.DESCS.get(d).endsWith(str))
 				{
 					o=Integer.valueOf(d<<5);
 					break;
@@ -1959,6 +1975,94 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 						buf.append(".  ");
 					}
 					break;
+				case DOMAIN: // +domain
+					{
+						buf.append(L("Disallowed in the following locale"+(multipleQuals(V,v,"-")?"s":"")+": "));
+						for(int v2=v+1;v2<V.size();v2++)
+						{
+							final String str2=V.get(v2);
+							if(zapCodes.containsKey(str2))
+								break;
+							if(str2.startsWith("-"))
+							{
+								final String str3=str2.substring(1).trim().toUpperCase();
+								if(CMath.isInteger(str3))
+								{
+									final int domain=CMath.s_int(str3);
+									if((domain>=0)&&(domain<Room.DOMAIN_OUTDOOR_DESCS.length))
+									{
+										v=v2;
+										buf.append(CMStrings.capitalizeAndLower(Room.DOMAIN_OUTDOOR_DESCS[domain])+", ");
+									}
+									else
+									if((domain>=Room.INDOORS)&&((domain-Room.INDOORS)<Room.DOMAIN_INDOORS_DESCS.length))
+									{
+										v=v2;
+										buf.append(CMStrings.capitalizeAndLower(Room.DOMAIN_INDOORS_DESCS[domain-Room.INDOORS])+", ");
+									}
+								}
+								else
+								{
+									int domain=CMParms.indexOf(Room.DOMAIN_OUTDOOR_DESCS,str3);
+									if(domain < 0)
+										domain = CMParms.indexOf(Room.DOMAIN_INDOORS_DESCS,str3);
+									if(domain>=0)
+									{
+										v=v2;
+										buf.append(CMStrings.capitalizeAndLower(str3)+", ");
+									}
+								}
+							}
+						}
+						if(buf.toString().endsWith(", "))
+							buf.delete(buf.length()-2, buf.length());
+						buf.append(".  ");
+					}
+					break;
+				case _DOMAIN: // -domain
+					{
+						buf.append(L((skipFirstWord?"Only ":"Allowed only ")+"in the following locale"+(multipleQuals(V,v,"+")?"s":"")+": "));
+						for(int v2=v+1;v2<V.size();v2++)
+						{
+							final String str2=V.get(v2);
+							if(zapCodes.containsKey(str2))
+								break;
+							if(str2.startsWith("+"))
+							{
+								final String str3=str2.substring(1).trim().toUpperCase();
+								if(CMath.isInteger(str3))
+								{
+									final int domain=CMath.s_int(str3);
+									if((domain>=0)&&(domain<Room.DOMAIN_OUTDOOR_DESCS.length))
+									{
+										v=v2;
+										buf.append(CMStrings.capitalizeAndLower(Room.DOMAIN_OUTDOOR_DESCS[domain])+", ");
+									}
+									else
+									if((domain>=Room.INDOORS)&&((domain-Room.INDOORS)<Room.DOMAIN_INDOORS_DESCS.length))
+									{
+										v=v2;
+										buf.append(CMStrings.capitalizeAndLower(Room.DOMAIN_INDOORS_DESCS[domain-Room.INDOORS])+", ");
+									}
+								}
+								else
+								{
+									int domain=CMParms.indexOf(Room.DOMAIN_OUTDOOR_DESCS,str3);
+									if(domain < 0)
+										domain = CMParms.indexOf(Room.DOMAIN_INDOORS_DESCS,str3);
+									if(domain>=0)
+									{
+										v=v2;
+										buf.append(CMStrings.capitalizeAndLower(str3)+", ");
+									}
+								}
+							}
+						}
+						if(buf.toString().endsWith(", "))
+							buf.delete(buf.length()-2, buf.length());
+						buf.append(".  ");
+					}
+					break;
 				case BIRTHDAY: //+birthday
 					{
 						buf.append(L("Disallow those born on the following day"+(multipleQuals(V,v,"-")?"s":"")+" of the month: "));
@@ -3033,14 +3137,6 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 				return true;
 		}
 		else
-		if(o instanceof Pair)
-		{
-			@SuppressWarnings("unchecked")
-			final Pair<Integer,Integer> p=(Pair<Integer,Integer>)o;
-			if((int)Math.round(CMath.floor(CMath.div(num,p.second.intValue())))==p.first.intValue())
-				return true;
-		}
-		else
 		if(o instanceof Triad)
 		{
 			@SuppressWarnings("unchecked")
@@ -3048,7 +3144,47 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 			if((num % p.second.intValue())==p.first.intValue())
 				return true;
 		}
+		else
+		if(o instanceof Pair)
+		{
+			@SuppressWarnings("unchecked")
+			final Pair<Integer,Integer> p=(Pair<Integer,Integer>)o;
+			if((int)Math.round(CMath.floor(CMath.div(num,p.second.intValue())))==p.first.intValue())
+				return true;
+		}
 		return false;
+	}
+
+	protected final void addDateValues(final Object o, final List<Integer> vals, final int min, final int max)
+	{
+		if(o instanceof Integer)
+			vals.add((Integer)o);
+		else
+		if(o instanceof Triad)
+		{
+			@SuppressWarnings("unchecked")
+			final Triad<Integer,Integer,String> p=(Triad<Integer,Integer,String>)o;
+			if(min == 0)
+			{
+				for(int i=p.first.intValue();i<=max;i+=p.second.intValue())
+					vals.add(Integer.valueOf(i));
+			}
+			else
+			{
+				int firstVal = min - (min % p.second.intValue()) + p.first.intValue() ;
+				if(firstVal <= min)
+					firstVal += p.second.intValue();
+				for(int i=firstVal;i<=max;i+=p.second.intValue())
+					vals.add(Integer.valueOf(i));
+			}
+		}
+		else
+		if(o instanceof Pair)
+		{
+			@SuppressWarnings("unchecked")
+			final Pair<Integer,Integer> p=(Pair<Integer,Integer>)o;
+			vals.add(Integer.valueOf(min+(p.second.intValue() * p.first.intValue())));
+		}
 	}
 
 	@Override
@@ -4442,6 +4578,37 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 						buf.add(new CompiledZapperMaskEntryImpl(entryType,parms.toArray(new Object[0])));
 					}
 					break;
+				case DOMAIN: // +domain
+				case _DOMAIN: // -domain
+					{
+						final ArrayList<Object> parms=new ArrayList<Object>();
+						buildRoomFlag=true;
+						for(int v2=v+1;v2<V.size();v2++)
+						{
+							final String str2=V.get(v2);
+							if(zapCodes.containsKey(str2))
+							{
+								v=v2-1;
+								break;
+							}
+							else
+							if((str2.startsWith("-"))||(str2.startsWith("+")))
+							{
+								final String str3=str2.substring(1).toUpperCase().trim();
+								if(CMath.isInteger(str2.substring(1).trim()))
+									parms.add(Integer.valueOf(CMath.s_int(str3)));
+								else
+								if(CMParms.indexOf(Room.DOMAIN_OUTDOOR_DESCS,str3)>=0)
+									parms.add(Integer.valueOf(CMParms.indexOf(Room.DOMAIN_OUTDOOR_DESCS,str3)));
+								else
+								if(CMParms.indexOf(Room.DOMAIN_INDOORS_DESCS,str3)>=0)
+									parms.add(Integer.valueOf(Room.INDOORS+CMParms.indexOf(Room.DOMAIN_INDOORS_DESCS,str3)));
+							}
+							v=V.size();
+						}
+						buf.add(new CompiledZapperMaskEntryImpl(entryType,parms.toArray(new Object[0])));
+					}
+					break;
 				case PORT: // +PORT
 				case _PORT: // -PORT
 					{
@@ -4488,8 +4655,12 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 				case DAY: // +DAY
 				case _DAY: // -DAY
 				case DAYOFYEAR: // +DAYOFYEAR
-				case _DAYOFYEAR: // -DAY
+				case _DAYOFYEAR: // -DAYOFYEAR
 					{
+						// three data formats supported:
+						// -MONTH +5 (the month numbered 5)
+						// -DAY +3rd 5 -- no earthly idea
+						// -MONTH +3 of 5 - 3rd of every 5 months
 						final ArrayList<Object> parms=new ArrayList<Object>();
 						buildRoomFlag=true;
 						for(int v2=v+1;v2<V.size();v2++)
@@ -4517,7 +4688,7 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 										if(amt > 0)
 										{
 											parms.add(new Pair<Integer,Integer>(
-													Integer.valueOf(amt-1), // because 0 is the first X
+													Integer.valueOf(amt), //-1 because 0 is the first X -- so what?
 													Integer.valueOf(CMath.s_int(nstr.trim()))));
 										}
 									}
@@ -4529,7 +4700,7 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 										{
 											parms.add(new Triad<Integer,Integer,String>(
 													Integer.valueOf(CMath.s_int(lstr3)),
-													Integer.valueOf(amt-1), // // because 0 is the first in every X
+													Integer.valueOf(amt), // -1 because 0 is the first in every X -- how is that an excuse?
 													null));
 										}
 									}
@@ -4908,10 +5079,7 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 		if((mob==null)||(cset.useItemFlag()&&(item==null)))
 			return false;
 		if(E instanceof Area)
-		{
-			final int[] areaStats = ((Area)E).getAreaIStats();
-			mob.addFaction(CMLib.factions().getAlignmentID(), areaStats[Area.Stats.MED_ALIGNMENT.ordinal()]);
-		}
+			mob.addFaction(CMLib.factions().getAlignmentID(), ((Area)E).getIStat(Area.Stats.MED_ALIGNMENT));
 		if(cset.entries().length<3)
 			return maskCheckSubEntries(cset.entries()[0],E,actual,mob,item,room,P);
 		else
@@ -4967,6 +5135,246 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 			break;
 		}
 		return false;
+	}
+
+	protected boolean maskCheckDateEntries(final CompiledZMaskEntry[] set, final TimeClock C)
+	{
+		for(final CompiledZMaskEntry entry : set)
+		{
+			try
+			{
+				switch(entry.maskType())
+				{
+				case HOUR: // +HOUR
+					{
+						final int num = C.getHourOfDay();
+						for(final Object o : entry.parms())
+						{
+							if(isDateMatch(o,num))
+								return false;
+						}
+					}
+					break;
+				case _HOUR: // -HOUR
+					{
+						boolean found=false;
+						final int num = C.getHourOfDay();
+						for(final Object o : entry.parms())
+						{
+							if(isDateMatch(o,num))
+							{
+								found = true;
+								break;
+							}
+						}
+						if(!found)
+							return false;
+					}
+					break;
+				case BIRTHYEAR: // +BIRTHYEAR
+				case YEAR: // +YEAR
+					{
+						final int num = C.getYear();
+						for(final Object o : entry.parms())
+						{
+							if(isDateMatch(o,num))
+								return false;
+						}
+					}
+					break;
+				case _BIRTHYEAR: // -BIRTHYEAR
+				case _YEAR: // -YEAR
+					{
+						boolean found=false;
+						final int num = C.getYear();
+						for(final Object o : entry.parms())
+						{
+							if(isDateMatch(o,num))
+							{
+								found = true;
+								break;
+							}
+						}
+						if(!found)
+							return false;
+					}
+					break;
+				case BIRTHWEEK: // +BIRTHWEEK
+				case WEEK: // +WEEK
+					{
+						final int num = C.getWeekOfMonth();
+						for(final Object o : entry.parms())
+						{
+							if(isDateMatch(o,num))
+								return false;
+						}
+					}
+					break;
+				case _BIRTHWEEK: // -BIRTHWEEK
+				case _WEEK: // -WEEK
+					{
+						boolean found=false;
+						final int num = C.getWeekOfMonth();
+						for(final Object o : entry.parms())
+						{
+							if(isDateMatch(o,num))
+							{
+								found = true;
+								break;
+							}
+						}
+						if(!found)
+							return false;
+					}
+					break;
+				case BIRTHSEASON: // +birthseason
+				case SEASON: // +season
+					{
+						final int num = C.getSeasonCode().ordinal();
+						for(final Object o : entry.parms())
+						{
+							if(isDateMatch(o,num))
+								return false;
+						}
+					}
+					break;
+				case _BIRTHSEASON: // -birthseason
+				case _SEASON: // -season
+					{
+						boolean found=false;
+						final int num = C.getSeasonCode().ordinal();
+						for(final Object o : entry.parms())
+						{
+							if(isDateMatch(o,num))
+							{
+								found = true;
+								break;
+							}
+						}
+						if(!found)
+							return false;
+					}
+					break;
+				case BIRTHMONTH:
+				case MONTH:
+					{
+						final int num = C.getMonth();
+						for(final Object o : entry.parms())
+						{
+							if(isDateMatch(o,num))
+								return false;
+						}
+					}
+					break;
+				case _BIRTHMONTH:
+				case _MONTH:
+					{
+						boolean found=false;
+						final int num = C.getMonth();
+						for(final Object o : entry.parms())
+						{
+							if(isDateMatch(o,num))
+							{
+								found = true;
+								break;
+							}
+						}
+						if(!found)
+							return false;
+					}
+					break;
+				case BIRTHWEEKOFYEAR:
+				case WEEKOFYEAR:
+					{
+						final int num = C.getWeekOfYear();
+						for(final Object o : entry.parms())
+						{
+							if(isDateMatch(o,num))
+								return false;
+						}
+					}
+					break;
+				case _BIRTHWEEKOFYEAR:
+				case _WEEKOFYEAR:
+					{
+						boolean found=false;
+						final int num = C.getWeekOfYear();
+						for(final Object o : entry.parms())
+						{
+							if(isDateMatch(o,num))
+							{
+								found = true;
+								break;
+							}
+						}
+						if(!found)
+							return false;
+					}
+					break;
+				case BIRTHDAY:
+				case DAY:
+					{
+						final int num = C.getDayOfMonth();
+						for(final Object o : entry.parms())
+						{
+							if(isDateMatch(o,num))
+								return false;
+						}
+					}
+					break;
+				case _BIRTHDAY:
+				case _DAY:
+					{
+						boolean found=false;
+						final int num = C.getDayOfMonth();
+						for(final Object o : entry.parms())
+						{
+							if(isDateMatch(o,num))
+							{
+								found = true;
+								break;
+							}
+						}
+						if(!found)
+							return false;
+					}
+					break;
+				case BIRTHDAYOFYEAR:
+				case DAYOFYEAR:
+					{
+						final int num = C.getDayOfYear();
+						for(final Object o : entry.parms())
+						{
+							if(isDateMatch(o,num))
+								return false;
+						}
+					}
+					break;
+				case _BIRTHDAYOFYEAR:
+				case _DAYOFYEAR:
+					{
+						boolean found=false;
+						final int num = C.getDayOfYear();
+						for(final Object o : entry.parms())
+						{
+							if(isDateMatch(o,num))
+							{
+								found = true;
+								break;
+							}
+						}
+						if(!found)
+							return false;
+					}
+					break;
+				default:
+					break;
+				}
+			}
+			catch(final Exception e)
+			{}
+		}
+		return true;
 	}
 
 	protected boolean maskCheckSubEntries(final CompiledZMaskEntry[] set, final Environmental E, final boolean actual,
@@ -5158,7 +5566,7 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 							return false;
 					}
 					break;
-				case ANYCLASSLEVEL: // +classlevel
+				case ANYCLASSLEVEL: // +anyclasslevel
 					{
 						for(int i=0;i<entry.parms().length;i+=3)
 						{
@@ -5167,7 +5575,7 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 												:mob.charStats().getClassLevel(C);
 							if(cl >= 0)
 							{
-								if(!doZapperCompare(entry,cl,i+1))
+								if(doZapperCompare(entry,cl,i+1))
 									return false;
 							}
 						}
@@ -5599,6 +6007,20 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 				case _SKILL: // -skill
 					{
 						boolean found=false;
+						if(E instanceof SpellHolder)
+						{
+							final SpellHolder spellE = (SpellHolder)E;
+							final String lowerSpellList = spellE.getSpellList().toLowerCase();
+							for(int v=0;v<entry.parms().length-1;v+=2)
+							{
+								if(lowerSpellList.indexOf(((String)entry.parms()[v]).toLowerCase())>=0)
+								{
+									found = true;
+									break;
+								}
+							}
+						}
+						else
 						for(int v=0;v<entry.parms().length-1;v+=2)
 						{
 							final Ability A=mob.fetchAbility((String)entry.parms()[v]);
@@ -5615,6 +6037,24 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 				case _SKILLFLAG: // -skillflag
 					{
 						boolean found=false;
+						if(E instanceof SpellHolder)
+						{
+							final SpellHolder spellE = (SpellHolder)E;
+							for(final Object o : entry.parms())
+							{
+								for(final Ability A : spellE.getSpells())
+								{
+									if(evaluateSkillFlagObject(o,A))
+									{
+										found = true;
+										break;
+									}
+								}
+								if(found)
+									break;
+							}
+						}
+						else
 						for(final Object o : entry.parms())
 						{
 							for(final Enumeration<Ability> a=mob.allAbilities();a.hasMoreElements();)
@@ -5635,6 +6075,17 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 					break;
 				case SKILL: // +skill
 					{
+						if(E instanceof SpellHolder)
+						{
+							final SpellHolder spellE = (SpellHolder)E;
+							final String lowerSpellList = spellE.getSpellList().toLowerCase();
+							for(int v=0;v<entry.parms().length-1;v+=2)
+							{
+								if(lowerSpellList.indexOf(((String)entry.parms()[v]).toLowerCase())>=0)
+									return false;
+							}
+						}
+						else
 						for(int v=0;v<entry.parms().length-1;v+=2)
 						{
 							final Ability A=mob.fetchAbility((String)entry.parms()[v]);
@@ -5645,6 +6096,19 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 					break;
 				case SKILLFLAG: // +skillflag
 					{
+						if(E instanceof SpellHolder)
+						{
+							final SpellHolder spellE = (SpellHolder)E;
+							for(final Object o : entry.parms())
+							{
+								for(final Ability A : spellE.getSpells())
+								{
+									if(evaluateSkillFlagObject(o,A))
+										return false;
+								}
+							}
+						}
+						else
 						for(final Object o : entry.parms())
 						{
 							for(final Enumeration<Ability> a=mob.allAbilities();a.hasMoreElements();)
@@ -6376,6 +6840,36 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 							for(final Object o : entry.parms())
 							{
 								if(room.getArea().getClimateObj().weatherType(room)==((Integer)o).intValue())
+								{
+									found = true;
+									break;
+								}
+							}
+						}
+						if(!found)
+							return false;
+					}
+					break;
+				case DOMAIN: // +domain
+					{
+						if(room!=null)
+						{
+							for(final Object o : entry.parms())
+							{
+								if(room.domainType()==((Integer)o).intValue())
+									return false;
+							}
+						}
+					}
+					break;
+				case _DOMAIN: // -domain
+					{
+						boolean found=false;
+						if(room!=null)
+						{
+							for(final Object o : entry.parms())
+							{
+								if(room.domainType()==((Integer)o).intValue())
 								{
 									found = true;
 									break;
@@ -7589,8 +8083,8 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 					else
 					if(E instanceof Item)
 					{
-						if(((Item)E).amWearingAt(Wearable.IN_INVENTORY))
-							return false;
+						if(!((Item)E).amWearingAt(Wearable.IN_INVENTORY))
+							return false; // duh, -worn and +worn should behave differently!
 					}
 					break;
 				case ALIGNMENT: // +alignment
@@ -7647,8 +8141,7 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 					{
 						if(E instanceof Area)
 						{
-							final int[] areaStats = ((Area)E).getAreaIStats();
-							if(areaStats[Area.Stats.POPULATION.ordinal()]<(((Integer)entry.parms()[0]).intValue()))
+							if(((Area)E).getIStat(Area.Stats.POPULATION)<(((Integer)entry.parms()[0]).intValue()))
 								return false;
 						}
 						else
@@ -7661,8 +8154,7 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 					{
 						if(E instanceof Area)
 						{
-							final int[] areaStats = ((Area)E).getAreaIStats();
-							if(areaStats[Area.Stats.POPULATION.ordinal()]>(((Integer)entry.parms()[0]).intValue()))
+							if(((Area)E).getIStat(Area.Stats.POPULATION)>(((Integer)entry.parms()[0]).intValue()))
 								return false;
 						}
 						else
@@ -7678,11 +8170,11 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 							for(int v=0;v<entry.parms().length-2;v+=3)
 							{
 								final ScriptingEngine SE = (ScriptingEngine)entry.parms()[v];
-								final String[][] EVAL = (String[][])entry.parms()[v+1];
+								final String[][] eval = (String[][])entry.parms()[v+1];
 								final Object[] tmp = (Object[])entry.parms()[v+2];
 								final MOB M = SE.getMakeMOB(E);
 								final Item defaultItem=(E instanceof Item)?(Item)E:null;
-								if(SE.eval((PhysicalAgent)E, M, null,M, defaultItem, null, "", tmp, EVAL, 0))
+								if(SE.eval(new MPContext((PhysicalAgent)E, M, M,null, defaultItem, null, "", tmp), eval, 0))
 								{
 									oneIsOK = true;
 									break;
@@ -7700,13 +8192,13 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 							for(int v=0;v<entry.parms().length-2;v+=3)
 							{
 								final ScriptingEngine SE = (ScriptingEngine)entry.parms()[v];
-								final String[][] EVAL = (String[][])entry.parms()[v+1];
+								final String[][] eval = (String[][])entry.parms()[v+1];
 								final Object[] tmp = (Object[])entry.parms()[v+2];
 								final MOB M = SE.getMakeMOB(E);
 								final Item defaultItem=(E instanceof Item)?(Item)E:null;
 								if(E instanceof PhysicalAgent)
 								{
-									if(SE.eval((PhysicalAgent)E, M, null,M, defaultItem, null, "", tmp, EVAL, 0))
+									if(SE.eval(new MPContext((PhysicalAgent)E, M, M,null, defaultItem, null, "", tmp), eval, 0))
 										return true;
 								}
 							}
@@ -7720,6 +8212,334 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 			}
 		}
 		return true;
+	}
+
+	protected int getTimeValue(final TimeClock C, final ZapperKey key)
+	{
+		switch(key)
+		{
+		case WEEK/*ofmonth*/:
+		case _WEEK/*ofmonth*/:
+			return C.getWeekOfMonth();
+		case DAYOFYEAR:
+		case _DAYOFYEAR:
+			return C.getDayOfYear();
+		default:
+			return C.get(toTimePeriod(key));
+		}
+	}
+
+	protected int getTimeMax(final TimeClock C, final ZapperKey key)
+	{
+		switch(key)
+		{
+		case WEEK/*ofmonth*/:
+		case _WEEK/*ofmonth*/:
+			return (C.getDaysInMonth() / C.getDaysInWeek())-1;
+		case DAYOFYEAR:
+		case _DAYOFYEAR:
+			return C.getDaysInYear();
+		default:
+			return C.getMax(toTimePeriod(key));
+		}
+	}
+
+	protected TimePeriod toTimePeriod(final ZapperKey key)
+	{
+		switch(key)
+		{
+		case HOUR:
+		case _HOUR:
+			return TimePeriod.HOUR;
+		case YEAR:
+		case _YEAR:
+			return TimePeriod.YEAR;
+		case MONTH:
+		case _MONTH:
+			return TimePeriod.MONTH;
+		case SEASON:
+		case _SEASON:
+			return TimePeriod.SEASON;
+		case WEEK/*ofmonth*/:
+		case _WEEK/*ofmonth*/:
+		case WEEKOFYEAR:
+		case _WEEKOFYEAR:
+			return TimePeriod.WEEK;
+		case DAY:
+		case _DAY:
+		case DAYOFYEAR:
+		case _DAYOFYEAR:
+			return TimePeriod.DAY;
+		case BIRTHDAY:
+		case _BIRTHDAY:
+		case BIRTHDAYOFYEAR:
+		case _BIRTHDAYOFYEAR:
+			return TimePeriod.DAY;
+		case BIRTHSEASON:
+		case _BIRTHSEASON:
+			return TimePeriod.SEASON;
+		case BIRTHWEEK:
+		case _BIRTHWEEK:
+		case BIRTHWEEKOFYEAR:
+		case _BIRTHWEEKOFYEAR:
+			return TimePeriod.WEEK;
+		case BIRTHYEAR:
+		case _BIRTHYEAR:
+			return TimePeriod.YEAR;
+		case BIRTHMONTH:
+		case _BIRTHMONTH:
+			return TimePeriod.MONTH;
+		default:
+			return null;
+		}
+	}
+
+	protected boolean useBirthTimePeriod(final ZapperKey key)
+	{
+		switch(key)
+		{
+		case BIRTHDAY:
+		case _BIRTHDAY:
+		case BIRTHDAYOFYEAR:
+		case _BIRTHDAYOFYEAR:
+		case BIRTHSEASON:
+		case _BIRTHSEASON:
+		case BIRTHWEEK:
+		case _BIRTHWEEK:
+		case BIRTHWEEKOFYEAR:
+		case _BIRTHWEEKOFYEAR:
+		case BIRTHYEAR:
+		case _BIRTHYEAR:
+		case BIRTHMONTH:
+		case _BIRTHMONTH:
+			return true;
+		default:
+			return false;
+		}
+	}
+
+	protected TimeClock dateMaskSubEntryToNextTimeClock(final Physical pP, final CompiledZMaskEntry[] set, final boolean[] not)
+	{
+		final CompiledZMaskEntry[] sset = Arrays.copyOf(set, set.length);
+		Arrays.sort(sset, new Comparator<CompiledZMaskEntry>()
+		{
+			@Override
+			public int compare(final CompiledZMaskEntry o1, final CompiledZMaskEntry o2)
+			{
+				final TimePeriod p1 = toTimePeriod(o1.maskType());
+				final TimePeriod p2 = toTimePeriod(o2.maskType());
+				if(p1.getIncrement()<p2.getIncrement())
+					return -1;
+				if(p1.getIncrement()>p2.getIncrement())
+					return 1;
+				return 0;
+			}
+		});
+		final TimeClock nowC = CMLib.time().homeClock(pP);
+		final TimeClock C = (TimeClock)nowC.copyOf();
+		final Set<TimePeriod> donePeriods = new HashSet<TimePeriod>();
+		if((pP instanceof MOB)&&(((MOB)pP).playerStats()!=null))
+		{
+			final List<CompiledZMaskEntry> bdEntries = new ArrayList<CompiledZMaskEntry>(3);
+			for(final CompiledZMaskEntry entry : set)
+			{
+				if(useBirthTimePeriod(entry.maskType()))
+				{
+					bdEntries.add(entry);
+					donePeriods.add(this.toTimePeriod(entry.maskType()));
+				}
+			}
+			if((bdEntries.size()>0) && (!maskCheck(bdEntries.toArray(new CompiledZMaskEntry[bdEntries.size()]), pP, true)))
+				return null;
+		}
+		final Map<TimePeriod, List<Integer>> okVals = new HashMap<TimePeriod, List<Integer>>();
+		for(final CompiledZMaskEntry entry : sset)
+		{
+			try
+			{
+				final TimePeriod period = toTimePeriod(entry.maskType());
+				if((period == null)||useBirthTimePeriod(entry.maskType()))
+					continue;
+				List<Integer> okV = okVals.get(period);
+				if(okV == null)
+				{
+					okV = new ArrayList<Integer>();
+					okVals.put(period, okV);
+				}
+				final int min = (period == TimePeriod.YEAR)?C.get(period):C.getMin(period);
+				final int max = (period == TimePeriod.YEAR)?C.get(period)+100:getTimeMax(C,entry.maskType());
+				for(final Object o : entry.parms())
+					addDateValues(o, okV, min, max);
+			}
+			catch (final NullPointerException n)
+			{
+			}
+		}
+		for(final CompiledZMaskEntry entry : sset)
+		{
+			try
+			{
+				final TimePeriod period = toTimePeriod(entry.maskType());
+				if((period == null)||useBirthTimePeriod(entry.maskType()))
+					continue;
+				final List<Integer> okV = okVals.get(period);
+				if(okV == null) // if null, anything will do!
+					continue;
+				final int max = (period == TimePeriod.YEAR)?(C.get(period)+100):(getTimeMax(C,entry.maskType())+1);
+				boolean useNot = !entry.maskType().name().startsWith("_");
+				useNot = (not == null || (!not[0])) ? useNot : !useNot;
+				Integer perI = Integer.valueOf(getTimeValue(C,entry.maskType()));
+				if(useNot)
+				{
+					for(int i=0;i<=max;i++) // time for brute force
+					{
+						if(!okV.contains(perI))
+							break;
+						else
+						{
+							C.bump(period, 1);
+							perI = Integer.valueOf(getTimeValue(C,entry.maskType()));
+						}
+					}
+				}
+				else
+				if(!okV.contains(perI))
+				{
+					int bump = Integer.MAX_VALUE;
+					for(final Integer I : okV)
+					{
+						final int bmp;
+						if((I.intValue()>perI.intValue())||(period == TimePeriod.YEAR))
+							bmp = I.intValue()-perI.intValue();
+						else
+						{
+							if(period == TimePeriod.HOUR)
+								bmp = 1+(max - perI.intValue()) + I.intValue();
+							else
+								bmp = (max - perI.intValue()) + I.intValue();
+						}
+						if(bmp < bump)
+						{
+							bump = bmp;
+							if(bump < 2)
+								break;
+						}
+					}
+					if(bump != Integer.MAX_VALUE)
+						C.bump(period, bump);
+				}
+				// if months matter, set days and lower to min
+				{
+					for(final TimePeriod P : TimePeriod.values())
+					{
+						if((P.getIncrement() < period.getIncrement())
+						&&(!donePeriods.contains(P)))
+						{
+							switch(P)
+							{
+							case DAY: // period is month, week, year, etc
+								if(period == TimePeriod.WEEK)
+									C.set(TimePeriod.DAY, (C.getWeekOfMonth()*C.getDaysInWeek())+1);
+								else
+									C.set(P, C.getMin(P));
+								break;
+							case MONTH: // period must be year
+							case HOUR: // period is year, month, day, etc
+								C.set(P, C.getMin(P));
+								break;
+							default:
+								break;
+							}
+						}
+					}
+				}
+				donePeriods.add(period);
+			}
+			catch (final NullPointerException n)
+			{
+			}
+		}
+		return C;
+	}
+
+	@Override
+	public TimeClock dateMaskToExpirationTimeClock(final Physical P, final CompiledZMask cset)
+	{
+		final Pair<CompiledZMaskEntry[], TimeClock> clock = dateMasksToNextTimeClock(P, cset);
+		if((clock == null)||(clock.second==null))
+			return null;
+		TimePeriod lowestPeriodC = null;
+		ZapperKey lowestKey = null;
+		for(int i=0;i<clock.first.length;i++)
+		{
+			final CompiledZMaskEntry entry = clock.first[i];
+			final TimePeriod period = toTimePeriod(entry.maskType());
+			if((period == null)||(period==TimePeriod.ALLTIME))
+				continue;
+			if((lowestPeriodC == null)
+			||(lowestPeriodC.getIncrement()>period.getIncrement()))
+			{
+				lowestPeriodC = period;
+				lowestKey = entry.maskType();
+			}
+		}
+
+		if(lowestPeriodC == null)
+			return clock.second;
+		final TimeClock C = (TimeClock)clock.second.copyOf();
+		final int max = (lowestPeriodC == TimePeriod.YEAR)?C.get(lowestPeriodC)+100:getTimeMax(C,lowestKey);
+		for(int i=0;i<max;i++)
+		{
+			C.bump(lowestPeriodC, 1);
+			if(!maskCheckDateEntries(clock.first, C))
+				return C;
+		}
+		return clock.second;
+	}
+
+	@Override
+	public TimeClock dateMaskToNextTimeClock(final Physical P, final CompiledZMask cset)
+	{
+		final Pair<CompiledZMaskEntry[], TimeClock> clock = dateMasksToNextTimeClock(P, cset);
+		if((clock == null)||(clock.second==null))
+			return null;
+		return clock.second;
+	}
+
+	protected Pair<CompiledZMaskEntry[], TimeClock> dateMasksToNextTimeClock(final Physical P, final CompiledZMask cset)
+	{
+		final boolean[] not = new boolean[] {false};
+		if(cset.entries().length<3)
+		{
+			final CompiledZMaskEntry[] e = cset.entries()[0];
+			return new Pair<CompiledZMaskEntry[], TimeClock>(e, dateMaskSubEntryToNextTimeClock(P, e, not));
+		}
+		else
+		{
+			TimeClock lastValue = null;
+			CompiledZMaskEntry[] lastE = null;
+			boolean lastConnectorNot = false;
+			for(int i=0;i<cset.entries().length;i+=2)
+			{
+				final TimeClock C = dateMaskSubEntryToNextTimeClock(P, cset.entries()[i], new boolean[] { lastConnectorNot });
+				if(C == null)
+					continue;
+				if((lastValue == null)||(lastValue.isBefore(C)))
+				{
+					lastValue = C;
+					lastE = cset.entries()[i];
+				}
+				if(i==cset.entries().length-1)
+					return new Pair<CompiledZMaskEntry[], TimeClock>(lastE, lastValue);
+				final CompiledZMaskEntry entry = cset.entries()[i+1][0];
+				if(entry.maskType()==MaskingLibrary.ZapperKey._OR)
+					lastConnectorNot=true;
+				else
+				if(entry.maskType()==MaskingLibrary.ZapperKey.OR)
+					lastConnectorNot=false;
+			}
+			return new Pair<CompiledZMaskEntry[], TimeClock>(lastE, lastValue);
+		}
 	}
 
 	@Override
@@ -8197,6 +9017,8 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 				case _HOUR: // -HOUR
 				case WEATHER: // +weather
 				case _WEATHER: // -weather
+				case DOMAIN: // +domain
+				case _DOMAIN: // -domain
 				case SEASON: // +season
 				case _SEASON: // -season
 				case MONTH: // +month
@@ -8379,7 +9201,14 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 	{
 		if(newText == null)
 			return "";
-		final List<String> p = CMParms.parse(newText);
+		return separateZapperMask(CMParms.parse(newText));
+	}
+
+	@Override
+	public String separateZapperMask(final List<String> p)
+	{
+		if(p == null)
+			return "";
 		int start = 0;
 		for(start=0;start<p.size();start++)
 		{
@@ -8469,5 +9298,233 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 			strs[1]="";
 		}
 		return strs;
+	}
+
+	@Override
+	public CompiledZMask parseSpecialItemMask(final List<String> parsed)
+	{
+		SpecialItemType type = null;
+		final StringBuilder finalMaskStr = new StringBuilder("");
+		for(int i=0;i<parsed.size();i++)
+		{
+			String s = parsed.get(i).trim();
+			if(s.length()==0)
+				continue;
+			if(Character.isDigit(s.charAt(0)))
+			{
+				if(s.endsWith("-")&&(i<parsed.size()-1)&&(CMath.isInteger(parsed.get(i+1))))
+					s=s+parsed.remove(i+1);
+				int x = s.indexOf('-');
+				if((x<0)&&(i<parsed.size()-1)&&(parsed.get(i+1).startsWith("-")))
+				{
+					x=s.length();
+					s+=parsed.remove(i+1);
+				}
+				if(x<0)
+				{
+					final int level = CMath.s_int(s);
+					if(level <= 0)
+					{
+						parsed.add(0,L("@x1 is not a valid level or level range.",s));
+						return null;
+					}
+					finalMaskStr.append(" -LEVEL +="+level);
+					continue;
+				}
+				else
+				if(x==s.length()-1)
+				{
+					final int level = CMath.s_int(s.substring(0,x));
+					if(level <= 0)
+					{
+						parsed.add(0,L("@x1 is not a valid level or level range.",s));
+						return null;
+					}
+					finalMaskStr.append(" -LEVEL +>="+level);
+					continue;
+				}
+				else
+				if(x==0)
+				{
+					final int level = CMath.s_int(s.substring(0,x));
+					if(level <= 0)
+					{
+						parsed.add(0,L("@x1 is not a valid level or level range.",s));
+						return null;
+					}
+					finalMaskStr.append(" -LEVEL +<="+level);
+					continue;
+				}
+				else
+				{
+					final int minlevel = CMath.s_int(s.substring(0,x));
+					final int maxlevel = CMath.s_int(s.substring(x+1));
+					if((minlevel<=0)||(maxlevel <= 0))
+					{
+						parsed.add(0,L("@x1 is not a valid level or level range.",s));
+						return null;
+					}
+					finalMaskStr.append(" +LEVEL -<"+minlevel+" ->"+maxlevel);
+					continue;
+				}
+			}
+			final String us = s.toUpperCase();
+			if(CMath.s_valueOf(SpecialItemType.class, us) != null)
+			{
+				type = (SpecialItemType)CMath.s_valueOf(SpecialItemType.class, us);
+				switch(type)
+				{
+				case ARMOR:
+					finalMaskStr.append(" -JAVACLASS +GenArmor +StdArmor");
+					break;
+				case RESOURCE:
+					finalMaskStr.append(" -JAVACLASS +GenResource +GenLiquidResource +GenFoodResource");
+					break;
+				case RING:
+					finalMaskStr.append(" -WORNON +finger");
+					break;
+				case WAND:
+					finalMaskStr.append(" -JAVACLASS +Wand +GenWand +StdWand");
+					break;
+				case WEAPON:
+					finalMaskStr.append(" -JAVACLASS +Weapon +GenWeapon +StdWeapon");
+					break;
+				case FOOD:
+					finalMaskStr.append(" -JAVACLASS +Food +StdFood +GenFood +GenFoodResource");
+					break;
+				case DRINK:
+					finalMaskStr.append(" -JAVACLASS +Drink +StdDrink +GenDrink +GenLiquidResource");
+					break;
+				case POTION:
+					finalMaskStr.append(" -JAVACLASS +Potion +StdPotion +GenPotion");
+					break;
+				}
+				continue;
+			}
+			if((us.equalsIgnoreCase("NAME")||us.equalsIgnoreCase("NAMED"))
+			&&(i<parsed.size()-1))
+			{
+				finalMaskStr.append(" -NAME +\""+CMParms.combine(parsed,i+1)+"\"");
+				break;
+			}
+			final int cd = RawMaterial.CODES.FIND_IgnoreCase(us);
+			if(cd >= 0)
+			{
+				finalMaskStr.append(" -RESOURCE +"+RawMaterial.CODES.NAME(cd));
+				continue;
+			}
+			if(type != null)
+			{
+				switch(type)
+				{
+				case ARMOR:
+				{
+					final long wc = Wearable.CODES.FIND_ignoreCase(us);
+					if(wc >=0)
+					{
+						finalMaskStr.append(" -WORNON +\""+Wearable.CODES.NAME(wc)+"\"");
+						continue;
+					}
+					parsed.add(0,L("@x1 is not a valid term for armor.",s));
+					return null;
+				}
+				case WEAPON:
+				{
+					boolean found=false;
+					for(int cl=0;cl<Weapon.TYPE_DESCS.length;cl++)
+					{
+						if(s.equalsIgnoreCase(Weapon.TYPE_DESCS[cl]))
+						{
+							finalMaskStr.append(" -WEAPONTYPE +\""+Weapon.TYPE_DESCS[cl]+"\"");
+							found=true;
+							break;
+						}
+					}
+					if(found)
+						continue;
+					for(int cl=0;cl<Weapon.CLASS_DESCS.length;cl++)
+					{
+						if(s.equalsIgnoreCase(Weapon.CLASS_DESCS[cl]))
+						{
+							finalMaskStr.append(" -WEAPONCLASS +\""+Weapon.CLASS_DESCS[cl]+"\"");
+							found=true;
+							break;
+						}
+					}
+					if(found)
+						continue;
+					for(int cl=0;cl<Weapon.TYPE_DESCS.length;cl++)
+					{
+						if(us.startsWith(Weapon.TYPE_DESCS[cl]))
+						{
+							finalMaskStr.append(" -WEAPONTYPE +\""+Weapon.TYPE_DESCS[cl]+"\"");
+							found=true;
+							break;
+						}
+					}
+					if(found)
+						continue;
+					for(int cl=0;cl<Weapon.CLASS_DESCS.length;cl++)
+					{
+						if(us.startsWith(Weapon.CLASS_DESCS[cl]))
+						{
+							finalMaskStr.append(" -WEAPONCLASS +\""+Weapon.CLASS_DESCS[cl]+"\"");
+							found=true;
+							break;
+						}
+					}
+					if(found)
+						continue;
+					parsed.add(0,L("@x1 is not a valid term for armor.",s));
+					return null;
+				}
+				case POTION:
+				case WAND:
+				{
+					Ability A =CMClass.getAbilityByName(s,true);
+					if(A == null)
+						A = CMClass.getAbilityByName(s,false);
+					if(A != null)
+					{
+						finalMaskStr.append(" -SKILL +"+A.ID());
+						continue;
+					}
+					parsed.add(0,L("@x1 is not a valid term for potions and wands.",s));
+					return null;
+				}
+				default:
+					parsed.add(0,L("@x1 is not a valid term for @x2s.",s,type.name().toLowerCase()));
+					return null;
+				}
+			}
+			boolean found=false;
+			for(int cl=0;cl<Weapon.CLASS_DESCS.length;cl++)
+			{
+				if(s.equalsIgnoreCase(Weapon.CLASS_DESCS[cl]))
+				{
+					finalMaskStr.append(" -JAVACLASS +Weapon +GenWeapon +StdWeapon");
+					finalMaskStr.append(" -WEAPONCLASS +\""+Weapon.CLASS_DESCS[cl]+"\"");
+					found=true;
+					break;
+				}
+			}
+			if(found)
+				continue;
+			for(int cl=0;cl<Weapon.CLASS_DESCS.length;cl++)
+			{
+				if(us.startsWith(Weapon.CLASS_DESCS[cl]))
+				{
+					finalMaskStr.append(" -JAVACLASS +Weapon +GenWeapon +StdWeapon");
+					finalMaskStr.append(" -WEAPONCLASS +\""+Weapon.CLASS_DESCS[cl]+"\"");
+					found=true;
+					break;
+				}
+			}
+			if(found)
+				continue;
+			parsed.add(0,L("@x1 is not a valid term for an unknown type.",s));
+			return null;
+		}
+		return maskCompile(finalMaskStr.toString());
 	}
 }

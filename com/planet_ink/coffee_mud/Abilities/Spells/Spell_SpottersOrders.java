@@ -68,6 +68,12 @@ public class Spell_SpottersOrders extends Spell
 	}
 
 	@Override
+	public long flags()
+	{
+		return super.flags() | Ability.FLAG_DIVINING;
+	}
+
+	@Override
 	public int classificationCode()
 	{
 		return Ability.ACODE_SPELL|Ability.DOMAIN_DIVINATION;
@@ -136,7 +142,7 @@ public class Spell_SpottersOrders extends Spell
 			}
 			if(groupMembers==null)
 			{
-				final Set<MOB> grp=mob.getGroupMembers(new TreeSet<MOB>());
+				final Set<MOB> grp=mob.getGroupMembers(new XTreeSet<MOB>());
 				groupMembers=new LinkedList<Triad<MOB,Ability,long[]>>();
 				for(final MOB M : grp)
 				{

@@ -1,6 +1,5 @@
 package com.planet_ink.coffee_mud.Items.CompTech;
 import com.planet_ink.coffee_mud.core.interfaces.*;
-import com.planet_ink.coffee_mud.core.interfaces.BoundedObject.BoundedCube;
 import com.planet_ink.coffee_mud.core.*;
 import com.planet_ink.coffee_mud.core.CMSecurity.DbgFlag;
 import com.planet_ink.coffee_mud.core.collections.*;
@@ -203,7 +202,7 @@ public class StdShipShieldGenerator extends StdElecCompItem implements ShipWarCo
 					else
 					if(weaponO.knownSource() != null)
 					{
-						final double[] directionToMe = CMLib.space().getDirection(weaponO.knownSource(), ship);
+						final Dir3D directionToMe = CMLib.space().getDirection(weaponO.knownSource(), ship);
 						final ShipDir dir = CMLib.space().getDirectionFromDir(ship.facing(), ship.roll(), directionToMe);
 						absorbs = CMParms.contains(getCurrentCoveredDirections(), dir);
 					}

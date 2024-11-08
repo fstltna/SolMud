@@ -931,9 +931,9 @@ public class Stat  extends Skills
 			}
 			if(ableTypes==-1)
 			{
-				for(int a=0;a<Ability.ACODE_DESCS.length;a++)
+				for(int a=0;a<Ability.ACODE.DESCS.size();a++)
 				{
-					if((Ability.ACODE_DESCS[a]+"S").equals(s)||(Ability.ACODE_DESCS[a]).equals(s))
+					if((Ability.ACODE.DESCS.get(a)+"S").equals(s)||(Ability.ACODE.DESCS.get(a)).equals(s))
 					{
 						ableTypes=a;
 						commands.remove(0);
@@ -1447,7 +1447,7 @@ public class Stat  extends Skills
 				msg.append(L(", [MOB/PLAYER NAME], [NUMBER] [DAYS/WEEKS/MONTHS], "));
 				for (final String[] element : ABLETYPE_DESCS)
 					msg.append(element[0]+", ");
-				msg.append(CMParms.toListString(Ability.ACODE_DESCS));
+				msg.append(CMParms.toListString(Ability.ACODE.DESCS));
 			}
 			mob.tell(msg.toString());
 			return false;
@@ -1792,6 +1792,16 @@ public class Stat  extends Skills
 				if(thisStat.equals("XPFNL"))
 				{
 					str.append(M.getExpNextLevel()).append(" ");
+					found=true;
+				}
+				else
+				if(thisStat.equals("XPSTATS"))
+				{
+					str.append(M.getExpPrevLevel()).append(" < ");
+					str.append(M.getExperience()).append(" > ");
+					str.append(M.getExpNextLevel()).append(" = ");
+					str.append(M.getExpNeededLevel()).append(" (");
+					str.append(M.getExpNeededDelevel()).append(")");
 					found=true;
 				}
 				if(!found)

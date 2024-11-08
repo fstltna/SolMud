@@ -143,6 +143,7 @@ public class DefaultItemCollection implements ItemCollection, CMCommon
 	}
 
 	@SuppressWarnings("unchecked")
+	@Override
 	public List<Item> findItems(final String itemID)
 	{
 		@SuppressWarnings("rawtypes")
@@ -218,7 +219,7 @@ public class DefaultItemCollection implements ItemCollection, CMCommon
 		{
 			return contents.elementAt(i);
 		}
-		catch(final java.lang.ArrayIndexOutOfBoundsException x)
+		catch(final IndexOutOfBoundsException x)
 		{
 		}
 		return null;

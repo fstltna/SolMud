@@ -1,5 +1,6 @@
 package com.planet_ink.coffee_mud.Libraries;
 import com.planet_ink.coffee_mud.core.interfaces.*;
+import com.planet_ink.coffee_mud.core.interfaces.Readable;
 import com.planet_ink.coffee_mud.core.*;
 import com.planet_ink.coffee_mud.core.collections.*;
 import com.planet_ink.coffee_mud.Abilities.interfaces.*;
@@ -274,6 +275,7 @@ public class CommonMsgs extends StdLibrary implements CommonCommands
 	public void postChannel(final String channelName, final Iterable<Pair<Clan,Integer>> clanList, final String message, final boolean systemMsg)
 	{
 		MOB talker = null;
+		boolean destroyTheTalker = false;
 		try
 		{
 			if((talkLocationR == null)
@@ -285,18 +287,33 @@ public class CommonMsgs extends StdLibrary implements CommonCommands
 			if((clanList != null)
 			&&(clanList.iterator().hasNext()))
 			{
-				final Pair<Clan,Integer> c = clanList.iterator().next();
-				talker = c.first.getFactoryMOB();
-				talker.setClan(c.first.clanID(), c.second.intValue());
+				final Iterator<Pair<Clan,Integer>> pc = clanList.iterator();
+				Pair<Clan,Integer> P = pc.next();
+				if(!pc.hasNext())
+					talker = P.first.getClanTalker();
+				else
+				if(clanList == CMLib.clans().clanRoles())
+					talker = CMLib.clans().getAllClanTalker();
+				else
+				{
+					talker = CMClass.getFactoryMOB();
+					talker.setName("^</B^>");
+					talker.basePhyStats().setDisposition(PhyStats.IS_GOLEM);
+					talker.phyStats().setDisposition(PhyStats.IS_GOLEM);
+					talker.setClan(P.first.clanID(),P.second.intValue());
+					for(;pc.hasNext();)
+					{
+						P = pc.next();
+						talker.setClan(P.first.clanID(),P.second.intValue());
+					}
+					destroyTheTalker = true;
+				}
 				talker.setLocation(talkLocationR);
-				//postChannel(talker,channelName,message,systemMsg);
 				// never destroy the clans factory mob!
 			}
 			else
 			if(nonClanTalkerM!=null)
-			{
 				talker=nonClanTalkerM;
-			}
 			else
 			{
 				talker=CMClass.getMOB("StdMOB"); // not factory because he lasts forever
@@ -310,7 +327,7 @@ public class CommonMsgs extends StdLibrary implements CommonCommands
 		}
 		finally
 		{
-			if ((talker != null) && (talker != nonClanTalkerM))
+			if (destroyTheTalker && (talker != null))
 				talker.destroy();
 		}
 	}
@@ -497,11 +514,13 @@ public class CommonMsgs extends StdLibrary implements CommonCommands
 					if((mob.location().okMessage(mob,msg))
 					&&((ignore)||((target.location()!=null)&&(target.location().okMessage(target,msg)))))
 					{
+						final String player=CMStrings.removeAllButLettersAndDigits(CMStrings.removeColors(mob.name(target)));
 						if((mob.session()!=null)&&(mob.session().getClientTelnetMode(Session.TELNET_GMCP)))
 						{
 							mob.session().sendGMCPEvent("comm.channel", "{\"chan\":\"tell\",\"msg\":\""+
-									MiniJSON.toJSONString(CMLib.coffeeFilter().fullOutFilter(null, mob, mob, target, null, CMStrings.removeColors(msg.sourceMessage()), false))
-									+"\",\"player\":\""+mob.name(target)+"\"}");
+									MiniJSON.toJSONString(CMStrings.unWWrap(CMLib.coffeeFilter().fullOutFilter(null, mob, mob, target, null,
+											CMStrings.removeColors(msg.sourceMessage()).trim(), false)))
+									+"\",\"player\":\""+player+"\"}");
 						}
 						mob.executeMsg(mob,msg);
 						if((mob!=target)&&(!ignore))
@@ -509,8 +528,9 @@ public class CommonMsgs extends StdLibrary implements CommonCommands
 							if((target.session()!=null)&&(target.session().getClientTelnetMode(Session.TELNET_GMCP)))
 							{
 								target.session().sendGMCPEvent("comm.channel", "{\"chan\":\"tell\",\"msg\":\""+
-										MiniJSON.toJSONString(CMLib.coffeeFilter().fullOutFilter(null, target, mob, target, null, CMStrings.removeColors(msg.targetMessage()), false))
-										+"\",\"player\":\""+mob.name(target)+"\"}");
+										MiniJSON.toJSONString(CMStrings.unWWrap(CMLib.coffeeFilter().fullOutFilter(null, target, mob, target, null,
+												CMStrings.removeColors(msg.targetMessage()), false)).trim())
+										+"\",\"player\":\""+player+"\"}");
 							}
 							target.executeMsg(target,msg);
 							String targetMessage=msg.targetMessage();
@@ -583,11 +603,13 @@ public class CommonMsgs extends StdLibrary implements CommonCommands
 
 	protected void gmcpSaySend(final String sayName, final MOB mob, final MOB target, final CMMsg msg)
 	{
+		final String player=CMStrings.removeAllButLettersAndDigits(CMStrings.removeColors(mob.name(target)));
 		if((mob.session()!=null)&&(mob.session().getClientTelnetMode(Session.TELNET_GMCP)))
 		{
 			mob.session().sendGMCPEvent("comm.channel", "{\"chan\":\""+sayName+"\",\"msg\":\""+
-					MiniJSON.toJSONString(CMLib.coffeeFilter().fullOutFilter(null, mob, mob, target, null, CMStrings.removeColors(msg.sourceMessage()), false))
-					+"\",\"player\":\""+mob.name(target)+"\"}");
+					MiniJSON.toJSONString(CMStrings.unWWrap(CMLib.coffeeFilter().fullOutFilter(null, mob, mob, target, null,
+							CMStrings.removeColors(msg.sourceMessage()), false)).trim())
+					+"\",\"player\":\""+player+"\"}");
 		}
 		final Room R=mob.location();
 		if(R!=null)
@@ -597,8 +619,9 @@ public class CommonMsgs extends StdLibrary implements CommonCommands
 			if((M!=null)&&(M!=msg.source())&&(M.session()!=null)&&(M.session().getClientTelnetMode(Session.TELNET_GMCP)))
 			{
 				M.session().sendGMCPEvent("comm.channel", "{\"chan\":\""+sayName+"\",\"msg\":\""+
-						MiniJSON.toJSONString(CMLib.coffeeFilter().fullOutFilter(null, M, mob, target, null, CMStrings.removeColors(msg.othersMessage()), false))
-						+"\",\"player\":\""+mob.name(target)+"\"}");
+						MiniJSON.toJSONString(CMStrings.unWWrap(CMLib.coffeeFilter().fullOutFilter(null, M, mob, target, null,
+								CMStrings.removeColors(msg.othersMessage()), false))).trim()
+						+"\",\"player\":\""+player+"\"}");
 			}
 		}
 	}
@@ -835,7 +858,7 @@ public class CommonMsgs extends StdLibrary implements CommonCommands
 		if((minutesEllapsed>0)
 		&&((!CMLib.flags().isCloaked(mob))
 		  ||(!CMSecurity.isAllowed(mob, mob.location(), CMSecurity.SecFlag.CMDROOMS))))
-			CMLib.players().bumpPrideStat(mob,AccountStats.PrideStat.MINUTES_ON, (int)minutesEllapsed);
+			CMLib.players().bumpPrideStat(mob,PrideStats.PrideStat.MINUTES_ON, (int)minutesEllapsed);
 
 		final PlayerStats stats = mob.playerStats();
 		if(stats==null)
@@ -1710,8 +1733,12 @@ public class CommonMsgs extends StdLibrary implements CommonCommands
 		final CMFlagLibrary flags = CMLib.flags();
 		final StringBuilder finalLookStr=new StringBuilder("");
 		boolean sysmsgs=mob.isAttributeSet(MOB.Attrib.SYSOPMSGS);
-		final boolean compress=mob.isAttributeSet(MOB.Attrib.COMPRESS) || (CMath.bset(room.phyStats().sensesMask(), PhyStats.SENSE_ALWAYSCOMPRESSED));
-		final boolean useName = (lookCode==LookView.LOOK_BRIEFOK) && compress && mob.isAttributeSet(MOB.Attrib.BRIEF);
+		final boolean minimal = (lookCode == LookView.LOOK_MINIMAL);
+		final boolean compress= minimal
+								|| mob.isAttributeSet(MOB.Attrib.COMPRESS)
+								|| (CMath.bset(room.phyStats().sensesMask(), PhyStats.SENSE_ALWAYSCOMPRESSED));
+		final boolean useBrief = minimal || ((lookCode==LookView.LOOK_BRIEFOK) && mob.isAttributeSet(MOB.Attrib.BRIEF));
+		final boolean useName = minimal || (useBrief && compress);
 		if(sysmsgs && (!CMSecurity.isAllowed(mob,room,CMSecurity.SecFlag.SYSMSGS)))
 		{
 			mob.setAttribute(MOB.Attrib.SYSOPMSGS,false);
@@ -1750,7 +1777,7 @@ public class CommonMsgs extends StdLibrary implements CommonCommands
 		if(flags.canBeSeenBy(room,mob))
 		{
 			finalLookStr.append("^O^<RName^>" + room.displayText(mob)+"^</RName^>"+flags.getDispositionBlurbs(room,mob)+"^L\n\r");
-			if((lookCode!=LookView.LOOK_BRIEFOK)||(!mob.isAttributeSet(MOB.Attrib.BRIEF)))
+			if(!useBrief)
 			{
 				String roomDesc=room.description(mob);
 				if(lookCode==LookView.LOOK_LONG)
@@ -1771,6 +1798,8 @@ public class CommonMsgs extends StdLibrary implements CommonCommands
 							for(int k=0;k<keyWords.size();k++)
 							{
 								word=keyWords.elementAt(k);
+								if(CMLib.english().isAnArticle(word))
+									continue;
 								x=roomDesc.toUpperCase().indexOf(word);
 								while(x>=0)
 								{
@@ -1876,10 +1905,9 @@ public class CommonMsgs extends StdLibrary implements CommonCommands
 				finalLookStr.append(itemStr);
 		}
 		if(flags.canBeSeenBy(room,mob)
-		&&((lookCode!=LookView.LOOK_BRIEFOK)
-			||(!mob.isAttributeSet(MOB.Attrib.BRIEF))
-			||(hadCompressedItems)))
-				finalLookStr.append("^N\n\r\n\r");
+		&&(!compress)
+		&&((!useBrief)||(hadCompressedItems)))
+			finalLookStr.append("^N\n\r\n\r");
 		final String itemStr=CMLib.lister().lister(mob,viewItems,useName,"RItem"," \"*\"",lookCode==LookView.LOOK_LONG,compress);
 		if(itemStr.length()>0)
 			finalLookStr.append(itemStr);
@@ -1947,8 +1975,9 @@ public class CommonMsgs extends StdLibrary implements CommonCommands
 			if(mobsInTheDarkness>0)
 				finalLookStr.append(L("^MYou are not alone, but it's too dark to tell.^?\n\r"));
 		}
-		else
-		if(compress)
+		if(compress
+		&& (finalLookStr.length()>0)
+		&& (finalLookStr.charAt(finalLookStr.length()-1)!='\r'))
 			finalLookStr.append("\n\r");
 		return finalLookStr.toString();
 	}
@@ -1983,7 +2012,7 @@ public class CommonMsgs extends StdLibrary implements CommonCommands
 				if((awarenessA!=null)&&(mobLocR != null))
 				{
 					sess.colorOnlyPrintln("", true);
-					final Vector<String> list=new Vector<String>();
+					final List<String> list=new Vector<String>();
 					awarenessA.invoke(mob, list, mobLocR, true, CMProps.getIntVar(CMProps.Int.AWARERANGE));
 					for(final String o : list)
 					{
@@ -2457,7 +2486,7 @@ public class CommonMsgs extends StdLibrary implements CommonCommands
 				if((text!=null)
 				&&(text.length()>0))
 				{
-					if(text.toUpperCase().startsWith("FILE="))
+					if(text.toUpperCase().startsWith(Readable.FILE_PREFIX))
 					{
 						final StringBuffer buf=Resources.getFileResource(text.substring(5),true);
 						if((buf!=null)&&(buf.length()>0))

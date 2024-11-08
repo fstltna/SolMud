@@ -19,6 +19,9 @@ import com.planet_ink.coffee_mud.Races.interfaces.*;
 
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Vector;
 
 /**
@@ -40,13 +43,20 @@ import java.util.Vector;
 public class ListenThread extends Thread
 {
 	private final ServerSocket listen;
-	private final Vector<Socket> clients;
+	private final List<Socket> clients;
+	public final String ipAddress;
 
 	public ListenThread(final int port) throws java.io.IOException
 	{
-		super("I3Listener@"+port);
-		clients = new Vector<Socket>(10, 2);
+		super(Thread.currentThread().getThreadGroup(), "I3Listener@"+port);
+		clients = new Vector<Socket>(10);
 		listen = new ServerSocket(port);
+		final String addr = listen.getLocalSocketAddress().toString();
+		final int x = addr.indexOf(':');
+		if(x > 0)
+			ipAddress = addr.substring(0,x);
+		else
+			ipAddress = addr;
 		setDaemon(true);
 		start();
 	}
@@ -57,24 +67,15 @@ public class ListenThread extends Thread
 		while( listen!=null && !listen.isClosed() )
 		{
 			Socket client;
-			if(CMSecurity.isDisabled(DisFlag.I3))
-			{
-				clients.clear();
-				CMLib.s_sleep(100);
-				continue;
-			}
 			try
 			{
 				client = listen.accept();
 				synchronized( clients )
 				{
-					clients.addElement(client);
+					clients.add(client);
 				}
 				if(CMSecurity.isDebugging(DbgFlag.I3))
 					Log.debugOut("I3Connection: "+client.getRemoteSocketAddress());
-				else
-				if(clients.size()>100)
-					Log.errOut("Excessive I3 connections: "+client.getRemoteSocketAddress());
 			}
 			catch( final java.io.IOException e )
 			{
@@ -104,8 +105,11 @@ public class ListenThread extends Thread
 		{
 			if( clients.size() > 0 )
 			{
-				client = clients.elementAt(0);
-				clients.removeElementAt(0);
+				final Socket s = clients.remove(0);
+				if(s.isConnected())
+					client = s;
+				else
+					client = null;
 			}
 			else
 			{

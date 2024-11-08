@@ -20,6 +20,7 @@ import com.planet_ink.coffee_mud.Libraries.interfaces.ChannelsLibrary;
 import com.planet_ink.coffee_mud.Libraries.interfaces.EnglishParsing;
 import com.planet_ink.coffee_mud.Libraries.interfaces.FactionManager.FAbilityMaskType;
 import com.planet_ink.coffee_mud.Libraries.interfaces.MaskingLibrary;
+import com.planet_ink.coffee_mud.Libraries.interfaces.MaskingLibrary.CompiledZMask;
 import com.planet_ink.coffee_mud.Locales.interfaces.*;
 import com.planet_ink.coffee_mud.MOBS.interfaces.*;
 import com.planet_ink.coffee_mud.Races.interfaces.*;
@@ -997,7 +998,7 @@ public class DefaultFaction implements Faction, MsgListener
 			if(CMClass.numPrototypes(CMObjectType.ABILITY)==0)
 				return null;
 			final Map<Integer,List<FactionChangeEvent>> abilityClassMap=new HashMap<Integer,List<FactionChangeEvent>>();
-			for(int classificationCode = 0;classificationCode < Ability.ACODE_DESCS.length;classificationCode++)
+			for(int classificationCode = 0;classificationCode < Ability.ACODE.DESCS.size();classificationCode++)
 			{
 				for (final Enumeration<FactionChangeEvent[]> e=changes.elements();e.hasMoreElements();)
 				{
@@ -1014,7 +1015,7 @@ public class DefaultFaction implements Faction, MsgListener
 				}
 			}
 			final Map<Integer,List<FactionChangeEvent>> abilityDomainMap=new HashMap<Integer,List<FactionChangeEvent>>();
-			for(int domainCode = 0;domainCode < Ability.DOMAIN_DESCS.length;domainCode++)
+			for(int domainCode = 0;domainCode < Ability.DOMAIN.DESCS.size();domainCode++)
 			{
 				final int domainID = domainCode << 5;
 				for (final Enumeration<FactionChangeEvent[]> e=changes.elements();e.hasMoreElements();)
@@ -1349,7 +1350,7 @@ public class DefaultFaction implements Faction, MsgListener
 						events=getChangeEvents(MiscTrigger.AREAASS.toString());
 						if((events!=null)
 						&&(killedM!=null)
-						&&(killedM.phyStats().level()==R.getArea().getAreaIStats()[Area.Stats.MAX_LEVEL.ordinal()])
+						&&(killedM.phyStats().level()==R.getArea().getIStat(Area.Stats.MAX_LEVEL))
 						&&(killingBlowM!=killedM)
 						&&(killedM.isMonster())
 						&&(killedM.getStartRoom()!=null)
@@ -1368,7 +1369,7 @@ public class DefaultFaction implements Faction, MsgListener
 									{
 										if(event.applies(mob,killedM))
 										{
-											final double population = A.getAreaIStats()[Area.Stats.MAX_LEVEL_MOBS.ordinal()];
+											final double population = A.getIStat(Area.Stats.MAX_LEVEL_MOBS);
 											final Faction.FData data = mob.fetchFactionData(factionID());
 											final int count = data.getCounter(""+event)+1;
 											data.setCounter(""+event, count);
@@ -1404,7 +1405,7 @@ public class DefaultFaction implements Faction, MsgListener
 										if(event.applies(mob,killedM))
 										{
 											final Faction.FData data = mob.fetchFactionData(factionID());
-											final double population = A.getAreaIStats()[Area.Stats.POPULATION.ordinal()];
+											final double population = A.getIStat(Area.Stats.POPULATION);
 											final int count = data.getCounter(""+event)+1;
 											data.setCounter(""+event, count);
 											final int myPct = (int)Math.round(100.0*CMath.div(count, population));
@@ -2055,9 +2056,9 @@ public class DefaultFaction implements Faction, MsgListener
 			return _ALL_TYPES;
 		for (final MiscTrigger element : Faction.FactionChangeEvent.MiscTrigger.values())
 			ALL_TYPES.append(element.name()+", ");
-		for (final String element : Ability.ACODE_DESCS)
+		for (final String element : Ability.ACODE.DESCS)
 			ALL_TYPES.append(element+", ");
-		for (final String element : Ability.DOMAIN_DESCS)
+		for (final String element : Ability.DOMAIN.DESCS)
 			ALL_TYPES.append(element+", ");
 		for (final String element : Ability.FLAG_DESCS)
 			ALL_TYPES.append(element+", ");
@@ -2411,18 +2412,18 @@ public class DefaultFaction implements Faction, MsgListener
 					return true;
 				}
 			}
-			for(int i=0;i<Ability.ACODE_DESCS.length;i++)
+			for(int i=0;i<Ability.ACODE.DESCS.size();i++)
 			{
-				if(Ability.ACODE_DESCS[i].equalsIgnoreCase(newID))
+				if(Ability.ACODE.DESCS.get(i).equalsIgnoreCase(newID))
 				{
 					IDclassFilter = i;
 					eventTriggerID = newID;
 					return true;
 				}
 			}
-			for(int i=0;i<Ability.DOMAIN_DESCS.length;i++)
+			for(int i=0;i<Ability.DOMAIN.DESCS.size();i++)
 			{
-				if(Ability.DOMAIN_DESCS[i].equalsIgnoreCase(newID))
+				if(Ability.DOMAIN.DESCS.get(i).equalsIgnoreCase(newID))
 				{
 					IDdomainFilter = i << 5;
 					eventTriggerID = newID;
@@ -2778,8 +2779,8 @@ public class DefaultFaction implements Faction, MsgListener
 		private boolean			erroredOut;
 		private Faction			myFaction;
 		public boolean			isReset	= false;
-		private DVector			currentReactionSets;
 		private long			birthTime = System.currentTimeMillis();
+		private PairList<CompiledZMask,List<Faction.FReactionItem>> currentReactionSets;
 
 		private final CMap<String, Long>				timers	= new SHashtable<String, Long>();
 		private final CMap<String, int[]>				counters= new SHashtable<String, int[]>();
@@ -2803,7 +2804,7 @@ public class DefaultFaction implements Faction, MsgListener
 				lastUpdated=System.currentTimeMillis();
 				myEffects=new Ability[0];
 				myBehaviors=new Behavior[0];
-				currentReactionSets = new DVector(2);
+				currentReactionSets = new PairVector<CompiledZMask,List<Faction.FReactionItem>>();
 				lightPresenceAbilities = new Ability[0];
 				currentRange = null;
 				erroredOut=false;
@@ -2878,7 +2879,6 @@ public class DefaultFaction implements Faction, MsgListener
 			nextChangeTime.put(event, Long.valueOf(time));
 		}
 
-		@SuppressWarnings("unchecked")
 		@Override
 		public void setValue(final int newValue)
 		{
@@ -2899,7 +2899,7 @@ public class DefaultFaction implements Faction, MsgListener
 					else
 					{
 						erroredOut=false;
-						currentReactionSets=new DVector(2);
+						currentReactionSets=new PairVector<CompiledZMask,List<Faction.FReactionItem>>();
 						for(final Enumeration<Faction.FReactionItem> e=reactions();e.hasMoreElements();)
 						{
 							Faction.FReactionItem react = e.nextElement();
@@ -2909,7 +2909,7 @@ public class DefaultFaction implements Faction, MsgListener
 							Vector<Faction.FReactionItem> reactSet=null;
 							for(int r=0;r<currentReactionSets.size();r++)
 							{
-								reactSet=(Vector<Faction.FReactionItem>)currentReactionSets.elementAt(r,2);
+								reactSet=(Vector<Faction.FReactionItem>)currentReactionSets.get(r).second;
 								sampleReact=reactSet.firstElement();
 								if(react.presentMOBMask().trim().equalsIgnoreCase(sampleReact.presentMOBMask().trim()))
 								{
@@ -2918,7 +2918,7 @@ public class DefaultFaction implements Faction, MsgListener
 								}
 							}
 							if(react!=null)
-								currentReactionSets.addElement(react.compiledPresentMOBMask(),new XVector<Faction.FReactionItem>(react));
+								currentReactionSets.add(react.compiledPresentMOBMask(),new XVector<Faction.FReactionItem>(react));
 						}
 						//noReactions=currentReactionSets.size()==0;
 					}
@@ -2966,24 +2966,23 @@ public class DefaultFaction implements Faction, MsgListener
 			return lastDataChange[0] > lastUpdated;
 		}
 
-		@SuppressWarnings("unchecked")
 		private Ability setPresenceReaction(final MOB M, final Physical myHost)
 		{
 			if((!CMLib.flags().canBeSeenBy(myHost, M))
 			&&(!CMLib.flags().canBeHeardMovingBy(myHost,M)))
 				return null;
-			if((M.amUltimatelyFollowing()!=null)
-			&&(!M.amUltimatelyFollowing().isMonster()))
+			if((M.amFollowing()!=null)
+			&&(!M.getGroupLeader().isMonster()))
 				return null;
-			Vector<String> myReactions=null;
+			List<String> myReactions=null;
 			List<Faction.FReactionItem> tempReactSet=null;
 			for(int d=0;d<currentReactionSets.size();d++)
 			{
-				if(CMLib.masking().maskCheck((MaskingLibrary.CompiledZMask)currentReactionSets.elementAt(d,1),M,true))
+				if(CMLib.masking().maskCheck(currentReactionSets.get(d).first,M,true))
 				{
 					if(myReactions==null)
 						myReactions=new Vector<String>();
-					tempReactSet=(List<Faction.FReactionItem>)currentReactionSets.elementAt(d,2);
+					tempReactSet=currentReactionSets.get(d).second;
 					for(final Faction.FReactionItem reactionItem : tempReactSet)
 						myReactions.add(reactionItem.reactionObjectID()+"="+reactionItem.parameters(myHost.Name()));
 				}
@@ -3484,10 +3483,10 @@ public class DefaultFaction implements Faction, MsgListener
 				switch(flag)
 				{
 				case ACODE:
-					type=CMParms.indexOfIgnoreCase(Ability.ACODE_DESCS, strflag);
+					type=CMParms.indexOfIgnoreCase(Ability.ACODE.DESCS, strflag);
 					break;
 				case DOMAIN:
-					domain=CMParms.indexOfIgnoreCase(Ability.DOMAIN_DESCS, strflag);
+					domain=CMParms.indexOfIgnoreCase(Ability.DOMAIN.DESCS, strflag);
 					break;
 				case FLAG:
 				{

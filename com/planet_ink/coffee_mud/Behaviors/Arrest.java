@@ -509,6 +509,16 @@ public class Arrest extends StdBehavior implements LegalBehavior
 		return false;
 	}
 
+	protected boolean isJailRoom(final Area myArea, final Room room)
+	{
+		if(!theLawIsEnabled())
+			return false;
+		final Law laws=getLaws(myArea,false);
+		if((laws!=null)&&(room!=null))
+			return getRooms(myArea,laws.jailRooms()).contains(room);
+		return false;
+	}
+
 	@Override
 	public boolean isJailRoom(final Area myArea, final List<Room> jails)
 	{
@@ -685,7 +695,14 @@ public class Arrest extends StdBehavior implements LegalBehavior
 					}
 				}
 				if(lawprops.isEmpty())
-					lawprops.load(new ByteArrayInputStream(new CMFile(Resources.makeFileResourceName(lawName),null).raw()));
+				{
+					for(final CMFile F : CMFile.getExistingExtendedFiles(Resources.makeFileResourceName(lawName),null, CMFile.FLAG_FORCEALLOW))
+					{
+						final Properties props=new Properties();
+						props.load(new ByteArrayInputStream(F.raw()));
+						lawprops.putAll(props);
+					}
+				}
 			}
 			catch(final IOException e)
 			{
@@ -2424,23 +2441,25 @@ public class Arrest extends StdBehavior implements LegalBehavior
 				else
 					name=msg.sourceMessage().substring(x+16).trim();
 				if(name.length()>0)
-				for(final LegalWarrant W : laws.warrants())
 				{
-					if((W.criminal()!=null)&&(CMLib.english().containsString(W.criminal().Name(),name)))
+					for(final LegalWarrant W : laws.warrants())
 					{
-						final Ability A=W.criminal().fetchEffect("Prisoner");
-						if(A!=null)
-							A.unInvoke();
-						if(W.jail()!=W.criminal().location())
+						if((W.criminal()!=null)&&(CMLib.english().containsString(W.criminal().Name(),name)))
 						{
-							if(W.arrestingOfficer()!=null)
-								dismissOfficer(W.arrestingOfficer());
-							laws.warrants().remove(W);
-						}
-						else
-						{
-							W.setCrime("pardoned");
-							W.setOffenses(0);
+							final Ability A=W.criminal().fetchEffect("Prisoner");
+							if(A!=null)
+								A.unInvoke();
+							if(W.jail()!=W.criminal().location())
+							{
+								if(W.arrestingOfficer()!=null)
+									dismissOfficer(W.arrestingOfficer());
+								laws.warrants().remove(W);
+							}
+							else
+							{
+								W.setCrime("pardoned");
+								W.setOffenses(0);
+							}
 						}
 					}
 				}
@@ -2458,8 +2477,8 @@ public class Arrest extends StdBehavior implements LegalBehavior
 			this.fillOutMurderWarrant(laws, myArea, criminal, msg.source());
 			if(criminal.isMonster() && (isAnyKindOfOfficer(laws, msg.source())))
 			{
-				final MOB leaderM = criminal.amUltimatelyFollowing();
-				if((leaderM != null) && (leaderM != criminal) && (!leaderM.isMonster()))
+				final MOB leaderM = criminal.getGroupLeader();
+				if((leaderM != criminal) && (!leaderM.isMonster()))
 					this.fillOutMurderWarrant(laws, myArea, leaderM, msg.source());
 			}
 			return;
@@ -3931,7 +3950,10 @@ public class Arrest extends StdBehavior implements LegalBehavior
 										unCuff(W.criminal());
 										final Ability pA=W.criminal().fetchEffect("Prisoner");
 										if(pA!=null)
+										{
+											pA.unInvoke();
 											W.criminal().delEffect(pA);
+										}
 										CMLib.commands().postSay(W.arrestingOfficer(),W.criminal(),L("Don't worry, you can always recall."),false,false);
 										dismissOfficer(W.arrestingOfficer());
 										W.setArrestingOfficer(myArea,null);
@@ -3948,7 +3970,10 @@ public class Arrest extends StdBehavior implements LegalBehavior
 								W.setTravelAttemptTime(0);
 								final Ability pA=W.criminal().fetchEffect("Prisoner");
 								if(pA!=null)
+								{
+									pA.unInvoke();
 									W.criminal().delEffect(pA);
+								}
 								fileAllWarrants(laws,W,W.criminal());
 								unCuff(W.criminal());
 								if(officer!=null)
@@ -3966,7 +3991,10 @@ public class Arrest extends StdBehavior implements LegalBehavior
 						W.setTravelAttemptTime(0);
 						final Ability pA=W.criminal().fetchEffect("Prisoner");
 						if(pA!=null)
+						{
+							pA.unInvoke();
 							W.criminal().delEffect(pA);
+						}
 						fileAllWarrants(laws,W,W.criminal());
 						unCuff(W.criminal());
 						if(W.arrestingOfficer()!=null)
@@ -3980,15 +4008,22 @@ public class Arrest extends StdBehavior implements LegalBehavior
 				&&(W.jail()!=null)
 				&&(!W.criminal().amDead())
 				&&(!W.jail().isInhabitant(W.criminal()))
-				&&(CMLib.flags().isInTheGame(W.criminal(), false)))
+				&&(CMLib.flags().isInTheGame(W.criminal(), false))
+				&&(laws.basicCrimes().containsKey("PRISONBREAK")))
 				{
-					W.setState(Law.STATE_SEEKING);
-					W.setTravelAttemptTime(0);
-					final Ability A=W.criminal().fetchEffect("Prisoner");
-					if(A!=null)
-						W.criminal().delEffect(A);
-					if(laws.basicCrimes().containsKey("PRISONBREAK"))
+					final Room criminR = W.criminal().location();
+					if(isJailRoom(myArea, criminR))
+						W.setJail(criminR);
+					else
 					{
+						W.setState(Law.STATE_SEEKING);
+						W.setTravelAttemptTime(0);
+						final Ability A=W.criminal().fetchEffect("Prisoner");
+						if(A!=null)
+						{
+							A.unInvoke();
+							W.criminal().delEffect(A);
+						}
 						final String[] info=laws.basicCrimes().get("PRISONBREAK");
 						fillOutWarrant(W.criminal(),
 										laws,
