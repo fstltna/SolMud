@@ -97,7 +97,7 @@ ss	BURP <T-NAME>	You burp loudly to <T-HIM-HER> in response.	<S-NAME> burps loud
 ss	BURP SELF	You burp at yourself.	<S-NAME> burps at <S-HIM-HERSELF>.  What a sick sight.			burp.wav		
 ov	BUTT <T-NAME>	You reach down and cup one of <T-NAME>`s buttcheeks.	<S-NAME> reaches down and cups one of <T-NAME>`s buttcheeks.	<S-NAME> reaches down and cups one of your buttcheeks.	Butt who?			
 ov	BUTTFUCK <I-NAME>	You buttfuck <T-NAME>.	<S-NAME> buttfucks <T-NAMESELF>.	<S-NAME> buttfucks you.	Buttfuck who?	fucking.wav		
-ov	BUTTFUCK <T-NAME>	You buttfuck <T-NAME>.	<S-NAME> buttfucks <T-NAMESELF>.	<S-NAME> buttfucks you.	Buttfuck who?	fucking.wav		TARG_CONFIRM
+ov	BUTTFUCK <T-NAME>	You buttfuck <T-NAME>.	<S-NAME> buttfucks <T-NAMESELF>.	<S-NAME> buttfucks you.	Buttfuck who?	fucking.wav		
 ov	BUTTFUCK <V-NAME>	You buttfuck <T-NAME>.	<S-NAME> buttfucks <T-NAMESELF>.	<S-NAME> buttfucks you.	Buttfuck who?	fucking.wav		
 ss	CACKLE	You cackle gleefully.	<S-NAME> throws back <S-HIS-HER> head and cackles with insane glee!			cackle.wav		
 ss	CACKLE <T-NAME>	You cackle gleefully at <T-NAMESELF>	<S-NAME> cackles gleefully at <T-NAMESELF>.	<S-NAME> cackles gleefully at you.  Better keep your distance from <S-HIM-HER>.	You can't find a friend to cackle with.	cackle.wav		
@@ -207,7 +207,7 @@ mo	EYEPOKE	You get ready to poke someone in the eye.
 mo	EYEPOKE <T-NAME>	You poke <T-NAME> in the eye! Squishy!	<S-NAME> pokes <T-NAME> in the eye. That must`ve hurt.	<S-NAME> pokes you in the eye! OWWIE!!!	They aren`t around to poke. Sorry.			
 mo	EYEPOKE SELF	You jam your thumb into your eye. Was that fun?						
 ov	FACEFUCK <I-NAME>	You facefuck <T-NAME>.	<S-NAME> facefucks <T-NAMESELF>.	<S-NAME> facefucks you.	Facefuck who?	sucking.wav		
-ov	FACEFUCK <T-NAME>	You facefuck <T-NAME>.	<S-NAME> facefucks <T-NAMESELF>.	<S-NAME> facefucks you.	Facefuck who?	sucking.wav		TARG_CONFIRM
+ov	FACEFUCK <T-NAME>	You facefuck <T-NAME>.	<S-NAME> facefucks <T-NAMESELF>.	<S-NAME> facefucks you.	Facefuck who?	sucking.wav		
 ov	FACEFUCK <V-NAME>	You facefuck <T-NAME>.	<S-NAME> facefucks <T-NAMESELF>.	<S-NAME> facefucks you.	Facefuck who?	sucking.wav		
 mv	FACEPALM	You put your hand over your face and shake your head slowly...What a dork!						
 oo	FAINT	You faint.						
@@ -666,6 +666,9 @@ mo	STROKE SELF	You are about to do something you'd rather not be caught doing.
 oo	STRUT	Strut your stuff.						
 oo	STRUT <T-NAME>	You strut to get <T-HIS-HER> attention.	<S-NAME> struts, hoping to get <T-NAMESELF>'s attention.	<S-NAME> struts, hoping to get your attention.	You don't see an audience.			
 oo	STRUT SELF	You strut to yourself, lost in your own world.						
+ov	SUCK <I-NAME>	You suck <T-NAME> off.	<S-NAME> sucks <T-NAMESELF> off.	<S-NAME> sucks you off.	suck who?	sucking.wav		
+ov	SUCK <T-NAME>	You suck <T-NAME> off.	<S-NAME> sucks <T-NAMESELF> off.	<S-NAME> sucks you off.	suck who?	sucking.wav		
+ov	SUCK <V-NAME>	You suck <T-NAME> off.	<S-NAME> sucks <T-NAMESELF> off.	<S-NAME> sucks you off.	suck who?	sucking.wav		
 mo	SULK	You sulk.						
 mo	SUPPORT	You fully support the plan.						
 ot	SUPPORT <T-NAME>	You hug <T-HIM-HER> supportively and smile.	<S-NAME> hugs <T-NAMESELF> supportively and smiles.	<S-NAME> hugs you supportively and smiles.	Sorry, friend, I can't see that person here.			

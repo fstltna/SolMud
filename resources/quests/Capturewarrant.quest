@@ -113,7 +113,7 @@ give "a quest point" "$9"
 endif
 if EVAL('9000' != '') AND EVAL('10000' > 0)
 mpoload 10000
-give 10000 "$9"
+drop 10000
 endif
 mpquestwin $9 *
 QUESTCHAT Capture bounty is fulfilled, reward handed out.

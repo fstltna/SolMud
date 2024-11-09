@@ -179,7 +179,7 @@ mpforce '${2 *}' GIVE "a quest point" $n
 endif
 if EVAL('15000' != '') AND EVAL('15000' > 0)
 mpforce '${2 *}' mpoload 15000
-mpforce '${2 *}' GIVE "15000" $n
+mpforce '${2 *}' DROP "15000"
 endif
 mpquestwin $n *
 mpecho Contract complete, we'll take it from here.

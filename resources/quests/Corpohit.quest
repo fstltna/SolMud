@@ -108,7 +108,7 @@ if EVAL('YES' == 'YES') AND !QUESTWINNER($n *)
 endif
 if EVAL('15000' != '') AND EVAL('15000' > 0)
 mpoload 15000
-give 15000 "$n"
+drop 15000
 endif
 mpoload fromfile Corpohit_rewarditems.xml any
 if EVAL('$b' != '')

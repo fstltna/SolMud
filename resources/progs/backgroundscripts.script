@@ -9,6 +9,7 @@ endif
 ~
 
 social_prog mate
+mpcallfunc blessening_checks
 if hastattoo($n mating) or hastattoo($t mating)
 else
 mptattoo $t '1 mating'
@@ -73,6 +74,7 @@ endif
 ~
 
 social_prog buttfuck
+mpcallfunc blessening_checks
 if hastattoo($n mating) or hastattoo($t mating)
 else
 mptattoo $t '1 mating'
@@ -137,6 +139,7 @@ endif
 ~
 
 social_prog facefuck
+mpcallfunc blessening_checks
 if hastattoo($n mating) or hastattoo($t mating)
 else
 mptattoo $t '1 mating'
@@ -189,6 +192,7 @@ endif
 ~
 
 social_prog suck
+mpcallfunc blessening_checks
 if hastattoo($n mating) or hastattoo($t mating)
 else
 mptattoo $t '1 mating'
@@ -751,5 +755,44 @@ else
 mpechoat $n What? You don't have two 'weapon's!
 endif
 return cancel
+endif
+~
+
+entry_prog 15
+  ## mobs spank you if your ass is big.
+  mploadvar $n asssize
+  if var($n asssize < 3)
+    return 
+  endif
+  for $0 = 1 to '$%NUMMOBSROOM(*)%'
+    if islike('$%ROOMMOB($0)%' -RACECAT +UNDEAD +HUMANOID) and isnpc('$%ROOMMOB($0)%')
+      mpforce '$%ROOMMOB($0)%' spank $n
+    endif
+  next
+~
+
+social_prog spank
+mpcallfunc blessening_checks
+~
+
+function_prog blessening_checks
+##target is self
+if isname('$n' '$t') 
+  return
+endif
+##target is not witnesser
+if !isname('$t' '$i') 
+  return
+endif
+##effects from spank
+##target is witnesser
+if isname('$t' '$i')
+  ##target is celestial
+  if racecat($t == Celestial)
+    mpforce $n mpcastext prayer_divineluck $n
+  endif
+  if racecat($t == Demon)
+    mpcastext prayer_demonshield $t $n
+  endif
 endif
 ~

@@ -3,13 +3,13 @@ mpechoat $n .___________________________._______._____________.
 mpechoat $n |         Resource          | Base  |    Demand   |
 mpechoat $n |---------------------------*-------*-------------|
 mpechoat $n |                           |  MC   |  PC S- NML  |
-mpechoat $n | nuclear fissile material  | 8/12  |   4  2  2   |
+mpechoat $n | nuclear fissile material  | 10/16 |   4  2  2   |
 mpechoat $n | refined oil               | 4/8   |   2  1  2   |
 mpechoat $n | crude oil                 | 2/3   |   1  -  0   |
 mpechoat $n | sex toys                  | 2/4   |   1  3  2   |
 mpechoat $n | textiles                  | 2/3   |   0  0  2   |
 mpechoat $n | bundled drugs             | 2/4   |   2  3  1   |
-mpechoat $n | medical supplies          | 3/6   |   -  2  3   |
+mpechoat $n | medical supplies          | 7/10  |   -  2  3   |
 mpechoat $n | weapon parts              | 2/4   |   0  2  3   |
 mpechoat $n | synthetic meats           | 1/2   |   -  -  2   |
 mpechoat $n | meats                     | 2/4   |   3  3  0   |
@@ -17,7 +17,7 @@ mpechoat $n | raw materials and metals  | 2/4   |   2  0  0   |
 mpechoat $n | construction materials    | 4/6   |   0  0  2   |
 mpechoat $n | cum                       | 1/2   |   -  3  0   |
 mpechoat $n | fish                      | 1/2   |   -  -  0   |
-mpechoat $n | luxury goods              | 7/10  |   -  0  4   |
+mpechoat $n | luxury goods              | 9/13  |   -  1  4   |
 mpechoat $n | birth control             | 2/3   |   -  -  2   |
 mpechoat $n | condoms                   | 1/2   |   -  -  2   |
 mpechoat $n |---------------------------*-------*-------------|
@@ -171,9 +171,15 @@ mpforce $t drop "A secure metal crate of luxury goods"
 else
 mpjunk A secure metal crate of luxury goods
 if islike($n -anyclass +sailor +pirate +artisan)
-mpoload 10 megacredit
+mpoload 13 megacredit
 mpforce $t give "$b" $n
 mpforce $t drop "$b"
+if inarea($i == sector minus)
+say Cool, here is a lil bonus.
+mpoload 1 megacredit
+mpforce $t give "$b" $n
+mpforce $t drop "$b"
+endif
 if inarea($i == no mans land)
 say We always need more of those sort of supply here, so here is a bonus.
 mpoload 4 megacredit
@@ -181,7 +187,7 @@ mpforce $t give "$b" $n
 mpforce $t drop "$b"
 endif
 else
-mpoload 7 megacredit
+mpoload 9 megacredit
 mpforce $t give "$b" $n
 mpforce $t drop "$b"
 endif
@@ -350,7 +356,7 @@ mpforce $t drop "A large white crate of medical supplies"
 else
 mpjunk A large white crate of medical supplies
 if islike($n -anyclass +sailor +pirate +artisan)
-mpoload 6 megacredit
+mpoload 10 megacredit
 mpforce $t give "$b" $n
 mpforce $t drop "$b"
 if inarea($i == sector minus)
@@ -366,7 +372,7 @@ mpforce $t give "$b" $n
 mpforce $t drop "$b"
 endif
 else
-mpoload 4 megacredit
+mpoload 7 megacredit
 mpforce $t give "$b" $n
 mpforce $t drop "$b"
 endif
@@ -551,7 +557,7 @@ endif
 give_prog p a barrel of nuclear fissile material
 mpjunk a barrel of nuclear fissile material
 if islike($n -anyclass +sailor +pirate +artisan)
-mpoload 12 megacredit
+mpoload 16 megacredit
 mpforce $t give "$b" $n
 mpforce $t drop "$b"
 if inarea($i == Phantom City)
@@ -573,7 +579,7 @@ mpforce $t give "$b" $n
 mpforce $t drop "$b"
 endif
 else
-mpoload 8 megacredit
+mpoload 10 megacredit
 mpforce $t give "$b" $n
 mpforce $t drop "$b"
 endif
