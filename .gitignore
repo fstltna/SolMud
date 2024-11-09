@@ -1,7 +1,6 @@
 
 *.class
 mud.log
-mud.log
 mud1.log
 mud2.log
 mud3.log
@@ -11,4 +10,4 @@ mud6.log
 mud7.log
 mud8.log
 mud9.log
-coffeemud.ini
+CoffeemudScreen.log
