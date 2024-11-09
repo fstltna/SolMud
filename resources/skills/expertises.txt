@@ -668,19 +668,19 @@ HELP_=<EXPERTISE>The ability to cast death lore-domain prayers at a higher power
 WARDING@x1=Divine Warding @x2,10,LEVEL|LOWCOST,-SKILLFLAG +WARDING,-LEVEL +>={29+(5*@x1)},+CON {12+@x1},0,1,0,0,0
 HELP_=<EXPERTISE>The ability to cast warding-domain prayers at a higher power level, producing longer and more malicious/beneficial magic, while also reducing mana cost.
 
-HEALING@x1=Healing @x2,10,LEVEL|LOWCOST,-SKILLFLAG +HEALING,-LEVEL +>={27+(5*@x1)},+CHA {12+@x1},0,1,0,0,0
+HEALING@x1=Healing @x2,10,LEVEL|LOWCOST,-SKILLFLAG +HEALING,-LEVEL +>={27+(5*@x1)},+WIS {12+@x1},0,1,0,0,0
 HELP_=<EXPERTISE>The ability to cast healing-domain prayers at a higher power level, producing longer and more malicious/beneficial magic, while also reducing mana cost.
 
 VEXING@x1=Vexing @x2,10,LEVEL|LOWCOST,-SKILLFLAG +VEXING,-LEVEL +>={27+(5*@x1)},+WIS {15+@x1},0,1,0,0,0
 HELP_=<EXPERTISE>The ability to cast vexing-domain prayers at a higher power level, producing longer and more malicious/beneficial magic, while also reducing mana cost.
 
-HOLYPROT@x1=Protecting @x2,10,LEVEL|LOWCOST,-SKILLFLAG +HOLY_PROTECTION,-LEVEL +>={27+(5*@x1)},+CHA {12+@x1},0,1,0,0,0
+HOLYPROT@x1=Protecting @x2,10,LEVEL|LOWCOST,-SKILLFLAG +HOLY_PROTECTION,-LEVEL +>={27+(5*@x1)},+WIS {12+@x1},0,1,0,0,0
 HELP_=<EXPERTISE>The ability to cast holy protection-domain prayers at a higher power level, producing longer and more malicious/beneficial magic, while also reducing mana cost.
 
 CORRUPTION@x1=Corrupting @x2,10,LEVEL|LOWCOST,-SKILLFLAG +CORRUPTION,-LEVEL +>={27+(5*@x1)},+STR {12+@x1},0,1,0,0,0
 HELP_=<EXPERTISE>The ability to cast corruption-domain prayers at a higher power level, producing longer and more malicious/beneficial magic, while also reducing mana cost.
 
-RESTORE@x1=Restoring @x2,10,LEVEL|LOWCOST,-SKILLFLAG +RESTORATION,-LEVEL +>={28+(5*@x1)},+CHA {12+@x1},0,1,0,0,0
+RESTORE@x1=Restoring @x2,10,LEVEL|LOWCOST,-SKILLFLAG +RESTORATION,-LEVEL +>={28+(5*@x1)},+WIS {12+@x1},0,1,0,0,0
 HELP_=<EXPERTISE>The ability to cast restoration-domain prayers at a higher power level, producing longer and more malicious/beneficial magic, while also reducing mana cost.
 
 BLESSING@x1=Blessing @x2,10,LEVEL|LOWCOST,-SKILLFLAG +BLESSING,-LEVEL +>={25+(5*@x1)},+WIS {15+@x1},0,1,0,0,0
