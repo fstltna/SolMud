@@ -1,7 +1,7 @@
 cast_prog p cyberinstall
 mpechoat $n ^#111Target is $t.^N
 ##prompts
-mpprompt $n itemval ^rPlease enter the full name of the cybernetic item to install. Enter nothing to cancel.^N
+mpprompt $n itemval ^rPlease enter the name of the cybernetic item to install. Enter nothing to cancel.^N
 mpprompt $n locationval ^rPlease enter the location this item will be installed (even if it can not be installed in multiple locations. ex: ears, torso.) Enter nothing to cancel.^N
 mpchoose $n INVISIBILITY YN N Is this an invisible cybernetic? For things such as subdermal implants, Will need detect invisible to see and manipulate. (Y/N)
 mpchoose $n DECISION YN N Are you certain you wrote those correctly? (Y/N)
@@ -28,18 +28,18 @@ mpechoat $n Canceled.
 endif
 else
 ## N
-mpechoat $ Canceled.
+mpechoat $n Canceled.
 endif
 ~
 
 function_prog installationtime
-mpunaffect '$<$n itemval>' Prop_Wearzapper
-mpforce $n give '$<$n itemval>' $t
-mpforce $t wear '$<$n itemval>' on $<$n locationval>
+mpforce $n give $<$n itemval> $t
+mpforce $t mpunaffect '$<$n itemval>' Prop_Wearzapper
+mpforce $t mpaffect Prop_WearZapper '$<$n itemval>' -NAME "+$t"
+mpforce $t wear $<$n itemval> on $<$n locationval>
 if  VAR($n INVISIBILITY == 'Y')
 mpforce $t mpgset '$<$n itemval>' disposition +ISINVISIBLE
 else
 mpforce $t mpgset '$<$n itemval>' disposition ''
 endif
-mpforce $t mpaffect Prop_WearZapper '$<$n itemval>' -RACE
 ~

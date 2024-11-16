@@ -656,7 +656,7 @@ HELP_=<EXPERTISE>The ability to magically generate higher level ghouls and ghast
 TORTURE@x1=Torturing @x2,10,LEVEL,-SKILL +Torturesmithing,-LEVEL +>={10+(7*@x1)},+DEX {12+@x1} ,0,1,0,0,0
 HELP_=<EXPERTISE>The ability to gain more experience from torturing others.
 
-SPIRITLORE@x1=Spirit Lore @x2,10,X1,-SKILL +Prayer_AnimateSpectre +Prayer_AnimateGhost,-LEVEL +>={25+(6*@x1)},+DEX {12+@x1},0,1,0,0,0
+SPIRITLORE@x1=Spirit Lore @x2,10,X1,-SKILL +Prayer_AnimateSpectre +Prayer_AnimateGhost +Prayer_AnimateShadow,-LEVEL +>={25+(6*@x1)},+DEX {12+@x1},0,1,0,0,0
 HELP_=<EXPERTISE>The ability to magically generate higher level spectres and ghosts.
 
 VAMPIRELORE@x1=Vampire Lore @x2,10,X1,-SKILL +Prayer_AnimateVampire,-LEVEL +>={27+(6*@x1)},+DEX {12+@x1},0,1,0,0,0

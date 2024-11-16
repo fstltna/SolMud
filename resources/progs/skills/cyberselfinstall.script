@@ -1,0 +1,39 @@
+once_prog
+##prompts
+mpprompt $i itemval ^rPlease enter the name of the cybernetic item to install. Enter nothing to cancel.^N
+mpprompt $i locationval ^rPlease enter the location this item will be installed (even if it can not be installed in multiple locations. ex: ears, torso.) Enter nothing to cancel.^N
+mpchoose $i INVISIBILITY YN N Is this an invisible cybernetic? For things such as subdermal implants, Will need detect invisible to see and manipulate. (Y/N)
+mpchoose $i DECISION YN N Are you certain you wrote those correctly? (Y/N)
+if  VAR($i DECISION == 'Y')
+    ## checks for yes
+    ## checks if entered blank
+    if  VAR($i itemval != '')
+        if  VAR($i locationval != '')
+            mpcallfunc installationtime
+        else
+            ## blank locationval
+            mpechoat $i Canceled.
+            return cancel
+        endif
+    else
+        ## Blank itemval
+        mpechoat $i Canceled.
+        return cancel
+    endif
+else
+    mpechoat $i Canceled.
+    return cancel
+endif
+ ~
+
+function_prog installationtime
+mpunaffect '$<$i itemval>' Prop_Wearzapper
+mpaffect Prop_WearZapper '$<$i itemval>' -NAME "+$i"
+mpforce $i wear $<$i itemval> on $<$i locationval>
+if  VAR($i INVISIBILITY == 'Y')
+    mpgset '$<$i itemval>' disposition +ISINVISIBLE
+else
+    mpgset '$<$i itemval>' disposition ''
+endif
+return cancel
+~

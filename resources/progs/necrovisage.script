@@ -6,19 +6,23 @@ if var($n visageactive != 1)
     mpaffect Prop_StatAdjuster '$n' CHA=30
     mpalarm 2 mpunaffect '$n' Prop_StatAdjuster
     for $0 = 1 to '$%NUMMOBSROOM(*)%'
-    if islike('$%ROOMMOB($0)%' -RACECAT +UNDEAD)
+        if islike('$%ROOMMOB($0)%' -RACECAT +UNDEAD)
             mpechoat '$%ROOMMOB($0)%' ^bYou feel an unholy chill up your spine. You find your body washed away with negative energy.^N
-            mpcastext skill_controlundead '$%ROOMMOB($0)%' $n
+            if !affected('$%ROOMMOB($0)%' skill_controlundead) and isnpc($%ROOMMOB($0)%)
+                mpaffect skill_controlundead '$%ROOMMOB($0)%' '$n'
+                mpforce '$%ROOMMOB($0)%' follow $n
+            endif
+            mpcastext prayer_healundead '$%ROOMMOB($0)%' '$%ROOMMOB($0)%'
             mpaffect Necromancer_VampiricRegeneration '$%ROOMMOB($0)%' 15TICKS
         else
             mpechoat '$%ROOMMOB($0)%' ^bYou feel an unholy chill up your spine. You find yourself withering away by negative energy.^N
-    endif
-    mpcastext prayer_harm '$%ROOMMOB($0)%' '$%ROOMMOB($0)%'
+            mpcastext prayer_harm '$%ROOMMOB($0)%' '$%ROOMMOB($0)%'
+        endif
     next
 else
-mpechoat $n You need to wait for your visage to recharge.
-mpalarm 30 mpsetvar $n visageactive 0
-mpalarm 30 mpecho ^b$n's visage restores it's unholy chill.^N
+    mpechoat $n You need to wait for your visage to recharge.
+    mpalarm 30 mpsetvar $n visageactive 0
+    mpalarm 30 mpecho ^b$n's visage restores it's unholy chill.^N
 endif
 return cancel
 ~

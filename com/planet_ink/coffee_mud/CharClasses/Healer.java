@@ -220,6 +220,7 @@ public class Healer extends Cleric
 		return level;
 	}
 
+/* healing aura disable
 	@Override
 	public boolean tick(final Tickable ticking, final int tickID)
 	{
@@ -275,7 +276,7 @@ public class Healer extends Cleric
 		super.level(mob, gainedAbilityIDs);
 		affectHealingAura(mob);
 	}
-
+*/
 	private final String[] raceRequiredList=new String[]{
 		"Human","Humanoid","Dwarf","Elf","HalfElf","Fairy-kin","Svirfneblin",
 		"LizardMan","Aarakocran","Merfolk","Faerie","Elf-kin","-Duergar","-Drow"
@@ -311,6 +312,7 @@ public class Healer extends Cleric
 		return L("Always fumbles evil prayers.  Qualifies and receives good prayers.  Using non-aligned prayers introduces failure chance.");
 	}
 
+/*
 	@Override
 	public void executeMsg(final Environmental myHost, final CMMsg msg)
 	{
@@ -332,6 +334,7 @@ public class Healer extends Cleric
 				msg.setValue((int)Math.round(CMath.mul(msg.value(),2.0)));
 		}
 	}
+*/
 
 	@Override
 	public List<Item> outfit(final MOB myChar)

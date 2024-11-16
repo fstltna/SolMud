@@ -149,16 +149,16 @@ MPSETVAR $t HitsCalc $%MATH($<$t HitsCalc> - $<$n randhealamt>)%
 if var($n cumtracker <= 0)
 	if sex($n == M) or sex($n == O) or sex($n == U)
 		if sex($t == F) or sex($t == A) or sex($t == H)
-			mpecho ^#401*SPLURT* $n $<$n actionwordlist>.$%RAND0NUM(5)% swallows a good ($<$n randhealamt>) ^wcummy load^#401 from $t's $<$t genitallist>.$%RAND0NUM(5)%! *SPLAT*
+			mpecho ^#401*SPLURT* $n swallows a good ($<$n randhealamt>) ^wcummy load^#401 from $t's $<$t genitallist>.$%RAND0NUM(5)%! *SPLAT*
 		else
-			mpecho ^#401*SPLURT* $n $<$n actionwordlist>.$%RAND0NUM(5)% swallows a good ($<$n randhealamt>) ^wcummy load^#401 from $t's $<$t genitallist>.$%RAND0NUM(5)%! *SPLAT*
+			mpecho ^#401*SPLURT* $n swallows a good ($<$n randhealamt>) ^wcummy load^#401 from $t's $<$t genitallist>.$%RAND0NUM(5)%! *SPLAT*
 		endif
 	endif
 	if sex($n == F) or sex($n == A) or sex($n == H)
 		if sex($t == F) or sex($t == A) or sex($t == H)
-			mpecho ^#401*SPLURT* $n $<$n actionwordlist>.$%RAND0NUM(5)% ^Wslurps^#401 a good amount ($<$n randhealamt>) from $t's $<$t genitallist>.$%RAND0NUM(5)%! *SPLAT*
+			mpecho ^#401*SPLURT* $n ^Wslurps^#401 a good amount ($<$n randhealamt>) from $t's $<$t genitallist>.$%RAND0NUM(5)%! *SPLAT*
 		else
-			mpecho ^#401*SPLURT* $n $<$n actionwordlist>.$%RAND0NUM(5)% swallows a good ($<$n randhealamt>) ^wcummy load^#401 from $t's $<$t genitallist>.$%RAND0NUM(5)%! *SPLAT*
+			mpecho ^#401*SPLURT* $n swallows a good ($<$n randhealamt>) ^wcummy load^#401 from $t's $<$t genitallist>.$%RAND0NUM(5)%! *SPLAT*
 		endif
 	endif
 	mpforce $t mate $n

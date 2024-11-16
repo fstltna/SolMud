@@ -373,18 +373,9 @@ endif
 ~
 
 delay_prog 1300
-if affected($i chant_strikebarren)
-    if affected($i Prop_Permabreed)
-      mpunaffect $i Prop_Permabreed
-      mpunaffect $i chant_fertility
-      mpunaffect $i chant_crossbreed
-    endif
-  else
-    if affected($i Prop_Permabreed)
-      else
-        mpechoat $i You feel like your fertility is high again.
-        mpaffect Prop_Permabreed $i
-      endif
+if !affected($i Prop_Permabreed) and !affected($i chant_strikebarren)
+  mpechoat $i You feel like your fertility is high again.
+  mpaffect Prop_Permabreed $i
 endif
 ~
 
@@ -680,12 +671,12 @@ if islike($n '-LOCATION +ROOMSTR(water) +ROOMSTR(ocean) +ROOMSTR(river) +ROOMSTR
   mpsetvar $n dirtystate -5
   mpsetvar $n cummystate -5
   if var($n dirtystate < 0)
-  mpsetvar $n dirtystate 0
-  mpechoat $n Your $<$n grointext> can't get cleaner than this.
-  endif
+    mpsetvar $n dirtystate 0
+    mpechoat $n Your $<$n grointext> can't get cleaner than this.
+    endif
   if var($n cummystate < 0)
-  mpsetvar $n cummystate 0
-  mpechoat $n Your $<$n grointext> can't get any less cummier.
+    mpsetvar $n cummystate 0
+    mpechoat $n Your $<$n grointext> can't get any less cummier.
   endif
   mpechoat $n You wash ^w(5)^N yourself and your $<$n grointext>, it would be easier in a shower but it works.%0D^r(Dirt: $<$n dirtystate>)^N%0D^r(Cum: $<$n cummystate>)^N
   mpsavevar $n dirtystate
@@ -742,31 +733,36 @@ endif
 #futa genital toggle
 cnclmsg_prog huh p toggle genitals
 if sex($n == U) or sex($n == H)
-if sex($n == H)
-  mpgset $n GENDER U
-  mpecho $n cock(s) $s penis, ready to slam!
+  if sex($n == H)
+    mpgset $n GENDER U
+    mpecho $n cock(s) $s penis, ready to slam!
+  else
+    if sex($n == U)
+      mpgset $n GENDER H
+      mpecho $n spread(s) $s pussylips, ready to bounce!
+    endif
+  endif
 else
-if sex($n == U)
-  mpgset $n GENDER H
-  mpecho $n spread(s) $s pussylips, ready to bounce!
-endif
-endif
-else
-mpechoat $n What? You don't have two 'weapon's!
-endif
+  mpechoat $n What? You don't have two 'weapon's!
 return cancel
 endif
 ~
 
-entry_prog 15
+entry_prog 5
   ## mobs spank you if your ass is big.
   mploadvar $n asssize
+  if islike($n '-DISPOSITION "+ISHIDDEN" "+ISINVISIBLE"')
+    return
+  endif
   if var($n asssize < 3)
     return 
   endif
   for $0 = 1 to '$%NUMMOBSROOM(*)%'
-    if islike('$%ROOMMOB($0)%' -RACECAT +UNDEAD +HUMANOID) and isnpc('$%ROOMMOB($0)%')
-      mpforce '$%ROOMMOB($0)%' spank $n
+    ##we dont want everyone spanking.
+    if rand(15)
+      if islike('$%ROOMMOB($0)%' -RACECAT +UNDEAD +HUMANOID) and isnpc('$%ROOMMOB($0)%')
+        mpforce '$%ROOMMOB($0)%' spank $n
+      endif
     endif
   next
 ~
@@ -776,6 +772,7 @@ mpcallfunc blessening_checks
 ~
 
 function_prog blessening_checks
+mpnotrigger social_prog 2000
 ##target is self
 if isname('$n' '$t') 
   return

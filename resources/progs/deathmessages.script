@@ -1,5 +1,5 @@
 kill_prog
-##child check to hopefully prevent the script
+##child check to hopefully prevent the script from being used on underage characters.
 if ispc($n)
 	if hastattoo($n underage)
 		mpecho $n is below 18 years old and could not participate in this.

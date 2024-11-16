@@ -39,3 +39,4 @@ crushing room	24		Trap_CrushingRoom
 vanishing trap	24		Trap_Vanishing				
 avalanche	25		Trap_Avalanche				
 flood room	29		Trap_FloodRoom				
+dildo spikes	30		Trap_Dildospike				

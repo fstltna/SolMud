@@ -1,0 +1,25 @@
+delay_prog 600
+if nummobsroom(* < 8)
+    for $0 = 1 to $%RANDNUM(4)%
+        mpmload fromfile /resources/mobspawnlists/abilitymobs/infestationmobs.cmare any
+        mpecho $b struggles out of $i's holes!
+        mpgset '$b' LEVEL $%GSTAT($i LEVEL)%
+    next
+endif
+~
+
+execmsg_prog MOVE bathe
+if isname('$i' '$n')
+    mpnotrigger execmsg_prog 1000
+    if islike($n '-LOCATION +ROOMSTR(water) +ROOMSTR(ocean) +ROOMSTR(river) +ROOMSTR(sea) +ROOMSTR(docks) +ROOMSTR(beach) +ROOMSTR(bathroom) +ROOMSTR(bath) +ROOMSTR(bathhouse)')
+    if affected($n Disease_HoleInfestation)
+        if rand(10)
+        mpechoat $n Freedom at last, the insects are... mostly off me.
+        mpunaffect $i Disease_HoleInfestation
+        else
+        mpechoat $n I could not get the insects off my holes, I need to try again...
+        endif
+    endif
+    endif
+endif
+~

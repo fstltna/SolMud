@@ -219,6 +219,7 @@ public class Templar extends Cleric
 		return Area.THEME_FANTASY;
 	}
 
+	/*
 	@Override
 	public boolean tick(final Tickable ticking, final int tickID)
 	{
@@ -238,6 +239,7 @@ public class Templar extends Cleric
 		}
 		return super.tick(myChar,tickID);
 	}
+	*/
 
 	@Override
 	public String[] getRequiredRaceList()
@@ -260,7 +262,7 @@ public class Templar extends Cleric
 	@Override
 	public String getOtherBonusDesc()
 	{
-		return L("Receives Aura of Strife which increases in power.");
+		return L("");
 	}
 
 	@Override

@@ -1,3 +1,8 @@
+cnclmsg_prog HUH p charedit
+mpechoat $n Try:: charedit (age/height/weight)
+return cancel
+~
+
 ##Age
 cnclmsg_prog HUH p charedit age
 mpprompt $n AGESET ^#111a bodiless feminine voice asks "^#135How old are you?^#111"^w
