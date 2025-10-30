@@ -40,7 +40,7 @@ import java.util.*;
 import java.util.concurrent.CompletableFuture;
 
 /*
-   Copyright 2005-2024 Bo Zimmerman
+   Copyright 2005-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -366,7 +366,7 @@ public class CMChannels extends StdLibrary implements ChannelsLibrary
 				return false;
 		}
 
-		if((!pstats.isIgnored(sender))
+		if((!pstats.isIgnored(chan.name(),sender))
 		&&(CMLib.masking().maskCheck(chan.mask(),M,true))
 		&&((!areaReq)
 		   ||(sender.location()==null)
@@ -413,8 +413,9 @@ public class CMChannels extends StdLibrary implements ChannelsLibrary
 		final Room R=M.location();
 		if((!ses.isStopped())
 		&&(R!=null)
-		&&(!pstats.isIgnored(sender))
+		&&(!pstats.isIgnored(chan.name(),sender))
 		&&(!pstats.isIgnored(senderName))
+		&&(!pstats.isIgnored(chan.name()+"."+senderName))
 		&&(CMLib.masking().maskCheck(chan.mask(),M,true))
 		&&((!areaReq)
 		   ||(sender.location()==null)
@@ -1283,8 +1284,15 @@ public class CMChannels extends StdLibrary implements ChannelsLibrary
 								if(discordTalkers.containsKey(name))
 									M = discordTalkers.get(name);
 								else
+								if(CMLib.players().getPlayer(name)!=null)
 								{
-									M=CMClass.getMOB(name);
+									M=CMLib.players().getPlayer(name);
+									discordTalkers.put(name,M);
+								}
+								else
+								{
+									M=CMClass.getMOB("StdMOB");
+									M.setName(name);
 									M.setLocation(CMLib.map().getRandomRoom());
 									discordTalkers.put(name,M);
 								}
@@ -1537,6 +1545,22 @@ public class CMChannels extends StdLibrary implements ChannelsLibrary
 		{
 			CMLib.threads().deleteTick(this, TICKID_SUPPORT|Tickable.TICKID_SOLITARYMASK);
 			serviceClient=null;
+		}
+		if(discordApi != null)
+		{
+			try
+			{
+				final Method disconnM = discordApi.getClass().getMethod("disconnect");
+				disconnM.invoke(discordApi);
+			}
+			catch(final Exception e)
+			{
+				Log.errOut(e);
+			}
+			finally
+			{
+				discordApi = null;
+			}
 		}
 		return true;
 	}

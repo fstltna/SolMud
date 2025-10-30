@@ -19,7 +19,7 @@ import com.planet_ink.coffee_mud.Races.interfaces.*;
 import java.util.*;
 
 /*
-   Copyright 2004-2024 Bo Zimmerman
+   Copyright 2004-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -311,7 +311,7 @@ public class Gaoler extends StdCharClass
 			&&(E2!=null))
 				rooms.add(R2);
 		}
-		return legalBehavior.isJailRoom(legalArea, rooms);
+		return legalBehavior.isAnyJailRoom(legalArea, rooms);
 	}
 
 	public boolean isRightOutsideAnOccupiedCell(final Room R, final LegalBehavior legalBehavior, final Area legalArea)
@@ -330,7 +330,7 @@ public class Gaoler extends StdCharClass
 		}
 		if(rooms.size()==0)
 			return false;
-		return legalBehavior.isJailRoom(legalArea, rooms);
+		return legalBehavior.isAnyJailRoom(legalArea, rooms);
 	}
 
 	protected boolean isAnOfficerOfTheCourt(final MOB mob, final LegalBehavior legalBehavior, final Area legalArea)
@@ -362,7 +362,7 @@ public class Gaoler extends StdCharClass
 		final Area legalArea=CMLib.law().getLegalObject(R);
 		if((legalBehavior != null)
 		&&(legalArea != null)
-		&&(legalBehavior.isJailRoom(legalArea, new XVector<Room>(R)))
+		&&(legalBehavior.isAnyJailRoom(legalArea, new XVector<Room>(R)))
 		&&(legalBehavior.hasWarrant(legalArea, M)))
 			return true;
 		return false;
@@ -538,9 +538,7 @@ public class Gaoler extends StdCharClass
 							qualifyingFood=false;
 						else
 						{
-							TimeClock C=CMLib.time().localClock(msg.source());
-							if(C==null)
-								C=CMLib.time().globalClock();
+							final TimeClock C=CMLib.time().localClock(msg.source());
 							map.put(""+msg.target(), Long.valueOf(System.currentTimeMillis() + (CMProps.getMillisPerMudHour() * C.getHoursInDay())));
 						}
 					}

@@ -18,13 +18,14 @@ import com.planet_ink.coffee_mud.Libraries.interfaces.HelpLibrary.HelpSection;
 import com.planet_ink.coffee_mud.Locales.interfaces.*;
 import com.planet_ink.coffee_mud.MOBS.interfaces.*;
 import com.planet_ink.coffee_mud.Races.interfaces.*;
+import com.planet_ink.coffee_mud.WebMacros.Authenticate;
 
 import java.util.*;
 import java.io.IOException;
 import java.math.BigDecimal;
 
 /*
-   Copyright 2004-2024 Bo Zimmerman
+   Copyright 2004-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -1384,6 +1385,102 @@ public class Create extends StdCommand
 		mob.location().showHappens(CMMsg.MSG_OK_ACTION,L("The skill of the world just increased!"));
 	}
 
+	public void commands(final MOB mob, final List<String> commands)
+	throws IOException
+	{
+		if(commands.size()<3)
+		{
+			mob.tell(L("You have failed to specify the proper fields.\n\rThe format is CREATE COMMAND [ID]\n\r"));
+			mob.location().showOthers(mob,null,CMMsg.MSG_OK_ACTION,L("<S-NAME> flub(s) a spell.."));
+			return;
+		}
+		final String classD=CMParms.combine(commands,2);
+		final Command C=CMClass.getCommand(classD);
+		if((C!=null)&&(C.isGeneric()))
+		{
+			mob.tell(L("A generic command with the ID '@x1' already exists!",C.ID()));
+			mob.location().showOthers(mob,null,CMMsg.MSG_OK_ACTION,L("<S-NAME> flub(s) a spell.."));
+			return;
+		}
+		if(classD.indexOf(' ')>=0)
+		{
+			mob.tell(L("'@x1' is an invalid  id, because it contains a space.",classD));
+			mob.location().showOthers(mob,null,CMMsg.MSG_OK_ACTION,L("<S-NAME> flub(s) a spell.."));
+			return;
+		}
+		final Command CR;
+		String typeClass = "";
+		if(C != null)
+		{
+			typeClass=C.getClass().getCanonicalName();
+			mob.location().showHappens(CMMsg.MSG_OK_ACTION,L("The command @x1 already exists, and will be over-ridden.",classD));
+			CR=(Command)CMClass.getCommand("GenCommand").copyOf();
+			final StringBuilder script = new StringBuilder("");
+			final String fullClassName = C.getClass().getCanonicalName();
+			script.append("FUNCTION_PROG EXECUTE\n");
+			script.append("<SCRIPT>\n");
+			script.append("  var c = new Packages."+fullClassName+"();\n");
+			script.append("  var l = new Packages.com.planet_ink.coffee_mud.core.collections.XArrayList();\n");
+			script.append("  for(var i=0;i<Number(objs()[0]);i++)\n");
+			script.append("    if((''+objs()[i+1]).length>0)\n");
+			script.append("      l.add(''+objs()[i+1]);\n");
+			script.append("  var r = c.execute(source(),l,0);\n");
+			script.append("  objs()[0] = ''+r;\n");
+			script.append("</SCRIPT>\n");
+			script.append("RETURN $0\n");
+			script.append("~\n");
+			boolean secCheck=false;
+			final MOB M = CMClass.getFactoryMOB();
+			try
+			{
+				secCheck=C.securityCheck(M);
+			}
+			finally
+			{
+				M.destroy();
+			}
+			((Modifiable)CR).setStat("CLASS",C.ID());
+			if((C.getAccessWords()!=null)&&(C.getAccessWords().length>0))
+				((Modifiable)CR).setStat("HELP",CMLib.help().getHelpText(C.getAccessWords()[0], mob, !secCheck, true));
+			((Modifiable)CR).setStat("ACCESS",CMParms.toListString(C.getAccessWords()));
+			((Modifiable)CR).setStat("SCRIPT",script.toString());
+			((Modifiable)CR).setStat("ORDEROK",C.canBeOrdered()+"");
+			((Modifiable)CR).setStat("SECMASK",secCheck?"":"+SYSOP -NAMES");
+			final String cmdWord = (C.getAccessWords()!=null)&&C.getAccessWords().length>0
+					?C.getAccessWords()[0]:"WORD";
+			String old=""+C.actionsCost(mob, new XArrayList<String>(cmdWord));
+			if(old.equalsIgnoreCase(""+CMProps.getCommandActionCost(C.ID())))
+				old="-1.0";
+			((Modifiable)CR).setStat("ACTCOST",old);
+			old=""+C.combatActionsCost(mob, new XArrayList<String>(cmdWord));
+			if(old.equalsIgnoreCase(""+CMProps.getCommandCombatActionCost(C.ID())))
+				old="-1.0";
+			((Modifiable)CR).setStat("CBTCOST",old);
+		}
+		else
+		{
+			CR=(Command)CMClass.getCommand("GenCommand").copyOf();
+			((Modifiable)CR).setStat("CLASS",classD);
+			((Modifiable)CR).setStat("ACTCOST","-1");
+			((Modifiable)CR).setStat("CBTCOST","-1");
+			((Modifiable)CR).setStat("ACCESS",classD.toUpperCase().trim());
+			final StringBuilder script = new StringBuilder("");
+			script.append("FUNCTION_PROG EXECUTE\n");
+			script.append("  MPECHO Number of arguments: $0\n");
+			script.append("  MPECHO All Arguments      : $g\n");
+			script.append("  FOR $1 = 0 to $0\n");
+			script.append("    MPECHO Argument#$1         : $g.$1\n");
+			script.append("  NEXT\n");
+			script.append("  RETURN true\n");
+			script.append("~\n");
+			((Modifiable)CR).setStat("SCRIPT",script.toString());
+		}
+		CMLib.genEd().modifyGenCommand(mob,(Modifiable)CR,-1);
+		CMLib.database().DBCreateCommand(CR.ID(),typeClass,((Modifiable)CR).getStat("ALLXML"));
+		mob.location().showHappens(CMMsg.MSG_OK_ACTION,L("The power of the world just increased!"));
+		CMClass.reloadCommandWords();
+	}
+
 	public void craftSkills(final MOB mob, final List<String> commands)
 	throws IOException
 	{
@@ -1543,10 +1640,10 @@ public class Create extends StdCommand
 
 	protected String listOfThings()
 	{
-		return "EXIT, ITEM, QUEST, FACTION, COMPONENT, GOVERNMENT, HOLIDAY, "
+		return "EXIT, ITEM, QUEST, FACTION, COMPONENT, GOVERNMENT, HOLIDAY, COMMAND, "
 			 + "CLAN, MOB, RACE, MIXEDRACE, ABILITY, LANGUAGE, CRAFTSKILL, HELP/AHELP, "
 			 + "ACHIEVEMENT, MANUFACTURER, ALLQUALIFY, CLASS, POLL, DEBUGFLAG, "
-			 + "WEBSERVER, DISABLEFLAG, ENABLEFLAG, NEWS, USER, TRAP, WRIGHTSKILL, "
+			 + "WEBSERVER, DISABLEFLAG, ENABLEFLAG, NEWS, USER, TRAP, WRIGHTSKILL, COMMAND, "
 			 + "GATHERSKILL, CRON, TITLE, AWARD, or ROOM";
 	}
 
@@ -1616,7 +1713,7 @@ public class Create extends StdCommand
 		{
 			if(interval.trim().length()==0)
 				throw new CMException("Bad value: "+interval);
-			tm = CMLib.time().parseTickExpression(interval);
+			tm = CMLib.time().parseTickExpression(CMLib.time().homeClock(mob), interval);
 			if(tm < 0)
 				throw new CMException("Bad value: "+tm);
 		}
@@ -1794,6 +1891,14 @@ public class Create extends StdCommand
 				return errorOut(mob);
 			mob.location().show(mob,null,CMMsg.MSG_OK_VISUAL,L("^S<S-NAME> wave(s) <S-HIS-HER> arms...^?"));
 			wrightSkills(mob,commands);
+		}
+		else
+		if(commandType.equals("COMMAND"))
+		{
+			if(!CMSecurity.isAllowed(mob,mob.location(),CMSecurity.SecFlag.CMDCOMMANDS))
+				return errorOut(mob);
+			mob.location().show(mob,null,CMMsg.MSG_OK_VISUAL,L("^S<S-NAME> wave(s) <S-HIS-HER> arms...^?"));
+			commands(mob,commands);
 		}
 		else
 		if(commandType.equals("GATHERSKILL"))
@@ -2070,7 +2175,8 @@ public class Create extends StdCommand
 			final Item I=CMClass.getItem("StdJournal");
 			I.setName(L("SYSTEM_NEWS"));
 			I.setDescription(L("Enter `LIST NEWS [NUMBER]` to read an entry.%0D%0AEnter CREATE NEWS to add new entries. "));
-			final CMMsg newMsg=CMClass.getMsg(mob,I,null,CMMsg.MSG_WRITE|CMMsg.MASK_ALWAYS,null,
+			final CMMsg newMsg=CMClass.getMsg(mob,I,null,
+					CMMsg.MSG_WRITE|CMMsg.MASK_ALWAYS,L("<S-NAME> write(s) the news."),
 					CMMsg.MSG_WRITE|CMMsg.MASK_ALWAYS,CMParms.combine(commands,2),
 					CMMsg.MSG_WRITE|CMMsg.MASK_ALWAYS,null);
 			if(mob.location().okMessage(mob,newMsg)&&I.okMessage(mob, newMsg))

@@ -981,6 +981,14 @@ public final class IMC2Driver extends Thread
 				break;
 			case ColorLibrary.COLORCODE_FANSI256:
 			case ColorLibrary.COLORCODE_BANSI256:
+				if((i < str.length() - 8)&&(str.charAt(i+2)==str.charAt(i+1)))
+				{
+					if(!CMath.isHexNumber(str.substring(i+3,i+9)))
+						str.delete(i,i+5);
+					else
+						str.delete(i, i + 9);
+				}
+				else
 				if (i < str.length() - 4)
 					str.delete(i, i + 5);
 				break;

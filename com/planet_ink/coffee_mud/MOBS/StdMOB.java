@@ -34,7 +34,7 @@ import com.planet_ink.coffee_mud.Libraries.interfaces.AchievementLibrary.Event;
 import com.planet_ink.coffee_mud.Libraries.interfaces.ChannelsLibrary.CMChannel;
 
 /*
- Copyright 2000-2024 Bo Zimmerman
+ Copyright 2000-2025 Bo Zimmerman
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -801,8 +801,9 @@ public class StdMOB implements MOB
 				phyStats.setSpeed(1.0+((baseSpeed-1.0)*speedAdj));
 		}
 		phyStats.setWeight(phyStats.weight() + charStats.getStat(CharStats.STAT_WEIGHTADJ));
-		if(location() != null)
-			location().affectPhyStats(this, phyStats);
+		final Room R = location();
+		if(R != null)
+			R.affectPhyStats(this, phyStats);
 		if(getMoney() > 0)
 			phyStats().setWeight(phyStats().weight() + (getMoney() / 100));
 		final Rideable riding = riding();
@@ -1684,26 +1685,27 @@ public class StdMOB implements MOB
 	@Override
 	public DeadBody killMeDead(final boolean createBody)
 	{
-		final Room deathRoom;
+		final Room corpseRoom;
+		Room deathRoom = location();
 		if(isMonster())
-			deathRoom = location();
+			corpseRoom = deathRoom;
 		else
-			deathRoom = CMLib.login().getDefaultBodyRoom(this);
-		if(location() != null)
-			location().delInhabitant(this);
+			corpseRoom = CMLib.login().getDefaultBodyRoom(this);
+		if(deathRoom != null)
+			deathRoom.delInhabitant(this);
 		amDead = true;
 		DeadBody bodyI = null;
 		if(createBody)
 		{
-			bodyI = charStats().getMyRace().getCorpseContainer(this, deathRoom);
+			bodyI = charStats().getMyRace().getCorpseContainer(this, corpseRoom);
 			if((bodyI != null)
 			&& (playerStats() != null))
 			{
 				bodyI.setSavable(false); // if the player is saving it, rooms are NOT.
 				playerStats().getExtItems().addItem(bodyI);
 			}
-			if(deathRoom != null)
-				deathRoom.show(this, bodyI, CMMsg.MASK_ALWAYS|CMMsg.MSG_BODYDROP, null);
+			if(corpseRoom != null)
+				corpseRoom.show(this, bodyI, CMMsg.MASK_ALWAYS|CMMsg.MSG_BODYDROP, null);
 		}
 		makePeace(false);
 		setRiding(null);
@@ -1733,9 +1735,12 @@ public class StdMOB implements MOB
 			setFollowing(null);
 		}
 		if((!isMonster()) && (soulMate() == null))
-			bringToLife(CMLib.login().getDefaultDeathRoom(this), true);
-		if(deathRoom != null)
-			deathRoom.recoverRoomStats();
+		{
+			deathRoom = CMLib.login().getDefaultDeathRoom(this);
+			bringToLife(deathRoom, true);
+		}
+		if(corpseRoom != null)
+			corpseRoom.recoverRoomStats();
 		return bodyI;
 	}
 
@@ -2673,10 +2678,10 @@ public class StdMOB implements MOB
 					{
 						switch(msg.sourceMinor())
 						{
+						case CMMsg.TYP_SLEEP:
 						case CMMsg.TYP_STAND:
 						case CMMsg.TYP_SITMOVE:
 						case CMMsg.TYP_SIT:
-						case CMMsg.TYP_SLEEP:
 							break;
 						case CMMsg.TYP_WEAPONATTACK:
 						case CMMsg.TYP_THROW:
@@ -2875,6 +2880,14 @@ public class StdMOB implements MOB
 						return false;
 					}
 					break;
+				case CMMsg.TYP_SLEEP:
+					if((!flags.canBreatheHere(this, location))
+					&& (!msg.sourceMajor(CMMsg.MASK_MAGIC)))
+					{
+						tell(L("You can't breathe!"));
+						return false;
+					}
+					//$FALL-THROUGH$
 				case CMMsg.TYP_SIT: // SIT is waking!
 					if(flags.isSleeping(this))
 						break;
@@ -2885,7 +2898,6 @@ public class StdMOB implements MOB
 				case CMMsg.TYP_FILL:
 				case CMMsg.TYP_LIST:
 				case CMMsg.TYP_LOCK:
-				case CMMsg.TYP_SLEEP:
 				case CMMsg.TYP_UNLOCK:
 				case CMMsg.TYP_VALUE:
 				case CMMsg.TYP_SELL:
@@ -3187,7 +3199,7 @@ public class StdMOB implements MOB
 					srcM.tell(srcM, this, null, L("<T-NAME> isn't interested."));
 					return false;
 				}
-				if(playerStats().isIgnored(msg.source()))
+				if(playerStats().isIgnored("TEACH",msg.source()))
 					return false;
 				if(!CMLib.expertises().canBeTaught(msg.source(), (MOB) msg.target(), msg.tool(), msg.targetMessage()))
 					return false;
@@ -3446,6 +3458,7 @@ public class StdMOB implements MOB
 			&& (!msg.sourceMajor(CMMsg.MASK_INTERMSG))
 			&& (msg.target() instanceof MOB)
 			&& (getVictim() != msg.target())
+			&&(msg.source()!=msg.target())
 			&& ((!msg.sourceMajor(CMMsg.MASK_ALWAYS))
 				|| (!(msg.tool() instanceof DiseaseAffect))))
 			{

@@ -18,7 +18,7 @@ import com.planet_ink.coffee_mud.Races.interfaces.*;
 import java.util.*;
 
 /*
-   Copyright 2004-2024 Bo Zimmerman
+   Copyright 2004-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -175,7 +175,7 @@ public class Prayer_Christen extends Prayer
 				((CagedAnimal)target).setCageText(txt);
 				final List<String> channels=CMLib.channels().getFlaggedChannelNames(ChannelsLibrary.ChannelFlag.CHRISTENINGS, null);
 				for(int i=0;i<channels.size();i++)
-					CMLib.commands().postChannel(channels.get(i),mob.clans(),L("@x1 was just christened.",target.name()),true);
+					CMLib.commands().postChannel(channels.get(i),mob.clans(),L("@x1 was just christened.",target.name()),true,mob);
 				CMLib.leveler().postExperience(mob,"ABILITY:"+ID(),null,null,5, false);
 			}
 		}

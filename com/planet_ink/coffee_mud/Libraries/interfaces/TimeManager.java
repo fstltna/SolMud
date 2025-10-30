@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
 import java.text.*;
 
 /*
-   Copyright 2005-2024 Bo Zimmerman
+   Copyright 2005-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -382,11 +382,12 @@ public interface TimeManager extends CMLibrary
 	 * expression ending with the word minutes,
 	 * hours, seconds, days, mudhours, muddays,
 	 * mudweeks, mudmonths, or mudyears
+	 * @param clock clock to use for muddays
 	 * @param val the expression
 	 * @throws any parsing errors
 	 * @return the number of ticks represented by the string
 	 */
-	public int parseTickExpression(String val) throws CMException;
+	public int parseTickExpression(TimeClock clock, String val) throws CMException;
 
 	/**
 	 * Parses whether a tick expression, or an

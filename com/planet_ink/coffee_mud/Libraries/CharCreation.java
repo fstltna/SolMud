@@ -7,6 +7,7 @@ import com.planet_ink.coffee_mud.core.*;
 import com.planet_ink.coffee_mud.core.CMProps.Int;
 import com.planet_ink.coffee_mud.core.CMProps.ListFile;
 import com.planet_ink.coffee_mud.core.CMProps.Str;
+import com.planet_ink.coffee_mud.core.CMSecurity.DisFlag;
 import com.planet_ink.coffee_mud.core.collections.*;
 import com.planet_ink.coffee_mud.Libraries.interfaces.*;
 import com.planet_ink.coffee_mud.Libraries.interfaces.AchievementLibrary.AchievementLoadFlag;
@@ -38,7 +39,7 @@ import java.net.SocketException;
 import java.util.*;
 
 /*
-   Copyright 2005-2024 Bo Zimmerman
+   Copyright 2005-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -583,7 +584,7 @@ public class CharCreation extends StdLibrary implements CharCreationLibrary
 				for(final Enumeration<PlayerAccount> e = CMLib.players().accounts(null,null); e.hasMoreElements(); )
 				{
 					final PlayerAccount A=e.nextElement();
-					if(A.isSet(PlayerAccount.AccountFlag.NOEXPIRE))
+					if(A.isSet(AccountFlag.NOEXPIRE))
 						continue;
 					if(now>=A.getAccountExpiration())
 						expired.add(A.getAccountName());
@@ -611,7 +612,7 @@ public class CharCreation extends StdLibrary implements CharCreationLibrary
 	{
 		if(!CMProps.getBoolVar(CMProps.Bool.ACCOUNTEXPIRATION))
 			return false;
-		if((acct!=null)&&(acct.isSet(PlayerAccount.AccountFlag.NOEXPIRE)))
+		if((acct!=null)&&(acct.isSet(AccountFlag.NOEXPIRE)))
 			return false;
 		long expiration;
 		if(mob!=null)
@@ -1152,6 +1153,14 @@ public class CharCreation extends StdLibrary implements CharCreationLibrary
 			}
 		}
 
+		final String cachedName =session.getStat("LOGIN_ACCOUNT");
+		if((cachedName!=null)&&(cachedName.length()>0))
+		{
+			loginObj.state=LoginState.LOGIN_NAME;
+			session.setStat("LOGIN_ACCOUNT", "");
+			loginObj.lastInput = cachedName;
+			return null;
+		}
 		if(CMProps.isUsingAccountSystem())
 			session.promptPrint(L("\n\raccount name: "));
 		else
@@ -1262,12 +1271,13 @@ public class CharCreation extends StdLibrary implements CharCreationLibrary
 		return null;
 	}
 
-	protected LoginResult loginAcctcharPword(final LoginSessionImpl loginObj, final Session session)
+	protected LoginResult loginAcctcharPword(final LoginSessionImpl loginObj, final Session session) throws IOException
 	{
 		loginObj.password=loginObj.lastInput;
 		if(CMLib.encoder().passwordCheck(loginObj.password, loginObj.player.password()))
 		{
-			if((loginObj.player.accountName()==null)||(loginObj.player.accountName().trim().length()==0))
+			if((loginObj.player.accountName()==null)
+			||(loginObj.player.accountName().trim().length()==0))
 			{
 				session.println(L("\n\rThis mud is now using an account system.  Please create a new account "
 								+ "and use the IMPORT command to add your character(s) to your account."));
@@ -1279,6 +1289,13 @@ public class CharCreation extends StdLibrary implements CharCreationLibrary
 			{
 				session.println(L("\n\rThis mud uses an account system.  Your account name is `^H@x1^N`.\n\r"
 								+ "Please use this account name when logging in.",loginObj.player.accountName()));
+				final LoginResult completeResult=completeCharacterLogin(session,loginObj.login, loginObj.wizi);
+				if(completeResult == LoginResult.NO_LOGIN)
+				{
+					loginObj.state=LoginState.LOGIN_START;
+					return null;
+				}
+				return LoginResult.NORMAL_LOGIN;
 			}
 		}
 		loginObj.state=LoginState.LOGIN_START;
@@ -1315,9 +1332,37 @@ public class CharCreation extends StdLibrary implements CharCreationLibrary
 			return acctcreateANSIConfirm(loginObj, session);
 		}
 		else
+		if(!session.isMTTS())
 		{
 			session.promptPrint(L("\n\rDo you want ANSI colors (Y/n)?"));
 			return LoginResult.INPUT_REQUIRED;
+		}
+		else
+		if((!session.getMTTS(Session.MTTS_ANSI))
+		&&(!session.getMTTS(Session.MTTS_256COLORS)))
+		{
+			loginObj.lastInput = "N";
+			return acctcreateANSIConfirm(loginObj, session);
+		}
+		else
+		{
+			final PlayerAccount acct=loginObj.acct;
+			loginObj.lastInput = "Y";
+			if(acct != null)
+			{
+				acct.setFlag(AccountFlag.ANSI, true);
+				acct.setFlag(AccountFlag.ANSI16ONLY, true);
+				acct.setFlag(AccountFlag.ANSI256ONLY, true);
+				if(session.getMTTS(Session.MTTS_TRUECOLOR) && (acct != null))
+				{
+					acct.setFlag(AccountFlag.ANSI256ONLY, false);
+					acct.setFlag(AccountFlag.ANSI16ONLY, false);
+				}
+				else
+				if(session.getMTTS(Session.MTTS_256COLORS) && (acct != null))
+					acct.setFlag(AccountFlag.ANSI16ONLY, false);
+			}
+			return acctcreateANSIConfirm(loginObj, session);
 		}
 	}
 
@@ -1327,7 +1372,7 @@ public class CharCreation extends StdLibrary implements CharCreationLibrary
 		final String input=loginObj.lastInput.toUpperCase().trim();
 		if(input.startsWith("N"))
 		{
-			acct.setFlag(PlayerAccount.AccountFlag.ANSI, false);
+			acct.setFlag(AccountFlag.ANSI, false);
 			session.setServerTelnetMode(Session.TELNET_ANSI,false);
 			session.setClientTelnetMode(Session.TELNET_ANSI,false);
 			session.setServerTelnetMode(Session.TELNET_ANSI16,false);
@@ -1341,7 +1386,7 @@ public class CharCreation extends StdLibrary implements CharCreationLibrary
 		}
 		else
 		{
-			acct.setFlag(PlayerAccount.AccountFlag.ANSI, true);
+			acct.setFlag(AccountFlag.ANSI, true);
 		}
 		StringBuffer introText=new CMFile(Resources.buildResourcePath("text")+"newacct.txt",null,CMFile.FLAG_LOGERRORS).text();
 		try
@@ -1496,6 +1541,14 @@ public class CharCreation extends StdLibrary implements CharCreationLibrary
 			catch (final IOException e)
 			{
 			}
+			final String cachedPw =session.getStat("LOGIN_PASSWORD");
+			if((cachedPw!=null)&&(cachedPw.length()>0))
+			{
+				loginObj.state=LoginState.LOGIN_PASS_RECEIVED;
+				session.setStat("LOGIN_PASSWORD", "");
+				loginObj.lastInput = cachedPw;
+				return null;
+			}
 			session.promptPrint(L("password: "));
 			loginObj.state=LoginState.LOGIN_PASS_RECEIVED;
 			return LoginResult.INPUT_REQUIRED;
@@ -1600,7 +1653,7 @@ public class CharCreation extends StdLibrary implements CharCreationLibrary
 						if((mob==null)||(!CMLib.flags().isCloaked(mob)))
 						{
 							for(int i=0;i<channels.size();i++)
-								CMLib.commands().postChannel(channels.get(i),null,L("Account @x1 has logged on.",loginObj.acct.getAccountName()),true);
+								CMLib.commands().postChannel(channels.get(i),null,L("Account @x1 has logged on.",loginObj.acct.getAccountName()),true,mob);
 						}
 					}
 				}
@@ -1692,10 +1745,12 @@ public class CharCreation extends StdLibrary implements CharCreationLibrary
 	protected LoginResult acctmenuStart(final LoginSessionImpl loginObj, final Session session)
 	{
 		final PlayerAccount acct=loginObj.acct;
-		session.setServerTelnetMode(Session.TELNET_ANSI,acct.isSet(PlayerAccount.AccountFlag.ANSI));
-		session.setClientTelnetMode(Session.TELNET_ANSI,acct.isSet(PlayerAccount.AccountFlag.ANSI));
-		session.setServerTelnetMode(Session.TELNET_ANSI16,acct.isSet(PlayerAccount.AccountFlag.ANSI16));
-		session.setClientTelnetMode(Session.TELNET_ANSI16,acct.isSet(PlayerAccount.AccountFlag.ANSI16));
+		session.setServerTelnetMode(Session.TELNET_ANSI,acct.isSet(AccountFlag.ANSI));
+		session.setClientTelnetMode(Session.TELNET_ANSI,acct.isSet(AccountFlag.ANSI));
+		session.setServerTelnetMode(Session.TELNET_ANSI16,acct.isSet(AccountFlag.ANSI16ONLY));
+		session.setClientTelnetMode(Session.TELNET_ANSI16,acct.isSet(AccountFlag.ANSI16ONLY));
+		session.setServerTelnetMode(Session.TELNET_ANSI256,acct.isSet(AccountFlag.ANSI256ONLY));
+		session.setClientTelnetMode(Session.TELNET_ANSI256,acct.isSet(AccountFlag.ANSI256ONLY));
 		// if its not a new account, do this?
 		StringBuffer introText=new CMFile(Resources.buildResourcePath("text")+"selchar.txt",null,CMFile.FLAG_LOGERRORS).text();
 		try
@@ -1706,7 +1761,7 @@ public class CharCreation extends StdLibrary implements CharCreationLibrary
 		{
 		}
 		session.println(null,null,null,"\n\r\n\r"+introText.toString());
-		if(acct.isSet(PlayerAccount.AccountFlag.ACCOUNTMENUSOFF))
+		if(acct.isSet(AccountFlag.ACCOUNTMENUSOFF))
 		{
 			loginObj.state=LoginState.ACCTMENU_SHOWCHARS;
 		}
@@ -1813,13 +1868,13 @@ public class CharCreation extends StdLibrary implements CharCreationLibrary
 	{
 		final PlayerAccount acct=loginObj.acct;
 		final StringBuffer buf = new StringBuffer("");
-		if(!acct.isSet(PlayerAccount.AccountFlag.ACCOUNTMENUSOFF))
+		if(!acct.isSet(AccountFlag.ACCOUNTMENUSOFF))
 		{
 			StringBuffer accountHelp=new CMFile(Resources.buildResourcePath("help")+"acctmenu.txt",null,CMFile.FLAG_LOGERRORS).text();
 			try
 			{
 				final Map<String,String> map=new HashMap<String,String>();
-				map.put("canexport", Boolean.toString((acct.isSet(PlayerAccount.AccountFlag.CANEXPORT))));
+				map.put("canexport", Boolean.toString((acct.isSet(AccountFlag.CANEXPORT))));
 				map.put("emailok", Boolean.toString(!CMProps.getVar(CMProps.Str.EMAILREQ).toUpperCase().startsWith("DISABLE")));
 				accountHelp = CMLib.webMacroFilter().virtualPageFilter(accountHelp,map,new HashMap<String,Object>());
 			}
@@ -1912,7 +1967,7 @@ public class CharCreation extends StdLibrary implements CharCreationLibrary
 			try
 			{
 				final Map<String,String> map=new HashMap<String,String>();
-				map.put("canexport", Boolean.toString((acct.isSet(PlayerAccount.AccountFlag.CANEXPORT))));
+				map.put("canexport", Boolean.toString((acct.isSet(AccountFlag.CANEXPORT))));
 				map.put("emailok", Boolean.toString(!CMProps.getVar(CMProps.Str.EMAILREQ).toUpperCase().startsWith("DISABLE")));
 				accountHelp = CMLib.webMacroFilter().virtualPageFilter(accountHelp,map,new HashMap<String,Object>());
 			}
@@ -1988,23 +2043,23 @@ public class CharCreation extends StdLibrary implements CharCreationLibrary
 		{
 			if((parms.length>1)&&(parms[parms.length-1].equalsIgnoreCase("<CONFIRMED>")))
 			{
-				if(acct.isSet(PlayerAccount.AccountFlag.ACCOUNTMENUSOFF))
+				if(acct.isSet(AccountFlag.ACCOUNTMENUSOFF))
 				{
 					session.println(L("Menus are back on."));
-					acct.setFlag(PlayerAccount.AccountFlag.ACCOUNTMENUSOFF, false);
+					acct.setFlag(AccountFlag.ACCOUNTMENUSOFF, false);
 				}
 				else
-				if(!acct.isSet(PlayerAccount.AccountFlag.ACCOUNTMENUSOFF))
+				if(!acct.isSet(AccountFlag.ACCOUNTMENUSOFF))
 				{
 					session.println(L("Menus are now off."));
-					acct.setFlag(PlayerAccount.AccountFlag.ACCOUNTMENUSOFF, true);
+					acct.setFlag(AccountFlag.ACCOUNTMENUSOFF, true);
 				}
 				loginObj.state=LoginState.ACCTMENU_SHOWMENU;
 
 			}
 			else
 			{
-				final String promptStr=acct.isSet(PlayerAccount.AccountFlag.ACCOUNTMENUSOFF)?L("Turn menus back on (y/N)?"):"Turn menus off (y/N)?";
+				final String promptStr=acct.isSet(AccountFlag.ACCOUNTMENUSOFF)?L("Turn menus back on (y/N)?"):"Turn menus off (y/N)?";
 				session.promptPrint(promptStr);
 				loginObj.state=LoginState.ACCTMENU_CONFIRMCOMMAND;
 				return LoginResult.INPUT_REQUIRED;
@@ -2018,10 +2073,13 @@ public class CharCreation extends StdLibrary implements CharCreationLibrary
 				acct.setFlag(AccountFlag.ANSI, !acct.isSet(AccountFlag.ANSI));
 				if(acct.isSet(AccountFlag.ANSI))
 				{
-					if(acct.isSet(AccountFlag.ANSI16))
+					if(acct.isSet(AccountFlag.ANSI16ONLY))
 						session.println(L("ANSI 16 color is now ON."));
 					else
+					if(acct.isSet(AccountFlag.ANSI256ONLY))
 						session.println(L("ANSI 256 color is now ON."));
+					else
+						session.println(L("ANSI True color is now ON."));
 				}
 				else
 					session.println(L("ANSI color is now OFF."));
@@ -2033,44 +2091,83 @@ public class CharCreation extends StdLibrary implements CharCreationLibrary
 			{
 				if(acct.isSet(AccountFlag.ANSI))
 				{
-					acct.setFlag(AccountFlag.ANSI16, !acct.isSet(AccountFlag.ANSI16));
-					if(acct.isSet(AccountFlag.ANSI16))
+					acct.setFlag(AccountFlag.ANSI16ONLY, !acct.isSet(AccountFlag.ANSI16ONLY));
+					if(acct.isSet(AccountFlag.ANSI16ONLY))
 						session.println(L("ANSI 16 color is now ON."));
 					else
+					if(acct.isSet(AccountFlag.ANSI256ONLY))
 						session.println(L("ANSI 256 color is now ON."));
+					else
+						session.println(L("ANSI True color is now ON."));
 				}
 				else
 				{
 					acct.setFlag(AccountFlag.ANSI, true);
-					acct.setFlag(AccountFlag.ANSI16, true);
+					acct.setFlag(AccountFlag.ANSI16ONLY, true);
 					session.println(L("ANSI 16 color is now ON."));
 				}
 				session.setServerTelnetMode(Session.TELNET_ANSI,acct.isSet(AccountFlag.ANSI));
 				session.setClientTelnetMode(Session.TELNET_ANSI,acct.isSet(AccountFlag.ANSI));
-				session.setServerTelnetMode(Session.TELNET_ANSI16,acct.isSet(AccountFlag.ANSI16));
-				session.setClientTelnetMode(Session.TELNET_ANSI16,acct.isSet(AccountFlag.ANSI16));
+				session.setServerTelnetMode(Session.TELNET_ANSI16,acct.isSet(AccountFlag.ANSI16ONLY));
+				session.setClientTelnetMode(Session.TELNET_ANSI16,acct.isSet(AccountFlag.ANSI16ONLY));
+				session.setServerTelnetMode(Session.TELNET_ANSI256,acct.isSet(AccountFlag.ANSI256ONLY));
+				session.setClientTelnetMode(Session.TELNET_ANSI256,acct.isSet(AccountFlag.ANSI256ONLY));
 			}
 			else
 			if(cmd.equals("ANSI256")||cmd.equals("COLOR256"))
 			{
 				if(acct.isSet(AccountFlag.ANSI))
 				{
-					acct.setFlag(AccountFlag.ANSI16, !acct.isSet(AccountFlag.ANSI16));
-					if(acct.isSet(AccountFlag.ANSI16))
+					acct.setFlag(AccountFlag.ANSI16ONLY, !acct.isSet(AccountFlag.ANSI16ONLY));
+					if(acct.isSet(AccountFlag.ANSI16ONLY))
 						session.println(L("ANSI 16 color is now ON."));
 					else
+					if(acct.isSet(AccountFlag.ANSI256ONLY))
 						session.println(L("ANSI 256 color is now ON."));
+					else
+						session.println(L("ANSI True color is now ON."));
 				}
 				else
 				{
 					acct.setFlag(AccountFlag.ANSI, true);
-					acct.setFlag(AccountFlag.ANSI16, false);
+					acct.setFlag(AccountFlag.ANSI16ONLY, false);
+					acct.setFlag(AccountFlag.ANSI256ONLY, true);
 					session.println(L("ANSI 256 color is now ON."));
 				}
 				session.setServerTelnetMode(Session.TELNET_ANSI,acct.isSet(AccountFlag.ANSI));
 				session.setClientTelnetMode(Session.TELNET_ANSI,acct.isSet(AccountFlag.ANSI));
-				session.setServerTelnetMode(Session.TELNET_ANSI16,acct.isSet(AccountFlag.ANSI16));
-				session.setClientTelnetMode(Session.TELNET_ANSI16,acct.isSet(AccountFlag.ANSI16));
+				session.setServerTelnetMode(Session.TELNET_ANSI16,acct.isSet(AccountFlag.ANSI16ONLY));
+				session.setClientTelnetMode(Session.TELNET_ANSI16,acct.isSet(AccountFlag.ANSI16ONLY));
+				session.setServerTelnetMode(Session.TELNET_ANSI256,acct.isSet(AccountFlag.ANSI256ONLY));
+				session.setClientTelnetMode(Session.TELNET_ANSI256,acct.isSet(AccountFlag.ANSI256ONLY));
+			}
+			else
+			if(cmd.equals("ANSITRUE")||cmd.equals("COLORTRUE"))
+			{
+				if(acct.isSet(AccountFlag.ANSI))
+				{
+					acct.setFlag(AccountFlag.ANSI256ONLY, !acct.isSet(AccountFlag.ANSI256ONLY));
+					if(acct.isSet(AccountFlag.ANSI16ONLY))
+						session.println(L("ANSI 16 color is now ON."));
+					else
+					if(acct.isSet(AccountFlag.ANSI256ONLY))
+						session.println(L("ANSI 256 color is now ON."));
+					else
+						session.println(L("ANSI TRUE color is now ON."));
+				}
+				else
+				{
+					acct.setFlag(AccountFlag.ANSI, true);
+					acct.setFlag(AccountFlag.ANSI16ONLY, false);
+					acct.setFlag(AccountFlag.ANSI256ONLY, false);
+					session.println(L("ANSI TRUE color is now ON."));
+				}
+				session.setServerTelnetMode(Session.TELNET_ANSI,acct.isSet(AccountFlag.ANSI));
+				session.setClientTelnetMode(Session.TELNET_ANSI,acct.isSet(AccountFlag.ANSI));
+				session.setServerTelnetMode(Session.TELNET_ANSI16,acct.isSet(AccountFlag.ANSI16ONLY));
+				session.setClientTelnetMode(Session.TELNET_ANSI16,acct.isSet(AccountFlag.ANSI16ONLY));
+				session.setServerTelnetMode(Session.TELNET_ANSI256,acct.isSet(AccountFlag.ANSI256ONLY));
+				session.setClientTelnetMode(Session.TELNET_ANSI256,acct.isSet(AccountFlag.ANSI256ONLY));
 			}
 			else
 			if((parms.length>1)&&(parms[1].equalsIgnoreCase("ON")))
@@ -2080,7 +2177,7 @@ public class CharCreation extends StdLibrary implements CharCreationLibrary
 				else
 				{
 					acct.setFlag(AccountFlag.ANSI, true);
-					if(acct.isSet(AccountFlag.ANSI16))
+					if(acct.isSet(AccountFlag.ANSI16ONLY))
 						session.println(L("ANSI 16 color is now ON."));
 					else
 						session.println(L("ANSI 256 color is now ON."));
@@ -2264,7 +2361,7 @@ public class CharCreation extends StdLibrary implements CharCreationLibrary
 			loginObj.state=LoginState.ACCTMENU_SHOWMENU;
 			return null;
 		}
-		if(("EXPORT ").startsWith(cmd)&&(acct.isSet(PlayerAccount.AccountFlag.CANEXPORT)))
+		if(("EXPORT ").startsWith(cmd)&&(acct.isSet(AccountFlag.CANEXPORT)))
 		{
 			if(parms.length<2)
 			{
@@ -2346,7 +2443,7 @@ public class CharCreation extends StdLibrary implements CharCreationLibrary
 			if(maxPlayersOnAccount < Integer.MAX_VALUE)
 				maxPlayersOnAccount += acct.getBonusCharsLimit();
 			if((maxPlayersOnAccount<=acct.numPlayers())
-			&&(!acct.isSet(PlayerAccount.AccountFlag.NUMCHARSOVERRIDE)))
+			&&(!acct.isSet(AccountFlag.NUMCHARSOVERRIDE)))
 			{
 				session.println(L("You may only have @x1 characters.  Please delete one to create another.",""+maxPlayersOnAccount));
 				loginObj.state=LoginState.ACCTMENU_SHOWMENU;
@@ -2467,7 +2564,7 @@ public class CharCreation extends StdLibrary implements CharCreationLibrary
 			&&(!CMProps.isOnWhiteList(CMProps.WhiteList.IPSCONN, session.getAddress()))
 			&&(!CMProps.isOnWhiteList(CMProps.WhiteList.LOGINS, acct.getAccountName()))
 			&&(!CMProps.isOnWhiteList(CMProps.WhiteList.LOGINS, realMOB.Name()))
-			&&(!acct.isSet(PlayerAccount.AccountFlag.MAXCONNSOVERRIDE)))
+			&&(!acct.isSet(AccountFlag.MAXCONNSOVERRIDE)))
 			{
 				session.println(L("You may only have @x1 of your characters on at one time.",""+CMProps.getIntVar(CMProps.Int.MAXCONNSPERACCOUNT)));
 				return null;
@@ -2656,27 +2753,43 @@ public class CharCreation extends StdLibrary implements CharCreationLibrary
 		mob.playerStats().setAccount(acct);
 
 		executeScript(mob,getLoginScripts().get("EMAIL"));
-
-		if(acct!=null)
-		{
-			if(acct.isSet(PlayerAccount.AccountFlag.ANSI))
-				mob.setAttribute(MOB.Attrib.ANSI,true);
-			else
-			{
-				mob.setAttribute(MOB.Attrib.ANSI,false);
-				session.setServerTelnetMode(Session.TELNET_ANSI,false);
-				session.setClientTelnetMode(Session.TELNET_ANSI,false);
-				session.setServerTelnetMode(Session.TELNET_ANSI16,false);
-				session.setClientTelnetMode(Session.TELNET_ANSI16,false);
-			}
-			loginObj.state=LoginState.CHARCR_ANSIDONE;
-		}
-		else
+		if((acct==null)&&(!session.isMTTS()))
 		{
 			session.promptPrint(L("\n\rDo you want ANSI colors (Y/n)?"));
 			loginObj.state=LoginState.CHARCR_ANSICONFIRMED;
 			return LoginResult.INPUT_REQUIRED;
 		}
+		if(acct!=null)
+		{
+			mob.setAttribute(MOB.Attrib.ANSI,acct.isSet(AccountFlag.ANSI));
+			mob.setAttribute(MOB.Attrib.ANSI16ONLY,acct.isSet(AccountFlag.ANSI16ONLY));
+			mob.setAttribute(MOB.Attrib.ANSI256ONLY,acct.isSet(AccountFlag.ANSI256ONLY));
+		}
+		if(session.isMTTS())
+		{
+			mob.setAttribute(MOB.Attrib.ANSI,true);
+			mob.setAttribute(MOB.Attrib.ANSI16ONLY,false);
+			mob.setAttribute(MOB.Attrib.ANSI256ONLY,false);
+			if(!session.getMTTS(Session.MTTS_TRUECOLOR))
+			{
+				if(!session.getMTTS(Session.MTTS_256COLORS))
+				{
+					if(!session.getMTTS(Session.MTTS_ANSI))
+						mob.setAttribute(MOB.Attrib.ANSI,false);
+					else
+						mob.setAttribute(MOB.Attrib.ANSI16ONLY,true);
+				}
+				else
+					mob.setAttribute(MOB.Attrib.ANSI256ONLY,true);
+			}
+		}
+		loginObj.state=LoginState.CHARCR_ANSIDONE;
+		session.setServerTelnetMode(Session.TELNET_ANSI,mob.isAttributeSet(Attrib.ANSI));
+		session.setClientTelnetMode(Session.TELNET_ANSI,mob.isAttributeSet(Attrib.ANSI));
+		session.setServerTelnetMode(Session.TELNET_ANSI16,mob.isAttributeSet(Attrib.ANSI16ONLY));
+		session.setClientTelnetMode(Session.TELNET_ANSI16,mob.isAttributeSet(Attrib.ANSI16ONLY));
+		session.setServerTelnetMode(Session.TELNET_ANSI256,mob.isAttributeSet(Attrib.ANSI256ONLY));
+		session.setClientTelnetMode(Session.TELNET_ANSI256,mob.isAttributeSet(Attrib.ANSI256ONLY));
 		return null;
 	}
 
@@ -2688,11 +2801,14 @@ public class CharCreation extends StdLibrary implements CharCreationLibrary
 		if(input.startsWith("N"))
 		{
 			mob.setAttribute(MOB.Attrib.ANSI,false);
-			mob.setAttribute(MOB.Attrib.ANSI16,false);
+			mob.setAttribute(MOB.Attrib.ANSI16ONLY,false);
+			mob.setAttribute(MOB.Attrib.ANSI256ONLY,false);
 			session.setServerTelnetMode(Session.TELNET_ANSI,false);
 			session.setClientTelnetMode(Session.TELNET_ANSI,false);
 			session.setServerTelnetMode(Session.TELNET_ANSI16,false);
 			session.setClientTelnetMode(Session.TELNET_ANSI16,false);
+			session.setServerTelnetMode(Session.TELNET_ANSI256,false);
+			session.setClientTelnetMode(Session.TELNET_ANSI256,false);
 		}
 		else
 		if((input.length()>0)
@@ -2704,7 +2820,8 @@ public class CharCreation extends StdLibrary implements CharCreationLibrary
 		else
 		{
 			mob.setAttribute(MOB.Attrib.ANSI,true);
-			mob.setAttribute(MOB.Attrib.ANSI16,false);
+			mob.setAttribute(MOB.Attrib.ANSI16ONLY,false);
+			mob.setAttribute(MOB.Attrib.ANSI256ONLY,false);
 		}
 		loginObj.state=LoginState.CHARCR_ANSIDONE;
 		return null;
@@ -2845,6 +2962,19 @@ public class CharCreation extends StdLibrary implements CharCreationLibrary
 	{
 		MOB mob=loginObj.mob;
 		session.setMob(loginObj.mob);
+		if(CMSecurity.isDisabled(CMSecurity.DisFlag.CHARCRRACE))
+		{
+			final List<Race> qualRaces = raceQualifies(mob, loginObj.theme);
+			Race newRace;
+			if(qualRaces.size()==0)
+				newRace = CMClass.randomRace();
+			else
+				newRace = qualRaces.get(CMLib.dice().roll(1, qualRaces.size(), -1));
+			mob.baseCharStats().setMyRace(newRace);
+			loginObj.state=LoginState.CHARCR_RACEDONE;
+			return null;
+		}
+		else
 		if(CMSecurity.isDisabled(CMSecurity.DisFlag.RACES))
 		{
 			Race newRace=CMClass.getRace("PlayerRace");
@@ -2862,7 +2992,7 @@ public class CharCreation extends StdLibrary implements CharCreationLibrary
 				Log.errOut("CharCreation","Races are disabled, but neither PlayerRace nor StdRace exists?!");
 			}
 		}
-		if(!CMSecurity.isDisabled(CMSecurity.DisFlag.RACES))
+		else
 		{
 			StringBuffer introText=new CMFile(Resources.buildResourcePath("text")+"races.txt",null,CMFile.FLAG_LOGERRORS).text();
 			try
@@ -2979,17 +3109,31 @@ public class CharCreation extends StdLibrary implements CharCreationLibrary
 
 	protected LoginResult charcrGenderStart(final LoginSessionImpl loginObj, final Session session)
 	{
-		final StringBuilder str = new StringBuilder("");
+		final List<Character> choices = new ArrayList<Character>();
 		for(final Object[] gset : CMProps.getListFileStringChoices(ListFile.GENDERS))
 		{
 			if((gset.length>0)
 			&&(gset[0].toString().length()>0)
 			&&(!gset[0].toString().trim().endsWith("-")))
-			{
-				if(str.length()>0)
-					str.append("/");
-				str.append(gset[0].toString().charAt(0));
-			}
+				choices.add(Character.valueOf(Character.toUpperCase(gset[0].toString().charAt(0))));
+		}
+		if(CMSecurity.isDisabled(CMSecurity.DisFlag.CHARCRGENDER))
+		{
+			final MOB mob = loginObj.mob;
+			char gender = 'N';
+			if(choices.size()>0)
+				gender = choices.get(CMLib.dice().roll(1, choices.size(), -1)).charValue();
+			mob.baseCharStats().setStat(CharStats.STAT_GENDER,gender);
+			mob.charStats().setStat(CharStats.STAT_GENDER,gender);
+			loginObj.state=LoginState.CHARCR_GENDERDONE;
+			return null;
+		}
+		final StringBuilder str = new StringBuilder("");
+		for(final Character c : choices)
+		{
+			if(str.length()>0)
+				str.append("/");
+			str.append(c);
 		}
 		StringBuffer genderIntro=new CMFile(Resources.buildResourcePath("text")+"gender.txt",null,0).text();
 		try
@@ -3011,24 +3155,27 @@ public class CharCreation extends StdLibrary implements CharCreationLibrary
 		final MOB mob=loginObj.mob;
 		final PlayerAccount acct=loginObj.acct;
 
-		final String gender=loginObj.lastInput.toUpperCase().trim();
-		boolean found=false;
-		for(final Object[] gset : CMProps.getListFileStringChoices(ListFile.GENDERS))
+		if(!CMSecurity.isDisabled(CMSecurity.DisFlag.CHARCRGENDER))
 		{
-			if((gset.length>0)
-			&&(gset.length>0)
-			&&(gset[0].toString().length()>0)
-			&&(gender.startsWith(""+gset[0].toString().charAt(0)))
-			&&(!gset[0].toString().trim().endsWith("-")))
-				found=true;
+			final String gender=loginObj.lastInput.toUpperCase().trim();
+			boolean found=false;
+			for(final Object[] gset : CMProps.getListFileStringChoices(ListFile.GENDERS))
+			{
+				if((gset.length>0)
+				&&(gset.length>0)
+				&&(gset[0].toString().length()>0)
+				&&(gender.startsWith(""+gset[0].toString().charAt(0)))
+				&&(!gset[0].toString().trim().endsWith("-")))
+					found=true;
+			}
+			if(!found)
+			{
+				loginObj.state=LoginState.CHARCR_GENDERSTART;
+				return null;
+			}
+			mob.baseCharStats().setStat(CharStats.STAT_GENDER,gender.toUpperCase().charAt(0));
+			mob.charStats().setStat(CharStats.STAT_GENDER,gender.toUpperCase().charAt(0));
 		}
-		if(!found)
-		{
-			loginObj.state=LoginState.CHARCR_GENDERSTART;
-			return null;
-		}
-		mob.baseCharStats().setStat(CharStats.STAT_GENDER,gender.toUpperCase().charAt(0));
-		mob.charStats().setStat(CharStats.STAT_GENDER,gender.toUpperCase().charAt(0));
 
 		mob.baseCharStats().getMyRace().startRacing(mob,false);
 
@@ -3053,6 +3200,22 @@ public class CharCreation extends StdLibrary implements CharCreationLibrary
 				final int randStat=CMLib.dice().roll(1, CharStats.CODES.BASECODES().length, -1);
 				mob.baseCharStats().setStat(CharStats.CODES.BASECODES()[randStat],
 						mob.baseCharStats().getStat(CharStats.CODES.BASECODES()[randStat])+1);
+			}
+			mob.recoverCharStats();
+			loginObj.state=LoginState.CHARCR_STATDONE;
+		}
+		else
+		if(CMSecurity.isDisabled(DisFlag.CHARCRSTAT))
+		{
+			if(startStat < 0)
+				mob.baseCharStats().setAllBaseValues(CMProps.getIntVar(CMProps.Int.BASEMINSTAT));
+			else
+			for(final int i : CharStats.CODES.BASECODES())
+			{
+
+				final int statValue = CMProps.getIntVar(CMProps.Int.BASEMINSTAT)
+						+ CMLib.dice().roll(1,CMProps.getIntVar(CMProps.Int.BASEMAXSTAT) - CMProps.getIntVar(CMProps.Int.BASEMINSTAT),-1);
+				mob.baseCharStats().setStat(i,statValue);
 			}
 			mob.recoverCharStats();
 			loginObj.state=LoginState.CHARCR_STATDONE;
@@ -3469,6 +3632,15 @@ public class CharCreation extends StdLibrary implements CharCreationLibrary
 			}
 			if(newClass == null)
 				newClass = qualClassesV.get(0);
+			mob.baseCharStats().setCurrentClass(newClass);
+			mob.charStats().setCurrentClass(newClass);
+			loginObj.state=LoginState.CHARCR_CLASSDONE;
+			return null;
+		}
+		else
+		if(CMSecurity.isDisabled(CMSecurity.DisFlag.CHARCRCLASS)) // and qualClassesV.size() > 1
+		{
+			final CharClass newClass = qualClassesV.get(CMLib.dice().roll(1, qualClassesV.size(), -1));
 			mob.baseCharStats().setCurrentClass(newClass);
 			mob.charStats().setCurrentClass(newClass);
 			loginObj.state=LoginState.CHARCR_CLASSDONE;
@@ -3947,7 +4119,7 @@ public class CharCreation extends StdLibrary implements CharCreationLibrary
 		CMLib.database().DBUpdatePlayer(mob);
 		final List<String> channels=CMLib.channels().getFlaggedChannelNames(ChannelsLibrary.ChannelFlag.NEWPLAYERS, mob);
 		for(int i=0;i<channels.size();i++)
-			CMLib.commands().postChannel(channels.get(i),mob.clans(),L("@x1 has just been created.",mob.Name()),true);
+			CMLib.commands().postChannel(channels.get(i),mob.clans(),L("@x1 has just been created.",mob.Name()),true,mob);
 		CMLib.coffeeTables().bump(mob,CoffeeTableRow.STAT_NEWPLAYERS);
 		if(isExpired(mob.playerStats().getAccount(),session,mob))
 		{
@@ -4142,7 +4314,7 @@ public class CharCreation extends StdLibrary implements CharCreationLibrary
 				if(maxPlayersOnAccount < Integer.MAX_VALUE)
 					maxPlayersOnAccount += acct.getBonusCharsLimit();
 				if((maxPlayersOnAccount<=acct.numPlayers())
-				&&(!acct.isSet(PlayerAccount.AccountFlag.NUMCHARSOVERRIDE)))
+				&&(!acct.isSet(AccountFlag.NUMCHARSOVERRIDE)))
 				{
 					session.println(L("You may only have @x1 characters.  Please retire one to create another.",""+maxPlayersOnAccount));
 					return false;
@@ -4157,7 +4329,7 @@ public class CharCreation extends StdLibrary implements CharCreationLibrary
 		int maxPlayersOnAccount = CMProps.getIntVar(CMProps.Int.COMMONACCOUNTSYSTEM);
 		if(maxPlayersOnAccount < Integer.MAX_VALUE)
 			maxPlayersOnAccount += acct.getBonusCharsLimit();
-		if(acct.isSet(PlayerAccount.AccountFlag.NUMCHARSOVERRIDE))
+		if(acct.isSet(AccountFlag.NUMCHARSOVERRIDE))
 			return Integer.MAX_VALUE;
 		return maxPlayersOnAccount;
 	}
@@ -4310,7 +4482,7 @@ public class CharCreation extends StdLibrary implements CharCreationLibrary
 		if(!CMLib.flags().isCloaked(mob))
 		{
 			for(int i=0;i<channels.size();i++)
-				CMLib.commands().postChannel(channels.get(i),mob.clans(),L("@x1 has logged on.",mob.Name()),true);
+				CMLib.commands().postChannel(channels.get(i),mob.clans(),L("@x1 has logged on.",mob.Name()),true,mob);
 		}
 		for(final Pair<Clan,Integer> clan : mob.clans())
 			clan.first.updateClanPrivileges(mob);
@@ -4411,8 +4583,15 @@ public class CharCreation extends StdLibrary implements CharCreationLibrary
 			Log.debugOut("CharCreation",mob.name()+" has no/lost location.. sending to start room");
 			startRoom = CMLib.map().getRoom(mob.getStartRoom());
 			if(startRoom == null)
+			{
 				startRoom = CMLib.map().getStartRoom(mob);
-
+				if(startRoom == null)
+					startRoom = getDefaultStartRoom(mob);
+				if(startRoom != null)
+					mob.setStartRoom(startRoom);
+				if(startRoom == null)
+					startRoom = CMLib.map().getRandomRoom();
+			}
 		}
 		return this.finishLogin(session, mob, startRoom, resetStats);
 	}

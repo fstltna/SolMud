@@ -22,3 +22,4 @@
  ^#222Our discord: ^chttps://discord.gg/TXsNYrqYCY^N
  ^#222^Y(^yWe are all at the discord!^Y)
  ^#222------------------------------------------------------^N
+ ^yPowered By CoffeeMud v5.10

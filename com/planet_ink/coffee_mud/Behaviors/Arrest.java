@@ -24,7 +24,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 
 /*
-   Copyright 2002-2024 Bo Zimmerman
+   Copyright 2002-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -65,6 +65,11 @@ public class Arrest extends StdBehavior implements LegalBehavior
 	protected Map<String, Object>	suppressedCrimes	= Collections.synchronizedMap(new TreeMap<String, Object>());
 	protected Map<String,Boolean>	bannedItemCache		= new LimitedTreeMap<String,Boolean>(99999,1000,false);
 	protected Set<String>			bannedMOBCheck		= new LimitedTreeSet<String>(60000,250,false);
+	protected String				lawName				= "laws.ini";
+	protected Properties 			extraParms			= new Properties();
+	protected String				extraLawParms		= "";
+	protected long					lastLawChange		= 0;
+	protected final RoomnumberSet	trespassSet			= (RoomnumberSet) CMClass.getCommon("DefaultRoomnumberSet");
 
 	@Override
 	public boolean isFullyControlled()
@@ -78,42 +83,13 @@ public class Arrest extends StdBehavior implements LegalBehavior
 		return 0;
 	}
 
-	protected String getLawParms()
-	{
-		final String parms=getParms();
-		final int x=parms.indexOf(';');
-		if(x>=0)
-			return parms.substring(0, x).trim();
-		return parms;
-	}
-
-	public final String getExtraLawString()
-	{
-		final String extraLawString=getParms();
-		final int x=extraLawString.indexOf(';');
-		if(x>=0)
-		{
-			return extraLawString.substring(x+1).trim();
-		}
-		return "";
-	}
-
-	public final Properties getExtraLawParms()
-	{
-		final String extraLawString=getExtraLawString();
-		final Properties p=new Properties();
-		if(extraLawString.length()>0)
-			p.putAll(CMParms.parseEQParms(extraLawString));
-		return p;
-	}
-
 	@Override
 	public String accountForYourself()
 	{
 		return "legaliness";
 	}
 
-	public void debugLogLostConvicts(final String lead, final LegalWarrant W, final MOB officer)
+	protected void debugLogLostConvicts(final String lead, final LegalWarrant W, final MOB officer)
 	{
 		final StringBuilder errLogMsg=new StringBuilder("("+lastAreaName+"): ");
 		errLogMsg.append(!W.criminal().location().isInhabitant(officer)?L("AE1 "):"");
@@ -262,7 +238,7 @@ public class Arrest extends StdBehavior implements LegalBehavior
 		if(laws!=null)
 		{
 			laws.resetLaw();
-			if(getLawParms().equalsIgnoreCase("custom")
+			if(lawName.equals("custom")
 			&&(myArea!=null))
 			{
 				CMLib.database().DBReCreatePlayerData(myArea.Name(),"ARREST",myArea.Name()+"/ARREST",laws.rawLawString());
@@ -384,7 +360,7 @@ public class Arrest extends StdBehavior implements LegalBehavior
 		return false;
 	}
 
-	public boolean addWarrant(final Law laws, final LegalWarrant W)
+	protected boolean addWarrant(final Law laws, final LegalWarrant W)
 	{
 		if(!theLawIsEnabled())
 			return false;
@@ -417,7 +393,7 @@ public class Arrest extends StdBehavior implements LegalBehavior
 			{
 				final List<String> channels=CMLib.channels().getFlaggedChannelNames(ChannelsLibrary.ChannelFlag.WARRANTS, W.criminal());
 				for(int i=0;i<channels.size();i++)
-					CMLib.commands().postChannel(channels.get(i),null,L("@x1 has been accused of @x2.",W.criminal().name(),fixCharge(W)),true);
+					CMLib.commands().postChannel(channels.get(i),null,L("@x1 has been accused of @x2.",W.criminal().name(),fixCharge(W)),true,W.criminal());
 			}
 			return true;
 		}
@@ -509,29 +485,83 @@ public class Arrest extends StdBehavior implements LegalBehavior
 		return false;
 	}
 
+	protected void populateRoomSet(final Area myArea, final List<String> list, final RoomnumberSet set)
+	{
+		if(set.isEmpty())
+		{
+			final List<Room> rooms = findSpecialRooms(myArea,list);
+			for(final Room R : rooms)
+			{
+				final String roomID = CMLib.map().getExtendedRoomID(R);
+				if(roomID.length()>0)
+					set.add(roomID);
+			}
+			if(set.isEmpty())
+				set.add("NOWHERE"+CMLib.dice().rollPercentage()+"#"+CMLib.dice().rollPercentage());
+		}
+	}
+
+	protected boolean isTrespassRoom(final Area myArea, final Room room)
+	{
+		if(!theLawIsEnabled())
+			return false;
+		if(room != null)
+		{
+			final Law laws=getLaws(myArea,false);
+			if(laws!=null)
+			{
+				final List<String> trespassDescs = laws.trespassRooms();
+				if((trespassDescs.size()==0)||(trespassDescs.get(0).equals("@")))
+					return false;
+				this.populateRoomSet(myArea, trespassDescs, trespassSet);
+				return trespassSet.contains(CMLib.map().getExtendedRoomID(room));
+			}
+		}
+		return false;
+	}
+
 	protected boolean isJailRoom(final Area myArea, final Room room)
 	{
 		if(!theLawIsEnabled())
 			return false;
-		final Law laws=getLaws(myArea,false);
-		if((laws!=null)&&(room!=null))
-			return getRooms(myArea,laws.jailRooms()).contains(room);
+		if(room != null)
+		{
+			final Law laws=getLaws(myArea,false);
+			if(laws!=null)
+			{
+				final List<String> jailDescs = laws.jailRooms();
+				if((jailDescs.size()==0)||(jailDescs.get(0).equals("@")))
+					return false;
+				for(final String jailDesc : jailDescs)
+					if(this.isSpecialRoom(myArea, room, jailDesc))
+						return true;
+			}
+		}
 		return false;
 	}
 
 	@Override
-	public boolean isJailRoom(final Area myArea, final List<Room> jails)
+	public boolean isAnyJailRoom(final Area myArea, final List<Room> jails)
 	{
 		if(!theLawIsEnabled())
+			return false;
+		if(jails.size()==0)
 			return false;
 		final Law laws=getLaws(myArea,false);
 		if(laws!=null)
 		{
-			final List<Room> rooms=getRooms(myArea,laws.jailRooms());
-			boolean answer=false;
-			for(int i=0;i<jails.size();i++)
-				answer=answer||rooms.contains(jails.get(i));
-			return answer;
+			final List<String> jailDescs = laws.jailRooms();
+			if((jailDescs.size()==0)||(jailDescs.get(0).equals("@")))
+				return false;
+			for(int r=0;r<jails.size();r++)
+			{
+				final Room R = jails.get(r);
+				if(R == null)
+					continue;
+				for(final String jailDesc : jailDescs)
+					if(this.isSpecialRoom(myArea, R, jailDesc))
+						return true;
+			}
 		}
 		return false;
 	}
@@ -544,8 +574,9 @@ public class Arrest extends StdBehavior implements LegalBehavior
 		final Law laws=getLaws(myArea,false);
 		if(laws!=null)
 		{
-			for (final String brokenLaw : accusableLaws)
+			for (int i=0;i<accusableLaws.length;i++)
 			{
+				final String brokenLaw = accusableLaws[i].toUpperCase().trim();
 				String[] info=null;
 				if((laws.basicCrimes().containsKey(brokenLaw))&&(laws.basicCrimes().get(brokenLaw) !=null))
 					info=laws.basicCrimes().get(brokenLaw);
@@ -555,6 +586,12 @@ public class Arrest extends StdBehavior implements LegalBehavior
 				else
 				if((laws.abilityCrimes().containsKey(brokenLaw))&&(laws.abilityCrimes().get(brokenLaw) !=null))
 					info=laws.abilityCrimes().get(brokenLaw);
+				else
+				if((i==0)&&(accusableLaws.length == Law.BIT_NUMBITS))
+				{
+					i=accusableLaws.length-1;
+					info=accusableLaws;
+				}
 				if(info!=null)
 				{
 					if((info[Law.BIT_CRIMENAME]!=null)
@@ -583,6 +620,22 @@ public class Arrest extends StdBehavior implements LegalBehavior
 	public void setParms(final String newParms)
 	{
 		super.setParms(newParms);
+		final int x=newParms.indexOf(';');
+		if(x>=0)
+		{
+			this.lawName = newParms.substring(0, x).trim().toLowerCase();
+			this.extraLawParms = newParms.substring(x+1).trim();
+		}
+		else
+		{
+			this.lawName = newParms.trim().toLowerCase();
+			this.extraLawParms = "";
+		}
+		if(lawName.length()==0)
+			lawName="laws.ini";
+		extraParms = new Properties();
+		if(extraLawParms.length()>0)
+			extraParms.putAll(CMParms.parseEQParms(this.extraLawParms));
 		loadAttempt=false;
 	}
 
@@ -628,45 +681,47 @@ public class Arrest extends StdBehavior implements LegalBehavior
 	@Override
 	public List<String> externalFiles()
 	{
-		String lawName=getLawParms();
-		if(lawName.length()==0)
-			lawName="laws.ini";
-		if(lawName.equalsIgnoreCase("custom"))
+		if(lawName.equals("custom"))
 			return super.externalFiles();
-		if(lawName.equalsIgnoreCase("laws.ini"))
+		if(lawName.equals("laws.ini"))
 			return super.externalFiles();
 		if(new CMFile(Resources.makeFileResourceName(lawName),null).exists())
 			return new XVector<String>(lawName);
 		return super.externalFiles();
 	}
 
-	public final String getResourceKey(final String lawName)
+	protected Law getLaws(final Environmental what, final boolean cachedOnly)
 	{
-		return "LEGAL-"+lawName+Long.toString(getExtraLawString().hashCode());
-	}
-
-	protected Law getLaws(final Environmental what, final boolean cleanOnly)
-	{
-		String lawName=getLawParms();
-
 		boolean modifiableLaw=false;
 		boolean modifiableNames=defaultModifiableNames();
 
 		Law laws=null;
-		if((lawName.equalsIgnoreCase("custom"))&&(what!=null))
+		String resourceKey;
+		if((lawName.equals("custom"))&&(what!=null))
 		{
 			modifiableLaw=true;
-			laws=(Law)Resources.getResource(getResourceKey(what.Name()));
+			resourceKey = "LEGAL-"+what.Name()+Long.toString(extraLawParms.hashCode());
+			laws=(Law)Resources.getResource(resourceKey);
 		}
 		else
 		{
-			if(lawName.length()==0)
-				lawName="laws.ini";
-			laws=(Law)Resources.getResource(getResourceKey(lawName));
+			resourceKey = "LEGAL-"+lawName+Long.toString(extraLawParms.hashCode());
+			laws=(Law)Resources.getResource(resourceKey);
 			modifiableNames=false;
 		}
 
-		if((laws==null)&&(cleanOnly))
+		if(laws != null)
+		{
+			if(laws.lastResetTime() > this.lastLawChange)
+			{
+				bannedItemCache.clear();
+				bannedMOBCheck.clear();
+				trespassSet.clear();
+				laws = null;
+			}
+		}
+		else
+		if(cachedOnly)
 			return null;
 
 		if(laws==null)
@@ -674,7 +729,7 @@ public class Arrest extends StdBehavior implements LegalBehavior
 			final Properties lawprops=new Properties();
 			try
 			{
-				if((lawName.equalsIgnoreCase("custom"))&&(what!=null))
+				if((lawName.equals("custom"))&&(what!=null))
 				{
 					final List<PlayerData> data=CMLib.database().DBReadPlayerData(what.Name(),"ARREST",what.Name()+"/ARREST");
 					if((data!=null)&&(data.size()>0))
@@ -713,14 +768,12 @@ public class Arrest extends StdBehavior implements LegalBehavior
 				}
 				return (Law)CMClass.getCommon("DefaultLawSet");
 			}
-			lawprops.putAll(getExtraLawParms());
+			lawprops.putAll(this.extraParms);
 			loadAttempt=true;
 			laws=(Law)CMClass.getCommon("DefaultLawSet");
 			laws.initialize(this,lawprops,modifiableNames,modifiableLaw);
-			if(lawName.equalsIgnoreCase("custom")&&(what!=null))
-				Resources.submitResource(getResourceKey(what.name()),laws);
-			else
-				Resources.submitResource(getResourceKey(lawName),laws);
+			Resources.submitResource(resourceKey,laws);
+			this.lastLawChange = System.currentTimeMillis();
 		}
 		return laws;
 	}
@@ -1003,10 +1056,7 @@ public class Arrest extends StdBehavior implements LegalBehavior
 
 	public int getBanishmentTicks(final Law laws, final LegalWarrant W, final MOB criminal)
 	{
-		TimeClock C=CMLib.time().globalClock();
-		if(criminal != null)
-			C=CMLib.time().localClock(criminal);
-
+		final TimeClock C=CMLib.time().localClock(criminal);
 		String s=null;
 		int days=0;
 		if(CMath.bset(W.punishmentCode(),Law.PUNISHMENTMASK_SEPARATE))
@@ -1042,10 +1092,7 @@ public class Arrest extends StdBehavior implements LegalBehavior
 
 	public int getShameTicks(final Law laws, final LegalWarrant W, final MOB criminal)
 	{
-		TimeClock C=CMLib.time().globalClock();
-		if(criminal != null)
-			C=CMLib.time().localClock(criminal);
-
+		final TimeClock C=CMLib.time().localClock(criminal);
 		String s=null;
 		int days=0;
 		if(CMath.bset(W.punishmentCode(),Law.PUNISHMENTMASK_SEPARATE))
@@ -1339,9 +1386,9 @@ public class Arrest extends StdBehavior implements LegalBehavior
 			if((laws.releaseRooms().size()==0)||(laws.releaseRooms().get(0).equals("@")))
 				return myArea.getMetroMap().nextElement();
 			if(criminal.location()!=null)
-				room=getRoom(criminal.location().getArea(),laws.releaseRooms());
+				room=findSpecialRoom(criminal.location().getArea(),laws.releaseRooms());
 			if(room==null)
-				room=getRoom(myArea,laws.releaseRooms());
+				room=findSpecialRoom(myArea,laws.releaseRooms());
 			if(room==null)
 				room=findTheJudge(laws,myArea);
 			if(room==null)
@@ -1363,16 +1410,18 @@ public class Arrest extends StdBehavior implements LegalBehavior
 		return (M.fetchEffect("QuestBound")!=null); // questing mobs are, by default, trouble makers
 	}
 
-	public List<Room> getRooms(final Area A, final List<String> V)
+	public List<Room> findSpecialRooms(final Area A, final List<String> descList)
 	{
 		final Vector<Room> finalV=new Vector<Room>();
 		Room jail=null;
-		if(V.size()==0)
+		if(descList.size()==0)
 			return finalV;
-		for(int v=0;v<V.size();v++)
+		for(int v=0;v<descList.size();v++)
 		{
-			final String which=V.get(v);
-			jail=getRoom(A,which);
+			final String which=descList.get(v);
+			if(which.equals("@"))
+				continue;
+			jail=findSpecialRoom(A,which);
 			if((jail!=null)
 			&&(!finalV.contains(jail)))
 				finalV.addElement(jail);
@@ -1380,7 +1429,22 @@ public class Arrest extends StdBehavior implements LegalBehavior
 		return finalV;
 	}
 
-	public Room getRoom(final Area A, final String which)
+	protected boolean isSpecialRoom(final Area A, final Room room, final String which)
+	{
+		if(room==null)
+			return false;
+		if(which.equals("@"))
+			return false;
+		if(CMLib.map().getExtendedRoomID(room).equalsIgnoreCase(which))
+			return true;
+		if(CMLib.english().containsString(room.displayText(),which))
+			return true;
+		if(CMLib.english().containsString(room.description(),which))
+			return true;
+		return false;
+	}
+
+	protected Room findSpecialRoom(final Area A, final String which)
 	{
 		Room jail=null;
 		jail=CMLib.map().getRoom(which);
@@ -1411,15 +1475,15 @@ public class Arrest extends StdBehavior implements LegalBehavior
 		return jail;
 	}
 
-	public Room getRoom(final Area A, final List<String> V)
+	protected Room findSpecialRoom(final Area A, final List<String> V)
 	{
 		if(V.size()==0)
 			return null;
 		final String which=V.get(CMLib.dice().roll(1,V.size(),-1));
-		return getRoom(A,which);
+		return findSpecialRoom(A,which);
 	}
 
-	public void fileAllWarrants(final Law laws, final LegalWarrant W1, final MOB mob)
+	protected void fileAllWarrants(final Law laws, final LegalWarrant W1, final MOB mob)
 	{
 		final List<LegalWarrant> V=new ArrayList<LegalWarrant>();
 		{
@@ -1463,37 +1527,37 @@ public class Arrest extends StdBehavior implements LegalBehavior
 		}
 	}
 
-	public Room findTheJail(final MOB mob, final Area myArea, final Law laws)
+	protected Room findTheJail(final MOB mob, final Area myArea, final Law laws)
 	{
 		Room jail=null;
 		if((laws.jailRooms().size()==0)||(laws.jailRooms().get(0).equals("@")))
 			return null;
-		jail=getRoom(mob.location().getArea(),laws.jailRooms());
+		jail=findSpecialRoom(mob.location().getArea(),laws.jailRooms());
 		if(jail==null)
-			jail=getRoom(myArea,laws.jailRooms());
+			jail=findSpecialRoom(myArea,laws.jailRooms());
 		return jail;
 	}
 
-	public Room findTheDetentionCenter(final MOB mob, final Area myArea, final Law laws, final LegalWarrant W)
+	protected Room findTheDetentionCenter(final MOB mob, final Area myArea, final Law laws, final LegalWarrant W)
 	{
 		final String detentionCenter=getDetainRoom(laws,W,W.criminal());
 		if(detentionCenter.length()==0)
 			return null;
-		Room detainer=getRoom(mob.location().getArea(),detentionCenter);
+		Room detainer=findSpecialRoom(mob.location().getArea(),detentionCenter);
 		if(detainer==null)
-			detainer=getRoom(myArea,detentionCenter);
+			detainer=findSpecialRoom(myArea,detentionCenter);
 		return detainer;
 	}
 
-	public Room findTheBanishingPoint(final MOB mob, final Area myArea, final Law laws, final LegalWarrant W)
+	protected Room findTheBanishingPoint(final MOB mob, final Area myArea, final Law laws, final LegalWarrant W)
 	{
 		final String banishingPoint=getDetainRoom(laws,W,W.criminal());
 		Room banishRoom = null;
 		if(banishingPoint.length()>0)
 		{
-			banishRoom=getRoom(mob.location().getArea(),banishingPoint);
+			banishRoom=findSpecialRoom(mob.location().getArea(),banishingPoint);
 			if(banishRoom==null)
-				banishRoom=getRoom(myArea,banishingPoint);
+				banishRoom=findSpecialRoom(myArea,banishingPoint);
 		}
 		final Room mobR=mob.location();
 		if((banishRoom == null)
@@ -1613,7 +1677,7 @@ public class Arrest extends StdBehavior implements LegalBehavior
 		return banishRoom;
 	}
 
-	public boolean judgeMe(final Law laws, MOB judge, final MOB officer, final MOB criminal, final LegalWarrant W, final Area A, final boolean debugging)
+	protected boolean judgeMe(final Law laws, MOB judge, final MOB officer, final MOB criminal, final LegalWarrant W, final Area A, final boolean debugging)
 	{
 		final List<LegalWarrant> relevantCrimes=getRelevantWarrants(laws.warrants(),W,criminal);
 		if(CMath.bset(W.punishmentCode(),Law.PUNISHMENTMASK_SKIPTRIAL))
@@ -1809,9 +1873,7 @@ public class Arrest extends StdBehavior implements LegalBehavior
 		&&(judge != null))
 		{
 			final int ticks=getBanishmentTicks(laws,W,criminal);
-			TimeClock C=CMLib.time().globalClock();
-			if(criminal != null)
-				C=CMLib.time().localClock(criminal);
+			final TimeClock C=CMLib.time().localClock(criminal);
 			if((ticks > 0)
 			&&(judge!=null)
 			&&(criminal != null)
@@ -1845,9 +1907,7 @@ public class Arrest extends StdBehavior implements LegalBehavior
 		&&(judge != null))
 		{
 			final int ticks=getShameTicks(laws,W,criminal);
-			TimeClock C=CMLib.time().globalClock();
-			if(criminal != null)
-				C=CMLib.time().localClock(criminal);
+			final TimeClock C=CMLib.time().localClock(criminal);
 			if((ticks > 0)
 			&&(judge!=null)
 			&&(criminal != null)
@@ -2324,18 +2384,19 @@ public class Arrest extends StdBehavior implements LegalBehavior
 
 		if((laws.basicCrimes().containsKey("TRESPASSING"))
 		&&((CMLib.masking().maskCheck(laws.getMessage(Law.MSG_TRESPASSERMASK),testMOB,false))
+			//|| isTrespassRoom(myArea, R) //BZ: useless feature
 			||(testMOB.isMonster()
-				&&(testMOB.getStartRoom()!=null)
-				&&(testMOB.getStartRoom().getArea()!=R.getArea())
+				&&(testMOB.getStartRoom() != null)
+				&&(testMOB.getStartRoom().getArea() != R.getArea())
 				&&(CMLib.flags().isPossiblyAggressive(testMOB))
-				&&((!(testMOB instanceof Rideable))||(((Rideable)testMOB).numRiders()==0))
+				&&((!(testMOB instanceof Rideable)) || (((Rideable)testMOB).numRiders() == 0))
 				&&((testMOB.amFollowing()==null)
-					||((!testMOB.amFollowing().isMonster())&&(testMOB.amFollowing().location()==testMOB.location())))
+					||((!testMOB.amFollowing().isMonster()) && (testMOB.amFollowing().location()==testMOB.location())))
 				&&(!CMLib.masking().maskCheck(laws.getMessage(Law.MSG_PROTECTEDMASK),testMOB,false)))))
 		{
 			final String[] info=laws.basicCrimes().get("TRESPASSING");
 			fillOutWarrant(testMOB,
-							laws,
+						   laws,
 						   myArea,
 						   null,
 						   info[Law.BIT_CRIMELOCS],
@@ -2350,8 +2411,8 @@ public class Arrest extends StdBehavior implements LegalBehavior
 			{
 				if((!testMOB.isPlayer())
 				&&(testMOB.getStartRoom() != null)
-				&&(testMOB.getStartRoom().getArea()== R.getArea())
-				&&(CMLib.dice().rollPercentage()>1))
+				&&(testMOB.getStartRoom().getArea() == R.getArea())
+				&&(CMLib.dice().rollPercentage() > 1))
 				{
 					// locals get a pass almost all of the time.
 				}
@@ -3627,7 +3688,7 @@ public class Arrest extends StdBehavior implements LegalBehavior
 						if(W.criminal().fetchEffect("Prisoner")==null)
 						{
 							fileAllWarrants(laws,W,W.criminal());
-							if(isJailRoom(myArea, new XVector<Room>(W.jail())))
+							if(isJailRoom(myArea,W.jail()))
 								unCuff(W.criminal());
 						}
 						else

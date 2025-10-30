@@ -2,6 +2,7 @@ package com.planet_ink.coffee_mud.Common;
 import com.planet_ink.coffee_mud.core.interfaces.*;
 import com.planet_ink.coffee_mud.core.threads.ServiceEngine;
 import com.planet_ink.coffee_mud.core.*;
+import com.planet_ink.coffee_mud.core.CMProps.Bool;
 import com.planet_ink.coffee_mud.core.collections.*;
 import com.planet_ink.coffee_mud.core.database.DBConnections;
 import com.planet_ink.coffee_mud.Abilities.interfaces.*;
@@ -39,7 +40,7 @@ import java.util.*;
 
 /**
  * Portions Copyright (c) 2003 Jeremy Vyska
- * Portions Copyright (c) 2004-2024 Bo Zimmerman
+ * Portions Copyright (c) 2004-2025 Bo Zimmerman
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -1612,6 +1613,7 @@ public class DefaultClan implements Clan
 
 		final XMLTag achievePiece = xmlLib.getPieceFromPieces(poliData, "ACHIEVEMENTS");
 		achievementers.clear();
+		// this shouldn't be done until the mud is booted
 		for(final Enumeration<Achievement> a=CMLib.achievements().achievements(Agent.CLAN);a.hasMoreElements();)
 		{
 			final Achievement A=a.nextElement();
@@ -2590,7 +2592,7 @@ public class DefaultClan implements Clan
 		}
 		final List<String> channels=CMLib.channels().getFlaggedChannelNames(ChannelsLibrary.ChannelFlag.CLANINFO, null);
 		for(int i=0;i<channels.size();i++)
-			CMLib.commands().postChannel(channels.get(i),channelSet,msg,true);
+			CMLib.commands().postChannel(channels.get(i),channelSet,msg,true,null);
 	}
 
 	private static final SearchIDList<Ability> emptyAbles =new CMUniqSortSVec<Ability>(1);

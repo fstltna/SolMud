@@ -20,7 +20,7 @@ import com.planet_ink.coffee_mud.Races.interfaces.*;
 import java.util.*;
 
 /*
-   Copyright 2005-2024 Bo Zimmerman
+   Copyright 2005-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -145,7 +145,7 @@ public class ScriptableEverymob extends StdBehavior implements ScriptingEngine
 	}
 
 	@Override
-	public void dequeResponses(Object[] objects)
+	public void dequeResponses(final Object[] objects)
 	{
 		if(sampleB!=null)
 			sampleB.dequeResponses(null);
@@ -155,6 +155,13 @@ public class ScriptableEverymob extends StdBehavior implements ScriptingEngine
 	public List<String> externalFiles()
 	{
 		return (sampleB==null)?null:sampleB.externalFiles();
+	}
+
+	@Override
+	public void preApproveScripts()
+	{
+		if(sampleB != null)
+			sampleB.preApproveScripts();
 	}
 
 	@Override

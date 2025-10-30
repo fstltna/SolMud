@@ -21,7 +21,7 @@ import java.lang.ref.WeakReference;
 import java.util.*;
 import java.util.Map.Entry;
 /*
-   Copyright 2005-2024 Bo Zimmerman
+   Copyright 2005-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -176,6 +176,15 @@ public interface GalacticMap extends CMLibrary
 	 * @return the minimum distance in high precision
 	 */
 	public double getMinDistanceFrom(final Coord3D prevPos, final Coord3D curPosition, final Coord3D objPos);
+
+	/**
+	 * Calculates the best available orbit.
+	 *
+	 * @param o the space ship that wants to orbit
+	 * @param p the planet to orbit
+	 * @return the final direction and speed to be in orbit
+	 */
+	public Pair<Dir3D, Double> calculateOrbit(final SpaceObject o, final SpaceObject p);
 
 	/**
 	 * Given two vectors, this will return the minimum

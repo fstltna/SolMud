@@ -21,7 +21,7 @@ import com.planet_ink.coffee_mud.Libraries.interfaces.*;
 import com.planet_ink.coffee_mud.Libraries.interfaces.XMLLibrary.XMLTag;
 
 /*
-   Copyright 2005-2024 Bo Zimmerman
+   Copyright 2005-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -95,6 +95,14 @@ public class DefaultRoomnumberSet implements RoomnumberSet
 		R.lastChangedTime = lastChangedTime;
 		return R;
 	}
+
+	@Override
+	public void clear()
+	{
+		this.root.clear();
+		this.lastChangedTime = System.currentTimeMillis();
+	}
+
 
 	@Override
 	public void setSingleAreaFlag(final boolean tf)

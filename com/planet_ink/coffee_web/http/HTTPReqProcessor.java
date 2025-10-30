@@ -29,7 +29,7 @@ import com.planet_ink.coffee_mud.core.Log;
 import com.planet_ink.coffee_mud.core.collections.Pair;
 
 /*
-   Copyright 2012-2024 Bo Zimmerman
+   Copyright 2012-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -268,6 +268,7 @@ public class HTTPReqProcessor implements HTTPFileGetter
 		catch(final IndexOutOfBoundsException e)
 		{
 			// just eat it.
+			config.getLogger().severe("Last Modified date of "+response.getLastModified().getTime()+" caused an arrayindex in HTTPReqProcessor #2.");
 		}
 		str.append(HTTPIOHandler.RANGE_HEADER);
 		str.append(EOLN);

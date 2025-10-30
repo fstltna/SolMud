@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import com.planet_ink.coffee_mud.core.BigCMath;
 
 /*
-   Copyright 2024-2024 Bo Zimmerman
+   Copyright 2024-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -19,6 +19,14 @@ import com.planet_ink.coffee_mud.core.BigCMath;
    See the License for the specific language governing permissions and
    limitations under the License.
 */
+/**
+ * Represents a directional vector in 3d space as a pair of BigDecimals
+ * in radians.
+ * The first of the pair is the full horizontal circle (2*pi), and the
+ * second of the pair is the half z-axis circle (0-pi).
+ * @author Bo Zimmerman
+ *
+ */
 public class Dir3D extends BigVector
 {
 	boolean safe = true;
@@ -207,7 +215,7 @@ public class Dir3D extends BigVector
 	{
 		return xy().hashCode() << 32 | z().hashCode();
 	}
-	
+
 	@Override
 	public boolean equals(final Object o)
 	{

@@ -19,7 +19,7 @@ import com.planet_ink.coffee_mud.Races.interfaces.*;
 
 import java.util.*;
 /*
-   Copyright 2008-2024 Bo Zimmerman
+   Copyright 2008-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -165,7 +165,7 @@ public interface AutoAwardsLibrary extends CMLibrary
 	 * auto-properties.
 	 *
 	 * @param mob the mob who wants auto properties
-	 * @param reset TODO
+	 * @param reset recalculate any existing auto properties
 	 */
 	public void giveAutoProperties(final MOB mob, boolean reset);
 

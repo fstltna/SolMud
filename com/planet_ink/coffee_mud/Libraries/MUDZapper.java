@@ -25,7 +25,7 @@ import com.planet_ink.coffee_mud.Races.interfaces.*;
 
 import java.util.*;
 /*
-   Copyright 2004-2024 Bo Zimmerman
+   Copyright 2004-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -5137,6 +5137,41 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 		return false;
 	}
 
+	@Override
+	public boolean maskCheckDateEntries(final CompiledZMask cset, final TimeClock C)
+	{
+		if(C==null)
+			return true;
+		if((cset==null)||(cset.empty())||(cset.entries().length<1))
+			return true;
+		getMaskCodes();
+		if(cset.entries().length<3)
+			return maskCheckDateEntries(cset.entries()[0], C);
+		else
+		{
+			boolean lastValue = false;
+			boolean lastConnectorNot = false;
+			for(int i=0;i<cset.entries().length;i+=2)
+			{
+				boolean subResult =  maskCheckDateEntries(cset.entries()[i],C);
+				if(lastConnectorNot)
+					subResult = !subResult;
+				lastValue = lastValue || subResult;
+				if(i==cset.entries().length-1)
+					return lastValue;
+				final CompiledZMaskEntry entry = cset.entries()[i+1][0];
+				if(entry.maskType()==MaskingLibrary.ZapperKey._OR)
+					lastConnectorNot=true;
+				else
+				if(entry.maskType()==MaskingLibrary.ZapperKey.OR)
+					lastConnectorNot=false;
+				else
+					Log.errOut("Badly compiled zappermask @ "+C.name());
+			}
+			return lastValue;
+		}
+	}
+
 	protected boolean maskCheckDateEntries(final CompiledZMaskEntry[] set, final TimeClock C)
 	{
 		for(final CompiledZMaskEntry entry : set)
@@ -8235,6 +8270,8 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 		{
 		case WEEK/*ofmonth*/:
 		case _WEEK/*ofmonth*/:
+			if(C.getDaysInWeek()<1)
+				return 0;
 			return (C.getDaysInMonth() / C.getDaysInWeek())-1;
 		case DAYOFYEAR:
 		case _DAYOFYEAR:
@@ -8318,6 +8355,14 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 		}
 	}
 
+	protected boolean containsMaskRange(final CompiledZMaskEntry[] sset, final TimePeriod P)
+	{
+		for(final CompiledZMaskEntry entry : sset)
+			if(toTimePeriod(entry.maskType()) == P)
+				return true;
+		return false;
+	}
+
 	protected TimeClock dateMaskSubEntryToNextTimeClock(final Physical pP, final CompiledZMaskEntry[] set, final boolean[] not)
 	{
 		final CompiledZMaskEntry[] sset = Arrays.copyOf(set, set.length);
@@ -8337,17 +8382,13 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 		});
 		final TimeClock nowC = CMLib.time().homeClock(pP);
 		final TimeClock C = (TimeClock)nowC.copyOf();
-		final Set<TimePeriod> donePeriods = new HashSet<TimePeriod>();
 		if((pP instanceof MOB)&&(((MOB)pP).playerStats()!=null))
 		{
 			final List<CompiledZMaskEntry> bdEntries = new ArrayList<CompiledZMaskEntry>(3);
 			for(final CompiledZMaskEntry entry : set)
 			{
 				if(useBirthTimePeriod(entry.maskType()))
-				{
 					bdEntries.add(entry);
-					donePeriods.add(this.toTimePeriod(entry.maskType()));
-				}
 			}
 			if((bdEntries.size()>0) && (!maskCheck(bdEntries.toArray(new CompiledZMaskEntry[bdEntries.size()]), pP, true)))
 				return null;
@@ -8385,7 +8426,8 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 				final List<Integer> okV = okVals.get(period);
 				if(okV == null) // if null, anything will do!
 					continue;
-				final int max = (period == TimePeriod.YEAR)?(C.get(period)+100):(getTimeMax(C,entry.maskType())+1);
+				final int max = (period == TimePeriod.YEAR)?(C.get(period)+100):
+								1+getTimeMax(C,entry.maskType());
 				boolean useNot = !entry.maskType().name().startsWith("_");
 				useNot = (not == null || (!not[0])) ? useNot : !useNot;
 				Integer perI = Integer.valueOf(getTimeValue(C,entry.maskType()));
@@ -8433,7 +8475,7 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 					for(final TimePeriod P : TimePeriod.values())
 					{
 						if((P.getIncrement() < period.getIncrement())
-						&&(!donePeriods.contains(P)))
+						&&(!containsMaskRange(sset,P)))
 						{
 							switch(P)
 							{
@@ -8441,6 +8483,7 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 								if(period == TimePeriod.WEEK)
 									C.set(TimePeriod.DAY, (C.getWeekOfMonth()*C.getDaysInWeek())+1);
 								else
+								if(!containsMaskRange(sset,TimePeriod.WEEK))
 									C.set(P, C.getMin(P));
 								break;
 							case MONTH: // period must be year
@@ -8453,7 +8496,6 @@ public class MUDZapper extends StdLibrary implements MaskingLibrary
 						}
 					}
 				}
-				donePeriods.add(period);
 			}
 			catch (final NullPointerException n)
 			{

@@ -18,7 +18,7 @@ import com.planet_ink.coffee_mud.Races.interfaces.*;
 import java.util.*;
 
 /*
-   Copyright 2004-2024 Bo Zimmerman
+   Copyright 2004-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -58,7 +58,7 @@ public class Time extends StdCommand
 			mob.tell(room.getArea().getTimeObj().timeDescription(mob,room));
 		if((mob.playerStats()!=null)&&(mob.playerStats().getBirthday()!=null))
 		{
-			final TimeClock C=CMLib.time().localClock(mob.getStartRoom());
+			final TimeClock C=CMLib.time().homeClock(mob);
 			final int day=C.getDayOfMonth();
 			final int month=C.getMonth();
 			int year=C.getYear();

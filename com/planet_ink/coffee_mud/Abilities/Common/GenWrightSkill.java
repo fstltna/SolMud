@@ -30,7 +30,7 @@ import java.util.*;
 import java.util.regex.Pattern;
 
 /*
-   Copyright 2022-2024 Bo Zimmerman
+   Copyright 2022-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -797,7 +797,6 @@ public class GenWrightSkill extends CraftingSkill implements ItemCraftor, Mendin
 		}
 		return str.toString();
 	}
-
 
 	@Override
 	public boolean invoke(final MOB mob, final List<String> commands, final Physical givenTarget, final boolean auto, final int asLevel)

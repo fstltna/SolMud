@@ -20,7 +20,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.*;
 /*
-   Copyright 2005-2024 Bo Zimmerman
+   Copyright 2005-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -133,6 +133,15 @@ public interface MaskingLibrary extends CMLibrary
 	 * @return true to pass the given object, false if rejected
 	 */
 	public boolean maskCheck(final CompiledZMask cset, final Environmental E, final boolean actual);
+
+	/**
+	 * Given a compiled zappermask containing only date/time and birth date/time related filters,
+	 * this will return whether the given clock passes the filter, or is rejected by it.
+	 * @param cset the compiled zappermask to apply to the player
+	 * @param C the clock to apply the pas to
+	 * @return true to pass the given clock, false if rejected
+	 */
+	public boolean maskCheckDateEntries(final CompiledZMask cset, final TimeClock C);
 
 	/**
 	 * Given a zappermask and a Environmental object, this will return whether the

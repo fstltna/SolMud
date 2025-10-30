@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 import com.planet_ink.coffee_mud.Libraries.interfaces.ColorLibrary;
 
 /*
-   Mostly Copyright 2000-2024 Bo Zimmerman
+   Mostly Copyright 2000-2025 Bo Zimmerman
 
    Functions for diff (C) 2006 Google
    Author: fraser@google.com (Neil Fraser)
@@ -954,19 +954,19 @@ public class CMStrings
 	{
 		if(str==null)
 			return str;
-		if(str.indexOf('\\')<0)
-			return str;
-		for(int i=0;i<str.length()-1;i++)
+		int i = str.indexOf('\\');
+		while((i>-1)&&(i<str.length()-1))
 		{
-			if(str.charAt(i)=='\\')
+			final char c = str.charAt(i+1);
+			if((quot == c)||(c=='\\'))
 				str=str.substring(0,i)+str.substring(i+1);
+			i = str.indexOf('\\',i+1);
 		}
 		return str;
 	}
 
 	/**
-	 * This methods replaces any double-escapes to single escape characters, and any
-	 * escaped double-chars to double-chars
+	 * This methods replaces any of the given escaped chars to being de-escaped.
 	 * @param str the string to de-escape
 	 * @param chars the chars to de-escape
 	 * @return the string, de-escaped
@@ -975,17 +975,12 @@ public class CMStrings
 	{
 		if(str==null)
 			return str;
-		if(str.indexOf('\\')<0)
-			return str;
-		for(int i=0;i<str.length()-1;i++)
+		int i = str.indexOf('\\');
+		while((i>-1)&&(i<str.length()-1))
 		{
-			if(str.charAt(i)=='\\')
-			{
-				if(chars.indexOf(str.charAt(i+1))>=0)
-					str=str.substring(0,i)+str.substring(i+1);
-				else
-					i++;
-			}
+			if(chars.indexOf(str.charAt(i+1))>=0)
+				str=str.substring(0,i)+str.substring(i+1);
+			i = str.indexOf('\\',i+1);
 		}
 		return str;
 	}
@@ -1320,10 +1315,21 @@ public class CMStrings
 					switch(c[i])
 					{
 					case ColorLibrary.COLORCODE_FANSI256:
-						i += 3;
+						if((i<c.length-8)&&(c[i+1]==c[i]))
+						{
+							if(!CMath.isHexNumber(name.substring(i+2,i+8)))
+								i += 3;
+							else
+								i += 7;
+						}
+						else
+							i += 3;
 						break;
 					case ColorLibrary.COLORCODE_BANSI256:
-						i += 3;
+						if((i<c.length-1)&&(c[i+1]==c[i]))
+							i += 7;
+						else
+							i += 3;
 						break;
 					case ColorLibrary.COLORCODE_BACKGROUND:
 						i++;
@@ -1392,10 +1398,21 @@ public class CMStrings
 					switch(c[i])
 					{
 					case ColorLibrary.COLORCODE_FANSI256:
-						i += 3;
+						if((i<c.length-8)&&(c[i+1]==c[i]))
+						{
+							if(!CMath.isHexNumber(name.substring(i+2,i+8)))
+								i += 3;
+							else
+								i += 7;
+						}
+						else
+							i += 3;
 						break;
 					case ColorLibrary.COLORCODE_BANSI256:
-						i += 3;
+						if((i<c.length-1)&&(c[i+1]==c[i]))
+							i += 7;
+						else
+							i += 3;
 						break;
 					case ColorLibrary.COLORCODE_BACKGROUND:
 						i++;
@@ -1468,10 +1485,21 @@ public class CMStrings
 					switch(c.charAt(i))
 					{
 					case ColorLibrary.COLORCODE_FANSI256:
-						i += 3;
+						if((i<c.length()-8)&&(c.charAt(i+1)==c.charAt(i)))
+						{
+							if(!CMath.isHexNumber(name.substring(i+2,i+8)))
+								i += 3;
+							else
+								i += 7;
+						}
+						else
+							i += 3;
 						break;
 					case ColorLibrary.COLORCODE_BANSI256:
-						i += 3;
+						if((i<c.length()-1)&&(c.charAt(i+1)==c.charAt(i)))
+							i += 7;
+						else
+							i += 3;
 						break;
 					case ColorLibrary.COLORCODE_BACKGROUND:
 						i++;
@@ -1546,10 +1574,21 @@ public class CMStrings
 					switch(c[i])
 					{
 					case ColorLibrary.COLORCODE_FANSI256:
-						i += 3;
+						if((i<c.length-8)&&(c[i+1]==c[i]))
+						{
+							if(!CMath.isHexNumber(name.substring(i+2,i+8)))
+								i += 3;
+							else
+								i += 7;
+						}
+						else
+							i += 3;
 						break;
 					case ColorLibrary.COLORCODE_BANSI256:
-						i += 3;
+						if((i<c.length-1)&&(c[i+1]==c[i]))
+							i += 7;
+						else
+							i += 3;
 						break;
 					case ColorLibrary.COLORCODE_BACKGROUND:
 						i++;
@@ -1970,6 +2009,14 @@ public class CMStrings
 						break;
 					case ColorLibrary.COLORCODE_FANSI256:
 					case ColorLibrary.COLORCODE_BANSI256:
+						if((i+9<=str.length())&&(str.charAt(i+2)==c))
+						{
+							if(!CMath.isHexNumber(str.substring(i+3,i+9)))
+								i+=4;
+							else
+								i += 8;
+						}
+						else
 						if(i+5<=str.length())
 							i+=4;
 						else
@@ -2089,6 +2136,15 @@ public class CMStrings
 						break;
 					case ColorLibrary.COLORCODE_FANSI256:
 					case ColorLibrary.COLORCODE_BANSI256:
+						if((i+9<=str.length())&&(str.charAt(i+2)==c))
+						{
+							if(!CMath.isHexNumber(str.substring(i+3,i+9)))
+								str.delete(i,i+5);
+							else
+								str.delete(i,i+9);
+							i--;
+						}
+						else
 						if(i+5<=str.length())
 						{
 							str.delete(i,i+5);
@@ -2292,6 +2348,21 @@ public class CMStrings
 						break;
 					case ColorLibrary.COLORCODE_FANSI256:
 					case ColorLibrary.COLORCODE_BANSI256:
+						if((i+9<str.length())&&(str.charAt(i+2)==c))
+						{
+							nos[++i]=true;
+							nos[++i]=true;
+							nos[++i]=true;
+							nos[++i]=true;
+							if(CMath.isHexNumber(str.substring(i+3,i+9)))
+							{
+								nos[++i]=true;
+								nos[++i]=true;
+								nos[++i]=true;
+								nos[++i]=true;
+							}
+						}
+						else
 						if(i+5<=str.length())
 						{
 							nos[++i]=true;
@@ -2407,10 +2478,31 @@ public class CMStrings
 							i++;
 							break;
 						case ColorLibrary.COLORCODE_FANSI256:
-							i += 3;
+							if((i<thisStr.length()-8)
+							&&(thisStr.charAt(i+1)==thisStr.charAt(i)))
+							{
+								if(!CMath.isHexNumber(thisStr.substring(i+2,i+8)))
+									i+=3;
+								else
+									i += 7;
+							}
+							else
+								i += 3;
 							break;
 						case ColorLibrary.COLORCODE_BANSI256:
-							i += 3;
+							if((i<thisStr.length()-9)
+							&&(thisStr.charAt(i+1)==thisStr.charAt(i)))
+							{
+								if(!CMath.isHexNumber(thisStr.substring(i+2,i+8)))
+								{
+									if(CMath.isHexNumber(thisStr.substring(i+2,i+4)))
+										i+=3;
+								}
+								else
+									i += 7;
+							}
+							else
+								i += 3;
 							break;
 						case '<':
 						{
@@ -3299,6 +3391,8 @@ public class CMStrings
 	 */
 	public final static String limit(final String thisStr, final int thisMuch)
 	{
+		if(thisMuch <= 0)
+			return thisStr;
 		final int lenMinusColors=lengthMinusColors(thisStr);
 		if(lenMinusColors>thisMuch)
 			return removeColors(thisStr).substring(0,thisMuch);

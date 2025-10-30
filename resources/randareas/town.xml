@@ -1,5 +1,5 @@
 <!--  
-   Copyright 2013-2024 Bo Zimmerman
+   Copyright 2013-2025 Bo Zimmerman
 
    Licensed under the Apache License</STRING><STRING>Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -36,6 +36,8 @@ See guides/RandomAreas.html for information about documents of this type.
 <AREA id="box_dungeon" merge=true like="maze_dungeon" layout="BOXCITY" requires="areaname=$,areasize=int,level_range=int,aggrochance=int,theme=town" />
 <AREA id="cross_dungeon" merge=true like="maze_dungeon" layout="CROSS" requires="areaname=$,areasize=int,level_range=int,aggrochance=int,theme=town" />
 <AREA id="tree_dungeon" merge=true like="maze_dungeon" layout="TREE" requires="areaname=$,areasize=int,level_range=int,aggrochance=int,theme=town" />
+<AREA id="branch_dungeon" merge=true like="maze_dungeon" layout="BRANCH" requires="areaname=$,areasize=int,level_range=int,aggrochance=int,theme=desert" />
+<AREA id="spot_dungeon" merge=true like="maze_dungeon" layout="SPOTTEDMESH" requires="areaname=$,areasize=int,level_range=int,aggrochance=int,theme=desert" />
 
 <AREA id="random_dungeon" merge=true select="any" requires="areaname=$" condition="$theme!='town'" />
 
@@ -607,7 +609,7 @@ See guides/RandomAreas.html for information about documents of this type.
 						<ITEM class="metacraft:any-herbalism &lt; $level_range" number=20 price="$item_level * 10"/>
 					</ITEM>
 					<ITEM select="all" condition="$shoptype='jewelry'">
-						<ITEM class="metacraft:all-jewelmaking<$mob_level" material="$any_cheap_metal" number=20/>
+						<ITEM class="metacraft:all-jewelmaking<$mob_level" number=20/>
 					</ITEM>
 					<MOB select="all" condition="$shoptype='pet'">
 						<MOB class="genmob" copyof="Monkey" number=20 level="$level_range" gender="$anygender" name="$subtheme_adjusted_name" display="$subtheme_adjusted_display"/>
@@ -1071,7 +1073,7 @@ See guides/RandomAreas.html for information about documents of this type.
 			</EXIT>
 			<ITEM class="GenWallpaper" name="sign" isreadable="true" readableText="Use `list` to see what is in your account, `deposit [itemname]` to deposit and item or money, `withdraw [itemname]` to remove an item or money, `borrow [amount]` to borrow money." />
 			<AFFECT class="Prop_ClosedDayNight" />
-			<MOB class="GenBanker" level="($level_range) * 1.05" race="$_humanoid_races" gender="$anygender" WHATISELL="CLAN BANKER" condition="$pop_mobs!='false'">
+			<MOB class="GenBanker" level="($level_range) * 1.05" race="$_humanoid_races" gender="$anygender" WHATISELL="CLAN BANKER" condition="$pop_mobs!='false'" BANKCHAIN="Random Inc">
 				<NAME>Bank clerk ${c:fantasy_name1}</NAME>
 				<DISPLAY select="pick-1">
 					<DISPLAY pickweight="1">$mob_name is here to serve.</DISPLAY>

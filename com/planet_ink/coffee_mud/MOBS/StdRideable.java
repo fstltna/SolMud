@@ -18,7 +18,7 @@ import com.planet_ink.coffee_mud.Races.interfaces.*;
 import java.util.*;
 
 /*
-   Copyright 2002-2024 Bo Zimmerman
+   Copyright 2002-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -653,7 +653,7 @@ public class StdRideable extends StdMOB implements Rideable
 				if(this.playerStats!=null)
 				{
 					if((!charStats().getMyRace().useRideClass())
-					||(playerStats.isIgnored(msg.source()))
+					||(playerStats.isIgnored("RIDE",msg.source()))
 					||(!getGroupMembers(new HashSet<MOB>()).contains(msg.source())))
 					{
 						msg.source().tell(L("@x1 won't let you do that.",name(msg.source())));

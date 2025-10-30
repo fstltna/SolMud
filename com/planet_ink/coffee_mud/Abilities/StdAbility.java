@@ -23,7 +23,7 @@ import com.planet_ink.coffee_mud.Races.interfaces.*;
 import java.util.*;
 
 /*
-   Copyright 2001-2024 Bo Zimmerman
+   Copyright 2001-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -1710,7 +1710,7 @@ public class StdAbility implements Ability
 			{
 				final List<String> channels = CMLib.channels().getFlaggedChannelNames(ChannelsLibrary.ChannelFlag.PROFICIENT, mob);
 				for (int i = 0; i < channels.size(); i++)
-					CMLib.commands().postChannel(channels.get(i), mob.clans(), L("@x1 is now proficient at @x2.", mob.name(), A.Name()), true);
+					CMLib.commands().postChannel(channels.get(i), mob.clans(), L("@x1 is now proficient at @x2.", mob.name(), A.Name()), true,mob);
 				CMLib.achievements().possiblyBumpAchievement(mob, AchievementLibrary.Event.SKILLPROF, 1, A);
 			}
 		}

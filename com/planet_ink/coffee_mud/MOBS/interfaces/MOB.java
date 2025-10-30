@@ -21,7 +21,7 @@ import java.util.Set;
 import java.util.Vector;
 
 /*
-   Copyright 2001-2024 Bo Zimmerman
+   Copyright 2001-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -1068,11 +1068,12 @@ public interface MOB extends Rider, DBIdentifiable, PhysicalAgent, ItemPossessor
 		AUTOMAP(true),//24
 		NOBATTLESPAM(false),//25
 		TELNET_GA(false,"TELNET-GA"), // 26
-		ANSI16(false,"16 COLOR"), //27
+		ANSI16ONLY(false,"16 COLOR ONLY"), //27
 		PRIVACY(false), // 28
 		NOREPROMPT(false), // 29
 		NOSPAM(false),//30
 		AUTOATTACK(true),//31
+		ANSI256ONLY(false,"256 COLOR ONLY"), //32
 		;
 		private final long bitCode;
 		private final boolean autoReverse;

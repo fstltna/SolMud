@@ -23,7 +23,7 @@ import java.io.IOException;
 import java.util.*;
 
 /*
-   Copyright 2004-2024 Bo Zimmerman
+   Copyright 2004-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -87,6 +87,7 @@ public class Config extends StdCommand
 					}
 					sorted.add("LINEWRAP");
 					sorted.add("PAGEBREAK");
+					sorted.add("AUTOTELLNOTIFY");
 					Collections.sort(sorted);
 					final Object rawHelp=CMLib.help().getHelpFile().get("CONFIG_HELP_OPTIONS");
 					if((!(rawHelp instanceof String))||(((String)rawHelp).length()==0))
@@ -261,6 +262,9 @@ public class Config extends StdCommand
 					if("OFF".startsWith(newWrap.toUpperCase())&&(newWrap.length()>0))
 						newVal=0;
 					else
+					if("0".equals(newWrap.toUpperCase()))
+						newVal=0;
+					else
 					{
 						mob.tell(L("'@x1' is not a valid linewrap setting. Enter a number larger than 10 or 'disable'.",newWrap));
 						return false;
@@ -272,7 +276,7 @@ public class Config extends StdCommand
 				if(name.equalsIgnoreCase("PAGEBREAK"))
 				{
 					final String newBreak=(commands.size()>2)?CMParms.combine(commands,2):"";
-					int newVal=mob.playerStats().getWrap();
+					int newVal=mob.playerStats().getPageBreak();
 					if((CMath.isInteger(newBreak))&&(CMath.s_int(newBreak)>0))
 						newVal=CMath.s_int(newBreak);
 					else
@@ -285,6 +289,25 @@ public class Config extends StdCommand
 					}
 					mob.playerStats().setPageBreak(newVal);
 					postStr=L("Configuration option change: PAGEBREAK");
+				}
+				else
+				if((name.equalsIgnoreCase("AUTOTELLNOTIFY"))
+				&&(mob.playerStats()!=null)
+				&&(mob.playerStats().getAccount()!=null))
+				{
+					final String parm=(commands.size()>2)?CMParms.combine(commands,2):"";
+					final PlayerAccount acct = mob.playerStats().getAccount();
+					if((!acct.isSet(PlayerAccount.AccountFlag.AUTOTELLNOTIFY) && (parm.length()==0))||(parm.equalsIgnoreCase("ON")))
+					{
+						acct.setFlag(PlayerAccount.AccountFlag.AUTOTELLNOTIFY, true);
+						postStr=L("Configuration flag toggled: AUTOTELLNOTIFY");
+					}
+					else
+					if((acct.isSet(PlayerAccount.AccountFlag.AUTOTELLNOTIFY) && (parm.length()==0))||(parm.equalsIgnoreCase("OFF")))
+					{
+						acct.setFlag(PlayerAccount.AccountFlag.AUTOTELLNOTIFY, false);
+						postStr=L("Configuration flag toggled: AUTOTELLNOTIFY");
+					}
 				}
 				else
 					postStr=L("Unknown configuration flag '@x1'.",name);
@@ -302,11 +325,18 @@ public class Config extends StdCommand
 						mob.session().setServerTelnetMode(Session.TELNET_ANSI,newSet);
 					}
 					break;
-				case ANSI16:
+				case ANSI16ONLY:
 					if(mob.session() != null)
 					{
 						mob.session().setClientTelnetMode(Session.TELNET_ANSI16,newSet);
 						mob.session().setServerTelnetMode(Session.TELNET_ANSI16,newSet);
+					}
+					break;
+				case ANSI256ONLY:
+					if(mob.session() != null)
+					{
+						mob.session().setClientTelnetMode(Session.TELNET_ANSI256,newSet);
+						mob.session().setServerTelnetMode(Session.TELNET_ANSI256,newSet);
 					}
 					break;
 				case AUTOASSIST:
@@ -432,10 +462,22 @@ public class Config extends StdCommand
 				if((!xtrasDone.contains("LINEWRAP"))
 				&&(a.getName().compareTo("LINEWRAP")>0))
 				{
-					final String wrap=(mob.playerStats().getWrap()!=0)?(""+mob.playerStats().getWrap()):"Disabled";
+					final int mobWrap = mob.playerStats().getWrap();
+					final int sessWrap = (mob.session()!=null)?mob.session().getWrap():mobWrap;
+					String wrap;
+					if(mobWrap == 0)
+						wrap = L("Disabled");
+					else
+					if(mobWrap == PlayerStats.DEFAULT_WORDWRAP)
+					{
+						if(mobWrap == sessWrap)
+							wrap = L("Default (@x1)",""+mobWrap);
+						else
+							wrap = L("NAWS (@x1)",""+sessWrap);
+					}
+					else
+						wrap = ""+mobWrap;
 					final StringBuilder m=new StringBuilder("^W"+CMStrings.padRight(L("LINEWRAP"),maxAttribLen)+"^N: ^w"+wrap);
-					if((mob.session()!=null)&&(mob.playerStats().getWrap() != mob.session().getWrap()))
-						m.append(" ("+mob.session().getWrap()+")");
 					if(++col==2)
 					{
 						msg.append(m.toString());
@@ -480,6 +522,24 @@ public class Config extends StdCommand
 			else
 				msg.append(CMStrings.padRight(m.toString(), 40));
 		}
+		if(CMProps.isUsingAccountSystem()
+		&&(mob.playerStats()!=null)
+		&&(mob.playerStats().getAccount()!=null))
+		{
+			final StringBuilder m=new StringBuilder("");
+			m.append("^W"+CMStrings.padRight("AUTOTELLNOTIFY",maxAttribLen)+"^N: ");
+			final boolean set=mob.playerStats().getAccount().isSet(PlayerAccount.AccountFlag.AUTOTELLNOTIFY);
+			m.append(set?L("^gON"):L("^rOFF"));
+			if(++col==2)
+			{
+				msg.append(m.toString());
+				msg.append("\n\r");
+				col=0;
+			}
+			else
+				msg.append(CMStrings.padRight(m.toString(), 40));
+		}
+
 		msg.append("^N");
 		msg.append(L("\n\rUse CONFIG HELP (X) for more information.\n\r"));
 		if(!quieter)

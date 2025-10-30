@@ -1,18 +1,17 @@
-CoffeeMud is an all-Java server application
-(C) 2000-2024 by Bo Zimmerman
+Hosted by pocketmud.com
+
+To see the immortal list use ^cWIZLIST^N
+
+SoL is made on CoffeeMud base, coffeemud credits are below.
+---
+CoffeeMud is an all-Java server application 
+(C) 2000-2025 by Bo Zimmerman
 
 Special thanks to Tim Kassebaum, Jef Kamenek, David Walters
 Mike Rundell, Thomas Neumann, Lee H. Fox, George Reese, and
 Jeremy Vyska.
 
-CoffeeMud is based on concepts borrowed from AD&D, and
+CoffeeMud is based on concepts borrowed from AD&D, and 
 observed in such popular muds as ROM.
 
 Long live text-based mudding!
---
-Secret of Life MUD Credits
-Hosted by pocketmud.com
-SoL Created by Vide Noir (Moonbeam)
-
-To see the immortal list use ^cWIZLIST^N
---

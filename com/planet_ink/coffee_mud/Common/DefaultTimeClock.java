@@ -21,7 +21,7 @@ import com.planet_ink.coffee_mud.Races.interfaces.*;
 import java.util.*;
 
 /*
-   Copyright 2004-2024 Bo Zimmerman
+   Copyright 2004-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -542,7 +542,7 @@ public class DefaultTimeClock implements TimeClock
 		catch(final CloneNotSupportedException e)
 		{
 		}
-		return CMLib.time().globalClock();
+		return (TimeClock)copyOf();
 	}
 
 	@Override
@@ -1162,7 +1162,9 @@ public class DefaultTimeClock implements TimeClock
 		case SEASON:
 			return 3;
 		case WEEK:
-			return this.getDaysInYear() / this.getDaysInWeek();
+			if(this.getDaysInWeek()<1)
+				return 0;
+			return (int)Math.round(Math.ceil(CMath.div(this.getDaysInYear(), this.getDaysInWeek())))-1;
 		case YEAR:
 			return Integer.MAX_VALUE/2;
 		}
@@ -1223,6 +1225,43 @@ public class DefaultTimeClock implements TimeClock
 		}
 	}
 
+	@Override
+	public void bumpToNext(final TimePeriod period, final int times)
+	{
+		switch(period)
+		{
+		case ALLTIME:
+			return;
+		case DAY:
+			bump(period, times);
+			set(TimePeriod.HOUR,getMin(TimePeriod.HOUR));
+			break;
+		case HOUR:
+			bump(period, times);
+			break;
+		case MONTH:
+			bump(period, times);
+			set(TimePeriod.DAY,getMin(TimePeriod.DAY));
+			set(TimePeriod.HOUR,getMin(TimePeriod.HOUR));
+			break;
+		case SEASON:
+			bump(period, times);
+			set(TimePeriod.MONTH,getMin(TimePeriod.MONTH) + (getMonthsInSeason()*getSeasonCode().ordinal()));
+			set(TimePeriod.DAY,getMin(TimePeriod.DAY));
+			set(TimePeriod.HOUR,getMin(TimePeriod.HOUR));
+			break;
+		case WEEK:
+			bump(period, times);
+			if(getDaysInWeek()>0)
+				set(TimePeriod.DAY, getWeekOfMonth()*getDaysInWeek()+1);
+			set(TimePeriod.HOUR,getMin(TimePeriod.HOUR));
+			break;
+		case YEAR:
+			bump(period, times);
+			break;
+		}
+	}
+	
 	@Override
 	public void setNext(final TimePeriod period, final int value)
 	{

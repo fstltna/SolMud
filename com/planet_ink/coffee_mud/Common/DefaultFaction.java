@@ -32,7 +32,7 @@ import java.util.regex.Pattern;
 //import java.lang.reflect.*;
 /**
  * Portions Copyright (c) 2003 Jeremy Vyska
- * Portions Copyright (c) 2004-2024 Bo Zimmerman
+ * Portions Copyright (c) 2004-2025 Bo Zimmerman
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -1967,7 +1967,7 @@ public class DefaultFaction implements Faction, MsgListener
 			{
 				final String msgStr = source.Name()+" ("+name()+"): "+seenMsg;
 				for(int i=0;i<channels.size();i++)
-					CMLib.commands().postChannel(channels.get(i),source.clans(),msgStr,true);
+					CMLib.commands().postChannel(channels.get(i),source.clans(),msgStr,true,source);
 			}
 		}
 		CMMsg facMsg=CMClass.getMsg(source,target,null,CMMsg.MASK_ALWAYS|CMMsg.TYP_FACTIONCHANGE,seenMsg,CMMsg.NO_EFFECT,null,CMMsg.NO_EFFECT,_factionID);
@@ -2326,7 +2326,7 @@ public class DefaultFaction implements Faction, MsgListener
 			if(compiledTargetZapper == null)
 			{
 				if(targetZapperStr.trim().length()>0)
-					compiledTargetZapper=CMLib.masking().maskCompile(targetZapperStr);
+					compiledTargetZapper=CMLib.masking().getPreCompiledMask(targetZapperStr);
 			}
 			return compiledTargetZapper;
 		}
@@ -2338,7 +2338,7 @@ public class DefaultFaction implements Faction, MsgListener
 			{
 				final String sourceZapperStr=savedTriggerParms.get("MASK");
 				if((sourceZapperStr!=null)&&(sourceZapperStr.length()>0))
-					compiledSourceZapper=CMLib.masking().maskCompile(sourceZapperStr);
+					compiledSourceZapper=CMLib.masking().getPreCompiledMask(sourceZapperStr);
 			}
 			return compiledSourceZapper;
 		}

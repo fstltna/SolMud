@@ -20,7 +20,7 @@ import com.planet_ink.coffee_mud.Races.interfaces.*;
 import java.util.*;
 
 /*
-   Copyright 2001-2024 Bo Zimmerman
+   Copyright 2001-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -956,17 +956,19 @@ public class StdItem implements Item
 	{
 		if(!canWear(mob,wearWhere))
 		{
-			long cantWearAt=whereCantWear(mob);
-			if(wearWhere!=0)
-				cantWearAt = cantWearAt & wearWhere;
+			final long wearMask = (wearWhere == 0) ? (long)~0 : wearWhere;
+			long cantWearAt=whereCantWear(mob) & wearMask;
 			Item alreadyWearing=(cantWearAt==0)?null:mob.fetchFirstWornItem(cantWearAt);
 			final Wearable.CODES codes = Wearable.CODES.instance();
 			if(alreadyWearing!=null)
 			{
+				final short layer=(this instanceof Armor)?((Armor)this).getClothingLayer():0;
+				final short layer2=(alreadyWearing instanceof Armor)?((Armor)alreadyWearing).getClothingLayer():0;
 				if((cantWearAt!=Wearable.WORN_HELD)&&(cantWearAt!=Wearable.WORN_WIELD))
 				{
 					final boolean amWearingOther = !alreadyWearing.amWearingAt(Item.IN_INVENTORY);
-					if(!CMLib.commands().postRemove(mob,alreadyWearing,quiet))
+					if((layer != layer2)
+					||(!CMLib.commands().postRemove(mob,alreadyWearing,quiet)))
 					{
 						mob.tell(L("You are already wearing @x1 on your @x2.",alreadyWearing.name(),codes.name(cantWearAt)));
 						return false;
@@ -982,21 +984,27 @@ public class StdItem implements Item
 				}
 				else
 				{
-					final short layer=(this instanceof Armor)?((Armor)this).getClothingLayer():0;
-					final short layer2=(alreadyWearing instanceof Armor)?((Armor)alreadyWearing).getClothingLayer():0;
-					if((rawProperLocationBitmap() == alreadyWearing.rawProperLocationBitmap())
-					&&(rawLogicalAnd())
-					&&(alreadyWearing.rawLogicalAnd())
-					&&(layer == layer2)
+					if((layer == layer2)
 					&&(CMLib.commands().postRemove(mob,alreadyWearing,quiet)))
-						return true;
+					{
+						if((wornLogicalAnd) && ((cantWearAt = (whereCantWear(mob) & wearMask)) != 0))
+						{
+							alreadyWearing=(cantWearAt==0)?null:mob.fetchFirstWornItem(cantWearAt);
+							if((alreadyWearing != null)
+							&&(CMLib.commands().postRemove(mob,alreadyWearing,quiet)))
+								return true;
+						}
+						else
+							return true;
+					}
+					final String wearName = (alreadyWearing != null) ? alreadyWearing.name(mob) : L("something");
 					if(cantWearAt==Wearable.WORN_HELD)
-						mob.tell(L("You are already holding @x1.",alreadyWearing.name()));
+						mob.tell(L("You are already holding @x1.",wearName));
 					else
 					if(cantWearAt==Wearable.WORN_WIELD)
-						mob.tell(L("You are already wielding @x1.",alreadyWearing.name()));
+						mob.tell(L("You are already wielding @x1.",wearName));
 					else
-						mob.tell(L("You are already wearing @x1 on your @x2.",alreadyWearing.name(),codes.name(cantWearAt)));
+						mob.tell(L("You are already wearing @x1 on your @x2.",wearName,codes.name(cantWearAt)));
 					return false;
 				}
 			}
@@ -1004,10 +1012,16 @@ public class StdItem implements Item
 			if(wearWhere!=0)
 			{
 				final StringBuilder locs=new StringBuilder("");
+				int tooMany=0;
 				for(int i=0;i<codes.total();i++)
 				{
-					if((codes.get(i)&wearWhere)>0)
-						locs.append(", " + codes.name(i));
+					if((codes.get(i)&wearMask)>0)
+					{
+						if(++tooMany>4)
+							locs.setLength(0);
+						else
+							locs.append(", " + codes.name(i));
+					}
 				}
 				if(locs.length()==0)
 					mob.tell(L("You can't wear that there."));

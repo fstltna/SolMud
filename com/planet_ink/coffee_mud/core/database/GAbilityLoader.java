@@ -21,7 +21,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /*
-   Copyright 2008-2024 Bo Zimmerman
+   Copyright 2008-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -81,7 +81,7 @@ public class GAbilityLoader
 		}
 		catch(final Exception sqle)
 		{
-			Log.errOut("DataLoader",sqle);
+			Log.errOut("GCmdLoader",sqle);
 		}
 		finally
 		{

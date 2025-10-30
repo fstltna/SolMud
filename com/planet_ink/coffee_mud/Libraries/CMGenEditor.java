@@ -11,6 +11,8 @@ import com.planet_ink.coffee_mud.core.collections.*;
 import com.planet_ink.coffee_mud.Libraries.interfaces.*;
 import com.planet_ink.coffee_mud.Libraries.interfaces.AbilityMapper.SecretFlag;
 import com.planet_ink.coffee_mud.Libraries.interfaces.GenericEditor.CMEval;
+import com.planet_ink.coffee_mud.Libraries.interfaces.JournalsLibrary.MsgMkrCallback;
+import com.planet_ink.coffee_mud.Libraries.interfaces.JournalsLibrary.MsgMkrResolution;
 import com.planet_ink.coffee_mud.Libraries.interfaces.ListingLibrary.ListStringer;
 import com.planet_ink.coffee_mud.Libraries.interfaces.MoneyLibrary.MoneyDenomination;
 import com.planet_ink.coffee_mud.Abilities.interfaces.*;
@@ -41,7 +43,7 @@ import java.util.Map.Entry;
 import java.util.regex.*;
 
 /*
-   Copyright 2008-2024 Bo Zimmerman
+   Copyright 2008-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -174,6 +176,37 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 	public void promptStatStr(final MOB mob, final Modifiable E, final String help, final int showNumber, final int showFlag, final String fieldDisplayStr, final String field, final boolean emptyOK) throws IOException
 	{
 		E.setStat(field, prompt(mob, E.getStat(field), showNumber, showFlag, fieldDisplayStr, emptyOK, false, help, null, null));
+	}
+
+	public void promptStatMsg(final MOB mob, final Modifiable E, final int showNumber, final int showFlag,
+							  final String fieldDisplayStr, final String field,
+							  final Filterer<String> filter, final String filterErr) throws IOException
+	{
+		final String oldVal = E.getStat(field);
+		if((mob==null)||(mob.session() == null))
+			return;
+		final Session sess=mob.session();
+		if((showFlag>0)&&(showFlag!=showNumber))
+			return;
+		final String showVal=CMStrings.limit(CMStrings.removeCRLF(oldVal),50)+"...";
+		final String numStr = (showNumber == 0)?"   ":(showNumber+". ");
+		mob.tell(numStr+field+": '"+showVal+"'.");
+		if((showFlag!=showNumber)&&(showFlag>-999))
+			return;
+
+		final List<String> vbuf = CMParms.parseAny(oldVal, '\n', false);
+		MsgMkrResolution res = CMLib.journals().makeMessage(mob, fieldDisplayStr, vbuf, false);
+		while((res == MsgMkrResolution.SAVEFILE) && (!sess.isStopped()))
+		{
+			final String newMsgTxt = CMParms.combineWith(vbuf, "\n");
+			if((filter == null)||(filter.passesFilter(newMsgTxt)))
+			{
+				E.setStat(field, newMsgTxt);
+				return;
+			}
+			else
+				res = CMLib.journals().makeMessage(mob, fieldDisplayStr, vbuf, false);
+		}
 	}
 
 	public void promptRawStatStr(final MOB mob, final Modifiable E, final String help, final int showNumber, final int showFlag, final String fieldDisplayStr, final String field, final boolean emptyOK) throws IOException
@@ -1606,7 +1639,7 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 	{
 		if(A==null)
 			return;
-		A.setStat("BIRTHDAY",prompt(mob,A.getStat("BIRTHDAY"),showNumber,showFlag,"Birthday (m,d,y)",true,false,null));
+		A.setStat("BIRTHDAY",prompt(mob,A.getStat("BIRTHDAY"),showNumber,showFlag,"Birthday (d,m,y)",true,false,null));
 	}
 
 	@Override
@@ -9318,6 +9351,61 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 	}
 
 	@Override
+	public void modifyGenCommand(final MOB mob, final Modifiable me, int showFlag) throws IOException
+	{
+		if(mob.isMonster())
+			return;
+		boolean ok=false;
+		if((showFlag == -1) && (CMProps.getIntVar(CMProps.Int.EDITORTYPE)>0))
+			showFlag=-999;
+		while((mob.session()!=null)&&(!mob.session().isStopped())&&(!ok))
+		{
+			int showNumber=0;
+			// id is bad to change.. make them delete it.
+			//genText(mob,me,null,++showNumber,showFlag,"Enter the class","CLASS");
+			promptStatStr(mob,me,null,++showNumber,showFlag,"Command Words (comma sep)","ACCESS",false);
+			promptStatBool(mob,me,null,++showNumber,showFlag,"Can be Ordered","ORDEROK");
+			promptStatStr(mob,me,CMLib.masking().maskHelp("\n", "disallow"),++showNumber,showFlag,
+					"Security Mask","SECMASK",true);
+			promptStatDouble(mob, me, ++showNumber, showFlag, "Action Cost", "ACTCOST");
+			promptStatDouble(mob, me, ++showNumber, showFlag, "Combat Cost", "CBTCOST");
+			promptStatMsg(mob,me,++showNumber,showFlag,"Help Text","HELP",null,"");
+			promptStatMsg(mob,me,++showNumber,showFlag,"Help Text","SCRIPT",new Filterer<String>() {
+				@Override
+				public boolean passesFilter(final String obj)
+				{
+					final List<String> lines = CMParms.parseAny(obj.toUpperCase(), '\n', true);
+					for(final String l : lines)
+					{
+						final String s = l.trim();
+						if(s.startsWith("FUNCTION_PROG")
+						&&(s.substring(13).trim().startsWith("EXECUTE")))
+							return true;
+					}
+					return false;
+				}
+			},"Your script must have a FUNCTION_PROG EXECUTE in it.");
+
+			if (showFlag < -900)
+			{
+				ok = true;
+				break;
+			}
+			if (showFlag > 0)
+			{
+				showFlag = -1;
+				continue;
+			}
+			showFlag=CMath.s_int(mob.session().prompt(L("Edit which? "),""));
+			if(showFlag<=0)
+			{
+				showFlag=-1;
+				ok=true;
+			}
+		}
+	}
+
+	@Override
 	public void modifyGenTrap(final MOB mob, final Trap me, int showFlag) throws IOException
 	{
 		if(mob.isMonster())
@@ -10158,10 +10246,11 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 			genDisplayText(mob,me,++showNumber,showFlag);
 			genDescription(mob,me,++showNumber,showFlag);
 			genLevel(mob,me,++showNumber,showFlag);
-			genSecretIdentity(mob,me,++showNumber,showFlag);
 			genMaterialCode(mob,me,++showNumber,showFlag);
 			if(me instanceof RawMaterial)
 				genMaterialSubType(mob,(RawMaterial)me,++showNumber,showFlag);
+			else
+				genSecretIdentity(mob,me,++showNumber,showFlag);
 			if(me instanceof Book)
 			{
 				((Book)me).setMaxPages(prompt(mob, ((Book)me).getMaxPages(), ++showNumber, showFlag, "Max Pages"));
@@ -10315,7 +10404,6 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 			genName(mob,me,++showNumber,showFlag);
 			genDisplayText(mob,me,++showNumber,showFlag);
 			genDescription(mob,me,++showNumber,showFlag);
-			genSecretIdentity(mob,me,++showNumber,showFlag);
 			genLevel(mob,me,++showNumber,showFlag);
 			genValue(mob,me,++showNumber,showFlag);
 			genRejuv(mob,me,++showNumber,showFlag);
@@ -10323,6 +10411,8 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 			genMaterialCode(mob,me,++showNumber,showFlag);
 			if(me instanceof RawMaterial)
 				genMaterialSubType(mob,(RawMaterial)me,++showNumber,showFlag);
+			else
+				genSecretIdentity(mob,me,++showNumber,showFlag);
 			genNourishment(mob,me,++showNumber,showFlag);
 			genBiteSize(mob,me,++showNumber,showFlag);
 			genDisposition(mob,me.basePhyStats(),++showNumber,showFlag);
@@ -10426,7 +10516,6 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 			genName(mob,me,++showNumber,showFlag);
 			genDisplayText(mob,me,++showNumber,showFlag);
 			genDescription(mob,me,++showNumber,showFlag);
-			genSecretIdentity(mob,(Item)me,++showNumber,showFlag);
 			genValue(mob,(Item)me,++showNumber,showFlag);
 			if(me instanceof Physical)
 			{
@@ -10438,6 +10527,8 @@ public class CMGenEditor extends StdLibrary implements GenericEditor
 			genMaterialCode(mob,(Item)me,++showNumber,showFlag);
 			if(me instanceof RawMaterial)
 				genMaterialSubType(mob,(RawMaterial)me,++showNumber,showFlag);
+			else
+				genSecretIdentity(mob,(Item)me,++showNumber,showFlag);
 			genDrinkHeld(mob,me,++showNumber,showFlag);
 			genGettable(mob,(Item)me,++showNumber,showFlag);
 			genIsReadable(mob,(Item)me,++showNumber,showFlag);

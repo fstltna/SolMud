@@ -7,7 +7,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import javax.naming.OperationNotSupportedException;
 
 /*
-   Copyright 2010-2024 Bo Zimmerman
+   Copyright 2010-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -372,7 +372,7 @@ public class SVector<T> implements Serializable, Iterable<T>, Collection<T>, CLi
 		{
 			return list.get(index);
 		}
-		catch(Exception e)
+		catch(final Exception e)
 		{
 			return null;
 		}

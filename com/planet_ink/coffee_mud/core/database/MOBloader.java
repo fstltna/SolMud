@@ -35,7 +35,7 @@ import java.util.*;
 import java.util.Map.Entry;
 
 /*
-   Copyright 2002-2024 Bo Zimmerman
+   Copyright 2002-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -1418,7 +1418,7 @@ public class MOBloader
 				{
 					final Ability newAbility=CMClass.getRawAbility(abilityID);
 					if(newAbility==null)
-						Log.errOut("MOB","Couldn't find ability '"+abilityID+"'");
+						Log.errOut("MOB","Couldn't find ability '"+abilityID+"' for "+mob.Name());
 					else
 					{
 						if((proficiency<0)||(proficiency==Integer.MAX_VALUE))
@@ -3238,7 +3238,7 @@ public class MOBloader
 		}
 		catch(final Exception sqle)
 		{
-			Log.errOut("MOB",sqle);
+			Log.errOut("MOB",sqle.getMessage());
 		}
 		finally
 		{

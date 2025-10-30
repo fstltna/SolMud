@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.util.*;
 
 /*
-   Copyright 2004-2024 Bo Zimmerman
+   Copyright 2004-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -276,7 +276,10 @@ public class ColorSet extends StdCommand
 		theSet.add(new Pair<String,Integer>("Room Titles",Integer.valueOf('O')));
 		theSet.add(new Pair<String,Integer>("Room Descriptions",Integer.valueOf('L')));
 		theSet.add(new Pair<String,Integer>("Weather",Integer.valueOf('J')));
-		theSet.add(new Pair<String,Integer>("Doors",Integer.valueOf('d')));
+		theSet.add(new Pair<String,Integer>("Exits (explored)",Integer.valueOf('D')));
+		theSet.add(new Pair<String,Integer>("Doors (explored)",Integer.valueOf('d')));
+		theSet.add(new Pair<String,Integer>("Exits (unexplored)",Integer.valueOf('U')));
+		theSet.add(new Pair<String,Integer>("Doors (unexplored)",Integer.valueOf('u')));
 		theSet.add(new Pair<String,Integer>("Items",Integer.valueOf('I')));
 		theSet.add(new Pair<String,Integer>("MOBs",Integer.valueOf('M')));
 		theSet.add(new Pair<String,Integer>("Channel Colors",Integer.valueOf('Q')));

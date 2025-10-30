@@ -23,7 +23,7 @@ import java.net.SocketException;
 import java.util.*;
 
 /*
-   Copyright 2015-2024 Bo Zimmerman
+   Copyright 2015-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -197,8 +197,8 @@ public class Switch extends StdCommand
 					sess.stopSession(true, true, true);
 				else
 				{
+					sess.setStat("CPING", "true");
 					CMLib.login().showTheNews(target);
-
 					Log.sysOut(mob.Name()+" switched login to: "+target.Name());
 				}
 			}

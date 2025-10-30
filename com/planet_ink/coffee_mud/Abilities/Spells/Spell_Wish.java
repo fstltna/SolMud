@@ -24,7 +24,7 @@ import com.planet_ink.coffee_mud.Races.interfaces.*;
 import java.util.*;
 
 /*
-   Copyright 2002-2024 Bo Zimmerman
+   Copyright 2002-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -974,8 +974,8 @@ public class Spell_Wish extends Spell
 					final long millisPerMudday=CMProps.getIntVar(CMProps.Int.TICKSPERMUDDAY)*CMProps.getTickMillis();
 					if(age<millisPerMudday)
 						age=millisPerMudday;
-					final long millisPerMonth=CMLib.time().globalClock().getDaysInMonth() * millisPerMudday;
-					final long millisPerYear=CMLib.time().globalClock().getMonthsInYear() * millisPerMonth;
+					final long millisPerMonth=CMLib.time().homeClock(mob).getDaysInMonth() * millisPerMudday;
+					final long millisPerYear=CMLib.time().homeClock(mob).getMonthsInYear() * millisPerMonth;
 					final int ageYears = (int)(age / millisPerYear);
 					if(!isLegalTarget(mob, target, false, myWish))
 						return false;

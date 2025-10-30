@@ -27,7 +27,7 @@ import java.util.*;
 import java.util.regex.*;
 
 /*
-   Copyright 2003-2024 Bo Zimmerman
+   Copyright 2003-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -420,10 +420,21 @@ public class EnglishParser extends StdLibrary implements EnglishParsing
 					switch(str.charAt(i))
 					{
 					case ColorLibrary.COLORCODE_FANSI256:
-						i += 3;
+						if((i<str.length()-8)&&(str.charAt(i+1)==str.charAt(i)))
+						{
+							if(!CMath.isHexNumber(str.substring(i+2,i+8)))
+								i+=3;
+							else
+								i += 7;
+						}
+						else
+							i += 3;
 						break;
 					case ColorLibrary.COLORCODE_BANSI256:
-						i += 3;
+						if((i<str.length()-1)&&(str.charAt(i+1)==str.charAt(i)))
+							i += 7;
+						else
+							i += 3;
 						break;
 					case ColorLibrary.COLORCODE_BACKGROUND:
 						i++;
@@ -642,10 +653,21 @@ public class EnglishParser extends StdLibrary implements EnglishParsing
 					switch(str.charAt(i))
 					{
 					case ColorLibrary.COLORCODE_FANSI256:
-						i += 3;
+						if((i<str.length()-8)&&(str.charAt(i+1)==str.charAt(i)))
+						{
+							if(!CMath.isHexNumber(str.substring(i+2,i+8)))
+								i += 3;
+							else
+								i += 7;
+						}
+						else
+							i += 3;
 						break;
 					case ColorLibrary.COLORCODE_BANSI256:
-						i += 3;
+						if((i<str.length()-1)&&(str.charAt(i+1)==str.charAt(i)))
+							i += 7;
+						else
+							i += 3;
 						break;
 					case ColorLibrary.COLORCODE_BACKGROUND:
 						i++;
@@ -1604,6 +1626,14 @@ public class EnglishParser extends StdLibrary implements EnglishParsing
 							break;
 						case ColorLibrary.COLORCODE_FANSI256:
 						case ColorLibrary.COLORCODE_BANSI256:
+							if((tos < toSrchC.length-8) && (toSrchC[tos+1]==toSrchC[tos]))
+							{
+								tos += 2;
+								for(int i=2;i<8;i++)
+									if(CMath.isHexDigit(toSrchC[tos]))
+										tos++;
+							}
+							else
 							if(tos < toSrchC.length-4)
 								tos+=4;
 							break;
@@ -1635,6 +1665,14 @@ public class EnglishParser extends StdLibrary implements EnglishParsing
 							break;
 						case ColorLibrary.COLORCODE_FANSI256:
 						case ColorLibrary.COLORCODE_BANSI256:
+							if((x < srchC.length-8)&&(srchC[x+1]==srchC[x]))
+							{
+								x+=2;
+								for(int i=2;i<8;i++)
+									if(CMath.isHexDigit(toSrchC[x]))
+										x++;
+							}
+							else
 							if(x < srchC.length-4)
 								x+=4;
 							break;

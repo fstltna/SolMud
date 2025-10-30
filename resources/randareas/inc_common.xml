@@ -1,5 +1,5 @@
 <!--  
-   Copyright 2013-2024 Bo Zimmerman
+   Copyright 2013-2025 Bo Zimmerman
 
    Licensed under the Apache License</STRING><STRING>Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -152,7 +152,7 @@ See guides/RandomAreas.html for information about documents of this type.
 	<ITEM class="GenPlayingCard" name="a playing card" ability="0?62" />
 	<ITEM class="GenItem" name="a dirty $any_avian_race feather" display="$item_name lies here" material="FEATHERS" level="$level_range" weight=1 />
 	<ITEM class="GenKey" name="a rusty worn ${l:item_material} key" display="$item_name lies here" material="$any_cheap_metal" level="$level_range" weight=1 READABLETEXT="opensnothing"/>
-	<ITEM class="GenItem" name="a dirty locke of $any_humanoid_race hair" display="$item_name lies here" material="MEAT" level="$level_range" weight=1 />
+	<ITEM class="GenItem" name="a dirty lock of $any_humanoid_race hair" display="$item_name lies here" material="MEAT" level="$level_range" weight=1 />
 	<ITEM class="GenItem" name="a dirty wooden toothpick" display="$item_name lies here" material="$any_wood" level="$level_range" weight=1 />
 	<ITEM class="GenItem" name="a bit of dirty ${l:item_material}" display="$item_name lies here" material="$any_cheap_cloth" level="$level_range" weight=1 />
 	<ITEM class="GenItem" name="(a(n)) $adj_metal_broken ${l:item_material} hook" display="$item_name is sitting here" material="$any_cheap_metal" level="$level_range" />
@@ -380,6 +380,8 @@ ${SELECT:any\name from (SELECT: . from $dungeon_junk)}
 <STRING id="all_cloth" insert="all_cheap_cloth,all_rich_cloth" select="all"></STRING>
 <STRING id="any_cloth" insert="all_cloth" select="any-1"></STRING>
 <STRING id="any_Item_material" insert="all_cloth,all_wood,all_metal,all_mithril" select="any-1" />
+<STRING id="all_cheap_jewel" select="all"><string>quartz</string><string>diamels</string><string>peridot</string><string>chrysoberyl</string><string>aquamarine</string><string>jade</string></STRING>
+<STRING id="any_cheap_jewel" insert="all_cheap_jewel" select="any-1" />
 
 <STRING id="trueorfalse" SELECT="any-1"><STRING>true</STRING><STRING>false</STRING></STRING>
 

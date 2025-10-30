@@ -21,7 +21,7 @@ import java.util.*;
 import java.util.regex.*;
 
 /*
-   Copyright 2006-2024 Bo Zimmerman
+   Copyright 2006-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -1179,11 +1179,13 @@ public class RawCMaterial extends StdLibrary implements MaterialLibrary
 	protected RawMaterial findFirstResource(final List<Item> V, final int resource, final Container C, final String subType)
 	{
 		final CMFlagLibrary flags=CMLib.flags();
+		final int maskedResource = resource&RawMaterial.RESOURCE_MASK;
 		for(int i=0;i<V.size();i++)
 		{
 			final Item I=V.get(i);
 			if((I instanceof RawMaterial)
-			&&(I.material()==resource)
+			&&((I.material()==resource)
+				||((I.material()&RawMaterial.RESOURCE_MASK)==maskedResource))
 			&&((subType==null)||(((RawMaterial)I).getSubType().equalsIgnoreCase(subType)))
 			&&(I.container()==C)
 			&&(!flags.isOnFire(I))

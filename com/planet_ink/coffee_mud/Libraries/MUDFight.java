@@ -26,7 +26,7 @@ import com.planet_ink.coffee_mud.Libraries.interfaces.*;
 import java.util.*;
 
 /*
-   Copyright 2004-2024 Bo Zimmerman
+   Copyright 2004-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -1601,9 +1601,13 @@ public class MUDFight extends StdLibrary implements CombatLibrary
 		final boolean stillExists = handleCombatLossConsequences(deadM,killerM,cmds,expLost,"^*You lose @x1 experience points.^?^.");
 		if(!isKnockedOutUponDeath(deadM,killerM))
 		{
-			Room bodyRoom=deathRoom;
-			if((body!=null)&&(body.owner() instanceof Room)&&(((Room)body.owner()).isContent(body)))
+			final Room bodyRoom;
+			if((body!=null)
+			&&(body.owner() instanceof Room)
+			&&(((Room)body.owner()).isContent(body)))
 				bodyRoom=(Room)body.owner();
+			else
+				bodyRoom=deathRoom;
 			if((killerM!=null)&&(body!=null))
 			{
 				body.setKillerName(killerM.Name());
@@ -1693,10 +1697,13 @@ public class MUDFight extends StdLibrary implements CombatLibrary
 				}
 			}
 
-			if((killerM != null)&&(killerM.getVictim()==deadM))
+			if((killerM != null)
+			&&(killerM.getVictim()==deadM))
 				killerM.setVictim(null);
 			deadM.setVictim(null);
-			if((body!=null)&&(bodyRoom!=null)&&(body.isDestroyedAfterLooting()))
+			if((body!=null)
+			&&(bodyRoom!=null)
+			&&(body.isDestroyedAfterLooting()))
 			{
 				for(int i=bodyRoom.numItems()-1;i>=0;i--)
 				{
@@ -1997,9 +2004,12 @@ public class MUDFight extends StdLibrary implements CombatLibrary
 	public String damageProwessStr(final MOB mob)
 	{
 		final int prowessCode = CMProps.getIntVar(CMProps.Int.COMBATPROWESS);
-		if(CMProps.Int.Prowesses.NONE.is(prowessCode))
+		if(CMProps.Int.Prowesses.NONE.is(prowessCode)||(mob==null))
 			return "";
-		final int damageProwess = this.adjustedDamage(mob, (Weapon)mob.fetchWieldedItem(), null, 0, false,true);
+		final Item I = mob.fetchWieldedItem();
+		if(!(I instanceof Weapon))
+			return "";
+		final int damageProwess = this.adjustedDamage(mob, (Weapon)I, null, 0, false,true);
 		final StringBuilder str=new StringBuilder("");
 		if(CMProps.Int.Prowesses.DAMAGE_ADJ.is(prowessCode)||CMProps.Int.Prowesses.DAMAGE_ADV.is(prowessCode))
 		{
@@ -2534,16 +2544,16 @@ public class MUDFight extends StdLibrary implements CombatLibrary
 					for(int i=0;i<channels.size();i++)
 					{
 						if((msg.tool() instanceof MOB))
-							CMLib.commands().postChannel(channels.get(i),deadmob.clans(),L("@x1 was just killed in @x2 by @x3.",deadmob.Name(),CMLib.map().getExtendedRoomID(deadmob.location()),msg.tool().Name()),true);
+							CMLib.commands().postChannel(channels.get(i),deadmob.clans(),L("@x1 was just killed in @x2 by @x3.",deadmob.Name(),CMLib.map().getExtendedRoomID(deadmob.location()),msg.tool().Name()),true,deadmob);
 						else
-							CMLib.commands().postChannel(channels.get(i),deadmob.clans(),L("@x1 has just died at @x2",deadmob.Name(),CMLib.map().getExtendedRoomID(deadmob.location())),true);
+							CMLib.commands().postChannel(channels.get(i),deadmob.clans(),L("@x1 has just died at @x2",deadmob.Name(),CMLib.map().getExtendedRoomID(deadmob.location())),true,deadmob);
 					}
 				}
 				if(!CMLib.flags().isCloaked(deadmob))
 				{
 					for(int i=0;i<channels2.size();i++)
 						if((msg.tool() instanceof MOB))
-							CMLib.commands().postChannel(channels2.get(i),deadmob.clans(),L("@x1 was just killed.",deadmob.Name()),true);
+							CMLib.commands().postChannel(channels2.get(i),deadmob.clans(),L("@x1 was just killed.",deadmob.Name()),true,deadmob);
 				}
 			}
 			if(msg.tool() instanceof MOB)

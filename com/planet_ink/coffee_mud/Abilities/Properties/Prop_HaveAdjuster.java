@@ -20,7 +20,7 @@ import com.planet_ink.coffee_mud.Races.interfaces.*;
 import java.util.*;
 
 /*
-   Copyright 2001-2024 Bo Zimmerman
+   Copyright 2001-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -309,7 +309,7 @@ public class Prop_HaveAdjuster extends Property implements TriggeredAffect
 				"MULTIPLYPH", "MULTIPLYCH", "abi", "arm", "att", "dam", "dis", "lev",
 				"rej", "sen", "spe", "wei", "hei", "gen", "cla", "cls", "rac", "hit",
 				"hun", "man", "mov", "thi", "ALLSAVES", "ABLEPROFS", "ABLELVLS","chr","hp",
-				"ALLSET","RONDEATH","AMBIANCE"
+				"ALLSET","RONDEATH","AMBIANCE","DEITY"
 			}));
 			for(final int i : CharStats.CODES.BASECODES())
 			{
@@ -377,6 +377,12 @@ public class Prop_HaveAdjuster extends Property implements TriggeredAffect
 		{
 			charStatsV.add(Character.valueOf('G'));
 			charStatsV.add(Character.valueOf(val.charAt(0)));
+		}
+		val=getParmStr(ps,parameters[0],"DEITY","").toUpperCase();
+		if(val.length()>0)
+		{
+			charStatsV.add(Character.valueOf('W'));
+			charStatsV.add(val);
 		}
 		val=getParmStr(ps,parameters[0],"cla","").toUpperCase();
 		if(val.length()>0)
@@ -779,6 +785,9 @@ public class Prop_HaveAdjuster extends Property implements TriggeredAffect
 			{
 				switch(((Character)changes[i]).charValue())
 				{
+				case 'W':
+					charStats.setWorshipCharID((String) changes[i + 1]);
+					break;
 				case 'G':
 					charStats.setStat(CharStats.STAT_GENDER, ((Character) changes[i + 1]).charValue());
 					break;

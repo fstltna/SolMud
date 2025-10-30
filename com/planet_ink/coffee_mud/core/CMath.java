@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 /*
-   Copyright 2005-2024 Bo Zimmerman
+   Copyright 2005-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -50,6 +50,7 @@ public class CMath
 	private static final int[]			INTEGER_BITMASKS= new int[31];
 	private static final long[]			LONG_BITMASKS	= new long[63];
 	private static Random 				rand			= new Random(System.currentTimeMillis());
+	private final static boolean[]		IS_HEX_DIGITS	= new boolean[128];
 
 	static
 	{
@@ -60,6 +61,8 @@ public class CMath
 			if(l<LONG_BITMASKS.length)
 				LONG_BITMASKS[l]=1L<<l;
 		}
+		for (int i = 0; i < 128; i++)
+			IS_HEX_DIGITS[i] = i >= '0' && (i <= '9' || (i >= 'A' && i <= 'F') || (i >= 'a' && i <= 'f'));
 	}
 
 	/**
@@ -230,6 +233,23 @@ public class CMath
 	}
 
 	/**
+	 * Safely parse the given hex string into hex.
+	 * @param str the hex string
+	 * @return the int value
+	 */
+	public final static int s_parseHex(final String str)
+	{
+		try
+		{
+			return Integer.parseUnsignedInt(str.toUpperCase().trim(), 16);
+		}
+		catch(final Exception e)
+		{
+			return 0;
+		}
+	}
+
+	/**
 	 * Returns which object in the object array is same as the
 	 * string, when cast to a string.
 	 * @param o array of objects
@@ -380,6 +400,21 @@ public class CMath
 			if("0123456789.,".indexOf(ups.charAt(i))<0)
 				return false;
 		}
+		return true;
+	}
+
+	/**
+	 * Returns true if the string is a hex number
+	 * @param s the string to test
+	 * @return true if a hex number, false otherwise
+	 */
+	public final static boolean isHexNumber(final String s)
+	{
+		if((s==null)||(s.length()==0))
+			return false;
+		for(int i=0;i<s.length();i++)
+			if(!isHexDigit(s.charAt(i)))
+				return false;
 		return true;
 	}
 
@@ -1021,6 +1056,17 @@ public class CMath
 	}
 
 	/**
+	 * Checks if a single hex digit
+	 * @param c the hex digit, maybe
+	 * @return true if hex
+	 */
+	public final static boolean isHexDigit(final char c)
+	{
+		if(c<128) return IS_HEX_DIGITS[c];
+		return false;
+	}
+
+	/**
 	 * Converts the given string to a floating
 	 * point number, 1&gt;=N&gt;=0, representing
 	 * the whole percentage of the string.  The
@@ -1090,6 +1136,21 @@ public class CMath
 	{
 		final double diff=(d1>d2)?d1-d2:d2-d1;
 		return diff/range;
+	}
+
+	/**
+	 * Returns whether the first number is within a %pct (0-1) distance from
+	 * the second/ideal value.
+	 *
+	 * @param v the value to test
+	 * @param ideal the ideal
+	 * @param pct the pct to return true if less than or equal to
+	 * @return true if its within the pct range, false otherwise
+	 */
+	public final static boolean isWithin(final double v, final double ideal, final double pct)
+	{
+		final double a = Math.abs(v - ideal);
+		return (a / ideal) < pct;
 	}
 
 	/**

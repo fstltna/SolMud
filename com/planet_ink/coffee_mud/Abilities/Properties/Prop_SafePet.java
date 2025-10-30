@@ -18,7 +18,7 @@ import com.planet_ink.coffee_mud.Races.interfaces.*;
 import java.util.*;
 
 /*
-   Copyright 2001-2024 Bo Zimmerman
+   Copyright 2001-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -65,6 +65,7 @@ public class Prop_SafePet extends Property
 
 	protected boolean	disabled		= false;
 	protected String	displayMessage	= "You may not attack <T-NAME>.";
+	protected String	liegeFollower	= null;
 
 	@Override
 	public String accountForYourself()
@@ -88,6 +89,28 @@ public class Prop_SafePet extends Property
 		{
 			displayMessage=newDisplayMsg.trim();
 		}
+		liegeFollower=CMParms.getParmStr(newMiscText, "LIEGEFOLLOW", null);
+	}
+
+	@Override
+	public void executeMsg(final Environmental myHost, final CMMsg msg)
+	{
+		if((liegeFollower!=null)
+		&&(affected instanceof MOB)
+		&&(msg.targetMinor()==CMMsg.TYP_ENTER)
+		&&(liegeFollower.length()>0)
+		&&(msg.target() instanceof Room)
+		&&(((MOB)affected).amFollowing()==null))
+		{
+			if(((MOB)affected).getLiegeID().length()==0)
+				((MOB)affected).setLiegeID(liegeFollower);
+			super.executeMsg(myHost, msg);
+			final MOB M = ((Room)msg.target()).fetchInhabitant("$"+liegeFollower+"$");
+			if(M!=null)
+				CMLib.commands().postFollow((MOB)affected, M, false);
+		}
+		else
+			super.executeMsg(myHost, msg);
 	}
 
 	@Override
@@ -95,7 +118,9 @@ public class Prop_SafePet extends Property
 	{
 		if(affected instanceof MOB)
 		{
-			if((msg.amISource((MOB)affected))&&(msg.sourceMinor()==CMMsg.TYP_DEATH)&&(!CMath.bset(msg.sourceMajor(), CMMsg.MASK_ALWAYS)))
+			if((msg.amISource((MOB)affected))
+			&&(msg.sourceMinor()==CMMsg.TYP_DEATH)
+			&&(!CMath.bset(msg.sourceMajor(), CMMsg.MASK_ALWAYS)))
 			{
 				msg.source().tell(L("You are safe from death."));
 				return false;

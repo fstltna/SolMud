@@ -24,7 +24,7 @@ import java.io.IOException;
 import java.lang.ref.WeakReference;
 
 /*
-   Copyright 2004-2024 Bo Zimmerman
+   Copyright 2004-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -268,11 +268,10 @@ public class CommonMsgs extends StdLibrary implements CommonCommands
 		forceInternalCommand(mob,"Channel",Boolean.valueOf(systemMsg),channelName,message);
 	}
 
-	protected MOB nonClanTalkerM = null;
 	protected Room talkLocationR = null;
 
 	@Override
-	public void postChannel(final String channelName, final Iterable<Pair<Clan,Integer>> clanList, final String message, final boolean systemMsg)
+	public void postChannel(final String channelName, final Iterable<Pair<Clan,Integer>> clanList, final String message, final boolean systemMsg, final MOB mob)
 	{
 		MOB talker = null;
 		boolean destroyTheTalker = false;
@@ -280,10 +279,7 @@ public class CommonMsgs extends StdLibrary implements CommonCommands
 		{
 			if((talkLocationR == null)
 			||(talkLocationR.amDestroyed()))
-			{
 				talkLocationR = CMLib.map().getRandomRoom();
-			}
-
 			if((clanList != null)
 			&&(clanList.iterator().hasNext()))
 			{
@@ -308,27 +304,34 @@ public class CommonMsgs extends StdLibrary implements CommonCommands
 					}
 					destroyTheTalker = true;
 				}
+				talker.setSoulMate(mob);
 				talker.setLocation(talkLocationR);
 				// never destroy the clans factory mob!
 			}
-			else
-			if(nonClanTalkerM!=null)
-				talker=nonClanTalkerM;
-			else
+			if(talker == null)
 			{
-				talker=CMClass.getMOB("StdMOB"); // not factory because he lasts forever
+				talker=CMClass.getFactoryMOB(); // not factory because he lasts forever
 				talker.setName("^</B^>");
 				talker.setLocation(talkLocationR);
 				talker.basePhyStats().setDisposition(PhyStats.IS_GOLEM);
 				talker.phyStats().setDisposition(PhyStats.IS_GOLEM);
-				nonClanTalkerM=talker;
+				talker.setSoulMate(mob);
+				destroyTheTalker = true;
 			}
 			postChannel(talker,channelName,message,systemMsg);
 		}
 		finally
 		{
-			if (destroyTheTalker && (talker != null))
-				talker.destroy();
+			if(talker != null)
+			{
+				talker.setSoulMate(null);
+				if (destroyTheTalker)
+				{
+					talker.basePhyStats().setDisposition(0);
+					talker.phyStats().setDisposition(0);
+					talker.destroy();
+				}
+			}
 		}
 	}
 
@@ -470,6 +473,130 @@ public class CommonMsgs extends StdLibrary implements CommonCommands
 		postSay(mob,null,text,false,false);
 	}
 
+	protected void postTell(final MOB mob, final MOB target, final String text)
+	{
+		String targetName=target.name();
+		if(targetName.indexOf('@')>=0)
+		{
+			final String mudName=targetName.substring(targetName.indexOf('@')+1);
+			targetName=targetName.substring(0,targetName.indexOf('@'));
+			if((!(CMLib.intermud().i3online()))&&(!(CMLib.intermud().imc2online())))
+				mob.tell(L("Intermud is unavailable."));
+			else
+				CMLib.intermud().i3tell(mob,targetName,mudName,text);
+		}
+		else
+		{
+			final boolean ignore=(
+				(target.playerStats()!=null)
+				&&(target.playerStats().isIgnored("TELL",mob)));
+			CMMsg msg=null;
+			if(((!CMLib.flags().isSeeable(mob))||(!CMLib.flags().isSeeable(target))))
+			{
+				msg=CMClass.getMsg(mob,target,null,
+						CMMsg.MSG_TELL,L("^t^<TELL \"@x1\"^>You tell <T-NAME> '@x2'^</TELL^>^?^.",CMStrings.removeColors(target.name(mob)),text),
+						CMMsg.MSG_TELL,L("^t^<TELL \"@x1\"^><S-NAME> tell(s) you '@x2'^</TELL^>^?^.",CMStrings.removeColors(mob.name(target)),text),
+						CMMsg.NO_EFFECT,null);
+			}
+			else
+			{
+				msg=CMClass.getMsg(mob,target,null,
+						CMMsg.MSG_TELL,L("^t^<TELL \"@x1\"^>You tell @x2 '@x3'^</TELL^>^?^.",CMStrings.removeColors(target.name(mob)),target.name(mob),text),
+						CMMsg.MSG_TELL,L("^t^<TELL \"@x1\"^>@x2 tell(s) you '@x3'^</TELL^>^?^.",CMStrings.removeColors(mob.name(target)),mob.Name(),text),
+						CMMsg.NO_EFFECT,null);
+			}
+			if((mob.location().okMessage(mob,msg))
+			&&((ignore)||((target.location()!=null)&&(target.location().okMessage(target,msg)))))
+			{
+				final String player=CMStrings.removeAllButLettersAndDigits(CMStrings.removeColors(mob.name(target)));
+				if((mob.session()!=null)&&(mob.session().getClientTelnetMode(Session.TELNET_GMCP)))
+				{
+					mob.session().sendGMCPEvent("comm.channel", "{\"chan\":\"tell\",\"msg\":\""+
+							MiniJSON.toJSONString(CMStrings.unWWrap(CMLib.coffeeFilter().fullOutFilter(null, mob, mob, target, null,
+									CMStrings.removeColors(msg.sourceMessage()).trim(), false)))
+							+"\",\"player\":\""+player+"\"}");
+				}
+				mob.executeMsg(mob,msg);
+				if((mob!=target)&&(!ignore))
+				{
+					if((target.session()!=null)
+					&&(target.session().getClientTelnetMode(Session.TELNET_GMCP)))
+					{
+						target.session().sendGMCPEvent("comm.channel", "{\"chan\":\"tell\",\"msg\":\""+
+								MiniJSON.toJSONString(CMStrings.unWWrap(CMLib.coffeeFilter().fullOutFilter(null, target, mob, target, null,
+										CMStrings.removeColors(msg.targetMessage()), false)).trim())
+								+"\",\"player\":\""+player+"\"}");
+					}
+					target.executeMsg(target,msg);
+
+					if((CMProps.isUsingAccountSystem())
+					&& (target.playerStats()!=null)
+					&& (target.playerStats().getAccount() != null)
+					&& (target.playerStats().getAccount().isSet(PlayerAccount.AccountFlag.AUTOTELLNOTIFY)))
+					{
+						final PlayerAccount acct = target.playerStats().getAccount();
+						for(final Session S : CMLib.sessions().allIterableAllHosts())
+						{
+							final MOB M = S.mob();
+							if((M != null)
+							&&(M != mob)
+							&&(M != target)
+							&&(M.playerStats() != null)
+							&&(M.playerStats().getAccount() == acct)
+							&&(target.session() != S))
+								S.println(L("\n\r^H@x1 has received a TELL.\n\r",target.name(M)));
+						}
+					}
+
+					String targetMessage=msg.targetMessage();
+					if(msg.trailerMsgs()!=null)
+					{
+						for(final CMMsg msg2 : msg.trailerMsgs())
+						{
+							if((msg!=msg2)
+							&&(target.okMessage(target,msg2)))
+							{
+								target.executeMsg(target,msg2);
+								if((msg.targetMinor()==msg2.targetMinor())
+								&&(msg.targetMessage()!=null)
+								&&(msg.targetMessage().length()>0))
+									targetMessage=msg2.targetMessage();
+							}
+						}
+						msg.trailerMsgs().clear();
+						if(msg.trailerRunnables()!=null)
+						{
+							for(final Runnable r : msg.trailerRunnables())
+								CMLib.threads().executeRunnable(r);
+							msg.trailerRunnables().clear();
+						}
+					}
+					if((!mob.isMonster())&&(!target.isMonster()))
+					{
+						if(mob.playerStats()!=null)
+						{
+							final String cleanedForStack = CMStrings.removeColors(CMStrings.replaceAll(msg.sourceMessage(),"^^","%5E"));
+							mob.playerStats().setReplyTo(target,PlayerStats.REPLY_TELL);
+							mob.playerStats().addTellStack(mob.Name(), target.Name(), CMLib.coffeeFilter().fullOutFilter(mob.session(),mob,mob,target,null,cleanedForStack,false));
+						}
+						if(target.playerStats()!=null)
+						{
+							target.playerStats().setReplyTo(mob,PlayerStats.REPLY_TELL);
+							String str=targetMessage;
+							if((msg.tool() instanceof Ability)
+							&&((((Ability)msg.tool()).classificationCode() & Ability.ALL_ACODES)==Ability.ACODE_LANGUAGE)
+							&&(target.fetchEffect(msg.tool().ID()) != null)
+							&&(msg.sourceMinor()!=CMMsg.TYP_TEACH))
+								str=CMStrings.substituteSayInMessage(str,CMStrings.getSayFromMessage(msg.sourceMessage()));
+							final String cleanedForStack = CMStrings.removeColors(CMStrings.replaceAll(str,"^^","%5E"));
+							target.playerStats().addTellStack(mob.Name(), target.Name(), CMLib.coffeeFilter().fullOutFilter(target.session(),target,mob,target,null,cleanedForStack,false));
+						}
+					}
+				}
+			}
+		}
+	}
+
 	@Override
 	public void postSay(final MOB mob, final MOB target, String text, final boolean isPrivate, final boolean tellFlag)
 	{
@@ -482,105 +609,7 @@ public class CommonMsgs extends StdLibrary implements CommonCommands
 		if((isPrivate)&&(target!=null))
 		{
 			if(tellFlag)
-			{
-				String targetName=target.name();
-				if(targetName.indexOf('@')>=0)
-				{
-					final String mudName=targetName.substring(targetName.indexOf('@')+1);
-					targetName=targetName.substring(0,targetName.indexOf('@'));
-					if((!(CMLib.intermud().i3online()))&&(!(CMLib.intermud().imc2online())))
-						mob.tell(L("Intermud is unavailable."));
-					else
-						CMLib.intermud().i3tell(mob,targetName,mudName,text);
-				}
-				else
-				{
-					final boolean ignore=((target.playerStats()!=null)&&(target.playerStats().isIgnored(mob)));
-					CMMsg msg=null;
-					if(((!CMLib.flags().isSeeable(mob))||(!CMLib.flags().isSeeable(target))))
-					{
-						msg=CMClass.getMsg(mob,target,null,
-								CMMsg.MSG_TELL,L("^t^<TELL \"@x1\"^>You tell <T-NAME> '@x2'^</TELL^>^?^.",CMStrings.removeColors(target.name(mob)),text),
-								CMMsg.MSG_TELL,L("^t^<TELL \"@x1\"^><S-NAME> tell(s) you '@x2'^</TELL^>^?^.",CMStrings.removeColors(mob.name(target)),text),
-								CMMsg.NO_EFFECT,null);
-					}
-					else
-					{
-						msg=CMClass.getMsg(mob,target,null,
-								CMMsg.MSG_TELL,L("^t^<TELL \"@x1\"^>You tell @x2 '@x3'^</TELL^>^?^.",CMStrings.removeColors(target.name(mob)),target.name(mob),text),
-								CMMsg.MSG_TELL,L("^t^<TELL \"@x1\"^>@x2 tell(s) you '@x3'^</TELL^>^?^.",CMStrings.removeColors(mob.name(target)),mob.Name(),text),
-								CMMsg.NO_EFFECT,null);
-					}
-					if((mob.location().okMessage(mob,msg))
-					&&((ignore)||((target.location()!=null)&&(target.location().okMessage(target,msg)))))
-					{
-						final String player=CMStrings.removeAllButLettersAndDigits(CMStrings.removeColors(mob.name(target)));
-						if((mob.session()!=null)&&(mob.session().getClientTelnetMode(Session.TELNET_GMCP)))
-						{
-							mob.session().sendGMCPEvent("comm.channel", "{\"chan\":\"tell\",\"msg\":\""+
-									MiniJSON.toJSONString(CMStrings.unWWrap(CMLib.coffeeFilter().fullOutFilter(null, mob, mob, target, null,
-											CMStrings.removeColors(msg.sourceMessage()).trim(), false)))
-									+"\",\"player\":\""+player+"\"}");
-						}
-						mob.executeMsg(mob,msg);
-						if((mob!=target)&&(!ignore))
-						{
-							if((target.session()!=null)&&(target.session().getClientTelnetMode(Session.TELNET_GMCP)))
-							{
-								target.session().sendGMCPEvent("comm.channel", "{\"chan\":\"tell\",\"msg\":\""+
-										MiniJSON.toJSONString(CMStrings.unWWrap(CMLib.coffeeFilter().fullOutFilter(null, target, mob, target, null,
-												CMStrings.removeColors(msg.targetMessage()), false)).trim())
-										+"\",\"player\":\""+player+"\"}");
-							}
-							target.executeMsg(target,msg);
-							String targetMessage=msg.targetMessage();
-							if(msg.trailerMsgs()!=null)
-							{
-								for(final CMMsg msg2 : msg.trailerMsgs())
-								{
-									if((msg!=msg2)
-									&&(target.okMessage(target,msg2)))
-									{
-										target.executeMsg(target,msg2);
-										if((msg.targetMinor()==msg2.targetMinor())
-										&&(msg.targetMessage()!=null)
-										&&(msg.targetMessage().length()>0))
-											targetMessage=msg2.targetMessage();
-									}
-								}
-								msg.trailerMsgs().clear();
-								if(msg.trailerRunnables()!=null)
-								{
-									for(final Runnable r : msg.trailerRunnables())
-										CMLib.threads().executeRunnable(r);
-									msg.trailerRunnables().clear();
-								}
-							}
-							if((!mob.isMonster())&&(!target.isMonster()))
-							{
-								if(mob.playerStats()!=null)
-								{
-									final String cleanedForStack = CMStrings.removeColors(CMStrings.replaceAll(msg.sourceMessage(),"^^","%5E"));
-									mob.playerStats().setReplyTo(target,PlayerStats.REPLY_TELL);
-									mob.playerStats().addTellStack(mob.Name(), target.Name(), CMLib.coffeeFilter().fullOutFilter(mob.session(),mob,mob,target,null,cleanedForStack,false));
-								}
-								if(target.playerStats()!=null)
-								{
-									target.playerStats().setReplyTo(mob,PlayerStats.REPLY_TELL);
-									String str=targetMessage;
-									if((msg.tool() instanceof Ability)
-									&&((((Ability)msg.tool()).classificationCode() & Ability.ALL_ACODES)==Ability.ACODE_LANGUAGE)
-									&&(target.fetchEffect(msg.tool().ID()) != null)
-									&&(msg.sourceMinor()!=CMMsg.TYP_TEACH))
-										str=CMStrings.substituteSayInMessage(str,CMStrings.getSayFromMessage(msg.sourceMessage()));
-									final String cleanedForStack = CMStrings.removeColors(CMStrings.replaceAll(str,"^^","%5E"));
-									target.playerStats().addTellStack(mob.Name(), target.Name(), CMLib.coffeeFilter().fullOutFilter(target.session(),target,mob,target,null,cleanedForStack,false));
-								}
-							}
-						}
-					}
-				}
-			}
+				postTell(mob, target, text);
 			else
 			{
 				final CMMsg msg=CMClass.getMsg(mob,target,null,CMMsg.MSG_SPEAK,L("^T^<SAY \"@x1\"^><S-NAME> say(s) '@x2' to <T-NAMESELF>.^</SAY^>^?",CMStrings.removeColors(target.name(mob)),text),CMMsg.MSG_SPEAK,L("^T^<SAY \"@x1\"^><S-NAME> say(s) '@x2' to <T-NAMESELF>.^</SAY^>^?",CMStrings.removeColors(mob.name(target)),text),CMMsg.NO_EFFECT,null);
@@ -1241,7 +1270,7 @@ public class CommonMsgs extends StdLibrary implements CommonCommands
 					1000,
 					5000
 				};
-				int eatNDex=namts.length;
+				int eatNDex=namts.length-1;
 				for(int i=0;i<namts.length;i++)
 				{
 					if(namts[i]>biteSize)
@@ -1267,7 +1296,7 @@ public class CommonMsgs extends StdLibrary implements CommonCommands
 					5,
 					10
 				};
-				int eatADex=aamts.length;
+				int eatADex=aamts.length-1;
 				for(int i=0;i<aamts.length;i++)
 				{
 					if(aamts[i]>adjSize)
@@ -2734,21 +2763,21 @@ public class CommonMsgs extends StdLibrary implements CommonCommands
 		{
 			final Exit exit=room.getExitInDir(d);
 			final Room room2=room.getRoomInDir(d);
-			StringBuilder Say=new StringBuilder("");
+			StringBuilder str=new StringBuilder("");
 			if(exit!=null)
-				Say=exit.viewableText(mob, room2);
+				str=exit.viewableText(mob, room2);
 			else
 			if((room2!=null)&&(mob.isAttributeSet(MOB.Attrib.SYSOPMSGS)))
-				Say.append(room2.roomID()+" via NULL");
-			if(Say.length()>0)
+				str.append(room2.roomID()+" via NULL");
+			if(str.length()>0)
 			{
 				Dir=CMStrings.padRightPreserve(CMLib.directions().getDirectionName(d,dirType),5);
 				if((mob.playerStats()!=null)
 				&&(room2!=null)
 				&&(mob.playerStats().hasVisited(room2)))
-					buf.append("^D^<EX^>" + Dir+"^</EX^>:^.^N ^d"+Say+"^.^N\n\r");
+					buf.append("^D^<EX^>" + Dir+"^</EX^>:^.^N ^d"+str+"^.^N\n\r");
 				else
-					buf.append("^U^<EX^>" + Dir+"^</EX^>:^.^N ^u"+Say+"^.^N\n\r");
+					buf.append("^U^<EX^>" + Dir+"^</EX^>:^.^N ^u"+str+"^.^N\n\r");
 			}
 		}
 		boolean noBoardableShips = false;

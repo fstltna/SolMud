@@ -27,7 +27,7 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /*
-   Copyright 2020-2024 Bo Zimmerman
+   Copyright 2020-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -680,7 +680,7 @@ public class InstanceArea extends StdAbility
 			final String absorb = instVars.get(InstVar.ABSORB.toString());
 			if(absorb != null)
 				reEffect(instArea,"Prop_AbsorbDamage",absorb);
-			final TimeClock C=(TimeClock)CMLib.time().globalClock().copyOf();
+			final TimeClock C=(TimeClock)CMLib.time().homeClock(affected).copyOf();
 			C.setDayOfMonth(1);
 			C.setYear(1);
 			C.setMonth(1);
@@ -688,7 +688,7 @@ public class InstanceArea extends StdAbility
 			final String hours = instVars.get(InstVar.HOURS.toString());
 			if((hours != null)&&(CMath.isInteger(hours)))
 			{
-				final double mul=CMath.div(CMath.s_int(hours),CMLib.time().globalClock().getHoursInDay());
+				final double mul=CMath.div(CMath.s_int(hours),C.getHoursInDay());
 				if(mul != 1.0)
 				{
 					final int newHours = (int)Math.round(CMath.mul(C.getHoursInDay(),mul));

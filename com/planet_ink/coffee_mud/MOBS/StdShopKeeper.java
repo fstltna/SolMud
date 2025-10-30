@@ -23,7 +23,7 @@ import com.planet_ink.coffee_mud.Races.interfaces.*;
 import java.util.*;
 
 /*
-   Copyright 2001-2024 Bo Zimmerman
+   Copyright 2001-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -232,9 +232,7 @@ public class StdShopKeeper extends StdMOB implements ShopKeeper
 		{
 			budgetRemaining = budget.first.longValue();
 			budgetTickDown = 100;
-			TimeClock C=CMLib.time().homeClock(this);
-			if(C==null)
-				C=CMLib.time().globalClock();
+			final TimeClock C=CMLib.time().homeClock(this);
 			budgetTickDown = (int) (CMProps.getTicksPerMudHour() * C.getHoursPer(budget.second));
 		}
 		budgetMax = budgetRemaining;
