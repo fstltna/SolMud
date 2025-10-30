@@ -10,5 +10,8 @@ mud6.log
 mud7.log
 mud8.log
 mud9.log
+*.log
+*.save
+coffeemud.ini
 CoffeemudScreen.log
 SQLErrors.que
