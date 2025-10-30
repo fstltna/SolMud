@@ -31,7 +31,7 @@ import org.mozilla.javascript.Context;
 import org.mozilla.javascript.ScriptableObject;
 
 /*
-   Copyright 2005-2024 Bo Zimmerman
+   Copyright 2005-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -761,6 +761,12 @@ public class CMJournals extends StdLibrary implements JournalsLibrary
 				return E.update();
 			if(debug)
 				Log.debugOut("Running cron job "+E.subj());
+			mob = CMLib.players().getLoadPlayerAllHosts(E.from());
+			if(mob == null)
+			{
+				Log.errOut("Cron job "+E.subj()+" has unkknown runner "+E.from());
+				return touch;
+			}
 			long interval = CMProps.getMillisPerMudHour();
 			try
 			{
@@ -769,7 +775,10 @@ public class CMJournals extends StdLibrary implements JournalsLibrary
 					interval = CMath.s_long(intStr);
 				else
 				{
-					final int ticks = CMLib.time().parseTickExpression(intStr);
+					TimeClock C = E.getKnownClock();
+					if (C == null)
+						C = CMLib.time().homeClock(mob);
+					final int ticks = CMLib.time().parseTickExpression(C, intStr);
 					interval = ticks * CMProps.getTickMillis();
 				}
 			}
@@ -780,12 +789,6 @@ public class CMJournals extends StdLibrary implements JournalsLibrary
 			touch = System.currentTimeMillis()+interval;
 			E.update(System.currentTimeMillis()+interval);
 			CMLib.database().DBTouchJournalMessage(jobKey, E.update());
-			mob = CMLib.players().getLoadPlayerAllHosts(E.from());
-			if(mob == null)
-			{
-				Log.errOut("Cron job "+E.subj()+" has unkknown runner "+E.from());
-				return touch;
-			}
 			if(mob.session()==null)
 			{
 				fakeS=(Session)CMClass.getCommon("FakeSession");
@@ -1317,7 +1320,7 @@ public class CMJournals extends StdLibrary implements JournalsLibrary
 							Log.debugOut("Calendar "+event.from()+" announce: "+event.subj()+"@"+event.dateStr());
 						final List<String> channels=CMLib.channels().getFlaggedChannelNames(ChannelsLibrary.ChannelFlag.CALENDAR, null);
 						for(int i=0;i<channels.size();i++)
-							CMLib.commands().postChannel(channels.get(i),null,getCalendarEvent(null,event),true);
+							CMLib.commands().postChannel(channels.get(i),null,getCalendarEvent(null,event),true,null);
 					}
 					else
 					{
@@ -2020,7 +2023,8 @@ public class CMJournals extends StdLibrary implements JournalsLibrary
 		});
 	}
 
-	protected MsgMkrResolution makeMessage(final MOB mob, final String messageTitle, final List<String> vbuf, final boolean autoAdd) throws IOException
+	@Override
+	public MsgMkrResolution makeMessage(final MOB mob, final String messageTitle, final List<String> vbuf, final boolean autoAdd) throws IOException
 	{
 		final Session sess=mob.session();
 		if((sess == null )||(sess.isStopped()))

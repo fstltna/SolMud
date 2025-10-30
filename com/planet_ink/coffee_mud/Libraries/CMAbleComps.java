@@ -32,7 +32,7 @@ import java.net.Socket;
 import java.util.*;
 
 /*
-   Copyright 2015-2024 Bo Zimmerman
+   Copyright 2015-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -101,21 +101,45 @@ public class CMAbleComps extends StdLibrary implements AbilityComponents
 		if(comp.getLocation()==CompLocation.TRIGGER)
 			return false;
 		Item container=null;
-		if((comp.getType()==CompType.STRING)
-		&&(!CMLib.english().containsString(I.name(),comp.getStringType())))
-			return false;
-		else
-		if((comp.getType()==CompType.RESOURCE)
-		&&((!(I instanceof RawMaterial))
-			||(I.material()!=comp.getLongType())
-			||((comp.getSubType().length()>0)&&(!((RawMaterial)I).getSubType().equalsIgnoreCase(comp.getSubType())))))
-			return false;
-		else
-		if((comp.getType()==CompType.MATERIAL)
-		&&((!(I instanceof RawMaterial))
-			||(!isRightMaterial(comp.getLongType(),I.material()&RawMaterial.MATERIAL_MASK,mithrilOK))
-			||((comp.getSubType().length()>0)&&(!((RawMaterial)I).getSubType().equalsIgnoreCase(comp.getSubType())))))
-			return false;
+		switch(comp.getType())
+		{
+		case STRING:
+			if(!CMLib.english().containsString(I.name(),comp.getStringType()))
+				return false;
+			break;
+		case RESOURCE:
+			if(I instanceof RawMaterial)
+			{
+				if((I.material()!=comp.getLongType())
+				||((comp.getSubType().length()>0)&&(!((RawMaterial)I).getSubType().equalsIgnoreCase(comp.getSubType()))))
+					return false;
+			}
+			else
+			if((I instanceof Drink)
+			&&(((Drink)I).liquidRemaining()>0))
+			{
+				final Drink D = (Drink)I;
+				if(D.liquidType()!=comp.getLongType())
+					return false;
+			}
+			break;
+		case MATERIAL:
+			if(I instanceof RawMaterial)
+			{
+				if((!isRightMaterial(comp.getLongType(),I.material()&RawMaterial.MATERIAL_MASK,mithrilOK))
+				||((comp.getSubType().length()>0)&&(!((RawMaterial)I).getSubType().equalsIgnoreCase(comp.getSubType()))))
+					return false;
+			}
+			else
+			if((I instanceof Drink)
+			&&(((Drink)I).liquidRemaining()>0))
+			{
+				final Drink D = (Drink)I;
+				if(!isRightMaterial(comp.getLongType(),D.liquidType()&RawMaterial.MATERIAL_MASK,mithrilOK))
+					return false;
+			}
+			break;
+		}
 		container=I.ultimateContainer(null);
 		if(container==null)
 			container=I;
@@ -896,7 +920,6 @@ public class CMAbleComps extends StdLibrary implements AbilityComponents
 				final List<Pair<Integer,String>> compInts=new ArrayList<Pair<Integer,String>>();
 				while(i>=0)
 				{
-
 					if((destroy)
 					&&(found.get(0) instanceof Item))
 					{

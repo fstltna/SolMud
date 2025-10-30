@@ -33,7 +33,7 @@ import java.net.InetAddress;
 import java.util.*;
 
 /*
-   Copyright 2002-2024 Bo Zimmerman
+   Copyright 2002-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -362,6 +362,23 @@ public class StdWebMacro implements WebMacro
 							c=s.charAt(x+2);
 							s.delete(x, x+1);
 							code=CMLib.color().getBackgroundHtmlTag(c);
+						}
+						else
+						if(((c==ColorLibrary.COLORCODE_FANSI256)||(c==ColorLibrary.COLORCODE_BANSI256))
+						&&(x<(s.length()-8))
+						&&(s.charAt(x+2)==c)) // true color
+						{
+							String finalHex= s.substring(x+3,x+9);
+							if(!CMath.isHexNumber(finalHex))
+							{
+								if(CMath.isHexNumber(s.substring(x+3,x+5)))
+									finalHex = ColorLibrary.Color.html256[CMath.s_parseHex(s.substring(x+3,x+5))];
+							}
+							final boolean isFg = (c==ColorLibrary.COLORCODE_FANSI256);
+							if(isFg)
+								code = "<FONT COLOR=\"#" +finalHex + "\"";
+							else
+								code = "<FONT STYLE=\"background-color: #" +finalHex + ";\"";
 						}
 						else
 						if(((c==ColorLibrary.COLORCODE_FANSI256)||(c==ColorLibrary.COLORCODE_BANSI256))

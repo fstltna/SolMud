@@ -18,7 +18,7 @@ import com.planet_ink.coffee_mud.Races.interfaces.*;
 import java.util.List;
 
 /*
-   Copyright 2002-2024 Bo Zimmerman
+   Copyright 2002-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -106,6 +106,12 @@ public interface Command extends CMObject
 	 * @return true if the command is available, and false if it is unknown
 	 */
 	public boolean securityCheck(MOB mob);
+
+	/**
+	 * Returns whether this class generic or not.
+	 * @return whether this class is defined fully by parameters
+	 */
+	public boolean isGeneric();
 
 	/**
 	 * This method actually performs the command, when the given parsed

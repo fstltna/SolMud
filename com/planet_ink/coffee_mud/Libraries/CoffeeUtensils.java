@@ -30,7 +30,7 @@ import java.util.Map.Entry;
 import java.util.concurrent.TimeUnit;
 
 /*
-   Copyright 2001-2024 Bo Zimmerman
+   Copyright 2001-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -146,14 +146,10 @@ public class CoffeeUtensils extends StdLibrary implements CMMiscUtils
 	public String getFormattedDate(final Environmental E)
 	{
 		String date=CMStrings.padRight(L("Unknown"),11);
-		if(E!=null)
+		if(E != null)
 		{
 			final Area A=CMLib.map().areaLocation(E);
-			final TimeClock C;
-			if(A != null)
-				C=A.getTimeObj();
-			else
-				C=CMLib.time().globalClock();
+			final TimeClock C = CMLib.time().homeClock(A);
 			if(C!=null)
 				date=CMStrings.padRight(C.getDayOfMonth()+"-"+C.getMonth()+"-"+C.getYear(),11);
 		}
@@ -2153,7 +2149,15 @@ public class CoffeeUtensils extends StdLibrary implements CMMiscUtils
 				}
 				case 'h':
 				{
-					buf.append("^<Hp^>" + mob.curState().getHitPoints() + "^</Hp^>");
+					if((c<prompt.length()-1)
+					&&(prompt.charAt(c+1)=='%')
+					&&((c>=prompt.length()-2)||(!Character.isLetter(prompt.charAt(c+2)))))
+					{
+						buf.append("^<Hp^>" + CMath.toPct(CMath.div(mob.curState().getHitPoints(),mob.maxState().getHitPoints())) + "^</Hp^>");
+						c++;
+					}
+					else
+						buf.append("^<Hp^>" + mob.curState().getHitPoints() + "^</Hp^>");
 					c++;
 					break;
 				}
@@ -2208,7 +2212,15 @@ public class CoffeeUtensils extends StdLibrary implements CMMiscUtils
 						{
 						case 'h':
 						{
-							buf.append(tank.curState().getHitPoints());
+							if((c<prompt.length()-1)
+							&&(prompt.charAt(c+1)=='%')
+							&&((c>=prompt.length()-2)||(!Character.isLetter(prompt.charAt(c+2)))))
+							{
+								buf.append(CMath.toPct(CMath.div(tank.curState().getHitPoints(),tank.maxState().getHitPoints())));
+								c++;
+							}
+							else
+								buf.append(tank.curState().getHitPoints());
 							c++;
 							break;
 						}
@@ -2220,7 +2232,15 @@ public class CoffeeUtensils extends StdLibrary implements CMMiscUtils
 						}
 						case 'm':
 						{
-							buf.append(tank.curState().getMana());
+							if((c<prompt.length()-1)
+							&&(prompt.charAt(c+1)=='%')
+							&&((c>=prompt.length()-2)||(!Character.isLetter(prompt.charAt(c+2)))))
+							{
+								buf.append(CMath.toPct(CMath.div(tank.curState().getMana(),tank.maxState().getMana())));
+								c++;
+							}
+							else
+								buf.append(tank.curState().getMana());
 							c++;
 							break;
 						}
@@ -2232,7 +2252,15 @@ public class CoffeeUtensils extends StdLibrary implements CMMiscUtils
 						}
 						case 'v':
 						{
-							buf.append(tank.curState().getMovement());
+							if((c<prompt.length()-1)
+							&&(prompt.charAt(c+1)=='%')
+							&&((c>=prompt.length()-2)||(!Character.isLetter(prompt.charAt(c+2)))))
+							{
+								buf.append(CMath.toPct(CMath.div(tank.curState().getMovement(),tank.maxState().getMovement())));
+								c++;
+							}
+							else
+								buf.append(tank.curState().getMovement());
 							c++;
 							break;
 						}
@@ -2303,7 +2331,15 @@ public class CoffeeUtensils extends StdLibrary implements CMMiscUtils
 				}
 				case 'm':
 				{
-					buf.append("^<Mana^>" + mob.curState().getMana() + "^</Mana^>");
+					if((c<prompt.length()-1)
+					&&(prompt.charAt(c+1)=='%')
+					&&((c>=prompt.length()-2)||(!Character.isLetter(prompt.charAt(c+2)))))
+					{
+						buf.append("^<Mana^>" + CMath.toPct(CMath.div(mob.curState().getMana(),mob.maxState().getMana())) + "^</Mana^>");
+						c++;
+					}
+					else
+						buf.append("^<Mana^>" + mob.curState().getMana() + "^</Mana^>");
 					c++;
 					break;
 				}
@@ -2394,7 +2430,15 @@ public class CoffeeUtensils extends StdLibrary implements CMMiscUtils
 				}
 				case 'v':
 				{
-					buf.append("^<Move^>" + mob.curState().getMovement() + "^</Move^>");
+					if((c<prompt.length()-1)
+					&&(prompt.charAt(c+1)=='%')
+					&&((c>=prompt.length()-2)||(!Character.isLetter(prompt.charAt(c+2)))))
+					{
+						buf.append("^<Move^>" + CMath.toPct(CMath.div(mob.curState().getMovement(),mob.maxState().getMovement())) + "^</Move^>");
+						c++;
+					}
+					else
+						buf.append("^<Move^>" + mob.curState().getMovement() + "^</Move^>");
 					c++;
 					break;
 				}

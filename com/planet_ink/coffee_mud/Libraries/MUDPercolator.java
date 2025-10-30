@@ -32,7 +32,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.io.*;
 /*
-   Copyright 2008-2024 Bo Zimmerman
+   Copyright 2008-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -516,10 +516,10 @@ public class MUDPercolator extends StdLibrary implements AreaGenerationLibrary
 	{
 		final String filePath="com/planet_ink/coffee_mud/Libraries/layouts";
 		final CMProps page = CMProps.instance();
-		final Vector<Object> layouts=CMClass.loadClassList(filePath,page.getStr("LIBRARY"),"/layouts",LayoutManager.class,true);
+		final List<Object> layouts=CMClass.loadClassList(filePath,page.getStr("LIBRARY"),"/layouts",LayoutManager.class,true);
 		for(int f=0;f<layouts.size();f++)
 		{
-			final LayoutManager lmgr= (LayoutManager)layouts.elementAt(f);
+			final LayoutManager lmgr= (LayoutManager)layouts.get(f);
 			final Class<LayoutManager> lmgrClass=(Class<LayoutManager>)lmgr.getClass();
 			mgrs.put(lmgr.name().toUpperCase().trim(),lmgrClass);
 		}
@@ -3377,7 +3377,7 @@ public class MUDPercolator extends StdLibrary implements AreaGenerationLibrary
 		final String finalFinalValue=finalValue.toString().trim();
 		if(processDefined!=null)
 			defineReward(E,ignoreStats,defPrefix,piece.getParmValue("DEFINE"),processDefined,finalFinalValue,defined,true);
-		return CMStrings.deEscape(finalFinalValue,"$");
+		return CMStrings.deEscape(finalFinalValue,"$\\");
 	}
 
 	@Override

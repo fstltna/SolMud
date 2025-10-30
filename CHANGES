@@ -1,4 +1,30 @@
-# Build 5.10.4 Release ??/??/2024
+# Build 5.10.5 Release ??/??/2025
+  *  DATABASE CHANGED! (new CMCDAC table)
+  1. New Generic Commands!, see GameBuildersGuide for more information.
+  2. BodyPiercing is now recipe driven, and recipes are now split off by level.
+  3. New Skill: Diary
+  4. ColorSet now supports Exits, as well as explored/unexplored doors.
+  5. Mudborn kids get Prop_SafePet with auto-leiging and auto-follow
+  6. New prompt features: %h% %m% and %v% for percentages .. breaks MXP bars
+  7. New disable flags: CHARCRSTAT, CHARCRRACE, CHARCRCLASS, CHARCRGENDER
+  8. New archon LISTs: DEBUGFLAGS, DISABLEFLAGS
+  9. Three new WebSocket macros (WebSock, WebSockASCII, and WebSockJSON).  See WebServer.html
+ 10. Log viewer in the MUDGrinder now shows the log by pages, starting at the last one.
+ 11. Undead-based races are now immune to Bleeding.
+ 12. New property: Prop_AffectReTick for changing the tick time of effects
+ 13. Siplet has been replaced with a new ph@-client version.
+ 14. MudChat now supports switching/adding dbs based on responses.
+ 15. New Percolator layouts: mesh, spotted mesh, and branch
+ 16. Ignore now supports ignoring players by limited categories.
+ 17. CoffeeMud now supports MTTS, and will skip ANSI prompts at CC if set.
+ 18. CoffeeMud now supports True color ansi codes, see HELP TRUECOLORS
+ 19. GMCP now supports more auto-logins.
+ 20. Sprinking of new CM1 commands: MUDINFO who, port, hosts, and WHOIS -name-
+ 21. Prop_ReqEntry and Prop_*Zapper support accusing someone of a crime.
+ 22. New WebMacros: TellMessageNext, and TellFunction.
+ 23. Scriptable/MOBPROG: new CNCLMSG_PROG and EXECMSG_PROG filtering.
+ 
+# Build 5.10.4 Release 12/05/2024
   *  DATABASE CHANGED! (Bitmap field in CMCHAR table is now larger)
   1. Races/GenRaces support parameters for cultural abilities.
   2. Better MSSP/MSDP support.  New INI entry: MSXPVARS.
@@ -78,7 +104,8 @@
  76. New race: Rust Monster
  77. ORDER now works with animal followers for specific commands in LISTS.INI file
  78. Can now LIST DBCONNECTIONS to check database status
- 
+ 79. New character class: Gypsy - thief subclass with druid highlights
+ 80. New command: AUTOTELLNOTIFY, with CONFIG support also, for account-based muds.
 # Build 5.10.3 Release 01/01/2024
   *. CoffeeMud now officially requires jdk 1.8.  ATM, it will still compile in 1.6 tho.
   1. New Paladin skills: Unholy Strike, Chaos Rage, Paladin's Fear, Paladin's Corruption

@@ -17,7 +17,7 @@ import com.planet_ink.coffee_mud.Races.interfaces.*;
 
 import java.util.*;
 /*
-   Copyright 2013-2024 Bo Zimmerman
+   Copyright 2013-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -213,6 +213,34 @@ public interface ProtocolLibrary extends CMLibrary
 	public Map<String,Object> getMSSPPackage();
 
 	/**
+	 * Strips telnet codes from the given buffer.
+	 * @param buf the buffer to strip
+	 * @return the original buffer, or a stripped one
+	 */
+	public byte[] stripTelnet(final byte[] buf);
+
+	/**
+	 * Strips linefeeds from the given buffer.
+	 * @param buf the buffer to strip
+	 * @return the original buffer, or a stripped one
+	 */
+	public byte[] stripLF(final byte[] buf);
+
+	/**
+	 * Strips ansi codes from the given buffer.
+	 * @param buf the buffer to strip
+	 * @return the original buffer, or a stripped one
+	 */
+	public byte[] stripANSI(final byte[] buf);
+
+	/**
+	 * Strips non-ascii codes from the given buffer.
+	 * @param buf the buffer to strip
+	 * @return the original buffer, or a stripped one
+	 */
+	public byte[] stripNonASCII(final byte[] buf);
+
+	/**
 	 * Enumeration of all support GMCP commands
 	 *
 	 * @author Bo Zimmerman
@@ -238,6 +266,7 @@ public interface ProtocolLibrary extends CMLibrary
 		char_items_contents,
 		char_skills_get,
 		char_effects_get,
+		char_login_credentials,
 		group,
 		room_info, // means they want room.wrongdir and room.enter and room.leave
 		room_items_inv,

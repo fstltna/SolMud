@@ -33,7 +33,7 @@ import java.util.Map.Entry;
 import org.mozilla.javascript.*;
 import org.mozilla.javascript.optimizer.*;
 /*
-   Copyright 2013-2024 Bo Zimmerman
+   Copyright 2013-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -1704,8 +1704,8 @@ public class CMProtocols extends StdLibrary implements ProtocolLibrary
 
 	protected String getAbilityGroupName(final int code)
 	{
-		return CMStrings.capitalizeAllFirstLettersAndLower(Ability.ACODE.DESCS.get(code&Ability.ALL_ACODES))+
-				"-"+CMStrings.capitalizeAllFirstLettersAndLower(Ability.DOMAIN.DESCS.get((code&Ability.ALL_DOMAINS)>>5));
+		return (Ability.ACODE.DESCS.get(code&Ability.ALL_ACODES)).toLowerCase()+
+				"-"+(Ability.DOMAIN.DESCS.get((code&Ability.ALL_DOMAINS)>>5)).toLowerCase();
 	}
 
 	protected void resetMsdpConfigurable(final Session session, final String var, final Map<Object,Object> reportables)
@@ -2093,6 +2093,19 @@ public class CMProtocols extends StdLibrary implements ProtocolLibrary
 					}
 					break;
 				}
+				case char_login_credentials:
+				{
+					if(json!=null)
+						json=json.getCheckedJSONObject("root");
+					if(json != null)
+					{
+						final String user=json.getCheckedString("account");
+						final String pw=json.getCheckedString("password");
+						session.setStat("LOGIN_ACCOUNT", user);
+						session.setStat("LOGIN_PASSWORD", pw);
+					}
+					break;
+				}
 				case core_supports_set:
 					supportables.clear();
 					//$FALL-THROUGH$
@@ -2101,6 +2114,7 @@ public class CMProtocols extends StdLibrary implements ProtocolLibrary
 					Object[] list = null;
 					if(json!=null)
 						list=json.getCheckedArray("root");
+					final StringBuilder respDoc = new StringBuilder("");
 					if(list != null)
 					{
 						for(final Object o : list)
@@ -2115,8 +2129,16 @@ public class CMProtocols extends StdLibrary implements ProtocolLibrary
 								s=s.substring(0,x).trim();
 							}
 							supportables.put(s, Double.valueOf(ver));
+							if(s.equalsIgnoreCase("char.login"))
+							{
+								respDoc.append("Char.Login.Default {");
+								respDoc.append("\"type\":[\"password-credentials\"]");
+								respDoc.append("}");
+							}
 						}
 					}
+					if(respDoc.length()>0)
+						return respDoc.toString();
 					break;
 				}
 				case core_supports_remove:
@@ -2507,11 +2529,21 @@ public class CMProtocols extends StdLibrary implements ProtocolLibrary
 						if(mob.isAttributeSet(MOB.Attrib.AUTORUN))
 							state=12;
 						doc.append("\"state\":").append(state).append(",");
-						doc.append("\"pos\":\"").append(
-									CMLib.flags().isSleeping(mob)?"Sleeping":
-									CMLib.flags().isSitting(mob)?"Sitting":
-									"Standing"
-									).append("\"");
+						final Rideable rd = mob.riding();
+						if(rd != null)
+						{
+							doc.append("\"pos\":\"")
+								.append(CMStrings.capitalizeAndLower(rd.stateString(mob)))
+								.append(" ").append(rd.name(mob)).append("\"");
+						}
+						else
+						{
+							doc.append("\"pos\":\"").append(
+										CMLib.flags().isSleeping(mob)?"Sleeping":
+										CMLib.flags().isSitting(mob)?"Sitting":
+										"Standing"
+										).append("\"");
+						}
 						final MOB vicM=mob.getVictim();
 						if(vicM!=null)
 						{
@@ -2581,7 +2613,8 @@ public class CMProtocols extends StdLibrary implements ProtocolLibrary
 							for(int d=0;d<Directions.NUM_DIRECTIONS();d++)
 							{
 								final Room R2=room.getRoomInDir(d);
-								if((R2!=null)&&(room.getExitInDir(d)!=null))
+								final Exit E2=room.getExitInDir(d);
+								if((R2!=null)&&(E2!=null)&&(CMLib.flags().canBeSeenBy(E2, mob)))
 								{
 									final String room2ID=CMLib.map().getExtendedRoomID(R2);
 									if(room2ID.length()>0)
@@ -2599,7 +2632,8 @@ public class CMProtocols extends StdLibrary implements ProtocolLibrary
 							for(int d=0;d<Directions.NUM_DIRECTIONS();d++)
 							{
 								final Room R2=room.getRoomInDir(d);
-								if((R2!=null)&&(room.getExitInDir(d)!=null))
+								final Exit E2=room.getExitInDir(d);
+								if((R2!=null)&&(E2!=null)&&(CMLib.flags().canBeSeenBy(E2, mob)))
 								{
 									final String room2ID=CMLib.map().getExtendedRoomID(R2);
 									if(room2ID.length()>0)
@@ -2765,7 +2799,7 @@ public class CMProtocols extends StdLibrary implements ProtocolLibrary
 									doc.append("\"group\":\""+MiniJSON.toJSONString(groupName)+"\",");
 									doc.append("\"list\":[");
 									for(final Ability A : allMyGroups.get(grp))
-										doc.append("\"").append(MiniJSON.toJSONString(A.name().toLowerCase())).append("\",");
+										doc.append("\"").append(MiniJSON.toJSONString(A.name())).append("\",");
 									doc.setCharAt(doc.length()-1,']');
 									break;
 								}
@@ -2794,7 +2828,7 @@ public class CMProtocols extends StdLibrary implements ProtocolLibrary
 								if((A!=null)&&(A.name().toLowerCase().equals(name)))
 								{
 									doc.append("\"group\":\""+MiniJSON.toJSONString(getAbilityGroupName(A.abilityCode()))+"\",");
-									doc.append("\"skill\":\""+MiniJSON.toJSONString(name)+"\",");
+									doc.append("\"skill\":\""+MiniJSON.toJSONString(A.name())+"\",");
 									doc.append("\"info\":\""+MiniJSON.toJSONString(CMLib.help().getHelpText(A.Name().toUpperCase(), mob, false).toString())+"\"");
 									break;
 								}
@@ -3138,6 +3172,135 @@ public class CMProtocols extends StdLibrary implements ProtocolLibrary
 	}
 
 	@Override
+	public byte[] stripTelnet(final byte[] buf)
+	{
+		boolean strip=false;
+		final int num = buf.length;
+		for(int i=0;i<num;i++)
+		{
+			if(buf[i] == (byte)Session.TELNET_IAC)
+				strip=true;
+		}
+		if(!strip)
+			return buf;
+		final ByteArrayOutputStream bout = new ByteArrayOutputStream();
+		int last=0;
+		for(int i=0;i<num;i++)
+		{
+			if(buf[i] == (byte)Session.TELNET_IAC)
+			{
+				bout.write(buf,last,i-last);
+				last=i+1;
+				if(++i<num)
+				{
+					switch(buf[i])
+					{
+					case (byte)Session.TELNET_DO:
+					case (byte)Session.TELNET_DONT:
+					case (byte)Session.TELNET_WILL:
+					case (byte)Session.TELNET_WONT:
+						++i; // i is now on the offending code
+						last=i+1;
+						break;
+					case (byte)Session.TELNET_SB:
+						while(++i < num && (buf[i] != (byte)Session.TELNET_SE))
+						{}
+						last=(i<num)?i+1:num;
+						break;
+					default:
+						if(buf[i] < 0)
+							last=i+1;
+						break;
+					}
+				}
+			}
+		}
+		bout.write(buf,last,num-last);
+		return bout.toByteArray();
+	}
+
+	@Override
+	public byte[] stripLF(final byte[] buf)
+	{
+		boolean strip=false;
+		final int num = buf.length;
+		for(int i=0;i<num;i++)
+		{
+			if(buf[i] == (byte)10)
+				strip=true;
+		}
+		if(!strip)
+			return buf;
+		final ByteArrayOutputStream bout = new ByteArrayOutputStream();
+		int last=0;
+		for(int i=0;i<num;i++)
+		{
+			if(buf[i] == 10)
+			{
+				bout.write(buf,last,i-last);
+				last=i+1;
+			}
+		}
+		bout.write(buf,last,num-last);
+		return bout.toByteArray();
+	}
+
+	@Override
+	public byte[] stripNonASCII(final byte[] buf)
+	{
+		boolean strip=false;
+		final int num = buf.length;
+		for(int i=0;i<num;i++)
+		{
+			if(buf[i] < 0)
+				strip=true;
+		}
+		if(!strip)
+			return buf;
+		final ByteArrayOutputStream bout = new ByteArrayOutputStream();
+		int last=0;
+		for(int i=0;i<num;i++)
+		{
+			if(buf[i] < 0)
+			{
+				bout.write(buf,last,i-last);
+				last=i+1;
+			}
+		}
+		bout.write(buf,last,num-last);
+		return bout.toByteArray();
+	}
+
+	@Override
+	public byte[] stripANSI(final byte[] buf)
+	{
+		boolean strip=false;
+		final int num = buf.length;
+		for(int i=0;i<num;i++)
+		{
+			if(buf[i] == (byte)'\033')
+				strip=true;
+		}
+		if(!strip)
+			return buf;
+		final ByteArrayOutputStream bout = new ByteArrayOutputStream();
+		int last=0;
+		for(int i=0;i<num-1;i++)
+		{
+			if((buf[i] == '\033') && (buf[i+1]=='['))
+			{
+				bout.write(buf,last,i-last);
+				i++;
+				while(++i<num && (buf[i] != 'm')&& (buf[i] != 'z'))
+				{}
+				last=i+1;
+			}
+		}
+		bout.write(buf,last,num-last);
+		return bout.toByteArray();
+	}
+
+	@Override
 	public Map<String,Object> getMSSPPackage()
 	{
 		final Map<String,Object> pkg = new Hashtable<String, Object>();
@@ -3212,6 +3375,7 @@ public class CMProtocols extends StdLibrary implements ProtocolLibrary
 		pkg.put("CONTACT",CMProps.getVar(CMProps.Str.ADMINEMAIL));
 		pkg.put("EMAIL",CMProps.getVar(CMProps.Str.ADMINEMAIL));
 		pkg.put("CODEBASE",("CoffeeMUD v"+CMProps.getVar(CMProps.Str.MUDVER)));
+		pkg.put("GAMEPLAY","Adventure");
 		pkg.put("AREAS",Integer.toString(CMLib.map().numAreas()));
 		pkg.put("HELPFILES",Integer.toString(CMLib.help().getHelpFile().size()));
 		pkg.put("MOBILES",Long.toString(CMClass.numPrototypes(CMClass.CMObjectType.MOB)));
@@ -3229,6 +3393,9 @@ public class CMProtocols extends StdLibrary implements ProtocolLibrary
 		pkg.put("SKILLS",Long.toString(CMLib.ableMapper().numMappedAbilities()));
 		pkg.put("ANSI","1");
 		pkg.put("XTERM 256 COLORS","1");
+		pkg.put("XTERM TRUE COLORS","1");
+		pkg.put("MCP","1");
+		pkg.put("VT100","0");
 		pkg.put("MCCP",(!CMSecurity.isDisabled(CMSecurity.DisFlag.MCCP)?"1":"0"));
 		pkg.put("MSP",(!CMSecurity.isDisabled(CMSecurity.DisFlag.MSP)?"1":"0"));
 		pkg.put("MXP",(!CMSecurity.isDisabled(CMSecurity.DisFlag.MXP)?"1":"0"));

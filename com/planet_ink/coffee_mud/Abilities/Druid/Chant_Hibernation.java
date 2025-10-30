@@ -19,7 +19,7 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 /*
-   Copyright 2002-2024 Bo Zimmerman
+   Copyright 2002-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -189,9 +189,9 @@ public class Chant_Hibernation extends Chant
 		final MOB mob=(MOB)affected;
 
 		if(tickID!=Tickable.TICKID_MOB)
-			return true;
+			return super.tick(ticking, tickID);
 		if(!proficiencyCheck(null,0,false))
-			return true;
+			return super.tick(ticking, tickID);
 
 		if((!mob.isInCombat())
 		&&(CMLib.flags().isSleeping(mob)))

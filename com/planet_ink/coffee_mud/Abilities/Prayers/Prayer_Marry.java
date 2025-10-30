@@ -18,7 +18,7 @@ import com.planet_ink.coffee_mud.Races.interfaces.*;
 import java.util.*;
 
 /*
-   Copyright 2004-2024 Bo Zimmerman
+   Copyright 2004-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -170,7 +170,7 @@ public class Prayer_Marry extends Prayer
 				CMLib.commands().postSay(mob,husband,L("You may kiss your bride!"),false,false);
 				final List<String> channels=CMLib.channels().getFlaggedChannelNames(ChannelsLibrary.ChannelFlag.MARRIAGES, husband);
 				for(int i=0;i<channels.size();i++)
-					CMLib.commands().postChannel(channels.get(i),husband.clans(),L("@x1 and @x2 were just joined in holy matrimony!",husband.name(),wife.name()),true);
+					CMLib.commands().postChannel(channels.get(i),husband.clans(),L("@x1 and @x2 were just joined in holy matrimony!",husband.name(),wife.name()),true,husband);
 			 }
 		}
 		else

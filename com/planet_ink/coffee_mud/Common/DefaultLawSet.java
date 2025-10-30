@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.util.*;
 
 /*
-   Copyright 2005-2024 Bo Zimmerman
+   Copyright 2005-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -105,24 +105,27 @@ public class DefaultLawSet implements Law
 	private List<String>chitChat4	= new Vector<String>();
 	private List<String>jailRooms	= new Vector<String>();
 	private List<String>releaseRooms= new Vector<String>();
+	private List<String>trespassRoom= new Vector<String>();
 	private List<String>officerNames= new Vector<String>();
 	private List<String>judgeNames	= new Vector<String>();
 	private String[]	messages	= new String[Law.MSG_TOTAL];
 
 	private boolean activated=true;
 
-	private final SVector<LegalWarrant> oldWarrants=new SVector<LegalWarrant>();
-	private final SVector<LegalWarrant> warrants=new SVector<LegalWarrant>();
+	private final SVector<LegalWarrant>	oldWarrants	= new SVector<LegalWarrant>();
+	private final SVector<LegalWarrant>	warrants	= new SVector<LegalWarrant>();
 
-	private boolean arrestMobs=false;
+	private boolean arrestMobs = false;
 
-	private Properties theLaws=null;
+	private Properties theLaws = null;
 
-	private final String[] paroleMessages=new String[4];
-	private final Integer[] paroleTimes=new Integer[4];
+	private final String[]	paroleMessages	= new String[4];
+	private final Integer[]	paroleTimes		= new Integer[4];
 
-	private final String[] jailMessages=new String[4];
-	private final Integer[] jailTimes=new Integer[4];
+	private final String[]	jailMessages	= new String[4];
+	private final Integer[]	jailTimes		= new Integer[4];
+
+	private volatile long lastReset 		= System.currentTimeMillis();
 
 	@Override
 	public void initialize(final LegalBehavior details, final Properties laws, final boolean modifiableNames, final boolean modifiableLaws)
@@ -215,6 +218,12 @@ public class DefaultLawSet implements Law
 	public List<String> releaseRooms()
 	{
 		return releaseRooms;
+	}
+
+	@Override
+	public List<String> trespassRooms()
+	{
+		return trespassRoom;
 	}
 
 	@Override
@@ -503,7 +512,7 @@ public class DefaultLawSet implements Law
 										{
 											CMLib.commands().postChannel(channels.get(i),clanSet,
 												CMLib.lang().L("@x1 has lost the title to @x2 in "+A.Name()+" due to failure to pay "
-															+ "property taxes.",T.getOwnerName(),T.landPropertyID()),false);
+															+ "property taxes.",T.getOwnerName(),T.landPropertyID()),false,null);
 										}
 										if(M!=null)
 										{
@@ -546,7 +555,7 @@ public class DefaultLawSet implements Law
 								{
 									CMLib.commands().postChannel(channels.get(i),clanSet,CMLib.lang().L("@x1 owes @x2 in back taxes to "+A.Name()+".  "
 											+ "Sufficient funds were not found in a local bank account."
-											+ "  Failure to pay could result in loss of property. ",clanC.name(),amountOwed),false);
+											+ "  Failure to pay could result in loss of property. ",clanC.name(),amountOwed),false,null);
 								}
 								if(M!=null)
 								{
@@ -709,6 +718,7 @@ public class DefaultLawSet implements Law
 
 	private void resetLaw(final Properties laws)
 	{
+		lastReset = System.currentTimeMillis();
 		theLaws=laws;
 		activated=(!getInternalStr("ACTIVATED").equalsIgnoreCase("FALSE"));
 		officerNames=CMParms.parse(getInternalStr("OFFICERS"));
@@ -755,6 +765,7 @@ public class DefaultLawSet implements Law
 
 		jailRooms=CMParms.parseSemicolons(getInternalStr("JAIL"),true);
 		releaseRooms=CMParms.parseSemicolons(getInternalStr("RELEASEROOM"),true);
+		trespassRoom=CMParms.parseSemicolons(getInternalStr("TRESPASSROOM"),true);
 
 		taxLaws.clear();
 		String taxLaw=getInternalStr("PROPERTYTAX");
@@ -862,6 +873,12 @@ public class DefaultLawSet implements Law
 	}
 
 	@Override
+	public long lastResetTime()
+	{
+		return this.lastReset;
+	}
+
+	@Override
 	public String rawLawString()
 	{
 		if(theLaws!=null)
@@ -914,8 +931,6 @@ public class DefaultLawSet implements Law
 		}
 		return null;
 	}
-
-
 
 	public LegalWarrant removeWarrant(final MOB criminal,
 									  final String crime,

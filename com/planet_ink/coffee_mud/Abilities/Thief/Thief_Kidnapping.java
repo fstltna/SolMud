@@ -21,7 +21,7 @@ import java.lang.ref.WeakReference;
 import java.util.*;
 
 /*
-   Copyright 2024-2024 Bo Zimmerman
+   Copyright 2024-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -218,8 +218,7 @@ public class Thief_Kidnapping extends ThiefSkill implements PrivateProperty
 		if(affected instanceof MOB)
 		{
 			final MOB M = (MOB)affected;
-			if((!M.isAttributeSet(Attrib.AUTOASSIST))
-			&&(!CMLib.flags().isAgedChild(affected)))
+			if(!M.isAttributeSet(Attrib.AUTOASSIST))
 				M.setAttribute(Attrib.AUTOASSIST, true); // true means its assist is turned OFF
 			if(invoker() == null)
 				return true;

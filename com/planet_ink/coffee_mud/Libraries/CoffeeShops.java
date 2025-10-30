@@ -22,7 +22,7 @@ import com.planet_ink.coffee_mud.Libraries.interfaces.XMLLibrary.XMLTag;
 import java.util.*;
 
 /*
-   Copyright 2005-2024 Bo Zimmerman
+   Copyright 2005-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -1998,6 +1998,12 @@ public class CoffeeShops extends StdLibrary implements ShoppingLibrary
 		&&(!CMLib.masking().maskCheck(ignoreMask,mob,false)))
 		{
 			mob.tell(whoIgnores,null,null,L("<S-NAME> appear(s) to be ignoring you."));
+			return false;
+		}
+		if((whoIgnores != null)
+		&&(whoIgnores.amDead() || whoIgnores.isInCombat()))
+		{
+			mob.tell(whoIgnores,null,null,L("<S-NAME> appear(s) to be too busy right now."));
 			return false;
 		}
 		return true;

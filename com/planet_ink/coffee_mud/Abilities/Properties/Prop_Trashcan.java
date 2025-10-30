@@ -18,7 +18,7 @@ import com.planet_ink.coffee_mud.Races.interfaces.*;
 import java.util.*;
 
 /*
-   Copyright 2003-2024 Bo Zimmerman
+   Copyright 2003-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -89,8 +89,10 @@ public class Prop_Trashcan extends Property
 		tickDelay=CMParms.getParmInt(newMiscText, "DELAY", 0);
 	}
 
-	protected void process(final Item I)
+	protected void process(final MOB mob, final Item I)
 	{
+		if(!CMLib.utensils().canBePlayerDestroyed(mob, I, true, false))
+			return;
 		if(tickDelay<=0)
 			I.destroy();
 		else
@@ -114,11 +116,11 @@ public class Prop_Trashcan extends Property
 		&&(msg.targetMinor()==CMMsg.TYP_PUT)
 		&&(msg.amITarget(affected))
 		&&(msg.tool() instanceof Item))
-			process((Item)msg.tool());
+			process(msg.source(), (Item)msg.tool());
 		else
 		if((affected instanceof Room)
 		&&(msg.targetMinor()==CMMsg.TYP_DROP)
 		&&(msg.target() instanceof Item))
-			process((Item)msg.target());
+			process(msg.source(), (Item)msg.target());
 	}
 }

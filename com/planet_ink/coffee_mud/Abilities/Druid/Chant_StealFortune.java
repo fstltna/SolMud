@@ -18,7 +18,7 @@ import com.planet_ink.coffee_mud.Races.interfaces.*;
 import java.util.*;
 
 /*
-   Copyright 2024-2024 Bo Zimmerman
+   Copyright 2024-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -152,11 +152,11 @@ public class Chant_StealFortune extends Chant
 				if(msg.value()<=0)
 				{
 					mob.location().show(target,null,CMMsg.MSG_OK_VISUAL,L("<S-NAME> feel(s) <S-HIS-HER> fortune being stolen."));
-					final Ability tmeA = beneficialAffect(mob,target,asLevel,0);
+					final Chant_StealFortune tmeA = (Chant_StealFortune)beneficialAffect(mob,target,asLevel,0);
 					if(tmeA != null)
 					{
-						final Ability smeA = beneficialAffect(mob,mob,asLevel,0);
-						smeA.setStat("TICKDOWN", tmeA.getStat("TICKDOWN"));
+						final Chant_StealFortune smeA = (Chant_StealFortune)beneficialAffect(mob,mob,asLevel,0);
+						smeA.tickDown = tmeA.tickDown;
 						if(!mob.isPlayer())
 							CMLib.awards().giveAutoProperties(mob, false);
 						if(!target.isPlayer())
@@ -165,10 +165,12 @@ public class Chant_StealFortune extends Chant
 						final Ability tA = target.fetchEffect("AutoAwards");
 						if(tA != null)
 						{
+							final String oldAwards = tA.getStat("AUTOAWARDS");
 							tA.setStat("SUPPRESSOR", tmeA.ID());
-							if((sA != null)&&(smeA!=null))
+							if((sA != null)
+							&&(smeA!=null))
 							{
-								sA.setStat("AUTOAWARDS", tA.getStat("AUTOAWARDS"));
+								sA.setStat("AUTOAWARDS", oldAwards);
 								sA.setStat("HOLDER", smeA.ID());
 							}
 							mob.recoverPhyStats();

@@ -21,7 +21,7 @@ import com.planet_ink.coffee_mud.Races.interfaces.*;
 import java.util.*;
 
 /*
-   Copyright 2005-2024 Bo Zimmerman
+   Copyright 2005-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -378,7 +378,7 @@ public class CommandJournal extends StdCommand
 							prePend+msgString);
 					mob.tell(L("Your @x1 message has been sent.  Thank you.",journal.NAME().toLowerCase()));
 					if(journal.getFlag(JournalsLibrary.CommandJournalFlags.CHANNEL)!=null)
-						CMLib.commands().postChannel(journal.getFlag(JournalsLibrary.CommandJournalFlags.CHANNEL).toUpperCase().trim(),null,L("@x1 posted to @x2: @x3",mob.Name(),journal.NAME(),CMParms.combine(commands,1)),true);
+						CMLib.commands().postChannel(journal.getFlag(JournalsLibrary.CommandJournalFlags.CHANNEL).toUpperCase().trim(),null,L("@x1 posted to @x2: @x3",mob.Name(),journal.NAME(),CMParms.combine(commands,1)),true,mob);
 				}
 
 			};

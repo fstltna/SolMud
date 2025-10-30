@@ -8,7 +8,7 @@ import java.net.Socket;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /*
-Copyright 2005-2024 Bo Zimmerman
+Copyright 2005-2025 Bo Zimmerman
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -157,6 +157,22 @@ public class CoffeeIOPipe
 		}
 
 		@Override
+		public void write(final byte[] bs) throws IOException
+		{
+			super.write(bs);
+			if(writeCallback != null)
+				writeCallback.run();
+		}
+
+		@Override
+		public void write(final byte[] bs, final int off, final int len) throws IOException
+		{
+			super.write(bs, off, len);
+			if(writeCallback != null)
+				writeCallback.run();
+		}
+
+		@Override
 		public void write(final int b) throws IOException
 		{
 			if(closed)
@@ -172,8 +188,6 @@ public class CoffeeIOPipe
 						readDex.set(0);
 				}
 			}
-			if(writeCallback != null)
-				writeCallback.run();
 		}
 
 		@Override

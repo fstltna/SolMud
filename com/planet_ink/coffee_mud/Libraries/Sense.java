@@ -23,7 +23,7 @@ import java.util.*;
 import com.planet_ink.coffee_mud.Libraries.interfaces.*;
 
 /*
-   Copyright 2001-2024 Bo Zimmerman
+   Copyright 2001-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -1758,7 +1758,7 @@ public class Sense extends StdLibrary implements CMFlagLibrary
 			return false;
 		if(isFlying(P))
 			return true;
-		if(P instanceof Rider)
+		if((P instanceof Rider)&&(P != ((Rider)P).riding()))
 			return isInFlight(((Rider)P).riding());
 		return false;
 	}
@@ -2299,10 +2299,10 @@ public class Sense extends StdLibrary implements CMFlagLibrary
 	{
 		if(E instanceof CagedAnimal)
 		{
-			final Ability A=((MOB)E).fetchEffect("Age");
+			final CagedAnimal I = (CagedAnimal)E;
+			final Ability A=I.fetchEffect("Age");
 			if((A != null)&&(((CMath.s_long(A.text())>Short.MAX_VALUE))))
 				return true;
-
 		}
 		return false;
 	}

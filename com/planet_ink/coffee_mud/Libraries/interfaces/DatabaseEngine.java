@@ -37,7 +37,7 @@ import com.planet_ink.coffee_mud.Races.interfaces.*;
 import java.util.*;
 
 /*
-   Copyright 2004-2024 Bo Zimmerman
+   Copyright 2004-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -86,7 +86,8 @@ public interface DatabaseEngine extends CMLibrary
 		DBJOURNALS,
 		DBQUEST,
 		DBCLANS,
-		DBBACKLOG
+		DBBACKLOG,
+		DBCOMMANDS
 	}
 
 	/**
@@ -2241,6 +2242,42 @@ public interface DatabaseEngine extends CMLibrary
 	 * @param data the xml data defining the generic ability
 	 */
 	public void DBCreateAbility(String classID, String typeClass, String data);
+
+	/**
+	 * Table category: DBCOMMAND
+	 * Reads all records from the CMCDAC table and returns the
+	 * AckRecord for all of them in a list, to do with as you please.
+	 * These are the generic commands.
+	 *
+	 * @see DatabaseEngine.AckRecord
+	 * @see DatabaseEngine#DBDeleteCommand(String)
+	 * @see DatabaseEngine#DBCreateCommand(String, String, String)
+	 *
+	 * @return the generic command records
+	 */
+	public List<AckRecord> DBReadCommands();
+
+	/**
+	 * Table category: DBCOMMAND
+	 * Removes a generic command from the CMCDAC table.
+	 * @see DatabaseEngine#DBReadCommands()
+	 * @see DatabaseEngine#DBCreateCommand(String, String, String)
+	 * @param classID the ID of the command to delete
+	 */
+	public AckRecord DBDeleteCommand(String classID);
+
+	/**
+	 * Table category: DBCOMMAND
+	 * Creates a new entry in the generic command (CMCDAC)
+	 * table with the given unique ID and xml definition
+	 * data.
+	 * @see DatabaseEngine#DBReadCommands()
+	 * @see DatabaseEngine#DBDeleteCommand(String)
+	 * @param classID the unique CommandID
+	 * @param baseClassID the Command class ID to base off of
+	 * @param data the xml data defining the generic command
+	 */
+	public void DBCreateCommand(String classID, String baseClassID, String data);
 
 	/**
 	 * Table category: DBSTATS

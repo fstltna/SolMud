@@ -25,7 +25,7 @@ import com.planet_ink.coffee_web.interfaces.*;
 import java.util.*;
 
 /*
-   Copyright 2015-2024 Bo Zimmerman
+   Copyright 2015-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -496,6 +496,13 @@ public interface AchievementLibrary extends CMLibrary
 		 * @return the tattoo to grant to the player or account
 		 */
 		public String getTattoo();
+
+		/**
+		 * Returns whether the tattoo award should be applied
+		 * to an account, default false.
+		 * @return true for an account tattoo
+		 */
+		public boolean isForAccount();
 	}
 
 	/**

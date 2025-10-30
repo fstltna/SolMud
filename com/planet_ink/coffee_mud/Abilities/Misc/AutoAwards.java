@@ -2,6 +2,7 @@ package com.planet_ink.coffee_mud.Abilities.Misc;
 import com.planet_ink.coffee_mud.Abilities.StdAbility;
 import com.planet_ink.coffee_mud.core.interfaces.*;
 import com.planet_ink.coffee_mud.core.*;
+import com.planet_ink.coffee_mud.core.CMSecurity.DbgFlag;
 import com.planet_ink.coffee_mud.core.collections.*;
 import com.planet_ink.coffee_mud.Abilities.interfaces.*;
 import com.planet_ink.coffee_mud.Areas.interfaces.*;
@@ -23,7 +24,7 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 /*
-   Copyright 2022-2024 Bo Zimmerman
+   Copyright 2022-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -109,7 +110,7 @@ public class AutoAwards extends StdAbility
 	protected volatile Ability		suppressorA	= null;
 	protected volatile Ability		reverserA	= null;
 
-	protected final PairList<AutoProperties, CMObject>	affects		= new PairVector<AutoProperties, CMObject>();
+	protected final PairList<AutoProperties, CMObject>	affects		= new PairSVector<AutoProperties, CMObject>();
 	protected final Map<TimePeriod, AutoProperties[]>	myEntries	= new Hashtable<TimePeriod, AutoProperties[]>();
 
 	protected void gatherTimelyEntries(final Physical P, final AutoProperties[] entries, final List<AutoProperties> apply, final int[] hash)
@@ -124,13 +125,29 @@ public class AutoAwards extends StdAbility
 			||(affected.fetchEffect(holdA.ID())!=holdA))
 				this.holderA = null;
 		}
+		final TimeClock C = CMLib.time().homeClock(P);
+		final boolean debug = CMSecurity.isDebugging(DbgFlag.AUTOAWARDS);
 		for(final AutoProperties E : entries)
 		{
 			if(((holderA != null) && (affects.containsFirst(E)))
-			||(mlib.maskCheck(E.getDateCMask(), P, true)))
+			||(mlib.maskCheckDateEntries(E.getDateCMask(), C)))
 			{
 				apply.add(E);
 				hash[0] ^= E.hashCode();
+				if(debug
+				&&(E.getProps()!=null)
+				&&(E.getProps().length>0))
+				{
+
+					final String tpcs = C.toTimePeriodCodeString();
+					final int tpcsx = tpcs.indexOf(' ');
+					Log.debugOut(ID(),"Auto: "
+									+ CMStrings.padRight(P.name(),8)
+									+ ": " + CMStrings.padRight(E.getPlayerMask(),17)
+									+ ": " + CMStrings.padRight(E.getProps()[0].second,17)
+									+ ": " + CMStrings.padRight(E.getDateMask(),32)
+									+ ": " + ((tpcsx>0)?tpcs.substring(0,tpcsx):tpcs));
+				}
 			}
 		}
 	}
@@ -181,16 +198,6 @@ public class AutoAwards extends StdAbility
 		if(affected != null)
 		{
 			TimeClock lastClock = this.lastClock;
-			if(lastClock == null)
-			{
-				lastClock = (TimeClock)CMLib.time().homeClock(affected).copyOf();
-				lastClock.setYear(1);
-				lastClock.setMonth(1);
-				lastClock.setDayOfMonth(1);
-				lastClock.setHourOfDay(0);
-				this.lastClock = lastClock;
-			}
-
 			final int astroHash = CMLib.awards().getAutoPropertiesHash();
 			if((savedHash==null)
 			||(savedHash[0]!=astroHash))
@@ -199,6 +206,16 @@ public class AutoAwards extends StdAbility
 					savedHash = new int[] { 0 };
 				savedHash[0] = astroHash;
 				assignMyEntries(affected);
+			}
+			if(lastClock == null)
+			{
+				lastClock = (TimeClock)CMLib.time().homeClock(affected).copyOf();
+				lastClock.setYear(1);
+				lastClock.setMonth(1);
+				lastClock.setDayOfMonth(1);
+				lastClock.setHourOfDay(0);
+				this.forceApply=true;
+				this.lastClock = lastClock;
 			}
 			if(myEntries.size()>0)
 			{
@@ -218,14 +235,14 @@ public class AutoAwards extends StdAbility
 					||((now.getWeekOfYear() != lastClock.getWeekOfYear()) && myEntries.containsKey(TimePeriod.WEEK) )
 					||((now.getMonth() != lastClock.getMonth()) && myEntries.containsKey(TimePeriod.MONTH) )
 					||((now.getSeasonCode() != lastClock.getSeasonCode()) && myEntries.containsKey(TimePeriod.SEASON) )
-					||((now.getYear() != lastClock.getYear()) && myEntries.containsKey(TimePeriod.YEAR) ))
+					||((now.getYear() != lastClock.getYear()) && myEntries.containsKey(TimePeriod.YEAR) )
+					|| (forceApply))
 					{
 						forceApply = false;
 						final List<AutoProperties> chk = new ArrayList<AutoProperties>();
 						final int[] eHash = new int[] {0};
-						final Room R=CMLib.map().roomLocation(affected);
 						for(final TimePeriod key : myEntries.keySet())
-							gatherTimelyEntries(R, myEntries.get(key), chk, eHash);
+							gatherTimelyEntries(affected, myEntries.get(key), chk, eHash);
 						if((affectHash==null)
 						||(affectHash[0] != eHash[0]))
 						{
@@ -310,7 +327,7 @@ public class AutoAwards extends StdAbility
 		super.affectPhyStats(affected,affectableStats);
 		if(affected==null)
 			return;
-		if(suppressorA == null)
+		if((suppressorA == null)&&(affects.size()>0))
 		{
 			for(final Pair<AutoProperties, CMObject> p : affects)
 			{
@@ -326,7 +343,7 @@ public class AutoAwards extends StdAbility
 		super.affectCharStats(affected, affectableStats);
 		if(affected==null)
 			return;
-		if(suppressorA == null)
+		if((suppressorA == null)&&(affects.size()>0))
 		{
 			for(final Pair<AutoProperties, CMObject> p : affects)
 			{
@@ -342,7 +359,7 @@ public class AutoAwards extends StdAbility
 		super.affectCharState(affected, affectableStats);
 		if(affected==null)
 			return;
-		if(suppressorA == null)
+		if((suppressorA == null)&&(affects.size()>0))
 		{
 			for(final Pair<AutoProperties, CMObject> p : affects)
 			{
@@ -495,8 +512,11 @@ public class AutoAwards extends StdAbility
 		if(code.equalsIgnoreCase("AUTOAWARDS"))
 		{
 			final StringBuilder str = new StringBuilder("");
-			for(final Pair<AutoProperties, CMObject> p : affects)
-				str.append(p.first.hashCode()+";");
+			if(suppressorA == null)
+			{
+				for(final Pair<AutoProperties, CMObject> p : affects)
+					str.append(p.first.hashCode()+";");
+			}
 			return str.toString();
 		}
 		return super.getStat(code);

@@ -163,7 +163,7 @@
 
             <li><a href="#script">&lt;SCRIPT&gt;</a></li>
 
-            <li><a href="#mpacctattoo">mpacctattoo</a></li><li><a href="#mpachieve">mpachieve</a></li>
+            <li><a href="#mpacctattoo">mpacctattoo</a></li><li><a href="#mpaccuse">mpaccuse</a></li><li><a href="#mpachieve">mpachieve</a></li>
 
             <li><a href="#mpaffect">mpaffect</a></li>
 
@@ -961,7 +961,7 @@ some of the same keywords &#8211; for example a cast_prog p Spell_Fireball and a
 
       <p>Usage:</p>
 
-      <pre>cast_prog [keyword list]<br />cast_prog p [keyword list]<br />cast_prog all<br /></pre>
+      <pre>casting_prog [keyword list]<br />casting_prog p [keyword list]<br />casting_prog all<br /></pre>
 
       <p>This type of mobprog is
 triggered by the mob casting a spell or skill on someone. If the spell
@@ -992,7 +992,7 @@ triggered by casting a &nbsp;Fireball spell or Ice Lance spell.</p>
       <p>This will trigger if the
 mob casts the spell that&nbsp; has the exact ID of Spell_Fireball.&nbsp;</p>
 
-      <pre>cast_prog all<br /></pre>
+      <pre>casting_prog all<br /></pre>
 
       <p>This will trigger if any spell or skill is&nbsp;cast by the mob</p>
 
@@ -1000,7 +1000,7 @@ mob casts the spell that&nbsp; has the exact ID of Spell_Fireball.&nbsp;</p>
 have more than one casting_prog on a mob.
 Generally it is best not to have casting_progs with the same keywords in
 them, unless they are a casting_prog p with different keyword lists but
-some of the same keywords &#8211; for example a casting_prog p Spell_Fireball and a cast_prog p Spell_IceLance</p>
+some of the same keywords &#8211; for example a casting_prog p Spell_Fireball and a casting_prog p Spell_IceLance</p>
 
 
       <h3><a name="channel_prog">channel_prog</a></h3>
@@ -1098,7 +1098,7 @@ close_progs p door gate and a close_prog p door to the gate.</p>
 
       <p>Usage:</p>
 
-      <pre>cnclmsg_prog [message code] [commands/keyword list]<br />cnclmsg_prog [message code] p [commands/keyword list]<br />cnclmsg_prog [message code] all<br /></pre>
+      <pre>cnclmsg_prog [message code] [commands/keyword list]<br />cnclmsg_prog [message code] p [commands/keyword list]<br />cnclmsg_prog [message code] =[STO] [VAR]=[VAL]<br />cnclmsg_prog [message code] all<br /></pre>
 
       <p>This type of mobprog is
 definitely for those very familiar
@@ -1112,50 +1112,11 @@ matches those typed by the player most recently to the arrival of this
 message. Since mobs, unlike players, do not enter commands on a command
 line, you should use the ALL form liberally.</p>
 
-      <p>The body of the trigger
-executes before the given message
-occurs, and the fact that the trigger executes is no guarantee that the
-event will end up occuring at all. For instance, this trigger may
-execute when a player tries to leave the room while under the effects
-of the "Hold" spell, meaning the player will not actually be allowed to
-leave regardless of what is done in your trigger. However, this type of
-trigger is most useful as a means of testing and cancelling certain
-types of event messages; thus the name. To cause the triggered event to
-be cancelled, you need only add a RETURN CANCEL command to the body of
-this script.</p>
-
-      <p>See also <span style="font-weight: bold;">execmsg_prog</span>.
-Valid message codes include the following:</p>
-
-      <span style="font-family: monospace;">AREAAFFECT,
-PUSH,
-PULL, RECALL, OPEN, CLOSE, PUT, GET, UNLOCK, LOCK, WIELD, GIVE, BUY,
-SELL, DROP, WEAR, FILL, DELICATE_HANDS_ACT, VALUE, HOLD, NOISYMOVEMENT,
-QUIETMOVEMENT, WEAPONATTACK, LOOK, READ, NOISE, SPEAK, CAST_SPELL,
-LIST, EAT, ENTER, FOLLOW, LEAVE, SLEEP, SIT, STAND, FLEE, NOFOLLOW,
-WRITE, FIRE, COLD, WATER, GAS, MIND, GENERAL, JUSTICE, ACID, ELECTRIC,
-POISON, UNDEAD, MOUNT, DISMOUNT, OK_ACTION, OK_VISUAL, DRINK, HANDS,
-PARALYZE, WAND_USE, SERVE, REBUKE, ADVANCE, DISEASE, DEATH, DEPOSIT,
-WITHDRAW, EMOTE, QUIT, SHUTDOWN, VIEW, RETIRE, RETREAT,PANIC, THROW,
-EXTINGUISH, TELL, SITMOVE, KNOCK, PRACTICE, TEACH, REMOVE, EXPCHANGE,
-DAMAGE, HEALING, ROOMRESET, RELOAD, SNIFF, ACTIVATE, DEACTIVATE,
-FACTIONCHANGE, LOGIN, LEVEL, EXAMINE, ORDER, EXPIRE, BORROW, HUH,
-LIFE, BID, CLANEVENT, UNLOAD, DUELCHALLENGE, LEGALWARRANT, DIG,
-PREINVOKE, POSSESS, DISPOSSESS, POWERCURRENT, CONTEMPLATE, POUR,
-LOOKEXITS, LASER, SONIC, REPAIR, ENHANCE, INSTALL, COLLISION, 
-AROMA, DUELLOSS, COMMANDFAIL, METACOMMAND, ITEMGENERATED, ATTACKMISS, 
-WEATHER,ITEMSGENERATED, WROTE, REWRITE, WASREAD, PREMOVE, THINK, 
-STARTUP, RPXPCHANGE, COMMANDREJECT,RECIPELEARNED, GRAVITY, 
-LEGALSTATE, NEWROOM,CAUSESINK, ENDQUEST,WINQUEST,HOLYEVENT
-      </span>
-      <p>And here are some general
-message code types that may also be
-used:</p>
-
-      <span style="font-family: monospace;">TOUCH, MOVE,
-EYES, MOUTH, SOUND, GENERAL, MAGIC, DELICATE, MALICIOUS, CHANNEL,
-OPTIMIZE, CNTRLMSG, INTERMSG, UNINTENTIONAL</span>
-      <p>For truly advanced users,
+      <p>The 'P' code can be prefixed to the command words to ensure an EXACT
+match. &nbsp;If, instead of command words, you wish to filter on attributes
+of the event agent (S), the event target (T), or the event tool (O),
+you can use = followed by one of those letters (STO), and then use
+VAR=VAL to check various fields of your selected object. &nbsp;You can use <span style="font-weight: bold; font-family: monospace;">LIST STATS</span> to get a list of the various values for VAR.</p><p>For truly advanced users,
 you can also prefix a message code
 with some combination of the letters S, O, and T followed by an equal
 (=) sign to narrow matches to only those messages where your given code
@@ -1168,7 +1129,18 @@ the&nbsp; S,
 O, or Ts in order to narrowly check against the Major masks or the
 Minor type codes respectively. &nbsp;See the Programmer's Guide if
 you
-don't know what that stuff means.&nbsp;</p>
+don't know what that stuff means.&nbsp;</p><p>The body of the trigger
+executes before the given message
+occurs, and the fact that the trigger executes is no guarantee that the
+event will end up occuring at all. For instance, this trigger may
+execute when a player tries to leave the room while under the effects
+of the "Hold" spell, meaning the player will not actually be allowed to
+leave regardless of what is done in your trigger. However, this type of
+trigger is most useful as a means of testing and cancelling certain
+types of event messages; thus the name. To cause the triggered event to
+be cancelled, you need only add a RETURN CANCEL command to the body of
+this script.</p><p>See also <span style="font-weight: bold;">execmsg_prog</span>.
+Valid message codes can be found by using <span style="font-weight: bold; font-family: monospace;">LIST MSGTYPES</span> from the command line. &nbsp;For general message mask types, use <span style="font-weight: bold; font-family: monospace;">LIST MSGMASKS</span> from the command line.</p><span style="font-family: monospace;"></span>
 
       <p>EXAMPLES:</p>
 
@@ -1439,7 +1411,7 @@ multiply triggered, in which case it will occur once, but immediately.</p>
 
       <p>Usage:</p>
 
-      <pre>execmsg_prog [message code] [commands/keyword list]<br />execmsg_prog [message code] p [commands/keyword list]<br />execmsg_prog [message code] all<br /></pre>
+      <pre>execmsg_prog [message code] [commands/keyword list]<br />execmsg_prog [message code] p [commands/keyword list]<br />execmsg_prog [message code] =[TSO] [VAR]=[VAL]<br />execmsg_prog [message code] all<br /></pre>
 
       <p>This type of mobprog is
 definitely for those very familiar
@@ -1451,38 +1423,12 @@ code". The trigger also requires either the word "all" to always
 execute whenever the desired message does, or a list of player command
 line words matching those typed by the player most recently to the
 arrival of this message. Since mobs, unlike players, do not enter
-commands on a command line, you should use the ALL form liberally.</p>
-
-      <p>See also <span style="font-weight: bold;">cnclmsg_prog</span>.
-Valid message codes include the following:</p>
-
-      <span style="font-family: monospace;">AREAAFFECT,
-PUSH,
-PULL, RECALL, OPEN, CLOSE, PUT, GET, UNLOCK, LOCK, WIELD, GIVE, BUY,
-SELL, DROP, WEAR, FILL, DELICATE_HANDS_ACT, VALUE, HOLD, NOISYMOVEMENT,
-QUIETMOVEMENT, WEAPONATTACK, LOOK, READ, NOISE, SPEAK, CAST_SPELL,
-LIST, EAT, ENTER, FOLLOW, LEAVE, SLEEP, SIT, STAND, FLEE, NOFOLLOW,
-WRITE, FIRE, COLD, WATER, GAS, MIND, GENERAL, JUSTICE, ACID, ELECTRIC,
-POISON, UNDEAD, MOUNT, DISMOUNT, OK_ACTION, OK_VISUAL, DRINK, HANDS,
-PARALYZE, WAND_USE, SERVE, REBUKE, ADVANCE, DISEASE, DEATH, DEPOSIT,
-WITHDRAW, EMOTE, QUIT, SHUTDOWN, VIEW, RETIRE, RETREAT,PANIC, THROW,
-EXTINGUISH, TELL, SITMOVE, KNOCK, PRACTICE, TEACH, REMOVE, EXPCHANGE,
-DAMAGE, HEALING, ROOMRESET, RELOAD, SNIFF, ACTIVATE, DEACTIVATE,
-FACTIONCHANGE, LOGIN, LEVEL, EXAMINE, BORROW, HUH,
-LIFE, BID, CLANEVENT, UNLOAD, DUELCHALLENGE, LEGALWARRANT, DIG,
-PREINVOKE, POSSESS, DISPOSSESS, POWERCURRENT, CONTEMPLATE, POUR,
-LOOKEXITS, LASER, SONIC, REPAIR, ENHANCE, INSTALL, COLLISION, AROMA,
-DUELLOSS, COMMANDFAIL, METACOMMAND</span>
-      <p>And here are some general
-message code types that may also be
-used:</p>
-
-      <span style="font-family: monospace;">TOUCH, MOVE,
-EYES, MOUTH, SOUND, GENERAL, MAGIC, DELICATE, MALICIOUS, CHANNEL,
-OPTIMIZE, CNTRLMSG, INTERMSG, UNINTENTIONAL<br />
-
-      </span>
-      <p>For truly advanced users,
+commands on a command line, you should use the ALL form liberally.</p><p>The
+'P' code can be prefixed to the command words to ensure an EXACT match.
+&nbsp;If, instead of command words, you wish to filter on attributes of
+the event agent (S), the event target (T), or the event tool (O), you
+can use = followed by one of those letters (STO), and then use VAR=VAL
+to check various fields of your selected object. &nbsp;You can use <span style="font-weight: bold; font-family: monospace;">LIST STATS</span> to get a list of the various values for VAR.</p><p>For truly advanced users,
 you can also prefix a message code
 with
 some combination of the letters S, O, and T followed by an equal (=)
@@ -1500,9 +1446,12 @@ what
 that
 stuff means.</p>
 
-      <p>EXAMPLES:</p>
+      <p>See also <span style="font-weight: bold;">cnclmsg_prog</span>.
+Valid message codes can be found by using <span style="font-weight: bold; font-family: monospace;">LIST MSGTYPES</span> from the command line. &nbsp;For general message mask types, use <span style="font-weight: bold; font-family: monospace;">LIST MSGMASKS</span> from the command line.</p><span style="font-family: monospace;"></span><p>EXAMPLES:</p>
 
       <pre>execmsg_prog get all<br /> mpecho $n likes $p.<br />~<br /></pre>
+
+      <pre>execmsg_prog S=get =T NAME=A spoon<br /> mpecho $n likes $p.<br />~<br /></pre>
 
       <p>This will trigger if a
 player or a mob attempts to get
@@ -4697,9 +4646,9 @@ string, or a line delimeter, it must be escaped: \;</p>
 
       <pre>GREET_PROG 100<br />mpecho Greetings $n! This command is mpecho, a mobprog command!<br /><br />&lt;SCRIPT&gt;<br />var greetedBefore=getVar(source().Name(),"GREETEDBEFORE");<br />source().tell("However, this greeting comes from Javascript!");<br />if(greetedBefore == 'true')<br /> source().tell("We've met before\; we will meet again!!");<br />else<br /> setVar(source().Name(),"GREETEDBEFORE","true");<br />&lt;/SCRIPT&gt;<br /><br />if var($n GREETEDBEFORE == true)<br /> mpecho The variable set in Javascript can be read here in mobprog land also!<br />endif<br />~ <br /></pre><h3><a name="mpacctattoo">mpachieve</a></h3>
 
-      <p>Usage:</p>
+      <p>Usage:</p><span style="font-family: monospace;">
 
-mpachieve [player] [achievement id] [amount]<br />
+mpachieve [player] [achievement id] [amount]</span><br />
 
       <p>Adds
 or removes points from the given achievment (tattoo/achievement id) for
@@ -4708,15 +4657,15 @@ achievements.</p>
 
       
 
-      <p>EXAMPLES:</p>
+      <p>EXAMPLES:</p><span style="font-family: monospace;">
 
-mpachieveme $i ACH_MYSPECIAL 10<br />
+mpachieveme $i ACH_MYSPECIAL 10</span><br />
 
       <h3><a name="mpacctattoo">mpacctattoo</a></h3>
 
-      <p>Usage:</p>
+      <p>Usage:</p><span style="font-family: monospace;">
 
-mpacctattoo [target] (-)[tattoo name]<br />
+mpacctattoo [target] (-)[tattoo name]</span><br />
 
       <p>If your mud even uses the common account system, this
 command
@@ -4735,13 +4684,33 @@ you can prefix the name with a number
 to create a temporary tattoo that disappears in the given number of
 ticks.</p>
 
-      <p>EXAMPLES:</p>
+      <p>EXAMPLES:</p><span style="font-family: monospace;">
 
-mpacctattoo $n smurfkiller<br />
+mpacctattoo $n smurfkiller</span><br style="font-family: monospace;" /><span style="font-family: monospace;">
 
-mpacctattoo $n -smurfkiller<br />
+mpacctattoo $n -smurfkiller</span><br style="font-family: monospace;" /><span style="font-family: monospace;">
 
-mpacctattoo $n '50 smurfkiller'<br />
+mpacctattoo $n '50 smurfkiller'</span><br /><h3><a name="mpaccuse">mpaccuse</a></h3>
+
+      <p>Usage:</p><span style="font-family: monospace;">
+
+mpaccuse [target] [victim] [crime name]</span><br style="font-family: monospace;" /><span style="font-family: monospace;">mpaccuse [target] </span><span style="font-family: monospace;">[</span><span style="font-family: monospace;">victim</span><span style="font-family: monospace;">] </span><span style="font-family: monospace;">[loc flags] [crime flags] [crime desc] [sentence] [warn msg]</span><br />
+
+      <p>If
+the current location is in an area with a legal system, then this
+command will allow you to accuse the target of a crime, which would
+then be taken up by the areas legal system. &nbsp;For the other
+arguments, you can either specify an existing crime in the local laws
+by its key name, or you can invent your own crime as described in the
+laws.ini file. &nbsp;The victim can be blank, but keep in mind that some crimes require one.</p>
+
+      
+
+      <p>EXAMPLES:</p><span style="font-family: monospace;">
+
+mpaccuse $n&nbsp;</span><span style="font-family: monospace;">'' </span><span style="font-family: monospace;"> trespassing</span><br style="font-family: monospace;" /><span style="font-family: monospace;">
+
+mpaccuse $n $t '!home' '!recently' 'violating the </span><span style="font-family: monospace;">badness </span><span style="font-family: monospace;">law' 'jail1' 'You are bad!'</span><br style="font-family: monospace;" /><br />
 
       <h3><a name="mpaffect">mpaffect</a></h3>
 
@@ -4764,7 +4733,7 @@ effect for a certain period of time.</p>
 
       <p>EXAMPLES:</p>
 
-      <pre>mpaffect Invisibility $n<br />mpaffect property:Invisibility $n<br />mpaffect Prop_PracticeDummy $n KILLABLE<br />mpaffect Prop_PracticeDummy $n 5TICKS KILLABLE<br /><br /></pre>
+      <pre><span style="font-family: monospace;">mpaffect Invisibility $n</span><br style="font-family: monospace;" /><span style="font-family: monospace;">mpaffect property:Invisibility $n</span><br style="font-family: monospace;" /><span style="font-family: monospace;">mpaffect Prop_PracticeDummy $n KILLABLE</span><br style="font-family: monospace;" /><span style="font-family: monospace;">mpaffect Prop_PracticeDummy $n 5TICKS KILLABLE</span><br /><br /></pre>
 
       <h3><a name="mpalarm">mpalarm</a></h3>
 
@@ -4931,9 +4900,9 @@ affect the probability of success.</p>
 
       <h3><a name="mpcastext">mpcastext</a></h3>
 
-      <p>Usage:</p>
+      <p>Usage:</p><span style="font-family: monospace;">
 
-mpcastext [spell] [target] [arguments]<br />
+mpcastext [spell] [target] [arguments]</span><br />
 
       <p>This
 command causes the
@@ -4955,9 +4924,9 @@ the mobprog engine.</p>
 1-in-20 chance of failure of any skill, and the level of the host will
 affect the probability of success.</p>
 
-      <p>EXAMPLES:</p>
+      <p>EXAMPLES:</p><span style="font-family: monospace;">
 
-mpcast brainwash '$r' "$r" "I'm a pretty princess"<br />
+mpcast brainwash '$r' "$r" "I'm a pretty princess"</span><br />
 
       <h3><a name="mpchannel">mpchannel</a></h3>
 
@@ -5134,7 +5103,7 @@ the character codes the mud uses, and can also use variables set by the
 mpsetvar command. This has a wide range of uses, from setting
 background noise to a mob, to allowing the mob to express itself safely
 as if speaking. The mpecho command does not set off speech_progs,
-although it does set off act_progs.</p>
+although it does set off act_progs. &nbsp;If the message begins with NOSOUND , then it will not generate sounds. &nbsp;</p>
 
       <p>EXAMPLES:</p>
 
@@ -5160,11 +5129,11 @@ echoing to everyone in the room, can be used to echo to everyone BUT
 the targeted person. Why would you do this? If used in conjunction with
 the mpechoat command, you can create text strings which look right to
 everyone involved. The way to make mpechoaround do this is to use the
-mpat command.</p>
+mpat command. &nbsp;If the message begins with NOSOUND , then it will not generate sounds. &nbsp;</p>
 
       <p>EXAMPLES:</p>
 
-      <pre> mpechoaround $n You hear voices speaking all around you.<br /> mpechoaround $n $N cringes as a poisoned dart strikes $s chest!<br /> mpechoaround $n A pile of rocks rains down upon $n!<br /> mpechoaround $n A circle of light surrounds $n, and then $e vanishes.<br /> <br /></pre>
+      <pre> mpechoaround $n You hear voices speaking all around you.<br /> mpechoaround $n NOSOUND $N cringes as a poisoned dart strikes $s chest!<br /> mpechoaround $n A pile of rocks rains down upon $n!<br /> mpechoaround $n A circle of light surrounds $n, and then $e vanishes.<br /> <br /></pre>
 
       <h3><a name="mpechoat">mpechoat</a></h3>
 
@@ -5182,11 +5151,11 @@ allows mobs to emulate the announce command. The target may be a local
 mob name, the word "world", the word "area", a room id, or an area
 name.&nbsp;If you need to be need to find mobile
 mobs or items, you can include the mob or item name, followed by @
-followed by a room id or area name. </p>
+followed by a room id or area name. &nbsp;If the message begins with NOSOUND , then it will not generate sounds. &nbsp; </p>
 
       <p>EXAMPLES:</p>
 
-      <pre>mpechoat $n You hear voices speaking all around you.<br />mpechoat $n You cringe as a poisoned dart strikes you in the chest!<br />mpechoat $n A pile of rocks rains down upon you!<br />mpechoat $n A circle of light surrounds you, and you are transported.<br /></pre>
+      <pre>mpechoat $n You hear voices speaking all around you.<br />mpechoat $n NOSOUND You cringe as a poisoned dart strikes you in the chest!<br />mpechoat $n A pile of rocks rains down upon you!<br />mpechoat $n A circle of light surrounds you, and you are transported.<br /></pre>
 
       <h3><a name="mpenable">mpenable</a></h3>
 
@@ -6320,6 +6289,10 @@ triggers fire. Values are true or false.</li>
         <li><b>ACTIVETRIGGERS</b>:
 Whether a mob will always trigger,
 despite being unhealthy or a follower. Values are true or false.</li>
+
+        <li><b>MULTITRIGGERS</b>:
+Whether multiple triggers can go off from the same event.  Values
+are true or false, and the default is false.</li>
 
         <li><b>DEFAULTQUEST</b>:
 Changes which quest this script is

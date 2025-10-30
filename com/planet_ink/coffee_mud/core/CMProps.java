@@ -23,7 +23,7 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 
 /*
-   Copyright 2005-2024 Bo Zimmerman
+   Copyright 2005-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -745,6 +745,30 @@ public class CMProps extends Properties
 		if(!page.loaded)
 			return null;
 		return page;
+	}
+
+	/**
+	 * Creates a new properties object detached from any thread group
+	 * and loads the given ini file.
+	 * @param iniFile the path and name of the ini file to load
+	 * @return the new properties object
+	 */
+	public static final Properties loadDetachedProperties(final String iniFile)
+	{
+		final CMFile F=new CMFile(iniFile,null);
+		if(F.exists())
+		{
+			final Properties P = new Properties();
+			try
+			{
+				P.load(new ByteArrayInputStream(F.textUnformatted().toString().getBytes()));
+				return P;
+			}
+			catch (final IOException e)
+			{
+			}
+		}
+		return new Properties();
 	}
 
 	/**

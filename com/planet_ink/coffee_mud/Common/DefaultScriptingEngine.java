@@ -37,7 +37,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /*
-   Copyright 2008-2024 Bo Zimmerman
+   Copyright 2008-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -81,6 +81,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 	protected int					tickStatus		 = Tickable.STATUS_NOT;
 	protected boolean				isSavable		 = true;
 	protected boolean				alwaysTriggers	 = false;
+	protected boolean				approvedScripts	 = false;
+	protected boolean				multiTriggers	 = false;
 
 	protected MOB					lastToHurtMe	 = null;
 	protected volatile Room			lastKnownLocation= null;
@@ -359,6 +361,12 @@ public class DefaultScriptingEngine implements ScriptingEngine
 	public String getVarScope()
 	{
 		return scope;
+	}
+
+	@Override
+	public void preApproveScripts()
+	{
+		this.approvedScripts = true;
 	}
 
 	@Override
@@ -851,7 +859,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 		if(H!=null)
 			val=H.get(var.toUpperCase());
 		else
-		if((defaultQuestName!=null)&&(defaultQuestName.length()>0))
+		if((defaultQuestName!=null)
+		&&(defaultQuestName.length()>0))
 		{
 			final MOB M=CMLib.players().getPlayerAllHosts(host);
 			if(M!=null)
@@ -914,7 +923,7 @@ public class DefaultScriptingEngine implements ScriptingEngine
 		que = Collections.synchronizedList(new ArrayList<ScriptableResponse>());
 		lastToHurtMe = null;
 		lastKnownLocation= null;
-		homeKnownLocation=null;
+		homeKnownLocation= null;
 		altStatusTickable= null;
 		oncesDone = Collections.synchronizedList(new ArrayList<Integer>());
 		delayTargetTimes = Collections.synchronizedMap(new HashMap<Integer,Integer>());
@@ -1086,9 +1095,10 @@ public class DefaultScriptingEngine implements ScriptingEngine
 				if(state == 0)
 					addSubScriptLine(currentScript, text.substring(lastLine,i));
 				else
-				if(state==2)
+				if(state == 2)
 					state=0;
-				lastLine=i+1;
+				if(state != 3)
+					lastLine=i+1;
 				break;
 			case '#':
 				if((state==0)
@@ -1119,7 +1129,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 				break;
 			case '<':
 				if((i<text.length()-9)
-				&&(Character.isLetter(text.charAt(i+1))))
+				&&(Character.isLetter(text.charAt(i+1))
+					||((text.charAt(i+1)=='/'))&&Character.isLetter(text.charAt(i+2))))
 				{
 					final String uppAhead=text.substring(i,i+9).toUpperCase();
 					if((state==0)
@@ -1128,8 +1139,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 					{
 						addSubScriptLine(currentScript, text.substring(lastLine,i));
 						addSubScriptLine(currentScript, "<SCRIPT>");
-						i+=8;
-						lastLine=i;
+						i+=7; // the 8th char is coming later
+						lastLine=i+1;
 						state=3;
 					}
 					else
@@ -1139,8 +1150,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 					{
 						addSubScriptLine(currentScript, text.substring(lastLine,i));
 						addSubScriptLine(currentScript, "</SCRIPT>");
-						i+=9;
-						lastLine=i;
+						i+=8; // 9th is coming later
+						lastLine=i+1;
 						state=0;
 					}
 				}
@@ -1958,27 +1969,32 @@ public class DefaultScriptingEngine implements ScriptingEngine
 				}
 			}
 		}
-		if(lastKnownLocation!=null)
+		str=varify(ctx,str);
+		Environmental E=null;
+		if(str.indexOf('#')>0)
+			E=CMLib.map().getRoom(str);
+		if((lastKnownLocation!=null) && (E==null))
 		{
-			str=varify(ctx,str);
-			Environmental E=null;
-			if(str.indexOf('#')>0)
-				E=CMLib.map().getRoom(str);
+			E=lastKnownLocation.fetchFromRoomFavorMOBs(null,str);
 			if(E==null)
-				E=lastKnownLocation.fetchFromRoomFavorMOBs(null,str);
-			if(E==null)
+			{
 				E=lastKnownLocation.fetchFromMOBRoomFavorsItems(ctx.monster,null,str,Wearable.FILTER_ANY);
-			if(E==null)
-				E=lastKnownLocation.findItem(str);
-			if((E==null)&&(ctx.monster!=null))
-				E=ctx.monster.findItem(str);
-			if(E==null)
-				E=CMLib.players().getPlayerAllHosts(str);
-			if((E==null)&&(ctx.source!=null))
-				E=ctx.source.findItem(str);
-			if(E instanceof PhysicalAgent)
-				return (PhysicalAgent)E;
+				if(E==null)
+					E=lastKnownLocation.findItem(str);
+			}
 		}
+		if((E == null)
+		&&(ctx.monster!=null))
+			E=ctx.monster.findItem(str);
+		if(E == null)
+		{
+			E=CMLib.players().getPlayerAllHosts(str);
+			if((E == null)
+			&&(ctx.source != null))
+				E=ctx.source.findItem(str);
+		}
+		if(E instanceof PhysicalAgent)
+			return (PhysicalAgent)E;
 		return null;
 	}
 
@@ -2023,11 +2039,11 @@ public class DefaultScriptingEngine implements ScriptingEngine
 	protected void confirmLastKnownLocation(final MOB monster, final MOB source)
 	{
 		if((monster!=null)&&(monster.location()!=null))
-			lastKnownLocation=monster.location();
+			lastKnownLocation = monster.location();
 		if((source!=null)&&(lastKnownLocation==null))
-			lastKnownLocation=source.location();
-		if(homeKnownLocation==null)
-			homeKnownLocation=lastKnownLocation;
+			lastKnownLocation = source.location();
+		if(homeKnownLocation == null)
+			homeKnownLocation = lastKnownLocation;
 	}
 
 	@Override
@@ -2523,7 +2539,7 @@ public class DefaultScriptingEngine implements ScriptingEngine
 		&&(CMath.s_valueOf(GenericBuilder.GenItemBonusFakeStats.class,uarg2)!=null))
 		{
 			found=true;
-			val=CMLib.coffeeMaker().getAnyGenStat((Item)E, uarg2);
+			val=CMLib.coffeeMaker().getAnyGenStat(E, uarg2);
 		}
 
 		if((!found)
@@ -2531,7 +2547,7 @@ public class DefaultScriptingEngine implements ScriptingEngine
 		&&(CMath.s_valueOf(GenericBuilder.GenPhysBonusFakeStats.class,uarg2)!=null))
 		{
 			found=true;
-			val=CMLib.coffeeMaker().getAnyGenStat((Physical)E, uarg2);
+			val=CMLib.coffeeMaker().getAnyGenStat(E, uarg2);
 		}
 		if(!found)
 			return null;
@@ -2659,8 +2675,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 		if((!found)
 		&&(E instanceof Physical))
 		{
-			if(CMLib.coffeeMaker().isAnyGenStat((Physical)E, arg2))
-				return CMLib.coffeeMaker().getAnyGenStat((Physical)E, arg2);
+			if(CMLib.coffeeMaker().isAnyGenStat(E, arg2))
+				return CMLib.coffeeMaker().getAnyGenStat(E, arg2);
 			if((!found)&&(arg2.startsWith("BASE")))
 			{
 				final String arg4=arg2.substring(4);
@@ -3888,7 +3904,7 @@ public class DefaultScriptingEngine implements ScriptingEngine
 							returnable=((Exit)E).isOpen();
 					}
 					else
-					if(lastKnownLocation!=null)
+					if(lastKnownLocation != null)
 					{
 						final Exit E=lastKnownLocation.getExitInDir(dir);
 						if(E!=null)
@@ -4434,7 +4450,7 @@ public class DefaultScriptingEngine implements ScriptingEngine
 									M=Q.getQuestMob(Q.getQuestMobIndex(arg1));
 								if(M!=null)
 								{
-									returnable=!M.amDead();
+									returnable=(!M.amDead()) && (!M.amDestroyed());
 									break;
 								}
 							}
@@ -4455,7 +4471,7 @@ public class DefaultScriptingEngine implements ScriptingEngine
 							if(M==null)
 								returnable=false;
 							else
-								returnable=!M.amDead();
+								returnable=(!M.amDead()) && (!M.amDestroyed());
 						}
 					}
 					break;
@@ -5572,32 +5588,39 @@ public class DefaultScriptingEngine implements ScriptingEngine
 					Environmental which=null;
 					int ct=1;
 					if(lastKnownLocation!=null)
-					for(int i=0;i<lastKnownLocation.numItems();i++)
 					{
-						final Item I=lastKnownLocation.getItem(i);
-						if((I!=null)&&(I.container()==null))
+						for(int i=0;i<lastKnownLocation.numItems();i++)
 						{
-							if(ct==CMath.s_int(arg1.trim()))
+							final Item I=lastKnownLocation.getItem(i);
+							if((I!=null)&&(I.container()==null))
 							{
-								which = I;
-								break;
+								if(ct==CMath.s_int(arg1.trim()))
+								{
+									which = I;
+									break;
+								}
+								ct++;
 							}
-							ct++;
 						}
 					}
 					if(which==null)
 						returnable=false;
 					else
+					{
 						returnable=(CMLib.english().containsString(which.name(),arg2)
 									||CMLib.english().containsString(which.Name(),arg2)
 									||CMLib.english().containsString(which.displayText(),arg2));
+					}
 					break;
 				}
 				case 36: // ishere
 				{
 					final String arg1=varify(ctx,CMParms.cleanBit(tt[t+0]));
 					if((arg1.length()>0)&&(lastKnownLocation!=null))
-						returnable=((lastKnownLocation.findItem(arg1)!=null)||(lastKnownLocation.fetchInhabitant(arg1)!=null));
+					{
+						returnable=((lastKnownLocation.findItem(arg1)!=null)
+								||(lastKnownLocation.fetchInhabitant(arg1)!=null));
+					}
 					else
 						returnable=false;
 					break;
@@ -5608,7 +5631,6 @@ public class DefaultScriptingEngine implements ScriptingEngine
 						tt=parseSpecial3PartEval(eval,t);
 					String comp="==";
 					Environmental E=ctx.monster;
-					final Room mobLocR=CMLib.map().roomLocation(E);
 					String arg2;
 					if(signH.containsKey(tt[t+1]))
 					{
@@ -5618,6 +5640,7 @@ public class DefaultScriptingEngine implements ScriptingEngine
 					}
 					else
 						arg2=varify(ctx,tt[t+0]);
+					final Room mobLocR=CMLib.map().roomLocation(E);
 					Room R=null;
 					if(arg2.equalsIgnoreCase("BEACON"))
 						ctx.monster.getStartRoom();
@@ -8036,7 +8059,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 					int num=0;
 					for(final Session S : CMLib.sessions().localOnlineIterable())
 					{
-						if((S.mob().location()!=null)&&(S.mob().location().getArea()==lastKnownLocation.getArea()))
+						if((S.mob().location()!=null)
+						&&(S.mob().location().getArea()==lastKnownLocation.getArea()))
 							num++;
 					}
 					results.append(""+num);
@@ -9084,7 +9108,7 @@ public class DefaultScriptingEngine implements ScriptingEngine
 					}
 					ln.third = new Object[] {jscript, Integer.valueOf(si-oldsi)};
 				}
-				if(CMSecurity.isApprovedJScript(jscript))
+				if(this.approvedScripts || CMSecurity.isApprovedJScript(jscript))
 				{
 					final Context cx = Context.enter();
 					try
@@ -9715,8 +9739,18 @@ public class DefaultScriptingEngine implements ScriptingEngine
 					if(tt==null)
 						return null;
 				}
-				if(lastKnownLocation!=null)
-					lastKnownLocation.show(ctx.monster,null,CMMsg.MSG_OK_ACTION,varify(ctx,tt[1]));
+				int msgType = CMMsg.MSG_OK_ACTION;
+				final Room R = lastKnownLocation;
+				if(R!=null)
+				{
+					String str = varify(ctx,tt[1]);
+					if(str.startsWith("NOSOUND "))
+					{
+						msgType = CMMsg.MSG_OK_VISUAL;
+						str=str.substring(8);
+					}
+					R.show(ctx.monster,null,msgType,str);
+				}
 				break;
 			}
 			case 13: // mpunaffect
@@ -9787,6 +9821,9 @@ public class DefaultScriptingEngine implements ScriptingEngine
 				else
 				if(arg2.equals("ACTIVETRIGGER")||arg2.equals("ACTIVETRIGGERS"))
 					alwaysTriggers=CMath.s_bool(arg3);
+				else
+				if(arg2.equals("MULTITRIGGER")||arg2.equals("MULTITRIGGERS"))
+					multiTriggers=CMath.s_bool(arg3);
 				else
 				if(arg2.equals("DEFAULTQUEST"))
 					registerDefaultQuest(arg3);
@@ -10871,12 +10908,16 @@ public class DefaultScriptingEngine implements ScriptingEngine
 						findSomethingCalledThis(name.substring(containerIndex+6).trim(),null,putRoom,containers,false);
 						for(int c=0;c<containers.size();c++)
 						{
-							if((containers.get(c) instanceof Container)
-							&&(((Container)containers.get(c)).capacity()>0))
+							if(containers.get(c) instanceof Container)
 							{
-								container=(Container)containers.get(c);
-								name=name.substring(0,containerIndex).trim();
-								break;
+								final Container C = (Container)containers.get(c);
+								if((C.owner()==putRoom)
+								&&(C.capacity()>0))
+								{
+									container=(Container)containers.get(c);
+									name=name.substring(0,containerIndex).trim();
+									break;
+								}
 							}
 						}
 					}
@@ -11387,27 +11428,24 @@ public class DefaultScriptingEngine implements ScriptingEngine
 						return null;
 				}
 				String parm=tt[1];
-				final Environmental newTarget=getArgumentMOB(parm,ctx);
-				final Room lastR=lastKnownLocation;
-				if((newTarget instanceof MOB)
-				&&(lastR!=null))
+				int msgType = CMMsg.MSG_OK_ACTION;
+				String str = varify(ctx,tt[2]);
+				if(str.startsWith("NOSOUND "))
 				{
-					if(newTarget==ctx.monster)
-						lastR.showSource(ctx.monster,null,null,CMMsg.MSG_OK_ACTION,varify(ctx,tt[2]));
-					else
-						lastR.show(ctx.monster,newTarget,null,CMMsg.MSG_OK_ACTION,null,CMMsg.MSG_OK_ACTION,varify(ctx,tt[2]),CMMsg.NO_EFFECT,null);
+					msgType = CMMsg.MSG_OK_VISUAL;
+					str=str.substring(8);
 				}
-				else
+				Room lastR = lastKnownLocation;
 				if((parm.equalsIgnoreCase("world"))
 				&&(lastR!=null))
 				{
 					if(lastR.numInhabitants()==0)
-						lastR.showSource(ctx.monster,null,CMMsg.MSG_OK_ACTION,varify(ctx,tt[2]));
+						lastR.showSource(ctx.monster,null,msgType,str);
 					for(final Enumeration<Room> e=CMLib.map().rooms();e.hasMoreElements();)
 					{
 						final Room R=e.nextElement();
 						if(R.numInhabitants()>0)
-							R.showOthers(ctx.monster,null,CMMsg.MSG_OK_ACTION,varify(ctx,tt[2]));
+							R.showOthers(ctx.monster,null,msgType,str);
 					}
 				}
 				else
@@ -11415,35 +11453,48 @@ public class DefaultScriptingEngine implements ScriptingEngine
 				&&(lastR!=null))
 				{
 					if(lastR.numInhabitants()==0)
-						lastR.showSource(ctx.monster,null,CMMsg.MSG_OK_ACTION,varify(ctx,tt[2]));
+						lastR.showSource(ctx.monster,null,msgType,str);
 					for(final Enumeration<Room> e=lastR.getArea().getProperMap();e.hasMoreElements();)
 					{
 						final Room R=e.nextElement();
 						if(R.numInhabitants()>0)
-							R.showOthers(ctx.monster,null,CMMsg.MSG_OK_ACTION,varify(ctx,tt[2]));
+							R.showOthers(ctx.monster,null,msgType,str);
 					}
 				}
 				else
 				{
-					parm = this.varify(ctx, parm);
-					if(parm.trim().length()>0)
+					final Environmental newTarget = getArgumentMOB(parm,ctx);
+					lastR=CMLib.map().roomLocation(newTarget);
+					if((newTarget instanceof MOB)
+					&&(lastR!=null))
 					{
-						Room R = CMLib.map().getRoom(parm);
-						if(R!=null)
-							R.show(ctx.monster,null,CMMsg.MSG_OK_ACTION,varify(ctx,tt[2]));
+						if(newTarget==ctx.monster)
+							lastR.showSource(ctx.monster,null,null,msgType,str);
 						else
+							lastR.show(ctx.monster,newTarget,null,msgType,null,msgType,str,CMMsg.NO_EFFECT,null);
+					}
+					else
+					{
+						parm = this.varify(ctx, parm);
+						if(parm.trim().length()>0)
 						{
-							final Area A = CMLib.map().findArea(parm);
-							if(A != null)
+							Room R = CMLib.map().getRoom(parm);
+							if(R!=null)
+								R.show(ctx.monster,null,msgType,str);
+							else
 							{
-								if((lastR!=null)
-								&&((lastR.numInhabitants()==0)||(!A.inMyMetroArea(lastR.getArea()))))
-									lastR.showSource(ctx.monster,null,CMMsg.MSG_OK_ACTION,varify(ctx,tt[2]));
-								for(final Enumeration<Room> e=A.getMetroMap();e.hasMoreElements();)
+								final Area A = CMLib.map().findArea(parm);
+								if(A != null)
 								{
-									R=e.nextElement();
-									if(R.numInhabitants()>0)
-										R.showOthers(ctx.monster,null,CMMsg.MSG_OK_ACTION,varify(ctx,tt[2]));
+									if((lastR!=null)
+									&&((lastR.numInhabitants()==0)||(!A.inMyMetroArea(lastR.getArea()))))
+										lastR.showSource(ctx.monster,null,msgType,str);
+									for(final Enumeration<Room> e=A.getMetroMap();e.hasMoreElements();)
+									{
+										R=e.nextElement();
+										if(R.numInhabitants()>0)
+											R.showOthers(ctx.monster,null,msgType,str);
+									}
 								}
 							}
 						}
@@ -11461,9 +11512,18 @@ public class DefaultScriptingEngine implements ScriptingEngine
 						return null;
 				}
 				final Environmental newTarget=getArgumentMOB(tt[1],ctx);
-				final Room lastR=lastKnownLocation;
+				final Room lastR=CMLib.map().roomLocation(newTarget);
 				if((newTarget!=null)&&(newTarget instanceof MOB)&&(lastR!=null))
-					lastR.showOthers((MOB)newTarget,null,CMMsg.MSG_OK_ACTION,varify(ctx,tt[2]));
+				{
+					int msgType = CMMsg.MSG_OK_ACTION;
+					String str = varify(ctx,tt[2]);
+					if(str.startsWith("NOSOUND "))
+					{
+						msgType = CMMsg.MSG_OK_VISUAL;
+						str=str.substring(8);
+					}
+					lastR.showOthers((MOB)newTarget,null,msgType,str);
+				}
 				break;
 			}
 			case 9: // mpcast
@@ -13507,6 +13567,63 @@ public class DefaultScriptingEngine implements ScriptingEngine
 				CMLib.achievements().bumpAchievement((MOB)M, A, CMath.s_int(amt), new Object[0]);
 				break;
 			}
+			case 100: // MPACCUSE
+			{
+				if(tt==null)
+				{
+					tt=parseBits(script,si,"Cccp");
+					if(tt==null)
+						return null;
+				}
+				final PhysicalAgent PA = getArgumentMOB(tt[1], ctx);
+				if(!(PA instanceof MOB))
+				{
+					logError(ctx.scripted,"MPACCUSE","RunTime",tt[1]+" is not found.");
+					break;
+				}
+				PhysicalAgent WA = null;
+				if(tt[2].trim().length()>0)
+				{
+					WA = getArgumentMOB(tt[2], ctx);
+					if(!(PA instanceof MOB))
+					{
+						logError(ctx.scripted,"MPACCUSE","RunTime",tt[1]+" is not found.");
+						break;
+					}
+				}
+				final MOB M = (MOB)PA;
+				final MOB WM = (WA != null)?(MOB)WA:null;
+				if(lastKnownLocation==null)
+					confirmLastKnownLocation(ctx.monster,ctx.source);
+				final Room locR = lastKnownLocation;
+				if(locR == null)
+					break;
+				final LegalBehavior B = CMLib.law().getLegalBehavior(locR);
+				if(B == null)
+				{
+					logError(ctx.scripted,"MPACCUSE","RunTime","No law at "+CMLib.map().getExtendedRoomID(locR));
+					break;
+				}
+				final Area A = CMLib.law().getLegalObject(locR);
+				String crimeID=varify(ctx,tt[3]);
+				if(CMParms.numBits(crimeID)==1)
+				{
+					crimeID = CMParms.cleanBit(crimeID);
+					B.accuse(A, M, WM, new String[] {crimeID});
+				}
+				else
+				if(CMParms.numBits(crimeID)==Law.BIT_NUMBITS)
+				{
+					final String[] newBits=CMParms.getCleanBits(crimeID);
+					B.accuse(A, M, WM, newBits);
+				}
+				else
+				{
+					logError(ctx.scripted,"MPACCUSE","RunTime","Wrong arguments.");
+					break;
+				}
+				break;
+			}
 			case 37: // mpenable
 			{
 				if(tt==null)
@@ -13936,6 +14053,34 @@ public class DefaultScriptingEngine implements ScriptingEngine
 										tryIt=true;
 								}
 								else
+								if(t[2].startsWith("=")
+								&&(t[2].length()==2)
+								&&(t.length>3)&&(t[3].indexOf('=')>0))
+								{
+									final int q = t[3].indexOf('=');
+									String val;
+									switch(t[2].charAt(1))
+									{
+									case 's': case 'S':
+										val=((msg.source()==null)?"":
+											CMLib.coffeeMaker().getAnyGenStat(msg.source(), t[3].substring(0,q)));
+										break;
+									case 't': case 'T':
+										val=((msg.target()==null)?"":
+											CMLib.coffeeMaker().getAnyGenStat(msg.target(), t[3].substring(0,q)));
+										break;
+									case 'o': case 'O':
+										val=((msg.tool()==null)?"":
+											CMLib.coffeeMaker().getAnyGenStat(msg.tool(), t[3].substring(0,q)));
+										break;
+									default:
+										val="";
+										break;
+									}
+									if(match(val.trim(),t[3].substring(q+1)))
+										tryIt=true;
+								}
+								else
 								for(int i=2;i<t.length;i++)
 								{
 									if(str.indexOf(" "+t[i]+" ")>=0)
@@ -14125,7 +14270,7 @@ public class DefaultScriptingEngine implements ScriptingEngine
 				{
 				case 1: // greet_prog
 					if((msg.targetMinor()==CMMsg.TYP_ENTER)
-					&&(msg.amITarget(lastKnownLocation))
+					&&(msg.amITarget(lastKnownLocation)||(affecting instanceof Area))
 					&&(!msg.amISource(eventMob))
 					&&((!(affecting instanceof MOB)) || isFreeToBeTriggered(monster))
 					&&canTrigger(1)
@@ -14139,7 +14284,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 							if(CMLib.dice().rollPercentage()<prcnt)
 							{
 								enqueResponse(triggerCode,affecting,monster,msg.source(),monster,defaultItem,null,null,script,1, t);
-								return;
+								if(!multiTriggers)
+									return;
 							}
 						}
 					}
@@ -14176,15 +14322,16 @@ public class DefaultScriptingEngine implements ScriptingEngine
 									}
 								}
 								enqueResponse(triggerCode,affecting,monster,msg.source(),monster,defaultItem,null,null,script,1, t);
-								return;
-							}
+								if(!multiTriggers)
+									return;
+						}
 						}
 					}
 					break;
 				case 2: // all_greet_prog
 					if((msg.targetMinor()==CMMsg.TYP_ENTER)&&canTrigger(2)
-					&&(msg.amITarget(lastKnownLocation))
 					&&(!msg.amISource(eventMob))
+					&&(msg.amITarget(lastKnownLocation)||(affecting instanceof Area))
 					&&((!(affecting instanceof MOB)) || isFreeToBeTriggered(monster))
 					&&((!(affecting instanceof MOB)) ||CMLib.flags().canActAtAll(monster)))
 					{
@@ -14196,7 +14343,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 							if(CMLib.dice().rollPercentage()<prcnt)
 							{
 								enqueResponse(triggerCode,affecting,monster,msg.source(),monster,defaultItem,null,null,script,1, t);
-								return;
+								if(!multiTriggers)
+									return;
 							}
 						}
 					}
@@ -14217,7 +14365,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 							{
 								noTrigger.put(Integer.valueOf(-52),Long.valueOf(System.currentTimeMillis()+CMProps.getTickMillis()));
 								enqueResponse(triggerCode,affecting,monster,msg.source(),monster,defaultItem,null,null,script,1, t);
-								return;
+								if(!multiTriggers)
+									return;
 							}
 						}
 					}
@@ -14257,7 +14406,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 							if((t[1].length()==0)||(t[1].equals("ALL")))
 							{
 								enqueResponse(triggerCode,affecting,monster,msg.source(),msg.target(),defaultItem,null,str,script,1, t);
-								return;
+								if(!multiTriggers)
+									return;
 							}
 							else
 							if((t[1].equals("P"))&&(t.length>2))
@@ -14265,7 +14415,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 								if(match(str.trim(),t[2]))
 								{
 									enqueResponse(triggerCode,affecting,monster,msg.source(),msg.target(),defaultItem,null,str,script,1, t);
-									return;
+									if(!multiTriggers)
+										return;
 								}
 							}
 							else
@@ -14275,7 +14426,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 								if(x>=0)
 								{
 									enqueResponse(triggerCode,affecting,monster,msg.source(),msg.target(),defaultItem,null,str.substring(x).trim(),script,1, t);
-									return;
+									if(!multiTriggers)
+										return;
 								}
 							}
 						}
@@ -14318,7 +14470,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 							if((t[1].length()==0)||(t[1].equals("ALL")))
 							{
 								enqueResponse(triggerCode,affecting,monster,msg.source(),msg.target(),defaultItem,null,str,script,1, t);
-								return;
+								if(!multiTriggers)
+									return;
 							}
 							else
 							if((t[1].equals("P"))&&(t.length>2))
@@ -14326,7 +14479,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 								if(match(str.trim(),t[2]))
 								{
 									enqueResponse(triggerCode,affecting,monster,msg.source(),msg.target(),defaultItem,null,str,script,1, t);
-									return;
+									if(!multiTriggers)
+										return;
 								}
 							}
 							else
@@ -14336,7 +14490,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 								if(x>=0)
 								{
 									enqueResponse(triggerCode,affecting,monster,msg.source(),msg.target(),defaultItem,null,str.substring(x).trim(),script,1, t);
-									return;
+									if(!multiTriggers)
+										return;
 								}
 							}
 						}
@@ -14360,7 +14515,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 								break;
 							lastMsg=msg;
 							enqueResponse(triggerCode,affecting,monster,msg.source(),monster,(Item)msg.tool(),defaultItem,check,script,1, t);
-							return;
+							if(!multiTriggers)
+								return;
 						}
 					}
 					break;
@@ -14381,7 +14537,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 								break;
 							lastMsg=msg;
 							enqueResponse(triggerCode,affecting,monster,msg.source(),msg.target(),(Item)msg.tool(),defaultItem,check,script,1, t);
-							return;
+							if(!multiTriggers)
+								return;
 						}
 					}
 					break;
@@ -14403,7 +14560,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 								break;
 							lastMsg=msg;
 							enqueResponse(triggerCode,affecting,monster,msg.source(),monster,defaultItem,null,check,script,1, t);
-							return;
+							if(!multiTriggers)
+								return;
 						}
 					}
 					break;
@@ -14424,7 +14582,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 								break;
 							lastMsg=msg;
 							enqueResponse(triggerCode,affecting,monster,msg.source(),msg.target(),defaultItem,null,check,script,1, t);
-							return;
+							if(!multiTriggers)
+								return;
 						}
 					}
 					break;
@@ -14437,7 +14596,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 						if(check!=null)
 						{
 							enqueResponse(triggerCode,affecting,monster,msg.source(),msg.target(),defaultItem,null,check,script,1, t);
-							return;
+							if(!multiTriggers)
+								return;
 						}
 					}
 					break;
@@ -14540,6 +14700,34 @@ public class DefaultScriptingEngine implements ScriptingEngine
 										doIt=true;
 								}
 								else
+								if(t[2].startsWith("=")
+								&&(t[2].length()==2)
+								&&(t.length>3)&&(t[3].indexOf('=')>0))
+								{
+									final int q = t[3].indexOf('=');
+									String val;
+									switch(t[2].charAt(1))
+									{
+									case 's': case 'S':
+										val=((msg.source()==null)?"":
+											CMLib.coffeeMaker().getAnyGenStat(msg.source(), t[3].substring(0,q)));
+										break;
+									case 't': case 'T':
+										val=((msg.target()==null)?"":
+											CMLib.coffeeMaker().getAnyGenStat(msg.target(), t[3].substring(0,q)));
+										break;
+									case 'o': case 'O':
+										val=((msg.tool()==null)?"":
+											CMLib.coffeeMaker().getAnyGenStat(msg.tool(), t[3].substring(0,q)));
+										break;
+									default:
+										val="";
+										break;
+									}
+									if(match(val.trim(),t[3].substring(q+1)))
+										doIt=true;
+								}
+								else
 								for(int i=2;i<t.length;i++)
 								{
 									if(str.indexOf(" "+t[i]+" ")>=0)
@@ -14563,7 +14751,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 										enqueResponse(triggerCode,affecting,monster,msg.source(),msg.target(),Tool,(Item)msg.target(),str,script,1, t);
 									else
 										enqueResponse(triggerCode,affecting,monster,msg.source(),msg.target(),Tool,defaultItem,str,script,1, t);
-									return;
+									if(!multiTriggers)
+										return;
 								}
 							}
 						}
@@ -14578,7 +14767,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 						if(check!=null)
 						{
 							enqueResponse(triggerCode,affecting,monster,msg.source(),msg.target(),defaultItem,defaultItem,check,script,1, t);
-							return;
+							if(!multiTriggers)
+								return;
 						}
 					}
 					break;
@@ -14603,7 +14793,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 								break;
 							lastMsg=msg;
 							enqueResponse(triggerCode,affecting,monster,msg.source(),msg.target(),checkInE,defaultItem,check,script,1, t);
-							return;
+							if(!multiTriggers)
+								return;
 						}
 					}
 					break;
@@ -14624,7 +14815,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 								break;
 							lastMsg=msg;
 							enqueResponse(triggerCode,affecting,monster,msg.source(),msg.target(),checkInE,defaultItem,check,script,1, t);
-							return;
+							if(!multiTriggers)
+								return;
 						}
 					}
 					break;
@@ -14648,7 +14840,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 								execute(new MPContext(affecting,monster,msg.source(),msg.target(),(Item)msg.target(),(Item)((Item)msg.target()).copyOf(),check, null),script);
 							else
 								enqueResponse(triggerCode,affecting,monster,msg.source(),msg.target(),(Item)msg.target(),defaultItem,check,script,1, t);
-							return;
+							if(!multiTriggers)
+								return;
 						}
 					}
 					break;
@@ -14668,7 +14861,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 								execute(new MPContext(affecting,monster,msg.source(),msg.target(),(Item)msg.target(),(Item)((Item)msg.target()).copyOf(),check, null),script);
 							else
 								enqueResponse(triggerCode,affecting,monster,msg.source(),msg.target(),(Item)msg.target(),defaultItem,check,script,1, t);
-							return;
+							if(!multiTriggers)
+								return;
 						}
 					}
 					break;
@@ -14686,7 +14880,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 						if(check!=null)
 						{
 							enqueResponse(triggerCode,affecting,monster,msg.source(),msg.target(),(Item)msg.target(),defaultItem,check,script,1, t);
-							return;
+							if(!multiTriggers)
+								return;
 						}
 					}
 					break;
@@ -14719,7 +14914,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 						if(check!=null)
 						{
 							enqueResponse(triggerCode,affecting,monster,msg.source(),msg.target(),I,defaultItem,check,script,1, t);
-							return;
+							if(!multiTriggers)
+								return;
 						}
 					}
 					break;
@@ -14739,7 +14935,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 								execute(new MPContext(affecting,monster,msg.source(),msg.target(),(Item)msg.target(),(Item)((Item)msg.target()).copyOf(),check, null),script);
 							else
 								enqueResponse(triggerCode,affecting,monster,msg.source(),msg.target(),(Item)msg.target(),defaultItem,check,script,1, t);
-							return;
+							if(!multiTriggers)
+								return;
 						}
 					}
 					break;
@@ -14764,7 +14961,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 								execute(new MPContext(affecting,monster,msg.source(),msg.target(),(Item)msg.target(),(Item)((Item)msg.target()).copyOf(),check, null),script);
 							else
 								enqueResponse(triggerCode,affecting,monster,msg.source(),msg.target(),(Item)msg.target(),(Item)msg.tool(),check,script,1, t);
-							return;
+							if(!multiTriggers)
+								return;
 						}
 					}
 					break;
@@ -14773,9 +14971,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 					&&((msg.tool()==affecting)
 						||(affecting instanceof Room)
 						||(affecting instanceof Area)
-						||(affecting instanceof MOB))
+						||((affecting instanceof MOB)&&(msg.source()==affecting)))
 					&&(msg.tool() instanceof Item)
-					&&(!msg.amISource(monster))
 					&&(msg.target() instanceof Item)
 					&&((!(affecting instanceof MOB)) || isFreeToBeTriggered(monster)))
 					{
@@ -14789,7 +14986,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 								execute(new MPContext(affecting,monster,msg.source(),msg.target(),(Item)msg.target(),(Item)((Item)msg.target()).copyOf(),check, null),script);
 							else
 								enqueResponse(triggerCode,affecting,monster,msg.source(),msg.target(),(Item)msg.target(),(Item)msg.tool(),check,script,1, t);
-							return;
+							if(!multiTriggers)
+								return;
 						}
 					}
 					break;
@@ -14810,7 +15008,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 								execute(new MPContext(affecting,monster,msg.source(),monster,product,(Item)product.copyOf(),check, null),script);
 							else
 								enqueResponse(triggerCode,affecting,monster,msg.source(),monster,product,product,check,script,1, t);
-							return;
+							if(!multiTriggers)
+								return;
 						}
 					}
 					break;
@@ -14830,7 +15029,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 								execute(new MPContext(affecting,monster,msg.source(),monster,product,(Item)product.copyOf(),null, null),script);
 							else
 								enqueResponse(triggerCode,affecting,monster,msg.source(),monster,product,product,check,script,1, t);
-							return;
+							if(!multiTriggers)
+								return;
 						}
 					}
 					break;
@@ -14847,7 +15047,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 						if(check!=null)
 						{
 							enqueResponse(triggerCode,affecting,monster,msg.source(),monster,(Item)msg.target(),defaultItem,check,script,1, t);
-							return;
+							if(!multiTriggers)
+								return;
 						}
 					}
 					break;
@@ -14877,7 +15078,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 							||(t[1].equals("ANY")))
 							{
 								enqueResponse(triggerCode,affecting,monster,msg.source(),monster,(Item)msg.tool(),defaultItem,null,script,1, t);
-								return;
+								if(!multiTriggers)
+									return;
 							}
 						}
 					}
@@ -14913,7 +15115,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 									}
 								}
 								enqueResponse(triggerCode,affecting,monster,msg.source(),monster,defaultItem,null,roomID,script,1, t);
-								return;
+								if(!multiTriggers)
+									return;
 							}
 						}
 					}
@@ -14947,7 +15150,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 									}
 								}
 								enqueResponse(triggerCode,affecting,monster,msg.source(),monster,defaultItem,null,roomID,script,1, t);
-								return;
+								if(!multiTriggers)
+									return;
 							}
 						}
 					}
@@ -14965,7 +15169,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 						if((src==null)||(src.location()!=monster.location()))
 							src=ded;
 						execute(new MPContext(affecting,ded,src,ded,defaultItem,null,null, null),script);
-						return;
+						if(!multiTriggers)
+							return;
 					}
 					break;
 				case 44: // kill_prog
@@ -14981,7 +15186,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 						if((src==null)||(src.location()!=monster.location()))
 							src=ded;
 						execute(new MPContext(affecting,ded,src,ded,defaultItem,null,null, null),script);
-						return;
+						if(!multiTriggers)
+							return;
 					}
 					break;
 				case 26: // damage_prog
@@ -14994,7 +15200,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 						if(msg.tool() instanceof Item)
 							I=(Item)msg.tool();
 						execute(new MPContext(affecting,eventMob,msg.source(),msg.target(),defaultItem,I,""+msg.value(), null),script);
-						return;
+						if(!multiTriggers)
+							return;
 					}
 					break;
 				case 29: // login_prog
@@ -15015,7 +15222,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 							if(CMLib.dice().rollPercentage()<prcnt)
 							{
 								enqueResponse(triggerCode,affecting,monster,msg.source(),monster,defaultItem,null,null,script,1, t);
-								return;
+								if(!multiTriggers)
+									return;
 							}
 						}
 					}
@@ -15042,7 +15250,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 								for(int i=0;i<t.length && (i<ctx.tmp.length);i++)
 									ctx.tmp[i]=t;
 								execute(ctx,script);
-								return;
+								if(!multiTriggers)
+									return;
 							}
 						}
 					}
@@ -15060,7 +15269,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 							if(CMLib.dice().rollPercentage()<prcnt)
 							{
 								enqueResponse(triggerCode,affecting,monster,msg.source(),monster,defaultItem,null,null,script,1, t);
-								return;
+								if(!multiTriggers)
+									return;
 							}
 						}
 					}
@@ -15128,7 +15338,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 								enqueResponse(triggerCode,affecting,monster,msg.source(),msg.target(),Tool,(Item)msg.target(),str,script,1, t);
 							else
 								enqueResponse(triggerCode,affecting,monster,msg.source(),msg.target(),Tool,defaultItem,str,script,1, t);
-							return;
+							if(!multiTriggers)
+								return;
 						}
 					}
 					break;
@@ -15150,7 +15361,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 								enqueResponse(triggerCode,affecting,monster,msg.source(),msg.target(),Tool,(Item)msg.target(),msg.tool().Name(),script,1, t);
 							else
 								enqueResponse(triggerCode,affecting,monster,msg.source(),msg.target(),Tool,defaultItem,msg.tool().Name(),script,1, t);
-							return;
+							if(!multiTriggers)
+								return;
 						}
 					}
 					break;
@@ -15231,7 +15443,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 									enqueResponse(triggerCode,affecting,monster,msg.source(),msg.target(),Tool,(Item)msg.target(),str,script,1, t);
 								else
 									enqueResponse(triggerCode,affecting,monster,msg.source(),msg.target(),Tool,defaultItem,str,script,1, t);
-								return;
+								if(!multiTriggers)
+									return;
 							}
 						}
 					}
@@ -15282,7 +15495,8 @@ public class DefaultScriptingEngine implements ScriptingEngine
 								enqueResponse(triggerCode,affecting,monster,msg.source(),msg.target(),Tool,(Item)msg.target(),str,script,1, t);
 							else
 								enqueResponse(triggerCode,affecting,monster,msg.source(),msg.target(),Tool,defaultItem,str,script,1, t);
-							return;
+							if(!multiTriggers)
+								return;
 						}
 					}
 					break;
@@ -15666,7 +15880,7 @@ public class DefaultScriptingEngine implements ScriptingEngine
 
 	protected void dupCheckClear(final ScriptableResponse resp, final String[] triggerStr)
 	{
-		if(que.size()>25)
+		if(que.size()>5)
 		{
 			int max = 25;
 			if(resp.ctx.scripted instanceof Area)

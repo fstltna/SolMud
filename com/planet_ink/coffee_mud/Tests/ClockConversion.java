@@ -27,7 +27,7 @@ import java.text.*;
 import java.util.*;
 
 /*
-Copyright 2024-2024 Bo Zimmerman
+Copyright 2024-2025 Bo Zimmerman
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -60,7 +60,7 @@ public class ClockConversion extends StdTest
 	{
 		for(int h=1;h<65536;h*=2)
 		{
-			final TimeClock NOW = (TimeClock)CMLib.time().globalClock().copyOf();
+			final TimeClock NOW = (TimeClock)CMLib.time().localClock(mob).copyOf();
 			final TimeClock C1 = (TimeClock)NOW.copyOf();
 			final TimeClock C2 = (TimeClock)NOW.copyOf();
 			C1.tickTock(h);

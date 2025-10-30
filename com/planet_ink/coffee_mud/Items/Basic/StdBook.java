@@ -23,7 +23,7 @@ import java.util.*;
 import java.io.IOException;
 
 /*
-   Copyright 2006-2024 Bo Zimmerman
+   Copyright 2006-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -448,10 +448,13 @@ public class StdBook extends StdItem implements Book
 								else
 								{
 									editOldChapter(mob.Name(),to,editKey[0],subject[0],message[0]);
-									if((R!=null)&&(msg.targetMessage().length()<=1))
-										R.send(mob, ((CMMsg)msg.copyOf()).modify(CMMsg.MSG_WROTE, L("Chapter modified."), CMMsg.MSG_WROTE, subject+"\n\r"+message, -1, null));
-									else
-										mob.tell(L("Chapter modified."));
+									if(msg.sourceMessage() != null)
+									{
+										if((R!=null)&&(msg.targetMessage().length()<=1))
+											R.send(mob, ((CMMsg)msg.copyOf()).modify(CMMsg.MSG_WROTE, L("Chapter modified."), CMMsg.MSG_WROTE, subject+"\n\r"+message, -1, null));
+										else
+											mob.tell(L("Chapter modified."));
+									}
 								}
 							}
 						}

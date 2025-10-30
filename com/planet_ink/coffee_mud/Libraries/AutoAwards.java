@@ -22,7 +22,7 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /*
-   Copyright 2008-2024 Bo Zimmerman
+   Copyright 2008-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -509,9 +509,9 @@ public class AutoAwards extends StdLibrary implements AutoAwardsLibrary
 		public AutoPropertiesImpl(final String pMask, final String dMask, final PairList<String,String> ps)
 		{
 			playerMask = pMask;
-			playerCMask = CMLib.masking().maskCompile(playerMask);
+			playerCMask = CMLib.masking().getPreCompiledMask(playerMask);
 			dateMask = dMask;
-			dateCMask = CMLib.masking().maskCompile(dateMask);
+			dateCMask = CMLib.masking().getPreCompiledMask(dateMask);
 			@SuppressWarnings("unchecked")
 			final Pair<String,String>[] base = new Pair[ps.size()];
 			props = ps.toArray(base);
@@ -744,7 +744,8 @@ public class AutoAwards extends StdLibrary implements AutoAwardsLibrary
 	{
 		if(CMSecurity.isDisabled(CMSecurity.DisFlag.AUTOAWARDS))
 			return;
-		if((!mob.isPlayer())&&(CMSecurity.isDisabled(CMSecurity.DisFlag.NPCAUTOAWARDS)))
+		if((!mob.isPlayer())
+		&&(CMSecurity.isDisabled(CMSecurity.DisFlag.NPCAUTOAWARDS)))
 			return;
 		Ability A=mob.fetchEffect("AutoAwards");
 		if(A==null)
@@ -754,6 +755,8 @@ public class AutoAwards extends StdLibrary implements AutoAwardsLibrary
 			{
 				mob.addNonUninvokableEffect(A);
 				A.setSavable(false);
+				if(!mob.isPlayer())
+					A.tick(mob, Tickable.TICKID_MOB);
 			}
 		}
 		else

@@ -30,7 +30,7 @@ import com.planet_ink.coffee_mud.Libraries.interfaces.DatabaseEngine.ReadRoomDis
 import com.planet_ink.coffee_mud.Libraries.interfaces.PlayerLibrary.PlayerCode;
 import com.planet_ink.coffee_mud.Libraries.interfaces.PlayerLibrary.ThinPlayer;
 /*
-   Copyright 2004-2024 Bo Zimmerman
+   Copyright 2004-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -71,6 +71,7 @@ public class DBInterface implements DatabaseEngine
 	GCClassLoader	GCClassLoader	= null;
 	ClanLoader		ClanLoader		= null;
 	BackLogLoader	BackLogLoader	= null;
+	GCommandLoader	CommandLoader	= null;
 	DBConnector		DB				= null;
 
 	public DBInterface(final DBConnector DB, Set<String> privacyV)
@@ -98,6 +99,7 @@ public class DBInterface implements DatabaseEngine
 				this.QuestLoader = ((DBInterface) baseEngine).QuestLoader;
 				this.ClanLoader = ((DBInterface) baseEngine).ClanLoader;
 				this.BackLogLoader = ((DBInterface) baseEngine).BackLogLoader;
+				this.CommandLoader = ((DBInterface) baseEngine).CommandLoader;
 			}
 		}
 
@@ -127,6 +129,8 @@ public class DBInterface implements DatabaseEngine
 			this.ClanLoader = 		new ClanLoader(privacyV.contains(DatabaseTables.DBCLANS.toString()) ? DB : oldBaseDB);
 		if((this.BackLogLoader == null) || privacyV.contains(DatabaseTables.DBBACKLOG.toString()))
 			this.BackLogLoader = 	new BackLogLoader(privacyV.contains(DatabaseTables.DBBACKLOG.toString()) ? DB : oldBaseDB);
+		if((this.CommandLoader == null) || privacyV.contains(DatabaseTables.DBCOMMANDS.toString()))
+			this.CommandLoader = 	new GCommandLoader(privacyV.contains(DatabaseTables.DBCOMMANDS.toString()) ? DB : oldBaseDB);
 	}
 
 	@Override
@@ -1259,6 +1263,24 @@ public class DBInterface implements DatabaseEngine
 	public void DBCreateAbility(final String classID, final String typeClass, final String data)
 	{
 		GAbilityLoader.DBCreateAbility(classID, typeClass, data);
+	}
+
+	@Override
+	public List<AckRecord> DBReadCommands()
+	{
+		return CommandLoader.DBReadCommands();
+	}
+
+	@Override
+	public AckRecord DBDeleteCommand(final String classID)
+	{
+		return CommandLoader.DBDeleteCommand(classID);
+	}
+
+	@Override
+	public void DBCreateCommand(final String classID, final String baseClassID, final String data)
+	{
+		CommandLoader.DBCreateCommand(classID, baseClassID, data);
 	}
 
 	@Override

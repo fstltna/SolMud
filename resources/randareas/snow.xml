@@ -1,5 +1,5 @@
 <!--  
-   Copyright 2013-2024 Bo Zimmerman
+   Copyright 2013-2025 Bo Zimmerman
 
    Licensed under the Apache License</STRING><STRING>Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -36,6 +36,8 @@ See guides/RandomAreas.html for information about documents of this type.
 <AREA id="box_dungeon" merge=true like="maze_dungeon" layout="BOXCITY" requires="areaname=$,areasize=int,level_range=int,aggrochance=int,theme=snow" />
 <AREA id="cross_dungeon" merge=true like="maze_dungeon" layout="CROSS" requires="areaname=$,areasize=int,level_range=int,aggrochance=int,theme=snow" />
 <AREA id="tree_dungeon" merge=true like="maze_dungeon" layout="TREE" requires="areaname=$,areasize=int,level_range=int,aggrochance=int,theme=snow" />
+<AREA id="branch_dungeon" merge=true like="maze_dungeon" layout="BRANCH" requires="areaname=$,areasize=int,level_range=int,aggrochance=int,theme=desert" />
+<AREA id="spot_dungeon" merge=true like="maze_dungeon" layout="SPOTTEDMESH" requires="areaname=$,areasize=int,level_range=int,aggrochance=int,theme=desert" />
 
 <ROOM id="hallway_rooms" merge=true select="pick-1" condition="$roomtag_nodetype='street' or $roomtag_nodetype='surround'">
 	<ROOM class="IcePlains" id="snow_street_room" condition="$theme='snow' or $theme='random'">
@@ -135,7 +137,7 @@ See guides/RandomAreas.html for information about documents of this type.
 		<NAME condition="$mob_level&lt;70 and $mob_level&gt;=40">an adult white dragon</NAME>
 		<NAME condition="$mob_level&lt;80 and $mob_level&gt;=70">an old white dragon</NAME>
 		<NAME condition="$mob_level&lt;85 and $mob_level&gt;=80">a very old white dragon</NAME>
-		<NAME condition="$mob_level&gt;=85">a ancient white dragon</NAME>
+		<NAME condition="$mob_level&gt;=85">an ancient white dragon</NAME>
 	</NAME>
 		<DISPLAY select="pick-1">
 			<DISPLAY pickweight="1">$mob_name leaps towards you.</DISPLAY>

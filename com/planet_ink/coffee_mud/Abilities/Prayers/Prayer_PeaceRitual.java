@@ -18,7 +18,7 @@ import com.planet_ink.coffee_mud.Races.interfaces.*;
 import java.util.*;
 
 /*
-   Copyright 2004-2024 Bo Zimmerman
+   Copyright 2004-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -110,7 +110,7 @@ public class Prayer_PeaceRitual extends Prayer
 		}
 		final List<String> channels=CMLib.channels().getFlaggedChannelNames(ChannelsLibrary.ChannelFlag.CLANINFO, null);
 		for(int i=0;i<channels.size();i++)
-			CMLib.commands().postChannel(channels.get(i),clan2Set,L("@x1 located in '@x2' is performing a peace ritual on behalf of @x3.",mob.name(),mob.location().displayText(mob),clan1.name()),false);
+			CMLib.commands().postChannel(channels.get(i),clan2Set,L("@x1 located in '@x2' is performing a peace ritual on behalf of @x3.",mob.name(),mob.location().displayText(mob),clan1.name()),false,mob);
 		return super.tick(ticking,tickID);
 	}
 
@@ -171,7 +171,7 @@ public class Prayer_PeaceRitual extends Prayer
 				}
 				final List<String> channels=CMLib.channels().getFlaggedChannelNames(ChannelsLibrary.ChannelFlag.CLANINFO, null);
 				for(int i=0;i<channels.size();i++)
-					CMLib.commands().postChannel(channels.get(i),CMLib.clans().clanRoles(),L("There is now peace between @x1 and @x2.",C1.name(),C2.name()),false);
+					CMLib.commands().postChannel(channels.get(i),CMLib.clans().clanRoles(),L("There is now peace between @x1 and @x2.",C1.name(),C2.name()),false,null);
 			}
 		}
 	}

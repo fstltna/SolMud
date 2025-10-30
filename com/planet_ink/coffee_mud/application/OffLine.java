@@ -30,7 +30,7 @@ import java.sql.*;
 import java.io.*;
 
 	/*
-	Copyright 2000-2024 Bo Zimmerman
+	Copyright 2000-2025 Bo Zimmerman
 
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
@@ -186,7 +186,7 @@ public class OffLine extends Thread implements MudHost
 	}
 
 	@Override
-	public void acceptConnection(Socket sock)
+	public Session[] acceptConnection(Socket sock)
 	throws SocketException, IOException
 {
 		sock.setSoLinger(true,3);
@@ -307,6 +307,7 @@ public class OffLine extends Thread implements MudHost
 			CMLib.s_sleep(250);
 			sock = null;
 		}
+		return new Session[] {null};
 	}
 
 	@Override
@@ -476,7 +477,7 @@ public class OffLine extends Thread implements MudHost
 
 				logStream.println();
 				logStream.println("CoffeeMud Off-Line");
-				logStream.println("(C) 2000-2024 Bo Zimmerman");
+				logStream.println("(C) 2000-2025 Bo Zimmerman");
 				logStream.println("http://www.coffeemud.org");
 
 				if(OffLine.isOK)

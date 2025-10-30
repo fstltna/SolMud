@@ -19,7 +19,7 @@ import java.util.*;
 import java.lang.ref.*;
 
 /*
-   Copyright 2022-2024 Bo Zimmerman
+   Copyright 2022-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -146,10 +146,13 @@ public class DefaultTriggerer implements Triggerer
 			if(states.containsKey(key))
 			{
 				final TrigState T = states.get(key);
-				if((T.timeout > 0)
-				&&(System.currentTimeMillis()>T.time + T.timeout))
-					return null;
-				return states.get(key);
+				if(T != null)
+				{
+					if((T.timeout > 0)
+					&&(System.currentTimeMillis()>T.time + T.timeout))
+						return null;
+					return T;
+				}
 			}
 			return null;
 		}
@@ -1521,7 +1524,10 @@ public class DefaultTriggerer implements Triggerer
 				case DRINK:
 				case EAT:
 					if((msg.target()!=null)
-					&&(DT.parm1.equals("0")||containsString(msg.target().name(),DT.parm1)))
+					&&(DT.parm1.equals("0")
+						||containsString(msg.target().name(),DT.parm1)
+						||((msg.target() instanceof Item)
+							&&(containsString(RawMaterial.CODES.NAME(((Item)msg.target()).material()),DT.parm1)))))
 					{
 						if(state == null)
 							state = getCreateTrigState(hostM, key);

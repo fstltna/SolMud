@@ -16,10 +16,11 @@ import com.planet_ink.coffee_mud.Locales.interfaces.*;
 import com.planet_ink.coffee_mud.MOBS.interfaces.*;
 import com.planet_ink.coffee_mud.Races.interfaces.*;
 
+import java.io.IOException;
 import java.util.*;
 
 /*
-   Copyright 2003-2024 Bo Zimmerman
+   Copyright 2003-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -73,6 +74,16 @@ public class Channel extends StdCommand
 		return Boolean.FALSE;
 	}
 
+	protected String reTimeAgo(final String str, final String timeAgo)
+	{
+		if((str == null)||(str.length()==0))
+			return null;
+		final int x = str.lastIndexOf("^</CHANNEL^>");
+		if(x<0)
+			return str+timeAgo;
+		return str.substring(0,x) + timeAgo+str.substring(x);
+	}
+
 	public boolean showBacklogMsg(final MOB mob, final long now, final int channelInt, final boolean areareq, final ChannelsLibrary.ChannelMsg msg)
 	{
 		final CMMsg modMsg = (CMMsg)msg.msg().copyOf();
@@ -85,12 +96,9 @@ public class Channel extends StdCommand
 		}
 
 		final String timeAgo = "^.^N ("+CMLib.time().date2SmartEllapsedTime(elapsedTime,false)+" ago)";
-		if((modMsg.sourceMessage()!=null)&&(modMsg.sourceMessage().length()>0))
-			modMsg.setSourceMessage(modMsg.sourceMessage()+timeAgo);
-		if((modMsg.targetMessage()!=null)&&(modMsg.targetMessage().length()>0))
-			modMsg.setTargetMessage(modMsg.targetMessage()+timeAgo);
-		if((modMsg.othersMessage()!=null)&&(modMsg.othersMessage().length()>0))
-			modMsg.setOthersMessage(modMsg.othersMessage()+timeAgo);
+		modMsg.setSourceMessage(reTimeAgo(modMsg.sourceMessage(),timeAgo));
+		modMsg.setTargetMessage(reTimeAgo(modMsg.targetMessage(),timeAgo));
+		modMsg.setOthersMessage(reTimeAgo(modMsg.othersMessage(),timeAgo));
 		if(CMath.bset(modMsg.sourceCode(),CMMsg.MASK_CHANNEL))
 			modMsg.setSourceCode(CMMsg.MASK_CHANNEL|(CMMsg.TYP_CHANNEL+channelInt));
 		if(CMath.bset(modMsg.targetCode(),CMMsg.MASK_CHANNEL))
@@ -163,34 +171,53 @@ public class Channel extends StdCommand
 			}
 		}
 
-		if((commands.size()==1)
-		&&("last".startsWith(commands.get(0))||"list".startsWith(commands.get(0))))
+		if(commands.size()==1)
 		{
-			commands.set(0, "last");
-			commands.add("10");
-		}
-
-		if((commands.size()==1)
-		&&("undo".startsWith(commands.get(0))||"delete".startsWith(commands.get(0))))
-		{
-			final List<ChannelsLibrary.ChannelMsg> que=CMLib.channels().getChannelQue(channelInt, 0, 1, mob);
-			if(que.size()>0)
+			if("last".startsWith(commands.get(0))||"list".startsWith(commands.get(0)))
 			{
-				final ChannelsLibrary.ChannelMsg chanMsg =que.get(que.size()-1);
-				final CMMsg msg=chanMsg.msg();
-				if((msg!=null)
-				&&(msg.source()!=null)
-				&&(msg.source().Name().equals(mob.Name())))
+				commands.set(0, "last");
+				commands.add("10");
+			}
+			else
+			if("off".equals(commands.get(0)))
+			{
+				final Command C = CMClass.getCommand("NoChannel");
+				if(C!=null)
 				{
-					CMLib.database().delBackLogEntry(channelName, chanMsg.sentTimeMillis());
-					mob.tell(L("Previous message deleted."));
-					return true;
+					commands.clear();
+					commands.add("NO"+channelName.toUpperCase().trim());
+					try
+					{
+						return C.execute(mob, commands, 0);
+					}
+					catch (final IOException e)
+					{
+						return false;
+					}
 				}
 			}
-			if(commands.get(0).length()>=4)
+			else
+			if(("undo".startsWith(commands.get(0))||"delete".startsWith(commands.get(0))))
 			{
-				mob.tell(L("You may not delete the last message."));
-				return true;
+				final List<ChannelsLibrary.ChannelMsg> que=CMLib.channels().getChannelQue(channelInt, 0, 1, mob);
+				if(que.size()>0)
+				{
+					final ChannelsLibrary.ChannelMsg chanMsg =que.get(que.size()-1);
+					final CMMsg msg=chanMsg.msg();
+					if((msg!=null)
+					&&(msg.source()!=null)
+					&&(msg.source().Name().equals(mob.Name())))
+					{
+						CMLib.database().delBackLogEntry(channelName, chanMsg.sentTimeMillis());
+						mob.tell(L("Previous message deleted."));
+						return true;
+					}
+				}
+				if(commands.get(0).length()>=4)
+				{
+					mob.tell(L("You may not delete the last message."));
+					return true;
+				}
 			}
 		}
 

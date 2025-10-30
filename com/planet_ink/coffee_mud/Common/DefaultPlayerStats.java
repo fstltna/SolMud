@@ -31,7 +31,7 @@ import com.planet_ink.coffee_mud.Races.interfaces.*;
 import java.util.*;
 
 /*
-   Copyright 2003-2024 Bo Zimmerman
+   Copyright 2003-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -61,7 +61,6 @@ public class DefaultPlayerStats extends DefaultPrideStats implements PlayerStats
 
 	protected final static int	TELL_STACK_MAX_SIZE		= 50;
 	protected final static int	GTELL_STACK_MAX_SIZE	= 50;
-	protected final static int	DEFAULT_WORDWRAP		= 78;
 
 	protected long			 hygiene		= 0;
 	protected int			 theme			= Area.THEME_FANTASY;
@@ -642,23 +641,31 @@ public class DefaultPlayerStats extends DefaultPrideStats implements PlayerStats
 	}
 
 	@Override
-	public boolean isIgnored(MOB mob)
+	public boolean isIgnored(final String cat, MOB mob)
 	{
 		if(mob==null)
 			return false;
-		if(account != null)
-			return account.isIgnored(mob);
-		if (mob.soulMate() != null)
-			mob=mob.soulMate();
+		synchronized(mob)
+		{
+			if (mob.soulMate() != null)
+				mob=mob.soulMate();
+		}
+		if((account != null) && (account.isIgnored(cat, mob)))
+			return true;
+		if(ignored.size()==0)
+			return false;
 		if(ignored.contains(mob.Name()))
 			return true;
-		final PlayerStats stats=mob.playerStats();
-		if(stats ==null)
+		final PlayerAccount acct = (mob.playerStats()!=null)?mob.playerStats().getAccount():null;
+		if((acct!=null) &&(ignored.contains(acct.getAccountName()+"*")))
+			return true;
+		if(cat == null)
 			return false;
-		final PlayerAccount account=stats.getAccount();
-		if(account == null)
-			return false;
-		return ignored.contains(account.getAccountName()+"*");
+		if(ignored.contains(cat+"."+mob.Name()))
+			return true;
+		if(acct != null)
+			return ignored.contains(cat+"."+acct.getAccountName()+"*");
+		return false;
 	}
 
 	@Override
@@ -666,8 +673,8 @@ public class DefaultPlayerStats extends DefaultPrideStats implements PlayerStats
 	{
 		if(name==null)
 			return false;
-		if(account != null)
-			return account.isIgnored(name);
+		if((account != null)&&account.isIgnored(name))
+			return true;
 		return (ignored.contains(name) || ignored.contains(name+"*"));
 	}
 

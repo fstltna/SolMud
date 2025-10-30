@@ -16,7 +16,7 @@ import com.planet_ink.coffee_mud.MOBS.interfaces.*;
 import com.planet_ink.coffee_mud.Races.interfaces.*;
 
 /*
-   Copyright 2004-2024 Bo Zimmerman
+   Copyright 2004-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -239,7 +239,7 @@ public interface SpaceObject extends Environmental, BoundedObject
 	/** constant useful for multiplying by radius -- this one to find the orbiting radius*/
 	public static final double MULTIPLIER_ORBITING_RADIUS_MAX=1.031;
 	/** multiplying by radius -- this one to find the gravitational pull radius*/
-	public static final double MULTIPLIER_GRAVITY_EFFECT_RADIUS=1.036;
+	public static final double MULTIPLIER_GRAVITY_EFFECT_RADIUS=1.037;
 
 	/** multiplier by radius to get planets mass -- only off by 15 zeroes or so 9333072865794100410 is the actual number*/
 	public static final long MULTIPLIER_PLANET_MASS=933L;

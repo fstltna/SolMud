@@ -22,7 +22,7 @@ import com.planet_ink.coffee_mud.MOBS.interfaces.*;
 import com.planet_ink.coffee_mud.Races.interfaces.*;
 
 /*
-   Copyright 2004-2024 Bo Zimmerman
+   Copyright 2004-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -574,6 +574,22 @@ public interface TimeClock extends Tickable, CMCommon
 	 */
 	public void bump(final TimePeriod P, final int num);
 
+	/**
+	 * Increase this clocks time by the given number of
+	 * time periods, setting the remainder of the clock
+	 * to the very first moment of that time period.
+	 *
+	 * @see TimeClock#tickTock(int)
+	 * @see TimeClock#bumpHours(int)
+	 * @see TimeClock#bumpDays(int)
+	 * @see TimeClock#bumpWeeks(int)
+	 * @see TimeClock#bumpMonths(int)
+	 * @see TimeClock#bumpYears(int)
+	 * @param period the time period
+	 * @param times the number of periods to bump by
+	 */
+	public void bumpToNext(final TimePeriod period, final int times);
+	
 	/**
 	 * Returns the total hours since epoc
 	 * @see TimeClock#setFromHoursSinceEpoc(long)

@@ -16,7 +16,7 @@ import com.planet_ink.coffee_mud.core.CMLib;
 import com.planet_ink.coffee_mud.core.Directions;
 
 /*
-   Copyright 2008-2024 Bo Zimmerman
+   Copyright 2008-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -100,6 +100,11 @@ public class LayoutSet
 	public boolean spaceAvailable()
 	{
 		return set.size() < total;
+	}
+
+	public boolean spaceAvailable(final int plus)
+	{
+		return set.size() + plus <= total;
 	}
 
 	public long[] makeNextCoord(final long[] n, final int dir)

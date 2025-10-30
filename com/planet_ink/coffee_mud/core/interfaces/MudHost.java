@@ -21,7 +21,7 @@ import java.net.SocketException;
 import java.util.*;
 
 /*
-   Copyright 2004-2024 Bo Zimmerman
+   Copyright 2004-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -127,10 +127,11 @@ public interface MudHost
 	/**
 	 * Handles a connection from a user, and internal states
 	 * @param sock the socket the connection was made on
+	 * @return the session object in 1 dim array managing this connection, or null
 	 * @throws java.net.SocketException socket exceptions
 	 * @throws java.io.IOException io exceptions
 	 */
-	public void acceptConnection(Socket sock) throws SocketException, IOException;
+	public Session[] acceptConnection(Socket sock) throws SocketException, IOException;
 
 	/**
 	 * Sets whether this mud is accepting connections

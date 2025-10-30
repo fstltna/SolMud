@@ -53,7 +53,7 @@ import java.util.*;
 import java.sql.*;
 
 /*
-   Copyright 2000-2024 Bo Zimmerman
+   Copyright 2000-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -69,7 +69,7 @@ import java.sql.*;
 */
 public class MUD extends Thread implements MudHost
 {
-	private static final String	  HOST_VERSION	= "5.10.3.2";
+	private static final String	  HOST_VERSION	= "5.10.4.2";
 
 	private static enum MudState
 	{
@@ -108,12 +108,13 @@ public class MUD extends Thread implements MudHost
 	}
 
 	@Override
-	public void acceptConnection(final Socket sock) throws SocketException, IOException
+	public Session[] acceptConnection(final Socket sock) throws SocketException, IOException
 	{
 		sock.setKeepAlive(true);
 		setState(MudState.ACCEPTING);
 		final ConnectionAcceptor acceptor = new ConnectionAcceptor(sock, Thread.currentThread().getName());
 		serviceEngine.executeRunnable(threadGroup.getName(),acceptor);
+		return acceptor.sess;
 	}
 
 	@Override
@@ -140,6 +141,7 @@ public class MUD extends Thread implements MudHost
 		Socket sock;
 		long startTime=0;
 		String name = null;
+		Session[] sess = new Session[] {null};
 
 		public ConnectionAcceptor(final Socket sock, final String name) throws SocketException, IOException
 		{
@@ -242,9 +244,9 @@ public class MUD extends Thread implements MudHost
 						catch (final Exception ex)
 						{
 						}
-						final Session S=(Session)CMClass.getCommon("DefaultSession");
-						S.initializeSession(sock, threadGroup().getName(), introText != null ? introText.toString() : null);
-						CMLib.sessions().add(S);
+						sess[0]=(Session)CMClass.getCommon("DefaultSession");
+						sess[0].initializeSession(sock, threadGroup().getName(), introText != null ? introText.toString() : null);
+						CMLib.sessions().add(sess[0]);
 						sock = null;
 					}
 				}
@@ -342,7 +344,8 @@ public class MUD extends Thread implements MudHost
 			}
 			catch (final UnknownHostException e)
 			{
-				Log.errOut(Thread.currentThread().getName(),"ERROR: MUD Server could not bind to address " + CMProps.getVar(CMProps.Str.MUDBINDADDRESS));
+				Log.errOut(Thread.currentThread().getName(),
+						CMProps.getVar(CMProps.Str.MUDNAME)+" Server could not bind to address " + CMProps.getVar(CMProps.Str.MUDBINDADDRESS));
 			}
 		}
 
@@ -350,9 +353,11 @@ public class MUD extends Thread implements MudHost
 		{
 			servsock=new ServerSocket(port, q_len, bindAddr);
 
-			Log.sysOut(Thread.currentThread().getName(),"MUD Server started on port: "+port);
+			Log.sysOut(Thread.currentThread().getName(),
+					CMProps.getVar(CMProps.Str.MUDNAME)+" Server started on port: "+port);
 			if (bindAddr != null)
-				Log.sysOut(Thread.currentThread().getName(),"MUD Server bound to: "+bindAddr.toString());
+				Log.sysOut(Thread.currentThread().getName(),
+						CMProps.getVar(CMProps.Str.MUDNAME)+" Server bound to: "+bindAddr.toString());
 			CMLib.hosts().add(this);
 			String oldPorts = CMProps.getVar(CMProps.Str.LOCALMUDPORTS);
 			if(oldPorts == null)
@@ -1342,6 +1347,7 @@ public class MUD extends Thread implements MudHost
 			CMProps.setBoolVar(CMProps.Bool.MAPFINDSNOCACHE,nocache.contains("MAPFINDERS"));
 			CMProps.setBoolVar(CMProps.Bool.ACCOUNTSNOCACHE,nocache.contains("ACCOUNTS"));
 			CMProps.setBoolVar(CMProps.Bool.PLAYERSNOCACHE,nocache.contains("PLAYERS"));
+			CMProps.setUpLowVar(CMProps.Str.MUDNAME, name);
 
 			DBConnector currentDBconnector=null;
 			String dbClass=page.getStr("DBCLASS");
@@ -1531,18 +1537,6 @@ public class MUD extends Thread implements MudHost
 					Log.sysOut(Thread.currentThread().getName(),"Socials loaded    : "+list.size());
 			}
 
-			final Map<String,Clan> clanPostLoads=new TreeMap<String,Clan>();
-			if((tCode==MAIN_HOST)||(checkPrivate&&CMProps.isPrivateToMe(CMLib.Library.CLANS.name())))
-			{
-				final List<Clan> clans = CMLib.database().DBReadAllClans();
-				for(final Clan C : clans)
-				{
-					CMLib.clans().addClan(C);
-					clanPostLoads.put(C.clanID(), C);
-				}
-				Log.sysOut(Thread.currentThread().getName(),"Clans loaded      : "+CMLib.clans().numClans());
-			}
-
 			if((tCode==MAIN_HOST)||(checkPrivate&&CMProps.isPrivateToMe(CMLib.Library.FACTIONS.name())))
 				serviceEngine.startTickDown(Thread.currentThread().getThreadGroup(),CMLib.factions(),Tickable.TICKID_MOB,CMProps.getTickMillis(),10);
 
@@ -1623,10 +1617,21 @@ public class MUD extends Thread implements MudHost
 				}
 			}
 
-			if(clanPostLoads.size()>0)
+			if((tCode==MAIN_HOST)||(checkPrivate&&CMProps.isPrivateToMe(CMLib.Library.CLANS.name())))
 			{
-				final int num = CMLib.database().DBReadClanItems(clanPostLoads);
-				Log.sysOut(Thread.currentThread().getName(),"Clan owned items  : "+num);
+				final Map<String,Clan> clanPostLoads=new TreeMap<String,Clan>();
+				final List<Clan> clans = CMLib.database().DBReadAllClans();
+				for(final Clan C : clans)
+				{
+					CMLib.clans().addClan(C);
+					clanPostLoads.put(C.clanID(), C);
+				}
+				Log.sysOut(Thread.currentThread().getName(),"Clans loaded      : "+CMLib.clans().numClans());
+				if(clanPostLoads.size()>0)
+				{
+					final int num = CMLib.database().DBReadClanItems(clanPostLoads);
+					Log.sysOut(Thread.currentThread().getName(),"Clan owned items  : "+num);
+				}
 			}
 
 			if((tCode==MAIN_HOST)||(checkPrivate&&CMProps.isPrivateToMe(CMLib.Library.QUEST.name())))
@@ -1951,15 +1956,12 @@ public class MUD extends Thread implements MudHost
 			&& page.containsKey("MUD_NAME")
 			&& (page.getStr("MUD_NAME") != null)
 			&& (page.getStr("MUD_NAME").toString().trim().length()>0))
-			{
-				nameID = page.getStr("MUD_NAME").toString().trim();
-				nameID = CMStrings.replaceAll(nameID, "\"", "`");
-			}
+				nameID = page.getStr("MUD_NAME").toString().trim().replace('\'', '`');
 			else
 				System.err.println("*** Please give your mud a unique name in mud.bat or mudUNIX.sh!! ***");
 		}
 		else
-		if(nameID.equalsIgnoreCase( "TheRealCoffeeMudCopyright2000-2024ByBoZimmerman" ))
+		if(nameID.equalsIgnoreCase( "TheRealCoffeeMudCopyright2000-2025ByBoZimmerman" ))
 			nameID="CoffeeMud";
 		if ((page==null)||(!page.isLoaded()))
 		{
@@ -1996,17 +1998,30 @@ public class MUD extends Thread implements MudHost
 			eolStream.println();
 			grpid=0;
 			Log.sysOut(Thread.currentThread().getName(),"CoffeeMud v"+HOST_VERSION);
-			Log.sysOut(Thread.currentThread().getName(),"(C) 2000-2024 Bo Zimmerman");
+			Log.sysOut(Thread.currentThread().getName(),"(C) 2000-2025 Bo Zimmerman");
 			Log.sysOut(Thread.currentThread().getName(),"http://www.coffeemud.org");
 			CMLib.hosts().clear();
 			final LinkedList<HostGroup> myGroups=new LinkedList<HostGroup>();
 			HostGroup mainHostGroup=null;
 			ThreadGroup mainThreadGroup = null;
+			final Set<String> usedNames = new TreeSet<String>();
 			for(int i=0;i<iniFiles.size();i++)
 			{
 				iniFile=iniFiles.elementAt(i);
+				String mudName = nameID;
+				final Properties myPage = CMProps.loadDetachedProperties(iniFile);
+				if((i>0)
+				&& myPage.containsKey("MUD_NAME")
+				&& (myPage.get("MUD_NAME") != null)
+				&& (myPage.get("MUD_NAME").toString().trim().length()>0))
+				{
+					final String myName = myPage.get("MUD_NAME").toString().trim().replace('\'', '`');
+					if(!usedNames.contains(myName))
+						mudName = myName;
+					usedNames.add(myName);
+				}
 				final ThreadGroup G=new ThreadGroup(i+"-MUD");
-				final HostGroup H=new HostGroup(G,nameID,iniFile);
+				final HostGroup H=new HostGroup(G,mudName,iniFile);
 				if((mainHostGroup==null)||(mainThreadGroup == null))
 				{
 					mainHostGroup=H;

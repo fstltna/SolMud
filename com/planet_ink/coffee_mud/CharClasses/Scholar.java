@@ -18,7 +18,7 @@ import com.planet_ink.coffee_mud.Races.interfaces.*;
 import java.util.*;
 
 /*
-   Copyright 2017-2024 Bo Zimmerman
+   Copyright 2017-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -141,6 +141,7 @@ public class Scholar extends StdCharClass
 		CMLib.ableMapper().addCharAbilityMapping(ID(),1,"Studying",true);
 
 		CMLib.ableMapper().addCharAbilityMapping(ID(),2,"Labeling",true);
+		CMLib.ableMapper().addCharAbilityMapping(ID(),2,"Skill_Diary",false);
 
 		CMLib.ableMapper().addCharAbilityMapping(ID(),3,"PaperMaking",true);
 		CMLib.ableMapper().addCharAbilityMapping(ID(),3,"Skill_CombatLog",false);

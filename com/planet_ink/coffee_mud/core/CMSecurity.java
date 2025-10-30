@@ -25,7 +25,7 @@ import java.net.*;
 import java.util.*;
 
 /*
-   Copyright 2004-2024 Bo Zimmerman
+   Copyright 2004-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -2343,7 +2343,7 @@ public class CMSecurity
 		ABILITIES, ABOVELAW, AFTER, AHELP, ALLSKILLS, ANNOUNCE, AS, ASYNC, AT, BAN,
 		BEACON, BOOT, CARRYALL, CATALOG, CHARGEN, CLOAK, CMD, CMDABILITIES,
 		CMDAREAS, CMDCLANS, CMDCLASSES, CMDEXITS, CMDFACTIONS, CMDITEMS,
-		CMDMOBS, CMDPLAYERS, CMDQUESTS, CMDRACES, CMDRECIPES, CMDROOMS,
+		CMDMOBS, CMDPLAYERS, CMDQUESTS, CMDRACES, CMDRECIPES, CMDROOMS, CMDCOMMANDS,
 		CMDSOCIALS, COMPONENTS, COPY, COPYITEMS, COPYMOBS, COPYROOMS,
 		DUMPFILE, EXPERTISE, EXPERTISES, EXPORT, EXPORTFILE, EXPORTPLAYERS,
 		GMODIFY, GOTO, I3, IDLEOK, IMC2, IMMORT, IMPORT, IMPORTITEMS, IMPORTMOBS,
@@ -2917,7 +2917,8 @@ public class CMSecurity
 		CALENDAR("calendar event tracing"),
 		TROPHIES("clan trophy logic tracing"),
 		PROPTAXES("property tax changes"),
-		RANDOMQUESTS("random quests generated")
+		RANDOMQUESTS("random quests generated"),
+		AUTOAWARDS("auto-awards system"),
 		;
 		private final String desc;
 
@@ -3042,7 +3043,11 @@ public class CMSecurity
 		NPCAUTOAWARDS("auto-awards system for npcs"),
 		FATIGUE("fatigue system"),
 		UNLEVELXP("unleveling from xp"),
-		UNLEVEL("unleveling at all")
+		UNLEVEL("unleveling at all"),
+		CHARCRSTAT("disable stat choices in char creation"),
+		CHARCRRACE("disable race picking in char creation"),
+		CHARCRCLASS("disable class picking in char creation"),
+		CHARCRGENDER("disable gender picking in char creation"),
 		;
 		private final String desc;
 

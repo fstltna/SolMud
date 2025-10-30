@@ -21,7 +21,7 @@ import com.planet_ink.coffee_mud.Races.interfaces.*;
 import java.util.*;
 
 /*
-   Copyright 2019-2024 Bo Zimmerman
+   Copyright 2019-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -274,15 +274,27 @@ public class PaintingSkill extends CommonSkill implements RecipeDriven
 			&&(i<writing.length()-1)
 			&&(writing.charAt(i+1)!='?'))
 			{
-				if((writing.charAt(i+1)==ColorLibrary.COLORCODE_FANSI256)
+				final char c = writing.charAt(i+1);
+				if((c==ColorLibrary.COLORCODE_FANSI256)
+				&&(i<writing.length()-8)
+				&&(writing.charAt(i+2)==ColorLibrary.COLORCODE_FANSI256))
+				{
+					if(!CMath.isHexNumber(writing.substring(i+3,i+9)))
+						colorCode=writing.substring(i+1, i+5);
+					else
+						colorCode=writing.substring(i+1, i+9);
+					break;
+				}
+				else
+				if((c==ColorLibrary.COLORCODE_FANSI256)
 				&&(i<writing.length()-1))
 				{
 					colorCode=writing.substring(i+1, i+5);
 					break;
 				}
 				else
-				if((writing.charAt(i+1)!=ColorLibrary.COLORCODE_BACKGROUND)
-				&&(writing.charAt(i+1)!=ColorLibrary.COLORCODE_BANSI256))
+				if((c!=ColorLibrary.COLORCODE_BACKGROUND)
+				&&(c!=ColorLibrary.COLORCODE_BANSI256))
 				{
 					colorCode=""+writing.charAt(i+1);
 					break;
@@ -300,15 +312,27 @@ public class PaintingSkill extends CommonSkill implements RecipeDriven
 			if((desc.charAt(x)=='^')
 			&&(desc.charAt(x+1)!='?'))
 			{
-				if((desc.charAt(x+1)==ColorLibrary.COLORCODE_FANSI256)
+				final char c = desc.charAt(x+1);
+				if((c==ColorLibrary.COLORCODE_FANSI256)
+				&&(x<desc.length()-8)
+				&&(desc.charAt(x+2)==c))
+				{
+					if(!CMath.isHexNumber(desc.substring(x+3,x+9)))
+						desc.delete(x+1, x+5);
+					else
+						desc.delete(x+1, x+9);
+					desc.insert(x+1, colorCode);
+				}
+				else
+				if((c==ColorLibrary.COLORCODE_FANSI256)
 				&&(x<desc.length()-4))
 				{
 					desc.delete(x+1, x+5);
 					desc.insert(x+1, colorCode);
 				}
 				else
-				if((desc.charAt(x+1)!=ColorLibrary.COLORCODE_BACKGROUND)
-				&&(desc.charAt(x+1)!=ColorLibrary.COLORCODE_BANSI256))
+				if((c!=ColorLibrary.COLORCODE_BACKGROUND)
+				&&(c!=ColorLibrary.COLORCODE_BANSI256))
 				{
 					desc.delete(x+1, x+2);
 					desc.insert(x+1, colorCode);

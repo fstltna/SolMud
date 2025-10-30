@@ -19,7 +19,7 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 /*
-   Copyright 2001-2024 Bo Zimmerman
+   Copyright 2001-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -141,7 +141,10 @@ public class Affect extends StdCommand
 			}
 			if(disp.length()>0)
 			{
-				if(disp.startsWith("(")&&disp.endsWith(")"))
+				if(disp.startsWith("(")
+				&&disp.endsWith(")")
+				&&(A.canBeUninvoked())
+				&&(!A.isNowAnAutoEffect()))
 				{
 					long tr=A.expirationDate();
 					if(A.invoker()!=null)

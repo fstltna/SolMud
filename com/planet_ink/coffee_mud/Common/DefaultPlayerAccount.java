@@ -16,6 +16,7 @@ import com.planet_ink.coffee_mud.Libraries.interfaces.*;
 import com.planet_ink.coffee_mud.Libraries.interfaces.AbilityMapper.AbilityMapping;
 import com.planet_ink.coffee_mud.Libraries.interfaces.AchievementLibrary.Achievement;
 import com.planet_ink.coffee_mud.Libraries.interfaces.AchievementLibrary.Tracker;
+import com.planet_ink.coffee_mud.Libraries.interfaces.PlayerLibrary.ThinPlayer;
 import com.planet_ink.coffee_mud.Libraries.interfaces.XMLLibrary.XMLTag;
 import com.planet_ink.coffee_mud.Locales.interfaces.*;
 import com.planet_ink.coffee_mud.MOBS.StdMOB;
@@ -27,7 +28,7 @@ import java.nio.ByteBuffer;
 import java.util.*;
 
 /*
-   Copyright 2010-2024 Bo Zimmerman
+   Copyright 2010-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -299,21 +300,27 @@ public class DefaultPlayerAccount extends DefaultPrideStats implements PlayerAcc
 	}
 
 	@Override
-	public boolean isIgnored(MOB mob)
+	public boolean isIgnored(final String cat, MOB mob)
 	{
-		if(mob==null)
+		if((mob==null)||(ignored.size()==0))
 			return false;
-		if (mob.soulMate() != null)
-			mob=mob.soulMate();
+		synchronized(mob)
+		{
+			if (mob.soulMate() != null)
+				mob=mob.soulMate();
+		}
 		if(ignored.contains(mob.Name()))
 			return true;
-		final PlayerStats stats=mob.playerStats();
-		if(stats ==null)
+		final PlayerAccount acct = (mob.playerStats()!=null)?mob.playerStats().getAccount():null;
+		if((acct!=null) &&(ignored.contains(acct.getAccountName()+"*")))
+			return true;
+		if(cat == null)
 			return false;
-		final PlayerAccount account=stats.getAccount();
-		if(account == null)
-			return false;
-		return ignored.contains(account.getAccountName()+"*");
+		if(ignored.contains(cat+"."+mob.Name()))
+			return true;
+		if(acct != null)
+			return ignored.contains(cat+"."+acct.getAccountName()+"*");
+		return false;
 	}
 
 	@Override
@@ -323,7 +330,6 @@ public class DefaultPlayerAccount extends DefaultPrideStats implements PlayerAcc
 			return false;
 		return (ignored.contains(name) || ignored.contains(name+"*"));
 	}
-
 
 	@Override
 	public MOB getAccountMob()
@@ -559,97 +565,8 @@ public class DefaultPlayerAccount extends DefaultPrideStats implements PlayerAcc
 				for(final Enumeration<String> e=getPlayers();e.hasMoreElements();)
 				{
 					final String name = e.nextElement();
-					PlayerLibrary.ThinPlayer tP = CMLib.database().getThinUser(name);
-					if (tP == null)
-					{
-						tP = new PlayerLibrary.ThinPlayer()
-						{
-							@Override
-							public String name()
-							{
-								return name;
-							}
-
-							@Override
-							public String charClass()
-							{
-								return "";
-							}
-
-							@Override
-							public String race()
-							{
-								return "";
-							}
-
-							@Override
-							public int level()
-							{
-								return 0;
-							}
-
-							@Override
-							public int age()
-							{
-								return 0;
-							}
-
-							@Override
-							public long last()
-							{
-								return 0;
-							}
-
-							@Override
-							public String email()
-							{
-								return "";
-							}
-
-							@Override
-							public String ip()
-							{
-								return "";
-							}
-
-							@Override
-							public int exp()
-							{
-								return 0;
-							}
-
-							@Override
-							public int expLvl()
-							{
-								return 0;
-							}
-
-							@Override
-							public String liege()
-							{
-								return "";
-							}
-
-							@Override
-							public String worship()
-							{
-								return "";
-							}
-
-							@Override
-							public String gender()
-							{
-								return "neuter";
-							}
-
-							@Override
-							public Enumeration<String> clans()
-							{
-								return new EmptyEnumeration<String>();
-							}
-						};
-					}
-					thinPlayers.add(tP);
+					final ThinPlayer tP = CMLib.players().getThinPlayer(name);
+					thinPlayers.add((tP!=null) ? tP : CMLib.players().getEmptyThinPlayerObject(name));
 				}
 			}
 		}

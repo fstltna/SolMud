@@ -22,7 +22,7 @@ import com.planet_ink.coffee_mud.Races.interfaces.*;
 import java.util.*;
 
 /*
-   Copyright 2003-2024 Bo Zimmerman
+   Copyright 2003-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -106,13 +106,13 @@ public class Pregnancy extends StdAbility implements HealthCondition
 		{
 			if(x<0)
 				return def;
-			prevX = x;
-			x=txt.indexOf('/',prevX+1);
+			prevX = x+1;
+			x=txt.indexOf('/',prevX);
 			ord++;
 		}
 		if(x<0)
-			return txt.substring(prevX+1);
-		return txt.substring(prevX+1,x);
+			return txt.substring(prevX);
+		return txt.substring(prevX,x);
 	}
 
 	protected void setSplitArgument(final PregArg arg, final String value)
@@ -796,7 +796,7 @@ public class Pregnancy extends StdAbility implements HealthCondition
 				setMiscText(start + "/" + end + "/" + mob.Name() + "/" + numKidMarker+mob.charStats().getMyRace().ID());
 				final List<String> channels = CMLib.channels().getFlaggedChannelNames(ChannelsLibrary.ChannelFlag.CONCEPTIONS, mob);
 				for (int i = 0; i < channels.size(); i++)
-					CMLib.commands().postChannel(channels.get(i), mob.clans(), L("@x1 is now in a 'family way'.", target.name()), true);
+					CMLib.commands().postChannel(channels.get(i), mob.clans(), L("@x1 is now in a 'family way'.", target.name()), true,mob);
 				final Pregnancy P=(Pregnancy)copyOf();
 				if((!mob.isPlayer())
 				&&(!target.isPlayer()))

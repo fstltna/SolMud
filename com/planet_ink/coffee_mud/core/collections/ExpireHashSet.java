@@ -3,7 +3,7 @@ package com.planet_ink.coffee_mud.core.collections;
 import java.util.*;
 
 /*
-   Copyright 2023-2024 Bo Zimmerman
+   Copyright 2023-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@ import java.util.*;
 public class ExpireHashSet<K> implements Set<K>
 {
 	private final Map<K,Long> internalMap;
-	private final long expirationTime = 2 * 60000; // two minutes
+	private long expirationTime = 2 * 60000; // two minutes
 
 	protected Long defTime()
 	{
@@ -34,6 +34,12 @@ public class ExpireHashSet<K> implements Set<K>
 	public ExpireHashSet()
 	{
 		internalMap = new SHashtable<K,Long>();
+	}
+
+	public ExpireHashSet(final long expirationMs)
+	{
+		this();
+		this.expirationTime = expirationMs;
 	}
 
 	public ExpireHashSet(final Set<K> s)

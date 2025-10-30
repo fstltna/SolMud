@@ -18,7 +18,7 @@ import com.planet_ink.coffee_mud.Races.interfaces.*;
 import java.util.*;
 
 /*
-   Copyright 2004-2024 Bo Zimmerman
+   Copyright 2004-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -57,7 +57,8 @@ public class NoANSI extends StdCommand
 			if(acct != null)
 			{
 				acct.setFlag(PlayerAccount.AccountFlag.ANSI, false);
-				acct.setFlag(PlayerAccount.AccountFlag.ANSI16, false);
+				acct.setFlag(PlayerAccount.AccountFlag.ANSI16ONLY, false);
+				acct.setFlag(PlayerAccount.AccountFlag.ANSI256ONLY, false);
 			}
 			if(mob.isAttributeSet(MOB.Attrib.ANSI))
 			{
@@ -72,6 +73,8 @@ public class NoANSI extends StdCommand
 			mob.session().setServerTelnetMode(Session.TELNET_ANSI,false);
 			mob.session().setClientTelnetMode(Session.TELNET_ANSI16,false);
 			mob.session().setServerTelnetMode(Session.TELNET_ANSI16,false);
+			mob.session().setClientTelnetMode(Session.TELNET_ANSI256,false);
+			mob.session().setServerTelnetMode(Session.TELNET_ANSI256,false);
 		}
 		return false;
 	}

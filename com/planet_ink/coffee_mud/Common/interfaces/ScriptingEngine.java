@@ -20,7 +20,7 @@ import com.planet_ink.coffee_mud.Races.interfaces.*;
 import java.util.*;
 
 /*
-   Copyright 2005-2024 Bo Zimmerman
+   Copyright 2005-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -322,6 +322,13 @@ public interface ScriptingEngine extends CMCommon, Tickable, MsgListener
 	 * @param value the value of the variable
 	 */
 	public void setVar(String context, String variable, String value);
+
+	/**
+	 * If the script contains any javascript, calling this method will
+	 * pre-approve the scripts so that they bypass any approval
+	 * requirements.
+	 */
+	public void preApproveScripts();
 
 	/**
 	 * Wrapper class for a standard parsed line of script,
@@ -676,6 +683,7 @@ public interface ScriptingEngine extends CMCommon, Tickable, MsgListener
 		"DEFAULT", //97 JUST for catching errors...
 		"MPHIT", //98
 		"MPACHIEVE", //99
+		"MPACCUSE", //100
 	};
 
 	/**

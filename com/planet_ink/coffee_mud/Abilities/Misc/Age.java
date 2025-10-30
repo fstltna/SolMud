@@ -24,7 +24,7 @@ import java.io.IOException;
 import java.util.*;
 
 /*
-   Copyright 2003-2024 Bo Zimmerman
+   Copyright 2003-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -651,7 +651,8 @@ public class Age extends StdAbility
 							if(A1==null)
 							{
 								A1=CMClass.getAbility("Prop_SafePet");
-								babe.addNonUninvokableEffect(A);
+								A1.setMiscText("LIEGEFOLLOW=\""+leigeM.Name()+"\"");
+								babe.addNonUninvokableEffect(A1);
 							}
 						}
 						babe.text();
@@ -1065,7 +1066,7 @@ public class Age extends StdAbility
 
 				final List<String> channels=CMLib.channels().getFlaggedChannelNames(ChannelsLibrary.ChannelFlag.NEWPLAYERS, newMan);
 				for(int i=0;i<channels.size();i++)
-					CMLib.commands().postChannel(channels.get(i),newMan.clans(),L("@x1 has just been created.",newMan.Name()),true);
+					CMLib.commands().postChannel(channels.get(i),newMan.clans(),L("@x1 has just been created.",newMan.Name()),true,newMan);
 
 				if(liege != null)
 				{

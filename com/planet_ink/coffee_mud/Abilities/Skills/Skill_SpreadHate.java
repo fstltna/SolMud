@@ -19,7 +19,7 @@ import com.planet_ink.coffee_mud.Races.interfaces.*;
 import java.util.*;
 
 /*
-   Copyright 2022-2024 Bo Zimmerman
+   Copyright 2022-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -138,6 +138,7 @@ public class Skill_SpreadHate extends StdSkill
 			maps.get(rcwords.size()-1).put(lword, pluralKey+"=\""+mask+" \\\"+"+fword+"\\\" \"");
 	}
 
+	@SuppressWarnings("unchecked")
 	protected String findHateable(final String msg)
 	{
 		final List<String> words = CMLib.english().parseWords(msg.toLowerCase());
@@ -173,6 +174,7 @@ public class Skill_SpreadHate extends StdSkill
 						addNewHate(maps, R.racialCategory().toLowerCase(), null, "-RACECAT");
 						addNewHate(maps, CMLib.english().makePlural(R.racialCategory().toLowerCase()), R.racialCategory().toLowerCase(), "-RACECAT");
 					}
+					types = maps.toArray(new Map[0]);
 				}
 			}
 		}

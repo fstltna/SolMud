@@ -18,7 +18,7 @@ import com.planet_ink.coffee_mud.Races.interfaces.*;
 import java.io.IOException;
 import java.util.*;
 /*
-   Copyright 2008-2024 Bo Zimmerman
+   Copyright 2008-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -202,6 +202,18 @@ public interface GenericEditor extends CMLibrary
 	 * @throws IOException any i/o errors that occur (socket reset errors usually)
 	 */
 	public void modifyGenWrightSkill(final MOB mob, final Ability me, int showFlag) throws IOException;
+
+
+	/**
+	 * Prompts the given user using the mud's standard menu interface.
+	 * Allows the editing of an existing Generic Command.
+	 *
+	 * @param mob the player doing the editing
+	 * @param me the object being edited
+	 * @param showFlag 0 to only show prompt and value, -999 to always edit, or the showNumber to edit
+	 * @throws IOException any i/o errors that occur (socket reset errors usually)
+	 */
+	public void modifyGenCommand(final MOB mob, final Modifiable me, int showFlag) throws IOException;
 
 	/**
 	 * Prompts the given user using the mud's standard menu interface.

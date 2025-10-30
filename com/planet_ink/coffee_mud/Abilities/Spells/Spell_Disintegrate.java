@@ -18,7 +18,7 @@ import com.planet_ink.coffee_mud.Races.interfaces.*;
 import java.util.*;
 
 /*
-   Copyright 2001-2024 Bo Zimmerman
+   Copyright 2001-2025 Bo Zimmerman
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -135,7 +135,6 @@ public class Spell_Disintegrate extends Spell
 						&&(I.container()==null))
 							oldBodies.add((DeadBody)I);
 					}
-
 					if(target instanceof MOB)
 					{
 						if(((MOB)target).curState().getHitPoints()>0)
@@ -167,9 +166,7 @@ public class Spell_Disintegrate extends Spell
 					}
 					R.recoverRoomStats();
 				}
-
 			}
-
 		}
 		else
 			maliciousFizzle(mob,target,L("<S-NAME> point(s) at <T-NAMESELF> and utter(s) a treacherous but fizzled spell!"));
