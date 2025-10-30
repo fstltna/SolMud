@@ -40,10 +40,10 @@ else
 	mpalarm 10 mptattoo $t -usingsexability
 	mpsetvar $t targetsave $%GSTAT($t 'SAVE VS MIND')%
 	mpsetvar $n expertiselevel $%EXPERTISE($n Sexual_cumvampiresuck LEVEL)%
-	mpsetvar $n maxsexrounds $%MATH(3 + $<$n expertiselevel>)%
+	mpsetvar $n maxsexrounds $%MATH(5 + $<$n expertiselevel>)%
 	MPSETVAR $n CurLevel $%GSTAT($n LEVEL)%
 	MPSETVAR $n CurLevelhalf $%MATH($<$n curlevel>/2)%
-	mpsetvar $n cumround $%MATH(4?10)%
+	mpsetvar $n cumround $%MATH(3?8)%
 	mpsetvar $n maxhealth $%GSTAT($n MAXHITS)%
 	mpsetvar $n cumtracker $<$n cumround>
 	mpsetvar $n expertisedmgmult $%MATH($<$n expertiselevel>/4 > 1)%
@@ -61,14 +61,14 @@ if sex($t == M) or sex($t == O) or sex($t == U)
 	mpsetvar $t genitallist 'cock penis dong schlong rod'
 else
 	if sex($t == F) or sex($t == A) or sex($t == H)
-		mpsetvar $t genitallist 'mouth facepussy lips face throat'
+		mpsetvar $t genitallist 'pussy kitty cunt fuckhole puss'
 	endif
 endif
 	mpsetvar $n soundlist '*PLAP* *PLOP* *SLAP* *SLICK* *GRIND*'
-	mpsetvar $n actionwordlist 'fucks pushes grinds thrusts slams'
-	mpsetvar $n severitywordlist 'thoroughly forcefully deeply quickly fiercely'
-	mpsetvar $t genitallist2 'ass bum butt pucker guts asshole'
-	mpsetvar $n genitallist2 'ass bum butt pucker guts asshole'
+	mpsetvar $n actionwordlist 'fucks pushes grinds thrusts slams plows ploughs jams hammers jackhammers'
+	mpsetvar $n severitywordlist 'thoroughly forcefully deeply quickly fiercely savagely primally angrily, deeply'
+	mpsetvar $t genitallist2 'ass bum butt pucker guts asshole donut anus rear hole'
+	mpsetvar $n genitallist2 'ass bum butt pucker guts asshole donut anus rear hole'
 	mpcallfunc unchaos
 	mpcallfunc MIDROUNDCHECK
 endif
@@ -88,18 +88,14 @@ else
 		MPSETVAR $n HitsCalc $%GSTAT($n Hits)%
 		MPSETVAR $t HitsCalc $%GSTAT($t Hits)%
 		mpsetvar $t strengthstat $%GSTAT('$t' STRENGTH)%
-		mpsetvar $t strengthstat $%MATH($<'$t' strengthstat> + 1?6)%
 		mpsetvar $t grapplerstrengthstat $%GSTAT('$n' STRENGTH)%
-		mpsetvar $t grapplerstrengthstat $%MATH($<'$t' grapplerstrengthstat> + 1?6)%
 		if var($t strengthstat > $<$t grapplerstrengthstat>)
 			mpecho $t manages to overpower $n! reducing $s grip strength! ^RSTR:[^r$<$t strengthstat> ^wvs^r $<$t grapplerstrengthstat>^R]^N
 			mpsetvar $n sexrounds --
 			mpsetvar $n sexrounds --
 		endif
 		mpsetvar $t dexteritystat $%GSTAT('$t' DEXTERITY)%
-		mpsetvar $t dexteritystat $%MATH($<'$t' dexteritystat> + 1?6)%
 		mpsetvar $t grapplerdexteritystat $%GSTAT('$n' DEXTERITY)%
-		mpsetvar $t grapplerdexteritystat $%MATH($<'$t' grapplerdexteritystat> + 1?6)%
 		if var($t dexteritystat > $<$t grapplerdexteritystat>)
 			mpecho $t manages to slip through $n's grip! reducing $s grip strength! ^RDEX:[^r$<$t dexteritystat> ^wvs^r $<$t grapplerdexteritystat>^R]^N
 			mpsetvar $n sexrounds --
@@ -133,7 +129,7 @@ if class($n == TacticalJoy)
 	mpsetvar $n randhealamt $%MATH($<$n joydamage> / 2)%
 	MPSETVAR $t HitsCalc $%MATH($<$t HitsCalc> - $<$n joydamage>)%
 	MPSETVAR $n HitsCalc $%MATH($<$n HitsCalc> + $<$n randhealamt>)%
-	MPECHO $n $<$n actionwordlist>.$%RAND0NUM(5)% ($<$n joydamage>) $m $<$n genitallist>.$%RAND0NUM(3)% $<$n actionwordlist>.$%RAND0NUM(5)%!
+	MPECHO $n $<$n actionwordlist>.$%RAND0NUM(10)% ($<$n joydamage>) $m $<$n genitallist>.$%RAND0NUM(3)% $<$n actionwordlist>.$%RAND0NUM(10)%!
 endif
 mpsetvar $n dmgroll $%RANDNUM(125)%
 mpsetvar $n randhealamt $%MATH($<$n dmgroll> * $<$n expertisedmgmult> + $<$n CurLevelhalf>)%
@@ -178,16 +174,16 @@ else
 	MPSETVAR $t HitsCalc $%MATH($<$t HitsCalc> - $<$n randhealamt>)%
 	if sex($n == M) or sex($n == O) or sex($n == U)
 		if sex($t == F) or sex($t == A) or sex($t == H)
-			mpecho ^#401$<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)% $n forces $t to $<$n severitywordlist>.$%RAND0NUM(5)% $<$n actionwordlist>.$%RAND0NUM(5)% ($<$n randhealamt>) $m $<$t genitallist>.$%RAND0NUM(3)% into $s $<$n genitallist>.$%RAND0NUM(5)%! $<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)%   
+			mpecho ^#401$<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)% $n forces $t to $<$n severitywordlist>.$%RAND0NUM(9)% $<$n actionwordlist>.$%RAND0NUM(10)% ($<$n randhealamt>) $m $<$t genitallist>.$%RAND0NUM(3)% into $s $<$n genitallist>.$%RAND0NUM(5)%! $<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)%   
 		else
-			mpecho ^#401$<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)% $n forces $t to $<$n severitywordlist>.$%RAND0NUM(5)% $<$n actionwordlist>.$%RAND0NUM(5)% ($<$n randhealamt>) $m $<$t genitallist>.$%RAND0NUM(3)% into $s $<$n genitallist2>.$%RAND0NUM(5)%! $<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)%   
+			mpecho ^#401$<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)% $n forces $t to $<$n severitywordlist>.$%RAND0NUM(9)% $<$n actionwordlist>.$%RAND0NUM(10)% ($<$n randhealamt>) $m $<$t genitallist>.$%RAND0NUM(3)% into $s $<$n genitallist2>.$%RAND0NUM(5)%! $<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)%   
 		endif
 	endif
 	if sex($n == F) or sex($n == A) or sex($n == H)
 		if sex($t == F) or sex($t == A) or sex($t == H)
-			mpecho ^#401$<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)% $n forces $t to $<$n severitywordlist>.$%RAND0NUM(5)% $<$n actionwordlist>.$%RAND0NUM(5)% ($<$n randhealamt>) $m $<$n genitallist>.$%RAND0NUM(3)% against $s $<$t genitallist>.$%RAND0NUM(5)%! $<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)%   
+			mpecho ^#401$<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)% $n forces $t to $<$n severitywordlist>.$%RAND0NUM(9)% $<$n actionwordlist>.$%RAND0NUM(10)% ($<$n randhealamt>) $m $<$n genitallist>.$%RAND0NUM(3)% against $s $<$t genitallist>.$%RAND0NUM(5)%! $<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)%   
 		else
-			mpecho ^#401$<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)% $n forces $t to $<$n severitywordlist>.$%RAND0NUM(5)% $<$n actionwordlist>.$%RAND0NUM(5)% ($<$n randhealamt>) $m $<$n genitallist>.$%RAND0NUM(3)% against $s $<$t genitallist>.$%RAND0NUM(5)%! $<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)%   
+			mpecho ^#401$<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)% $n forces $t to $<$n severitywordlist>.$%RAND0NUM(9)% $<$n actionwordlist>.$%RAND0NUM(10)% ($<$n randhealamt>) $m $<$n genitallist>.$%RAND0NUM(3)% against $s $<$t genitallist>.$%RAND0NUM(5)%! $<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)%   
 		endif
 	endif
 endif

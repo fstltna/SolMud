@@ -372,9 +372,9 @@ if sex($n == M) or sex($n == O) or sex($n == U) or sex($n == H)
 endif
 ~
 
-delay_prog 1300
-if !affected($i Prop_Permabreed) and !affected($i chant_strikebarren)
-  mpechoat $i You feel like your fertility is high again.
+delay_prog 1000
+if !affected($i Prop_Permabreed) and !affected($i chant_strikebarren) and !affected($i pregnancy)
+  mpechoat $i You feel fertile again.
   mpaffect Prop_Permabreed $i
 endif
 ~
@@ -668,6 +668,7 @@ mpnotrigger execmsg_prog 1000
 if islike($n '-LOCATION +ROOMSTR(water) +ROOMSTR(ocean) +ROOMSTR(river) +ROOMSTR(sea) +ROOMSTR(docks) +ROOMSTR(beach) +ROOMSTR(bathroom) +ROOMSTR(bath) +ROOMSTR(bathhouse)')
   mploadvar $n dirtystate
   mploadvar $n cummystate
+  mploadvar $n grointext
   mpsetvar $n dirtystate -5
   mpsetvar $n cummystate -5
   if var($n dirtystate < 0)
@@ -767,29 +768,55 @@ entry_prog 5
   next
 ~
 
-social_prog spank
-mpcallfunc blessening_checks
+level_prog 100
+mploadvar $n highestlevel
+if var($n highestlevel == '')
+  mpsetvar $n highestlevel $%LEVEL($n)%
+  mpsavevar $n highestlevel
+  return
+endif
+if level($n > $<$n highestlevel>)
+  mpechoat $n ^cYour highest achieved level is now $%LEVEL($n)%^?
+  mpsetvar $n highestlevel $%LEVEL($n)%
+  mpsavevar $n highestlevel
+endif
 ~
 
-function_prog blessening_checks
-mpnotrigger social_prog 2000
-##target is self
-if isname('$n' '$t') 
-  return
+cnclmsg_prog huh p rpflag
+mpchannel rpfinder ,is inviting people to $d ($%INROOM($n)%).
+return cancel
+~
+
+execmsg_prog DRINK all
+mpnotrigger execmsg_prog 1000
+if name($n != $i)
+  return cancel
 endif
-##target is not witnesser
-if !isname('$t' '$i') 
-  return
+switch $%RANDNUM(2)%
+  case 1
+  mpcastext prayer_minorinfusion $n $n
+  case 2
+  mpcastext prayer_moderateinfusion $n $n
+endswitch
+~
+
+execmsg_prog EAT all
+mpnotrigger execmsg_prog 1000
+if name($n != $i)
+  return cancel
 endif
-##effects from spank
-##target is witnesser
-if isname('$t' '$i')
-  ##target is celestial
-  if racecat($t == Celestial)
-    mpforce $n mpcastext prayer_divineluck $n
+switch $%RANDNUM(2)%
+  case 1
+  if racecat($n == undead)
+    mpcastext prayer_causeserious $n $n
+  else
+    mpcastext prayer_cureserious $n $n
   endif
-  if racecat($t == Demon)
-    mpcastext prayer_demonshield $t $n
+  case 2
+  if racecat($n == undead)
+    mpcastext prayer_healundead $n $n
+  else
+    mpcastext prayer_heal $n $n
   endif
-endif
+endswitch
 ~

@@ -262,6 +262,12 @@ mpalarm 6 mpechoat $n ^#111A soul-piercing feminine voice claws your mind. ^w'Go
 mpalarm 8 mptransfer $n afterlife#4
 mpalarm 8 mpechoat $n ^#111You feel yourself moving forward in great speed... Finding yourself out of there.
 else
+if var($n deathcountstenebrase > 2)
+mpechoat $n ^#222You feel a tugging on your soul, then nothing, intense loneliness takes you, like you are floating in the void.^N
+mpalarm 1 mpechoat $n ^rYou feel a great pain straight in your very spectral existence, every bit of your body quivering in agony..!^N
+mpalarm 2 mpechoat $n ^#111A soul-piercing feminine voice claws your mind. ^w'You don't fail to disappoint.'^N
+mpalarm 3 mptransfer $n afterlife#4
+endif
 endif
 endif
 endif

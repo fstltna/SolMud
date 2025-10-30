@@ -323,3 +323,6 @@ magazine of 20 .308 Win ultrasolid rounds	88	20	(onground:consumed:4:MITHRIL:)	4
 box of 80 .308 Win ripper rounds	89	80	(onground:consumed:8:LEAD:)	400	GenAmmunition	.308 Win	80				Prop_AddDamage;50% SLASHING;Prop_FightSpellCast;70% BLEEDING	
 magazine of 10 .308 Win hyperdrill rounds	90	10	(onground:consumed:2:ADAMANTITE:)	500	GenAmmunition	.308 Win	10				*Prop_AddDamage;30% SLASHING	
 speedloader of 7 .44 Magnum rounds	32	30	1	7	GenAmmunition	.44 Magnum	7					
+% laser pistol	90	150	175	200	GenGun	fusion	50	65	2		*Prop_AddDamage;10% MELTING	1
+% laser rifle	100	200	200	300	GenGun	fusion	50	71	4		*Prop_AddDamage;10% MELTING	2
+Fusion Cell	80	20	20	150	GenAmmunition	fusion	50					

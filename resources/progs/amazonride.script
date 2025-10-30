@@ -106,17 +106,13 @@ else
 		MPSETVAR $n HitsCalc $%GSTAT($n Hits)%
 		MPSETVAR $t HitsCalc $%GSTAT($t Hits)%
 		mpsetvar $t strengthstat $%GSTAT('$t' STRENGTH)%
-		mpsetvar $t strengthstat $%MATH($<'$t' strengthstat> + 1?3)%
 		mpsetvar $t grapplerstrengthstat $%GSTAT('$n' STRENGTH)%
-		mpsetvar $t grapplerstrengthstat $%MATH($<'$t' grapplerstrengthstat> + 1?6)%
 		if var($t strengthstat > $<$t grapplerstrengthstat>)
 			mpecho $t manages to overpower $n! reducing $s grip strength! ^RSTR:[^r$<$t strengthstat> ^wvs^r $<$t grapplerstrengthstat>^R]^N
 			mpsetvar $n sexrounds --
 		endif
 		mpsetvar $t dexteritystat $%GSTAT('$t' DEXTERITY)%
-		mpsetvar $t dexteritystat $%MATH($<'$t' dexteritystat> + 1?3)%
 		mpsetvar $t grapplerdexteritystat $%GSTAT('$n' DEXTERITY)%
-		mpsetvar $t grapplerdexteritystat $%MATH($<'$t' grapplerdexteritystat> + 1?6)%
 		if var($t dexteritystat > $<$t grapplerdexteritystat>)
 			mpecho $t manages to slip through $n's grip! reducing $s grip strength! ^RDEX:[^r$<$t dexteritystat> ^wvs^r $<$t grapplerdexteritystat>^R]^N
 			mpsetvar $n sexrounds --
@@ -171,16 +167,16 @@ MPSETVAR $t HitsCalc $%MATH($<$t HitsCalc> - $<$n randhealamt>)%
 if var($n cumtracker <= 0)
 if sex($n == M) or sex($n == O) or sex($n == U)
 	if sex($t == F) or sex($t == A) or sex($t == H)
-		mpecho ^#401*SPLURT* $n splurts a good ($<$n randhealamt>) ^wcummy load^#401 into $t's poor $<$t genitallist>.$%RAND0NUM(5)%! *SPLAT*
+		mpecho ^#401*SPLURT* $n $<$n actionwordlist>.$%RAND0NUM(5)% splurts a good ($<$n randhealamt>) ^wcummy load^#401 into $t's poor $<$t genitallist>.$%RAND0NUM(5)%! *SPLAT*
 	else
-		mpecho ^#401*SPLURT* $n splurts a good ($<$n randhealamt>) ^wcummy load^#401 into $t's poor $<$t genitallist2>.$%RAND0NUM(5)%! *SPLAT*
+		mpecho ^#401*SPLURT* $n $<$n actionwordlist>.$%RAND0NUM(5)% splurts a good ($<$n randhealamt>) ^wcummy load^#401 into $t's poor $<$t genitallist2>.$%RAND0NUM(5)%! *SPLAT*
 	endif
 endif
 if sex($n == F) or sex($n == A) or sex($n == H)
 	if sex($t == F) or sex($t == A) or sex($t == H)
-		mpecho ^#401*SPLURT* $n ^Wsquirts^#401 a good amount ($<$n randhealamt>) onto $t's poor $<$t genitallist>.$%RAND0NUM(5)%! *SPLAT*
+		mpecho ^#401*SPLURT* $n $<$n actionwordlist>.$%RAND0NUM(5)% ^Wsquirts^#401 a good amount ($<$n randhealamt>) onto $t's poor $<$t genitallist>.$%RAND0NUM(5)%! *SPLAT*
 	else
-		mpecho ^#401*SPLURT* $n receives a good ($<$n randhealamt>) ^wcummy load^#401 from $t's poor $<$t genitallist>.$%RAND0NUM(5)%! *SPLAT*
+		mpecho ^#401*SPLURT* $n $<$n actionwordlist>.$%RAND0NUM(5)% receives a good ($<$n randhealamt>) ^wcummy load^#401 from $t's poor $<$t genitallist>.$%RAND0NUM(5)%! *SPLAT*
 	endif
 endif
 mploadvar $t cummystate

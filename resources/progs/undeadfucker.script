@@ -1,18 +1,11 @@
 delay_prog 15 20
 mploadvar $n necroowner
-if ishere($<$n necroowner>)
+if ishere($<$n necroowner>) and hitprcnt($<$n necroowner> < 100)
 mpcallfunc calcundeadfuck $<$n necroowner>
 endif
 ~
 
 function_prog calcundeadfuck
-if !hitprcnt($g < 100)
-switch $%RANDNUM(10)%
-case 1
-mpecho ^b$n^b stays idle, clung on $g until healing is required.^N
-endswitch
-return
-endif
 mploadvar $g grointext
 mpsetvar $n zombielevel $%GSTAT($n LEVEL)%
 MPSETVAR $n fuckerheal $%MATH(15?40 + $<$n zombielevel>)%

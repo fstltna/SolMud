@@ -19,10 +19,10 @@ if var($n visageactive != 1)
             mpcastext prayer_harm '$%ROOMMOB($0)%' '$%ROOMMOB($0)%'
         endif
     next
-else
-    mpechoat $n You need to wait for your visage to recharge.
     mpalarm 30 mpsetvar $n visageactive 0
     mpalarm 30 mpecho ^b$n's visage restores it's unholy chill.^N
+else
+    mpechoat $n You need to wait for your visage to recharge.
 endif
 return cancel
 ~

@@ -96,7 +96,7 @@
             <POWER>CLAN_TITLES</POWER>
             <POWER>JOURNAL</POWER>
         </POSITION>
-        <POSITION ID="APPLICANT" ROLEID=0 RANK=6 NAME="APPLICANT" PLURAL="APPLICANTS" MAX=999999 INNERMASK="" PUBLIC="false">
+        <POSITION ID="APPLICANT" ROLEID=0 RANK=6 NAME="APPLICANT" PLURAL="APPLICANTS" MAX=0% INNERMASK="" PUBLIC="false">
         </POSITION>
     </POSITIONS>
     <VOTING />
@@ -268,12 +268,12 @@
         </POSITION>
     </POSITIONS>
     <VOTING MAXDAYS=24 QUORUMPCT=100>
-        <POWER>TAX</POWER>
-        <POWER>DECLARE</POWER>
-        <POWER>SET_HOME</POWER>
         <POWER>SET_DONATE</POWER>
-        <POWER>ASSIGN</POWER>
         <POWER>PREMISE</POWER>
+        <POWER>ASSIGN</POWER>
+        <POWER>TAX</POWER>
+        <POWER>SET_HOME</POWER>
+        <POWER>DECLARE</POWER>
     </VOTING>
     <TITLES>
         <TITLE>*, @x2 of @x1</TITLE>
@@ -426,15 +426,15 @@
         </POSITION>
     </POSITIONS>
     <VOTING MAXDAYS=48 QUORUMPCT=66>
-        <POWER>REJECT</POWER>
-        <POWER>TAX</POWER>
-        <POWER>DECLARE</POWER>
-        <POWER>SET_HOME</POWER>
-        <POWER>SET_DONATE</POWER>
-        <POWER>ASSIGN</POWER>
-        <POWER>EXILE</POWER>
-        <POWER>PREMISE</POWER>
         <POWER>ACCEPT</POWER>
+        <POWER>SET_DONATE</POWER>
+        <POWER>PREMISE</POWER>
+        <POWER>ASSIGN</POWER>
+        <POWER>REJECT</POWER>
+        <POWER>EXILE</POWER>
+        <POWER>TAX</POWER>
+        <POWER>SET_HOME</POWER>
+        <POWER>DECLARE</POWER>
     </VOTING>
     <TITLES>
         <TITLE>*, @x2 of @x1</TITLE>
@@ -594,15 +594,15 @@
         </POSITION>
     </POSITIONS>
     <VOTING MAXDAYS=100 QUORUMPCT=33>
-        <POWER>REJECT</POWER>
-        <POWER>TAX</POWER>
-        <POWER>DECLARE</POWER>
-        <POWER>SET_HOME</POWER>
-        <POWER>SET_DONATE</POWER>
-        <POWER>ASSIGN</POWER>
-        <POWER>EXILE</POWER>
-        <POWER>PREMISE</POWER>
         <POWER>ACCEPT</POWER>
+        <POWER>SET_DONATE</POWER>
+        <POWER>PREMISE</POWER>
+        <POWER>ASSIGN</POWER>
+        <POWER>REJECT</POWER>
+        <POWER>EXILE</POWER>
+        <POWER>TAX</POWER>
+        <POWER>SET_HOME</POWER>
+        <POWER>DECLARE</POWER>
     </VOTING>
     <TITLES>
         <TITLE>*, @x2 of @x1</TITLE>
@@ -836,6 +836,25 @@
     <SHORTDESC>patron/matron rules a private group only family can join</SHORTDESC>
     <LONGDESC>The Family is a clan that only family can join, and is ruled by either a Matron, a Patron, or both.  The traditional powers of treasurer and enchanter can be held by any of the adult members of the family, which includes Misters and Mistresses.  All other minor powers are held equally by all members, including the cousins, the children, and even the black sheep of the family.</LONGDESC>
     <POSITIONS>
+        <POSITION ID="NEUTER" ROLEID=7 RANK=1 NAME="NEUTER" PLURAL="NEUTERS" MAX=999999 INNERMASK="-FEMALE -MALE" PUBLIC="true">
+            <POWER>ACCEPT</POWER>
+            <POWER>ASSIGN</POWER>
+            <POWER>WITHDRAW</POWER>
+            <POWER>DEPOSIT</POWER>
+            <POWER>ORDER_UNDERLINGS</POWER>
+            <POWER>ORDER_CONQUERED</POWER>
+            <POWER>DEPOSIT_LIST</POWER>
+            <POWER>TAX</POWER>
+            <POWER>ENCHANT</POWER>
+            <POWER>CHANNEL</POWER>
+            <POWER>MORGUE</POWER>
+            <POWER>LIST_MEMBERS</POWER>
+            <POWER>HOME_PRIVS</POWER>
+            <POWER>CLAN_BENEFITS</POWER>
+            <POWER>CLAN_TITLES</POWER>
+            <POWER>JOURNAL</POWER>
+            <POWER>CREATE_LAW</POWER>
+        </POSITION>
         <POSITION ID="PATRON" ROLEID=6 RANK=0 NAME="PATRON" PLURAL="PATRONS" MAX=1 INNERMASK="-FEMALE -NEUTER" PUBLIC="true">
             <POWER>ACCEPT</POWER>
             <POWER>ASSIGN</POWER>
@@ -931,25 +950,6 @@
             <POWER>CLAN_TITLES</POWER>
             <POWER>JOURNAL</POWER>
             <POWER>CREATE_LAW</POWER>
-        </POSITION>
-        <POSITION ID="NEUTER" ROLEID=7 RANK=1 NAME="NEUTER" PLURAL="NEUTERS" MAX=999999 INNERMASK="-FEMALE -MALE" PUBLIC="true">
-            <POWER>ACCEPT</POWER>
-            <POWER>ASSIGN</POWER>
-            <POWER>WITHDRAW</POWER>
-            <POWER>DEPOSIT</POWER>
-            <POWER>ORDER_UNDERLINGS</POWER>
-            <POWER>ORDER_CONQUERED</POWER>
-            <POWER>CREATE_LAW</POWER>
-            <POWER>DEPOSIT_LIST</POWER>
-            <POWER>TAX</POWER>
-            <POWER>ENCHANT</POWER>
-            <POWER>CHANNEL</POWER>
-            <POWER>MORGUE</POWER>
-            <POWER>LIST_MEMBERS</POWER>
-            <POWER>HOME_PRIVS</POWER>
-            <POWER>CLAN_BENEFITS</POWER>
-            <POWER>CLAN_TITLES</POWER>
-            <POWER>JOURNAL</POWER>
         </POSITION>
         <POSITION ID="COUSIN" ROLEID=2 RANK=2 NAME="COUSIN" PLURAL="COUSINS" MAX=999999 INNERMASK="" PUBLIC="true">
             <POWER>ACCEPT</POWER>
@@ -1150,7 +1150,9 @@
 
 
 
-    A simple, permanent membership clan that decides most things with votes. Use for system-based clans, and grant a class on entry.
+
+
+    A simple, permanent membership clan that decides most things with votes. Use for system-based clans, and grant a class on entry.
 
 
 
@@ -1161,7 +1163,9 @@
 
 
 
-    Players must be an Apprentice to join a profession, and once in a profession, players can not gain experience outside of one.
+
+
+    Players must be an Apprentice to join a profession, and once in a profession, players can not gain experience outside of one.
 
 
 
@@ -1172,7 +1176,9 @@
 
 
 
-    When the Archon creates clans from this government, they should designate the clans auto-class, and make sure players only
+
+
+    When the Archon creates clans from this government, they should designate the clans auto-class, and make sure players only
 
 
 
@@ -1183,7 +1189,9 @@
 
 
 
-    qualify for Apprentice when creating characters.
+
+
+    qualify for Apprentice when creating characters.
 
 
 
@@ -1194,7 +1202,9 @@
 
 
 
-    </LONGDESC>
+
+
+    </LONGDESC>
     <POSITIONS>
         <POSITION ID="OFFICER" ROLEID=2 RANK=0 NAME="OFFICER" PLURAL="OFFICERS" MAX=2147483647 INNERMASK="" PUBLIC="true">
             <POWER>ACCEPT</POWER>
@@ -1237,16 +1247,16 @@
         </POSITION>
     </POSITIONS>
     <VOTING MAXDAYS=10 QUORUMPCT=66>
-        <POWER>REJECT</POWER>
+        <POWER>SET_DONATE</POWER>
+        <POWER>PREMISE</POWER>
         <POWER>MORGUE</POWER>
+        <POWER>ASSIGN</POWER>
+        <POWER>REJECT</POWER>
+        <POWER>EXILE</POWER>
         <POWER>WITHDRAW</POWER>
         <POWER>TAX</POWER>
-        <POWER>DECLARE</POWER>
         <POWER>SET_HOME</POWER>
-        <POWER>SET_DONATE</POWER>
-        <POWER>ASSIGN</POWER>
-        <POWER>EXILE</POWER>
-        <POWER>PREMISE</POWER>
+        <POWER>DECLARE</POWER>
     </VOTING>
     <TITLES>
         <TITLE>*, @x2 of @x1</TITLE>
@@ -1700,7 +1710,11 @@
     <SHORTDESC>A corporate entity led by the CEO.</SHORTDESC>
     <LONGDESC></LONGDESC>
     <POSITIONS>
-        <POSITION ID="CEO" ROLEID=6 RANK=0 NAME="CEO" PLURAL="CEOs" MAX=1 INNERMASK="" PUBLIC="true">
+        <POSITION ID="INTERN" ROLEID=7 RANK=6 NAME="Intern" PLURAL="Interns" MAX=0% INNERMASK="" PUBLIC="true">
+            <POWER>DEPOSIT</POWER>
+            <POWER>CLAN_BENEFITS</POWER>
+        </POSITION>
+        <POSITION ID="CEO" ROLEID=6 RANK=0 NAME="CEO" PLURAL="CEOs" MAX=0% INNERMASK="" PUBLIC="true">
             <POWER>ACCEPT</POWER>
             <POWER>ASSIGN</POWER>
             <POWER>EXILE</POWER>
@@ -1760,7 +1774,7 @@
             <POWER>CREATE_LAW</POWER>
             <POWER>CREATE_MOTD</POWER>
         </POSITION>
-        <POSITION ID="SENIOR" ROLEID=4 RANK=2 NAME="Senior Employee" PLURAL="Senior Employees" MAX=15 INNERMASK="" PUBLIC="true">
+        <POSITION ID="SENIOR" ROLEID=4 RANK=2 NAME="Senior Employee" PLURAL="Senior Employees" MAX=0% INNERMASK="" PUBLIC="true">
             <POWER>SET_HOME</POWER>
             <POWER>DEPOSIT</POWER>
             <POWER>ORDER_UNDERLINGS</POWER>
@@ -1807,7 +1821,7 @@
         <POSITION ID="SERVICE" ROLEID=1 RANK=5 NAME="Service Employee" PLURAL="Service Employees" MAX=2147483647 INNERMASK="" PUBLIC="false">
             <POWER>MORGUE</POWER>
         </POSITION>
-        <POSITION ID="APPLICANT" ROLEID=0 RANK=6 NAME="Applicant" PLURAL="Applicants" MAX=2147483647 INNERMASK="" PUBLIC="false">
+        <POSITION ID="APPLICANT" ROLEID=0 RANK=7 NAME="Applicant" PLURAL="Applicants" MAX=0% INNERMASK="" PUBLIC="false">
             <POWER>DEPOSIT</POWER>
         </POSITION>
     </POSITIONS>
@@ -1995,7 +2009,7 @@
         <ABILITY ID="Spell_CEqAcid" PROFF=0 LEVEL=5 QUALIFYONLY=true PARM="" />
         <ABILITY ID="Spell_ImprovedClanWard" PROFF=0 LEVEL=20 QUALIFYONLY=true PARM="" />
         <ABILITY ID="Spell_CEqFire" PROFF=0 LEVEL=5 QUALIFYONLY=true PARM="" />
-        <ABILITY ID="Archon_Accuse" PROFF=100 LEVEL=5 QUALIFYONLY=false PARM="" ROLES="MAGISTRATE JUDGE, JUDGE" />
+        <ABILITY ID="Archon_Accuse" PROFF=100 LEVEL=1 QUALIFYONLY=false PARM="" ROLES="MAGISTRATE JUDGE, JUDGE" />
         <ABILITY ID="Spell_CEqGas" PROFF=0 LEVEL=4 QUALIFYONLY=true PARM="" />
         <ABILITY ID="Skill_CollectBounty" PROFF=100 LEVEL=1 QUALIFYONLY=false PARM="" />
         <ABILITY ID="Spell_CEqWater" PROFF=0 LEVEL=4 QUALIFYONLY=true PARM="" />

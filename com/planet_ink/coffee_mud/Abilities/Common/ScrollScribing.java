@@ -391,7 +391,7 @@ public class ScrollScribing extends SpellCraftingSkill implements ItemCraftor
 			}
 			if(((Scroll)buildingI).getSpells().size()>0)
 			{
-				int level=25;
+				int level=100;
 				for(final Ability A : ((Scroll)buildingI).getSpells())
 				{
 					int lvl=CMLib.ableMapper().qualifyingLevel(mob,A);

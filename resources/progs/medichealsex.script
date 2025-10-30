@@ -34,9 +34,9 @@ mpcallfunc ending
 else
 mpsetvar $n fuckrounds 0
 mpaffect bandaging $t
-MPSETVAR $n medicsexhealLevel $%Level($n)%
+MPSETVAR $n medicsexhealLevel $%MATH(10?50 + $%Level($n)%)%
 mpsetvar $n medicsexheallevelplus $%MATH(50?100 + $<$n medicsexheallevel>)%
-mpsetvar $n medicsexheallevelhalf $%MATH(20?40 + $<$n medicsexheallevel>/4)%
+mpsetvar $n medicsexheallevelhalf $%MATH($<$n medicsexheallevel>/2)%
 if isable($n skill_sexhealing)
 mpsetvar $n fuckrounds +1
 mpecho $<$n fuckrounds>/10 to orgasm.
@@ -150,7 +150,7 @@ function_prog medicsexhealer
 MPSETVAR $t MaxHits $%GSTAT($t BASEHITS)%
 IF GSTAT($t HITS < $<$t MaxHits>)
     MPSETVAR $t CurHits $%GSTAT($t HITS)%
-    MPSETVAR $t HitsCalc $%MATH($<$t CurHits> + $<$n medicsexheallevelplus>)%
+    MPSETVAR $t HitsCalc $%MATH($<$t CurHits> + $<$n medicsexheallevelplus> < $<$t MaxHits>)%
     IF GSTAT($t BASEHITS < $<$t HitsCalc>)
         MPSETVAR $t HitsCalc $<$t MaxHits>
     ENDIF
@@ -184,7 +184,7 @@ function_prog nonmedicsexhealer
 MPSETVAR $t MaxHits $%GSTAT($t BASEHITS)%
 IF GSTAT($t HITS < $<$t MaxHits>)
     MPSETVAR $t CurHits $%GSTAT($t Hits)%
-    MPSETVAR $t HitsCalc $%MATH($<$t CurHits> + $<$n medicsexheallevel>)%
+    MPSETVAR $t HitsCalc $%MATH($<$t CurHits> + $<$n medicsexheallevel> < $<$t MaxHits>)%
     IF GSTAT($t BASEHITS < $<$t HitsCalc>)
         MPSETVAR $t HitsCalc $<$t MaxHits>
     ENDIF

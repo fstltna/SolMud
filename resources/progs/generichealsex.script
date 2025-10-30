@@ -1,4 +1,14 @@
-casting_prog p skill_healsex
+imask_prog p skill_healsex
+mpnotrigger imask_prog 1000
+if var($n havingsex == 1)
+return
+endif
+mpsetvar $n havingsex 1
+mpsetvar $n fuckrounds 0
+mpcallfunc midroundcheck
+~
+
+function_prog midroundcheck
 if ispc($n)
 	if hastattoo($n underage)
 		mpecho $n is below 18 years old and could not participate in this.
@@ -23,44 +33,21 @@ return
 endif
 mpsetvar $n soundlist '*PLAP* *PLOP* *SLAP* *SLICK* *GRIND*'
 if sex($n == M) or sex($n == O) or sex($n == U)
-	mpsetvar $n genitallist 'cock penis dong schlong rod'
+	mpsetvar $n genitallist 'cock penis dong schlong rod meat bitchbreaker cuntstretcher'
 else
 	if sex($n == F) or sex($n == A) or sex($n == H)
-		mpsetvar $n genitallist 'pussy cunt vagina kitty box'
+		mpsetvar $n genitallist 'pussy cunt vagina kitty box, slit, flower, breeding hole'
 	endif
 endif
-mpsetvar $n actionwordlist 'fucks pushes grinds thrusts slams'
+mpsetvar $n actionwordlist 'fucks pushes grinds thrusts slams plows ploughs jams hammers jackhammers'
 mpsetvar $n severitywordlist 'thoroughly roughly deeply quickly hastily'
-if var($n havingsex != 1)
-mpsetvar $n havingsex 1
-mpalarm 11 mpsetvar $n havingsex 0
 if islike($t -names "+$n")
 mpechoat $n You realize you can't actually fuck yourself.
 mpcallfunc ending
-else
-mpsetvar $n fuckrounds 0
-MPSETVAR $n playerLevel $%Level($n)%
-MPSETVAR $n sexheallevel $%MATH(5?25 + (25?$<$n playerlevel>) < 1)%
-mpsetvar $n sexheallevelplus $%MATH(5?50 + $<$n sexheallevel>)%
-mpsetvar $n sexheallevelhalf $%MATH(1?20 + $<$n sexheallevel>/4)%
-if isable($n Skill_Sexhealing)
-mpsetvar $n fuckrounds +1
-mpecho $<$n fuckrounds>/10 to orgasm.
-mpalarm 1 mpcallfunc sexhealer
-else
-mpsetvar $n fuckrounds +1
-mpecho $<$n fuckrounds>/10 to orgasm.
-mpalarm 1 mpcallfunc nonsexhealer
 endif
-else
-endif
-else
+if var($n havingsex != 1)
 return
 endif
-return
-~
-
-function_prog midroundcheck
 if ishere($t)
 if var($n fuckrounds < 10)
 mploadvar $n dirtystate
@@ -69,12 +56,12 @@ mpsavevar $n dirtystate
 mploadvar $t dirtystate
 mpsetvar $t dirtystate ++
 mpsavevar $t dirtystate
-mpsetvar $n fuckrounds +1
+mpsetvar $n fuckrounds ++
 mpecho $<$n fuckrounds>/10 to orgasm.
 MPSETVAR $n playerLevel $%Level($n)%
-MPSETVAR $n sexheallevel $%MATH(5?25 + (25?$<$n playerlevel>) < 1)%
+MPSETVAR $n sexheallevel $%MATH(5?25 + $<$n playerlevel>)%
 mpsetvar $n sexheallevelplus $%MATH(5?50 + $<$n sexheallevel>)%
-mpsetvar $n sexheallevelhalf $%MATH(1?20 + $<$n sexheallevel>/4)%
+mpsetvar $n sexheallevelhalf $%MATH($<$n sexheallevel> * 0.5)%
 if isable($n Skill_Sexhealing)
 mpalarm 1 mpcallfunc sexhealer
 else
@@ -98,26 +85,6 @@ if sex($n == M) or sex($n == O) or sex($n == U)
  mpecho $t slips $n's cock out after receiving a good load, holding a bottle to $M pussy and letting the cum fill it as it gushes out.
   mpoloadroom fromfile milkables.cmare A bottle of cum
  endif
- if affected($t sexual_cumbloat3)
- mpecho $t's belly can't get inflated any more but it is filled with fresh cum over again...
- mpunaffect $t sexual_cumbloat3
- mpaffect sexual_cumbloat3 $t
- else
- if affected($t sexual_cumbloat2)
- mpecho $t's belly inflate even more with the large amount of cum splurted into it!
- mpunaffect $t sexual_cumbloat2
- mpaffect sexual_cumbloat3 $t
- else
- if affected($t sexual_cumbloat1)
- mpecho $t's belly inflate more with the large amount of cum splurted into it!
- mpunaffect $t sexual_cumbloat1
- mpaffect sexual_cumbloat2 $t
- else
- mpecho $t's belly inflate with the large amount of cum splurted into it!
- mpaffect sexual_cumbloat1 $t
- endif
- endif
- endif
  endif
  else
  if sex($n == F) or sex($n == A) or sex($n == H)
@@ -130,26 +97,6 @@ if sex($n == M) or sex($n == O) or sex($n == U)
  mpecho $n slips $t's cock out after receiving a good load, holding a bottle to $m pussy and letting the cum fill it as it gushes out.
   mpoloadroom fromfile milkables.cmare A bottle of cum
  endif
- if affected($n sexual_cumbloat3)
- mpecho $n's belly can't get inflated any more but it is filled with fresh cum over again...
- mpunaffect $n sexual_cumbloat3
- mpaffect sexual_cumbloat3 $n
- else
- if affected($n sexual_cumbloat2)
- mpecho $n's belly inflate even more with the large amount of cum splurted into it!
- mpunaffect $n sexual_cumbloat2
- mpaffect sexual_cumbloat3 $n
- else
- if affected($n sexual_cumbloat1)
- mpecho $n's belly inflate more with the large amount of cum splurted into it!
- mpunaffect $n sexual_cumbloat1
- mpaffect sexual_cumbloat2 $n
- else
- mpecho $n's belly inflate with the large amount of cum splurted into it!
- mpaffect Sexual_Cumbloat1 $n
- endif
- endif
- endif
  endif
  endif
  endif
@@ -161,19 +108,20 @@ mpcallfunc ending
 endif
 ~
 
+
 function_prog sexhealer
 if isable($n 'Skill_undeadhealsex') or isable($t 'Skill_undeadhealsex')
 if racecat($t == UNDEAD) or racecat($n == UNDEAD)
 mpsetvar $n necrodamage $%MATH(1?20 + $<$n sexheallevelhalf>)%
-mpecho ^b$n's unholy $<$n actionwordlist>.$%RAND0NUM(5)% against $t mends ^c($<$n necrodamage>)^b their form.^N
+mpecho ^b$n's unholy $<$n actionwordlist>.$%RAND0NUM(10)% against $t mends ^c($<$n necrodamage>)^b their form.^N
 mpsetvar sexheallevel $%MATH($<$n necrodamage> + $<$n sexheallevel>)%
 endif
 endif
 MPSETVAR $t MaxHits $%GSTAT($t BASEHITS)%
 IF GSTAT($t HITS < $<$t MaxHits>)
     MPSETVAR $t CurHits $%GSTAT($t HITS)%
-    MPSETVAR $t HitsCalc $%MATH($<$t CurHits> + $<$n sexheallevelplus>)%
-    IF GSTAT($t BASEHITS < $<$t HitsCalc>)
+    MPSETVAR $t HitsCalc $%MATH($<$t CurHits> + $<$n sexheallevelplus> < $<$t MaxHits>)%
+    IF GSTAT($t HITS < $<$t HitsCalc>)
         MPSETVAR $t HitsCalc $<$t MaxHits>
     ENDIF
     MPGSET $t HITS $%VAR($t HitsCalc)%
@@ -197,7 +145,7 @@ IF GSTAT($n MOVE <= 50)
             MPCALLFUNC ending
         ENDIF
 ENDIF
-mpecho ^p$<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)% $n $<$n severitywordlist>.$%RAND0NUM(5)% $<$n actionwordlist>.$%RAND0NUM(5)% $s $<$n genitallist>.$%RAND0NUM(5)% against $t, healing $S for ^g($<$n sexheallevelplus>)^p during the sexual healing! $<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)%^N
+mpecho ^p$<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)% $n $<$n severitywordlist>.$%RAND0NUM(9)% $<$n actionwordlist>.$%RAND0NUM(10)% $s $<$n genitallist>.$%RAND0NUM(9)% against $t, healing $S for ^g($<$n sexheallevelplus>)^p during the sexual healing! $<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)%^N
 mpcallfunc midroundcheck
 ~
 
@@ -205,14 +153,14 @@ function_prog nonsexhealer
 if isable($n 'Skill_undeadhealsex') or isable($t 'Skill_undeadhealsex')
 if racecat($t == UNDEAD) or racecat($n == UNDEAD)
 mpsetvar $n necrodamage $%MATH(1?20 + $<$n sexheallevelhalf>)%
-mpecho ^b$n's unholy $<$n actionwordlist>.$%RAND0NUM(5)% against $t mends ^c($<$n necrodamage>)^b their form.^N
+mpecho ^b$n's unholy $<$n actionwordlist>.$%RAND0NUM(10)% against $t mends ^c($<$n necrodamage>)^b their form.^N
 mpsetvar sexheallevel $%MATH($<$n necrodamage> + $<$n sexheallevel>)%
 endif
 endif
 MPSETVAR $t MaxHits $%GSTAT($t BASEHITS)%
 IF GSTAT($t HITS < $<$t MaxHits>)
     MPSETVAR $t CurHits $%GSTAT($t Hits)%
-    MPSETVAR $t HitsCalc $%MATH($<$t CurHits> + $<$n sexheallevel>)%
+    MPSETVAR $t HitsCalc $%MATH($<$t CurHits> + $<$n sexheallevel> < $<$t MaxHits>)%
     IF GSTAT($t BASEHITS < $<$t HitsCalc>)
         MPSETVAR $t HitsCalc $<$t MaxHits>
     ENDIF
@@ -236,15 +184,17 @@ IF GSTAT($n MOVE <= 50)
             MPCALLFUNC ending
         ENDIF
 ENDIF
-mpecho ^p$<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)% $n $<$n severitywordlist>.$%RAND0NUM(5)% $<$n actionwordlist>.$%RAND0NUM(5)% $s $<$n genitallist>.$%RAND0NUM(5)% against $t, healing $S for ^g($<$n sexheallevel>)^p during the sexual healing! $<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)%^N
+mpecho ^p$<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)% $n $<$n severitywordlist>.$%RAND0NUM(9)% $<$n actionwordlist>.$%RAND0NUM(10)% $s $<$n genitallist>.$%RAND0NUM(9)% against $t, healing $S for ^g($<$n sexheallevel>)^p during the sexual healing! $<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)% $<$n soundlist>.$%RAND0NUM(5)%^N
 mpcallfunc midroundcheck
 ~
 
 function_prog ending
 mpecho $n steps away.
+mpunaffect $i Skill_Healsex
 mpunaffect $t Skill_Healsex
 mpunaffect $n Skill_Healsex
 mpsetvar $n havingsex 0
+return
 ~
 
 exit_prog 100

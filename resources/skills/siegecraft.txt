@@ -52,3 +52,5 @@ large % flaming pitch shot bundle	84	100	(onground:consumed:400:rock:)	1000	GenA
 huge % glaive-blade bundle	87	150	(onground:consumed:300:metal:)	300	GenAmmunition	glaive-blades	100					
 huge % disease shot bundle	88	225	(onground:consumed:600:rock:)	3000	GenAmmunition	trebuchet-shots	100				*PROP_FIGHTSPELLCAST;ONLYMOBS;75%;Disease_Plague	
 % polybolos	90	200	680	6500	GenSiegeWeapon	ballista-bolts	10	80	5			
+% cannonball bundle	95	20	(onground:consumed:25:rock:)	150	GenAmmunition	cannonballs	5					
+% cannon	100	250	(onground:consumed:400:METAL:)	8000	GenSiegeWeapon	cannonballs	1	150	5			

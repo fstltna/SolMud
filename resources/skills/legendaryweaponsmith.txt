@@ -132,4 +132,7 @@ legendary three-headed % flail	90	130	18	20815	GenWeapon	FLAILED	BASHING	147	-27
 legendary % naginata	90	230	35	18765	GenWeapon	POLEARM	SLASHING	139	-30	2	1		
 legendary % twohanded sword	78	70	20	11236	GenWeapon	SWORD	SLASHING	106	0	2	0		
 legendary % hurlbat	90	140	8	12772	GenSpear	THROWN	SLASHING	131	-80	1	1		
-% high-frequency dagger	100	250	10	15000	GenWeapon	DAGGER	PIERCING	18	120	1	1	URANIUM	
+% high-frequency plasma dagger	100	250	20	15000	GenWeapon	DAGGER	PIERCING	15	110	1	1	URANIUM	*Prop_AddDamage;10% BURNING MELTING
+% high-frequency plasma sword	100	300	35	20000	GenWeapon	EDGED	SLASHING	50	25	2	0	URANIUM	*Prop_AddDamage;10% BURNING MELTING
+a hydraulic gauntlet	95	200	20	13000	GenArmor							TITANIUM	Prop_WearAdjuster;str+4 attacks-30 damage+63;Prop_WearZapper;-anyclass +monk message="You lack the unarmed proficiency to be able to utilize this. Maybe a monk could."
+% high-frequency plasma spear	95	300	45	14000	GenSpear	POLEARM	PIERCING	120	-80	1	2		*Prop_AddDamage;10% BURNING MELTING

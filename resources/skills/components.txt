@@ -38,7 +38,6 @@ THIEF_TASSEOGRAPHY=(have:consumed:1:coffee:) "some coffee"
 THIEF_FORTUNETELLING=(have:kept:1:crystal ball:) "a crystal ball
 THIEF_ROGUEPUSSY=(inventory:consumed:1:METAL:)&&(inventory:consumed:1:^#444A V^#333IA^#444L O^#333F ^#432SL^#231IM^#233E ^#322OI^#211L M^#322IX^#231TU^#322RE ^#111AND A ^#210THIN FI^#211LM OF ^#210ME^#211DICIN^#210AL HER^#211BS^N:)&&(inventory:kept:1:^#111A ^#320STER^#234I^#320LE CASE^#111 OF ODD TOOLS^N:)
 THIEF_POISONPUSSY=(inventory:consumed:1:METAL:)&&(inventory:kept:1:^#444A V^#333IA^#444L O^#333F ^#432SL^#231IM^#233E ^#322OI^#211L M^#322IX^#231TU^#322RE ^#111AND A ^#210THIN FI^#211LM OF ^#210ME^#211DICIN^#210AL HER^#211BS:)&&(inventory:consumed:1:^#111a spherical vial of strange liquid^N:)
-SPELL_SILHOUETTEFULLNELSON=(onground:consumed:5:GOLD:)&&(onground:consumed:1:PUSSYJUICE:)&&(onground:consumed:1:MEAT:)&&(onground:consumed:5:BONE:)&&(onground:kept:1:DIAMOND:)&&(trigger:SITTING &EMOTE "cuts their hand and drips the blood onto the diamond." &SAY "I call forth a darkened soul from the depths of hell. Do as I wish and you shall be set free to the world.":)
 Prayer_Resurrect=(onground:kept:1:DIAMOND:)&&(trigger:STANDING &SAY "I call you back to your body from the void, thou toll is paid!":)
 PRAYER_TRUERESURRECTION=(onground:kept:1:DIAMOND:)&&(onground:consumed:5:EMERALD:)&&(trigger:INROOM holy &INCLUDE 2 0 &ALLSAY "We call you back from the void, thou toll is paid!":)
 SONG_REBIRTH=(inventory:consumed:1:DIAMOND:)

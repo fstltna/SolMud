@@ -1,9 +1,9 @@
 cnclmsg_prog huh p browse
-mpechoat $n ^cPossible location keys:%0DArkhenneld%0DPhantom%0DGoblin%0DPlantperson%0DGlimmerfall%0DWayshore%0DFrozen%0DZhaladusk%0D%0DUse travel <keyword> to travel.%0DGive ^g1000^c of the local currency to get an one-use gem to use for this service.^N
+mpechoat $n ^cPossible location keys:%0DArkhenneld%0DPhantom%0DGoblin%0DPlantperson%0DGlimmerfall%0DWayshore%0DFrozen%0DZhaladusk%0D%0DUse travel <keyword> to travel.%0DGive ^g500^c of the local currency to get an one-use gem to use for this service.^N
 return cancel
 ~
 
-bribe_prog 1000
+bribe_prog 500
 mpoload fromfile resources/itemspawnlists/psiongem.cmare any
 mpforce $i drop gem
 mpforce $n get gem

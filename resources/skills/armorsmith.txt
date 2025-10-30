@@ -20,10 +20,12 @@
 % chainmail mantle	4	22	5	90	GenArmor	NECK	0	3	0	
 % targe shield	4	28	8	120	GenShield	HANDS	0	6	0	
 % ringmail vest	4	60	30	240	GenArmor	S1:TORSO	0	12	0	
+% ringmail bra	4	60	30	240	GenArmor	S1:TORSO	0	12	0	
 % chainmail cuffs	4	24	3	54	GenArmor	LEFT WRIST||RIGHT WRIST	0	3	0	
 % chainmail sleeves	5	40	15	270	GenArmor	ARMS	0	6	0	
 % skullcap	5	36	10	125	GenArmor	2:HEAD	0	5	0	
 % ringmail skirt	5	46	15	120	GenArmor	S2:LEGS&&GROIN	0	8	0	
+% ringmail panties	5	46	15	120	GenArmor	S2:LEGS&&GROIN	0	8	0	
 % scalemail collar	5	24	5	63	GenArmor	S1:NECK	0	3	0	
 % chainmail shirt	5	86	30	540	GenArmor	TORSO	0	18	0	
 % ringmail belt	5	24	5	40	GenArmor	1:WAIST	100	2	32	
@@ -45,6 +47,7 @@ horned % helm	8	44	10	180	GenArmor	2:HEAD	0	6	0
 % banded leggings	8	76	15	368	GenArmor	2:LEGS&&GROIN	0	14	0	
 % chainmail collar	8	30	5	90	GenArmor	S0:NECK	0	3	0	
 % chainmail vest	8	92	30	540	GenArmor	S0:TORSO	0	18	0	
+% chainmail bra	8	92	30	540	GenArmor	S0:TORSO	0	18	0	
 % banded sleeves	9	50	15	368	GenArmor	2:ARMS	0	7	0	
 % scalemail coat	9	102	45	563	GenArmor	1:BODY	0	20	0	
 % chainmail socks	9	34	10	180	GenArmor	FEET	0	3	0	
@@ -54,6 +57,7 @@ horned % helm	8	44	10	180	GenArmor	2:HEAD	0	6	0
 % banded rearbraces	10	54	15	368	GenArmor	3:ARMS	0	7	0	
 % scalemail hauberk	10	102	45	563	GenArmor	2:TORSO&&ARMS	0	20	0	
 % chainmail skirt	10	70	15	270	GenArmor	S1:LEGS&&GROIN	0	12	0	
+% chainmail panties	10	70	15	270	GenArmor	S1:LEGS&&GROIN	0	12	0	
 % banded collar	10	38	5	123	GenArmor	S2:NECK	0	4	0	
 small % shield	10	54	15	120	GenShield	HELD	0	12	0	
 % scalemail jerkin	10	82	30	375	GenArmor	2:TORSO	0	15	0	
@@ -163,12 +167,14 @@ large % shield	23	108	15	480	GenShield	HELD	0	24	0
 % fullplate mitts	27	76	5	250	GenArmor	3:HANDS	0	5	0	
 % heaume	27	96	10	500	GenArmor	4:HEAD	0	10	0	
 % fullplate jacket	27	216	45	2250	GenArmor	2:TORSO&&ARMS	0	40	0	
-% fullplate vest	27	176	30	1500	GenArmor	S2:TORSO	0	30	0	
+% fullplate vest	27	176	30	1500	GenArmor	S2:TORSO	0	30	0
+% fullplate bra	27	176	30	1500	GenArmor	S2:TORSO	0	30	0	
 % fullplate pauldrons	28	100	15	750	GenArmor	S4:ARMS	0	10	0	
 % fieldplate Barding	28	202	180	7290	GenArmor	2:BODY	0	36	0	*prop_wearoverride;-racecat +equine
 % fullplate boots	28	78	10	500	GenArmor	2:FEET	25	5	8	
 % fullplate gauntlets	28	80	5	250	GenArmor	2:HANDS	0	6	0	
 % fullplate skirt	28	138	15	750	GenArmor	S3:LEGS&&GROIN	0	20	0	
+% fullplate panties	28	138	15	750	GenArmor	S3:LEGS&&GROIN	0	20	0	
 % fullplate vambrace	28	76	3	150	GenArmor	2:LEFT WRIST||RIGHT WRIST	25	5	8	
 % fullplate coat	29	222	45	2250	GenArmor	2:BODY	0	40	0	
 % fullplate hauberk	29	222	45	2250	GenArmor	3:TORSO&&ARMS	0	40	0	

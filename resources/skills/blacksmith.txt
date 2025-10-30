@@ -159,3 +159,4 @@ legendary % lumberjack saw	91	50	7	325	GenItem			*Prop_ImproveGather;amt=5 skill
 % expert drilling tap	25	20	1	5	GenItem			*Prop_ImproveGather;amt=3 skills=Drilling,MasterDrilling
 % expert skinners knife	25	20	1	5	GenItem			*Prop_ImproveGather;amt=3 skills=Butchering,MasterButchering
 % expert fishing rod	25	20	1	5	GenItem			*Prop_ImproveGather;amt=3 skills=Fishing,MasterFishing
+% dildo	5	20	3	5	GenChair	CHAIR	0	

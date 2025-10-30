@@ -28,6 +28,7 @@
 
 4 Searching 
 
+15 Skill_ImprovedRevoke PROF=100 AUTOGAIN REQUIRES=skill_revoke 
 15 Spell_ChangeSexSelf PROF=75 REQUIRES=Spell_ChangeSex 
 
 [ALL]
@@ -58,8 +59,8 @@
 1 Prop_BGTracker PROF=100 AUTOGAIN 
 1 RP_ActingI PROF=100 AUTOGAIN MASK=-EXPERTISES +acting5 
 1 RP_ActingII PROF=100 AUTOGAIN MASK=-EXPERTISES +acting10 
-1 RP_Breedingi PROF=100 AUTOGAIN MASK=-EXPERTISES +breeder5 REQUIRES=matingpress 
-1 RP_Breedingii PROF=100 AUTOGAIN MASK=-EXPERTISES +breeder10 REQUIRES=Skill_ImprovedMatingPress 
+1 RP_Breedingi PROF=100 AUTOGAIN MASK=-expertises +breeding5 REQUIRES=matingpress 
+1 RP_Breedingii PROF=100 AUTOGAIN MASK=-expertises +breeding10 REQUIRES=Skill_ImprovedMatingPress 
 1 RP_EvasiveI PROF=100 AUTOGAIN MASK=-EXPERTISES +evasive5 REQUIRES=Skill_Dodge 
 1 RP_EvasiveII PROF=100 AUTOGAIN MASK=-EXPERTISES +evasive10 REQUIRES=skill_dodge 
 1 RP_ForensicLore PROF=100 AUTOGAIN MASK=-EXPERTISE +Anatomy10 +combatlore3 +legallore2 
@@ -80,6 +81,7 @@
 1 skill_masturbate PROF=100 AUTOGAIN 
 1 Skill_Recall PROF=100 AUTOGAIN 
 1 Skill_Revoke PROF=100 AUTOGAIN 
+1 Skill_SelfAmputate PROF=100 AUTOGAIN MASK=-MOB 
 1 Skill_Sexylook PROF=100 AUTOGAIN 
 1 Unbinding PROF=75 AUTOGAIN 
 1 Undercommon 
@@ -145,11 +147,12 @@
 15 Excavation MASK=+CON 15 REQUIRES=Sculpting 
 15 Irrigation MASK=+CON 15 REQUIRES=Drilling 
 15 Landscaping MASK=+CON 15 REQUIRES=Farming 
+15 Publishing PROF=100 AUTOGAIN 
 15 Skill_HealSex PROF=75 AUTOGAIN MASK=+gender -neuter 
 15 slavemodifying PROF=100 
 
-16 Herding PROF=75 AUTOGAIN 
-16 Mycology PROF=75 AUTOGAIN 
+16 Herding PROF=75 
+16 Mycology PROF=75 
 
 18 FoodPreserving MASK=+INT 12 
 18 Skill_Autoclimb MASK=+STR 12 REQUIRES=Skill_Climb 

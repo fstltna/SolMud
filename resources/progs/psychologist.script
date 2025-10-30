@@ -1,5 +1,5 @@
 greet_prog 100
-mpechoat $n ^cINFO:^N This is a therapy room, you can be cured of depression by talking or fucking here, at a small chance each, sex has a higher chance to fix depression but at a delay.^N
+mpechoat $n ^CINFO:^? This is a therapy room, there is a chance to cure depression by talking and emoting (or using sex socials) here.^N
 ~
 
 execmsg_prog speak all

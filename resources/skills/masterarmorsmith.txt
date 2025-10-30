@@ -79,11 +79,13 @@ Featherweight % Chainmail Coif	43	156	5	845	GenArmor	-1:HEAD	0	13	0
 % Legionary Helmet	45	156	10	845	GenArmor	3:HEAD	0	13	0	
 Featherweight % Chainmail Jacket	44	312	23	3803	GenArmor	-1:TORSO&&ARMS	0	52	0	
 Featherweight % Chainmail Vest	44	260	15	2535	GenArmor	S-1:TORSO	0	39	0	
+Featherweight % Chainmail Bra	44	260	15	2535	GenArmor	S-1:TORSO	0	39	0	
 Steam-Powered % Plate Vest	45	260	30	2535	GenArmor	S2:TORSO	0	39	0	Prop_WearAdjuster;Dam+1 STR+1 DEX-1
 Steam-Powered % Plate Jacket	45	312	45	3803	GenArmor	2:TORSO&&ARMS	0	52	0	Prop_WearAdjuster;Dam+2 STR+2 DEX-1
 Steam-Powered % Plate Boots	46	132	10	845	GenArmor	2:FEET	25	7	8	Prop_WearAdjuster;Dam+1 STR+1 DEX-1
 Steam-Powered % Plate Pauldrons	46	160	15	1268	GenArmor	S4:ARMS	0	13	0	Prop_WearAdjuster;Dam+1 STR+1 DEX-1
 Featherweight % Chainmail Skirt	46	210	8	1268	GenArmor	LEGS&&GROIN	0	26	0	
+Featherweight % Chainmail Panties	46	210	8	1268	GenArmor	LEGS&&GROIN	0	26	0	
 Steam-Powered % Plate Gauntlets	47	134	5	423	GenArmor	2:HANDS	0	7	0	Prop_WearAdjuster;Dam+1 STR+1 DEX-1
 Featherweight % Chainmail Belt	47	134	3	423	GenArmor	-1:WAIST	100	7	32	
 Steam-Powered % Plate Girdle	53	134	5	423	GenArmor	2:WAIST	100	7	32	Prop_WearAdjuster;Dam+1 STR+1 DEX-1

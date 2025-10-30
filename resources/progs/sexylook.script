@@ -27,13 +27,17 @@ if var($t sexylookinited != 1)
   mploadvar $t asssize
   if var($t asssize == '')
     mpsetvar $t asssize $%RANDNUM(5)%
+    if ispc($t)
     mpsavevar $t asssize
+    endif
   endif
   mploadvar $t breastsize
     if sex($t == F) or sex($t == A) or sex($t == H) or sex($t == O) or sex($t == U)
       if var($t breastsize == '')
         mpsetvar $t breastsize $%RANDNUM(5)%
+       if ispc($t)
         mpsavevar $t breastsize
+       endif
       endif
       else
         mpsetvar $t breastsize 1
@@ -42,11 +46,15 @@ if var($t sexylookinited != 1)
       if racecat($t == Undead)
        mpsetvar $t tearstate $%RANDNUM(30)%
        mpsetvar $t dirtystate $%RANDNUM(30)%
+       if ispc($t)
        mpsavevar $t tearstate
        mpsavevar $t dirtystate
+       endif
       endif
   mpsetvar $t sexylookinited 1
+  if ispc($t)
   mpsavevar $t sexylookinited
+  endif
 endif
 # vars to load
 mploadvar $t breastsize
@@ -517,7 +525,7 @@ endif
 
 cnclmsg_prog huh p sexysetup
 if ispc($n)
-	if gstat($n age < 18)
+	if gstat($n AGE < 18)
 		mpechoat $n r%0D[N-UI] Booting up cosmetic adjustment protocols...%0D^rERR: Insufficent age.%0D^N
 		return
 	endif
@@ -590,6 +598,8 @@ if ispc($n)
 	if gstat($n age < 18)
 		return
 	endif
+else
+    return
 endif
 mploadvar $n grointext
 mploadvar $n genitalalerts

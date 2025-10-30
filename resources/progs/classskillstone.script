@@ -11,7 +11,7 @@ if isfight($n)
     return
 endif
     mpecho $n touches $s hand on $t, and the runes glow brightly, $n is paralyzed for a moment as $e is filled with new information at once.
-    mpenable $n '$<$i secrets>.1'
+    mpenable $n '$<$i secrets>.1' 100
     mpecho $n learns $<$i secrets>.1.
 endif
 ~

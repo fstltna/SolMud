@@ -157,6 +157,7 @@ mo	CRINGE	You cringe in terror.
 mo	CRINGE <T-NAME>	You cringe away from <T-HIM-HER>.	<S-NAME> cringes away from <T-NAMESELF> in mortal terror.	<S-NAME> cringes away from you.	I don't see anyone by that name here.. what are you afraid of?			
 ww	CRITICIZE <T-NAME>	You criticize <T-HIM-HER> with all the warmth of a snake.	With a nasty grin, <S-NAME> rips apart <T-NAMESELF>s efforts.	<S-NAME> informs you that your attempts need some MAJOR adjustments.	Where oh where has my victim gone, oh where oh where...			
 ww	CRITICIZE SELF	You criticize yourself profusely.						
+q 	CROSS	You cross your arms.	<S-NAME> crosses <S-HIS-HER> arms.					
 ss	CRY	Waaaaah..	<S-NAME> bursts into tears.			scry.wav		
 ss	CRY <T-NAME>	You cry on <T-HIS-HER> shoulder.	<S-NAME> cries on <T-NAMESELF>'s shoulder.	<S-NAME> cries on your shoulder.	Who's that?	scry.wav		
 ss	CRY SELF	You cry to yourself.	<S-NAME> sobs quietly to <S-HIM-HERSELF>.			scry.wav		
@@ -410,7 +411,6 @@ ss	MOAN SELF	You moan at yourself.
 ss	MOO	You chew your cud and moo plaintively.  Muh-OOOOO!	<S-NAME> turns cowlike eyes on you, chews <S-HIS-HER> cud, and moos plaintively.			moo.wav		
 ss	MOO <T-NAME>	You focus all your bovine Zen on <T-NAMESELF>, and speak your thoughts.  Muh-OOOOO!	Slowly, <S-NAME> looks at <T-NAMESELF>, chews <S-HIS-HER> cud, and muh-OOOOs!	<S-NAME> moos at you.  What could that possibly mean?	You'd better find someone else to moo at.	moo.wav		
 ss	MOO SELF	You settle down into the center of your bovine Zen; the foolish world thinks you're just mooing.	<S-NAME> is mooing at <S-HIM-HERSELF> again...  You look for an exit...			moo.wav		
-oo	MOON	You drop your drawers and moon everyone in the room!						
 oo	MOON <T-NAME>	You bend over and moon <T-NAMESELF>.	<S-NAME> drops <S-HIS-HER> pants and rudely moons <T-NAMESELF>!	<S-NAME> bends over and gives you the vertical smile!	You stand, with your pants around your ankles, looking VERY silly!			
 oo	MOON SELF	You try to moon yourself, but you can't see your A** that well.						
 ov	MOSH	You mosh insanely around the room!						

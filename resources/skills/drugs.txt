@@ -6,9 +6,9 @@ hazia	FOOD	Poison_Hazia	1	LAMP OIL	1	COAL	1
 cum dust blunt	GenCigar	*Prayer_Invigorate;	1	CUM		PIPEWEED		PAPER									
 marijuana blunt	GenCigar	*Spell_Friends;	1	Marijuana baggie	1	PAPER	1										
 marijuana baggie	FOOD	*Spell_Friends;	1	PIPEWEED	3												
-cocaine baggie	FOOD	*Prayer_Invigorate;	1	VINE	3	poppy											
+cocaine baggie	FOOD	Prayer_Invigorate;Spell_Haste	1	COCOA	3	GASOLINE	1										
 ecstasy pill	FOOD	Poison_Hallucinogen;Spell_Friends;Prayer_Invigorate	1	COFFEEBEANS		Meth											
-heroin baggie	FOOD	Spell_MindFog;Spell_Slow;Spell_Friends	1	poppy													
-meth	FOOD	Spell_MindFog;Spell_Slow;Poison_Hallucinogen	1	PEPPERS				^ca c^Col^cdof^Cf pi^cll^N	3								
-sharpsugar	FOOD	Poison_Clarity	1	SUGAR	1	COFFEEBEANS	1
-caffeine	FOOD	Poison_Caffeine	1	COFFEEBEANS	5	POPPY	1
+heroin baggie	FOOD	Spell_MindFog;Spell_Slow;Spell_Friends	1	poppy	1												
+meth	FOOD	Spell_MindFog;Spell_Slow;Poison_Hallucinogen	1	a bottle of Acid	1	a bottle of Phosphorus	1	^ca c^Col^cdof^Cf pi^cll^N	1								
+sharpsugar	FOOD	Poison_Clarity	1	SUGAR	1	COFFEEBEANS	1										
+caffeine	FOOD	Poison_Caffeine	1	COFFEEBEANS	5	POPPY	1										

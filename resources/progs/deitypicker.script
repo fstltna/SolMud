@@ -8,7 +8,6 @@ mpforce $i say Not really a god, mother of the forest and the new world. Re-gree
 mpchoose $n choice YN N choice Is this your deity? (Y/N)
 if var($n choice == Y)
 mpgset $n deity Blissrose
-else
 endif
 ~
 
@@ -17,7 +16,6 @@ mpforce $i say Young goddess of all good and wet dreams, queen of the astral pla
 mpchoose $n choice YN N choice Is this your deity? (Y/N)
 if var($n choice == Y)
 mpgset $n deity 'Lady Moonbeam'
-else
 endif
 ~
 
@@ -26,7 +24,6 @@ mpforce $i say Mother of Monsters and demon-goddess of family. A demonic gnoll, 
 mpchoose $n choice YN N choice Is this your deity? (Y/N)
 if var($n choice == Y)
 mpgset $n deity Lamashtu
-else
 endif
 ~
 
@@ -35,7 +32,6 @@ mpforce $i say Oldest new god, initially corrupted by an ancient demonic being a
 mpchoose $n choice YN N choice Is this your deity? (Y/N)
 if var($n choice == Y)
 mpgset $n deity 'Last Death God'
-else
 endif
 ~
 
@@ -44,16 +40,6 @@ mpforce $i say The Wanderer is the God of the Desert, the Nomad king of the trib
 mpchoose $n choice YN N choice Is this your deity? (Y/N)
 if var($n choice == Y)
 mpgset $n deity 'The Wanderer'
-else
-endif
-~
-
-speech_prog p Ultraporn
-mpforce $i say Goddess of everything sexual, even beyond. Her appearance appears normal at first, but it is almost eldritch.. Bizarre... viewing her image is too much for mortal, untrained minds with low wills. Proceed with care. It is known for Madness and Pornography
-mpchoose $n choice YN N choice Is this your deity? (Y/N)
-if var($n choice == Y)
-mpgset $n deity Ultraporn
-else
 endif
 ~
 
@@ -62,6 +48,37 @@ mpforce $i say The evil primordial goddess of darkness, tyrant empress of the un
 mpchoose $n choice YN N choice Is this your deity? (Y/N)
 if var($n choice == Y)
 mpgset $n deity Tenebrase
-else
+endif
+~
+
+speech_prog p Lunaria
+mpforce $i say The moon goddess Lunaria,
+mpchoose $n choice YN N choice Is this your deity? (Y/N)
+if var($n choice == Y)
+mpgset $n deity Lunaria
+endif
+~
+
+speech_prog p Lady Solaria
+mpforce $i say The star, therefore sun goddess Solaria.
+mpchoose $n choice YN N choice Is this your deity? (Y/N)
+if var($n choice == Y)
+mpgset $n deity 'Lady Solaria'
+endif
+~
+
+speech_prog p Sinius
+mpforce $i say Sinius the merciless, the orc god of ultraviolence...
+mpchoose $n choice YN N choice Is this your deity? (Y/N)
+if var($n choice == Y)
+mpgset $n deity Sinius
+endif
+~
+
+speech_prog p Dismas
+mpforce $i say Dismas the god of thievery, ill-gotten gains and Highwaymen...
+mpchoose $n choice YN N choice Is this your deity? (Y/N)
+if var($n choice == Y)
+mpgset $n deity Dismas
 endif
 ~

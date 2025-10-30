@@ -70,4 +70,5 @@ a very powerful scroll	80	120	(onground:consumed:3:a sheet of silkscreen:)	2500	
 a huge spellbook	81	200	(onground:consumed:4:a sheet of silkscreen:)	5000	GenScroll	SILK			
 huge origami figure	84	240	10	150	GenItem	PAPER	STATUE		
 the omnibus	88	150	25	1000	GenPlayerBook	WOOD		0/0	
-an ultrapowerful scroll	90	120	(onground:consumed:6:a sheet of silkscreen:)	3000	GenScroll	SILK			
+an ultrapowerful scroll	90	120	(onground:consumed:6:A SHEET OF SILKSCREEN:)	3000	GenScroll	SILK			
+an exquisite spellbook	100	180	(onground:consumed:8:A SHEET OF SILKSCREEN:)	5000	GenScroll	SILK			

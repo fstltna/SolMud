@@ -175,7 +175,7 @@ public class Spell_Scribe extends Spell
 			return false;
 		}
 
-		int level=25;
+		int level=100;
 		for(final Ability A : spells)
 		{
 			int lvl=CMLib.ableMapper().qualifyingLevel(mob,A);
@@ -185,7 +185,7 @@ public class Spell_Scribe extends Spell
 		}
 		if(level <= 0)
 		{
-			mob.tell(L("You can only scribe on blank scrolls, or a scroll with less than 25 levels of spells on it."));
+			mob.tell(L("You can only scribe on blank scrolls, or a scroll with less than 100 levels of spells on it."));
 			return false;
 		}
 

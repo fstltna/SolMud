@@ -5,7 +5,7 @@
 ^H4.^N Do not be mean OOCly to other players under any circumstances, this is not supposed to be another bitter place in everyone's possibly already bitter lives.
 ^H5.^N If you are asked by another player to take your ERP elsewhere while in a public space that is not meant for that, such as surface Phantom City or else please do so.
 ^H6.^N Remember that everyone is here to have fun, antagonizing and PK actions should not be bullying, rather story-building kind. If you do not trust yourself to keep it that way it may be best to stay away from such roleplay for everyone's sake and your own.
-^H7.^N You are not supposed to cross-breed as half-breeds, you should only breed with fullbreeds or same half-breeds. mixing up more half breeds in a soup ends up terribly bloating the race list and causing odd mixes to be born. If you really wish to go on with it ask staff over STAFFMAIL. Therefore -do not- go harem mode and breed random npcs for nothing, if you must make a half-half breed and so on, do it only with a player partner, if must.
+^H7.^N Do not abuse the crossbreeding system, if you do it will need us to remove pregnancy as a whole.
 ^H8.^N You can give tips for dungeons and secret places to your friends, though don't just hand-hold them and lead them through everything if they haven't seen it before.. let them explore themselves somewhat.
 ^H9.^N No sexual interactions with children.
 ^H10.^N You are expected to act reasonably and as someone who lives in such universe would, so you are not meant to find strange exploits, cast random spells on npcs such as find mate spell and wreak havoc cause you can get away with it until an admin hears of it. Act as a sane person would and keep the immersion up for everyone.
@@ -16,13 +16,13 @@
 ^H3.^N Remember to always be 'cool' OOCly to your PKers and your victims, of course.
 ^H4.^N Using any sort of spell or anything on another character without their consent such as 'See Aura' is also a PK action even if it dont cause a fight, and the other character can even attack you for it. (In fact, don't use 'See Aura' on other characters without their consent at all, even if intending to PK.)
 ^H5.^N Don't bully lower level characters or antagonize them unless they start something first, the level difference in coffeemud is for some reason massive and nothing at a difference of even 5 levels will survive a round most times.
+^H6.^N If you do not have your PK flag on, you can not antagonize other characters in any way, if you wish to play an evil character or be generally rude you need to enable your PK flag, remember you can not disable your flag once you enable it, without a pk flag you may also not be able to take part in some major plots.
+^H7.^N You can not antagonize people without their PK flag on in any way as they are not able to antagonize anyone.
 
 ^xThe Alt Char Rules of @MudInfo?Name@!^.^?^N
-^H1.^N Alts, aka your side-characters can not share equipment, money or cast spells on each other (or help each other in any way possible). Though they can share a property (housing) they still have to keep their own items in check and not share anything. An account can have multiple housings provided they can keep up with the rental pricing, though it's heavily recommended an account only keeps one housing as it takes others' opportunities of having a place. (Max you can have is 3 lots.)
-^H2.^N Your alts can not help each other in plots, or avenge each others' deaths or anything, they should generally be unaware of each others actions and general being unless they are related or living in the same place and all. So keep your alts as distant to each other as possible with all of them having their own lives.
-^H3.^N You can puppet up to two alts in same room in -private locations- and you are required to let everyone else in the room aware which characters are your alts therefore you can not play two chars and manipulate some conflict or people by appearing as two different people, this was mostly allowed for more casual fun rp than competitive PK stuff, so be careful about that.
-^H4.^N You can not have your alts in the same room just to farm RPXP, this will get you a massive exp reduction and eventually ban if you keep that up.
-^H5.^N Child alts played by one of the parents can take funds from the parent(s) and be equipped with whatever means they may have, they have family relations and they are not affected by the whole seperate life rule for the most part.
+^H1.^N Your alts can not help each other in plots, or avenge each others' deaths or anything, they should generally be out of each others' businesses.
+^H2.^N You can puppet up to two alts in same room in -private locations- and you are required to let everyone else in the room aware which characters are your alts therefore you can not play two chars and manipulate some conflict or people by appearing as two different people, this was mostly allowed for more casual fun rp than competitive PK stuff, so be careful about that.
+^H3.^N You can not have your alts in the same room just to farm RPXP, this will get you a massive exp reduction and eventually ban if you keep that up.
 
 ^xThe Other Rules of @MudInfo?Name@!^.^?^N
 ^H1.^N Due code difficulties it is forbidden to steal vehicles and steal from vehicles at any circumstance.
@@ -33,6 +33,7 @@
 ^H2. -25 to -50% or more experience gain rate for a month or more
 ^H3. Temporary ban starting from a week to a year.
 ^H4. A permanent ban.
+
 
 
 

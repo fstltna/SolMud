@@ -15,3 +15,4 @@ bolt of gold lame	20	40	(onground:consumed:1:COTTON(COTTON):)&&(onground:consume
 bolt of arcanin	24	90	(onground:consumed:1:SILK(CHIFFON):)&&(onground:consumed:1:SILK(RAMIE):)	3300	GenResource	SILK	ARCANIN	Prop_WearAdjuster;savemagic+2
 bolt of gnomish underweave	25	90	(onground:consumed:1:COTTON(COTTON):)&&(onground:consumed:1:IRON:)	60	GenResource	SILK	GNOMISH UNDERWEAVE	Prop_WearAdjuster;savedisease+3
 bolt of spidersteel	30	90	(onground:consumed:1:SILK(SILK):)&&(onground:consumed:1:MITHRIL:)	1000	GenResource	SPIDERSTEEL	SPIDERSTEEL	
+bolt of shadowsteel	33	100	(onground:consumed:1:SPIDERSTEEL:)&&(onground:consumed:1:DARKSTEEL:)	1400	GenResource	SPIDERSTEEL	SHADOWSTEEL	*Prop_WearAdjuster;savepierce+3 saveblunt+3 saveslash+3

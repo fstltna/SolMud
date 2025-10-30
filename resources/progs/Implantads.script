@@ -1,5 +1,8 @@
 time_prog 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
-switch $%RANDNUM(10)%
+if NUMPCSAREA( < 1)
+return
+endif
+switch $%RANDNUM(11)%
 case 1
 mpchannel !IMPLANT %0D_________________________________________________________%0DArcherCorp, for a better future in and out of this world.%0D_________________________________________________________^N
 case 2
@@ -7,7 +10,7 @@ mpchannel !IMPLANT %0D__________________________________________________________
 case 3
 mpchannel !IMPLANT %0D___________________________________________________________________________%0DDon't flatline at your prime days now, Novamed Cloning and Medevac services are available for it's subscribers at all times. Contact Novamed Today! ++ %0D___________________________________________________________________________^N
 case 4
-mpchannel !IMPLANT %0D___________________________________________________________________________%0DDo you want to experience an adult adventure? With unlimited access to erotic scenarios with famous people from Phantom City? Ad free with the with the subscription plan "wet4us"! Only 50c a month.%0D___________________________________________________________________________^N
+mpchannel !IMPLANT %0D___________________________________________________________________________%0DDo you want to experience an adult adventure? With unlimited access to erotic scenarios with famous people from Phantom City? Ad free with the subscription plan "wet4us"! Only 50c a month.%0D___________________________________________________________________________^N
 case 5
 mpchannel !IMPLANT %0D___________________________________________________________________________%0D.*.*.*.*.*..*.Got no bitches? Need to get your dose of nudies? Crimson Veil Strip Club under NineTails Tower is waiting for you..*.*.*.*.*.*.*.*.*.*.*.%0D___________________________________________________________________________^N
 case 6
@@ -20,5 +23,7 @@ case 9
 mpchannel !IMPLANT %0D___________________________________________________________________________%0DNeed to let yours hang free? Come over to the Bareback down in sector minus and let it swing. (We don't give a damn if you get your shit stolen though)%0D___________________________________________________________________________^N
 case 10
 mpchannel !IMPLANT %0D________________________________________________________________________%0DNeed a real meat, quality meal once in a while? The Big Byte at surface Phantom City is waiting for you. Contact us to make reservations today!%0D________________________________________________________________________^N
+case 11
+mpchannel %0D________________________________________________________________________%0DWanna submit your own official advertisement? Contact us at ^C(STAFFMAIL)^?.%0D________________________________________________________________________^N
 endswitch
 ~

@@ -99,7 +99,7 @@ endif
 mpforce $n follow self
 mpforce $n follow $i
 mpsetvar $9 Capturewarrant_CAPTURED ++;
-if var($9 Capturewarrant_CAPTURED >= 3)
+if var($9 Capturewarrant_CAPTURED >= 1)
 mpsetvar $i Capturewarrant_REWARDED $9
 if EVAL('30%' != '')
 mpexp $9 30%
@@ -127,8 +127,8 @@ mptransfer $n $n
 ENDIF
 ENDIF
 else
-if EVAL(3 > 1)
-mpechoat $9 You've brought in $<$9 Capturewarrant_CAPTURED>/3
+if EVAL(1 > 1)
+mpechoat $9 You've brought in $<$9 Capturewarrant_CAPTURED>/1
 endif
 endif
 ENDIF
