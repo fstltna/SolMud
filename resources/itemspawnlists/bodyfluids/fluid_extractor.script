@@ -1,0 +1,55 @@
+cnclmsg_prog huh draw_blood
+mpnotrigger cnclmsg_prog 3000
+if !has($n $i) or gstat($i SECRET != blood)
+    return
+endif
+mpprompt $n drawtarget 'Who to draw from?'
+if ishere($<$n drawtarget>)
+    mpdamage $<$n drawtarget> 30 80
+    mpoload fromfile /resources/itemspawnlists/bodyfluids/bloodvial.cmare any
+    mpset $b name some $%RACE($<$n drawtarget>)% blood
+    mpecho $n draws blood from $<$n drawtarget>.
+    return cancel
+endif
+~
+
+cnclmsg_prog huh draw_milk
+mpnotrigger cnclmsg_prog 3000
+if !has($n $i) or gstat($i SECRET != milk)
+    return
+endif
+mpprompt $n drawtarget 'Who to draw from?'
+if ishere($<$n drawtarget>)
+    if !sex('$<$n drawtarget>' == F) or sex('$<$n drawtarget>' == A) or sex('$<$n drawtarget>' == H) or sex('$<$n drawtarget>' == U)
+        mpechoat $n $<$n drawtarget> does not look like they can offer milk.
+        return cancel
+    endif
+    mpoload fromfile /resources/milkables.cmare breastmilk
+    mpset $b name some $%RACE($<$n drawtarget>)% milk
+    mpecho $n pumps milk from $<$n drawtarget>.
+    return cancel
+endif
+~
+
+cnclmsg_prog huh draw_fluids
+mpnotrigger cnclmsg_prog 3000
+if !has($n $i) or gstat($i SECRET != genital)
+    return
+endif
+mpprompt $n drawtarget 'Who to draw from?'
+if ishere($<$n drawtarget>)
+    if sex('$<$n drawtarget>' == N)
+        mpechoat $n What are you going to pump!? They got NOTHING.
+        return cancel
+    endif
+    if sex('$<$n drawtarget>' == F) or sex('$<$n drawtarget>' == A) or sex('$<$n drawtarget>' == H)
+        mpoload fromfile /resources/milkables.cmare pussyjuice
+        mpset $b some name $%RACE($<$n drawtarget>)% pussyjuice
+    else
+        mpoload fromfile /resources/milkables.cmare cum
+        mpset $b some name $%RACE($<$n drawtarget>)% cum
+    endif
+    mpecho $n pumps genital fluids from $<$n drawtarget>.
+    return cancel
+endif
+~

@@ -1,0 +1,489 @@
+<MOBS><MOB><MCLAS>GenMob</MCLAS><MLEVL>30</MLEVL><MABLE>307</MABLE><MREJV>255</MREJV><MTEXT>&lt;NAME&gt;the Vampire Guildmaster&lt;/NAME&gt;&lt;DESC&gt;Lord Steppenson regards you, reading your soul. He wears the adornments of a nobleman and has a very pale, gaunt face. His fingers end in long, sharp fingernails, and his eyes are dark disks devoid of compassion.&lt;/DESC&gt;&lt;DISP&gt;Your Guildmaster stands here, patiently waiting to teach you.&lt;/DISP&gt;&lt;PROP&gt;307|-3|88|30|0|30|255|2.0|159|71|422|&lt;/PROP&gt;&lt;IMG /&gt;&lt;BEHAVES&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;Clericness&lt;/BCLASS&gt;&lt;BPARMS&gt;necromancer&lt;/BPARMS&gt;&lt;/BHAVE&gt;&lt;BHAVE&gt;&lt;BCLASS&gt;MOBTeacher&lt;/BCLASS&gt;&lt;BPARMS&gt;necromancer nocommon&lt;/BPARMS&gt;&lt;/BHAVE&gt;&lt;/BEHAVES&gt;&lt;AFFECS&gt;&lt;AFF&gt;&lt;ACLASS&gt;Prayer_Sanctuary&lt;/ACLASS&gt;&lt;ATEXT /&gt;&lt;/AFF&gt;&lt;AFF&gt;&lt;ACLASS&gt;Prop_Resistance&lt;/ACLASS&gt;&lt;ATEXT&gt;teleport mind magic weapons 40%&lt;/ATEXT&gt;&lt;/AFF&gt;&lt;AFF&gt;&lt;ACLASS&gt;Prop_NoOrdering&lt;/ACLASS&gt;&lt;ATEXT /&gt;&lt;/AFF&gt;&lt;AFF&gt;&lt;ACLASS&gt;Prop_SafePet&lt;/ACLASS&gt;&lt;ATEXT /&gt;&lt;/AFF&gt;&lt;AFF&gt;&lt;ACLASS&gt;Prop_StatTrainer&lt;/ACLASS&gt;&lt;ATEXT&gt;dex=50&lt;/ATEXT&gt;&lt;/AFF&gt;&lt;/AFFECS&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;MONEY&gt;10&lt;/MONEY&gt;&lt;VARMONEY&gt;0.0&lt;/VARMONEY&gt;&lt;GENDER&gt;M&lt;/GENDER&gt;&lt;MRACE&gt;Vampire&lt;/MRACE&gt;&lt;FACTIONS&gt;&lt;FCTN ID="ALIGNMENT.INI"&gt;-10000&lt;/FCTN&gt;&lt;FCTN ID="ELDRITCH_RACE.INI"&gt;5001&lt;/FCTN&gt;&lt;FCTN ID="INCLINATION.INI"&gt;0&lt;/FCTN&gt;&lt;FCTN ID="AREA_ELVENHAME.INI"&gt;5000&lt;/FCTN&gt;&lt;/FACTIONS&gt;&lt;INVEN /&gt;&lt;ABLTYS&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Common&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Elvish&lt;/ACLASS&gt;&lt;APROF&gt;100&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;FireBuilding&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Foraging&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Necromancer_FeedBlood&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Feed Blood&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Vampiric Regeneration)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Vampire_AnimalFriendship&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Animal Friendship&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Animal Friend)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Vampire_AstralProjection&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Psychic Projection&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP /&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Vampire_AuraPerception&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Aura Perception&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Viewing Auras)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Vampire_Awe&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Vampiric Awe&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Awe-Inspiring)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Vampire_ClearMind&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Clear Mind&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP /&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Vampire_CloakOfShadows&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Cloak of Shadows&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Cloaked in Shadows)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Vampire_CloakTheGathering&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Cloak the Gathering&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Cloaked)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Vampire_Conditioning&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Conditioning&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP /&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Vampire_DrawingOutTheBeast&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Drawing Out the Beast&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Frenzied)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Vampire_DreadGaze&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Dread Gaze&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Cowed)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Vampire_EarthMeld&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Earth Meld&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Earth Melded)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Vampire_FeelThoughts&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Feel Thoughts&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP /&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Vampire_GleamOfTheRedEyes&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Gleam of the Red Eyes&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Red Eyes)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Vampire_HardenSkin&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Harden Skin&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Fortitude)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Vampire_HeightenPresence&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Heighten Presence&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Presence)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Vampire_HeightenSenses&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Heighten Senses&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Heightened Senses)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Vampire_HeightenSpeed&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Heighten Speed&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Celerity)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Vampire_HeightenStrength&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Heighten Strength&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Potence)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Vampire_InduceSleep&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Induce Sleep&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Induced Sleep)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Vampire_InherentAnimalism&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Inherent Animalism&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Inherent Animalism)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Vampire_Mesmerize&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Mesmerize&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP /&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Vampire_MistForm&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Mist Form&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP /&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Vampire_RevertForm&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Revert Form&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP /&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Vampire_ShadowOfTheBat&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Shadow of the Bat&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP /&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Vampire_ShadowOfTheRat&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Shadow of the Rat&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP /&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Vampire_ShadowOfTheWolf&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Shadow of the Wolf&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP /&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Vampire_SharingOfSpirits&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Sharing of Spirits&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Sharing of Spirits)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Vampire_SongOfSerenity&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Song of Serenity&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP /&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Vampire_Summon&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Summon&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP /&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Vampire_SweetWhispers&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Sweet Whispers&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Sweet Whispering)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Vampire_Telepathy&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Telepathic Scanning&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Mind Reading)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Vampire_TheBeckoning&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;The Beckoning&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Beckoning)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Vampire_TheSpiritsTouch&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;The Spirit Touch&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Spirittouch)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Vampire_UnseenPresence&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Unseen Presence&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Hidden)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Vampire_VanishFromMindsEye&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Vanish from Mind's Eye&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Well Hidden)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;ABLTY&gt;&lt;ACLASS&gt;Vampire_WolfClaws&lt;/ACLASS&gt;&lt;APROF&gt;75&lt;/APROF&gt;&lt;ADATA&gt;&lt;NAME&gt;Wolf Claws&lt;/NAME&gt;&lt;DESC&gt;&&lt;/DESC&gt;&lt;DISP&gt;(Wolf Claws)&lt;/DISP&gt;&lt;IMG /&gt;&lt;FLAG&gt;0&lt;/FLAG&gt;&lt;AWRAP /&gt;&lt;/ADATA&gt;&lt;/ABLTY&gt;&lt;/ABLTYS&gt;&lt;EDUS&gt;ANATOMY4;BONELORE3;CALIGRAPHY1;COMMUNE1;CURSING1;DEATHLORE10;EDGEDSTRIKE1;EVANGELIST2;EXTENDEDABJURATION2;EXTENDEDCONJURATION2;FITNESS1;FLUIDITY9;GHOULLORE3;NATURELORE2;NEUTRALIZING1;POWERABJURATION2;POWERCONJURATION2;QUICKCRAFT10;QUICKWORK10;RANGEDABJURATION2;RANGEDCONJURATION2;REDUCEDABJURATION9;REDUCEDCONJURATION9;SUMMON3;VAMPIRELORE10;WANDUSE2;&lt;/EDUS&gt;</MTEXT></MOB>
+</MOBS><CUSTOM><ABILITY ID="Vampire_Summon" TYPE="GenAbility"><CLASS>Vampire_Summon</CLASS><NAME>Summon</NAME><DISPLAY></DISPLAY><TRIGSTR>SUMMON</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,NOTHING</CLASSIFICATION><OVERRIDEMANA>-1</OVERRIDEMANA><USAGEMASK>HITPOINTS</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>OK_SELF</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT>imask_prog p Vampire_Summon $0
+## Needs work
+##Need to fill out messages as well.
+##Ideally, use a script to locate a mob by that name, preferring players, if no players, then check for mobs in the area, if no mobs in the area, check for mobs in the world.
+##Need to TRACK to player, and once there, remove the thing causing trackto.
+~</SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempts to use this ability against &lt;T-NAME&gt;, and fails</FIZZLEMSG><AUTOCASTMSG>An amazing thing happens to &lt;T-NAME&gt;!</AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; uses an ability against &lt;T-NAME&gt;</CASTMSG><POSTCASTMSG>&lt;T-NAME&gt; is &lt;DAMAGE&gt; by an ability from &lt;S-NAME&gt;!</POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;With this power, you may call a person from a very great distance and that person will come to attend your desires. The subject of the Summons may not know exactly why he is walking across the room toward the cloaked stranger, but the Kindred?s powerful aura will completely entrance the subject.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>0</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG></UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG><NUMARGS>1</NUMARGS></ABILITY><ABILITY ID="Vampire_TheBeckoning" TYPE="GenAbility"><CLASS>Vampire_TheBeckoning</CLASS><NAME>The Beckoning</NAME><DISPLAY>(Beckoning)</DISPLAY><TRIGSTR>BECKON</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>SUMMONING,NONENCHANTMENT</FLAGS><CLASSIFICATION>SKILL,NOTHING</CLASSIFICATION><OVERRIDEMANA>-1</OVERRIDEMANA><USAGEMASK>MANA</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>OK_SELF</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT>IMASK_PROG p Vampire_TheBeckoning
+  mpcast Chant_SpeakWithAnimals
+  IF EXPERTISE($n Vampire_TheBeckoning X5 &lt;2)
+    mpcast Chant_SummonAnimal
+  ELSE
+    IF EXPERTISE($n Vampire_TheBeckoning X5 &lt;4)
+      mpcast Chant_SummonAnimal
+      mpcast Chant_SummonAnimal
+    ELSE
+      mpcast Chant_SummonAnimals
+    ENDIF
+  ENDIF
+~</SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempt(s) to sound like an animal, but fail(s).</FIZZLEMSG><AUTOCASTMSG>&lt;T-NAME&gt; find(s) some friends!</AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; make(s) some animal noises.</CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;The essence of the animal has grown strong in you, and now animals respond when you call to them. You are now able to summon nearly any species of animal, drawing them to you. The primary limitation is that you may not call animals of a specific species.
+
+Animals called in this way are under immediate obligation to heed your commands, and using this ability will also confer the ability to speak with animals.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>1</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG></UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Vampire_GleamOfTheRedEyes" TYPE="GenAbility"><CLASS>Vampire_GleamOfTheRedEyes</CLASS><NAME>Gleam of the Red Eyes</NAME><DISPLAY>(Red Eyes)</DISPLAY><TRIGSTR>GLEAMINGEYES</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,NOTHING</CLASSIFICATION><OVERRIDEMANA>10</OVERRIDEMANA><USAGEMASK>HITPOINTS</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>OK_SELF</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT></SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; begin(s) to stare, but loses &lt;S-HIS-HER&gt; focus.</FIZZLEMSG><AUTOCASTMSG>&lt;T-YOUPOSS&gt; eyes glow red!!</AUTOCASTMSG><CASTMSG>&lt;T-YOUPOSS&gt; eyes glow red!</CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;This basic Protean discipline power provides the ability to see good auras around especially righteous individuals. When this power is activated, your eyes glow an eerie red.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>0</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG>&lt;T-YOUPOSS&gt; eyes stop glowing.</UNINVOKEMSG><MOCKABILITY>Prayer_SenseGood</MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Vampire_InherentAnimalism" TYPE="GenAbility"><CLASS>Vampire_InherentAnimalism</CLASS><NAME>Inherent Animalism</NAME><DISPLAY>(Inherent Animalism)</DISPLAY><TRIGSTR></TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>true</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,NOTHING</CLASSIFICATION><OVERRIDEMANA>-1</OVERRIDEMANA><USAGEMASK>MANA</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>OK_SELF</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT></SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempt(s) to connect with the Beast Within, but fail(s).</FIZZLEMSG><AUTOCASTMSG>&lt;T-NAME&gt; channel(s) the Beast Within!</AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; channel(s) the Beast Within.</CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;Animalism allows empathy with and power over the animal world, as well as the animal within, and embodies the Beast which lurks within the soul of every Vampire. At the most basic level, this prevents hostile thoughts of animals towards the vampire.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>0</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG></UNINVOKEMSG><MOCKABILITY>Chant_AnimalFriendship</MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Vampire_VanishFromMindsEye" TYPE="GenAbility"><CLASS>Vampire_VanishFromMindsEye</CLASS><NAME>Vanish from Mind's Eye</NAME><DISPLAY>(Well Hidden)</DISPLAY><TRIGSTR>VANISH</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,NOTHING</CLASSIFICATION><OVERRIDEMANA>-1</OVERRIDEMANA><USAGEMASK>HITPOINTS</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>OK_SELF</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT></SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempt(s) to blend in.</FIZZLEMSG><AUTOCASTMSG>&lt;T-NAME&gt; vanish(es)!</AUTOCASTMSG><CASTMSG></CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;Your power has advanced to such a degree that you may actually disappear from plain view. Even if you are standing face to face with a mortal, you may exercise this power and simply vanish. Those who witness such a disappearing act, especially mortals, are normally stunned with indecision for a turn. One member of a large group might be able to react (such as to fire into the space where the character vanished), but this is the exception. Moreover, mortals with low strength of will may actually forget that they every saw you at all.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>0</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG></UNINVOKEMSG><MOCKABILITY>Thief_HideInPlainSight</MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Vampire_HeightenSpeed" TYPE="GenAbility"><CLASS>Vampire_HeightenSpeed</CLASS><NAME>Heighten Speed</NAME><DISPLAY>(Celerity)</DISPLAY><TRIGSTR>CELERITY</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>ADJUSTER</FLAGS><CLASSIFICATION>SKILL,NOTHING</CLASSIFICATION><OVERRIDEMANA>-1</OVERRIDEMANA><USAGEMASK>HITPOINTS</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>OK_SELF</QUALITY><HERESTATS>SPEED+0.5+(@x8/2)</HERESTATS><CASTMASK>-RACECAT +UNDEAD</CASTMASK><SCRIPT></SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; think(s) fast, but move(s) slowly.</FIZZLEMSG><AUTOCASTMSG>&lt;T-NAME&gt; speed(s) up!!</AUTOCASTMSG><CASTMSG>&lt;T-NAME&gt; speed(s) up!</CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;This Discipline explains the superior quickness of vampires. As expertise in Celerity increase, the vampire can move extremely quickly in times of stress and take multiple actions in a single turn.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>0</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG>&lt;T-NAME&gt; slow(s) down!</UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Vampire_RevertForm" TYPE="GenAbility"><CLASS>Vampire_RevertForm</CLASS><NAME>Revert Form</NAME><DISPLAY></DISPLAY><TRIGSTR>REVERT</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,NOTHING</CLASSIFICATION><OVERRIDEMANA>0</OVERRIDEMANA><USAGEMASK>MANA</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>OK_SELF</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT>IMASK_PROG p Vampire_RevertForm
+  if affected($n Vampire_GleamOfTheRedEyes)
+    mpunaffect $n Vampire_GleamOfTheRedEyes
+    mpecho $n resume(s) $m normal eyes.
+  endif
+  if affected($n Vampire_WolfClaws)
+    mpunaffect $n Vampire_WolfClaws
+    mpecho $n resume(s) $m normal hands.
+  endif
+  if affected($n Vampire_EarthMeld)
+    mpunaffect $n Vampire_EarthMeld
+    mpechoat $n You resume a solid form.
+  endif
+  if affected($n Vampire_ShadowOfTheBat)
+    mpunaffect $n Vampire_ShadowOfTheBat
+    mpecho $n resume(s) $m natural form.
+  endif
+  if affected($n Vampire_ShadowOfTheRat)
+    mpunaffect $n Vampire_ShadowOfTheRat
+    mpecho $n resume(s) $m natural form.
+  endif
+  if affected($n Vampire_ShadowOfTheWolf)
+    mpunaffect $n Vampire_ShadowOfTheWolf
+    mpecho $n resume(s) $m natural form.
+  endif
+  if affected($n Vampire_MistForm)
+    mpunaffect $n Vampire_MistForm
+    mpecho $n resume(s) $m full form.
+  endif
+~</SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; twitch(es) but fail(s) to change.</FIZZLEMSG><AUTOCASTMSG>&lt;T-NAME&gt; appears normal!</AUTOCASTMSG><CASTMSG></CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;A vampire may end all of their Protean abilities early through the use of this ability.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>1</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG></UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Vampire_WolfClaws" TYPE="GenAbility"><CLASS>Vampire_WolfClaws</CLASS><NAME>Wolf Claws</NAME><DISPLAY>(Wolf Claws)</DISPLAY><TRIGSTR>WOLFCLAWS</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,NOTHING</CLASSIFICATION><OVERRIDEMANA>-1</OVERRIDEMANA><USAGEMASK>HITPOINTS</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>OK_SELF</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT></SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;T-YOUPOSS&gt; fingernails fail to grow.</FIZZLEMSG><AUTOCASTMSG>&lt;T-NAME&gt; grow(s) powerful claws!</AUTOCASTMSG><CASTMSG>&lt;T-YOUPOSS&gt; fingernails grow into powerful claws.</CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;You are able to grow an inch-long claw on each finger. These claws make excellent weapons in combat and can be used in many attacks. Wounds caused by the claws are especially vicious.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>0</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG>&lt;T-YOUPOSS&gt; fingernails return to normal.</UNINVOKEMSG><MOCKABILITY>Spell_MageClaws</MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Vampire_ShadowOfTheWolf" TYPE="GenAbility"><CLASS>Vampire_ShadowOfTheWolf</CLASS><NAME>Shadow of the Wolf</NAME><DISPLAY></DISPLAY><TRIGSTR>WOLFFORM</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,NOTHING</CLASSIFICATION><OVERRIDEMANA>25</OVERRIDEMANA><USAGEMASK>HITPOINTS</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>OK_SELF</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT></SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempt(s) to change forms, and fail(s).</FIZZLEMSG><AUTOCASTMSG></AUTOCASTMSG><CASTMSG></CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;You may transform into a wolf. When in this form, you benefit from all of the obvious advantages, such as the wolf's ability to track.
+
+The Revert Form ability is required to return to your normal form prior to the normal duration.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>0</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG></UNINVOKEMSG><MOCKABILITY>Spell_PolymorphSelf</MOCKABILITY><MOCKABLETEXT>VampireWolf</MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Vampire_Conditioning" TYPE="GenAbility"><CLASS>Vampire_Conditioning</CLASS><NAME>Conditioning</NAME><DISPLAY></DISPLAY><TRIGSTR>CONDITIONING</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,NOTHING</CLASSIFICATION><OVERRIDEMANA>50</OVERRIDEMANA><USAGEMASK>HITPOINTS</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>MALICIOUS</QUALITY><HERESTATS>savemin +50</HERESTATS><CASTMASK></CASTMASK><SCRIPT>IMASK_PROG p Vampire_Conditioning
+  if !hastattoo($t RecentlyDominated)
+    mpsetvar $t vampiricdomination ++
+    mpecho $t vampiric domination is set to $&lt;$t vampiricdomination&gt;.
+  endif
+  mpechoat $n You reinforce the willpower of $t.
+  mpstop $t
+  if var($t vampiricdomination &gt; 15) 
+    if var ($t vampiricdomination &lt; 10000)
+      mpstop $t
+      if ispc($t)
+        mpchoose $t WILLINGSERVANT YN N Do you accept $n as your master:
+        if var($t WILLINGSERVANT == 'Y')
+          mpforce $t SERVE $n
+          mpsetvar $t vampiricdomination +10000
+        else
+          mpechoat $t You reject $n.
+          mpechoat $n $t rejects you through a strong force of will.
+          mptattoo $t '60 RecentlyDominated'
+          mpsetvar $t vampiricdomination 0
+        endif
+      else
+        mpforce $t SERVE $n
+        mpunbehave antivagrant $t 
+        mpunbehave aggressive $t
+        mpunbehave alignhelper $t
+        mpunbehave beggar $t
+        mpunbehave brotherhelper $t
+        mpunbehave clanhelper $t
+        mpunbehave corpselooter $t
+        mpunbehave doorwayguardian $t
+        mpunbehave emoter $t
+        mpunbehave faithhelper $t
+        mpunbehave follower $t
+        mpunbehave gateguard $t
+        mpunbehave getsallequipped $t
+        mpunbehave goldlooter $t 
+        mpunbehave goodexecutioner $t
+        mpunbehave goodguardian $t
+        mpunbehave guard $t
+        mpunbehave healer $t
+        mpunbehave hireling $t
+        mpunbehave mobhelper $t
+        mpunbehave mobile $t
+        mpunbehave mobileaggressive $t
+        mpunbehave mobilegoodguardian $t
+        mpunbehave mudchat $t
+        mpunbehave nastyabilities $t
+        mpunbehave neutralabilities $t
+        mpunbehave niceabilities $t 
+        mpunbehave objectguardian $t
+        mpunbehave patroller $t
+        mpunbehave playerhelper $t
+        mpunbehave racehelper $t
+        mpunbehave romgangmember $t
+        mpunbehave rompatrolman $t
+        mpunbehave scavenger $t
+        mpunbehave vagrant $t
+        mpunbehave veryaggressive $t
+        mpunbehave wimpy $t
+        mpunbehave wimpyaggressive $t
+        mpsetvar $t vampiricdomination +10000
+      endif
+    else
+      mpechoat $n $t has hardened their will against conditioning.
+    endif
+  else
+    mpechoat $n The mind of $t has not been fully penetrated for your conditioning.
+    mptattoo $t '60 RecentlyDominated'
+  endif
+~</SCRIPT><TARGETMASK>+RACECAT -Undead </TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; deeply probe(s) &lt;T-YOUPOSS&gt; mind, but fail(s) to breach &lt;T-HIS-HER&gt; mental defenses.</FIZZLEMSG><AUTOCASTMSG>&lt;T-NAME&gt; is mentally conditioned!</AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; deeply probe(s) &lt;T-YOUPOSS&gt; mind.</CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>MIND</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;Over time, an individual can be Conditioned so that she is thereafter unable to resist your Domination and is also more resistant to the Domination of others. Kindred often Condition their servants to ensure loyal retainers. The procedure works based on the fact that mortals who have been Dominated repeatedly have a harder time resisting future attempts.
+
+Conditioning is not something that is effective on the drop of a hat. It takes time to carefully cultivate the subject's mind (through use of the Command the Wearied Mind and Mesmerize abilities) for the kind of control you will exercise. Fully conditioning a subject can take weeks or even months.
+
+Conditioned retainers have very little imagination, and tend to obey the orders given them quite literally. The conditioning actually destroys some of their free will, turning them into automatons.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>1</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG></UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG>Undead and mindless creatures are not affected by this ability.</TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Vampire_Telepathy" TYPE="GenAbility"><CLASS>Vampire_Telepathy</CLASS><NAME>Telepathic Scanning</NAME><DISPLAY>(Mind Reading)</DISPLAY><TRIGSTR>SCANMIND</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,NOTHING</CLASSIFICATION><OVERRIDEMANA>-1</OVERRIDEMANA><USAGEMASK>MANA</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>OK_OTHERS</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT></SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempt(s) to scan &lt;T-NAME&gt;, and fail(s).</FIZZLEMSG><AUTOCASTMSG>&lt;T-NAME&gt; &lt;T-IS-ARE&gt; heard!</AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; scan(s) &lt;T-NAME&gt;.</CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY>Spell_Telepathy</POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;You can probe the surface thoughts of any nearby subject and listen to them as you would listen to that person speak. Given enough time, you can learn nearly anything about the subject. For instance, you might be able to divine the sire of another vampire through telepathic scanning.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>0</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG></UNINVOKEMSG><MOCKABILITY>Thief_Evesdrop</MOCKABILITY><MOCKABLETEXT>@x1</MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG><NUMARGS>1</NUMARGS></ABILITY><ABILITY ID="Vampire_ShadowOfTheRat" TYPE="GenAbility"><CLASS>Vampire_ShadowOfTheRat</CLASS><NAME>Shadow of the Rat</NAME><DISPLAY></DISPLAY><TRIGSTR>RATFORM</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,NOTHING</CLASSIFICATION><OVERRIDEMANA>5</OVERRIDEMANA><USAGEMASK>HITPOINTS</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>OK_SELF</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT></SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempt(s) to change forms, and fail(s).</FIZZLEMSG><AUTOCASTMSG></AUTOCASTMSG><CASTMSG></CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;You may transform into a rat. When in this form, you benefit from all of the obvious advantages, such as the rat's small size.
+
+The Revert Form ability is required to return to your normal form prior to the normal duration.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>0</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG></UNINVOKEMSG><MOCKABILITY>Spell_PolymorphSelf</MOCKABILITY><MOCKABLETEXT>VampireRat</MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Vampire_HeightenSenses" TYPE="GenAbility"><CLASS>Vampire_HeightenSenses</CLASS><NAME>Heighten Senses</NAME><DISPLAY>(Heightened Senses)</DISPLAY><TRIGSTR>HEIGHTENSENSES</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,NOTHING</CLASSIFICATION><OVERRIDEMANA>10</OVERRIDEMANA><USAGEMASK>HITPOINTS</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>BENEFICIAL_SELF</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT>##The tattoos are to determine if the source of their affects are coming from this ability and should be removed when this ability is. Without the tattoos, they may inadvertently get removed from some other source.
+IMASK_PROG p Vampire_HeightenSenses
+  IF !AFFECTED($n Chant_Bloodhound)
+    mpaffect property:Chant_Bloodhound $n
+    mptattoo $n vampirebloodhounded
+  ENDIF
+  IF !AFFECTED($n Spell_Sonar)
+    mptattoo $n vampiresonar
+    mpaffect property:Spell_Sonar $n
+  ENDIF
+  IF EXPERTISE($n Vampire_HeightenSenses level &gt; 0)
+    IF !AFFECTED($n Spell_DetectHidden)
+      mptattoo $n vampiredetecthidden
+      mpaffect property:Spell_DetectHidden $n
+    ENDIF
+    IF EXPERTISE($n Vampire_HeightenSenses level &gt; 1)
+      IF !AFFECTED($n Spell_DetectAmbush)
+        mptattoo $n vampiredetectambush
+        mpaffect property:Spell_DetectAmbush $n
+      ENDIF
+      IF EXPERTISE($n Vampire_HeightenSenses level &gt; 3)
+        IF !AFFECTED($n Spell_DetectInvisible)
+          mptattoo $n vampiredetectinvisible
+          mpaffect property:Spell_DetectInvisible $n
+        ENDIF
+        IF EXPERTISE($n Vampire_HeightenSenses level &gt; 5)
+          IF !AFFECTED($n Spell_TrueSight)
+            mptattoo $n vampiretruesight
+            mpaffect property:Spell_TrueSight $n
+          ENDIF
+        ENDIF
+      ENDIF
+    ENDIF
+  ENDIF
+~
+
+IMASK_PROG p UNINVOKE-Vampire_HeightenSenses
+  IF AFFECTED($n Chant_Bloodhound)
+    IF hastattoo($n vampirebloodhounded)
+      mptattoo $n -vampirebloodhounded
+      mpunaffect $n Chant_Bloodhound
+    ENDIF
+  ENDIF
+  IF AFFECTED($n Spell_Sonar)
+    IF hastattoo($n vampiresonar)
+      mptattoo $n -vampiresonar
+      mpunaffect $n Spell_Sonar
+    ENDIF
+  ENDIF
+  IF AFFECTED($n Spell_DetectHidden)
+    IF hastattoo($n vampiredetecthidden)
+      mptattoo $n -vampiredetecthidden
+      mpunaffect $n Spell_DetectHidden
+    ENDIF
+  ENDIF
+  IF AFFECTED($n Spell_DetectAmbush)
+    IF hastattoo($n vampiredetectambush)
+      mptattoo $n -vampiredetectambush
+      mpunaffect $n Spell_DetectAmbush
+    ENDIF
+  ENDIF
+  IF AFFECTED($n Spell_DetectInvisible)
+    IF hastattoo(mptattoo $n vampiredetectinvisible)
+      mptattoo $n -vampiredetectinvisible
+      mpunaffect $n Spell_DetectInvisible
+    ENDIF
+  ENDIF
+  IF AFFECTED($n Spell_TrueSight)
+    IF hastattoo(mptattoo $n vampiretruesight)
+      mptattoo $n -vampiretruesight
+      mpunaffect $n Spell_TrueSight
+    ENDIF
+  ENDIF
+~
+
+CNCLMSG_PROG LONGLOOK p longlook north
+  MPCAST Spell_Augury north
+  IF EXPERTISE($n Vampire_HeightenSenses level &gt; 2)
+    MPCAST Spell_Farsight north 
+  ELSE
+    LOOK NORTH
+  ENDIF
+~
+
+CNCLMSG_PROG LONGLOOK p longlook south
+  IF !AFFECTED($n Vampire_HeightenSenses)
+    MPCAST Spell_Augury south
+    IF EXPERTISE($n Vampire_HeightenSenses level &gt; 2)
+      MPCAST Spell_Farsight south 
+    ELSE
+      LOOK SOUTH
+    ENDIF
+  ENDIF
+~
+
+CNCLMSG_PROG LONGLOOK p longlook east
+  IF !AFFECTED($n Vampire_HeightenSenses)
+    MPCAST Spell_Augury east
+    IF EXPERTISE($n Vampire_HeightenSenses level &gt; 2)
+      MPCAST Spell_Farsight east 
+    ELSE
+      LOOK EAST
+    ENDIF
+  ENDIF
+~
+
+CNCLMSG_PROG LONGLOOK p longlook west
+  IF !AFFECTED($n Vampire_HeightenSenses)
+    MPCAST Spell_Augury west
+    IF EXPERTISE($n Vampire_HeightenSenses level &gt; 2)
+      MPCAST Spell_Farsight west 
+    ELSE
+      LOOK WEST
+    ENDIF
+  ENDIF
+~
+
+CNCLMSG_PROG LONGLOOK p longlook up
+  IF !AFFECTED($n Vampire_HeightenSenses)
+    MPCAST Spell_Augury up
+    IF EXPERTISE($n Vampire_HeightenSenses level &gt; 2)
+      MPCAST Spell_Farsight up 
+    ELSE
+      LOOK UP
+    ENDIF
+  ENDIF
+~
+
+CNCLMSG_PROG LONGLOOK p longlook down
+  IF !AFFECTED($n Vampire_HeightenSenses)
+    MPCAST Spell_Augury down
+    IF EXPERTISE($n Vampire_HeightenSenses level &gt; 2)
+      MPCAST Spell_Farsight down 
+    ELSE
+      LOOK DOWN
+    ENDIF
+  ENDIF
+~
+
+CNCLMSG_PROG LONGLOOK p longlook there
+  IF !AFFECTED($n Vampire_HeightenSenses)
+    MPCAST Spell_Augury there
+    IF EXPERTISE($n Vampire_HeightenSenses level &gt; 2)
+      MPCAST Spell_Farsight there 
+    ELSE
+      LOOK THERE
+    ENDIF
+  ENDIF
+~</SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; fail(s) to focus &lt;S-HIS-HER&gt; senses.</FIZZLEMSG><AUTOCASTMSG>&lt;T-NAME&gt; &lt;T-IS-ARE&gt; extremely focused!</AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; focus(es) intently.</CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;You can sharpen all five of your senses to an extraordinary degree. This ability allows the Kindred to see hidden objects and creatures normally. With increased access to the Auspex Discipline, this grows allows you to double your normal ranges of sight (when issuing a LONGLOOK [direction] command), detect potential ambushes, see unnaturally invisible items and creatures, and pierce through disguises at a glance. Your other senses become equally useful; with increased olfactory sensitivity, you can detect other creatures even in absolute darkness (and may learn to track) and identify nearby sounds. You are also occasionally alerted to impending danger with unsettling premonitions. These premonitions are typically confusing, but can be invaluable.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>0</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG>&lt;T-NAME&gt; &lt;T-IS-ARE&gt; less focused.</UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Vampire_InduceSleep" TYPE="GenAbility"><CLASS>Vampire_InduceSleep</CLASS><NAME>Induce Sleep</NAME><DISPLAY>(Induced Sleep)</DISPLAY><TRIGSTR>INDUCESLEEP</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,NOTHING</CLASSIFICATION><OVERRIDEMANA>-1</OVERRIDEMANA><USAGEMASK>HITPOINTS</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>MALICIOUS</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT>IMASK_PROG p Vampire_InduceSleep
+  if !position($n == SLEEPING)
+    mpforce $t sleep until dawn
+    mpstop $t
+  endif
+  if !hastattoo($t RecentlyDominated)
+    mpsetvar $t vampiricdomination ++
+    mptattoo $t '60 RecentlyDominated'
+  endif
+~</SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; stare(s) into the eyes of &lt;T-NAME&gt;, and blink(s)!</FIZZLEMSG><AUTOCASTMSG>&lt;T-NAME&gt; fall(s) asleep!!</AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; induce(s) sleep in &lt;T-NAME&gt;.</CASTMSG><POSTCASTMSG>&lt;T-NAME&gt; fall(s) asleep!</POSTCASTMSG><ATTACKCODE>MIND</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;Usage    : INDUCESLEEP [TARGET NAME] 
+Example  : inducesleep Jill
+Using their power to dominate minds, a vampire may induce sleep in a victim for a short while. Damaging the victim may cause them to wake up. This ability may only be used once every 20 seconds. </HELP><TICKSBETWEENCASTS>4</TICKSBETWEENCASTS><TICKSOVERRIDE>1</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG></UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Vampire_SharingOfSpirits" TYPE="GenAbility"><CLASS>Vampire_SharingOfSpirits</CLASS><NAME>Sharing of Spirits</NAME><DISPLAY>(Sharing of Spirits)</DISPLAY><TRIGSTR>SHARESPIRIT</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,NOTHING</CLASSIFICATION><OVERRIDEMANA>-1</OVERRIDEMANA><USAGEMASK>HITPOINTS</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>INDIFFERENT</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT>IMASK_PROG p Vampire_SharingOfSpirits
+ mpcast chant_animalspy $0
+~</SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempt(s) to channel into &lt;T-NAME&gt;.</FIZZLEMSG><AUTOCASTMSG>&lt;T-NAME&gt; &lt;T-IS-ARE&gt; possessed!</AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; stare(s) beyond the horizon.</CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;By staring into the eyes of an animal in your party, your spirit or conscious mind moves within the animal and possesses it. This allows you to control the actions of the animal and see through its eyes. To direct the animal's actions, simply say a command (e.g SAY NORTH) and the animal will attempt to perform that action, regardless of how distant the animal is from you. You may continue to perform actions while sharing your spirit with your animal.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>1</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG>&lt;S-NAME&gt; return(s) to &lt;S-HIS-HER&gt; senses.</UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG><NUMARGS>1</NUMARGS></ABILITY><ABILITY ID="Vampire_AstralProjection" TYPE="GenAbility"><CLASS>Vampire_AstralProjection</CLASS><NAME>Psychic Projection</NAME><DISPLAY></DISPLAY><TRIGSTR>PSYCHICPROJECT</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,NOTHING</CLASSIFICATION><OVERRIDEMANA>-1</OVERRIDEMANA><USAGEMASK>HITPOINTS</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>OK_SELF</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT>imask_prog p UNINVOKE-Vampire_AstralProjection
+  mpunaffect $n Chant_AstralProjection
+~
+
+cnclmsg_prog think p quit
+  mpunaffect $n Vampire_AstralProjection
+  mpunaffect $n Chant_AstralProjection
+~</SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; fail(s) to find &lt;S-HIS-HER&gt; astral form.</FIZZLEMSG><AUTOCASTMSG>&lt;T-NAME&gt; start(s) to astral project!</AUTOCASTMSG><CASTMSG></CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY>Chant_AstralProjection</POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;You arc able to expand your consciousness to such a degree that you can separate your mind from your body. While in this state you can travel without the use of your body, journeying nearly anywhere on Earth. However, as your astral self reaches the outermost point of the Moon`s orbit, you will encounter what has been referred to as the Limit of the Lunar Sphere - an impassable barrier.
+
+The physical body left behind lies as motionless as if it were in torpor. Your mind stays with the astral self, and you have no way of knowing what is going on around or in your body. Indeed, for all you know, your body is in flames.
+
+A silver cord, a diaphanous line grounding your consciousness to your body, connects your astral self to your real body. As long as this cord is not severed, you may enter QUIT to return quickly to your body. If this cord is severed during an astral mishap, you become completely lost and fully enter the astral plane, the realm of ghosts and shades. Finding one`s body again requires an arduous and terrifying journey.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>0</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG></UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Vampire_CloakOfShadows" TYPE="GenAbility"><CLASS>Vampire_CloakOfShadows</CLASS><NAME>Cloak of Shadows</NAME><DISPLAY>(Cloaked in Shadows)</DISPLAY><TRIGSTR>CLOAKOFSHADOWS</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,NOTHING</CLASSIFICATION><OVERRIDEMANA>10</OVERRIDEMANA><USAGEMASK>HITPOINTS</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>OK_SELF</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT>imask_prog p Vampire_CloakOfShadows
+  mpstop $n
+~
+
+cnclmsg_prog think p visible
+  mpunaffect $n Vampire_CloakOfShadows
+~</SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempt(s) to find something to hide behind, and fail(s).</FIZZLEMSG><AUTOCASTMSG></AUTOCASTMSG><CASTMSG></CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY>Thief_Hide</POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;This fledgling OBFUSCATE ability allows the vampire to hide themselves behind some sort of cover or at least be in a position that eyes easily pass over anyway them. Most often, such cover is the shadows of an alley or a recessed door frame, but this power also works if you can interpose a tree or lamppost (no matter how narrow) between yourself and the ones from whom you hide.
+
+You may use the VISIBLE command to end this effect early.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>0</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG>&lt;S-NAME&gt; step(s) out of the shadows.</UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Vampire_AuraPerception" TYPE="GenAbility"><CLASS>Vampire_AuraPerception</CLASS><NAME>Aura Perception</NAME><DISPLAY>(Viewing Auras)</DISPLAY><TRIGSTR>SEEAURAS</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,NOTHING</CLASSIFICATION><OVERRIDEMANA>25</OVERRIDEMANA><USAGEMASK>HITPOINTS</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>OK_SELF</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT></SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; fail(s) to channel &lt;S-HIS-HER&gt; thoughts.</FIZZLEMSG><AUTOCASTMSG>&lt;T-NAME&gt; see(s) colors!</AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; focus(es) deeply on the ether.</CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;You can see the auras of other beings and items, upon entering a new room, the colors of which indicate their moods, identities, dispositions and levels of power.
+
+Even the most shallow, transparent person usually has several different colors composing his aura. The aura may shift between the different colors in a predictable cycle, or it might shift completely at random. Each color indicates the presence of a mob or item of the appropriate trait:
+
+Black - Something Undead
+Red - Something evil
+Blue - Something good
+Green - A neutral creature
+Grey - Something metal or stone
+Maroon - Something hidden
+Yellow - Something invisible
+Brown - Something wooden
+Orange - Something trapped
+White - Something lawful
+Purple - Something chaotic
+(Striped colors) - a single source of multiple colors
+(Swirling colors) - multiple sources of multiple colors
+(Dull colors) - highest level is below 15 levels below the caster
+(Faded colors) - highest level is below 5 levels below the caster
+(Bright colors) - highest level is between 5 and 15 levels above the caster
+(Brilliant colors) - highest level is between 15 and 25 levels above the caster
+(Dazzling colors) - highest level is 25 levels or more above the caster</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>0</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG>&lt;S-NAME&gt; seem(s) less focused.</UNINVOKEMSG><MOCKABILITY>Chant_BreathColor</MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Vampire_TheSpiritsTouch" TYPE="GenAbility"><CLASS>Vampire_TheSpiritsTouch</CLASS><NAME>The Spirit Touch</NAME><DISPLAY>(Spirittouch)</DISPLAY><TRIGSTR>SPIRITTOUCH</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,NOTHING</CLASSIFICATION><OVERRIDEMANA>25</OVERRIDEMANA><USAGEMASK>HITPOINTS</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>OK_SELF</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT>IMASK_PROG p Vampire_TheSpiritsTouch
+  IF !wornon($n hands ALL)
+    mpcast thief_appraise $%wornon($n held)%
+    IF EXPERTISE($n Vampire_HeightenSenses level &gt; 1)
+      mpcast Spell_AnalyzeDweomer $%wornon($n held)%
+      IF EXPERTISE($n Vampire_HeightenSenses level &gt; 3)
+        mpcast Spell_KnowOrigin $%wornon($n held)%
+        IF EXPERTISE($n Vampire_HeightenSenses level &gt; 5)
+          mpcast Thief_Lore $%wornon($n held)%
+        ENDIF
+      ENDIF
+    ENDIF
+  ENDIF
+~</SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; fail(s) to focus &lt;S-HIS-HER&gt; touch.</FIZZLEMSG><AUTOCASTMSG>&lt;T-NAME&gt; &lt;T-IS-ARE&gt; extremely focused on touching!</AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; focus(es) intently on their touch.</CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;With this power you may pick up an object and gain impressions of the object. This object reading is usually limited to a ?snapshot? of the tableau, but sometimes such things as the value, function and material. The Spirit's Touch can also reveal how the owner came to possess the item, or reveal what went on during the last moments the subject held the object. Due to the nature of the increased sensitivity, the Vampire may wish to wear gloves for the duration of this ability, to avoid being overloaded by sensations from the item's past, and remove the gloves when seeking to learn more about an item held.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>0</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG>&lt;T-NAME&gt; &lt;T-IS-ARE&gt; less touchy-feely.</UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Vampire_EarthMeld" TYPE="GenAbility"><CLASS>Vampire_EarthMeld</CLASS><NAME>Earth Meld</NAME><DISPLAY>(Earth Melded)</DISPLAY><TRIGSTR>EARTHMELD, EMELD</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>MOVING,LAW</FLAGS><CLASSIFICATION>SKILL,NOTHING</CLASSIFICATION><OVERRIDEMANA>25</OVERRIDEMANA><USAGEMASK>HITPOINTS</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>OK_SELF</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT>imask_prog p UNINVOKE-Vampire_EarthMeld
+  mpunaffect $n Prayer_MassGrave
+~</SCRIPT><TARGETMASK>-DOMAIN +CAVE +WOODS +ROCKY +PLAINS +JUNGLE +SWAMP +DESERT +HILLS +MOUNTAINS</TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempt(s) to meld into the ground, and fail(s).</FIZZLEMSG><AUTOCASTMSG>&lt;T-NAME&gt; sink(s) into the ground!</AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; silently sink(s) into the ground.</CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY>Prayer_MassGrave</POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;One of the most prized powers that a vampire can possess, Earth Meld has saved the lives of countless vampires through the ages. This power enables you to make the earth part of yourself and thus merge with it. Others viewing your use of earth meld will simply see you sink into the ground.
+You can only sink into earth. It is absolutely impossible to meld into earth through another substance. For example, while there may be earth underneath it, a linoleum floor completely prohibits the use of this power.
+Earth Meld is a great way to find cover when outdoors. Being one with the earth prevents contact with sunlight and also provides a way to sleep away the centuries. Many ancient vampires use Earth Meld to rest in safety, and thereby gain strength and power. Some whisper that thousands of Ancients sleep within the ground and will awaken on the night of Gehenna.
+
+The Revert Form ability is required to return to your normal form prior to the normal duration.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>0</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG></UNINVOKEMSG><MOCKABILITY>Spell_Untraceable</MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG>This ability will only work on soil or natural stone.</TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Vampire_HardenSkin" TYPE="GenAbility"><CLASS>Vampire_HardenSkin</CLASS><NAME>Harden Skin</NAME><DISPLAY>(Fortitude)</DISPLAY><TRIGSTR>HARDENSKIN</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,NOTHING</CLASSIFICATION><OVERRIDEMANA>25</OVERRIDEMANA><USAGEMASK>HITPOINTS</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>BENEFICIAL_SELF</QUALITY><HERESTATS>armor-20-(@x1*4) savefir+10+(5*@x8) savecol+10+(5*@x8) saveaci+10+(5*@x8) saveele+10+(5*@x8) savetra+10+(5*@x8)</HERESTATS><CASTMASK></CASTMASK><SCRIPT></SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; fail(s) to brace for damage.</FIZZLEMSG><AUTOCASTMSG>&lt;T-NAME&gt; &lt;T-IS-ARE&gt; braced!</AUTOCASTMSG><CASTMSG>&lt;T-NAME&gt; brace(s) for damage.</CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;All vampires have a powerful constitution, and are able to shrug off most injuries, but those with a high expertise in Fortitude are even less likely to be harmed by physical or elemental blows. </HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>0</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG>&lt;T-NAME&gt; ease(s) &lt;T-HIS-HER&gt; muscles.</UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Necromancer_FeedBlood" TYPE="GenAbility"><CLASS>Necromancer_FeedBlood</CLASS><NAME>Feed Blood</NAME><DISPLAY>(Vampiric Regeneration)</DISPLAY><TRIGSTR>FEED</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>UNHOLY</FLAGS><CLASSIFICATION>SKILL,DEATH_LORE</CLASSIFICATION><OVERRIDEMANA>25</OVERRIDEMANA><USAGEMASK>HITPOINTS</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>BENEFICIAL_OTHERS</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT>IMASK_PROG p Necromancer_FeedBlood
+  if !affected($t Undead_BloodFed)
+    mpcast Undead_BloodFed $t
+  endif
+~
+
+CNCLMSG_PROG T=HEALING ALL
+&lt;SCRIPT&gt;
+  var msg = objs()[0];
+  if ((msg != null)
+  &&  (msg.othersMessage)
+  &&  (msg.othersMessage())
+  &&  (msg.othersMessage().startsWith("The harming magic"))) 
+  {
+    msg.setSourceMessage(null);
+    msg.setTargetMessage(null);
+    msg.setOthersMessage(null);
+  }
+
+&lt;/SCRIPT&gt;
+~</SCRIPT><TARGETMASK>-JAVACLASS +GenUndead +GenRideableUndead -race +Vampire +Vampire* +Ghoul +Ghoul* +Ghast +Ghast*</TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempt(s) to regenerate &lt;T-NAME&gt;, and fail(s).</FIZZLEMSG><AUTOCASTMSG>&lt;T-NAME&gt; &lt;T-IS-ARE&gt; regenerating!</AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; feeds(s) &lt;T-NAME&gt; &lt;S-HIS-HER&gt; own blood.</CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>2+@x4</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;The vampire gives some of their own blood to heal another vampire or ghoul.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>15</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG>&lt;T-NAME&gt; stop(s) regenerating.</UNINVOKEMSG><MOCKABILITY>Prayer_Regeneration</MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG>&lt;T-NAME&gt; may not be an undead vampire or ghoul.</TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Vampire_DrawingOutTheBeast" TYPE="GenAbility"><CLASS>Vampire_DrawingOutTheBeast</CLASS><NAME>Drawing Out the Beast</NAME><DISPLAY>(Frenzied)</DISPLAY><TRIGSTR>DRAWOUTBEAST</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,NOTHING</CLASSIFICATION><OVERRIDEMANA>-1</OVERRIDEMANA><USAGEMASK>HITPOINTS</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>INDIFFERENT</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT>IMASK_PROG p Vampire_DrawingOutTheBeast
+  IF !hastattoo ($t BEASTHASBEENDRAWNOUT)
+    IF rand0num (30 &lt; 28)
+      mptattoo $t BEASTHASBEENDRAWNOUT
+      if isbehave ($t Aggressive) or isbehave ($t VeryAggressive) or isbehave ($t WimpyAggressive) or isbehave ($t Wimpy)
+      ##Don't change aggressiveness stance
+      else
+        IF rand0num (4 == 0)
+          mpbehave WIMPY $t VERY=1 +NAMES -$n
+          mptattoo $t DRAWNOUTBEASTWIMPY
+        ELSE
+          mpbehave Aggressive $t MOBKILL CHECKLEVEL +NAMES -$n
+          mptattoo $t DRAWNOUTBEASTAGGRO
+        ENDIF
+      endif
+    ENDIF
+    IF rand0num (25 == 24)
+      mpaffect $t chant_yearning
+      mptattoo $t DRAWNOUTBEASTYEARNING
+    ENDIF
+  ENDIF
+~
+
+IMASK_PROG p UNINVOKE-Vampire_DrawingOutTheBeast
+  mptattoo $t -BEASTHASBEENDRAWNOUT
+  IF hastattoo ($t DRAWNOUTBEASTWIMPY)
+    mpunbehave WIMPY $t
+    mptattoo $t -DRAWNOUTBEASTWIMPY
+  ENDIF
+  IF hastattoo ($t DRAWNOUTBEASTAGGRO)
+    mpunbehave Aggressive $t
+    mptattoo $t -DRAWNOUTBEASTAGGRO
+  ENDIF
+  IF hastattoo ($t DRAWNOUTBEASTYEARNING)
+    mpunaffect $t chant_yearning
+    mptattoo $t -DRAWNOUTBEASTYEARNING
+  ENDIF
+~</SCRIPT><TARGETMASK>+RACECAT -Undead</TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempt(s) to draw out the beast in &lt;T-NAME&gt;, and fail(s).</FIZZLEMSG><AUTOCASTMSG>&lt;T-NAME&gt; seem(s) more feral!</AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; draw(s) out the beast in &lt;T-NAME&gt;.</CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;You have attained a deep understanding of the mysteries of man`s wild cousins. Armed with this knowledge, you are better able to deal with the Beast within. You may draw out the Beast in a target living creature, causing them to enter a state of frenzy. While in this state, they will fight with reckless abandon, dealing more damage but at the cost of reduced armor. They may become aggressive to others (except initiating vampire, but not other members in their group), or behave more erratically in other fashions.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>0</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG></UNINVOKEMSG><MOCKABILITY>Fighter_Berzerk</MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG>You may not affect undead with this ability.</TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Vampire_AnimalFriendship" TYPE="GenAbility"><CLASS>Vampire_AnimalFriendship</CLASS><NAME>Animal Friendship</NAME><DISPLAY>(Animal Friend)</DISPLAY><TRIGSTR>BEFRIENDANIMAL</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,NOTHING</CLASSIFICATION><OVERRIDEMANA>-1</OVERRIDEMANA><USAGEMASK>HITPOINTS</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>INDIFFERENT</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT></SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempt(s) to befriend &lt;T-NAME&gt;, and fail(s).</FIZZLEMSG><AUTOCASTMSG>&lt;T-NAME&gt; &lt;T-IS-ARE&gt; befriended!</AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; befriend(s) &lt;T-NAME&gt;.</CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;USAGE    : BEFRIENDANIMAL [TARGET NAME]
+Example  : befriendanimal rat
+This ability will cause some animal in the same room to immediately befriend the vampire.  The vampire will then have the animal as a follower who will fight alongside, and follow all ORDERs that the vampire gives.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>0</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG></UNINVOKEMSG><MOCKABILITY>Chant_CharmAnimal</MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Vampire_ShadowOfTheBat" TYPE="GenAbility"><CLASS>Vampire_ShadowOfTheBat</CLASS><NAME>Shadow of the Bat</NAME><DISPLAY></DISPLAY><TRIGSTR>BATFORM</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,NOTHING</CLASSIFICATION><OVERRIDEMANA>10</OVERRIDEMANA><USAGEMASK>HITPOINTS</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>OK_SELF</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT></SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempt(s) to change forms, and fail(s).</FIZZLEMSG><AUTOCASTMSG></AUTOCASTMSG><CASTMSG></CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;You may transform into a bat. When in this form, you benefit from all of the obvious advantages, such as the bat?s ability to fly.
+
+The Revert Form ability is required to return to your normal form prior to the normal duration.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>0</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG></UNINVOKEMSG><MOCKABILITY>Spell_PolymorphSelf</MOCKABILITY><MOCKABLETEXT>VampireBat</MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Vampire_UnseenPresence" TYPE="GenAbility"><CLASS>Vampire_UnseenPresence</CLASS><NAME>Unseen Presence</NAME><DISPLAY>(Hidden)</DISPLAY><TRIGSTR>UNSEENPRESENCE</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,NOTHING</CLASSIFICATION><OVERRIDEMANA>10</OVERRIDEMANA><USAGEMASK>HITPOINTS</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>OK_SELF</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT>IMASK_PROG p Vampire_UnseenPresence
+##Tattoo them if they have abilities, then use tattoos to determine uninvoke
+  IF !isable($n Thief_Sneak)
+    mpenable $n Thief_Sneak 100
+    mptattoo $n vampiresneak
+  ENDIF
+  IF !isable($n Thief_AutoSneak)
+    mpenable $n Thief_Autosneak 100
+    mptattoo $n vampireautosneak
+  ENDIF
+~
+
+IMASK_PROG p UNINVOKE-Vampire_UnseenPresence
+  IF hastattoo($n vampiresneak)
+    mpdisable $n Thief_Sneak
+    mptattoo $n -vampiresneak
+  ENDIF
+  IF hastattoo($n vampireautosneak)
+    mpdisable $n Thief_Autosneak
+    mptattoo $n -vampireautosneak
+  ENDIF
+~</SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempts to use this ability against &lt;T-NAME&gt;, and fails</FIZZLEMSG><AUTOCASTMSG>An amazing thing happens to &lt;T-NAME&gt;!</AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; uses an ability against &lt;T-NAME&gt;</CASTMSG><POSTCASTMSG>&lt;T-NAME&gt; is &lt;DAMAGE&gt; by an ability from &lt;S-NAME&gt;!</POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;Your powers of remaining unseen have become so potent that you can effectively cause yourself to disappear indefinitely and remain hidden even if you walk around.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>0</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG></UNINVOKEMSG><MOCKABILITY>Thief_Hide</MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Vampire_Mesmerize" TYPE="GenAbility"><CLASS>Vampire_Mesmerize</CLASS><NAME>Mesmerize</NAME><DISPLAY></DISPLAY><TRIGSTR>MESMERIZE</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,NOTHING</CLASSIFICATION><OVERRIDEMANA>10</OVERRIDEMANA><USAGEMASK>HITPOINTS</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>INDIFFERENT</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT>IMASK_PROG p Vampire_Mesmerize
+  mpcastext spell_geas $0 $1
+  if !hastattoo($t RecentlyDominated)
+    mpsetvar $t vampiricdomination ++
+    mptattoo $t '60 RecentlyDominated'
+  endif
+  MPSTOP $t
+~</SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempt(s) to impose &lt;S-HIS-HER&gt; will upon &lt;T-NAME&gt;.</FIZZLEMSG><AUTOCASTMSG>&lt;T-NAME&gt; &lt;T-IS-ARE&gt; mesmerized!</AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; impose(s) &lt;S-HIS-HER&gt; will upon &lt;T-NAME&gt;.</CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>MIND</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;USAGE    : MESMERIZE "[Target Name]" "[Task to perform]".
+
+With a domineering presence, the vampire forces the target to perform a specific task.</HELP><TICKSBETWEENCASTS>4</TICKSBETWEENCASTS><TICKSOVERRIDE>1</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG></UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG><NUMARGS>2</NUMARGS></ABILITY><ABILITY ID="Vampire_ClearMind" TYPE="GenAbility"><CLASS>Vampire_ClearMind</CLASS><NAME>Clear Mind</NAME><DISPLAY></DISPLAY><TRIGSTR>CLEARMIND</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,NOTHING</CLASSIFICATION><OVERRIDEMANA>0</OVERRIDEMANA><USAGEMASK>MANA</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>BENEFICIAL_SELF</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT>IMASK_PROG p Vampire_ClearMind
+  if affected($n Vampire_FeelThoughts)
+    mpunaffect $n Vampire_Telepathy
+    mpechoat $n You clear your mind of foreign thoughts.
+  endif
+  if affected($n Vampire_HeightenSenses)
+    mpunaffect $n Vampire_Telepathy
+    mpechoat $n You clear your mind of foreign thoughts.
+  endif
+  if affected($n Vampire_AuraPerception)
+    mpunaffect $n Vampire_Telepathy
+    mpechoat $n You clear your mind of foreign thoughts.
+  endif
+  if affected($n Vampire_TheSpiritsTouch)
+    mpunaffect $n Vampire_Telepathy
+    mpechoat $n You clear your mind of foreign thoughts.
+  endif
+  if affected($n Vampire_Telepathy)
+    mpunaffect $n Vampire_Telepathy
+    mpechoat $n You clear your mind of foreign thoughts.
+  endif
+  if affected($n Vampire_AstralProjection)
+    mpunaffect $n Vampire_Telepathy
+    mpechoat $n You clear your mind of foreign thoughts.
+  endif
+~</SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; twitch(es) but fail(s) to still &lt;S-HIS-HER&gt; mind.</FIZZLEMSG><AUTOCASTMSG>&lt;T-NAME&gt; appear(s) calm!</AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; appear(s) calm.</CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;A vampire may end all of their Auspex abilities early through the use of this ability.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>1</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG></UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Vampire_SweetWhispers" TYPE="GenAbility"><CLASS>Vampire_SweetWhispers</CLASS><NAME>Sweet Whispers</NAME><DISPLAY>(Sweet Whispering)</DISPLAY><TRIGSTR>COMMUNE</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,NOTHING</CLASSIFICATION><OVERRIDEMANA>10</OVERRIDEMANA><USAGEMASK>HITPOINTS</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>OK_SELF</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT></SCRIPT><TARGETMASK>-RACECAT +Undead</TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; fail(s) to comprehend.</FIZZLEMSG><AUTOCASTMSG>&lt;T-NAME&gt; can speak with animals!</AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; listen(s) to &lt;S-HIS-HER&gt; beast within.</CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;As a vampire gains expertise in Animalism, they may gain this ability to communicate with animals.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>0</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG></UNINVOKEMSG><MOCKABILITY>Chant_SpeakWithAnimals</MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG>Only certain forms of undead may be affected by this prayer.</TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Vampire_DreadGaze" TYPE="GenAbility"><CLASS>Vampire_DreadGaze</CLASS><NAME>Dread Gaze</NAME><DISPLAY>(Cowed)</DISPLAY><TRIGSTR>DREADGAZE</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>HEATING,FEARING</FLAGS><CLASSIFICATION>SKILL,NOTHING</CLASSIFICATION><OVERRIDEMANA>10</OVERRIDEMANA><USAGEMASK>HITPOINTS</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>INDIFFERENT</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT>imask_prog p Vampire_DreadGaze
+  if randnum (4 == 0)
+    mpecho $t flee(s) from $n.
+    mpforce $t flee
+    mpstop $t
+  else
+    mpstop $t
+    mpecho $t momentarily cowers in place.
+  endif
+~</SCRIPT><TARGETMASK>+JAVACLASS -GenUndead -GenRideableUndead</TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; bare(s) &lt;S-HIS-HER&gt; teeth in an unintimidating fashion.</FIZZLEMSG><AUTOCASTMSG>&lt;T-NAME&gt; become(s) cowered!</AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; focus(es) on &lt;T-NAME&gt;.</CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;The exhibition of your full vampiric powers can cause great fear and loathing in mortals. This is usually accomplished by baring teeth and claws while hissing loudly. While most vampires can performing this action, you are exceptionally adept at it, and are capable of driving mortals insane with fear, or frightening them into submission or flight with the merest snarl. The subjects are cowed by your appearance and will do anything to avoid incurring your wrath.
+
+This ability is best used to cause enemies in combat to retreat from combat. Dread Gaze will also stop progress on any crafting or building activities.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>1</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG></UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG>Undead are unaffected by Dread Gaze.</TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Vampire_Awe" TYPE="GenAbility"><CLASS>Vampire_Awe</CLASS><NAME>Vampiric Awe</NAME><DISPLAY>(Awe-Inspiring)</DISPLAY><TRIGSTR>VAMPIRICAWE, VAWE</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,NOTHING</CLASSIFICATION><OVERRIDEMANA>-1</OVERRIDEMANA><USAGEMASK>HITPOINTS</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>BENEFICIAL_SELF</QUALITY><HERESTATS>CHA+2+@x8 MAXCHA+((@x8)/2)</HERESTATS><CASTMASK></CASTMASK><SCRIPT></SCRIPT><TARGETMASK>-RACECAT +Undead</TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; &lt;S-IS-ARE&gt; not inspiring.</FIZZLEMSG><AUTOCASTMSG>&lt;T-NAME&gt; &lt;T-IS-ARE&gt; amazing!</AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; &lt;S-IS-ARE&gt; even more fascinating!</CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;When you employ this power, everyone near you becomes intensely attracted to you. They will do nearly anything to be close to you, although their fascination is not so complete that they will endanger themselves. The effects last for a while, but everyone will view you more favorably while they persist.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>0</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG></UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG>Only certain forms of undead may be affected by this ability.</TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Vampire_SongOfSerenity" TYPE="GenAbility"><CLASS>Vampire_SongOfSerenity</CLASS><NAME>Song of Serenity</NAME><DISPLAY></DISPLAY><TRIGSTR>SINGSERENITY</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,NOTHING</CLASSIFICATION><OVERRIDEMANA>-1</OVERRIDEMANA><USAGEMASK>HITPOINTS</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>MALICIOUS</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT>IMASK_PROG p Vampire_SongOfSerenity
+  mpcast Prayer_Calm
+  mpcast Prayer_Paralyze $t
+  mpstop $t
+~</SCRIPT><TARGETMASK>+RACECAT -Undead "-Metal Golem" -Slime -Vegetation "-Wood Golem"</TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempt(s) to soothe &lt;T-YOUPOSS&gt; beast within, and fail(s).</FIZZLEMSG><AUTOCASTMSG>&lt;T-NAME&gt; &lt;T-IS-ARE&gt; passivated!</AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; soothe(s) &lt;T-YOUPOSS&gt; spirit.</CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>PARALYZE</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;This power allows you to expel the savagery from an animal or mortal, causing the target to become passive and listless. Simply by singing a song of comfort and solace to the Beast within, you can take from him that which gives him the fire of individuality and creativity.
+
+When the Beast has been removed from an individual, he loses the will to fight or struggle. He cannot use or regain Willpower, nor can he resist any sort of attack upon him. Kindred are immune to this power.
+
+Mortals and creatures who lack a Beast are prone to accept nearly anything which occurs to them in this state as completely normal and natural, evincing no reaction to it. Later they might wonder why they had no reaction, but often they avoid thinking about the situation at all.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>1</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG></UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG>This ability does not work on undead or mindless creatures.</TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Vampire_CloakTheGathering" TYPE="GenAbility"><CLASS>Vampire_CloakTheGathering</CLASS><NAME>Cloak the Gathering</NAME><DISPLAY>(Cloaked)</DISPLAY><TRIGSTR>CLOAKTHEGATHERING</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,NOTHING</CLASSIFICATION><OVERRIDEMANA>-1</OVERRIDEMANA><USAGEMASK>HITPOINTS</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>BENEFICIAL_OTHERS</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT>imask_prog p Vampire_CloakTheGathering
+  mpcast "Mass Invisibility" $n
+~</SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempt(s) to be stealthy.</FIZZLEMSG><AUTOCASTMSG>&lt;T-NAME&gt; fade(s) from view!</AUTOCASTMSG><CASTMSG></CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;This incredibly manipulative power allows you to extend any of your Obfuscate powers to those around you. Not only are you concealed, but so is everyone else with you whom you wish to conceal.
+
+If one character compromises the disguise or invisibility, then only she is no longer under the protection of your powers. However, if you compromise the position, the Cloak drops completely and everyone may be seen.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>1</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG></UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Vampire_MistForm" TYPE="GenAbility"><CLASS>Vampire_MistForm</CLASS><NAME>Mist Form</NAME><DISPLAY></DISPLAY><TRIGSTR>MISTFORM</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,NOTHING</CLASSIFICATION><OVERRIDEMANA>25</OVERRIDEMANA><USAGEMASK>HITPOINTS</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>OK_SELF</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT></SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; attempt(s) to change forms, and fail(s).</FIZZLEMSG><AUTOCASTMSG></AUTOCASTMSG><CASTMSG></CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;You may transform into a mist. While in this form, you may not hold or manipulate items, perform certain actions or gain experience. However, you do gain the ability to fly and to move through closed doors that are not perfectly sealed. You also become impervious to most attacks.
+
+The Revert Form ability is required to return to your normal form prior to the normal duration.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>0</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG></UNINVOKEMSG><MOCKABILITY>Spell_PolymorphSelf</MOCKABILITY><MOCKABLETEXT>Mist</MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Vampire_HeightenStrength" TYPE="GenAbility"><CLASS>Vampire_HeightenStrength</CLASS><NAME>Heighten Strength</NAME><DISPLAY>(Potence)</DISPLAY><TRIGSTR>POTENCE</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>ADJUSTER</FLAGS><CLASSIFICATION>SKILL,NOTHING</CLASSIFICATION><OVERRIDEMANA>25</OVERRIDEMANA><USAGEMASK>HITPOINTS</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>BENEFICIAL_SELF</QUALITY><HERESTATS>STR+3+(3*@x8) MAXSTR+3+(3*@x8)</HERESTATS><CASTMASK></CASTMASK><SCRIPT></SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; grunt(s) and puff(s), but doesn't get stronger.</FIZZLEMSG><AUTOCASTMSG>&lt;T-NAME&gt; bulk(s) up!!</AUTOCASTMSG><CASTMSG>&lt;T-NAME&gt; bulk(s) up!</CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;This Discipline defines the superior strength that vampires possess. This additional physical might allows great feats to be accomplished, far beyond what a normal mortal would be able to perform. As expertise in Potence increases, the vampire can lift greater weights and inflict greater harm upon objects and individuals when they are punched or hit.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>0</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG>&lt;T-NAME&gt; relax(es) &lt;T-HIS-HER&gt; frame!!</UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Vampire_FeelThoughts" TYPE="GenAbility"><CLASS>Vampire_FeelThoughts</CLASS><NAME>Feel Thoughts</NAME><DISPLAY></DISPLAY><TRIGSTR>FEELTHOUGHTS</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,NOTHING</CLASSIFICATION><OVERRIDEMANA>25</OVERRIDEMANA><USAGEMASK>HITPOINTS</USAGEMASK><CANAFFECTMASK>ROOMS</CANAFFECTMASK><CANTARGETMASK>ROOMS</CANTARGETMASK><QUALITY>OK_SELF</QUALITY><HERESTATS></HERESTATS><CASTMASK></CASTMASK><SCRIPT></SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; fail(s) to focus &lt;S-HIS-HER&gt; thoughts.</FIZZLEMSG><AUTOCASTMSG>&lt;T-NAME&gt; hear(s) voices!</AUTOCASTMSG><CASTMSG>&lt;S-NAME&gt; focus(es) intently on the thoughts of those nearby.</CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY>Spell_HearThoughts</POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;This mentalist ability allows a vampire to hear thoughts of nearby beings. This may provide some knowledge on surrounding inhabitants and some of their capabilities and motivations.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>1</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG></UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY><ABILITY ID="Vampire_HeightenPresence" TYPE="GenAbility"><CLASS>Vampire_HeightenPresence</CLASS><NAME>Heighten Presence</NAME><DISPLAY>(Presence)</DISPLAY><TRIGSTR>PRESENCE</TRIGSTR><MAXRANGE>MELEE</MAXRANGE><MINRANGE>MELEE</MINRANGE><AUTOINVOKE>false</AUTOINVOKE><FLAGS>0</FLAGS><CLASSIFICATION>SKILL,NOTHING</CLASSIFICATION><OVERRIDEMANA>25</OVERRIDEMANA><USAGEMASK>HITPOINTS</USAGEMASK><CANAFFECTMASK>MOBS</CANAFFECTMASK><CANTARGETMASK>MOBS</CANTARGETMASK><QUALITY>BENEFICIAL_SELF</QUALITY><HERESTATS>CHA+3+(3*@x8) MAXCHA+3+(3*@x8)</HERESTATS><CASTMASK></CASTMASK><SCRIPT></SCRIPT><TARGETMASK></TARGETMASK><FIZZLEMSG>&lt;S-NAME&gt; think(s) &lt;S-HE-SHE&gt; is charming, but is only fooling &lt;S-NAMESELF&gt;.</FIZZLEMSG><AUTOCASTMSG>&lt;T-NAME&gt; &lt;T-IS-ARE&gt; charming!!</AUTOCASTMSG><CASTMSG>&lt;T-NAME&gt; &lt;T-IS-ARE&gt; charming!!</CASTMSG><POSTCASTMSG></POSTCASTMSG><ATTACKCODE>NOTHING</ATTACKCODE><POSTCASTAFFECT></POSTCASTAFFECT><POSTCASTABILITY></POSTCASTABILITY><POSTCASTDAMAGE>0</POSTCASTDAMAGE><HELP>&lt;ABILITY&gt;This Discipline is why vampires are exceptionally attractive and appealing to others. People want to be around the vampire, to bask in the brilliant light he sheds. He need not make any sort of overt or deliberate action, for Presence is a natural aspect of one?s personality. Presence is a powerful, if subtle, Discipline that increases effectiveness with expertise.</HELP><TICKSBETWEENCASTS>0</TICKSBETWEENCASTS><TICKSOVERRIDE>0</TICKSOVERRIDE><TICKAFFECTS>false</TICKAFFECTS><CHANNELING>false</CHANNELING><UNINVOKEMSG>&lt;T-NAME&gt; &lt;T-IS-ARE&gt; less charming.</UNINVOKEMSG><MOCKABILITY></MOCKABILITY><MOCKABLETEXT></MOCKABLETEXT><TARGETFAILMSG></TARGETFAILMSG><NUMARGS>0</NUMARGS></ABILITY></CUSTOM>

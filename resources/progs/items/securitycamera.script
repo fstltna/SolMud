@@ -1,0 +1,34 @@
+cnclmsg_prog huh p reconfigure
+if worn('$n' '$i')
+mploadvar $i setclan
+mpsetvar $i setclan $%CLANDATA('$n' 'NAME')%
+mpgset $i SECRET $<$i setclan>
+mpset $i description It can be reconfigured with ^creconfigure^? while held. It is rated at 40. It belongs to $<$i setclan>.
+mpechoat $n You set the scanner to $%CLANDATA('$n' 'NAME')%%0D^rRemember you are allowed to have only 1 security device per entrance of a restricted area.
+mpunaffect $i prop_havezapper
+mpaffect prop_havezapper $i '-clan "+$<$i setclan>"'
+mpsavevar $i setclan
+endif
+return cancel
+~
+
+greet_prog 40
+mploadvar $i setclan
+mpsetclan $i $<$i setclan> 0
+if ispc($n) and var($i setclan != '') and islike($n +LOCATION -OWNED CLANOWNED) and var($i setclan != $%CLANDATA('$n' 'NAME'))
+mpsetvar $i tempfol $%ISFOLLOW($n)%
+if var($i tempfol != '')
+ if clan('$<$i tempfol>' == '$<$i setclan>')
+ mpecho scans $n for a moment but a light blinks yellow and it stays idle.
+ return
+ endif
+endif
+if clan($n in '$<$i setclan>')
+ return
+endif
+mpchannel !wizinfo $n illegally entered $%INROOM()%.
+mpecho $i ^rwhirrs to life as it scans $n and a light blinks red.^N
+mpchannel !clantalk [$<$i setclan>] ALERT: AN INTRUDER IS SPOTTED AT $%INROOM()%.
+mpchannel corpo [$<$i setclan>] ALERT: AN INTRUDER IS SPOTTED AT $%INROOM()%.
+endif
+~

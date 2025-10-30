@@ -1,0 +1,233 @@
+function_prog unchaos
+    for $0 = 1 to '$%NUMMOBSROOM(*)%'
+	mpsetvar $i temptarg $%ROOMMOB($0)%
+    if isnpc($<$i temptarg>) and isfight($<$i temptarg>) and !hastattoo('$<$i temptarg>' usingsexability)
+        mpstop '$%ROOMMOB($0)%'
+		mpecho $%ROOMMOB($0)% stops fighting for a moment due to the battlefuck.^N
+	endif
+    next
+~
+
+fight_prog 100
+mpnotrigger casting_prog 5
+if ispc($n)
+	if hastattoo($n underage)
+		mpecho $n is below 18 years old and could not participate in this.
+		mpunaffect $n Sexual_milksteal
+		mpunaffect $t Sexual_milksteal
+		return
+	endif
+endif
+if ispc($t)
+	if hastattoo($t underage)
+		mpecho $t is below 18 years old and could not participate in this.
+		mpunaffect $n Sexual_milksteal
+		mpunaffect $t Sexual_milksteal
+		return
+	endif
+endif
+if isname($n child)
+return
+endif
+if isname($t child)
+return
+endif
+if islike('$n' '-tattoos +usingsexability') or islike('$t' '-tattoos +usingsexability')
+else
+	mpsetvar $t grapplername '$n'
+	mpsetvar $t targetname '$t'
+	mpalarm 10 mptattoo $n -usingsexability
+	mpalarm 10 mptattoo $t -usingsexability
+	mpsetvar $t targetsave $%GSTAT($t 'SAVE VS MIND')%
+	mpsetvar $n expertiselevel $%EXPERTISE($n Sexual_milksteal LEVEL)%
+	mpsetvar $n maxsexrounds $%MATH(5 + $<$n expertiselevel>)%
+	MPSETVAR $n CurLevel $%GSTAT($n LEVEL)%
+	MPSETVAR $n CurLevelhalf $%MATH($<$n curlevel>/2)%
+	mpsetvar $n cumround $%MATH(5?10)%
+	mpsetvar $n maxhealth $%GSTAT($n MAXHITS)%
+	mpsetvar $n cumtracker $<$n cumround>
+	mpsetvar $n expertisedmgmult $%MATH($<$n expertiselevel>/4 > 1)%
+	mpsetvar $n sexrounds $%MATH($<$n maxsexrounds> + 1)% 
+	mptattoo $n '$<$n maxsexrounds> usingsexability'
+	mptattoo $t '$<$n maxsexrounds> usingsexability'
+if sex($n == M) or sex($n == O) or sex($n == U)
+	mpsetvar $n genitallist 'mouth lips tongue'
+else
+	if sex($n == F) or sex($n == A) or sex($n == H)
+		mpsetvar $n genitallist 'mouth facepussy lips face throat'
+	endif
+endif
+if sex($t == M) or sex($t == O) or sex($t == U)
+	mpsetvar $t genitallist 'cock penis dong schlong rod'
+else
+	if sex($t == F) or sex($t == A) or sex($t == H)
+		mpsetvar $t genitallist 'nipple nub milker milkjug nip'
+	endif
+endif
+	mpsetvar $n severitywordlist 'thoroughly forcefully deeply quickly fiercely savagely primally angrily, deeply'
+	mpcallfunc unchaos
+	mpcallfunc MIDROUNDCHECK
+endif
+~
+
+FUNCTION_PROG MIDROUNDCHECK
+if var($n sexrounds <= 0)
+	mpunaffect $t Sexual_milksteal
+	mpunaffect $n Sexual_milksteal
+	mpecho $t breaks out of $n's sucking!
+	mptattoo $n -usingsexability
+	mptattoo $t -usingsexability
+else
+	if ishere($n)
+		mpsetvar $n sexrounds -1
+		mpsetvar $n cumtracker -1
+		MPSETVAR $n HitsCalc $%GSTAT($n Hits)%
+		MPSETVAR $t HitsCalc $%GSTAT($t Hits)%
+		mpsetvar $t strengthstat $%GSTAT('$t' STRENGTH)%
+		mpsetvar $t grapplerstrengthstat $%GSTAT('$n' STRENGTH)%
+		if var($t strengthstat > $<$t grapplerstrengthstat>)
+			mpecho $t manages to overpower $n! reducing $s grip strength! ^RSTR:[^r$<$t strengthstat> ^wvs^r $<$t grapplerstrengthstat>^R]^N
+			mpsetvar $n sexrounds --
+			mpsetvar $n sexrounds --
+		endif
+		mpsetvar $t dexteritystat $%GSTAT('$t' DEXTERITY)%
+		mpsetvar $t grapplerdexteritystat $%GSTAT('$n' DEXTERITY)%
+		if var($t dexteritystat > $<$t grapplerdexteritystat>)
+			mpecho $t manages to slip through $n's grip! reducing $s grip strength! ^RDEX:[^r$<$t dexteritystat> ^wvs^r $<$t grapplerdexteritystat>^R]^N
+			mpsetvar $n sexrounds --
+			mpsetvar $n sexrounds --
+		endif
+		mpecho $n's sucking grip strength on $t: $<'$n' sexrounds>/$<'$n' maxsexrounds>
+		mpalarm 1 mpcallfunc INITIATESexual_milksteal
+	else
+		mpunaffect $t Sexual_milksteal
+		mpunaffect $i Sexual_milksteal
+		mpunaffect $n Sexual_milksteal
+		mpunaffect $i Sexual_milksteal
+		mptattoo $n -usingsexability
+		mptattoo $t -usingsexability
+	endif
+endif
+~
+
+FUNCTION_PROG INITIATESexual_milksteal
+if class($n == TacticalJoy)
+	mpsetvar $n joydamage $%RANDNUM(30)%
+	mpsetvar $n joydamage $%MATH($<$n joydamage> + $<$n CurLevelhalf>)
+	if var($t targetsave < 0)
+		mpsetvar $n savedifference $%MATH($<$n randhealamt> / $<$t targetsave> * -1)%
+		mpsetvar $n joydamage $%MATH($<$n randhealamt> + $<$n savedifference>)%
+	endif
+	if var($t targetsave > 0)
+		mpsetvar $n savedifference $%MATH($<$n randhealamt> / $<$t targetsave>)%
+		mpsetvar $n joydamage $%MATH($<$n randhealamt> - $<$n savedifference>)%
+	endif
+	mpsetvar $n randhealamt $%MATH($<$n joydamage> / 2)%
+	MPSETVAR $t HitsCalc $%MATH($<$t HitsCalc> - $<$n joydamage>)%
+	MPSETVAR $n HitsCalc $%MATH($<$n HitsCalc> + $<$n randhealamt>)%
+	MPECHO $n sucks ($<$n joydamage>) $t's $<$t genitallist>.$%RAND0NUM(3)%!
+endif
+mpsetvar $n dmgroll $%RANDNUM(125)%
+mpsetvar $n randhealamt $%MATH($<$n dmgroll> * $<$n expertisedmgmult> + $<$n CurLevelhalf>)%
+if var($t targetsave < 0)
+	mpsetvar $n savedifference $%MATH($<$n randhealamt> / $<$t targetsave> * -1)%
+	mpsetvar $n randhealamt $%MATH($<$n randhealamt> + $<$n savedifference>)%
+endif
+if var($t targetsave > 0)
+	mpsetvar $n savedifference $%MATH($<$n randhealamt> / $<$t targetsave>)%
+	mpsetvar $n randhealamt $%MATH($<$n randhealamt> - $<$n savedifference>)%
+endif
+MPSETVAR $t HitsCalc $%MATH($<$t HitsCalc> - $<$n randhealamt>)%
+if var($n cumtracker <= 0)
+	if sex($n == M) or sex($n == O) or sex($n == U)
+		if sex($t == F) or sex($t == A) or sex($t == H)
+			mpecho ^#401$n swallows a good ($<$n randhealamt>) ^wmilky load^#401 from $t's $<$t genitallist>.$%RAND0NUM(5)%!
+		else
+			mpecho ^#401$n swallows a good ($<$n randhealamt>) ^wmilky load^#401 from $t's $<$t genitallist>.$%RAND0NUM(5)%!
+		endif
+	endif
+	if sex($n == F) or sex($n == A) or sex($n == H)
+		if sex($t == F) or sex($t == A) or sex($t == H)
+			mpecho ^#401$n ^Wslurps^#401 a good amount ($<$n randhealamt>) from $t's $<$t genitallist>.$%RAND0NUM(5)%!
+		else
+			mpecho ^#401$n swallows a good ($<$n randhealamt>) ^wmilky load^#401 from $t's $<$t genitallist>.$%RAND0NUM(5)%!
+		endif
+	endif
+	mpforce $t mate $n
+	mpsetvar $n cumround $%MATH(8?10)%
+	mpsetvar $n cumtracker $<$n cumround>
+else
+	mpsetvar $n dmgroll $%RANDNUM(10)%
+	mpsetvar $n randhealamt $%MATH($<$n dmgroll> * $<$n expertisedmgmult> + $<$n CurLevelhalf>)%
+	if var($t targetsave < 0)
+		mpsetvar $n savedifference $%MATH($<$n randhealamt> / $<$t targetsave> * -1)%
+		mpsetvar $n randhealamt $%MATH($<$n randhealamt> + $<$n savedifference>)%
+	endif
+	if var($t targetsave > 0)
+		mpsetvar $n savedifference $%MATH($<$n randhealamt> / $<$t targetsave>)%
+		mpsetvar $n randhealamt $%MATH($<$n randhealamt> - $<$n savedifference>)%
+	endif
+	MPSETVAR $t HitsCalc $%MATH($<$t HitsCalc> - $<$n randhealamt>)%
+	if sex($n == M) or sex($n == O) or sex($n == U)
+		if sex($t == F) or sex($t == A) or sex($t == H)
+			mpecho ^#401 $n $<$n severitywordlist>.$%RAND0NUM(9)% sucks ($<$n randhealamt>) $t's $<$t genitallist>.$%RAND0NUM(3)%!  
+		else
+			mpecho ^#401 $n $<$n severitywordlist>.$%RAND0NUM(9)% sucks ($<$n randhealamt>) $t's $<$t genitallist>.$%RAND0NUM(3)%!
+		endif
+	endif
+	if sex($n == F) or sex($n == A) or sex($n == H)
+		if sex($t == F) or sex($t == A) or sex($t == H)
+			mpecho ^#401 $n $<$n severitywordlist>.$%RAND0NUM(9)% sucks ($<$n randhealamt>) $t's $<$t genitallist>.$%RAND0NUM(3)%!   
+		else
+			mpecho ^#401 $n $<$n severitywordlist>.$%RAND0NUM(9)% sucks ($<$n randhealamt>) $t's $<$t genitallist>.$%RAND0NUM(3)%!    
+		endif
+	endif
+endif
+mpsetvar $n randhealamt $%MATH($<$n randhealamt>/2)%
+MPSETVAR $n HitsCalc $%MATH($<$n HitsCalc> + $<$n randhealamt>)%
+if var($t HitsCalc < 1)
+	mpslay $t
+else
+	MPGSET $t HITS $%VAR($t HitsCalc)%
+endif
+if var($n HitsCalc > $<$n maxhealth>)
+	mpgset $n HITS $<$n maxhealth>
+else
+	MPGSET $n HITS $%VAR($n HitsCalc)%
+endif
+MPCALLFUNC MIDROUNDCHECK
+~
+
+cnclmsg_prog huh p stop
+mpecho $n lets go of $i!
+mpunaffect $t Sexual_milksteal
+mpunaffect $i Sexual_milksteal
+mpunaffect $n Sexual_milksteal
+mpunaffect $i Sexual_milksteal
+mptattoo $n -usingsexability
+mptattoo $t -usingsexability
+mpsetvar $n sexrounds 0
+return cancel
+~
+
+death_prog
+mpunaffect $t Sexual_milksteal
+mpunaffect $i Sexual_milksteal
+mpunaffect $n Sexual_milksteal
+mpunaffect $i Sexual_milksteal
+mptattoo $n -usingsexability
+mptattoo $t -usingsexability
+mpsetvar $n sexrounds 0
+~
+
+exit_prog
+if !ishere($n)
+mpunaffect $t Sexual_milksteal
+mpunaffect $i Sexual_milksteal
+mpunaffect $n Sexual_milksteal
+mpunaffect $i Sexual_milksteal
+mptattoo $n -usingsexability
+mptattoo $t -usingsexability
+mpsetvar $n sexrounds 0
+endif
+~

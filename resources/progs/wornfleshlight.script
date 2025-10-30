@@ -1,0 +1,100 @@
+entry_prog 100
+mpnotrigger entry_prog 5
+if ispc($n)
+	if hastattoo($n underage)
+		mpunaffect $n Sexual_wornfleshlight
+		return
+	endif
+endif
+if isname($n child)
+return
+endif
+mpsetvar $i soundlist '*PLAP* *PLOP* *SLAP* *SLICK* *GRIND*'
+mpsetvar $i actionwordlist 'fucks pushes grinds thrusts slams plows ploughs jams hammers jackhammers'
+mpsetvar $i severitywordlist 'thoroughly forcefully deeply quickly fiercely savagely primally angrily deeply'
+if sex($n == M) or sex($n == O) or sex($n == U)
+	mpsetvar $i toygenital 'pussy kitty cunt fuckhole puss'
+	mpsetvar $i genitallist 'cock penis dong schlong rod'
+else
+	if sex($n == F) or sex($n == A) or sex($n == H)
+		mpsetvar $i toygenital 'cock penis dong schlong rod'
+		mpsetvar $i genitallist 'pussy kitty cunt fuckhole puss'
+	endif
+endif
+mpsetvar $i genitallist2 'ass bum butt pucker guts asshole donut anus rear hole'
+mpcallfunc fleshlighttime
+~
+
+rand_prog 15
+mpcallfunc fleshlighttime
+~
+
+FUNCTION_PROG fleshlighttime
+mpsetvar $i randhealamt $%RANDNUM(15)%
+if sex($n == M) or sex($n == O) or sex($n == U)
+	mpecho ^#401$<$i soundlist>.$%RAND0NUM(5)% $<$i soundlist>.$%RAND0NUM(5)% worn goblin's $<$i toygenital>.$%RAND0NUM(5)% $<$i severitywordlist>.$%RAND0NUM(9)% $<$i actionwordlist>.$%RAND0NUM(10)% ($<$i randhealamt>) into $n's $<$i genitallist>.$%RAND0NUM(5)%! $<$i soundlist>.$%RAND0NUM(5)% $<$i soundlist>.$%RAND0NUM(5)%   
+endif
+if sex($n == F) or sex($n == A) or sex($n == H)
+	if var($i usedfleshlighthole != 1)
+		mpecho ^#401$<$i soundlist>.$%RAND0NUM(5)% $<$i soundlist>.$%RAND0NUM(5)% worn goblin's $<$i toygenital>.$%RAND0NUM(5)% $<$i severitywordlist>.$%RAND0NUM(9)% $<$i actionwordlist>.$%RAND0NUM(10)% ($<$i randhealamt>) into $n's $<$i genitallist>.$%RAND0NUM(5)%! $<$i soundlist>.$%RAND0NUM(5)% $<$i soundlist>.$%RAND0NUM(5)%   
+	else
+		mpecho ^#401$<$i soundlist>.$%RAND0NUM(5)% $<$i soundlist>.$%RAND0NUM(5)% worn goblin's $<$i toygenital>.$%RAND0NUM(5)% $<$i severitywordlist>.$%RAND0NUM(9)% $<$i actionwordlist>.$%RAND0NUM(10)% ($<$i randhealamt>) into $n's $<$i genitallist2>.$%RAND0NUM(10)%! $<$i soundlist>.$%RAND0NUM(5)% $<$i soundlist>.$%RAND0NUM(5)%   
+	endif
+	if rand(15)
+		mploadvar $n dirtystate
+		mpsetvar $n dirtystate ++
+		mpsavevar $n dirtystate
+		mploadvar $t tearstate
+		mpsetvar $t tearstate ++
+		mpsavevar $t tearstate
+		mploadvar $t cummystate
+		mpsetvar $t cummystate ++
+		mpsavevar $t cummystate
+		if sex($n == F) or sex($n == A) or sex($n == H)
+			if var($i usedfleshlighthole != 1)
+				mpsetvar $i usedfleshlighthole 1
+				mpecho *POP* the worn goblin pumps a fat load into $n's $<$i genitallist>.$%RAND0NUM(5)% then pops his $<$i toygenital>.$%RAND0NUM(5)% out and switches into $m $<$i genitallist2>.$%RAND0NUM(5)%.
+			else
+				mpsetvar $i usedfleshlighthole 0
+				mpecho *POP* the worn goblin pumps a fat load into $n's $<$i genitallist2>.$%RAND0NUM(5)% then pops his $<$i toygenital>.$%RAND0NUM(5)% out and switches into $m $<$i genitallist>.$%RAND0NUM(5)%.
+			endif
+			if affected($t sexual_cumbloat3)
+				mpecho $t's belly can't get inflated any more but it is filled with fresh cum over again...
+				mpunaffect $t sexual_cumbloat3
+				mpaffect sexual_cumbloat3 $t
+			else
+				if affected($t sexual_cumbloat2)
+						mpecho $t's belly inflate even more with the large amount of cum splurted into it!
+						mpunaffect $t sexual_cumbloat2
+						mpaffect sexual_cumbloat3 $t
+				else
+					if affected($t sexual_cumbloat1)
+						mpecho $t's belly inflate more with the large amount of cum splurted into it!
+						mpunaffect $t sexual_cumbloat1
+						mpaffect sexual_cumbloat2 $t
+					else
+						mpecho $t's belly inflate with the large amount of cum splurted into it!
+						mpaffect Sexual_Cumbloat1 $t
+					endif
+				endif
+			endif
+		else
+			mpecho *POP* the worn goblin receives a fat load from $n into her $<$i toygenital>.$%RAND0NUM(5)%.
+		endif
+	endif
+endif
+mpsetvar $n healamt $%MATH(15?30)%
+if class($n == TacticalJoy)
+mpsetvar $n healamt +30
+endif
+mpsetvar $n MaxHits $%GSTAT($n BASEHITS)%
+IF GSTAT($n HITS < $<$n MaxHits>)
+    MPECHO ^g$n heals ($<$n healamt>) by the stimulant!
+    mpsetvar $n CurHits $%GSTAT($n HITS)%
+    mpsetvar $n HitsCalc $%MATH($<$n CurHits> + $<$n healamt> < $<$n MaxHits>)%
+    IF GSTAT($n BASEHITS < $<$n HitsCalc>)
+        mpsetvar $n HitsCalc $<$n MaxHits>
+    ENDIF
+    MPGSET $n HITS $%VAR($n HitsCalc)%
+ENDIF
+~

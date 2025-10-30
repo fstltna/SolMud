@@ -1,0 +1,64 @@
+social_prog spank
+mpcallfunc blessening_checks
+~
+
+function_prog blessening_checks
+mpnotrigger social_prog 2000
+##target is self
+if isname('$n' '$t') 
+  return
+endif
+##target is not witnesser
+if !isname('$t' '$i') 
+  return
+endif
+##effects from spank
+##target is witnesser
+if isname('$t' '$i')
+  ##target is celestial
+  if racecat($t == Celestial)
+    mpecho with the resonance of the rippling celestial cheeks, $n is blessed with divine luck.
+    mpforce $n mpcastext prayer_divineluck $n
+  endif
+  if racecat($t == Demon)
+    mpecho with the resonance of the rippling demonic cheeks, $n is covered in unholy flames.
+    mpforce $n mpcastext prayer_demonshield $n
+  endif
+  if strin('$%GSTAT($t race)%' '*undead*') or strin('$%GSTAT($t race)%' '*zombie*')
+    mpecho with the resonance of the rippling zombie cheeks, $n is covered in an aura of fear!
+    mpforce $n mpcastext prayer_aurafear $n
+  endif
+  if strin('$%GSTAT($t race)%' '*mummy*')
+    mpecho with the resonance of the rippling, wrapped mummy cheeks, $n is protected from diseases!
+    mpforce $n mpcastext prayer_protectiondisease $n
+  endif
+  if strin('$%GSTAT($t race)%' '*ghoul*')
+    mpecho with the resonance of the rippling, ghoulish cheeks, $n is protected from paralyzation!
+    mpforce $n mpcastext prayer_protectionparalyzation $n
+  endif
+  if strin('$%GSTAT($t race)%' '*ghast*')
+    mpecho with the resonance of the rippling, ghastly cheeks, $n's and any allies are freed of restrains!
+    mpforce $n mpcastext prayer_massfreedom $n
+  endif
+  if strin('$%GSTAT($t race)%' '*vampire*')
+    mpecho with the resonance of the rippling, vampiric cheeks, $n starts to look more charming!
+    mpforce $n mpcastext Spell_Friends $n
+  endif
+  if strin('$%GSTAT($t race)%' '*spectre*')
+    mpecho with the resonance of the rippling, spectral... cheeks? $n starts to drain energy of others!
+    mpforce $n mpcastext Spell_Siphon $n
+  endif
+  if strin('$%GSTAT($t race)%' '*skeleton*')
+    mpecho with the resonance of the clattering skeletal... cheeks? $n starts to be protected by a layer of bone!
+    mpforce $n mpcastext Spell_stoneskin $n
+  endif
+  if strin('$%GSTAT($t race)%' '*lich*')
+    mpecho with the resonance of the rippling lichly cheeks cause spirits to become restless!
+    mpforce $t mpcastext Prayer_Haunted $t
+  endif
+  if strin('$%GSTAT($t race)%' '*spirit*') or strin('$%GSTAT($t race)%' '*ghost*')
+    mpecho with the resonance of the ethereal... cheeks? $n and their group starts to float!
+    mpforce $n mpcastext Spell_massfly $n
+  endif
+endif
+~

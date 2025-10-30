@@ -1,0 +1,80 @@
+cnclmsg_prog huh p diceroll
+    ##dicerolls
+    mpechoat $n You can diceroll: strength, intelligence, dexterity, constitution, charisma, wisdom%0D^C[OOC:Since there is so much to cover please request additions for what you'd like the most.]^?
+    return cancel
+~
+
+cnclmsg_prog huh p diceroll strength
+    mpecho ^C[D20]^? $n rolls for Strength [$%MATH(1?20)%]
+    return cancel
+~
+
+cnclmsg_prog huh p diceroll intelligence
+    mpecho ^C[D20]^? $n rolls for Intelligence [$%MATH(1?20)%]
+    if isable($n RP_NecromancyLore)
+    mpecho ^C[Necromancy Expertise]^? When rolling for anything involving undead/necromancy You add ^g10^? to your rolls. If you roll a failure you succeed instead.
+    endif
+    return cancel
+~
+
+cnclmsg_prog huh p diceroll dexterity
+    mpecho ^C[D20]^? $n rolls for Dexterity [$%MATH(1?20)%]
+    if isable($n RP_EvasiveI)
+        mpecho ^C[Like a Butterfly I]^? When rolling for evasiveness in plot or else RP, you add 5 to your evasion rolls.
+    endif
+    if isable($n RP_EvasiveII)
+        mpecho ^C[Like a Butterfly II]^? When rolling for evasiveness in plot or else RP, you add another 5 to your evasion rolls, if you roll failure on rolls to evade ranged projectile or magic attacks you roll a success instead.
+    endif
+    if isable($n RP_Roguery)
+        mpecho ^C[Roguery Skills]^? When rolling for related skills in plot or else RP, you add 10 to your rolls. If you roll a failure you succeed instead.
+    endif
+    if isable($n RP_Stealthyi)
+        mpecho ^C[Like a Shadow I]^? you add 5 to your stealth rolls.
+    endif
+    if isable($n RP_Stealthyii)
+        mpecho ^C[Like a Shadow I]^? you add another 5 to your stealth rolls.If you roll a normal failure in stealth rolls, you roll a success instead. (provided you are not trying to hide in plain sight.)
+    endif
+    return cancel
+~
+
+cnclmsg_prog huh p diceroll constitution
+    mpecho ^C[D20]^? $n rolls for Constitution [$%MATH(1?20)%]
+    return cancel
+~
+
+cnclmsg_prog huh p diceroll wisdom
+    mpecho ^C[D20]^? $n rolls for Wisdom [$%MATH(1?20)%]
+    if isable($n RP_ForensicLore)
+    mpecho ^C[Forensic Expertise]^? You add 10 to your forensics rolls. Even if you fail you will still find out a few things about the investigation.
+    endif
+    if isable($n RP_HealingI)
+    mpecho ^C[Hands of a Healer I]^? You add 5 to your healing rolls.
+    endif
+    if isable($n RP_HealingII)
+    mpecho ^C[Hands of a Healer II]^? You add another 5 to your healing rolls.
+    endif
+    if isable($n RP_Nature)
+    mpecho ^C[Nature Bond]^? When rolling for related skills in plot or else RP, you add 10 to your rolls. If you roll a failure you succeed instead.
+    endif
+    return cancel
+~
+
+cnclmsg_prog huh p diceroll charisma
+    mpecho ^C[D20]^? $n rolls for Charisma [$%MATH(1?20)%]
+    if isable($n RP_Performer)
+        pecho ^C[Amazing Performer]^? You add 10 to your performance rolls. If you roll a failure you succeed instead.
+    endif
+    if isable($n RP_ActingI)
+        mpecho ^C[Shining Star I]^? You add 5 to your acting rolls.
+    endif
+    if isable($n RP_ActingII)
+        mpecho ^C[Shining Star II]^? You add another 5 to your acting rolls. If you roll a failure you succeed instead.
+    endif
+    if isable($n RP_Breedingi)
+        mpecho ^C[Sexpertise I]^? You add 5 to your sex rolls.
+    endif
+    if isable($n RP_Breedingii)
+        mpecho ^C[Sexpertise II]^? You add another 5 to your sex rolls. If you roll a failure you succeed instead.
+    endif
+    return cancel
+~
